@@ -1,0 +1,13 @@
+{{/*
+This source code is licensed under the Apache 2.0 license found
+in the LICENSE file in the root directory of this source tree.
+*/}}
+
+{{/* gotype: github.com/usalko/fluent/flc/gen.Graph */}}
+
+{{ define "fluent_ql" }}
+	{{ $tmpl := printf "dialect/%s/fluent_ql" $.Storage }}
+	{{ if hasTemplate $tmpl }}
+		{{ xtemplate $tmpl . }}
+	{{ end }}
+{{ end }}

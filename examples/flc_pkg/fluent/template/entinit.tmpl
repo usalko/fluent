@@ -1,0 +1,25 @@
+package schema
+
+import (
+    "github.com/usalko/fluent"
+    "github.com/usalko/fluent/schema/mixin"
+)
+
+// {{ . }} holds the schema definition for the {{ . }} entity.
+type {{ . }} struct {
+    fluent.Schema
+}
+
+// Mixins of the {{ . }}.
+func ({{ . }}) Mixins() []fluent.Mixin {
+    return []fluent.Mixin{
+        mixin.Time{},
+    }
+}
+
+// Fields of the {{ . }}.
+func ({{ . }}) Fields() []fluent.Field {
+    return []fluent.Field{
+        // Fields go here.
+    }
+}
