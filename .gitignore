@@ -1,0 +1,4 @@
+# IDE Specific
+.vscode
+# Local environment
+.env
