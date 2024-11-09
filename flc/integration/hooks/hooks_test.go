@@ -10,7 +10,6 @@ import (
 	"testing"
 	"time"
 
-	"entgo.io/ent"
 	"github.com/usalko/fluent/dialect"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/flc/integration/hooks/fluent"
@@ -56,7 +55,7 @@ func TestSchemaHooks(t *testing.T) {
 
 func TestRuntimeHooks(t *testing.T) {
 	ctx := context.Background()
-	client := fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1", fluent.WithOptions(fluent.Log(t.Log)), fluent.WithMigrateOptions(migrate.WithGlobalUniqueID(true)))
+	client := fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1", fluent_test.WithOptions(fluent.Log(t.Log)), fluent_test.WithMigrateOptions(migrate.WithGlobalUniqueID(true)))
 	defer client.Close()
 	var calls int
 	client.Use(func(next fluent.Mutator) fluent.Mutator {
@@ -98,7 +97,7 @@ func TestRuntimeChain(t *testing.T) {
 
 func TestMutationClient(t *testing.T) {
 	ctx := context.Background()
-	client := fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1", fluent.WithMigrateOptions(migrate.WithGlobalUniqueID(true)))
+	client := fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1", fluent_test.WithMigrateOptions(migrate.WithGlobalUniqueID(true)))
 	defer client.Close()
 	client.Card.Use(func(next fluent.Mutator) fluent.Mutator {
 		return hook.CardFunc(func(ctx context.Context, m *fluent.CardMutation) (fluent.Value, error) {
@@ -166,7 +165,7 @@ func TestMutatorClient(t *testing.T) {
 
 func TestMutationTx(t *testing.T) {
 	ctx := context.Background()
-	client := fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1", fluent.WithMigrateOptions(migrate.WithGlobalUniqueID(true)))
+	client := fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1", fluent_test.WithMigrateOptions(migrate.WithGlobalUniqueID(true)))
 	defer client.Close()
 	client.Card.Use(func(next fluent.Mutator) fluent.Mutator {
 		return hook.CardFunc(func(ctx context.Context, m *fluent.CardMutation) (fluent.Value, error) {
@@ -192,7 +191,7 @@ func TestMutationTx(t *testing.T) {
 
 func TestDeletion(t *testing.T) {
 	ctx := context.Background()
-	client := fluent.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1", fluent.WithMigrateOptions(migrate.WithGlobalUniqueID(true)))
+	client := fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1", fluent_test.WithMigrateOptions(migrate.WithGlobalUniqueID(true)))
 	defer client.Close()
 	client.User.Use(func(next fluent.Mutator) fluent.Mutator {
 		return hook.UserFunc(func(ctx context.Context, m *fluent.UserMutation) (fluent.Value, error) {
@@ -218,9 +217,9 @@ func TestDeletion(t *testing.T) {
 
 func TestMutationIDs(t *testing.T) {
 	ctx := context.Background()
-	client := fluent.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
+	client := fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
 	defer client.Close()
-	count := make(map[ent.Op]int)
+	count := make(map[fluent.Op]int)
 	client.User.Use(
 		hook.Unless(
 			func(next fluent.Mutator) fluent.Mutator {
@@ -249,7 +248,7 @@ func TestMutationIDs(t *testing.T) {
 
 func TestPostCreation(t *testing.T) {
 	ctx := context.Background()
-	client := fluent.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
+	client := fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
 	defer client.Close()
 	client.Card.Use(hook.On(func(next fluent.Mutator) fluent.Mutator {
 		return hook.CardFunc(func(ctx context.Context, m *fluent.CardMutation) (fluent.Value, error) {
@@ -273,7 +272,7 @@ func TestPostCreation(t *testing.T) {
 
 func TestUpdateAfterCreation(t *testing.T) {
 	ctx := context.Background()
-	client := fluent.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
+	client := fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
 	defer client.Close()
 	client.User.Use(hook.On(func(next fluent.Mutator) fluent.Mutator {
 		return hook.UserFunc(func(ctx context.Context, m *fluent.UserMutation) (fluent.Value, error) {
@@ -300,7 +299,7 @@ func TestUpdateAfterCreation(t *testing.T) {
 
 func TestUpdateAfterUpdateOne(t *testing.T) {
 	ctx := context.Background()
-	client := fluent.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
+	client := fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
 	defer client.Close()
 	client.User.Use(hook.On(func(next fluent.Mutator) fluent.Mutator {
 		return hook.UserFunc(func(ctx context.Context, m *fluent.UserMutation) (fluent.Value, error) {
@@ -332,7 +331,7 @@ func TestUpdateAfterUpdateOne(t *testing.T) {
 
 func TestOldValues(t *testing.T) {
 	ctx := context.Background()
-	client := fluent.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1", fluent.WithMigrateOptions(migrate.WithGlobalUniqueID(true)))
+	client := fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1", fluent_test.WithMigrateOptions(migrate.WithGlobalUniqueID(true)))
 	defer client.Close()
 
 	// Querying old fields post mutation should fail.
@@ -418,7 +417,7 @@ func TestOldValues(t *testing.T) {
 }
 
 func TestConditions(t *testing.T) {
-	client := fluent.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1", fluent.WithMigrateOptions(migrate.WithGlobalUniqueID(true)))
+	client := fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1", fluent_test.WithMigrateOptions(migrate.WithGlobalUniqueID(true)))
 	defer client.Close()
 
 	var calls int
@@ -455,7 +454,7 @@ func TestConditions(t *testing.T) {
 }
 
 func TestRuntimeTx(t *testing.T) {
-	client := fluent.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1", fluent.WithMigrateOptions(migrate.WithGlobalUniqueID(true)))
+	client := fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1", fluent_test.WithMigrateOptions(migrate.WithGlobalUniqueID(true)))
 	defer client.Close()
 	client.Card.Use(func(next fluent.Mutator) fluent.Mutator {
 		return hook.CardFunc(func(ctx context.Context, m *fluent.CardMutation) (fluent.Value, error) {
@@ -488,7 +487,7 @@ func TestInterceptor_Sanity(t *testing.T) {
 	t.Run("All", func(t *testing.T) {
 		var (
 			calls  int
-			client = fluent.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
+			client = fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
 		)
 		defer client.Close()
 		client.Intercept(
@@ -512,7 +511,7 @@ func TestInterceptor_Sanity(t *testing.T) {
 	t.Run("Count", func(t *testing.T) {
 		var (
 			calls  int
-			client = fluent.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
+			client = fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
 		)
 		defer client.Close()
 		client.Intercept(
@@ -536,7 +535,7 @@ func TestInterceptor_Sanity(t *testing.T) {
 	t.Run("IDs", func(t *testing.T) {
 		var (
 			calls  int
-			client = fluent.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
+			client = fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
 			users  = client.User.CreateBulk(
 				client.User.Create().SetName("a8m"),
 				client.User.Create().SetName("nati"),
@@ -573,7 +572,7 @@ func TestInterceptor_Sanity(t *testing.T) {
 		}
 		var (
 			calls  int
-			client = fluent.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
+			client = fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
 		)
 		defer client.Close()
 		client.Intercept(
@@ -604,7 +603,7 @@ func TestInterceptor_Sanity(t *testing.T) {
 	t.Run("Clone", func(t *testing.T) {
 		var (
 			calls  int
-			client = fluent.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
+			client = fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
 		)
 		defer client.Close()
 		client.Intercept(
@@ -631,7 +630,7 @@ func TestInterceptor_Sanity(t *testing.T) {
 
 func TestSoftDelete(t *testing.T) {
 	ctx := context.Background()
-	client := fluent.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
+	client := fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
 	defer client.Close()
 
 	a8m := client.User.Create().SetName("a8m").SaveX(ctx)
@@ -695,7 +694,7 @@ func TestSoftDelete(t *testing.T) {
 
 func TestTraverseUnique(t *testing.T) {
 	ctx := context.Background()
-	client := fluent.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
+	client := fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
 	defer client.Close()
 
 	a8m := client.User.Create().SetName("a8m").SaveX(ctx)
@@ -724,7 +723,7 @@ func TestTraverseUnique(t *testing.T) {
 // can be used by multiple packages/projects using generics.
 func TestSharedInterceptor(t *testing.T) {
 	ctx := context.Background()
-	client := fluent.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
+	client := fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
 	defer client.Close()
 	client.User.Create().SetName("a8m").ExecX(ctx)
 	client.User.Create().SetName("nati").ExecX(ctx)
@@ -755,7 +754,7 @@ func SharedLimiter[Q interface{ Limit(int) }](f func(entgo.Query) (Q, error), li
 
 func TestTypedTraverser(t *testing.T) {
 	ctx := context.Background()
-	client := fluent.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
+	client := fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
 	defer client.Close()
 	a8m, nat := client.User.Create().SetName("a8m").SaveX(ctx), client.User.Create().SetName("nati").SetActive(false).SaveX(ctx)
 	client.Pet.CreateBulk(
@@ -785,7 +784,7 @@ func TestTypedTraverser(t *testing.T) {
 
 func TestLimitInterceptor(t *testing.T) {
 	ctx := context.Background()
-	client := fluent.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
+	client := fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
 	defer client.Close()
 	client.User.Create().SetName("a8m").SaveX(ctx)
 	client.User.Create().SetName("nati").SaveX(ctx)
@@ -801,7 +800,7 @@ func TestLimitInterceptor(t *testing.T) {
 
 func TestFilterTraverseFunc(t *testing.T) {
 	ctx := context.Background()
-	client := fluent.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
+	client := fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
 	defer client.Close()
 	a8m, nat := client.User.Create().SetName("a8m").SaveX(ctx), client.User.Create().SetName("nati").SetActive(false).SaveX(ctx)
 	client.Pet.CreateBulk(

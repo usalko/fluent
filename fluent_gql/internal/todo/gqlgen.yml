@@ -53,4 +53,4 @@ models:
       - github.com/usalko/fluent/fluent_gql/internal/todo/fluent/schema/schematype.CategoryTypes
   UUID:
     model:
-      - github.com/usalko/fluent/fluent_gql/internal/todouuid/fluent/schema/uuidgql.UUID
+      - github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/schema/uuidgql.UUID

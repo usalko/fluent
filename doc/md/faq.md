@@ -95,7 +95,7 @@ func VersionHook() fluent.Hook {
 
 #### How to write an audit-log extension?
 
-The preferred way for writing such an extension is to use [ent.Mixin](schema-mixin.md). Use the `Fields` option for
+The preferred way for writing such an extension is to use [fluent.Mixin](schema-mixin.md). Use the `Fields` option for
 setting the fields that are shared between all schemas that import the mixed-schema, and use the `Hooks` option for
 attaching a mutation-hook for all mutations that are being applied on these schemas. Here's an example, based on a
 discussion in the [repository issue-tracker](https://github.com/usalko/fluent/issues/830):

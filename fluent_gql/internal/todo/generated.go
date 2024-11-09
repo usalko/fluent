@@ -20,7 +20,7 @@ import (
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/schema/durationgql"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/schema/schematype"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/todo"
-	"github.com/usalko/fluent/fluent_gql/internal/todouuid/fluent/schema/uuidgql"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/schema/uuidgql"
 	"github.com/99designs/gqlgen/graphql"
 	"github.com/99designs/gqlgen/graphql/introspection"
 	"github.com/google/uuid"

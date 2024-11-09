@@ -364,8 +364,8 @@ func (mutationResolver) CreateTodo(ctx context.Context, todo TodoInput) (*fluent
 
 The [ent/contrib](https://github.com/usalko/contrib) contains several examples at the moment:
 1. A complete GraphQL server with a simple [Todo App](https://github.com/usalko/contrib/tree/master/ fluent_gql/internal/todo) with numeric ID field
-2. The same [Todo App](https://github.com/usalko/contrib/tree/master/ fluent_gql/internal/todouuid) in 1, but with UUID type for the ID field
-3. The same [Todo App](https://github.com/usalko/contrib/tree/master/ fluent_gql/internal/todopulid) in 1 and 2, but with a prefixed [ULID](https://github.com/ulid/spec) or `PULID` as the ID field. This example supports the Relay Node API by prefixing IDs with the entity type rather than employing the ID space partitioning in [Universal IDs](migrate.md#universal-ids).
+2. The same [Todo App](https://github.com/usalko/contrib/tree/master/ fluent_gql/internal/todo_uuid) in 1, but with UUID type for the ID field
+3. The same [Todo App](https://github.com/usalko/contrib/tree/master/ fluent_gql/internal/todo_pulid) in 1 and 2, but with a prefixed [ULID](https://github.com/ulid/spec) or `PULID` as the ID field. This example supports the Relay Node API by prefixing IDs with the entity type rather than employing the ID space partitioning in [Universal IDs](migrate.md#universal-ids).
 
 ---
 
