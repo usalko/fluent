@@ -11,7 +11,7 @@ require (
 	github.com/lib/pq v1.10.7
 	github.com/mattn/go-sqlite3 v1.14.17
 	github.com/stretchr/testify v1.9.0
-	github.com/usalko/fluent v0.1.0-0.1.010.1.00.1.00.1.00.1.00
+	github.com/usalko/fluent v0.1.1-0.1.110.1.10.1.10.1.10.1.10
 	gocloud.dev v0.28.0
 )
 
@@ -21,7 +21,7 @@ require (
 	github.com/bmatcuk/doublestar v1.3.4 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/go-openapi/inflect v0.19.0 // indirect
-	github.com/golang/groupcache v0.1.0-20210331224755-41bb18bfe9da // indirect
+	github.com/golang/groupcache v0.1.1-20210331224755-41bb18bfe9da // indirect
 	github.com/golang/protobuf v1.5.2 // indirect
 	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/googleapis/gax-go/v2 v2.7.0 // indirect
@@ -35,9 +35,9 @@ require (
 	golang.org/x/net v0.6.0 // indirect
 	golang.org/x/sys v0.27.0 // indirect
 	golang.org/x/text v0.18.0 // indirect
-	golang.org/x/xerrors v0.1.0-20220907171357-04be3eba64a2 // indirect
+	golang.org/x/xerrors v0.1.1-20220907171357-04be3eba64a2 // indirect
 	google.golang.org/api v0.103.0 // indirect
-	google.golang.org/genproto v0.1.0-20221201204527-e3fa12d562f3 // indirect
+	google.golang.org/genproto v0.1.1-20221201204527-e3fa12d562f3 // indirect
 	google.golang.org/grpc v1.51.0 // indirect
 	google.golang.org/protobuf v1.28.1 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
