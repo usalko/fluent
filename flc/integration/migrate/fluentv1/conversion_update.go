@@ -698,7 +698,7 @@ func (cuo *ConversionUpdateOne) sqlSave(ctx context.Context) (_node *Conversion,
 		_spec.Node.Columns = append(_spec.Node.Columns, conversion.FieldID)
 		for _, f := range fields {
 			if !conversion.ValidColumn(f) {
-				return nil, &ValidationError{Name: f, err: fmt.Errorf("entv1: invalid field %q for query", f)}
+				return nil, &ValidationError{Name: f, err: fmt.Errorf("fluentv1: invalid field %q for query", f)}
 			}
 			if f != conversion.FieldID {
 				_spec.Node.Columns = append(_spec.Node.Columns, f)

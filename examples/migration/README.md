@@ -17,7 +17,7 @@ Versioned migration files exists under `ent/migrate/migrations`.
 ```bash
 atlas migrate diff <migration_name> \
   --dir "file://fluent/migrate/migrations" \
-  --to "ent://fluent/schema" \
+  --to "fluent://fluent/schema" \
   --dev-url "docker://mysql/8/fluent"
 ```
 

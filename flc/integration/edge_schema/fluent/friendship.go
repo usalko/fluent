@@ -157,7 +157,7 @@ func (f *Friendship) Update() *FriendshipUpdateOne {
 func (f *Friendship) Unwrap() *Friendship {
 	_tx, ok := f.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: Friendship is not a transactional entity")
+		panic("fluent: Friendship is not a transactional entity")
 	}
 	f.config.driver = _tx.drv
 	return f

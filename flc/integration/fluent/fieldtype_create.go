@@ -4136,7 +4136,7 @@ func (u *FieldTypeUpsertOne) ClearPasswordOther() *FieldTypeUpsertOne {
 // Exec executes the query.
 func (u *FieldTypeUpsertOne) Exec(ctx context.Context) error {
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for FieldTypeCreate.OnConflict")
+		return errors.New("fluent: missing options for FieldTypeCreate.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }
@@ -5856,11 +5856,11 @@ func (u *FieldTypeUpsertBulk) Exec(ctx context.Context) error {
 	}
 	for i, b := range u.create.builders {
 		if len(b.conflict) != 0 {
-			return fmt.Errorf("ent: OnConflict was set for builder %d. Set it on the FieldTypeCreateBulk instead", i)
+			return fmt.Errorf("fluent: OnConflict was set for builder %d. Set it on the FieldTypeCreateBulk instead", i)
 		}
 	}
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for FieldTypeCreateBulk.OnConflict")
+		return errors.New("fluent: missing options for FieldTypeCreateBulk.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }

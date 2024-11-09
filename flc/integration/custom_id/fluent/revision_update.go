@@ -148,7 +148,7 @@ func (ruo *RevisionUpdateOne) sqlSave(ctx context.Context) (_node *Revision, err
 		_spec.Node.Columns = append(_spec.Node.Columns, revision.FieldID)
 		for _, f := range fields {
 			if !revision.ValidColumn(f) {
-				return nil, &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
+				return nil, &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 			}
 			if f != revision.FieldID {
 				_spec.Node.Columns = append(_spec.Node.Columns, f)

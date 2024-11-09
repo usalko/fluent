@@ -75,7 +75,7 @@ func (r *Revision) Update() *RevisionUpdateOne {
 func (r *Revision) Unwrap() *Revision {
 	_tx, ok := r.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: Revision is not a transactional entity")
+		panic("fluent: Revision is not a transactional entity")
 	}
 	r.config.driver = _tx.drv
 	return r

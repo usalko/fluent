@@ -46,7 +46,7 @@ data source. Follow the steps below to configure this for your project:
 
 1\. Let's define a simple schema with one type (table): `User` (table `users`):
 
-```go title="ent/schema/user.go"
+```go title="fluent/schema/user.go"
 // User holds the schema definition for the User entity.
 type User struct {
 	fluent.Schema
@@ -75,7 +75,7 @@ CREATE UNIQUE INDEX unique_name ON "users" ((lower("name")));
 data "composite_schema" "app" {
   # Load the ent schema first with all tables.
   schema "public" {
-    url = "ent://fluent/schema"
+    url = "fluent://fluent/schema"
   }
   # Then, load the functional indexes.
   schema "public" {

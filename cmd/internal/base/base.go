@@ -67,11 +67,11 @@ func InitCmd() *cobra.Command {
 	c.Use = "init [flags] [schemas]"
 	c.Short = "initialize an environment with zero or more schemas"
 	c.Example = examples(
-		"ent init Example",
-		"ent init --target entv1/schema User Group",
-		"ent init --template ./path/to/file.tmpl User",
+		"fluent init Example",
+		"fluent init --target entv1/schema User Group",
+		"fluent init --template ./path/to/file.tmpl User",
 	)
-	c.Deprecated = `use "ent new" instead`
+	c.Deprecated = `use "fluent new" instead`
 	return c
 }
 
@@ -82,9 +82,9 @@ func NewCmd() *cobra.Command {
 		Use:   "new [flags] [schemas]",
 		Short: "initialize a new environment with zero or more schemas",
 		Example: examples(
-			"ent new Example",
-			"ent new --target entv1/schema User Group",
-			"ent new --template ./path/to/file.tmpl User",
+			"fluent new Example",
+			"fluent new --target entv1/schema User Group",
+			"fluent new --template ./path/to/file.tmpl User",
 		),
 		Args: func(_ *cobra.Command, names []string) error {
 			for _, name := range names {
@@ -107,10 +107,10 @@ func NewCmd() *cobra.Command {
 				tmpl, err = tmpl.Parse(defaultTemplate)
 			}
 			if err != nil {
-				log.Fatalln(fmt.Errorf("ent/new: could not parse template %w", err))
+				log.Fatalln(fmt.Errorf("fluent/new: could not parse template %w", err))
 			}
 			if err := newEnv(target, names, tmpl); err != nil {
-				log.Fatalln(fmt.Errorf("ent/new: %w", err))
+				log.Fatalln(fmt.Errorf("fluent/new: %w", err))
 			}
 		},
 	}
@@ -125,8 +125,8 @@ func DescribeCmd() *cobra.Command {
 		Use:   "describe [flags] path",
 		Short: "print a description of the graph schema",
 		Example: examples(
-			"ent describe ./fluent/schema",
-			"ent describe github.com/a8m/x",
+			"fluent describe ./fluent/schema",
+			"fluent describe github.com/a8m/x",
 		),
 		Args: cobra.ExactArgs(1),
 		Run: func(cmd *cobra.Command, path []string) {
@@ -242,7 +242,7 @@ func createDir(target string) error {
 	if target != defaultSchema {
 		return nil
 	}
-	if err := os.WriteFile("ent/generate.go", []byte(genFile), 0644); err != nil {
+	if err := os.WriteFile("fluent/generate.go", []byte(genFile), 0644); err != nil {
 		return fmt.Errorf("creating generate.go file: %w", err)
 	}
 	return nil
@@ -256,7 +256,7 @@ func fileExists(target, name string) bool {
 
 const (
 	// default schema package path.
-	defaultSchema = "ent/schema"
+	defaultSchema = "fluent/schema"
 	// ent/generate.go file used for "go generate" command.
 	genFile = "package fluent\n\n//go:generate go run -mod=mod github.com/usalko/fluent/cmd/fluent generate ./schema\n"
 	// schema template for the "init" command.

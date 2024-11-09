@@ -115,7 +115,7 @@ func (s *Session) Update() *SessionUpdateOne {
 func (s *Session) Unwrap() *Session {
 	_tx, ok := s.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: Session is not a transactional entity")
+		panic("fluent: Session is not a transactional entity")
 	}
 	s.config.driver = _tx.drv
 	return s

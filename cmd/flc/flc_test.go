@@ -13,15 +13,15 @@ import (
 )
 
 func TestCmd(t *testing.T) {
-	defer os.RemoveAll("ent")
+	defer os.RemoveAll("fluent")
 	cmd := exec.Command("go", "run", "github.com/usalko/fluent/cmd/flc", "new", "User")
 	stderr := bytes.NewBuffer(nil)
 	cmd.Stderr = stderr
 	require.NoError(t, cmd.Run(), stderr.String())
 
-	_, err := os.Stat("ent/generate.go")
+	_, err := os.Stat("fluent/generate.go")
 	require.NoError(t, err)
-	_, err = os.Stat("ent/schema/user.go")
+	_, err = os.Stat("fluent/schema/user.go")
 	require.NoError(t, err)
 
 	cmd = exec.Command("go", "run", "github.com/usalko/fluent/cmd/flc", "generate", "./fluent/schema")
@@ -29,6 +29,6 @@ func TestCmd(t *testing.T) {
 	cmd.Stderr = stderr
 	require.NoError(t, cmd.Run(), stderr.String())
 
-	_, err = os.Stat("ent/user.go")
+	_, err = os.Stat("fluent/user.go")
 	require.NoError(t, err)
 }

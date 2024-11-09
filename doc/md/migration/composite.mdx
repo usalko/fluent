@@ -82,7 +82,7 @@ composite "address" {
 <Tabs>
 <TabItem value={"schema"} label={"Schema"}>
 
-```go title="ent/schema/user.go" {6-8}
+```go title="fluent/schema/user.go" {6-8}
 // Fields of the User.
 func (User) Fields() []fluent.Field {
 	return []fluent.Field{
@@ -102,7 +102,7 @@ used by the driver (e.g., "varchar").
 </TabItem>
 <TabItem value={"address"} label={"Address Type"}>
 
-```go title="ent/schematype/address.go"
+```go title="fluent/schematype/address.go"
 type Address struct {
 	Street, City string
 }
@@ -141,7 +141,7 @@ data "composite_schema" "app" {
   }
   # Second, load the Ent schema.
   schema "public" {
-    url = "ent://fluent/schema"
+    url = "fluent://fluent/schema"
   }
 }
 

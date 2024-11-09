@@ -130,7 +130,7 @@ func (is *IntSID) Update() *IntSIDUpdateOne {
 func (is *IntSID) Unwrap() *IntSID {
 	_tx, ok := is.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: IntSID is not a transactional entity")
+		panic("fluent: IntSID is not a transactional entity")
 	}
 	is.config.driver = _tx.drv
 	return is

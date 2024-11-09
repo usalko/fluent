@@ -368,7 +368,7 @@ func (uguo *UserGroupUpdateOne) sqlSave(ctx context.Context) (_node *UserGroup, 
 		_spec.Node.Columns = append(_spec.Node.Columns, usergroup.FieldID)
 		for _, f := range fields {
 			if !usergroup.ValidColumn(f) {
-				return nil, &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
+				return nil, &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 			}
 			if f != usergroup.FieldID {
 				_spec.Node.Columns = append(_spec.Node.Columns, f)

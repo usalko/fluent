@@ -150,7 +150,7 @@ func (ug *UserGroup) Update() *UserGroupUpdateOne {
 func (ug *UserGroup) Unwrap() *UserGroup {
 	_tx, ok := ug.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: UserGroup is not a transactional entity")
+		panic("fluent: UserGroup is not a transactional entity")
 	}
 	ug.config.driver = _tx.drv
 	return ug

@@ -83,7 +83,7 @@ func (i *Item) Update() *ItemUpdateOne {
 func (i *Item) Unwrap() *Item {
 	_tx, ok := i.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: Item is not a transactional entity")
+		panic("fluent: Item is not a transactional entity")
 	}
 	i.config.driver = _tx.drv
 	return i

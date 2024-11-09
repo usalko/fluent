@@ -1073,7 +1073,7 @@ func aliases(g *Graph) {
 	mayAlias := make(map[string]*Type)
 	for _, n := range g.Nodes {
 		if pkg := n.PackageDir(); importPkg[pkg] != "" {
-			// By default, a package named "pet" will be named as "entpet".
+			// By default, a package named "pet" will be named as "fluentpet".
 			n.alias = path.Base(g.Package) + pkg
 		} else {
 			mayAlias[n.PackageDir()] = n
@@ -1091,7 +1091,7 @@ func aliases(g *Graph) {
 			// A user-defined type already uses the
 			// package local name.
 			if n, ok := mayAlias[name]; ok {
-				// By default, a package named "pet" will be named as "entpet".
+				// By default, a package named "pet" will be named as "fluentpet".
 				n.alias = path.Base(g.Package) + name
 			}
 		}

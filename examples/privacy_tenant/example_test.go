@@ -116,7 +116,7 @@ func Example_TenantView() {
 
 	// DeleteOne with wrong viewer-context should cause the operation to fail with NotFoundError.
 	err := client.User.DeleteOne(hubUsers[0]).Exec(labView)
-	if !ent.IsNotFound(err) {
+	if !fluent.IsNotFound(err) {
 		log.Fatal("expect user deletion to fail, but got:", err)
 	}
 	fmt.Println(client.User.Query().CountX(hubView)) // 2
@@ -182,12 +182,12 @@ func Example_DenyMismatchedTenants() {
 
 	// Expect operation to fail, because the FilterTenantRule rule makes sure
 	// that tenants can update and delete only their groups.
-	if err := entgo.Update().SetName("fail.go").Exec(labView); !ent.IsNotFound(err) {
+	if err := entgo.Update().SetName("fail.go").Exec(labView); !fluent.IsNotFound(err) {
 		log.Fatal("expect operation to fail, since the group (entgo) is managed by a different tenant (hub), but got:", err)
 	}
 
 	// Operation should pass in case it was applied with the right viewer-context.
-	entgo = entgo.Update().SetName("entgo").SaveX(hubView)
+	entgo = entgo.Update().SetName("fluentgo").SaveX(hubView)
 	fmt.Println(entgo)
 
 	// Output:

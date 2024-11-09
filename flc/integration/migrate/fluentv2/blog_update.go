@@ -314,7 +314,7 @@ func (buo *BlogUpdateOne) sqlSave(ctx context.Context) (_node *Blog, err error) 
 		_spec.Node.Columns = append(_spec.Node.Columns, blog.FieldID)
 		for _, f := range fields {
 			if !blog.ValidColumn(f) {
-				return nil, &ValidationError{Name: f, err: fmt.Errorf("entv2: invalid field %q for query", f)}
+				return nil, &ValidationError{Name: f, err: fmt.Errorf("fluentv2: invalid field %q for query", f)}
 			}
 			if f != blog.FieldID {
 				_spec.Node.Columns = append(_spec.Node.Columns, f)

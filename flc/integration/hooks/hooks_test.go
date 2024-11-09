@@ -10,10 +10,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/usalko/fluent"
+	"entgo.io/ent"
 	"github.com/usalko/fluent/dialect"
 	"github.com/usalko/fluent/dialect/sql"
-	fluent "github.com/usalko/fluent/flc/integration/hooks/fluent"
+	"github.com/usalko/fluent/flc/integration/hooks/fluent"
 	"github.com/usalko/fluent/flc/integration/hooks/fluent/card"
 	"github.com/usalko/fluent/flc/integration/hooks/fluent/hook"
 	"github.com/usalko/fluent/flc/integration/hooks/fluent/intercept"
@@ -22,6 +22,8 @@ import (
 	"github.com/usalko/fluent/flc/integration/hooks/fluent/schema"
 	"github.com/usalko/fluent/flc/integration/hooks/fluent/user"
 
+	"github.com/usalko/fluent/flc/integration/hooks/fluent/fluent_test"
+
 	_ "github.com/mattn/go-sqlite3"
 	"github.com/stretchr/testify/require"
 	entgo "github.com/usalko/fluent"
@@ -29,7 +31,7 @@ import (
 
 func TestSchemaHooks(t *testing.T) {
 	ctx := context.Background()
-	client := fluent.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1", fluent.WithMigrateOptions(migrate.WithGlobalUniqueID(true)))
+	client := fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1", fluent_test.WithMigrateOptions(migrate.WithGlobalUniqueID(true)))
 	defer client.Close()
 	err := client.Card.Create().SetNumber("123").Exec(ctx)
 	require.EqualError(t, err, "card number is too short", "error is returned from hook")
@@ -54,7 +56,7 @@ func TestSchemaHooks(t *testing.T) {
 
 func TestRuntimeHooks(t *testing.T) {
 	ctx := context.Background()
-	client := fluent.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1", fluent.WithOptions(fluent.Log(t.Log)), fluent.WithMigrateOptions(migrate.WithGlobalUniqueID(true)))
+	client := fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1", fluent.WithOptions(fluent.Log(t.Log)), fluent.WithMigrateOptions(migrate.WithGlobalUniqueID(true)))
 	defer client.Close()
 	var calls int
 	client.Use(func(next fluent.Mutator) fluent.Mutator {
@@ -74,7 +76,7 @@ func TestRuntimeHooks(t *testing.T) {
 
 func TestRuntimeChain(t *testing.T) {
 	ctx := context.Background()
-	client := fluent.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
+	client := fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
 	defer client.Close()
 	var (
 		chain  hook.Chain
@@ -96,7 +98,7 @@ func TestRuntimeChain(t *testing.T) {
 
 func TestMutationClient(t *testing.T) {
 	ctx := context.Background()
-	client := fluent.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1", fluent.WithMigrateOptions(migrate.WithGlobalUniqueID(true)))
+	client := fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1", fluent.WithMigrateOptions(migrate.WithGlobalUniqueID(true)))
 	defer client.Close()
 	client.Card.Use(func(next fluent.Mutator) fluent.Mutator {
 		return hook.CardFunc(func(ctx context.Context, m *fluent.CardMutation) (fluent.Value, error) {
@@ -113,7 +115,7 @@ func TestMutationClient(t *testing.T) {
 
 func TestMutatorClient(t *testing.T) {
 	ctx := context.Background()
-	client := fluent.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
+	client := fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1")
 	defer client.Close()
 	client.Use(
 		hook.On(
@@ -164,7 +166,7 @@ func TestMutatorClient(t *testing.T) {
 
 func TestMutationTx(t *testing.T) {
 	ctx := context.Background()
-	client := fluent.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1", fluent.WithMigrateOptions(migrate.WithGlobalUniqueID(true)))
+	client := fluent_test.Open(t, dialect.SQLite, "file:ent?mode=memory&_fk=1", fluent.WithMigrateOptions(migrate.WithGlobalUniqueID(true)))
 	defer client.Close()
 	client.Card.Use(func(next fluent.Mutator) fluent.Mutator {
 		return hook.CardFunc(func(ctx context.Context, m *fluent.CardMutation) (fluent.Value, error) {
@@ -732,7 +734,7 @@ func TestSharedInterceptor(t *testing.T) {
 	require.Len(t, client.User.Query().Limit(10).AllX(ctx), 2)
 }
 
-// Project-level example. The usage of "entgo" package demonstrates how to
+// Project-level example. The usage of "fluentgo" package demonstrates how to
 // write a generic interceptor that can be used by any ent-based project.
 func SharedLimiter[Q interface{ Limit(int) }](f func(entgo.Query) (Q, error), limit int) entgo.Interceptor {
 	return entgo.InterceptFunc(func(next entgo.Querier) entgo.Querier {

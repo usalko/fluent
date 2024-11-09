@@ -298,7 +298,7 @@ func (u *TokenUpsertOne) UpdateBody() *TokenUpsertOne {
 // Exec executes the query.
 func (u *TokenUpsertOne) Exec(ctx context.Context) error {
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for TokenCreate.OnConflict")
+		return errors.New("fluent: missing options for TokenCreate.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }
@@ -315,7 +315,7 @@ func (u *TokenUpsertOne) ID(ctx context.Context) (id sid.ID, err error) {
 	if u.create.driver.Dialect() == dialect.MySQL {
 		// In case of "ON CONFLICT", there is no way to get back non-numeric ID
 		// fields from the database since MySQL does not support the RETURNING clause.
-		return id, errors.New("ent: TokenUpsertOne.ID is not supported by MySQL driver. Use TokenUpsertOne.Exec instead")
+		return id, errors.New("fluent: TokenUpsertOne.ID is not supported by MySQL driver. Use TokenUpsertOne.Exec instead")
 	}
 	node, err := u.create.Save(ctx)
 	if err != nil {
@@ -531,11 +531,11 @@ func (u *TokenUpsertBulk) Exec(ctx context.Context) error {
 	}
 	for i, b := range u.create.builders {
 		if len(b.conflict) != 0 {
-			return fmt.Errorf("ent: OnConflict was set for builder %d. Set it on the TokenCreateBulk instead", i)
+			return fmt.Errorf("fluent: OnConflict was set for builder %d. Set it on the TokenCreateBulk instead", i)
 		}
 	}
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for TokenCreateBulk.OnConflict")
+		return errors.New("fluent: missing options for TokenCreateBulk.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }

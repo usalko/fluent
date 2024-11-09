@@ -210,7 +210,7 @@ func (miuo *MixinIDUpdateOne) sqlSave(ctx context.Context) (_node *MixinID, err 
 		_spec.Node.Columns = append(_spec.Node.Columns, mixinid.FieldID)
 		for _, f := range fields {
 			if !mixinid.ValidColumn(f) {
-				return nil, &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
+				return nil, &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 			}
 			if f != mixinid.FieldID {
 				_spec.Node.Columns = append(_spec.Node.Columns, f)

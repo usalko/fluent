@@ -108,7 +108,7 @@ func OnMutationOperation(rule MutationRule, op fluent.Op) MutationRule {
 // DenyMutationOperationRule returns a rule denying specified mutation operation.
 func DenyMutationOperationRule(op fluent.Op) MutationRule {
 	rule := MutationRuleFunc(func(_ context.Context, m fluent.Mutation) error {
-		return Denyf("ent/privacy: operation %s is not allowed", m.Op())
+		return Denyf("fluent/privacy: operation %s is not allowed", m.Op())
 	})
 	return OnMutationOperation(rule, op)
 }
@@ -122,7 +122,7 @@ func (f UserQueryRuleFunc) EvalQuery(ctx context.Context, q fluent.Query) error 
 	if q, ok := q.(*fluent.UserQuery); ok {
 		return f(ctx, q)
 	}
-	return Denyf("ent/privacy: unexpected query type %T, expect *fluent.UserQuery", q)
+	return Denyf("fluent/privacy: unexpected query type %T, expect *fluent.UserQuery", q)
 }
 
 // The UserMutationRuleFunc type is an adapter to allow the use of ordinary
@@ -134,5 +134,5 @@ func (f UserMutationRuleFunc) EvalMutation(ctx context.Context, m fluent.Mutatio
 	if m, ok := m.(*fluent.UserMutation); ok {
 		return f(ctx, m)
 	}
-	return Denyf("ent/privacy: unexpected mutation type %T, expect *fluent.UserMutation", m)
+	return Denyf("fluent/privacy: unexpected mutation type %T, expect *fluent.UserMutation", m)
 }

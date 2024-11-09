@@ -25,8 +25,8 @@ func (Link) Fields() []fluent.Field {
 		field.UUID("id", uuidc.UUIDC{}).Default(uuidc.NewUUIDC),
 		field.JSON("link_information", map[string]LinkInformation{}).
 			Default(map[string]LinkInformation{
-				"ent": {
-					Name: "ent",
+				"fluent": {
+					Name: "fluent",
 					Link: "https://github.com/usalko/fluent/",
 				},
 			}),

@@ -104,7 +104,7 @@ func (n *Node) Update() *NodeUpdateOne {
 func (n *Node) Unwrap() *Node {
 	_tx, ok := n.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: Node is not a transactional entity")
+		panic("fluent: Node is not a transactional entity")
 	}
 	n.config.driver = _tx.drv
 	return n

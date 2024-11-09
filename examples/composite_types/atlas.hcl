@@ -5,7 +5,7 @@ data "composite_schema" "app" {
   }
   # Second, load the Ent schema.
   schema "public" {
-    url = "ent://fluent/schema"
+    url = "fluent://fluent/schema"
   }
 }
 

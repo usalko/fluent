@@ -226,7 +226,7 @@ func (rq *RevisionQuery) Exist(ctx context.Context) (bool, error) {
 	case IsNotFound(err):
 		return false, nil
 	case err != nil:
-		return false, fmt.Errorf("ent: check existence: %w", err)
+		return false, fmt.Errorf("fluent: check existence: %w", err)
 	default:
 		return true, nil
 	}
@@ -288,7 +288,7 @@ func (rq *RevisionQuery) Aggregate(fns ...AggregateFunc) *RevisionSelect {
 func (rq *RevisionQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range rq.inters {
 		if inter == nil {
-			return fmt.Errorf("ent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, rq); err != nil {
@@ -298,7 +298,7 @@ func (rq *RevisionQuery) prepareQuery(ctx context.Context) error {
 	}
 	for _, f := range rq.ctx.Fields {
 		if !revision.ValidColumn(f) {
-			return &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
+			return &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 		}
 	}
 	if rq.path != nil {

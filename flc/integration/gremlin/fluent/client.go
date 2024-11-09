@@ -194,7 +194,7 @@ func Open(driverName, dataSourceName string, options ...Option) (*Client, error)
 }
 
 // ErrTxStarted is returned when trying to start a new transaction from a transactional client.
-var ErrTxStarted = errors.New("ent: cannot start a transaction within a transaction")
+var ErrTxStarted = errors.New("fluent: cannot start a transaction within a transaction")
 
 // Tx returns a new transactional client. The provided context
 // is used until the transaction is committed or rolled back.
@@ -204,7 +204,7 @@ func (c *Client) Tx(ctx context.Context) (*Tx, error) {
 	}
 	tx, err := newTx(ctx, c.driver)
 	if err != nil {
-		return nil, fmt.Errorf("ent: starting a transaction: %w", err)
+		return nil, fmt.Errorf("fluent: starting a transaction: %w", err)
 	}
 	cfg := c.config
 	cfg.driver = tx
@@ -331,7 +331,7 @@ func (c *Client) Mutate(ctx context.Context, m Mutation) (Value, error) {
 	case *UserMutation:
 		return c.User.mutate(ctx, m)
 	default:
-		return nil, fmt.Errorf("ent: unknown mutation type %T", m)
+		return nil, fmt.Errorf("fluent: unknown mutation type %T", m)
 	}
 }
 
@@ -464,7 +464,7 @@ func (c *APIClient) mutate(ctx context.Context, m *APIMutation) (Value, error) {
 	case OpDelete, OpDeleteOne:
 		return (&APIDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
 	default:
-		return nil, fmt.Errorf("ent: unknown Api mutation op: %q", m.Op())
+		return nil, fmt.Errorf("fluent: unknown Api mutation op: %q", m.Op())
 	}
 }
 
@@ -597,7 +597,7 @@ func (c *BuilderClient) mutate(ctx context.Context, m *BuilderMutation) (Value, 
 	case OpDelete, OpDeleteOne:
 		return (&BuilderDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
 	default:
-		return nil, fmt.Errorf("ent: unknown Builder mutation op: %q", m.Op())
+		return nil, fmt.Errorf("fluent: unknown Builder mutation op: %q", m.Op())
 	}
 }
 
@@ -752,7 +752,7 @@ func (c *CardClient) mutate(ctx context.Context, m *CardMutation) (Value, error)
 	case OpDelete, OpDeleteOne:
 		return (&CardDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
 	default:
-		return nil, fmt.Errorf("ent: unknown Card mutation op: %q", m.Op())
+		return nil, fmt.Errorf("fluent: unknown Card mutation op: %q", m.Op())
 	}
 }
 
@@ -885,7 +885,7 @@ func (c *CommentClient) mutate(ctx context.Context, m *CommentMutation) (Value, 
 	case OpDelete, OpDeleteOne:
 		return (&CommentDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
 	default:
-		return nil, fmt.Errorf("ent: unknown Comment mutation op: %q", m.Op())
+		return nil, fmt.Errorf("fluent: unknown Comment mutation op: %q", m.Op())
 	}
 }
 
@@ -1018,7 +1018,7 @@ func (c *ExValueScanClient) mutate(ctx context.Context, m *ExValueScanMutation) 
 	case OpDelete, OpDeleteOne:
 		return (&ExValueScanDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
 	default:
-		return nil, fmt.Errorf("ent: unknown ExValueScan mutation op: %q", m.Op())
+		return nil, fmt.Errorf("fluent: unknown ExValueScan mutation op: %q", m.Op())
 	}
 }
 
@@ -1151,7 +1151,7 @@ func (c *FieldTypeClient) mutate(ctx context.Context, m *FieldTypeMutation) (Val
 	case OpDelete, OpDeleteOne:
 		return (&FieldTypeDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
 	default:
-		return nil, fmt.Errorf("ent: unknown FieldType mutation op: %q", m.Op())
+		return nil, fmt.Errorf("fluent: unknown FieldType mutation op: %q", m.Op())
 	}
 }
 
@@ -1317,7 +1317,7 @@ func (c *FileClient) mutate(ctx context.Context, m *FileMutation) (Value, error)
 	case OpDelete, OpDeleteOne:
 		return (&FileDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
 	default:
-		return nil, fmt.Errorf("ent: unknown File mutation op: %q", m.Op())
+		return nil, fmt.Errorf("fluent: unknown File mutation op: %q", m.Op())
 	}
 }
 
@@ -1461,7 +1461,7 @@ func (c *FileTypeClient) mutate(ctx context.Context, m *FileTypeMutation) (Value
 	case OpDelete, OpDeleteOne:
 		return (&FileTypeDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
 	default:
-		return nil, fmt.Errorf("ent: unknown FileType mutation op: %q", m.Op())
+		return nil, fmt.Errorf("fluent: unknown FileType mutation op: %q", m.Op())
 	}
 }
 
@@ -1594,7 +1594,7 @@ func (c *GoodsClient) mutate(ctx context.Context, m *GoodsMutation) (Value, erro
 	case OpDelete, OpDeleteOne:
 		return (&GoodsDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
 	default:
-		return nil, fmt.Errorf("ent: unknown Goods mutation op: %q", m.Op())
+		return nil, fmt.Errorf("fluent: unknown Goods mutation op: %q", m.Op())
 	}
 }
 
@@ -1771,7 +1771,7 @@ func (c *GroupClient) mutate(ctx context.Context, m *GroupMutation) (Value, erro
 	case OpDelete, OpDeleteOne:
 		return (&GroupDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
 	default:
-		return nil, fmt.Errorf("ent: unknown Group mutation op: %q", m.Op())
+		return nil, fmt.Errorf("fluent: unknown Group mutation op: %q", m.Op())
 	}
 }
 
@@ -1915,7 +1915,7 @@ func (c *GroupInfoClient) mutate(ctx context.Context, m *GroupInfoMutation) (Val
 	case OpDelete, OpDeleteOne:
 		return (&GroupInfoDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
 	default:
-		return nil, fmt.Errorf("ent: unknown GroupInfo mutation op: %q", m.Op())
+		return nil, fmt.Errorf("fluent: unknown GroupInfo mutation op: %q", m.Op())
 	}
 }
 
@@ -2048,7 +2048,7 @@ func (c *ItemClient) mutate(ctx context.Context, m *ItemMutation) (Value, error)
 	case OpDelete, OpDeleteOne:
 		return (&ItemDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
 	default:
-		return nil, fmt.Errorf("ent: unknown Item mutation op: %q", m.Op())
+		return nil, fmt.Errorf("fluent: unknown Item mutation op: %q", m.Op())
 	}
 }
 
@@ -2181,7 +2181,7 @@ func (c *LicenseClient) mutate(ctx context.Context, m *LicenseMutation) (Value, 
 	case OpDelete, OpDeleteOne:
 		return (&LicenseDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
 	default:
-		return nil, fmt.Errorf("ent: unknown License mutation op: %q", m.Op())
+		return nil, fmt.Errorf("fluent: unknown License mutation op: %q", m.Op())
 	}
 }
 
@@ -2336,7 +2336,7 @@ func (c *NodeClient) mutate(ctx context.Context, m *NodeMutation) (Value, error)
 	case OpDelete, OpDeleteOne:
 		return (&NodeDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
 	default:
-		return nil, fmt.Errorf("ent: unknown Node mutation op: %q", m.Op())
+		return nil, fmt.Errorf("fluent: unknown Node mutation op: %q", m.Op())
 	}
 }
 
@@ -2469,7 +2469,7 @@ func (c *PCClient) mutate(ctx context.Context, m *PCMutation) (Value, error) {
 	case OpDelete, OpDeleteOne:
 		return (&PCDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
 	default:
-		return nil, fmt.Errorf("ent: unknown PC mutation op: %q", m.Op())
+		return nil, fmt.Errorf("fluent: unknown PC mutation op: %q", m.Op())
 	}
 }
 
@@ -2624,7 +2624,7 @@ func (c *PetClient) mutate(ctx context.Context, m *PetMutation) (Value, error) {
 	case OpDelete, OpDeleteOne:
 		return (&PetDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
 	default:
-		return nil, fmt.Errorf("ent: unknown Pet mutation op: %q", m.Op())
+		return nil, fmt.Errorf("fluent: unknown Pet mutation op: %q", m.Op())
 	}
 }
 
@@ -2768,7 +2768,7 @@ func (c *SpecClient) mutate(ctx context.Context, m *SpecMutation) (Value, error)
 	case OpDelete, OpDeleteOne:
 		return (&SpecDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
 	default:
-		return nil, fmt.Errorf("ent: unknown Spec mutation op: %q", m.Op())
+		return nil, fmt.Errorf("fluent: unknown Spec mutation op: %q", m.Op())
 	}
 }
 
@@ -2901,7 +2901,7 @@ func (c *TaskClient) mutate(ctx context.Context, m *TaskMutation) (Value, error)
 	case OpDelete, OpDeleteOne:
 		return (&TaskDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
 	default:
-		return nil, fmt.Errorf("ent: unknown Task mutation op: %q", m.Op())
+		return nil, fmt.Errorf("fluent: unknown Task mutation op: %q", m.Op())
 	}
 }
 
@@ -3155,7 +3155,7 @@ func (c *UserClient) mutate(ctx context.Context, m *UserMutation) (Value, error)
 	case OpDelete, OpDeleteOne:
 		return (&UserDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
 	default:
-		return nil, fmt.Errorf("ent: unknown User mutation op: %q", m.Op())
+		return nil, fmt.Errorf("fluent: unknown User mutation op: %q", m.Op())
 	}
 }
 

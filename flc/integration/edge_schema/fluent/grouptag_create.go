@@ -302,7 +302,7 @@ func (u *GroupTagUpsertOne) UpdateGroupID() *GroupTagUpsertOne {
 // Exec executes the query.
 func (u *GroupTagUpsertOne) Exec(ctx context.Context) error {
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for GroupTagCreate.OnConflict")
+		return errors.New("fluent: missing options for GroupTagCreate.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }
@@ -537,11 +537,11 @@ func (u *GroupTagUpsertBulk) Exec(ctx context.Context) error {
 	}
 	for i, b := range u.create.builders {
 		if len(b.conflict) != 0 {
-			return fmt.Errorf("ent: OnConflict was set for builder %d. Set it on the GroupTagCreateBulk instead", i)
+			return fmt.Errorf("fluent: OnConflict was set for builder %d. Set it on the GroupTagCreateBulk instead", i)
 		}
 	}
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for GroupTagCreateBulk.OnConflict")
+		return errors.New("fluent: missing options for GroupTagCreateBulk.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }

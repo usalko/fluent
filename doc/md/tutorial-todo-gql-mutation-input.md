@@ -25,7 +25,7 @@ go run ./cmd/todo/
 Ent supports generating mutation types. A mutation type can be accepted as an input for GraphQL mutations, and it is
 handled and verified by Ent. Let's tell Ent that our GraphQL `Todo` type supports create and update operations:
 
-```go title="ent/schema/todo.go"
+```go title="fluent/schema/todo.go"
 func (Todo) Annotations() []schema.Annotation {
 	return []schema.Annotation{
 		 fluent_gql.QueryField(),

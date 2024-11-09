@@ -24,8 +24,8 @@ import (
 	"net"
 
 	_ "github.com/mattn/go-sqlite3"
-	"ent-grpc-example/fluent"
-	"ent-grpc-example/fluent/proto/fluentpb"
+	"fluent-grpc-example/fluent"
+	"fluent-grpc-example/fluent/proto/fluentpb"
 	"google.golang.org/grpc"
 )
 
@@ -90,7 +90,7 @@ import (
 	"math/rand"
 	"time"
 
-	"ent-grpc-example/fluent/proto/fluentpb"
+	"fluent-grpc-example/fluent/proto/fluentpb"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/status"
 )

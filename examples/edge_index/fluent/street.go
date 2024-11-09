@@ -124,7 +124,7 @@ func (s *Street) Update() *StreetUpdateOne {
 func (s *Street) Unwrap() *Street {
 	_tx, ok := s.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: Street is not a transactional entity")
+		panic("fluent: Street is not a transactional entity")
 	}
 	s.config.driver = _tx.drv
 	return s

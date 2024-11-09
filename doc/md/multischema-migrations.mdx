@@ -119,7 +119,7 @@ values={[
 
 ```shell
 atlas migrate diff \
-  --to "ent://fluent/schema" \
+  --to "fluent://fluent/schema" \
   --dev-url "docker://mysql/8"
 ```
 
@@ -128,7 +128,7 @@ atlas migrate diff \
 
 ```shell
 atlas migrate diff \
-  --to "ent://fluent/schema" \
+  --to "fluent://fluent/schema" \
   --dev-url "docker://maria/8"
 ```
 
@@ -137,7 +137,7 @@ atlas migrate diff \
 
 ```shell
 atlas migrate diff \
-  --to "ent://fluent/schema" \
+  --to "fluent://fluent/schema" \
   --dev-url "docker://postgres/15/dev"
 ```
 
@@ -150,7 +150,7 @@ generate the SQL statements with indentation, use the `--format` flag. For examp
 
 ```shell
 atlas migrate diff \
-  --to "ent://fluent/schema" \
+  --to "fluent://fluent/schema" \
   --dev-url "docker://postgres/15/dev" \
 // highlight-next-line
   --format "{{ sql . \"  \" }}"

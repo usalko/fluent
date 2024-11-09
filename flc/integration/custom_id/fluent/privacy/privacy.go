@@ -109,7 +109,7 @@ func OnMutationOperation(rule MutationRule, op fluent.Op) MutationRule {
 // DenyMutationOperationRule returns a rule denying specified mutation operation.
 func DenyMutationOperationRule(op fluent.Op) MutationRule {
 	rule := MutationRuleFunc(func(_ context.Context, m fluent.Mutation) error {
-		return Denyf("ent/privacy: operation %s is not allowed", m.Op())
+		return Denyf("fluent/privacy: operation %s is not allowed", m.Op())
 	})
 	return OnMutationOperation(rule, op)
 }
@@ -123,7 +123,7 @@ func (f AccountQueryRuleFunc) EvalQuery(ctx context.Context, q fluent.Query) err
 	if q, ok := q.(*fluent.AccountQuery); ok {
 		return f(ctx, q)
 	}
-	return Denyf("ent/privacy: unexpected query type %T, expect *fluent.AccountQuery", q)
+	return Denyf("fluent/privacy: unexpected query type %T, expect *fluent.AccountQuery", q)
 }
 
 // The AccountMutationRuleFunc type is an adapter to allow the use of ordinary
@@ -135,7 +135,7 @@ func (f AccountMutationRuleFunc) EvalMutation(ctx context.Context, m fluent.Muta
 	if m, ok := m.(*fluent.AccountMutation); ok {
 		return f(ctx, m)
 	}
-	return Denyf("ent/privacy: unexpected mutation type %T, expect *fluent.AccountMutation", m)
+	return Denyf("fluent/privacy: unexpected mutation type %T, expect *fluent.AccountMutation", m)
 }
 
 // The BlobQueryRuleFunc type is an adapter to allow the use of ordinary
@@ -147,7 +147,7 @@ func (f BlobQueryRuleFunc) EvalQuery(ctx context.Context, q fluent.Query) error 
 	if q, ok := q.(*fluent.BlobQuery); ok {
 		return f(ctx, q)
 	}
-	return Denyf("ent/privacy: unexpected query type %T, expect *fluent.BlobQuery", q)
+	return Denyf("fluent/privacy: unexpected query type %T, expect *fluent.BlobQuery", q)
 }
 
 // The BlobMutationRuleFunc type is an adapter to allow the use of ordinary
@@ -159,7 +159,7 @@ func (f BlobMutationRuleFunc) EvalMutation(ctx context.Context, m fluent.Mutatio
 	if m, ok := m.(*fluent.BlobMutation); ok {
 		return f(ctx, m)
 	}
-	return Denyf("ent/privacy: unexpected mutation type %T, expect *fluent.BlobMutation", m)
+	return Denyf("fluent/privacy: unexpected mutation type %T, expect *fluent.BlobMutation", m)
 }
 
 // The BlobLinkQueryRuleFunc type is an adapter to allow the use of ordinary
@@ -171,7 +171,7 @@ func (f BlobLinkQueryRuleFunc) EvalQuery(ctx context.Context, q fluent.Query) er
 	if q, ok := q.(*fluent.BlobLinkQuery); ok {
 		return f(ctx, q)
 	}
-	return Denyf("ent/privacy: unexpected query type %T, expect *fluent.BlobLinkQuery", q)
+	return Denyf("fluent/privacy: unexpected query type %T, expect *fluent.BlobLinkQuery", q)
 }
 
 // The BlobLinkMutationRuleFunc type is an adapter to allow the use of ordinary
@@ -183,7 +183,7 @@ func (f BlobLinkMutationRuleFunc) EvalMutation(ctx context.Context, m fluent.Mut
 	if m, ok := m.(*fluent.BlobLinkMutation); ok {
 		return f(ctx, m)
 	}
-	return Denyf("ent/privacy: unexpected mutation type %T, expect *fluent.BlobLinkMutation", m)
+	return Denyf("fluent/privacy: unexpected mutation type %T, expect *fluent.BlobLinkMutation", m)
 }
 
 // The CarQueryRuleFunc type is an adapter to allow the use of ordinary
@@ -195,7 +195,7 @@ func (f CarQueryRuleFunc) EvalQuery(ctx context.Context, q fluent.Query) error {
 	if q, ok := q.(*fluent.CarQuery); ok {
 		return f(ctx, q)
 	}
-	return Denyf("ent/privacy: unexpected query type %T, expect *fluent.CarQuery", q)
+	return Denyf("fluent/privacy: unexpected query type %T, expect *fluent.CarQuery", q)
 }
 
 // The CarMutationRuleFunc type is an adapter to allow the use of ordinary
@@ -207,7 +207,7 @@ func (f CarMutationRuleFunc) EvalMutation(ctx context.Context, m fluent.Mutation
 	if m, ok := m.(*fluent.CarMutation); ok {
 		return f(ctx, m)
 	}
-	return Denyf("ent/privacy: unexpected mutation type %T, expect *fluent.CarMutation", m)
+	return Denyf("fluent/privacy: unexpected mutation type %T, expect *fluent.CarMutation", m)
 }
 
 // The DeviceQueryRuleFunc type is an adapter to allow the use of ordinary
@@ -219,7 +219,7 @@ func (f DeviceQueryRuleFunc) EvalQuery(ctx context.Context, q fluent.Query) erro
 	if q, ok := q.(*fluent.DeviceQuery); ok {
 		return f(ctx, q)
 	}
-	return Denyf("ent/privacy: unexpected query type %T, expect *fluent.DeviceQuery", q)
+	return Denyf("fluent/privacy: unexpected query type %T, expect *fluent.DeviceQuery", q)
 }
 
 // The DeviceMutationRuleFunc type is an adapter to allow the use of ordinary
@@ -231,7 +231,7 @@ func (f DeviceMutationRuleFunc) EvalMutation(ctx context.Context, m fluent.Mutat
 	if m, ok := m.(*fluent.DeviceMutation); ok {
 		return f(ctx, m)
 	}
-	return Denyf("ent/privacy: unexpected mutation type %T, expect *fluent.DeviceMutation", m)
+	return Denyf("fluent/privacy: unexpected mutation type %T, expect *fluent.DeviceMutation", m)
 }
 
 // The DocQueryRuleFunc type is an adapter to allow the use of ordinary
@@ -243,7 +243,7 @@ func (f DocQueryRuleFunc) EvalQuery(ctx context.Context, q fluent.Query) error {
 	if q, ok := q.(*fluent.DocQuery); ok {
 		return f(ctx, q)
 	}
-	return Denyf("ent/privacy: unexpected query type %T, expect *fluent.DocQuery", q)
+	return Denyf("fluent/privacy: unexpected query type %T, expect *fluent.DocQuery", q)
 }
 
 // The DocMutationRuleFunc type is an adapter to allow the use of ordinary
@@ -255,7 +255,7 @@ func (f DocMutationRuleFunc) EvalMutation(ctx context.Context, m fluent.Mutation
 	if m, ok := m.(*fluent.DocMutation); ok {
 		return f(ctx, m)
 	}
-	return Denyf("ent/privacy: unexpected mutation type %T, expect *fluent.DocMutation", m)
+	return Denyf("fluent/privacy: unexpected mutation type %T, expect *fluent.DocMutation", m)
 }
 
 // The GroupQueryRuleFunc type is an adapter to allow the use of ordinary
@@ -267,7 +267,7 @@ func (f GroupQueryRuleFunc) EvalQuery(ctx context.Context, q fluent.Query) error
 	if q, ok := q.(*fluent.GroupQuery); ok {
 		return f(ctx, q)
 	}
-	return Denyf("ent/privacy: unexpected query type %T, expect *fluent.GroupQuery", q)
+	return Denyf("fluent/privacy: unexpected query type %T, expect *fluent.GroupQuery", q)
 }
 
 // The GroupMutationRuleFunc type is an adapter to allow the use of ordinary
@@ -279,7 +279,7 @@ func (f GroupMutationRuleFunc) EvalMutation(ctx context.Context, m fluent.Mutati
 	if m, ok := m.(*fluent.GroupMutation); ok {
 		return f(ctx, m)
 	}
-	return Denyf("ent/privacy: unexpected mutation type %T, expect *fluent.GroupMutation", m)
+	return Denyf("fluent/privacy: unexpected mutation type %T, expect *fluent.GroupMutation", m)
 }
 
 // The IntSIDQueryRuleFunc type is an adapter to allow the use of ordinary
@@ -291,7 +291,7 @@ func (f IntSIDQueryRuleFunc) EvalQuery(ctx context.Context, q fluent.Query) erro
 	if q, ok := q.(*fluent.IntSIDQuery); ok {
 		return f(ctx, q)
 	}
-	return Denyf("ent/privacy: unexpected query type %T, expect *fluent.IntSIDQuery", q)
+	return Denyf("fluent/privacy: unexpected query type %T, expect *fluent.IntSIDQuery", q)
 }
 
 // The IntSIDMutationRuleFunc type is an adapter to allow the use of ordinary
@@ -303,7 +303,7 @@ func (f IntSIDMutationRuleFunc) EvalMutation(ctx context.Context, m fluent.Mutat
 	if m, ok := m.(*fluent.IntSIDMutation); ok {
 		return f(ctx, m)
 	}
-	return Denyf("ent/privacy: unexpected mutation type %T, expect *fluent.IntSIDMutation", m)
+	return Denyf("fluent/privacy: unexpected mutation type %T, expect *fluent.IntSIDMutation", m)
 }
 
 // The LinkQueryRuleFunc type is an adapter to allow the use of ordinary
@@ -315,7 +315,7 @@ func (f LinkQueryRuleFunc) EvalQuery(ctx context.Context, q fluent.Query) error 
 	if q, ok := q.(*fluent.LinkQuery); ok {
 		return f(ctx, q)
 	}
-	return Denyf("ent/privacy: unexpected query type %T, expect *fluent.LinkQuery", q)
+	return Denyf("fluent/privacy: unexpected query type %T, expect *fluent.LinkQuery", q)
 }
 
 // The LinkMutationRuleFunc type is an adapter to allow the use of ordinary
@@ -327,7 +327,7 @@ func (f LinkMutationRuleFunc) EvalMutation(ctx context.Context, m fluent.Mutatio
 	if m, ok := m.(*fluent.LinkMutation); ok {
 		return f(ctx, m)
 	}
-	return Denyf("ent/privacy: unexpected mutation type %T, expect *fluent.LinkMutation", m)
+	return Denyf("fluent/privacy: unexpected mutation type %T, expect *fluent.LinkMutation", m)
 }
 
 // The MixinIDQueryRuleFunc type is an adapter to allow the use of ordinary
@@ -339,7 +339,7 @@ func (f MixinIDQueryRuleFunc) EvalQuery(ctx context.Context, q fluent.Query) err
 	if q, ok := q.(*fluent.MixinIDQuery); ok {
 		return f(ctx, q)
 	}
-	return Denyf("ent/privacy: unexpected query type %T, expect *fluent.MixinIDQuery", q)
+	return Denyf("fluent/privacy: unexpected query type %T, expect *fluent.MixinIDQuery", q)
 }
 
 // The MixinIDMutationRuleFunc type is an adapter to allow the use of ordinary
@@ -351,7 +351,7 @@ func (f MixinIDMutationRuleFunc) EvalMutation(ctx context.Context, m fluent.Muta
 	if m, ok := m.(*fluent.MixinIDMutation); ok {
 		return f(ctx, m)
 	}
-	return Denyf("ent/privacy: unexpected mutation type %T, expect *fluent.MixinIDMutation", m)
+	return Denyf("fluent/privacy: unexpected mutation type %T, expect *fluent.MixinIDMutation", m)
 }
 
 // The NoteQueryRuleFunc type is an adapter to allow the use of ordinary
@@ -363,7 +363,7 @@ func (f NoteQueryRuleFunc) EvalQuery(ctx context.Context, q fluent.Query) error 
 	if q, ok := q.(*fluent.NoteQuery); ok {
 		return f(ctx, q)
 	}
-	return Denyf("ent/privacy: unexpected query type %T, expect *fluent.NoteQuery", q)
+	return Denyf("fluent/privacy: unexpected query type %T, expect *fluent.NoteQuery", q)
 }
 
 // The NoteMutationRuleFunc type is an adapter to allow the use of ordinary
@@ -375,7 +375,7 @@ func (f NoteMutationRuleFunc) EvalMutation(ctx context.Context, m fluent.Mutatio
 	if m, ok := m.(*fluent.NoteMutation); ok {
 		return f(ctx, m)
 	}
-	return Denyf("ent/privacy: unexpected mutation type %T, expect *fluent.NoteMutation", m)
+	return Denyf("fluent/privacy: unexpected mutation type %T, expect *fluent.NoteMutation", m)
 }
 
 // The OtherQueryRuleFunc type is an adapter to allow the use of ordinary
@@ -387,7 +387,7 @@ func (f OtherQueryRuleFunc) EvalQuery(ctx context.Context, q fluent.Query) error
 	if q, ok := q.(*fluent.OtherQuery); ok {
 		return f(ctx, q)
 	}
-	return Denyf("ent/privacy: unexpected query type %T, expect *fluent.OtherQuery", q)
+	return Denyf("fluent/privacy: unexpected query type %T, expect *fluent.OtherQuery", q)
 }
 
 // The OtherMutationRuleFunc type is an adapter to allow the use of ordinary
@@ -399,7 +399,7 @@ func (f OtherMutationRuleFunc) EvalMutation(ctx context.Context, m fluent.Mutati
 	if m, ok := m.(*fluent.OtherMutation); ok {
 		return f(ctx, m)
 	}
-	return Denyf("ent/privacy: unexpected mutation type %T, expect *fluent.OtherMutation", m)
+	return Denyf("fluent/privacy: unexpected mutation type %T, expect *fluent.OtherMutation", m)
 }
 
 // The PetQueryRuleFunc type is an adapter to allow the use of ordinary
@@ -411,7 +411,7 @@ func (f PetQueryRuleFunc) EvalQuery(ctx context.Context, q fluent.Query) error {
 	if q, ok := q.(*fluent.PetQuery); ok {
 		return f(ctx, q)
 	}
-	return Denyf("ent/privacy: unexpected query type %T, expect *fluent.PetQuery", q)
+	return Denyf("fluent/privacy: unexpected query type %T, expect *fluent.PetQuery", q)
 }
 
 // The PetMutationRuleFunc type is an adapter to allow the use of ordinary
@@ -423,7 +423,7 @@ func (f PetMutationRuleFunc) EvalMutation(ctx context.Context, m fluent.Mutation
 	if m, ok := m.(*fluent.PetMutation); ok {
 		return f(ctx, m)
 	}
-	return Denyf("ent/privacy: unexpected mutation type %T, expect *fluent.PetMutation", m)
+	return Denyf("fluent/privacy: unexpected mutation type %T, expect *fluent.PetMutation", m)
 }
 
 // The RevisionQueryRuleFunc type is an adapter to allow the use of ordinary
@@ -435,7 +435,7 @@ func (f RevisionQueryRuleFunc) EvalQuery(ctx context.Context, q fluent.Query) er
 	if q, ok := q.(*fluent.RevisionQuery); ok {
 		return f(ctx, q)
 	}
-	return Denyf("ent/privacy: unexpected query type %T, expect *fluent.RevisionQuery", q)
+	return Denyf("fluent/privacy: unexpected query type %T, expect *fluent.RevisionQuery", q)
 }
 
 // The RevisionMutationRuleFunc type is an adapter to allow the use of ordinary
@@ -447,7 +447,7 @@ func (f RevisionMutationRuleFunc) EvalMutation(ctx context.Context, m fluent.Mut
 	if m, ok := m.(*fluent.RevisionMutation); ok {
 		return f(ctx, m)
 	}
-	return Denyf("ent/privacy: unexpected mutation type %T, expect *fluent.RevisionMutation", m)
+	return Denyf("fluent/privacy: unexpected mutation type %T, expect *fluent.RevisionMutation", m)
 }
 
 // The SessionQueryRuleFunc type is an adapter to allow the use of ordinary
@@ -459,7 +459,7 @@ func (f SessionQueryRuleFunc) EvalQuery(ctx context.Context, q fluent.Query) err
 	if q, ok := q.(*fluent.SessionQuery); ok {
 		return f(ctx, q)
 	}
-	return Denyf("ent/privacy: unexpected query type %T, expect *fluent.SessionQuery", q)
+	return Denyf("fluent/privacy: unexpected query type %T, expect *fluent.SessionQuery", q)
 }
 
 // The SessionMutationRuleFunc type is an adapter to allow the use of ordinary
@@ -471,7 +471,7 @@ func (f SessionMutationRuleFunc) EvalMutation(ctx context.Context, m fluent.Muta
 	if m, ok := m.(*fluent.SessionMutation); ok {
 		return f(ctx, m)
 	}
-	return Denyf("ent/privacy: unexpected mutation type %T, expect *fluent.SessionMutation", m)
+	return Denyf("fluent/privacy: unexpected mutation type %T, expect *fluent.SessionMutation", m)
 }
 
 // The TokenQueryRuleFunc type is an adapter to allow the use of ordinary
@@ -483,7 +483,7 @@ func (f TokenQueryRuleFunc) EvalQuery(ctx context.Context, q fluent.Query) error
 	if q, ok := q.(*fluent.TokenQuery); ok {
 		return f(ctx, q)
 	}
-	return Denyf("ent/privacy: unexpected query type %T, expect *fluent.TokenQuery", q)
+	return Denyf("fluent/privacy: unexpected query type %T, expect *fluent.TokenQuery", q)
 }
 
 // The TokenMutationRuleFunc type is an adapter to allow the use of ordinary
@@ -495,7 +495,7 @@ func (f TokenMutationRuleFunc) EvalMutation(ctx context.Context, m fluent.Mutati
 	if m, ok := m.(*fluent.TokenMutation); ok {
 		return f(ctx, m)
 	}
-	return Denyf("ent/privacy: unexpected mutation type %T, expect *fluent.TokenMutation", m)
+	return Denyf("fluent/privacy: unexpected mutation type %T, expect *fluent.TokenMutation", m)
 }
 
 // The UserQueryRuleFunc type is an adapter to allow the use of ordinary
@@ -507,7 +507,7 @@ func (f UserQueryRuleFunc) EvalQuery(ctx context.Context, q fluent.Query) error 
 	if q, ok := q.(*fluent.UserQuery); ok {
 		return f(ctx, q)
 	}
-	return Denyf("ent/privacy: unexpected query type %T, expect *fluent.UserQuery", q)
+	return Denyf("fluent/privacy: unexpected query type %T, expect *fluent.UserQuery", q)
 }
 
 // The UserMutationRuleFunc type is an adapter to allow the use of ordinary
@@ -519,7 +519,7 @@ func (f UserMutationRuleFunc) EvalMutation(ctx context.Context, m fluent.Mutatio
 	if m, ok := m.(*fluent.UserMutation); ok {
 		return f(ctx, m)
 	}
-	return Denyf("ent/privacy: unexpected mutation type %T, expect *fluent.UserMutation", m)
+	return Denyf("fluent/privacy: unexpected mutation type %T, expect *fluent.UserMutation", m)
 }
 
 type (
@@ -592,7 +592,7 @@ func queryFilter(q fluent.Query) (Filter, error) {
 	case *fluent.UserQuery:
 		return q.Filter(), nil
 	default:
-		return nil, Denyf("ent/privacy: unexpected query type %T for query filter", q)
+		return nil, Denyf("fluent/privacy: unexpected query type %T for query filter", q)
 	}
 }
 
@@ -633,6 +633,6 @@ func mutationFilter(m fluent.Mutation) (Filter, error) {
 	case *fluent.UserMutation:
 		return m.Filter(), nil
 	default:
-		return nil, Denyf("ent/privacy: unexpected mutation type %T for mutation filter", m)
+		return nil, Denyf("fluent/privacy: unexpected mutation type %T for mutation filter", m)
 	}
 }

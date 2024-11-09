@@ -355,7 +355,7 @@ func (u *RoleUserUpsertOne) UpdateUserID() *RoleUserUpsertOne {
 // Exec executes the query.
 func (u *RoleUserUpsertOne) Exec(ctx context.Context) error {
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for RoleUserCreate.OnConflict")
+		return errors.New("fluent: missing options for RoleUserCreate.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }
@@ -582,11 +582,11 @@ func (u *RoleUserUpsertBulk) Exec(ctx context.Context) error {
 	}
 	for i, b := range u.create.builders {
 		if len(b.conflict) != 0 {
-			return fmt.Errorf("ent: OnConflict was set for builder %d. Set it on the RoleUserCreateBulk instead", i)
+			return fmt.Errorf("fluent: OnConflict was set for builder %d. Set it on the RoleUserCreateBulk instead", i)
 		}
 	}
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for RoleUserCreateBulk.OnConflict")
+		return errors.New("fluent: missing options for RoleUserCreateBulk.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }

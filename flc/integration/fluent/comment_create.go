@@ -526,7 +526,7 @@ func (u *CommentUpsertOne) ClearClient() *CommentUpsertOne {
 // Exec executes the query.
 func (u *CommentUpsertOne) Exec(ctx context.Context) error {
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for CommentCreate.OnConflict")
+		return errors.New("fluent: missing options for CommentCreate.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }
@@ -866,11 +866,11 @@ func (u *CommentUpsertBulk) Exec(ctx context.Context) error {
 	}
 	for i, b := range u.create.builders {
 		if len(b.conflict) != 0 {
-			return fmt.Errorf("ent: OnConflict was set for builder %d. Set it on the CommentCreateBulk instead", i)
+			return fmt.Errorf("fluent: OnConflict was set for builder %d. Set it on the CommentCreateBulk instead", i)
 		}
 	}
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for CommentCreateBulk.OnConflict")
+		return errors.New("fluent: missing options for CommentCreateBulk.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }

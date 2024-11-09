@@ -441,7 +441,7 @@ func (tuo *TeamUpdateOne) sqlSave(ctx context.Context) (_node *Team, err error) 
 		_spec.Node.Columns = append(_spec.Node.Columns, team.FieldID)
 		for _, f := range fields {
 			if !team.ValidColumn(f) {
-				return nil, &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
+				return nil, &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 			}
 			if f != team.FieldID {
 				_spec.Node.Columns = append(_spec.Node.Columns, f)

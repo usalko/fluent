@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/usalko/fluent"
 	gen "github.com/usalko/fluent/flc/integration/hooks/fluent"
 	"github.com/usalko/fluent/flc/integration/hooks/fluent/card"
 	"github.com/usalko/fluent/flc/integration/hooks/fluent/hook"

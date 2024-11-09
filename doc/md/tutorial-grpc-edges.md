@@ -8,7 +8,7 @@ together with generated gRPC services.
 
 Let's start by adding a new entity, `Category` and create edges relating our `User` type to it:
 
-```go title="ent/schema/category.go"
+```go title="fluent/schema/category.go"
 package schema
 
 import (
@@ -47,7 +47,7 @@ func (Category) Edges() []fluent.Edge {
 
 Creating the inverse relation on the `User`:
 
-```go title="ent/schema/user.go" {4-6}
+```go title="fluent/schema/user.go" {4-6}
 // Edges of the User.
 func (User) Edges() []fluent.Edge {
 	return []fluent.Edge{
@@ -66,7 +66,7 @@ Notice a few things:
 
 Re-generating the project with `go generate ./...`, notice the changes to the `.proto` file:
 
-```protobuf title="ent/proto/fluentpb/fluentpb.proto" {1-7,18}
+```protobuf title="fluent/proto/fluentpb/fluentpb.proto" {1-7,18}
 message Category {
   int64 id = 1;
 
@@ -110,10 +110,10 @@ import (
 
 	_ "github.com/mattn/go-sqlite3"
 
-	"ent-grpc-example/fluent/category"
-	"ent-grpc-example/fluent/fluent_test"
-	"ent-grpc-example/fluent/proto/fluentpb"
-	"ent-grpc-example/fluent/user"
+	"fluent-grpc-example/fluent/category"
+	"fluent-grpc-example/fluent/fluent_test"
+	"fluent-grpc-example/fluent/proto/fluentpb"
+	"fluent-grpc-example/fluent/user"
 )
 
 func TestServiceWithEdges(t *testing.T) {
@@ -168,7 +168,7 @@ func TestServiceWithEdges(t *testing.T) {
 To create the edge from the created `User` to the existing `Category` we do not need to populate the entire `Category`
 object. Instead we only populate the `Id` field. This is picked up by the generated service code:
 
-```go title="ent/proto/fluentpb/fluentpb_user_service.go" {3-6}
+```go title="fluent/proto/fluentpb/fluentpb_user_service.go" {3-6}
 func (svc *UserService) createBuilder(user *User) (*fluent.UserCreate, error) {
 	  // truncated ...
 	for _, item := range user.GetAdministered() {
@@ -238,7 +238,7 @@ done deliberately because the amount of entities related to an entity is unbound
 whether or not to return the edge information or not, the generated service adheres to [AIP-157](https://google.aip.dev/157)
 (Partial Responses). In short, the `GetUserRequest` message includes an enum named `View`:
 
-```protobuf title="ent/proto/fluentpb/fluentpb.proto"
+```protobuf title="fluent/proto/fluentpb/fluentpb.proto"
 message GetUserRequest {
   int64 id = 1;
 
@@ -256,7 +256,7 @@ message GetUserRequest {
 
 Consider the generated code for the `Get` method:
 
-```go title="ent/proto/fluentpb/fluentpb_user_service.go"
+```go title="fluent/proto/fluentpb/fluentpb_user_service.go"
 // Get implements UserServiceServer.Get
 func (svc *UserService) Get(ctx context.Context, req *GetUserRequest) (*User, error) {
 	// .. truncated ..

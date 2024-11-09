@@ -15,7 +15,7 @@ import (
 )
 
 func BenchmarkGraph_Gen(b *testing.B) {
-	target := filepath.Join(os.TempDir(), "ent")
+	target := filepath.Join(os.TempDir(), "fluent")
 	require.NoError(b, os.MkdirAll(target, os.ModePerm), "creating tmpdir")
 	defer os.RemoveAll(target)
 	storage, err := gen.NewStorage("sql")

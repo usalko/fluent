@@ -75,7 +75,7 @@ func (_pc *PC) Update() *PCUpdateOne {
 func (_pc *PC) Unwrap() *PC {
 	_tx, ok := _pc.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: PC is not a transactional entity")
+		panic("fluent: PC is not a transactional entity")
 	}
 	_pc.config.driver = _tx.drv
 	return _pc

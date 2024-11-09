@@ -396,7 +396,7 @@ func (u *TweetTagUpsertOne) UpdateTweetID() *TweetTagUpsertOne {
 // Exec executes the query.
 func (u *TweetTagUpsertOne) Exec(ctx context.Context) error {
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for TweetTagCreate.OnConflict")
+		return errors.New("fluent: missing options for TweetTagCreate.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }
@@ -413,7 +413,7 @@ func (u *TweetTagUpsertOne) ID(ctx context.Context) (id uuid.UUID, err error) {
 	if u.create.driver.Dialect() == dialect.MySQL {
 		// In case of "ON CONFLICT", there is no way to get back non-numeric ID
 		// fields from the database since MySQL does not support the RETURNING clause.
-		return id, errors.New("ent: TweetTagUpsertOne.ID is not supported by MySQL driver. Use TweetTagUpsertOne.Exec instead")
+		return id, errors.New("fluent: TweetTagUpsertOne.ID is not supported by MySQL driver. Use TweetTagUpsertOne.Exec instead")
 	}
 	node, err := u.create.Save(ctx)
 	if err != nil {
@@ -657,11 +657,11 @@ func (u *TweetTagUpsertBulk) Exec(ctx context.Context) error {
 	}
 	for i, b := range u.create.builders {
 		if len(b.conflict) != 0 {
-			return fmt.Errorf("ent: OnConflict was set for builder %d. Set it on the TweetTagCreateBulk instead", i)
+			return fmt.Errorf("fluent: OnConflict was set for builder %d. Set it on the TweetTagCreateBulk instead", i)
 		}
 	}
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for TweetTagCreateBulk.OnConflict")
+		return errors.New("fluent: missing options for TweetTagCreateBulk.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }

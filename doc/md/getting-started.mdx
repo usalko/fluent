@@ -40,7 +40,7 @@ go run -mod=mod github.com/usalko/fluent/cmd/fluent new User
 
 The command above will generate the schema for `User` under `entdemo/fluent/schema/` directory:
 
-```go title="entdemo/fluent/schema/user.go"
+```go title="fluentdemo/fluent/schema/user.go"
 
 package schema
 
@@ -65,7 +65,7 @@ func (User) Edges() []fluent.Edge {
 
 Add 2 fields to the `User` schema:
 
-```go title="entdemo/fluent/schema/user.go"
+```go title="fluentdemo/fluent/schema/user.go"
 // Fields of the User.
 func (User) Fields() []fluent.Field {
 	return []fluent.Field{
@@ -120,14 +120,14 @@ values={[
 ]}>
 <TabItem value="sqlite">
 
-```go title="entdemo/start.go"
+```go title="fluentdemo/start.go"
 package main
 
 import (
 	"context"
 	"log"
 
-    "entdemo/fluent"
+    "fluentdemo/fluent"
 
 	_ "github.com/mattn/go-sqlite3"
 )
@@ -150,14 +150,14 @@ func main() {
 </TabItem>
 <TabItem value="postgres">
 
-```go title="entdemo/start.go"
+```go title="fluentdemo/start.go"
 package main
 
 import (
 	"context"
 	"log"
 
-    "entdemo/fluent"
+    "fluentdemo/fluent"
 
 	_ "github.com/lib/pq"
 )
@@ -180,14 +180,14 @@ func main() {
 </TabItem>
 <TabItem value="mysql">
 
-```go title="entdemo/start.go"
+```go title="fluentdemo/start.go"
 package main
 
 import (
 	"context"
 	"log"
 
-	"entdemo/fluent"
+	"fluentdemo/fluent"
 
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -213,7 +213,7 @@ func main() {
 After running schema migration, we're ready to create our user. For the sake of this example, let's name this function
 _CreateUser_:
 
-```go title="entdemo/start.go"
+```go title="fluentdemo/start.go"
 func CreateUser(ctx context.Context, client *fluent.Client) (*fluent.User, error) {
 	u, err := client.User.
 		Create().
@@ -233,7 +233,7 @@ func CreateUser(ctx context.Context, client *fluent.Client) (*fluent.User, error
 `ent` generates a package for each entity schema that contains its predicates, default values, validators
 and additional information about storage elements (column names, primary keys, etc).
 
-```go title="entdemo/start.go"
+```go title="fluentdemo/start.go"
 func QueryUser(ctx context.Context, client *fluent.Client) (*fluent.User, error) {
 	u, err := client.User.
 		Query().
@@ -262,7 +262,7 @@ go run -mod=mod github.com/usalko/fluent/cmd/fluent new Car Group
 
 And then we add the rest of the fields manually:
 
-```go title="entdemo/fluent/schema/car.go"
+```go title="fluentdemo/fluent/schema/car.go"
 // Fields of the Car.
 func (Car) Fields() []fluent.Field {
 	return []fluent.Field{
@@ -272,7 +272,7 @@ func (Car) Fields() []fluent.Field {
 }
 ```
 
-```go title="entdemo/fluent/schema/group.go"
+```go title="fluentdemo/fluent/schema/group.go"
 // Fields of the Group.
 func (Group) Fields() []fluent.Field {
 	return []fluent.Field{
@@ -290,7 +290,7 @@ can **have 1 or more** cars, but a car **has only one** owner (one-to-many relat
 
 Let's add the `"cars"` edge to the `User` schema, and run `go generate ./fluent`:
 
-```go title="entdemo/fluent/schema/user.go"
+```go title="fluentdemo/fluent/schema/user.go"
 // Edges of the User.
 func (User) Edges() []fluent.Edge {
 	return []fluent.Edge{
@@ -301,7 +301,7 @@ func (User) Edges() []fluent.Edge {
 
 We continue our example by creating 2 cars and adding them to a user.
 
-```go title="entdemo/start.go"
+```go title="fluentdemo/start.go"
 func CreateCars(ctx context.Context, client *fluent.Client) (*fluent.User, error) {
 	// Create a new car with model "Tesla".
 	tesla, err := client.Car.
@@ -341,7 +341,7 @@ func CreateCars(ctx context.Context, client *fluent.Client) (*fluent.User, error
 ```
 But what about querying the `cars` edge (relation)? Here's how we do it:
 
-```go title="entdemo/start.go"
+```go title="fluentdemo/start.go"
 func QueryCars(ctx context.Context, a8m *fluent.User) error {
 	cars, err := a8m.QueryCars().All(ctx)
 	if err != nil {
@@ -374,7 +374,7 @@ edge in the database. It's just a back-reference to the real edge (relation).
 Let's add an inverse edge named `owner` to the `Car` schema, reference it to the `cars` edge
 in the `User` schema, and run `go generate ./fluent`.
 
-```go title="entdemo/fluent/schema/car.go"
+```go title="fluentdemo/fluent/schema/car.go"
 // Edges of the Car.
 func (Car) Edges() []fluent.Edge {
 	return []fluent.Edge{
@@ -391,7 +391,7 @@ func (Car) Edges() []fluent.Edge {
 ```
 We'll continue the user/cars example above by querying the inverse edge.
 
-```go title="entdemo/start.go"
+```go title="fluentdemo/start.go"
 func QueryCarUsers(ctx context.Context, a8m *fluent.User) error {
 	cars, err := a8m.QueryCars().All(ctx)
 	if err != nil {
@@ -426,7 +426,7 @@ and run the following command:
 
 ```bash
 atlas schema inspect \
-  -u "ent://fluent/schema" \
+  -u "fluent://fluent/schema" \
   --dev-url "sqlite://file?mode=memory&_fk=1" \
   -w
 ```
@@ -442,7 +442,7 @@ atlas schema inspect \
 
 ```bash
 atlas schema inspect \
-  -u "ent://fluent/schema" \
+  -u "fluent://fluent/schema" \
   --dev-url "sqlite://file?mode=memory&_fk=1" \
   --format '{{ sql . "  " }}'
 ```
@@ -481,7 +481,7 @@ a simple "many-to-many" relationship. In the above illustration, the `Group` sch
 of the `users` edge (relation), and the `User` entity has a back-reference/inverse edge to this
 relationship named `groups`. Let's define this relationship in our schemas:
 
-```go title="entdemo/fluent/schema/group.go"
+```go title="fluentdemo/fluent/schema/group.go"
 // Edges of the Group.
 func (Group) Edges() []fluent.Edge {
    return []fluent.Edge{
@@ -490,7 +490,7 @@ func (Group) Edges() []fluent.Edge {
 }
 ```
 
-```go title="entdemo/fluent/schema/user.go"
+```go title="fluentdemo/fluent/schema/user.go"
 // Edges of the User.
 func (User) Edges() []fluent.Edge {
    return []fluent.Edge{
@@ -517,7 +517,7 @@ entities and relations). Let's create the following graph using the framework:
 ![re-graph](https://github.com/usalko/fluent/images/assets/re_graph_getting_started.png)
 
 
-```go title="entdemo/start.go"
+```go title="fluentdemo/start.go"
 func CreateGraph(ctx context.Context, client *fluent.Client) error {
 	// First, create the users.
 	a8m, err := client.User.
@@ -593,7 +593,7 @@ Now when we have a graph with data, we can run a few queries on it:
 
 1. Get all user's cars within the group named "GitHub":
 
-	```go title="entdemo/start.go"
+	```go title="fluentdemo/start.go"
 	func QueryGithub(ctx context.Context, client *fluent.Client) error {
 		cars, err := client.Group.
 			Query().
@@ -612,7 +612,7 @@ Now when we have a graph with data, we can run a few queries on it:
 
 2. Change the query above, so that the source of the traversal is the user *Ariel*:
    
-	```go title="entdemo/start.go"
+	```go title="fluentdemo/start.go"
 	func QueryArielCars(ctx context.Context, client *fluent.Client) error {
 		// Get "Ariel" from previous steps.
 		a8m := client.User.
@@ -643,7 +643,7 @@ Now when we have a graph with data, we can run a few queries on it:
 
 3. Get all groups that have users (query with a look-aside predicate):
 
-	```go title="entdemo/start.go"
+	```go title="fluentdemo/start.go"
 	func QueryGroupWithUsers(ctx context.Context, client *fluent.Client) error {
     	groups, err := client.Group.
     		Query().

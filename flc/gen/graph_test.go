@@ -406,7 +406,7 @@ func TestEnsureCorrectFK(t *testing.T) {
 
 func TestGraph_Gen(t *testing.T) {
 	require := require.New(t)
-	target := filepath.Join(os.TempDir(), "ent")
+	target := filepath.Join(os.TempDir(), "fluent")
 	require.NoError(os.MkdirAll(target, os.ModePerm), "creating tmpdir")
 	defer os.RemoveAll(target)
 	external := MustParse(NewTemplate("external").Parse("package external"))
@@ -439,7 +439,7 @@ func TestGraph_Gen(t *testing.T) {
 	require.NotNil(graph)
 	require.NoError(graph.Gen())
 	// Ensure graph files were generated.
-	for _, name := range []string{"ent", "client"} {
+	for _, name := range []string{"fluent", "client"} {
 		_, err := os.Stat(fmt.Sprintf("%s/%s.go", target, name))
 		require.NoError(err)
 	}

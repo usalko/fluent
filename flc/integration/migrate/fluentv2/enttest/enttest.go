@@ -28,13 +28,13 @@ type (
 	Option func(*options)
 
 	options struct {
-		opts        []entv2.Option
+		opts        []fluentv2.Option
 		migrateOpts []schema.MigrateOption
 	}
 )
 
 // WithOptions forwards options to client creation.
-func WithOptions(opts ...entv2.Option) Option {
+func WithOptions(opts ...fluentv2.Option) Option {
 	return func(o *options) {
 		o.opts = append(o.opts, opts...)
 	}
@@ -55,10 +55,10 @@ func newOptions(opts []Option) *options {
 	return o
 }
 
-// Open calls entv2.Open and auto-run migration.
-func Open(t TestingT, driverName, dataSourceName string, opts ...Option) *entv2.Client {
+// Open calls fluentv2.Open and auto-run migration.
+func Open(t TestingT, driverName, dataSourceName string, opts ...Option) *fluentv2.Client {
 	o := newOptions(opts)
-	c, err := entv2.Open(driverName, dataSourceName, o.opts...)
+	c, err := fluentv2.Open(driverName, dataSourceName, o.opts...)
 	if err != nil {
 		t.Error(err)
 		t.FailNow()
@@ -67,14 +67,14 @@ func Open(t TestingT, driverName, dataSourceName string, opts ...Option) *entv2.
 	return c
 }
 
-// NewClient calls entv2.NewClient and auto-run migration.
-func NewClient(t TestingT, opts ...Option) *entv2.Client {
+// NewClient calls fluentv2.NewClient and auto-run migration.
+func NewClient(t TestingT, opts ...Option) *fluentv2.Client {
 	o := newOptions(opts)
-	c := entv2.NewClient(o.opts...)
+	c := fluentv2.NewClient(o.opts...)
 	migrateSchema(t, c, o)
 	return c
 }
-func migrateSchema(t TestingT, c *entv2.Client, o *options) {
+func migrateSchema(t TestingT, c *fluentv2.Client, o *options) {
 	tables, err := schema.CopyTables(migrate.Tables)
 	if err != nil {
 		t.Error(err)

@@ -65,7 +65,7 @@ values={[
 ```shell
 atlas migrate diff user_title_required \
   --dir "file://fluent/migrate/migrations" \
-  --to "ent://fluent/schema" \
+  --to "fluent://fluent/schema" \
   --dev-url "docker://mysql/8/fluent"
 ```
 
@@ -75,7 +75,7 @@ atlas migrate diff user_title_required \
 ```shell
 atlas migrate diff user_title_required \
   --dir "file://fluent/migrate/migrations" \
-  --to "ent://fluent/schema" \
+  --to "fluent://fluent/schema" \
   --dev-url "docker://mariadb/latest/test"
 ```
 
@@ -85,7 +85,7 @@ atlas migrate diff user_title_required \
 ```shell
 atlas migrate diff user_title_required \
   --dir "file://fluent/migrate/migrations" \
-  --to "ent://fluent/schema" \
+  --to "fluent://fluent/schema" \
   --dev-url "docker://postgres/15/test?search_path=public"
 ```
 
@@ -95,7 +95,7 @@ atlas migrate diff user_title_required \
 ```shell
 atlas migrate diff user_title_required \
   --dir "file://fluent/migrate/migrations" \
-  --to "ent://fluent/schema" \
+  --to "fluent://fluent/schema" \
   --dev-url "sqlite://file?mode=memory&_fk=1"
 ```
 
@@ -104,7 +104,7 @@ atlas migrate diff user_title_required \
 
 A new migration file was created in the `ent/migrate/migrations` directory:
 
-```sql title="ent/migrate/migrations/20221116051710_user_title_required.sql"
+```sql title="fluent/migrate/migrations/20221116051710_user_title_required.sql"
 -- modify "users" table
 ALTER TABLE `users` MODIFY COLUMN `title` varchar(255) NOT NULL;
 ```
@@ -210,7 +210,7 @@ docs on the Atlas website.
 Let's fix the issue by back-filling the `title` column. Add the following
 statement to the migration file:
 
-```sql title="ent/migrate/migrations/20221116051710_user_title_required.sql"
+```sql title="fluent/migrate/migrations/20221116051710_user_title_required.sql"
 -- modify "users" table
 UPDATE `users` SET `title` = "" WHERE `title` IS NULL;
 

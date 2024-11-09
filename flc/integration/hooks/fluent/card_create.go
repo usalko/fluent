@@ -148,7 +148,7 @@ func (cc *CardCreate) defaults() error {
 	}
 	if _, ok := cc.mutation.CreatedAt(); !ok {
 		if card.DefaultCreatedAt == nil {
-			return fmt.Errorf("ent: uninitialized card.DefaultCreatedAt (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized card.DefaultCreatedAt (forgotten import ent/runtime?)")
 		}
 		v := card.DefaultCreatedAt()
 		cc.mutation.SetCreatedAt(v)

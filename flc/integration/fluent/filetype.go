@@ -128,7 +128,7 @@ func (ft *FileType) Update() *FileTypeUpdateOne {
 func (ft *FileType) Unwrap() *FileType {
 	_tx, ok := ft.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: FileType is not a transactional entity")
+		panic("fluent: FileType is not a transactional entity")
 	}
 	ft.config.driver = _tx.drv
 	return ft

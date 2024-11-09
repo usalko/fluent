@@ -355,7 +355,7 @@ func (u *BlobLinkUpsertOne) UpdateLinkID() *BlobLinkUpsertOne {
 // Exec executes the query.
 func (u *BlobLinkUpsertOne) Exec(ctx context.Context) error {
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for BlobLinkCreate.OnConflict")
+		return errors.New("fluent: missing options for BlobLinkCreate.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }
@@ -582,11 +582,11 @@ func (u *BlobLinkUpsertBulk) Exec(ctx context.Context) error {
 	}
 	for i, b := range u.create.builders {
 		if len(b.conflict) != 0 {
-			return fmt.Errorf("ent: OnConflict was set for builder %d. Set it on the BlobLinkCreateBulk instead", i)
+			return fmt.Errorf("fluent: OnConflict was set for builder %d. Set it on the BlobLinkCreateBulk instead", i)
 		}
 	}
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for BlobLinkCreateBulk.OnConflict")
+		return errors.New("fluent: missing options for BlobLinkCreateBulk.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }

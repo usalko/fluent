@@ -226,7 +226,7 @@ func (ctq *CustomTypeQuery) Exist(ctx context.Context) (bool, error) {
 	case IsNotFound(err):
 		return false, nil
 	case err != nil:
-		return false, fmt.Errorf("entv2: check existence: %w", err)
+		return false, fmt.Errorf("fluentv2: check existence: %w", err)
 	default:
 		return true, nil
 	}
@@ -271,7 +271,7 @@ func (ctq *CustomTypeQuery) Clone() *CustomTypeQuery {
 //
 //	client.CustomType.Query().
 //		GroupBy(customtype.FieldCustom).
-//		Aggregate(entv2.Count()).
+//		Aggregate(fluentv2.Count()).
 //		Scan(ctx, &v)
 func (ctq *CustomTypeQuery) GroupBy(field string, fields ...string) *CustomTypeGroupBy {
 	ctq.ctx.Fields = append([]string{field}, fields...)
@@ -310,7 +310,7 @@ func (ctq *CustomTypeQuery) Aggregate(fns ...AggregateFunc) *CustomTypeSelect {
 func (ctq *CustomTypeQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range ctq.inters {
 		if inter == nil {
-			return fmt.Errorf("entv2: uninitialized interceptor (forgotten import entv2/runtime?)")
+			return fmt.Errorf("fluentv2: uninitialized interceptor (forgotten import entv2/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, ctq); err != nil {
@@ -320,7 +320,7 @@ func (ctq *CustomTypeQuery) prepareQuery(ctx context.Context) error {
 	}
 	for _, f := range ctq.ctx.Fields {
 		if !customtype.ValidColumn(f) {
-			return &ValidationError{Name: f, err: fmt.Errorf("entv2: invalid field %q for query", f)}
+			return &ValidationError{Name: f, err: fmt.Errorf("fluentv2: invalid field %q for query", f)}
 		}
 	}
 	if ctq.path != nil {

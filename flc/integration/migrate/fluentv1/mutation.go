@@ -112,7 +112,7 @@ func (m CarMutation) Client() *Client {
 // it returns an error otherwise.
 func (m CarMutation) Tx() (*Tx, error) {
 	if _, ok := m.driver.(*txDriver); !ok {
-		return nil, errors.New("entv1: mutation is not running in a transaction")
+		return nil, errors.New("fluentv1: mutation is not running in a transaction")
 	}
 	tx := &Tx{config: m.config}
 	tx.init()
@@ -458,7 +458,7 @@ func (m ConversionMutation) Client() *Client {
 // it returns an error otherwise.
 func (m ConversionMutation) Tx() (*Tx, error) {
 	if _, ok := m.driver.(*txDriver); !ok {
-		return nil, errors.New("entv1: mutation is not running in a transaction")
+		return nil, errors.New("fluentv1: mutation is not running in a transaction")
 	}
 	tx := &Tx{config: m.config}
 	tx.init()
@@ -1649,7 +1649,7 @@ func (m CustomTypeMutation) Client() *Client {
 // it returns an error otherwise.
 func (m CustomTypeMutation) Tx() (*Tx, error) {
 	if _, ok := m.driver.(*txDriver); !ok {
-		return nil, errors.New("entv1: mutation is not running in a transaction")
+		return nil, errors.New("fluentv1: mutation is not running in a transaction")
 	}
 	tx := &Tx{config: m.config}
 	tx.init()
@@ -2018,7 +2018,7 @@ func (m UserMutation) Client() *Client {
 // it returns an error otherwise.
 func (m UserMutation) Tx() (*Tx, error) {
 	if _, ok := m.driver.(*txDriver); !ok {
-		return nil, errors.New("entv1: mutation is not running in a transaction")
+		return nil, errors.New("fluentv1: mutation is not running in a transaction")
 	}
 	tx := &Tx{config: m.config}
 	tx.init()

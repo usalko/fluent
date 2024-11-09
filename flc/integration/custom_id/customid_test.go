@@ -253,8 +253,8 @@ func CustomID(t *testing.T, client *fluent.Client) {
 		l := client.Link.Create().SaveX(ctx)
 		require.NotEmpty(t, l.ID)
 		require.Len(t, l.LinkInformation, 1)
-		require.Equal(t, "ent", l.LinkInformation["ent"].Name)
-		require.Equal(t, "https://github.com/usalko/fluent/", l.LinkInformation["ent"].Link)
+		require.Equal(t, "fluent", l.LinkInformation["fluent"].Name)
+		require.Equal(t, "https://github.com/usalko/fluent/", l.LinkInformation["fluent"].Link)
 	})
 }
 

@@ -346,7 +346,7 @@ func (duo *DeviceUpdateOne) sqlSave(ctx context.Context) (_node *Device, err err
 		_spec.Node.Columns = append(_spec.Node.Columns, device.FieldID)
 		for _, f := range fields {
 			if !device.ValidColumn(f) {
-				return nil, &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
+				return nil, &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 			}
 			if f != device.FieldID {
 				_spec.Node.Columns = append(_spec.Node.Columns, f)

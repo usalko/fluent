@@ -167,7 +167,7 @@ func (t *Task) Update() *TaskUpdateOne {
 func (t *Task) Unwrap() *Task {
 	_tx, ok := t.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: Task is not a transactional entity")
+		panic("fluent: Task is not a transactional entity")
 	}
 	t.config.driver = _tx.drv
 	return t

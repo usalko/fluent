@@ -508,7 +508,7 @@ func (duo *DocUpdateOne) sqlSave(ctx context.Context) (_node *Doc, err error) {
 		_spec.Node.Columns = append(_spec.Node.Columns, doc.FieldID)
 		for _, f := range fields {
 			if !doc.ValidColumn(f) {
-				return nil, &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
+				return nil, &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 			}
 			if f != doc.FieldID {
 				_spec.Node.Columns = append(_spec.Node.Columns, f)

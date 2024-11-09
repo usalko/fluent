@@ -179,7 +179,7 @@ func (riuo *RelationshipInfoUpdateOne) sqlSave(ctx context.Context) (_node *Rela
 		_spec.Node.Columns = append(_spec.Node.Columns, relationshipinfo.FieldID)
 		for _, f := range fields {
 			if !relationshipinfo.ValidColumn(f) {
-				return nil, &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
+				return nil, &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 			}
 			if f != relationshipinfo.FieldID {
 				_spec.Node.Columns = append(_spec.Node.Columns, f)

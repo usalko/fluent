@@ -265,7 +265,7 @@ func (u *IntSIDUpsertOne) Update(set func(*IntSIDUpsert)) *IntSIDUpsertOne {
 // Exec executes the query.
 func (u *IntSIDUpsertOne) Exec(ctx context.Context) error {
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for IntSIDCreate.OnConflict")
+		return errors.New("fluent: missing options for IntSIDCreate.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }
@@ -478,11 +478,11 @@ func (u *IntSIDUpsertBulk) Exec(ctx context.Context) error {
 	}
 	for i, b := range u.create.builders {
 		if len(b.conflict) != 0 {
-			return fmt.Errorf("ent: OnConflict was set for builder %d. Set it on the IntSIDCreateBulk instead", i)
+			return fmt.Errorf("fluent: OnConflict was set for builder %d. Set it on the IntSIDCreateBulk instead", i)
 		}
 	}
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for IntSIDCreateBulk.OnConflict")
+		return errors.New("fluent: missing options for IntSIDCreateBulk.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }

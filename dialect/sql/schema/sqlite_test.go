@@ -359,7 +359,7 @@ func TestSQLite_Create(t *testing.T) {
 			before: func(mock sqliteMock) {
 				mock.start()
 				// creating ent_types table.
-				mock.tableExists("ent_types", false)
+				mock.tableExists("fluent_types", false)
 				mock.ExpectExec(escape("CREATE TABLE `ent_types`(`id` integer PRIMARY KEY AUTOINCREMENT NOT NULL, `type` varchar(255) UNIQUE NOT NULL)")).
 					WillReturnResult(sqlmock.NewResult(0, 1))
 				mock.tableExists("users", false)
@@ -401,7 +401,7 @@ func TestSQLite_Create(t *testing.T) {
 			before: func(mock sqliteMock) {
 				mock.start()
 				// query ent_types table.
-				mock.tableExists("ent_types", true)
+				mock.tableExists("fluent_types", true)
 				mock.ExpectQuery(escape("SELECT `type` FROM `ent_types` ORDER BY `id` ASC")).
 					WillReturnRows(sqlmock.NewRows([]string{"type"}).AddRow("users"))
 				mock.tableExists("users", false)

@@ -131,7 +131,7 @@ func (d *Device) Update() *DeviceUpdateOne {
 func (d *Device) Unwrap() *Device {
 	_tx, ok := d.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: Device is not a transactional entity")
+		panic("fluent: Device is not a transactional entity")
 	}
 	d.config.driver = _tx.drv
 	return d

@@ -73,7 +73,7 @@ enum "status" {
 
 2\. In your Ent schema, define an enum field that uses the underlying Postgres `ENUM` type:
 
-```go title="ent/schema/user.go" {6-8}
+```go title="fluent/schema/user.go" {6-8}
 // Fields of the User.
 func (User) Fields() []fluent.Field {
 	return []fluent.Field{
@@ -102,7 +102,7 @@ data "composite_schema" "app" {
   }
   # Second, load the Ent schema.
   schema "public" {
-    url = "ent://fluent/schema"
+    url = "fluent://fluent/schema"
   }
 }
 

@@ -408,7 +408,7 @@ func (u *BlobUpsertOne) UpdateCount() *BlobUpsertOne {
 // Exec executes the query.
 func (u *BlobUpsertOne) Exec(ctx context.Context) error {
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for BlobCreate.OnConflict")
+		return errors.New("fluent: missing options for BlobCreate.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }
@@ -425,7 +425,7 @@ func (u *BlobUpsertOne) ID(ctx context.Context) (id uuid.UUID, err error) {
 	if u.create.driver.Dialect() == dialect.MySQL {
 		// In case of "ON CONFLICT", there is no way to get back non-numeric ID
 		// fields from the database since MySQL does not support the RETURNING clause.
-		return id, errors.New("ent: BlobUpsertOne.ID is not supported by MySQL driver. Use BlobUpsertOne.Exec instead")
+		return id, errors.New("fluent: BlobUpsertOne.ID is not supported by MySQL driver. Use BlobUpsertOne.Exec instead")
 	}
 	node, err := u.create.Save(ctx)
 	if err != nil {
@@ -662,11 +662,11 @@ func (u *BlobUpsertBulk) Exec(ctx context.Context) error {
 	}
 	for i, b := range u.create.builders {
 		if len(b.conflict) != 0 {
-			return fmt.Errorf("ent: OnConflict was set for builder %d. Set it on the BlobCreateBulk instead", i)
+			return fmt.Errorf("fluent: OnConflict was set for builder %d. Set it on the BlobCreateBulk instead", i)
 		}
 	}
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for BlobCreateBulk.OnConflict")
+		return errors.New("fluent: missing options for BlobCreateBulk.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }

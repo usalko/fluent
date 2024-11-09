@@ -156,7 +156,7 @@ func (d *Doc) Update() *DocUpdateOne {
 func (d *Doc) Unwrap() *Doc {
 	_tx, ok := d.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: Doc is not a transactional entity")
+		panic("fluent: Doc is not a transactional entity")
 	}
 	d.config.driver = _tx.drv
 	return d

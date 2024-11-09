@@ -104,7 +104,7 @@ func (ct *CustomType) Update() *CustomTypeUpdateOne {
 func (ct *CustomType) Unwrap() *CustomType {
 	_tx, ok := ct.config.driver.(*txDriver)
 	if !ok {
-		panic("entv2: CustomType is not a transactional entity")
+		panic("fluentv2: CustomType is not a transactional entity")
 	}
 	ct.config.driver = _tx.drv
 	return ct

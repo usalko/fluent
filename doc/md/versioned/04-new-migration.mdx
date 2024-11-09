@@ -58,7 +58,7 @@ values={[
 ```shell
 atlas migrate diff add_user_title \
   --dir "file://fluent/migrate/migrations" \
-  --to "ent://fluent/schema" \
+  --to "fluent://fluent/schema" \
   --dev-url "docker://mysql/8/fluent"
 ```
 
@@ -68,7 +68,7 @@ atlas migrate diff add_user_title \
 ```shell
 atlas migrate diff add_user_title \
   --dir "file://fluent/migrate/migrations" \
-  --to "ent://fluent/schema" \
+  --to "fluent://fluent/schema" \
   --dev-url "docker://mariadb/latest/test"
 ```
 
@@ -78,7 +78,7 @@ atlas migrate diff add_user_title \
 ```shell
 atlas migrate diff add_user_title \
   --dir "file://fluent/migrate/migrations" \
-  --to "ent://fluent/schema" \
+  --to "fluent://fluent/schema" \
   --dev-url "docker://postgres/15/test?search_path=public"
 ```
 
@@ -88,7 +88,7 @@ atlas migrate diff add_user_title \
 ```shell
 atlas migrate diff add_user_title \
   --dir "file://fluent/migrate/migrations" \
-  --to "ent://fluent/schema" \
+  --to "fluent://fluent/schema" \
   --dev-url "sqlite://file?mode=memory&_fk=1"
 ```
 

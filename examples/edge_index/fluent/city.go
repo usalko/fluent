@@ -111,7 +111,7 @@ func (c *City) Update() *CityUpdateOne {
 func (c *City) Unwrap() *City {
 	_tx, ok := c.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: City is not a transactional entity")
+		panic("fluent: City is not a transactional entity")
 	}
 	c.config.driver = _tx.drv
 	return c

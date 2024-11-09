@@ -109,7 +109,7 @@ func (b *Blog) Update() *BlogUpdateOne {
 func (b *Blog) Unwrap() *Blog {
 	_tx, ok := b.config.driver.(*txDriver)
 	if !ok {
-		panic("entv2: Blog is not a transactional entity")
+		panic("fluentv2: Blog is not a transactional entity")
 	}
 	b.config.driver = _tx.drv
 	return b

@@ -85,7 +85,7 @@ func (c *Card) Update() *CardUpdateOne {
 func (c *Card) Unwrap() *Card {
 	_tx, ok := c.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: Card is not a transactional entity")
+		panic("fluent: Card is not a transactional entity")
 	}
 	c.config.driver = _tx.drv
 	return c

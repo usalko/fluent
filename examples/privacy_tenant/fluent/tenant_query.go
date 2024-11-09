@@ -227,7 +227,7 @@ func (tq *TenantQuery) Exist(ctx context.Context) (bool, error) {
 	case IsNotFound(err):
 		return false, nil
 	case err != nil:
-		return false, fmt.Errorf("ent: check existence: %w", err)
+		return false, fmt.Errorf("fluent: check existence: %w", err)
 	default:
 		return true, nil
 	}
@@ -311,7 +311,7 @@ func (tq *TenantQuery) Aggregate(fns ...AggregateFunc) *TenantSelect {
 func (tq *TenantQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range tq.inters {
 		if inter == nil {
-			return fmt.Errorf("ent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, tq); err != nil {
@@ -321,7 +321,7 @@ func (tq *TenantQuery) prepareQuery(ctx context.Context) error {
 	}
 	for _, f := range tq.ctx.Fields {
 		if !tenant.ValidColumn(f) {
-			return &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
+			return &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 		}
 	}
 	if tq.path != nil {
@@ -332,7 +332,7 @@ func (tq *TenantQuery) prepareQuery(ctx context.Context) error {
 		tq.sql = prev
 	}
 	if tenant.Policy == nil {
-		return errors.New("ent: uninitialized tenant.Policy (forgotten import ent/runtime?)")
+		return errors.New("fluent: uninitialized tenant.Policy (forgotten import ent/runtime?)")
 	}
 	if err := tenant.Policy.EvalQuery(ctx, tq); err != nil {
 		return err

@@ -50,7 +50,7 @@ be applied to any query type. The `intercept` feature flag can be added to a pro
 
 If you are using the default go generate config, add `--feature intercept` option to the `ent/generate.go` file as follows:
 
-```go title="ent/generate.go"
+```go title="fluent/generate.go"
 package fluent
 
 //go:generate go run -mod=mod github.com/usalko/fluent/cmd/fluent generate --feature intercept ./schema
@@ -383,7 +383,7 @@ The example below demonstrates how to write a generic interceptor that can be us
 <TabItem value="definition" label="Definition">
 
 ```go
-// Project-level example. The usage of "entgo" package emphasizes that this interceptor does not rely on any generated code.
+// Project-level example. The usage of "fluentgo" package emphasizes that this interceptor does not rely on any generated code.
 func SharedLimiter[Q interface{ Limit(int) }](f func(entgo.Query) (Q, error), limit int) entgo.Interceptor {
 	return entgo.InterceptFunc(func(next entgo.Querier) entgo.Querier {
 		return entgo.QuerierFunc(func(ctx context.Context, query entgo.Query) (entgo.Value, error) {

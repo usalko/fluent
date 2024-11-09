@@ -298,7 +298,7 @@ func (mq *MetadataQuery) Exist(ctx context.Context) (bool, error) {
 	case IsNotFound(err):
 		return false, nil
 	case err != nil:
-		return false, fmt.Errorf("ent: check existence: %w", err)
+		return false, fmt.Errorf("fluent: check existence: %w", err)
 	default:
 		return true, nil
 	}
@@ -418,7 +418,7 @@ func (mq *MetadataQuery) Aggregate(fns ...AggregateFunc) *MetadataSelect {
 func (mq *MetadataQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range mq.inters {
 		if inter == nil {
-			return fmt.Errorf("ent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, mq); err != nil {
@@ -428,7 +428,7 @@ func (mq *MetadataQuery) prepareQuery(ctx context.Context) error {
 	}
 	for _, f := range mq.ctx.Fields {
 		if !metadata.ValidColumn(f) {
-			return &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
+			return &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 		}
 	}
 	if mq.path != nil {

@@ -50,7 +50,7 @@ data source. Follow the steps below to configure this for your project:
 
 1\. Let's define a simple schema with two types (tables): `users` and `tenants`:
 
-```go title="ent/schema/tenant.go"
+```go title="fluent/schema/tenant.go"
 // Tenant holds the schema definition for the Tenant entity.
 type Tenant struct {
 	fluent.Schema
@@ -97,7 +97,7 @@ the custom security policies defined in `schema.sql`:
 data "composite_schema" "app" {
   # Load the ent schema first with all tables.
   schema "public" {
-    url = "ent://fluent/schema"
+    url = "fluent://fluent/schema"
   }
   # Then, load the RLS schema.
   schema "public" {

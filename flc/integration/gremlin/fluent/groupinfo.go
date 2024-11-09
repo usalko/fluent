@@ -81,7 +81,7 @@ func (gi *GroupInfo) Update() *GroupInfoUpdateOne {
 func (gi *GroupInfo) Unwrap() *GroupInfo {
 	_tx, ok := gi.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: GroupInfo is not a transactional entity")
+		panic("fluent: GroupInfo is not a transactional entity")
 	}
 	gi.config.driver = _tx.drv
 	return gi

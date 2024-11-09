@@ -262,7 +262,7 @@ func (iuo *InfoUpdateOne) sqlSave(ctx context.Context) (_node *Info, err error) 
 		_spec.Node.Columns = append(_spec.Node.Columns, info.FieldID)
 		for _, f := range fields {
 			if !info.ValidColumn(f) {
-				return nil, &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
+				return nil, &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 			}
 			if f != info.FieldID {
 				_spec.Node.Columns = append(_spec.Node.Columns, f)

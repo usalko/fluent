@@ -814,7 +814,7 @@ func (tuo *TweetUpdateOne) sqlSave(ctx context.Context) (_node *Tweet, err error
 		_spec.Node.Columns = append(_spec.Node.Columns, tweet.FieldID)
 		for _, f := range fields {
 			if !tweet.ValidColumn(f) {
-				return nil, &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
+				return nil, &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 			}
 			if f != tweet.FieldID {
 				_spec.Node.Columns = append(_spec.Node.Columns, f)

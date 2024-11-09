@@ -23,12 +23,12 @@ The first step is to enable the versioned migration feature by passing in the `s
 Depending on how you execute the Ent code generator, you have to use one of the two options:
 
 <Tabs
-defaultValue="ent"
+defaultValue="fluent"
 values={[
 {label: 'Using Ent CLI', value: 'ent'},
 {label: 'Using the flc package', value: 'flc'},
 ]}>
-<TabItem value="ent">
+<TabItem value="fluent">
 
 If you are using the default go generate configuration, simply add the `--feature sql/versioned-migration` to
 the `ent/generate.go` file as follows:
@@ -132,7 +132,7 @@ import (
 )
 
 const (
-	dir = "ent/migrate/migrations"
+	dir = "fluent/migrate/migrations"
 )
 
 func main() {

@@ -645,7 +645,7 @@ func (u *TaskUpsertOne) UpdateOp() *TaskUpsertOne {
 // Exec executes the query.
 func (u *TaskUpsertOne) Exec(ctx context.Context) error {
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for TaskCreate.OnConflict")
+		return errors.New("fluent: missing options for TaskCreate.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }
@@ -1014,11 +1014,11 @@ func (u *TaskUpsertBulk) Exec(ctx context.Context) error {
 	}
 	for i, b := range u.create.builders {
 		if len(b.conflict) != 0 {
-			return fmt.Errorf("ent: OnConflict was set for builder %d. Set it on the TaskCreateBulk instead", i)
+			return fmt.Errorf("fluent: OnConflict was set for builder %d. Set it on the TaskCreateBulk instead", i)
 		}
 	}
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for TaskCreateBulk.OnConflict")
+		return errors.New("fluent: missing options for TaskCreateBulk.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }

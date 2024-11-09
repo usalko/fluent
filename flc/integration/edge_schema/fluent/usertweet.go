@@ -150,7 +150,7 @@ func (ut *UserTweet) Update() *UserTweetUpdateOne {
 func (ut *UserTweet) Unwrap() *UserTweet {
 	_tx, ok := ut.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: UserTweet is not a transactional entity")
+		panic("fluent: UserTweet is not a transactional entity")
 	}
 	ut.config.driver = _tx.drv
 	return ut

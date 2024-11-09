@@ -13,7 +13,7 @@ The builtin annotations allow configuring the different storage drivers (like SQ
 
 A custom table name can be provided for types using the `fluent_sql` annotation as follows:
 
-```go title="ent/schema/user.go"
+```go title="fluent/schema/user.go"
 package schema
 
 import (
@@ -54,7 +54,7 @@ database schemas. Check out the [multi-schema doc](multi_schema-migrations.mdx) 
 Ent allows to customize the foreign key creation and provide a [referential action](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html#foreign-key-referential-actions)
 for the `ON DELETE` clause:
 
-```go title="ent/schema/user.go" {27}
+```go title="fluent/schema/user.go" {27}
 package schema
 
 import (
@@ -94,7 +94,7 @@ rows in the child table.
 By default, table and column comments are not stored in the database. However, this functionality can be enabled by
 using the `WithComments(true)` annotation. For example:
 
-```go title="ent/schema/user.go" {18-21,34-37}
+```go title="fluent/schema/user.go" {18-21,34-37}
 package schema
 
 import (

@@ -410,7 +410,7 @@ func (ftuo *FileTypeUpdateOne) sqlSave(ctx context.Context) (_node *FileType, er
 		_spec.Node.Columns = append(_spec.Node.Columns, filetype.FieldID)
 		for _, f := range fields {
 			if !filetype.ValidColumn(f) {
-				return nil, &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
+				return nil, &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 			}
 			if f != filetype.FieldID {
 				_spec.Node.Columns = append(_spec.Node.Columns, f)

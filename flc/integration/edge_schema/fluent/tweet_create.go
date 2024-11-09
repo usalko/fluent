@@ -394,7 +394,7 @@ func (u *TweetUpsertOne) UpdateText() *TweetUpsertOne {
 // Exec executes the query.
 func (u *TweetUpsertOne) Exec(ctx context.Context) error {
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for TweetCreate.OnConflict")
+		return errors.New("fluent: missing options for TweetCreate.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }
@@ -615,11 +615,11 @@ func (u *TweetUpsertBulk) Exec(ctx context.Context) error {
 	}
 	for i, b := range u.create.builders {
 		if len(b.conflict) != 0 {
-			return fmt.Errorf("ent: OnConflict was set for builder %d. Set it on the TweetCreateBulk instead", i)
+			return fmt.Errorf("fluent: OnConflict was set for builder %d. Set it on the TweetCreateBulk instead", i)
 		}
 	}
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for TweetCreateBulk.OnConflict")
+		return errors.New("fluent: missing options for TweetCreateBulk.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }

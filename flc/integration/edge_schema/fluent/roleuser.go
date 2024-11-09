@@ -142,7 +142,7 @@ func (ru *RoleUser) Update() *RoleUserUpdateOne {
 func (ru *RoleUser) Unwrap() *RoleUser {
 	_tx, ok := ru.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: RoleUser is not a transactional entity")
+		panic("fluent: RoleUser is not a transactional entity")
 	}
 	ru.config.driver = _tx.drv
 	return ru

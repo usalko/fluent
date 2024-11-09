@@ -372,7 +372,7 @@ func (tluo *TweetLikeUpdateOne) sqlSave(ctx context.Context) (_node *TweetLike, 
 		_spec.Node.Columns = make([]string, len(fields))
 		for i, f := range fields {
 			if !tweetlike.ValidColumn(f) {
-				return nil, &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
+				return nil, &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 			}
 			_spec.Node.Columns[i] = f
 		}

@@ -102,7 +102,7 @@ func (s *Spec) Update() *SpecUpdateOne {
 func (s *Spec) Unwrap() *Spec {
 	_tx, ok := s.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: Spec is not a transactional entity")
+		panic("fluent: Spec is not a transactional entity")
 	}
 	s.config.driver = _tx.drv
 	return s

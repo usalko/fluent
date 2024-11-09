@@ -1,7 +1,7 @@
 data "composite_schema" "app" {
   # Load the ent schema first with all tables.
   schema "public" {
-    url = "ent://fluent/schema"
+    url = "fluent://fluent/schema"
   }
   # Then, load the RLS schema.
   schema "public" {

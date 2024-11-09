@@ -356,7 +356,7 @@ func (u *PetUpsertOne) Update(set func(*PetUpsert)) *PetUpsertOne {
 // Exec executes the query.
 func (u *PetUpsertOne) Exec(ctx context.Context) error {
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for PetCreate.OnConflict")
+		return errors.New("fluent: missing options for PetCreate.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }
@@ -373,7 +373,7 @@ func (u *PetUpsertOne) ID(ctx context.Context) (id string, err error) {
 	if u.create.driver.Dialect() == dialect.MySQL {
 		// In case of "ON CONFLICT", there is no way to get back non-numeric ID
 		// fields from the database since MySQL does not support the RETURNING clause.
-		return id, errors.New("ent: PetUpsertOne.ID is not supported by MySQL driver. Use PetUpsertOne.Exec instead")
+		return id, errors.New("fluent: PetUpsertOne.ID is not supported by MySQL driver. Use PetUpsertOne.Exec instead")
 	}
 	node, err := u.create.Save(ctx)
 	if err != nil {
@@ -570,11 +570,11 @@ func (u *PetUpsertBulk) Exec(ctx context.Context) error {
 	}
 	for i, b := range u.create.builders {
 		if len(b.conflict) != 0 {
-			return fmt.Errorf("ent: OnConflict was set for builder %d. Set it on the PetCreateBulk instead", i)
+			return fmt.Errorf("fluent: OnConflict was set for builder %d. Set it on the PetCreateBulk instead", i)
 		}
 	}
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for PetCreateBulk.OnConflict")
+		return errors.New("fluent: missing options for PetCreateBulk.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }

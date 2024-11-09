@@ -208,7 +208,7 @@ func (ruo *RentalUpdateOne) sqlSave(ctx context.Context) (_node *Rental, err err
 		_spec.Node.Columns = append(_spec.Node.Columns, rental.FieldID)
 		for _, f := range fields {
 			if !rental.ValidColumn(f) {
-				return nil, &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
+				return nil, &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 			}
 			if f != rental.FieldID {
 				_spec.Node.Columns = append(_spec.Node.Columns, f)

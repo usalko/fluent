@@ -155,7 +155,7 @@ func (m *Metadata) Update() *MetadataUpdateOne {
 func (m *Metadata) Unwrap() *Metadata {
 	_tx, ok := m.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: Metadata is not a transactional entity")
+		panic("fluent: Metadata is not a transactional entity")
 	}
 	m.config.driver = _tx.drv
 	return m

@@ -26,7 +26,7 @@ import (
 
 // Category holds the schema definition for the Category entity.
 type Category struct {
-	ent.Schema
+	fluent.Schema
 }
 
 // Fields of the Category.

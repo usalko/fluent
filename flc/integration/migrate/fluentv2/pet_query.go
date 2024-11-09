@@ -251,7 +251,7 @@ func (pq *PetQuery) Exist(ctx context.Context) (bool, error) {
 	case IsNotFound(err):
 		return false, nil
 	case err != nil:
-		return false, fmt.Errorf("entv2: check existence: %w", err)
+		return false, fmt.Errorf("fluentv2: check existence: %w", err)
 	default:
 		return true, nil
 	}
@@ -308,7 +308,7 @@ func (pq *PetQuery) WithOwner(opts ...func(*UserQuery)) *PetQuery {
 //
 //	client.Pet.Query().
 //		GroupBy(pet.FieldName).
-//		Aggregate(entv2.Count()).
+//		Aggregate(fluentv2.Count()).
 //		Scan(ctx, &v)
 func (pq *PetQuery) GroupBy(field string, fields ...string) *PetGroupBy {
 	pq.ctx.Fields = append([]string{field}, fields...)
@@ -347,7 +347,7 @@ func (pq *PetQuery) Aggregate(fns ...AggregateFunc) *PetSelect {
 func (pq *PetQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range pq.inters {
 		if inter == nil {
-			return fmt.Errorf("entv2: uninitialized interceptor (forgotten import entv2/runtime?)")
+			return fmt.Errorf("fluentv2: uninitialized interceptor (forgotten import entv2/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, pq); err != nil {
@@ -357,7 +357,7 @@ func (pq *PetQuery) prepareQuery(ctx context.Context) error {
 	}
 	for _, f := range pq.ctx.Fields {
 		if !pet.ValidColumn(f) {
-			return &ValidationError{Name: f, err: fmt.Errorf("entv2: invalid field %q for query", f)}
+			return &ValidationError{Name: f, err: fmt.Errorf("fluentv2: invalid field %q for query", f)}
 		}
 	}
 	if pq.path != nil {

@@ -274,7 +274,7 @@ func (fuo *FriendshipUpdateOne) sqlSave(ctx context.Context) (_node *Friendship,
 		_spec.Node.Columns = append(_spec.Node.Columns, friendship.FieldID)
 		for _, f := range fields {
 			if !friendship.ValidColumn(f) {
-				return nil, &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
+				return nil, &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 			}
 			if f != friendship.FieldID {
 				_spec.Node.Columns = append(_spec.Node.Columns, f)

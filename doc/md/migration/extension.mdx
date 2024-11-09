@@ -76,7 +76,7 @@ extension "postgis" {
 2\. In your Ent schema, define a field that uses the data type provided by the extension. In this example, we use the
 `GEOMETRY(Point, 4326)` data type provided by the `postgis` extension:
 
-```go title="ent/schema/user.go" {7-9}
+```go title="fluent/schema/user.go" {7-9}
 // Fields of the User.
 func (User) Fields() []fluent.Field {
 	return []fluent.Field{
@@ -101,7 +101,7 @@ data "composite_schema" "app" {
   }
   # Then, load the Ent schema.
   schema "public" {
-    url = "ent://fluent/schema"
+    url = "fluent://fluent/schema"
   }
 }
 

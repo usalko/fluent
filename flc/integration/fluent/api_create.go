@@ -174,7 +174,7 @@ func (u *ApiUpsertOne) Update(set func(*ApiUpsert)) *ApiUpsertOne {
 // Exec executes the query.
 func (u *ApiUpsertOne) Exec(ctx context.Context) error {
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for APICreate.OnConflict")
+		return errors.New("fluent: missing options for APICreate.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }
@@ -376,11 +376,11 @@ func (u *ApiUpsertBulk) Exec(ctx context.Context) error {
 	}
 	for i, b := range u.create.builders {
 		if len(b.conflict) != 0 {
-			return fmt.Errorf("ent: OnConflict was set for builder %d. Set it on the APICreateBulk instead", i)
+			return fmt.Errorf("fluent: OnConflict was set for builder %d. Set it on the APICreateBulk instead", i)
 		}
 	}
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for APICreateBulk.OnConflict")
+		return errors.New("fluent: missing options for APICreateBulk.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }

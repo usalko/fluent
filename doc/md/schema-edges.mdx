@@ -34,7 +34,7 @@ In the example above, you can see 2 relations declared using edges. Let's go ove
 <Tabs>
 <TabItem value="user" label="User" default>
 
-```go title="ent/schema/user.go" {23}
+```go title="fluent/schema/user.go" {23}
 package schema
 
 import (
@@ -64,7 +64,7 @@ func (User) Edges() []fluent.Edge {
 </TabItem>
 <TabItem value="pet" label="Pet">
 
-```go title="ent/schema/pet.go" {23-25}
+```go title="fluent/schema/pet.go" {23-25}
 package schema
 
 import (
@@ -114,7 +114,7 @@ more widely below.
 <Tabs>
 <TabItem value="group" label="Group" default>
 
-```go title="ent/schema/group.go" {23}
+```go title="fluent/schema/group.go" {23}
 package schema
 
 import (
@@ -144,7 +144,7 @@ func (Group) Edges() []fluent.Edge {
 </TabItem>
 <TabItem value="user" label="User">
 
-```go title="ent/schema/user.go" {23-24}
+```go title="fluent/schema/user.go" {23-24}
 package schema
 
 import (
@@ -228,7 +228,7 @@ defines a back-reference to this edge using `edge.From` named `owner`.
 <Tabs>
 <TabItem value="user" label="User" default>
 
-```go title="ent/schema/user.go"
+```go title="fluent/schema/user.go"
 // Edges of the user.
 func (User) Edges() []fluent.Edge {
 	return []fluent.Edge{
@@ -240,7 +240,7 @@ func (User) Edges() []fluent.Edge {
 </TabItem>
 <TabItem value="card" label="Card">
 
-```go title="ent/schema/card.go"
+```go title="fluent/schema/card.go"
 // Edges of the Card.
 func (Card) Edges() []fluent.Edge {
 	return []fluent.Edge{
@@ -321,7 +321,7 @@ The full example exists in [GitHub](https://github.com/usalko/fluent/tree/master
 In this linked-list example, we have a **recursive relation** named `next`/`prev`. Each node in the list can
 **have only one** `next` node. If a node A points (using `next`) to node B, B can get its pointer using `prev` (the back-reference edge).   
 
-```go title="ent/schema/node.go"
+```go title="fluent/schema/node.go"
 // Edges of the Node.
 func (Node) Edges() []fluent.Edge {
 	return []fluent.Edge{
@@ -433,7 +433,7 @@ If user A sets its spouse (using `spouse`) to B, B can get its spouse using the 
 
 Note that there are no owner/inverse terms in cases of bidirectional edges.
 
-```go title="ent/schema/user.go"
+```go title="fluent/schema/user.go"
 // Edges of the User.
 func (User) Edges() []fluent.Edge {
 	return []fluent.Edge{
@@ -547,7 +547,7 @@ Note that this relation is also a M2O (many-to-one) from the point of view of th
 <Tabs>
 <TabItem value="user" label="User" default>
 
-```go title="ent/schema/user.go" {4}
+```go title="fluent/schema/user.go" {4}
 // Edges of the User.
 func (User) Edges() []fluent.Edge {
 	return []fluent.Edge{
@@ -558,7 +558,7 @@ func (User) Edges() []fluent.Edge {
 </TabItem>
 <TabItem value="pet" label="Pet">
 
-```go title="ent/schema/pet.go" {4-6}
+```go title="fluent/schema/pet.go" {4-6}
 // Edges of the Pet.
 func (Pet) Edges() []fluent.Edge {
 	return []fluent.Edge{
@@ -622,7 +622,7 @@ func Do(ctx context.Context, client *fluent.Client) error {
 Note that, the foreign-key column can be configured and exposed as an entity field using the 
 [Edge Field](#edge-field) option as follows:
 
-```go title="ent/schema/pet.go" {4,15}
+```go title="fluent/schema/pet.go" {4,15}
 // Fields of the Pet.
 func (Pet) Fields() []fluent.Field {
 	return []fluent.Field{
@@ -667,7 +667,7 @@ In this example, we have a recursive O2M relation between tree's nodes and their
 Each node in the tree **has many** children, and **has one** parent. If node A adds B to its children,
 B can get its owner using the `owner` edge.
 
-```go title="ent/schema/node.go"
+```go title="fluent/schema/node.go"
 // Edges of the Node.
 func (Node) Edges() []fluent.Edge {
 	return []fluent.Edge{
@@ -811,7 +811,7 @@ The full example exists in [GitHub](https://github.com/usalko/fluent/tree/master
 In this groups-users example, we have a M2M relation between groups and their users.
 Each group **has many** users, and each user can be joined to **many** groups.
 
-```go title="ent/schema/group.go"
+```go title="fluent/schema/group.go"
 // Edges of the Group.
 func (Group) Edges() []fluent.Edge {
 	return []fluent.Edge{
@@ -820,7 +820,7 @@ func (Group) Edges() []fluent.Edge {
 }
 ```
 
-```go title="ent/schema/user.go"
+```go title="fluent/schema/user.go"
 // Edges of the User.
 func (User) Edges() []fluent.Edge {
 	return []fluent.Edge{
@@ -932,7 +932,7 @@ The full example exists in [GitHub](https://github.com/usalko/fluent/tree/master
 In this following-followers example, we have a M2M relation between users to their followers. Each user 
 can follow **many** users, and can have **many** followers.
 
-```go title="ent/schema/user.go"
+```go title="fluent/schema/user.go"
 // Edges of the User.
 func (User) Edges() []fluent.Edge {
 	return []fluent.Edge{
@@ -1057,7 +1057,7 @@ Each user can **have many** friends. If user A becomes a friend of B, B is also 
 
 Note that there are no owner/inverse terms in cases of bidirectional edges.
 
-```go title="ent/schema/user.go"
+```go title="fluent/schema/user.go"
 // Edges of the User.
 func (User) Edges() []fluent.Edge {
 	return []fluent.Edge{
@@ -1130,7 +1130,7 @@ The full example exists in [GitHub](https://github.com/usalko/fluent/tree/master
 The `Field` option for edges allows users to expose foreign-keys as regular fields on the schema.
 Note that only relations that hold foreign-keys (edge-ids) are allowed to use this option.
 
-```go title="ent/schema/post.go"
+```go title="fluent/schema/post.go"
 // Fields of the Post.
 func (Post) Fields() []fluent.Field {
 	return []fluent.Field{
@@ -1245,7 +1245,7 @@ values={[
 ]}>
 <TabItem value="user">
 
-```go title="ent/schema/user.go" {18}
+```go title="fluent/schema/user.go" {18}
 // User holds the schema definition for the User entity.
 type User struct {
 	fluent.Schema
@@ -1271,7 +1271,7 @@ func (User) Edges() []fluent.Edge {
 </TabItem>
 <TabItem value="friendship">
 
-```go title="ent/schema/friendship.go" {11-12}
+```go title="fluent/schema/friendship.go" {11-12}
 // Friendship holds the edge schema definition of the Friendship relationship.
 type Friendship struct {
 	fluent.Schema
@@ -1325,7 +1325,7 @@ values={[
 ]}>
 <TabItem value="user">
 
-```go title="ent/schema/user.go" {18}
+```go title="fluent/schema/user.go" {18}
 // User holds the schema definition for the User entity.
 type User struct {
 	fluent.Schema
@@ -1351,7 +1351,7 @@ func (User) Edges() []fluent.Edge {
 </TabItem>
 <TabItem value="tweet">
 
-```go title="ent/schema/tweet.go" {18}
+```go title="fluent/schema/tweet.go" {18}
 // Tweet holds the schema definition for the Tweet entity.
 type Tweet struct {
 	fluent.Schema
@@ -1377,7 +1377,7 @@ func (Tweet) Edges() []fluent.Edge {
 </TabItem>
 <TabItem value="like">
 
-```go title="ent/schema/like.go" {8,17-18}
+```go title="fluent/schema/like.go" {8,17-18}
 // Like holds the edge schema definition for the Like edge.
 type Like struct {
 	fluent.Schema
@@ -1445,7 +1445,7 @@ values={[
 ]}>
 <TabItem value="user">
 
-```go title="ent/schema/user.go" {18}
+```go title="fluent/schema/user.go" {18}
 // User holds the schema definition for the User entity.
 type User struct {
 	fluent.Schema
@@ -1471,7 +1471,7 @@ func (User) Edges() []fluent.Edge {
 </TabItem>
 <TabItem value="tweet">
 
-```go title="ent/schema/tweet.go" {18}
+```go title="fluent/schema/tweet.go" {18}
 // Tweet holds the schema definition for the Tweet entity.
 type Tweet struct {
 	fluent.Schema
@@ -1498,7 +1498,7 @@ func (Tweet) Edges() []fluent.Edge {
 </TabItem>
 <TabItem value="usertweet">
 
-```go title="ent/schema/usertweet.go" {33-34}
+```go title="fluent/schema/usertweet.go" {33-34}
 // UserTweet holds the schema definition for the UserTweet entity.
 type UserTweet struct {
 	fluent.Schema

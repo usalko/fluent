@@ -46,7 +46,7 @@ data source. Follow the steps below to configure this for your project:
 
 1\. Let's define a simple schema with two types (tables): `users` and `user_audit_logs`:
 
-```go title="ent/schema/user.go"
+```go title="fluent/schema/user.go"
 // User holds the schema definition for the User entity.
 type User struct {
 	fluent.Schema
@@ -123,7 +123,7 @@ the custom triggers defined in `schema.sql`:
 data "composite_schema" "app" {
   # Load the ent schema first with all tables.
   schema "public" {
-    url = "ent://fluent/schema"
+    url = "fluent://fluent/schema"
   }
   # Then, load the triggers schema.
   schema "public" {

@@ -13,7 +13,6 @@ import (
 	gen "github.com/usalko/fluent/flc/integration/hooks/fluent"
 	"github.com/usalko/fluent/flc/integration/hooks/fluent/hook"
 	"github.com/usalko/fluent/flc/integration/hooks/fluent/intercept"
-	fluent "github.com/usalko/fluent/flc/integration/template/fluent"
 	"github.com/usalko/fluent/schema/field"
 	"github.com/usalko/fluent/schema/mixin"
 )

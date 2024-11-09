@@ -299,7 +299,7 @@ func (uq *UserQuery) Exist(ctx context.Context) (bool, error) {
 	case IsNotFound(err):
 		return false, nil
 	case err != nil:
-		return false, fmt.Errorf("entv2: check existence: %w", err)
+		return false, fmt.Errorf("fluentv2: check existence: %w", err)
 	default:
 		return true, nil
 	}
@@ -380,7 +380,7 @@ func (uq *UserQuery) WithFriends(opts ...func(*UserQuery)) *UserQuery {
 //
 //	client.User.Query().
 //		GroupBy(user.FieldMixedString).
-//		Aggregate(entv2.Count()).
+//		Aggregate(fluentv2.Count()).
 //		Scan(ctx, &v)
 func (uq *UserQuery) GroupBy(field string, fields ...string) *UserGroupBy {
 	uq.ctx.Fields = append([]string{field}, fields...)
@@ -419,7 +419,7 @@ func (uq *UserQuery) Aggregate(fns ...AggregateFunc) *UserSelect {
 func (uq *UserQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range uq.inters {
 		if inter == nil {
-			return fmt.Errorf("entv2: uninitialized interceptor (forgotten import entv2/runtime?)")
+			return fmt.Errorf("fluentv2: uninitialized interceptor (forgotten import entv2/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, uq); err != nil {
@@ -429,7 +429,7 @@ func (uq *UserQuery) prepareQuery(ctx context.Context) error {
 	}
 	for _, f := range uq.ctx.Fields {
 		if !user.ValidColumn(f) {
-			return &ValidationError{Name: f, err: fmt.Errorf("entv2: invalid field %q for query", f)}
+			return &ValidationError{Name: f, err: fmt.Errorf("fluentv2: invalid field %q for query", f)}
 		}
 	}
 	if uq.path != nil {

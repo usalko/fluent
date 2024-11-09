@@ -85,7 +85,7 @@ func (ri *RelationshipInfo) Update() *RelationshipInfoUpdateOne {
 func (ri *RelationshipInfo) Unwrap() *RelationshipInfo {
 	_tx, ok := ri.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: RelationshipInfo is not a transactional entity")
+		panic("fluent: RelationshipInfo is not a transactional entity")
 	}
 	ri.config.driver = _tx.drv
 	return ri

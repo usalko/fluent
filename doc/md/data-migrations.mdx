@@ -43,7 +43,7 @@ atlas migrate new <migration_name> \
 ```
 
 3\. Edit the migration file and add the custom data migration there. For example:
-```sql title="ent/migrate/migrations/20221126185750_backfill_data.sql"
+```sql title="fluent/migrate/migrations/20221126185750_backfill_data.sql"
 -- Backfill NULL or null tags with a default value.
 UPDATE `users` SET `tags` = '["foo","bar"]' WHERE `tags` IS NULL OR JSON_CONTAINS(`tags`, 'null', '$');
 ```
@@ -71,7 +71,7 @@ function:
 <Tabs>
 <TabItem value="single" label="Single Statement" default>
 
-```go title="ent/migrate/migratedata/migratedata.go"
+```go title="fluent/migrate/migratedata/migratedata.go"
 package migratedata
 
 // BackfillUnknown back-fills all empty users' names with the default value 'Unknown'.
@@ -109,7 +109,7 @@ UPDATE `users` SET `name` = 'Unknown' WHERE `users`.`name` = '';
 </TabItem>
 <TabItem value="multi" label="Multi Statement">
 
-```go title="ent/migrate/migratedata/migratedata.go"
+```go title="fluent/migrate/migratedata/migratedata.go"
 package migratedata
 
 // BackfillUserTags is used to generate the migration file '20221126185750_backfill_user_tags.sql'.
@@ -176,7 +176,7 @@ UPDATE `users` SET `tags` = CASE WHEN (JSON_TYPE(JSON_EXTRACT(`tags`, '$')) IS N
 </TabItem>
 <TabItem value="seed" label="Data Seeding">
 
-```go title="ent/migrate/migratedata/migratedata.go"
+```go title="fluent/migrate/migratedata/migratedata.go"
 package migratedata
 
 // SeedUsers add the initial users to the database.

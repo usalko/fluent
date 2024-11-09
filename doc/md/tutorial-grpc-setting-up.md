@@ -38,7 +38,7 @@ go get -u github.com/usalko/fluent/fluentproto
 
 Next, we will define the schema for the `User` entity. Open `ent/schema/user.go` and edit:
 
-```go title="ent/schema/user.go"
+```go title="fluent/schema/user.go"
 package schema
 
 import (

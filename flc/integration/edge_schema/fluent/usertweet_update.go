@@ -368,7 +368,7 @@ func (utuo *UserTweetUpdateOne) sqlSave(ctx context.Context) (_node *UserTweet, 
 		_spec.Node.Columns = append(_spec.Node.Columns, usertweet.FieldID)
 		for _, f := range fields {
 			if !usertweet.ValidColumn(f) {
-				return nil, &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
+				return nil, &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 			}
 			if f != usertweet.FieldID {
 				_spec.Node.Columns = append(_spec.Node.Columns, f)

@@ -9,7 +9,7 @@ primitive fields.
 
 To support this, the Protobuf project supports some [Well-Known types](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf) called "wrapper types".
 For example, the wrapper type for a `bool`, is called `google.protobuf.BoolValue` and is [defined as](https://github.com/protocolbuffers/protobuf/blob/991bcada050d7e9919503adef5b52547ec249d35/src/google/protobuf/wrappers.proto#L103-L107):
-```protobuf title="ent/proto/fluentpb/fluentpb.proto"
+```protobuf title="fluent/proto/fluentpb/fluentpb.proto"
 // Wrapper message for `bool`.
 //
 // The JSON representation for `BoolValue` is JSON `true` and `false`.
@@ -22,7 +22,7 @@ When `entproto` generates a Protobuf message definition, it uses these wrapper t
 
 Let's see this in action, modifying our ent schema to include an optional field:
 
-```go title="ent/schema/user.go" {14-16}
+```go title="fluent/schema/user.go" {14-16}
 // Fields of the User.
 func (User) Fields() []fluent.Field {
 	return []fluent.Field{
@@ -45,7 +45,7 @@ func (User) Fields() []fluent.Field {
 
 Re-running `go generate ./...`, observe that our Protobuf definition for `User` now looks like:
 
-```protobuf title="ent/proto/fluentpb/fluentpb.proto" {8}
+```protobuf title="fluent/proto/fluentpb/fluentpb.proto" {8}
 message User {
   int32 id = 1;
 
@@ -61,7 +61,7 @@ message User {
 
 The generated service implementation also utilize this field. Observe in `entpb_user_service.go`:
 
-```go title="ent/proto/fluentpb/fluentpb_user_service.go" {3-6}
+```go title="fluent/proto/fluentpb/fluentpb_user_service.go" {3-6}
 func (svc *UserService) createBuilder(user *User) (*fluent.UserCreate, error) {
 	m := svc.client.User.Create()
 	if user.GetAlias() != nil {

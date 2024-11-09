@@ -365,7 +365,7 @@ func (u *AttachedFileUpsertOne) UpdateProcID() *AttachedFileUpsertOne {
 // Exec executes the query.
 func (u *AttachedFileUpsertOne) Exec(ctx context.Context) error {
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for AttachedFileCreate.OnConflict")
+		return errors.New("fluent: missing options for AttachedFileCreate.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }
@@ -615,11 +615,11 @@ func (u *AttachedFileUpsertBulk) Exec(ctx context.Context) error {
 	}
 	for i, b := range u.create.builders {
 		if len(b.conflict) != 0 {
-			return fmt.Errorf("ent: OnConflict was set for builder %d. Set it on the AttachedFileCreateBulk instead", i)
+			return fmt.Errorf("fluent: OnConflict was set for builder %d. Set it on the AttachedFileCreateBulk instead", i)
 		}
 	}
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for AttachedFileCreateBulk.OnConflict")
+		return errors.New("fluent: missing options for AttachedFileCreateBulk.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }

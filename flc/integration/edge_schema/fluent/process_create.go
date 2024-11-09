@@ -242,7 +242,7 @@ func (u *ProcessUpsertOne) Update(set func(*ProcessUpsert)) *ProcessUpsertOne {
 // Exec executes the query.
 func (u *ProcessUpsertOne) Exec(ctx context.Context) error {
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for ProcessCreate.OnConflict")
+		return errors.New("fluent: missing options for ProcessCreate.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }
@@ -444,11 +444,11 @@ func (u *ProcessUpsertBulk) Exec(ctx context.Context) error {
 	}
 	for i, b := range u.create.builders {
 		if len(b.conflict) != 0 {
-			return fmt.Errorf("ent: OnConflict was set for builder %d. Set it on the ProcessCreateBulk instead", i)
+			return fmt.Errorf("fluent: OnConflict was set for builder %d. Set it on the ProcessCreateBulk instead", i)
 		}
 	}
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for ProcessCreateBulk.OnConflict")
+		return errors.New("fluent: missing options for ProcessCreateBulk.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }

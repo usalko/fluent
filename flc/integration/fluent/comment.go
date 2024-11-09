@@ -134,7 +134,7 @@ func (c *Comment) Update() *CommentUpdateOne {
 func (c *Comment) Unwrap() *Comment {
 	_tx, ok := c.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: Comment is not a transactional entity")
+		panic("fluent: Comment is not a transactional entity")
 	}
 	c.config.driver = _tx.drv
 	return c

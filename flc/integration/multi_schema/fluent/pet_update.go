@@ -291,7 +291,7 @@ func (puo *PetUpdateOne) sqlSave(ctx context.Context) (_node *Pet, err error) {
 		_spec.Node.Columns = append(_spec.Node.Columns, pet.FieldID)
 		for _, f := range fields {
 			if !pet.ValidColumn(f) {
-				return nil, &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
+				return nil, &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 			}
 			if f != pet.FieldID {
 				_spec.Node.Columns = append(_spec.Node.Columns, f)

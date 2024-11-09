@@ -75,7 +75,7 @@ func (z *Zoo) Update() *ZooUpdateOne {
 func (z *Zoo) Unwrap() *Zoo {
 	_tx, ok := z.config.driver.(*txDriver)
 	if !ok {
-		panic("entv2: Zoo is not a transactional entity")
+		panic("fluentv2: Zoo is not a transactional entity")
 	}
 	z.config.driver = _tx.drv
 	return z

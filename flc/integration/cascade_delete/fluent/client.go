@@ -123,7 +123,7 @@ func Open(driverName, dataSourceName string, options ...Option) (*Client, error)
 }
 
 // ErrTxStarted is returned when trying to start a new transaction from a transactional client.
-var ErrTxStarted = errors.New("ent: cannot start a transaction within a transaction")
+var ErrTxStarted = errors.New("fluent: cannot start a transaction within a transaction")
 
 // Tx returns a new transactional client. The provided context
 // is used until the transaction is committed or rolled back.
@@ -133,7 +133,7 @@ func (c *Client) Tx(ctx context.Context) (*Tx, error) {
 	}
 	tx, err := newTx(ctx, c.driver)
 	if err != nil {
-		return nil, fmt.Errorf("ent: starting a transaction: %w", err)
+		return nil, fmt.Errorf("fluent: starting a transaction: %w", err)
 	}
 	cfg := c.config
 	cfg.driver = tx
@@ -149,13 +149,13 @@ func (c *Client) Tx(ctx context.Context) (*Tx, error) {
 // BeginTx returns a transactional client with specified options.
 func (c *Client) BeginTx(ctx context.Context, opts *sql.TxOptions) (*Tx, error) {
 	if _, ok := c.driver.(*txDriver); ok {
-		return nil, errors.New("ent: cannot start a transaction within a transaction")
+		return nil, errors.New("fluent: cannot start a transaction within a transaction")
 	}
 	tx, err := c.driver.(interface {
 		BeginTx(context.Context, *sql.TxOptions) (dialect.Tx, error)
 	}).BeginTx(ctx, opts)
 	if err != nil {
-		return nil, fmt.Errorf("ent: starting a transaction: %w", err)
+		return nil, fmt.Errorf("fluent: starting a transaction: %w", err)
 	}
 	cfg := c.config
 	cfg.driver = &txDriver{tx: tx, drv: c.driver}
@@ -216,7 +216,7 @@ func (c *Client) Mutate(ctx context.Context, m Mutation) (Value, error) {
 	case *UserMutation:
 		return c.User.mutate(ctx, m)
 	default:
-		return nil, fmt.Errorf("ent: unknown mutation type %T", m)
+		return nil, fmt.Errorf("fluent: unknown mutation type %T", m)
 	}
 }
 
@@ -365,7 +365,7 @@ func (c *CommentClient) mutate(ctx context.Context, m *CommentMutation) (Value, 
 	case OpDelete, OpDeleteOne:
 		return (&CommentDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
 	default:
-		return nil, fmt.Errorf("ent: unknown Comment mutation op: %q", m.Op())
+		return nil, fmt.Errorf("fluent: unknown Comment mutation op: %q", m.Op())
 	}
 }
 
@@ -530,7 +530,7 @@ func (c *PostClient) mutate(ctx context.Context, m *PostMutation) (Value, error)
 	case OpDelete, OpDeleteOne:
 		return (&PostDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
 	default:
-		return nil, fmt.Errorf("ent: unknown Post mutation op: %q", m.Op())
+		return nil, fmt.Errorf("fluent: unknown Post mutation op: %q", m.Op())
 	}
 }
 
@@ -679,7 +679,7 @@ func (c *UserClient) mutate(ctx context.Context, m *UserMutation) (Value, error)
 	case OpDelete, OpDeleteOne:
 		return (&UserDelete{config: c.config, hooks: c.Hooks(), mutation: m}).Exec(ctx)
 	default:
-		return nil, fmt.Errorf("ent: unknown User mutation op: %q", m.Op())
+		return nil, fmt.Errorf("fluent: unknown User mutation op: %q", m.Op())
 	}
 }
 

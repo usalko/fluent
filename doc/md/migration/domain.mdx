@@ -80,7 +80,7 @@ domain "us_postal_code" {
 
 2\. In your Ent schema, define a field that uses the domain type only in PostgreSQL dialect:
 
-```go title="ent/schema/user.go" {5-7}
+```go title="fluent/schema/user.go" {5-7}
 // Fields of the User.
 func (User) Fields() []fluent.Field {
 	return []fluent.Field{
@@ -108,7 +108,7 @@ data "composite_schema" "app" {
   }
   # Second, load the Ent schema.
   schema "public" {
-    url = "ent://fluent/schema"
+    url = "fluent://fluent/schema"
   }
 }
 

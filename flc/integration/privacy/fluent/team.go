@@ -127,7 +127,7 @@ func (t *Team) Update() *TeamUpdateOne {
 func (t *Team) Unwrap() *Team {
 	_tx, ok := t.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: Team is not a transactional entity")
+		panic("fluent: Team is not a transactional entity")
 	}
 	t.config.driver = _tx.drv
 	return t

@@ -835,7 +835,7 @@ func (a *Atlas) diff(ctx context.Context, name string, current, desired *schema.
 	return plan, nil
 }
 
-var errTypeTableNotFound = errors.New("ent_type table not found")
+var errTypeTableNotFound = errors.New("fluent_type table not found")
 
 // loadTypes loads the currently saved range allocations from the TypeTable.
 func (a *Atlas) loadTypes(ctx context.Context, conn dialect.ExecQuerier) ([]string, error) {

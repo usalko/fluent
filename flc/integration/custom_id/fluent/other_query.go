@@ -227,7 +227,7 @@ func (oq *OtherQuery) Exist(ctx context.Context) (bool, error) {
 	case IsNotFound(err):
 		return false, nil
 	case err != nil:
-		return false, fmt.Errorf("ent: check existence: %w", err)
+		return false, fmt.Errorf("fluent: check existence: %w", err)
 	default:
 		return true, nil
 	}
@@ -289,7 +289,7 @@ func (oq *OtherQuery) Aggregate(fns ...AggregateFunc) *OtherSelect {
 func (oq *OtherQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range oq.inters {
 		if inter == nil {
-			return fmt.Errorf("ent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, oq); err != nil {
@@ -299,7 +299,7 @@ func (oq *OtherQuery) prepareQuery(ctx context.Context) error {
 	}
 	for _, f := range oq.ctx.Fields {
 		if !other.ValidColumn(f) {
-			return &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
+			return &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 		}
 	}
 	if oq.path != nil {

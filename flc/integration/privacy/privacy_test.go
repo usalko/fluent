@@ -27,14 +27,14 @@ func TestPrivacyRules(t *testing.T) {
 		require.FailNow(t, "hook called on privacy deny")
 	})
 	ctx := context.Background()
-	_, err := client.Team.Create().SetName("ent").Save(ctx)
+	_, err := client.Team.Create().SetName("fluent").Save(ctx)
 	require.True(t, errors.Is(err, privacy.Deny), "policy requires viewer context")
 	view := viewer.NewContext(ctx, viewer.AppViewer{
 		Role: viewer.View,
 	})
 	_, err = client.Team.CreateBulk(
-		client.Team.Create().SetName("ent"),
-		client.Team.Create().SetName("ent-contrib"),
+		client.Team.Create().SetName("fluent"),
+		client.Team.Create().SetName("fluent-contrib"),
 	).Save(view)
 	require.True(t, errors.Is(err, privacy.Deny), "team policy requires admin user")
 	rule.SetMutationLogFunc(logf)
@@ -43,8 +43,8 @@ func TestPrivacyRules(t *testing.T) {
 		Role: viewer.Admin,
 	})
 	teams := client.Team.CreateBulk(
-		client.Team.Create().SetName("ent"),
-		client.Team.Create().SetName("ent-contrib"),
+		client.Team.Create().SetName("fluent"),
+		client.Team.Create().SetName("fluent-contrib"),
 	).SaveX(admin)
 
 	_, err = client.User.Create().SetName("a8m").AddTeams(teams[0]).Save(view)

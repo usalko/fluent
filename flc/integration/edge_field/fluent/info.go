@@ -117,7 +117,7 @@ func (i *Info) Update() *InfoUpdateOne {
 func (i *Info) Unwrap() *Info {
 	_tx, ok := i.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: Info is not a transactional entity")
+		panic("fluent: Info is not a transactional entity")
 	}
 	i.config.driver = _tx.drv
 	return i

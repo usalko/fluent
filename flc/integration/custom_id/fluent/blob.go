@@ -164,7 +164,7 @@ func (b *Blob) Update() *BlobUpdateOne {
 func (b *Blob) Unwrap() *Blob {
 	_tx, ok := b.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: Blob is not a transactional entity")
+		panic("fluent: Blob is not a transactional entity")
 	}
 	b.config.driver = _tx.drv
 	return b

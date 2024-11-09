@@ -75,7 +75,7 @@ func (gr *Group) Update() *GroupUpdateOne {
 func (gr *Group) Unwrap() *Group {
 	_tx, ok := gr.config.driver.(*txDriver)
 	if !ok {
-		panic("entv2: Group is not a transactional entity")
+		panic("fluentv2: Group is not a transactional entity")
 	}
 	gr.config.driver = _tx.drv
 	return gr

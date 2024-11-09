@@ -1026,7 +1026,7 @@ func TestMySQL_Create(t *testing.T) {
 			options: []MigrateOption{WithGlobalUniqueID(true)},
 			before: func(mock mysqlMock) {
 				mock.start("5.7.23")
-				mock.tableExists("ent_types", false)
+				mock.tableExists("fluent_types", false)
 				// create ent_types table.
 				mock.ExpectExec(escape("CREATE TABLE IF NOT EXISTS `ent_types`(`id` bigint unsigned AUTO_INCREMENT NOT NULL, `type` varchar(255) UNIQUE NOT NULL, PRIMARY KEY(`id`)) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin")).
 					WillReturnResult(sqlmock.NewResult(0, 1))
@@ -1062,7 +1062,7 @@ func TestMySQL_Create(t *testing.T) {
 			options: []MigrateOption{WithGlobalUniqueID(true)},
 			before: func(mock mysqlMock) {
 				mock.start("5.7.23")
-				mock.tableExists("ent_types", true)
+				mock.tableExists("fluent_types", true)
 				// query ent_types table.
 				mock.ExpectQuery(escape("SELECT `type` FROM `ent_types` ORDER BY `id` ASC")).
 					WillReturnRows(sqlmock.NewRows([]string{"type"}).AddRow("users"))
@@ -1100,7 +1100,7 @@ func TestMySQL_Create(t *testing.T) {
 			options: []MigrateOption{WithGlobalUniqueID(true)},
 			before: func(mock mysqlMock) {
 				mock.start("5.7.23")
-				mock.tableExists("ent_types", true)
+				mock.tableExists("fluent_types", true)
 				// query ent_types table.
 				mock.ExpectQuery(escape("SELECT `type` FROM `ent_types` ORDER BY `id` ASC")).
 					WillReturnRows(sqlmock.NewRows([]string{"type"}).AddRow("users"))
@@ -1130,7 +1130,7 @@ func TestMySQL_Create(t *testing.T) {
 			options: []MigrateOption{WithGlobalUniqueID(true)},
 			before: func(mock mysqlMock) {
 				mock.start("5.7.23")
-				mock.tableExists("ent_types", true)
+				mock.tableExists("fluent_types", true)
 				// query ent_types table.
 				mock.ExpectQuery(escape("SELECT `type` FROM `ent_types` ORDER BY `id` ASC")).
 					WillReturnRows(sqlmock.NewRows([]string{"type"}).
@@ -1339,7 +1339,7 @@ func TestMySQL_Create(t *testing.T) {
 			options: []MigrateOption{WithGlobalUniqueID(true)},
 			before: func(mock mysqlMock) {
 				mock.start("10.1.48-MariaDB-1~bionic")
-				mock.tableExists("ent_types", false)
+				mock.tableExists("fluent_types", false)
 				// create ent_types table.
 				mock.ExpectExec(escape("CREATE TABLE IF NOT EXISTS `ent_types`(`id` bigint unsigned AUTO_INCREMENT NOT NULL, `type` varchar(191) UNIQUE NOT NULL, PRIMARY KEY(`id`)) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin")).
 					WillReturnResult(sqlmock.NewResult(0, 1))

@@ -150,7 +150,7 @@ func (af *AttachedFile) Update() *AttachedFileUpdateOne {
 func (af *AttachedFile) Unwrap() *AttachedFile {
 	_tx, ok := af.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: AttachedFile is not a transactional entity")
+		panic("fluent: AttachedFile is not a transactional entity")
 	}
 	af.config.driver = _tx.drv
 	return af

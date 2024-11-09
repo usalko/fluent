@@ -198,7 +198,7 @@ func (u *RevisionUpsertOne) Update(set func(*RevisionUpsert)) *RevisionUpsertOne
 // Exec executes the query.
 func (u *RevisionUpsertOne) Exec(ctx context.Context) error {
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for RevisionCreate.OnConflict")
+		return errors.New("fluent: missing options for RevisionCreate.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }
@@ -215,7 +215,7 @@ func (u *RevisionUpsertOne) ID(ctx context.Context) (id string, err error) {
 	if u.create.driver.Dialect() == dialect.MySQL {
 		// In case of "ON CONFLICT", there is no way to get back non-numeric ID
 		// fields from the database since MySQL does not support the RETURNING clause.
-		return id, errors.New("ent: RevisionUpsertOne.ID is not supported by MySQL driver. Use RevisionUpsertOne.Exec instead")
+		return id, errors.New("fluent: RevisionUpsertOne.ID is not supported by MySQL driver. Use RevisionUpsertOne.Exec instead")
 	}
 	node, err := u.create.Save(ctx)
 	if err != nil {
@@ -411,11 +411,11 @@ func (u *RevisionUpsertBulk) Exec(ctx context.Context) error {
 	}
 	for i, b := range u.create.builders {
 		if len(b.conflict) != 0 {
-			return fmt.Errorf("ent: OnConflict was set for builder %d. Set it on the RevisionCreateBulk instead", i)
+			return fmt.Errorf("fluent: OnConflict was set for builder %d. Set it on the RevisionCreateBulk instead", i)
 		}
 	}
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for RevisionCreateBulk.OnConflict")
+		return errors.New("fluent: missing options for RevisionCreateBulk.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }

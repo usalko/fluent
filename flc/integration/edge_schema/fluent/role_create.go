@@ -312,7 +312,7 @@ func (u *RoleUpsertOne) UpdateCreatedAt() *RoleUpsertOne {
 // Exec executes the query.
 func (u *RoleUpsertOne) Exec(ctx context.Context) error {
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for RoleCreate.OnConflict")
+		return errors.New("fluent: missing options for RoleCreate.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }
@@ -548,11 +548,11 @@ func (u *RoleUpsertBulk) Exec(ctx context.Context) error {
 	}
 	for i, b := range u.create.builders {
 		if len(b.conflict) != 0 {
-			return fmt.Errorf("ent: OnConflict was set for builder %d. Set it on the RoleCreateBulk instead", i)
+			return fmt.Errorf("fluent: OnConflict was set for builder %d. Set it on the RoleCreateBulk instead", i)
 		}
 	}
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for RoleCreateBulk.OnConflict")
+		return errors.New("fluent: missing options for RoleCreateBulk.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }

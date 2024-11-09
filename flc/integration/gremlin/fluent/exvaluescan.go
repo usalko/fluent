@@ -81,7 +81,7 @@ func (evs *ExValueScan) Update() *ExValueScanUpdateOne {
 func (evs *ExValueScan) Unwrap() *ExValueScan {
 	_tx, ok := evs.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: ExValueScan is not a transactional entity")
+		panic("fluent: ExValueScan is not a transactional entity")
 	}
 	evs.config.driver = _tx.drv
 	return evs

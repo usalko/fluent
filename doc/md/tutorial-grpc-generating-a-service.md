@@ -5,7 +5,7 @@ sidebar_label: Generating a Service
 ---
 Generating Protobuf structs generated from our `ent.Schema` can be useful, but what we're really interested in is getting an actual server that can create, read, update, and delete entities from an actual database. To do that, we need to update just one line of code! When we annotate a schema with `entproto.Service`, we tell the `entproto` code-gen that we are interested in generating a gRPC service definition, from the `protoc-gen-entgrpc` will read our definition and generate a service implementation. Edit `ent/schema/user.go` and modify the schema's `Annotations`:
 
-```go title="ent/schema/user.go" {4}
+```go title="fluent/schema/user.go" {4}
 func (User) Annotations() []schema.Annotation {
 	return []schema.Annotation{
 		entproto.Message(),
@@ -33,7 +33,7 @@ ent/proto/fluentpb
 
 First, `entproto` added a service definition to `entpb.proto`:
 
-```protobuf title="ent/proto/fluentpb/fluentpb.proto"
+```protobuf title="fluent/proto/fluentpb/fluentpb.proto"
 service UserService {
   rpc Create ( CreateUserRequest ) returns ( User );
 
@@ -51,7 +51,7 @@ service UserService {
 
 In addition, two new files were created. The first, `entpb_grpc.pb.go`, contains the gRPC client stub and the interface definition. If you open the file, you will find in it (among many other things):
 
-```go title="ent/proto/fluentpb/fluentpb_grpc.pb.go"
+```go title="fluent/proto/fluentpb/fluentpb_grpc.pb.go"
 // UserServiceClient is the client API for UserService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please
@@ -68,7 +68,7 @@ type UserServiceClient interface {
 
 The second file, `entpub_user_service.go` contains a generated implementation for this interface. For example, an implementation for the `Get` method:
 
-```go title="ent/proto/fluentpb/fluentpb_user_service.go"
+```go title="fluent/proto/fluentpb/fluentpb_user_service.go"
 // Get implements UserServiceServer.Get
 func (svc *UserService) Get(ctx context.Context, req *GetUserRequest) (*User, error) {
 	var (

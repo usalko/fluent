@@ -138,7 +138,7 @@ func (n *Note) Update() *NoteUpdateOne {
 func (n *Note) Unwrap() *Note {
 	_tx, ok := n.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: Note is not a transactional entity")
+		panic("fluent: Note is not a transactional entity")
 	}
 	n.config.driver = _tx.drv
 	return n

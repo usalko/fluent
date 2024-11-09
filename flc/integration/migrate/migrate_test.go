@@ -62,8 +62,8 @@ func TestMySQL(t *testing.T) {
 			require.NoError(t, err, "connecting to migrate database")
 			defer drv.Close()
 
-			clientv1 := entv1.NewClient(entv1.Driver(drv))
-			clientv2 := entv2.NewClient(entv2.Driver(drv))
+			clientv1 := fluentv1.NewClient(fluentv1.Driver(drv))
+			clientv2 := fluentv2.NewClient(fluentv2.Driver(drv))
 			V1ToV2(t, drv.Dialect(), clientv1, clientv2)
 			if version == "8" {
 				CheckConstraint(t, clientv2)
@@ -112,8 +112,8 @@ func TestPostgres(t *testing.T) {
 			err = drv.Exec(ctx, "CREATE TYPE customtype as range (subtype = time)", []any{}, nil)
 			require.NoError(t, err, "creating custom type")
 
-			clientv1 := entv1.NewClient(entv1.Driver(drv))
-			clientv2 := entv2.NewClient(entv2.Driver(drv))
+			clientv1 := fluentv1.NewClient(fluentv1.Driver(drv))
+			clientv2 := fluentv2.NewClient(fluentv2.Driver(drv))
 			V1ToV2(
 				t, drv.Dialect(), clientv1, clientv2,
 				// A diff hook to ensure foreign-keys that point to
@@ -174,7 +174,7 @@ func TestSQLite(t *testing.T) {
 	require.NoError(t, err)
 	defer drv.Close()
 	ctx := context.Background()
-	client := entv2.NewClient(entv2.Driver(drv))
+	client := fluentv2.NewClient(fluentv2.Driver(drv))
 	require.NoError(
 		t,
 		client.Schema.Create(
@@ -448,7 +448,7 @@ func Versioned(t *testing.T, drv sql.ExecQuerier, devURL string, client *version
 	require.Equal(t, string(f1), string(f2))
 }
 
-func V1ToV2(t *testing.T, dialect string, clientv1 *entv1.Client, clientv2 *entv2.Client, hooks ...schema.DiffHook) {
+func V1ToV2(t *testing.T, dialect string, clientv1 *fluentv1.Client, clientv2 *fluentv2.Client, hooks ...schema.DiffHook) {
 	ctx := context.Background()
 
 	// Run migration and execute queries on v1.
@@ -488,7 +488,7 @@ func V1ToV2(t *testing.T, dialect string, clientv1 *entv1.Client, clientv2 *entv
 	require.True(t, exist, "expect renamed column to have previous values")
 }
 
-func SanityV1(t *testing.T, dbdialect string, client *entv1.Client) {
+func SanityV1(t *testing.T, dbdialect string, client *fluentv1.Client) {
 	ctx := context.Background()
 	u := client.User.Create().SetAge(1).SetName("foo").SetNickname("nick_foo").SetRenamed("renamed").SaveX(ctx)
 	require.EqualValues(t, 1, u.Age)
@@ -559,7 +559,7 @@ func SanityV1(t *testing.T, dbdialect string, client *entv1.Client) {
 	creator.SaveX(ctx)
 }
 
-func SanityV2(t *testing.T, dbdialect string, client *entv2.Client) {
+func SanityV2(t *testing.T, dbdialect string, client *fluentv2.Client) {
 	ctx := context.Background()
 	for _, u := range client.User.Query().AllX(ctx) {
 		require.NotEmpty(t, u.NewToken, "old_token column should be renamed to new_token")
@@ -590,7 +590,7 @@ func SanityV2(t *testing.T, dbdialect string, client *entv2.Client) {
 	// New unique index was added to (age, phone).
 	err = client.User.Create().SetAge(1).SetName("foo").SetPhone("200").SetNickname("nick_bar").Exec(ctx)
 	require.Error(t, err)
-	require.True(t, entv2.IsConstraintError(err))
+	require.True(t, fluentv2.IsConstraintError(err))
 
 	// Ensure all rows in the database have the same default for the `title` column.
 	require.Equal(
@@ -646,7 +646,7 @@ func SanityV2(t *testing.T, dbdialect string, client *entv2.Client) {
 	}
 }
 
-func CheckConstraint(t *testing.T, client *entv2.Client) {
+func CheckConstraint(t *testing.T, client *fluentv2.Client) {
 	ctx := context.Background()
 	t.Log("testing check constraints")
 	err := client.Media.Create().SetText("boring").Exec(ctx)
@@ -655,7 +655,7 @@ func CheckConstraint(t *testing.T, client *entv2.Client) {
 	require.Error(t, err)
 }
 
-func NicknameSearch(t *testing.T, client *entv2.Client) {
+func NicknameSearch(t *testing.T, client *fluentv2.Client) {
 	ctx := context.Background()
 	names := client.User.Query().
 		Where(func(s *sql.Selector) {
@@ -664,13 +664,13 @@ func NicknameSearch(t *testing.T, client *entv2.Client) {
 			}))
 		}).
 		Unique(true).
-		Order(entv2.Asc(user.FieldNickname)).
+		Order(fluentv2.Asc(user.FieldNickname)).
 		Select(user.FieldNickname).
 		StringsX(ctx)
 	require.Equal(t, []string{"nick_bar", "nick_foo"}, names)
 }
 
-func EqualFold(t *testing.T, client *entv2.Client) {
+func EqualFold(t *testing.T, client *fluentv2.Client) {
 	ctx := context.Background()
 	t.Log("testing equal-fold on sql specific dialects")
 	client.User.Create().SetAge(37).SetName("Alex").SetNickname("alexsn").SetPhone("123456789").SaveX(ctx)
@@ -678,7 +678,7 @@ func EqualFold(t *testing.T, client *entv2.Client) {
 	require.True(t, client.User.Query().Where(user.NameEqualFold("alex")).ExistX(ctx))
 }
 
-func ContainsFold(t *testing.T, client *entv2.Client) {
+func ContainsFold(t *testing.T, client *fluentv2.Client) {
 	ctx := context.Background()
 	t.Log("testing contains-fold on sql specific dialects")
 	client.User.Create().SetAge(30).SetName("Mashraki").SetNickname("a8m").SetPhone("102030").SaveX(ctx)
@@ -781,7 +781,7 @@ func IndexOpClass(t *testing.T, drv *sql.Driver) {
 	require.Equal(t, d, "CREATE INDEX user_age_phone ON public.users USING btree (age, phone bpchar_pattern_ops)")
 }
 
-func SerialType(t *testing.T, c *entv2.Client) {
+func SerialType(t *testing.T, c *fluentv2.Client) {
 	ctx := context.Background()
 	c.Blog.Create().ExecX(ctx)
 	require.NotZero(t, c.Blog.Query().OnlyX(ctx).Oid)
@@ -839,7 +839,7 @@ func fillNulls(dbdialect string) schema.ApplyHook {
 			// Append a custom migrate.Change to the plan, execute an SQL statement directly
 			// on the dialect.ExecQuerier, or use the fluent.Client used by the project.
 			drv := sql.NewDriver(dbdialect, sql.Conn{ExecQuerier: conn.(*sql.Tx)})
-			client := entv2.NewClient(entv2.Driver(drv))
+			client := fluentv2.NewClient(fluentv2.Driver(drv))
 			if err := client.User.
 				Update().
 				SetDropOptional("Unknown").

@@ -124,7 +124,7 @@ func (m BlogMutation) Client() *Client {
 // it returns an error otherwise.
 func (m BlogMutation) Tx() (*Tx, error) {
 	if _, ok := m.driver.(*txDriver); !ok {
-		return nil, errors.New("entv2: mutation is not running in a transaction")
+		return nil, errors.New("fluentv2: mutation is not running in a transaction")
 	}
 	tx := &Tx{config: m.config}
 	tx.init()
@@ -583,7 +583,7 @@ func (m CarMutation) Client() *Client {
 // it returns an error otherwise.
 func (m CarMutation) Tx() (*Tx, error) {
 	if _, ok := m.driver.(*txDriver); !ok {
-		return nil, errors.New("entv2: mutation is not running in a transaction")
+		return nil, errors.New("fluentv2: mutation is not running in a transaction")
 	}
 	tx := &Tx{config: m.config}
 	tx.init()
@@ -1004,7 +1004,7 @@ func (m ConversionMutation) Client() *Client {
 // it returns an error otherwise.
 func (m ConversionMutation) Tx() (*Tx, error) {
 	if _, ok := m.driver.(*txDriver); !ok {
-		return nil, errors.New("entv2: mutation is not running in a transaction")
+		return nil, errors.New("fluentv2: mutation is not running in a transaction")
 	}
 	tx := &Tx{config: m.config}
 	tx.init()
@@ -1930,7 +1930,7 @@ func (m CustomTypeMutation) Client() *Client {
 // it returns an error otherwise.
 func (m CustomTypeMutation) Tx() (*Tx, error) {
 	if _, ok := m.driver.(*txDriver); !ok {
-		return nil, errors.New("entv2: mutation is not running in a transaction")
+		return nil, errors.New("fluentv2: mutation is not running in a transaction")
 	}
 	tx := &Tx{config: m.config}
 	tx.init()
@@ -2421,7 +2421,7 @@ func (m GroupMutation) Client() *Client {
 // it returns an error otherwise.
 func (m GroupMutation) Tx() (*Tx, error) {
 	if _, ok := m.driver.(*txDriver); !ok {
-		return nil, errors.New("entv2: mutation is not running in a transaction")
+		return nil, errors.New("fluentv2: mutation is not running in a transaction")
 	}
 	tx := &Tx{config: m.config}
 	tx.init()
@@ -2688,7 +2688,7 @@ func (m MediaMutation) Client() *Client {
 // it returns an error otherwise.
 func (m MediaMutation) Tx() (*Tx, error) {
 	if _, ok := m.driver.(*txDriver); !ok {
-		return nil, errors.New("entv2: mutation is not running in a transaction")
+		return nil, errors.New("fluentv2: mutation is not running in a transaction")
 	}
 	tx := &Tx{config: m.config}
 	tx.init()
@@ -3182,7 +3182,7 @@ func (m PetMutation) Client() *Client {
 // it returns an error otherwise.
 func (m PetMutation) Tx() (*Tx, error) {
 	if _, ok := m.driver.(*txDriver); !ok {
-		return nil, errors.New("entv2: mutation is not running in a transaction")
+		return nil, errors.New("fluentv2: mutation is not running in a transaction")
 	}
 	tx := &Tx{config: m.config}
 	tx.init()
@@ -3625,7 +3625,7 @@ func (m UserMutation) Client() *Client {
 // it returns an error otherwise.
 func (m UserMutation) Tx() (*Tx, error) {
 	if _, ok := m.driver.(*txDriver); !ok {
-		return nil, errors.New("entv2: mutation is not running in a transaction")
+		return nil, errors.New("fluentv2: mutation is not running in a transaction")
 	}
 	tx := &Tx{config: m.config}
 	tx.init()
@@ -5487,7 +5487,7 @@ func (m ZooMutation) Client() *Client {
 // it returns an error otherwise.
 func (m ZooMutation) Tx() (*Tx, error) {
 	if _, ok := m.driver.(*txDriver); !ok {
-		return nil, errors.New("entv2: mutation is not running in a transaction")
+		return nil, errors.New("fluentv2: mutation is not running in a transaction")
 	}
 	tx := &Tx{config: m.config}
 	tx.init()

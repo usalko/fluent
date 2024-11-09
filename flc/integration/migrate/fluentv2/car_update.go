@@ -280,7 +280,7 @@ func (cuo *CarUpdateOne) sqlSave(ctx context.Context) (_node *Car, err error) {
 		_spec.Node.Columns = append(_spec.Node.Columns, car.FieldID)
 		for _, f := range fields {
 			if !car.ValidColumn(f) {
-				return nil, &ValidationError{Name: f, err: fmt.Errorf("entv2: invalid field %q for query", f)}
+				return nil, &ValidationError{Name: f, err: fmt.Errorf("fluentv2: invalid field %q for query", f)}
 			}
 			if f != car.FieldID {
 				_spec.Node.Columns = append(_spec.Node.Columns, f)

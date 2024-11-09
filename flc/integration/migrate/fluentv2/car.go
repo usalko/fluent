@@ -124,7 +124,7 @@ func (c *Car) Update() *CarUpdateOne {
 func (c *Car) Unwrap() *Car {
 	_tx, ok := c.config.driver.(*txDriver)
 	if !ok {
-		panic("entv2: Car is not a transactional entity")
+		panic("fluentv2: Car is not a transactional entity")
 	}
 	c.config.driver = _tx.drv
 	return c

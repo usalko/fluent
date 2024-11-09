@@ -163,7 +163,7 @@ func (buo *BuilderUpdateOne) sqlSave(ctx context.Context) (_node *Builder, err e
 		_spec.Node.Columns = append(_spec.Node.Columns, builder.FieldID)
 		for _, f := range fields {
 			if !builder.ValidColumn(f) {
-				return nil, &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
+				return nil, &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 			}
 			if f != builder.FieldID {
 				_spec.Node.Columns = append(_spec.Node.Columns, f)

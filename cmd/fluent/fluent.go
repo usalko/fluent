@@ -13,7 +13,7 @@ import (
 
 func main() {
 	log.SetFlags(0)
-	cmd := &cobra.Command{Use: "ent"}
+	cmd := &cobra.Command{Use: "fluent"}
 	cmd.AddCommand(
 		base.NewCmd(),
 		base.DescribeCmd(),

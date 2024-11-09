@@ -142,7 +142,7 @@ func (bl *BlobLink) Update() *BlobLinkUpdateOne {
 func (bl *BlobLink) Unwrap() *BlobLink {
 	_tx, ok := bl.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: BlobLink is not a transactional entity")
+		panic("fluent: BlobLink is not a transactional entity")
 	}
 	bl.config.driver = _tx.drv
 	return bl

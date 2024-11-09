@@ -124,7 +124,7 @@ func (pe *Pet) Update() *PetUpdateOne {
 func (pe *Pet) Unwrap() *Pet {
 	_tx, ok := pe.config.driver.(*txDriver)
 	if !ok {
-		panic("entv2: Pet is not a transactional entity")
+		panic("fluentv2: Pet is not a transactional entity")
 	}
 	pe.config.driver = _tx.drv
 	return pe

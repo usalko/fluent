@@ -228,7 +228,7 @@ func (aq *APIQuery) Exist(ctx context.Context) (bool, error) {
 	case IsNotFound(err):
 		return false, nil
 	case err != nil:
-		return false, fmt.Errorf("ent: check existence: %w", err)
+		return false, fmt.Errorf("fluent: check existence: %w", err)
 	default:
 		return true, nil
 	}
@@ -291,7 +291,7 @@ func (aq *APIQuery) Aggregate(fns ...AggregateFunc) *APISelect {
 func (aq *APIQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range aq.inters {
 		if inter == nil {
-			return fmt.Errorf("ent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, aq); err != nil {
@@ -301,7 +301,7 @@ func (aq *APIQuery) prepareQuery(ctx context.Context) error {
 	}
 	for _, f := range aq.ctx.Fields {
 		if !api.ValidColumn(f) {
-			return &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
+			return &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 		}
 	}
 	if aq.path != nil {

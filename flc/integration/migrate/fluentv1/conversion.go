@@ -149,7 +149,7 @@ func (c *Conversion) Update() *ConversionUpdateOne {
 func (c *Conversion) Unwrap() *Conversion {
 	_tx, ok := c.config.driver.(*txDriver)
 	if !ok {
-		panic("entv1: Conversion is not a transactional entity")
+		panic("fluentv1: Conversion is not a transactional entity")
 	}
 	c.config.driver = _tx.drv
 	return c

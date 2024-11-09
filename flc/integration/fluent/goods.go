@@ -75,7 +75,7 @@ func (_go *Goods) Update() *GoodsUpdateOne {
 func (_go *Goods) Unwrap() *Goods {
 	_tx, ok := _go.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: Goods is not a transactional entity")
+		panic("fluent: Goods is not a transactional entity")
 	}
 	_go.config.driver = _tx.drv
 	return _go

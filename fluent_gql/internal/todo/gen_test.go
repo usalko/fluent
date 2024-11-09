@@ -32,7 +32,7 @@ func TestGeneratedSchema(t *testing.T) {
 	ex, err := fluent_gql.NewExtension(
 		fluent_gql.WithConfigPath(filepath.Join(tempDir, "gqlgen.yml")),
 		fluent_gql.WithSchemaGenerator(),
-		fluent_gql.WithSchemaPath(filepath.Join(tempDir, "ent.graphql")),
+		fluent_gql.WithSchemaPath(filepath.Join(tempDir, "fluent.graphql")),
 		fluent_gql.WithWhereInputs(true),
 		fluent_gql.WithNodeDescriptor(true),
 	)
@@ -46,7 +46,7 @@ func TestGeneratedSchema(t *testing.T) {
 	require.NoError(t, err)
 	expected, err := os.ReadFile("./fluent.graphql")
 	require.NoError(t, err)
-	actual, err := os.ReadFile(filepath.Join(tempDir, "ent.graphql"))
+	actual, err := os.ReadFile(filepath.Join(tempDir, "fluent.graphql"))
 	require.NoError(t, err)
 	require.Equal(t, string(expected), string(actual))
 }

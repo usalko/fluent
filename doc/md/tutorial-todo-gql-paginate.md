@@ -53,7 +53,7 @@ go run ./cmd/todo/
 Ordering can be defined on any comparable field of Ent by annotating it with ` fluent_gql.Annotation`.
 Note that the given `OrderField` name must be uppercase and match its enum value in the GraphQL schema.
 
-```go title="ent/schema/todo.go"
+```go title="fluent/schema/todo.go"
 func (Todo) Fields() []fluent.Field {
     return []fluent.Field{
 		field.Text("text").
@@ -90,7 +90,7 @@ func (Todo) Fields() []fluent.Field {
 By default, the `orderBy` argument only accepts a single `<T>Order` value. To enable sorting by multiple fields, simply
 add the ` fluent_gql.MultiOrder()` annotation to desired schema.
 
-```go title="ent/schema/todo.go"
+```go title="fluent/schema/todo.go"
 func (Todo) Annotations() []schema.Annotation {
     return []schema.Annotation{
         //highlight-next-line
@@ -106,7 +106,7 @@ By adding this annotation to the `Todo` schema, the `orderBy` argument will be c
 Non-unique edges can be annotated with the `OrderField` annotation to enable sorting nodes based on the count of specific
 edge types.
 
-```go title="ent/schema/todo/go"
+```go title="fluent/schema/todo/go"
 func (Todo) Edges() []fluent.Edge {
 	return []fluent.Edge{
 		edge.To("children", Todo.Type).
@@ -134,7 +134,7 @@ in order to sort by an edge field, the field must be annotated with `OrderField`
 
 The naming convention for this ordering term is: `UPPER(<edge-name>)_<edge-field>`. For example, `PARENT_PRIORITY`.
 
-```go title="ent/schema/todo.go"
+```go title="fluent/schema/todo.go"
 // Fields returns todo fields.
 func (Todo) Fields() []fluent.Field {
 	return []fluent.Field{
@@ -171,7 +171,7 @@ The naming convention for this ordering term is: `UPPER(<edge-name>)_<edge-field
 
 1\. The next step for enabling pagination is to tell Ent that the `Todo` type is a Relay Connection.
 
-```go title="ent/schema/todo.go"
+```go title="fluent/schema/todo.go"
 func (Todo) Annotations() []schema.Annotation {
 	return []schema.Annotation{
         //highlight-next-line
@@ -185,7 +185,7 @@ func (Todo) Annotations() []schema.Annotation {
 2\. Then, run `go generate .` and you'll notice that `ent.resolvers.go` was changed. Head over to the `Todos` resolver
 and update it to pass pagination arguments to `.Paginate()`:
 
-```go title="ent.resolvers.go" {2-5}
+```go title="fluent.resolvers.go" {2-5}
 func (r *queryResolver) Todos(ctx context.Context, after *fluent.Cursor, first *int, before *fluent.Cursor, last *int, orderBy *fluent.TodoOrder) (*fluent.TodoConnection, error) {
 	return r.client.Todo.Query().
 		Paginate(ctx, after, first, before, last,

@@ -62,7 +62,7 @@ go generate .
 Like before, we need to implement the GraphQL resolvers in `ent.resolvers.go`. With a one-liner change, we can
 implement those by replacing the generated `gqlgen` code with the following:
 
-```diff title="ent.resolvers.go"
+```diff title="fluent.resolvers.go"
 func (r *queryResolver) Node(ctx context.Context, id int) (fluent.Noder, error) {
 -	panic(fmt.Errorf("not implemented: Node - node"))
 +	return r.client.Noder(ctx, id)

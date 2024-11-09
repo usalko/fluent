@@ -23,7 +23,7 @@ Follow these 3 steps to enable it to your project:
 
 1\. Create a new Go file named `ent/flc.go`, and paste the following content:
 
-```go title="ent/flc.go"
+```go title="fluent/flc.go"
 // +build ignore
 
 package main
@@ -49,7 +49,7 @@ func main() {
 
 2\. Edit the `ent/generate.go` file to execute the `ent/flc.go` file:
 
-```go title="ent/generate.go"
+```go title="fluent/generate.go"
 package fluent
 
 //go:generate go run -mod=mod flc.go

@@ -32,6 +32,7 @@ import (
 	"github.com/usalko/fluent/flc/integration/fluent/exvaluescan"
 	"github.com/usalko/fluent/flc/integration/fluent/file"
 	"github.com/usalko/fluent/flc/integration/fluent/filetype"
+	"github.com/usalko/fluent/flc/integration/fluent/fluent_test"
 	"github.com/usalko/fluent/flc/integration/fluent/group"
 	"github.com/usalko/fluent/flc/integration/fluent/groupinfo"
 	"github.com/usalko/fluent/flc/integration/fluent/hook"
@@ -321,7 +322,7 @@ func Upsert(t *testing.T, client *fluent.Client) {
 	err := client.User.Create().SetName("Mashraki").SetAge(30).SetPhone("0000").Exec(ctx)
 	require.True(t, fluent.IsConstraintError(err), "phone field is unique")
 	err = client.User.Create().SetName("Mashraki").SetAge(30).SetPhone("0000").OnConflict().Exec(ctx)
-	require.EqualError(t, err, "ent: missing options for UserCreate.OnConflict")
+	require.EqualError(t, err, "fluent: missing options for UserCreate.OnConflict")
 
 	client.User.Create().
 		SetName("Mashraki").
@@ -1242,15 +1243,15 @@ func Relation(t *testing.T, client *fluent.Client) {
 	err = client.Group.UpdateOne(grp).SetMaxUsers(-10).Exec(ctx)
 	require.Error(err, "max_users validator failed")
 	_, err = client.Group.Query().Select("unknown_field").String(ctx)
-	require.EqualError(err, "ent: invalid field \"unknown_field\" for query")
+	require.EqualError(err, "fluent: invalid field \"unknown_field\" for query")
 	_, err = client.Group.Query().GroupBy("unknown_field").String(ctx)
-	require.EqualError(err, "ent: invalid field \"unknown_field\" for query")
+	require.EqualError(err, "fluent: invalid field \"unknown_field\" for query")
 	_, err = client.User.Query().Order(fluent.Asc("invalid")).Only(ctx)
-	require.EqualError(err, "ent: unknown column \"invalid\" for table \"users\"")
+	require.EqualError(err, "fluent: unknown column \"invalid\" for table \"users\"")
 	_, err = client.User.Query().Order(fluent.Asc("invalid")).QueryFollowing().Only(ctx)
-	require.EqualError(err, "ent: unknown column \"invalid\" for table \"users\"")
+	require.EqualError(err, "fluent: unknown column \"invalid\" for table \"users\"")
 	_, err = client.User.Query().GroupBy("name").Aggregate(fluent.Sum("invalid")).String(ctx)
-	require.EqualError(err, "ent: unknown column \"invalid\" for table \"users\"")
+	require.EqualError(err, "fluent: unknown column \"invalid\" for table \"users\"")
 
 	t.Log("query using edge-with predicate")
 	require.Len(usr.QueryGroups().Where(group.HasInfoWith(groupinfo.Desc("group info"))).AllX(ctx), 1)
@@ -2442,7 +2443,7 @@ func ExtValueScan(t *testing.T, client *fluent.Client) {
 	require.False(t, client.ExValueScan.Query().Where(exvaluescan.BinaryEQ(&url.URL{})).ExistX(ctx))
 	require.True(t, client.ExValueScan.Query().Where(exvaluescan.Base64In("m8a")).ExistX(ctx))
 	require.False(t, client.ExValueScan.Query().Where(exvaluescan.Base64In("a8m")).ExistX(ctx))
-	require.True(t, client.ExValueScan.Query().Where(exvaluescan.CustomHasPrefix("ent")).ExistX(ctx))
+	require.True(t, client.ExValueScan.Query().Where(exvaluescan.CustomHasPrefix("fluent")).ExistX(ctx))
 	require.False(t, client.ExValueScan.Query().Where(exvaluescan.CustomHasPrefix("atlas")).ExistX(ctx))
 	// HasSuffix cannot work with this field as the value is stored as hex (with additional prefix).
 	require.False(t, client.ExValueScan.Query().Where(exvaluescan.CustomHasSuffix("io")).ExistX(ctx))

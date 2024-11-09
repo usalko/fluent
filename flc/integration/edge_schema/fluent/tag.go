@@ -159,7 +159,7 @@ func (t *Tag) Update() *TagUpdateOne {
 func (t *Tag) Unwrap() *Tag {
 	_tx, ok := t.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: Tag is not a transactional entity")
+		panic("fluent: Tag is not a transactional entity")
 	}
 	t.config.driver = _tx.drv
 	return t

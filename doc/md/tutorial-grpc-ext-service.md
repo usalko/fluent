@@ -17,14 +17,14 @@ Find the changes described in this section in  [this pull request](https://githu
 For example, suppose you want to add a method named `TopUser` which will return the user with the highest ID number.
 To do this, create a new `.proto` file in your `entpb` directory, and define a new service:
 
-```protobuf title="ent/proto/fluentpb/ext.proto"
+```protobuf title="fluent/proto/fluentpb/ext.proto"
 syntax = "proto3";
 
 package fluentpb;
 
 option go_package = "github.com/rotemtam/fluent-grpc-example/fluent/proto/fluentpb";
 
-import "entpb/fluentpb.proto";
+import "fluentpb/fluentpb.proto";
 
 import "google/protobuf/empty.proto";
 
@@ -36,7 +36,7 @@ service ExtService {
 
 Next, update `entpb/generate.go` to include the new file in the `protoc` command input:
 
-```diff title="ent/proto/fluentpb/generate.go"
+```diff title="fluent/proto/fluentpb/generate.go"
 - //go:generate protoc -I=.. --go_out=.. --go-grpc_out=.. --go_opt=paths=source_relative --go-grpc_opt=paths=source_relative --entgrpc_out=.. --entgrpc_opt=paths=source_relative,schema_path=../../schema entpb/fluentpb.proto 
 + //go:generate protoc -I=.. --go_out=.. --go-grpc_out=.. --go_opt=paths=source_relative --go-grpc_opt=paths=source_relative --entgrpc_out=.. --entgrpc_opt=paths=source_relative,schema_path=../../schema entpb/fluentpb.proto entpb/ext.proto
 ```
@@ -68,7 +68,7 @@ tree
 
 Now, you can implement the `TopUser` method in `ent/proto/fluentpb/ext.go`:
 
-```go title="ent/proto/fluentpb/ext.go"
+```go title="fluent/proto/fluentpb/ext.go"
 package fluentpb
 
 import (

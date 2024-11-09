@@ -7,6 +7,7 @@ import (
 	"context"
 	"testing"
 
+	"github.com/usalko/fluent/flc/integration/idtype/fluent"
 	"github.com/usalko/fluent/flc/integration/idtype/fluent/migrate"
 	"github.com/usalko/fluent/flc/integration/idtype/fluent/user"
 

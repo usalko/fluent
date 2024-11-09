@@ -701,7 +701,7 @@ func (b *bytesBuilder) NotEmpty() *bytesBuilder {
 //	field.Bytes("blob").
 //		Validate(func(b []byte) error {
 //			if len(b) % 2 == 0 {
-//				return fmt.Errorf("ent/schema: blob length is even: %d", len(b))
+//				return fmt.Errorf("fluent/schema: blob length is even: %d", len(b))
 //			}
 //			return nil
 //		})

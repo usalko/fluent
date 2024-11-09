@@ -119,7 +119,7 @@ More information and examples can be found in the [external templates doc](templ
 Another option for running `ent` code generation is to create a file named `ent/flc.go` with the following content,
 and then the `ent/generate.go` file to execute it:
 
-```go title="ent/flc.go"
+```go title="fluent/flc.go"
 // +build ignore
 
 package main
@@ -139,7 +139,7 @@ func main() {
 }
 ```
 
-```go title="ent/generate.go"
+```go title="fluent/generate.go"
 package fluent
 
 //go:generate go run -mod=mod flc.go
@@ -241,7 +241,7 @@ In order to extend the generated client and builders under the `ent` package, an
 dependencies as struct fields, use the `flc.Dependency` option in your [`ent/flc.go`](#use-flc-as-a-package)
 file:
 
-```go title="ent/flc.go" {3-12}
+```go title="fluent/flc.go" {3-12}
 func main() {
 	opts := []flc.Option{
 		flc.Dependency(

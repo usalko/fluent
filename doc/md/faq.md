@@ -30,7 +30,7 @@ sidebar_label: FAQ
 #### How to create an entity from a struct `T`?
 
 The different builders don't support the option of setting the entity fields (or edges) from a given struct `T`.
-The reason is that there's no way to distinguish between zero/real values when updating the database (for example, `&ent.T{Age: 0, Name: ""}`).
+The reason is that there's no way to distinguish between zero/real values when updating the database (for example, `&fluent.T{Age: 0, Name: ""}`).
 Setting these values, may set incorrect values in the database or update unnecessary columns.
 
 However, the [external template](templates.md) option lets you extend the default code-generation assets by adding custom logic.
@@ -798,7 +798,7 @@ To encode entities without the `edges` attribute, users can follow these two ste
 These two steps can be automated using [codegen extensions](extension.md), and a full working example is available under
 the [examples/json_encode](https://github.com/usalko/fluent/tree/master/examples/json_encode) directory.
 
-```go title="ent/flc.go" {17,28}
+```go title="fluent/flc.go" {17,28}
 //go:build ignore
 // +build ignore
 

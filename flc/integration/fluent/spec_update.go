@@ -281,7 +281,7 @@ func (suo *SpecUpdateOne) sqlSave(ctx context.Context) (_node *Spec, err error) 
 		_spec.Node.Columns = append(_spec.Node.Columns, spec.FieldID)
 		for _, f := range fields {
 			if !spec.ValidColumn(f) {
-				return nil, &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
+				return nil, &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 			}
 			if f != spec.FieldID {
 				_spec.Node.Columns = append(_spec.Node.Columns, f)

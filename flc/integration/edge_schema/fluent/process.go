@@ -117,7 +117,7 @@ func (pr *Process) Update() *ProcessUpdateOne {
 func (pr *Process) Unwrap() *Process {
 	_tx, ok := pr.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: Process is not a transactional entity")
+		panic("fluent: Process is not a transactional entity")
 	}
 	pr.config.driver = _tx.drv
 	return pr

@@ -251,7 +251,7 @@ func (pq *PetQuery) Exist(ctx context.Context) (bool, error) {
 	case IsNotFound(err):
 		return false, nil
 	case err != nil:
-		return false, fmt.Errorf("ent: check existence: %w", err)
+		return false, fmt.Errorf("fluent: check existence: %w", err)
 	default:
 		return true, nil
 	}
@@ -347,7 +347,7 @@ func (pq *PetQuery) Aggregate(fns ...AggregateFunc) *PetSelect {
 func (pq *PetQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range pq.inters {
 		if inter == nil {
-			return fmt.Errorf("ent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, pq); err != nil {
@@ -357,7 +357,7 @@ func (pq *PetQuery) prepareQuery(ctx context.Context) error {
 	}
 	for _, f := range pq.ctx.Fields {
 		if !pet.ValidColumn(f) {
-			return &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
+			return &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 		}
 	}
 	if pq.path != nil {

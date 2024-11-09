@@ -5,11 +5,11 @@ in the LICENSE file in the root directory of this source tree.
 
 {{/* gotype: github.com/usalko/fluent/flc/gen.Graph */}}
 
-{{ define "enttest" }}
+{{ define "fluenttest" }}
 
 {{ $pkg := base $.Config.Package }}
 
-{{ with extend $ "Package" "enttest" -}}
+{{ with extend $ "Package" "fluenttest" -}}
 	{{ template "header" . }}
 {{ end }}
 

@@ -47,7 +47,7 @@ func (b *Builder) Update() *BuilderUpdateOne {
 func (b *Builder) Unwrap() *Builder {
 	_tx, ok := b.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: Builder is not a transactional entity")
+		panic("fluent: Builder is not a transactional entity")
 	}
 	b.config.driver = _tx.drv
 	return b

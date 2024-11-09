@@ -17,15 +17,15 @@ import (
 var (
 	// Allow may be returned by rules to indicate that the policy
 	// evaluation should terminate with an allow decision.
-	Allow = errors.New("ent/privacy: allow rule")
+	Allow = errors.New("fluent/privacy: allow rule")
 
 	// Deny may be returned by rules to indicate that the policy
 	// evaluation should terminate with an deny decision.
-	Deny = errors.New("ent/privacy: deny rule")
+	Deny = errors.New("fluent/privacy: deny rule")
 
 	// Skip may be returned by rules to indicate that the policy
 	// evaluation should continue to the next rule.
-	Skip = errors.New("ent/privacy: skip rule")
+	Skip = errors.New("fluent/privacy: skip rule")
 )
 
 // Allowf returns a formatted wrapped Allow decision.
@@ -106,7 +106,7 @@ func OnMutationOperation(rule MutationRule, op fluent.Op) MutationRule {
 // DenyMutationOperationRule returns a rule denying specified mutation operation.
 func DenyMutationOperationRule(op fluent.Op) MutationRule {
 	rule := MutationRuleFunc(func(_ context.Context, m fluent.Mutation) error {
-		return Denyf("ent/privacy: operation %s is not allowed", m.Op())
+		return Denyf("fluent/privacy: operation %s is not allowed", m.Op())
 	})
 	return OnMutationOperation(rule, op)
 }

@@ -139,7 +139,7 @@ func (gt *GroupTag) Update() *GroupTagUpdateOne {
 func (gt *GroupTag) Unwrap() *GroupTag {
 	_tx, ok := gt.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: GroupTag is not a transactional entity")
+		panic("fluent: GroupTag is not a transactional entity")
 	}
 	gt.config.driver = _tx.drv
 	return gt

@@ -102,7 +102,7 @@ func (tlc *TweetLikeCreate) ExecX(ctx context.Context) {
 func (tlc *TweetLikeCreate) defaults() error {
 	if _, ok := tlc.mutation.LikedAt(); !ok {
 		if tweetlike.DefaultLikedAt == nil {
-			return fmt.Errorf("ent: uninitialized tweetlike.DefaultLikedAt (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized tweetlike.DefaultLikedAt (forgotten import ent/runtime?)")
 		}
 		v := tweetlike.DefaultLikedAt()
 		tlc.mutation.SetLikedAt(v)
@@ -361,7 +361,7 @@ func (u *TweetLikeUpsertOne) UpdateTweetID() *TweetLikeUpsertOne {
 // Exec executes the query.
 func (u *TweetLikeUpsertOne) Exec(ctx context.Context) error {
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for TweetLikeCreate.OnConflict")
+		return errors.New("fluent: missing options for TweetLikeCreate.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }
@@ -588,11 +588,11 @@ func (u *TweetLikeUpsertBulk) Exec(ctx context.Context) error {
 	}
 	for i, b := range u.create.builders {
 		if len(b.conflict) != 0 {
-			return fmt.Errorf("ent: OnConflict was set for builder %d. Set it on the TweetLikeCreateBulk instead", i)
+			return fmt.Errorf("fluent: OnConflict was set for builder %d. Set it on the TweetLikeCreateBulk instead", i)
 		}
 	}
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for TweetLikeCreateBulk.OnConflict")
+		return errors.New("fluent: missing options for TweetLikeCreateBulk.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }

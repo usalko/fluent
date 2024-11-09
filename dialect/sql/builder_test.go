@@ -2283,7 +2283,7 @@ func TestReusePredicates(t *testing.T) {
 					From(pivot).
 					Join(t1).
 					On(pivot.C("group_id"), t1.C("id")).
-					Where(EQ(t1.C("name"), "ent"))
+					Where(EQ(t1.C("name"), "fluent"))
 				return And(
 					GT("balance", 0),
 					In("id", matches),
@@ -2291,7 +2291,7 @@ func TestReusePredicates(t *testing.T) {
 				)
 			}(),
 			wantQuery: `SELECT * FROM "users" WHERE "balance" > $1 AND "id" IN (SELECT "user_groups"."user_id" FROM "user_groups" JOIN "groups" AS "t1" ON "user_groups"."group_id" = "t1"."id" WHERE "t1"."name" = $2) AND "balance" > $3`,
-			wantArgs:  []any{0, "ent", 100},
+			wantArgs:  []any{0, "fluent", 100},
 		},
 	}
 	for _, tt := range tests {

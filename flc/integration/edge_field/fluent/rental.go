@@ -153,7 +153,7 @@ func (r *Rental) Update() *RentalUpdateOne {
 func (r *Rental) Unwrap() *Rental {
 	_tx, ok := r.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: Rental is not a transactional entity")
+		panic("fluent: Rental is not a transactional entity")
 	}
 	r.config.driver = _tx.drv
 	return r

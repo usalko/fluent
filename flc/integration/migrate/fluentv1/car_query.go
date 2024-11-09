@@ -251,7 +251,7 @@ func (cq *CarQuery) Exist(ctx context.Context) (bool, error) {
 	case IsNotFound(err):
 		return false, nil
 	case err != nil:
-		return false, fmt.Errorf("entv1: check existence: %w", err)
+		return false, fmt.Errorf("fluentv1: check existence: %w", err)
 	default:
 		return true, nil
 	}
@@ -325,7 +325,7 @@ func (cq *CarQuery) Aggregate(fns ...AggregateFunc) *CarSelect {
 func (cq *CarQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range cq.inters {
 		if inter == nil {
-			return fmt.Errorf("entv1: uninitialized interceptor (forgotten import entv1/runtime?)")
+			return fmt.Errorf("fluentv1: uninitialized interceptor (forgotten import entv1/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, cq); err != nil {
@@ -335,7 +335,7 @@ func (cq *CarQuery) prepareQuery(ctx context.Context) error {
 	}
 	for _, f := range cq.ctx.Fields {
 		if !car.ValidColumn(f) {
-			return &ValidationError{Name: f, err: fmt.Errorf("entv1: invalid field %q for query", f)}
+			return &ValidationError{Name: f, err: fmt.Errorf("fluentv1: invalid field %q for query", f)}
 		}
 	}
 	if cq.path != nil {

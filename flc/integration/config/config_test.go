@@ -54,7 +54,7 @@ func TestSchemaConfig(t *testing.T) {
 	require.Equal(t, size, migrate.Tables[0].Columns[1].Size)
 
 	fd := schema.User{}.Fields()[1].Descriptor()
-	f, err := parser.ParseFile(token.NewFileSet(), "ent/user.go", nil, parser.ParseComments)
+	f, err := parser.ParseFile(token.NewFileSet(), "fluent/user.go", nil, parser.ParseComments)
 	require.NoError(t, err)
 	ast.Inspect(f, func(n ast.Node) bool {
 		if f, ok := n.(*ast.Field); ok && len(f.Names) > 0 && f.Names[0].Name == fd.Name {

@@ -2895,7 +2895,7 @@ func (ec *executionContext) field_Category_subCategories_args(ctx context.Contex
 	var arg0 * fluent_gql.Cursor[uuid.UUID]
 	if tmp, ok := rawArgs["after"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
-		arg0, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
+		arg0, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋfluent_gqlᚐCursor(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}
@@ -2913,7 +2913,7 @@ func (ec *executionContext) field_Category_subCategories_args(ctx context.Contex
 	var arg2 * fluent_gql.Cursor[uuid.UUID]
 	if tmp, ok := rawArgs["before"]; ok {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
-		arg2, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
+		arg2, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋfluent_gqlᚐCursor(ctx, tmp)
 		if err != nil {
 			return nil, err
 		}

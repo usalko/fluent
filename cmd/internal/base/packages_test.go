@@ -25,13 +25,13 @@ func testPkgPath(t *testing.T, x packagestest.Exporter) {
 	defer e.Cleanup()
 
 	e.Config.Dir = filepath.Dir(e.File("golang.org/x", "x.go"))
-	target := filepath.Join(e.Config.Dir, "ent")
+	target := filepath.Join(e.Config.Dir, "fluent")
 	pkgPath, err := PkgPath(e.Config, target)
 	require.NoError(t, err)
 	require.Equal(t, "golang.org/x/fluent", pkgPath)
 
 	e.Config.Dir = filepath.Dir(e.File("golang.org/x", "y/y.go"))
-	target = filepath.Join(e.Config.Dir, "ent")
+	target = filepath.Join(e.Config.Dir, "fluent")
 	pkgPath, err = PkgPath(e.Config, target)
 	require.NoError(t, err)
 	require.Equal(t, "golang.org/x/y/fluent", pkgPath)

@@ -119,7 +119,7 @@ In order to automatically generate migration files, you can use one of the two a
 
 :::note
 To enable the [`GlobalUniqueID`](migrate.md#universal-ids) option in versioned migration, append the query parameter
-`globalid=1` to the desired state. For example: `--to "ent://fluent/schema?globalid=1"`.
+`globalid=1` to the desired state. For example: `--to "fluent://fluent/schema?globalid=1"`.
 :::
 
 Run `ls ent/migrate/migrations` after the command above was passed successfully, and you will notice Atlas created 2
@@ -164,12 +164,12 @@ The first step is to enable the versioned migration feature by passing in the `s
 Depending on how you execute the Ent code generator, you have to use one of the two options:
 
 <Tabs
-defaultValue="ent"
+defaultValue="fluent"
 values={[
 {label: 'Using Ent CLI', value: 'ent'},
 {label: 'Using the flc package', value: 'flc'},
 ]}>
-<TabItem value="ent">
+<TabItem value="fluent">
 
 If you are using the default go generate configuration, simply add the `--feature sql/versioned-migration` to
 the `ent/generate.go` file as follows:
@@ -262,7 +262,7 @@ values={[
 ]}>
 <TabItem value="atlas">
 
-```go title="ent/migrate/main.go"
+```go title="fluent/migrate/main.go"
 //go:build ignore
 
 package main
@@ -283,7 +283,7 @@ import (
 func main() {
 	ctx := context.Background()
 	// Create a local migration directory able to understand Atlas migration file format for replay.
-	dir, err := atlas.NewLocalDir("ent/migrate/migrations")
+	dir, err := atlas.NewLocalDir("fluent/migrate/migrations")
 	if err != nil {
 		log.Fatalf("failed creating atlas migration directory: %v", err)
 	}
@@ -308,7 +308,7 @@ func main() {
 </TabItem>
 <TabItem value="golang_migrate">
 
-```go title="ent/migrate/main.go"
+```go title="fluent/migrate/main.go"
 //go:build ignore
 
 package main
@@ -329,7 +329,7 @@ import (
 func main() {
 	ctx := context.Background()
 	// Create a local migration directory able to understand golang-migrate migration file format for replay.
-	dir, err := sqltool.NewGolangMigrateDir("ent/migrate/migrations")
+	dir, err := sqltool.NewGolangMigrateDir("fluent/migrate/migrations")
 	if err != nil {
 		log.Fatalf("failed creating atlas migration directory: %v", err)
 	}
@@ -353,7 +353,7 @@ func main() {
 </TabItem>
 <TabItem value="goose">
 
-```go title="ent/migrate/main.go"
+```go title="fluent/migrate/main.go"
 //go:build ignore
 
 package main
@@ -374,7 +374,7 @@ import (
 func main() {
 	ctx := context.Background()
 	// Create a local migration directory able to understand goose migration file format for replay.
-	dir, err := sqltool.NewGooseDir("ent/migrate/migrations")
+	dir, err := sqltool.NewGooseDir("fluent/migrate/migrations")
 	if err != nil {
 		log.Fatalf("failed creating atlas migration directory: %v", err)
 	}
@@ -398,7 +398,7 @@ func main() {
 </TabItem>
 <TabItem value="dbmate">
 
-```go title="ent/migrate/main.go"
+```go title="fluent/migrate/main.go"
 //go:build ignore
 
 package main
@@ -419,7 +419,7 @@ import (
 func main() {
 	ctx := context.Background()
 	// Create a local migration directory able to understand dbmate migration file format for replay.
-	dir, err := sqltool.NewDBMateDir("ent/migrate/migrations")
+	dir, err := sqltool.NewDBMateDir("fluent/migrate/migrations")
 	if err != nil {
 		log.Fatalf("failed creating atlas migration directory: %v", err)
 	}
@@ -443,7 +443,7 @@ func main() {
 </TabItem>
 <TabItem value="flyway">
 
-```go title="ent/migrate/main.go"
+```go title="fluent/migrate/main.go"
 //go:build ignore
 
 package main
@@ -464,7 +464,7 @@ import (
 func main() {
 	ctx := context.Background()
 	// Create a local migration directory able to understand Flyway migration file format for replay.
-	dir, err := sqltool.NewFlywayDir("ent/migrate/migrations")
+	dir, err := sqltool.NewFlywayDir("fluent/migrate/migrations")
 	if err != nil {
 		log.Fatalf("failed creating atlas migration directory: %v", err)
 	}
@@ -488,7 +488,7 @@ func main() {
 </TabItem>
 <TabItem value="liquibase">
 
-```go title="ent/migrate/main.go"
+```go title="fluent/migrate/main.go"
 //go:build ignore
 
 package main
@@ -509,7 +509,7 @@ import (
 func main() {
 	ctx := context.Background()
 	// Create a local migration directory able to understand Liquibase migration file format for replay.
-	dir, err := sqltool.NewLiquibaseDir("ent/migrate/migrations")
+	dir, err := sqltool.NewLiquibaseDir("fluent/migrate/migrations")
 	if err != nil {
 		log.Fatalf("failed creating atlas migration directory: %v", err)
 	}

@@ -226,7 +226,7 @@ func (zq *ZooQuery) Exist(ctx context.Context) (bool, error) {
 	case IsNotFound(err):
 		return false, nil
 	case err != nil:
-		return false, fmt.Errorf("entv2: check existence: %w", err)
+		return false, fmt.Errorf("fluentv2: check existence: %w", err)
 	default:
 		return true, nil
 	}
@@ -288,7 +288,7 @@ func (zq *ZooQuery) Aggregate(fns ...AggregateFunc) *ZooSelect {
 func (zq *ZooQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range zq.inters {
 		if inter == nil {
-			return fmt.Errorf("entv2: uninitialized interceptor (forgotten import entv2/runtime?)")
+			return fmt.Errorf("fluentv2: uninitialized interceptor (forgotten import entv2/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, zq); err != nil {
@@ -298,7 +298,7 @@ func (zq *ZooQuery) prepareQuery(ctx context.Context) error {
 	}
 	for _, f := range zq.ctx.Fields {
 		if !zoo.ValidColumn(f) {
-			return &ValidationError{Name: f, err: fmt.Errorf("entv2: invalid field %q for query", f)}
+			return &ValidationError{Name: f, err: fmt.Errorf("fluentv2: invalid field %q for query", f)}
 		}
 	}
 	if zq.path != nil {

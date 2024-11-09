@@ -286,7 +286,7 @@ func (muo *MediaUpdateOne) sqlSave(ctx context.Context) (_node *Media, err error
 		_spec.Node.Columns = append(_spec.Node.Columns, media.FieldID)
 		for _, f := range fields {
 			if !media.ValidColumn(f) {
-				return nil, &ValidationError{Name: f, err: fmt.Errorf("entv2: invalid field %q for query", f)}
+				return nil, &ValidationError{Name: f, err: fmt.Errorf("fluentv2: invalid field %q for query", f)}
 			}
 			if f != media.FieldID {
 				_spec.Node.Columns = append(_spec.Node.Columns, f)

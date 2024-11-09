@@ -382,7 +382,7 @@ func (u *DocUpsertOne) ClearText() *DocUpsertOne {
 // Exec executes the query.
 func (u *DocUpsertOne) Exec(ctx context.Context) error {
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for DocCreate.OnConflict")
+		return errors.New("fluent: missing options for DocCreate.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }
@@ -399,7 +399,7 @@ func (u *DocUpsertOne) ID(ctx context.Context) (id schema.DocID, err error) {
 	if u.create.driver.Dialect() == dialect.MySQL {
 		// In case of "ON CONFLICT", there is no way to get back non-numeric ID
 		// fields from the database since MySQL does not support the RETURNING clause.
-		return id, errors.New("ent: DocUpsertOne.ID is not supported by MySQL driver. Use DocUpsertOne.Exec instead")
+		return id, errors.New("fluent: DocUpsertOne.ID is not supported by MySQL driver. Use DocUpsertOne.Exec instead")
 	}
 	node, err := u.create.Save(ctx)
 	if err != nil {
@@ -622,11 +622,11 @@ func (u *DocUpsertBulk) Exec(ctx context.Context) error {
 	}
 	for i, b := range u.create.builders {
 		if len(b.conflict) != 0 {
-			return fmt.Errorf("ent: OnConflict was set for builder %d. Set it on the DocCreateBulk instead", i)
+			return fmt.Errorf("fluent: OnConflict was set for builder %d. Set it on the DocCreateBulk instead", i)
 		}
 	}
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for DocCreateBulk.OnConflict")
+		return errors.New("fluent: missing options for DocCreateBulk.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }

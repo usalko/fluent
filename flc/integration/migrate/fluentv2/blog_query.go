@@ -251,7 +251,7 @@ func (bq *BlogQuery) Exist(ctx context.Context) (bool, error) {
 	case IsNotFound(err):
 		return false, nil
 	case err != nil:
-		return false, fmt.Errorf("entv2: check existence: %w", err)
+		return false, fmt.Errorf("fluentv2: check existence: %w", err)
 	default:
 		return true, nil
 	}
@@ -308,7 +308,7 @@ func (bq *BlogQuery) WithAdmins(opts ...func(*UserQuery)) *BlogQuery {
 //
 //	client.Blog.Query().
 //		GroupBy(blog.FieldOid).
-//		Aggregate(entv2.Count()).
+//		Aggregate(fluentv2.Count()).
 //		Scan(ctx, &v)
 func (bq *BlogQuery) GroupBy(field string, fields ...string) *BlogGroupBy {
 	bq.ctx.Fields = append([]string{field}, fields...)
@@ -347,7 +347,7 @@ func (bq *BlogQuery) Aggregate(fns ...AggregateFunc) *BlogSelect {
 func (bq *BlogQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range bq.inters {
 		if inter == nil {
-			return fmt.Errorf("entv2: uninitialized interceptor (forgotten import entv2/runtime?)")
+			return fmt.Errorf("fluentv2: uninitialized interceptor (forgotten import entv2/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, bq); err != nil {
@@ -357,7 +357,7 @@ func (bq *BlogQuery) prepareQuery(ctx context.Context) error {
 	}
 	for _, f := range bq.ctx.Fields {
 		if !blog.ValidColumn(f) {
-			return &ValidationError{Name: f, err: fmt.Errorf("entv2: invalid field %q for query", f)}
+			return &ValidationError{Name: f, err: fmt.Errorf("fluentv2: invalid field %q for query", f)}
 		}
 	}
 	if bq.path != nil {

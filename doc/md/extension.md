@@ -158,7 +158,7 @@ func DisallowTypeName(name string) gen.Hook {
 To use an extension in our code-generation configuration, use `flc.Extensions`, a helper
 method that returns an `flc.Option` that applies our chosen extensions:
 
-```go title="ent/flc.go"
+```go title="fluent/flc.go"
 //+build ignore
 
 package main

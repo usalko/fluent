@@ -163,7 +163,7 @@ func (guo *GoodsUpdateOne) sqlSave(ctx context.Context) (_node *Goods, err error
 		_spec.Node.Columns = append(_spec.Node.Columns, goods.FieldID)
 		for _, f := range fields {
 			if !goods.ValidColumn(f) {
-				return nil, &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
+				return nil, &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 			}
 			if f != goods.FieldID {
 				_spec.Node.Columns = append(_spec.Node.Columns, f)

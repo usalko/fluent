@@ -153,7 +153,7 @@ func (tt *TweetTag) Update() *TweetTagUpdateOne {
 func (tt *TweetTag) Unwrap() *TweetTag {
 	_tx, ok := tt.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: TweetTag is not a transactional entity")
+		panic("fluent: TweetTag is not a transactional entity")
 	}
 	tt.config.driver = _tx.drv
 	return tt

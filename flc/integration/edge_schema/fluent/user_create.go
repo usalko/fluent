@@ -548,7 +548,7 @@ func (u *UserUpsertOne) UpdateName() *UserUpsertOne {
 // Exec executes the query.
 func (u *UserUpsertOne) Exec(ctx context.Context) error {
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for UserCreate.OnConflict")
+		return errors.New("fluent: missing options for UserCreate.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }
@@ -770,11 +770,11 @@ func (u *UserUpsertBulk) Exec(ctx context.Context) error {
 	}
 	for i, b := range u.create.builders {
 		if len(b.conflict) != 0 {
-			return fmt.Errorf("ent: OnConflict was set for builder %d. Set it on the UserCreateBulk instead", i)
+			return fmt.Errorf("fluent: OnConflict was set for builder %d. Set it on the UserCreateBulk instead", i)
 		}
 	}
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for UserCreateBulk.OnConflict")
+		return errors.New("fluent: missing options for UserCreateBulk.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }

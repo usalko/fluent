@@ -13,6 +13,6 @@ go generate ./...
 ```console
 atlas migrate diff migration_name \
   --dir "file://fluent/migrate/migrations" \
-  --to "ent://fluent/schema" \
+  --to "fluent://fluent/schema" \
   --dev-url "sqlite://file?mode=memory&_fk=1"
 ```

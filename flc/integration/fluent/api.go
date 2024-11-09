@@ -75,7 +75,7 @@ func (a *Api) Update() *APIUpdateOne {
 func (a *Api) Unwrap() *Api {
 	_tx, ok := a.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: Api is not a transactional entity")
+		panic("fluent: Api is not a transactional entity")
 	}
 	a.config.driver = _tx.drv
 	return a

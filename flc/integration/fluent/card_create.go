@@ -483,7 +483,7 @@ func (u *CardUpsertOne) ClearName() *CardUpsertOne {
 // Exec executes the query.
 func (u *CardUpsertOne) Exec(ctx context.Context) error {
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for CardCreate.OnConflict")
+		return errors.New("fluent: missing options for CardCreate.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }
@@ -757,11 +757,11 @@ func (u *CardUpsertBulk) Exec(ctx context.Context) error {
 	}
 	for i, b := range u.create.builders {
 		if len(b.conflict) != 0 {
-			return fmt.Errorf("ent: OnConflict was set for builder %d. Set it on the CardCreateBulk instead", i)
+			return fmt.Errorf("fluent: OnConflict was set for builder %d. Set it on the CardCreateBulk instead", i)
 		}
 	}
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for CardCreateBulk.OnConflict")
+		return errors.New("fluent: missing options for CardCreateBulk.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }

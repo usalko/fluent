@@ -11,7 +11,7 @@ type-safe GraphQL schema from our `ent/schema`.
 
 Go to your `ent/flc.go` file, and add the highlighted line (extension options):
 
-```go {5} title="ent/flc.go"
+```go {5} title="fluent/flc.go"
 func main() {
 	ex, err := fluent_gql.NewExtension(
 		 fluent_gql.WithWhereInputs(true),
@@ -40,7 +40,7 @@ The ` fluent_gql.RelayConnection()` annotation is used to generate the Relay `<T
 
 The ` fluent_gql.QueryField()` annotation is used to generate the `todos` field in the `Query` type.
 
-```go {13,14} title="ent/schema/todo.go"
+```go {13,14} title="fluent/schema/todo.go"
 // Edges of the Todo.
 func (Todo) Edges() []fluent.Edge {
 	return []fluent.Edge{
@@ -61,7 +61,7 @@ func (Todo) Annotations() []schema.Annotation {
 
 The ` fluent_gql.RelayConnection()` annotation can also be used on the edge fields, to generate first, last, after, before... arguments and change the field type to `<T>Connection!`. For example to change the `children` field from `children: [Todo!]!` to `children(first: Int, last: Int, after: Cursor, before: Cursor): TodoConnection!`. You can add the ` fluent_gql.RelayConnection()` annotation to the edge field:
 
-```go {7} title="ent/schema/todo.go"
+```go {7} title="fluent/schema/todo.go"
 // Edges of the Todo.
 func (Todo) Edges() []fluent.Edge {
 	return []fluent.Edge{
@@ -204,7 +204,7 @@ We also need to do some changes to our `generate.go` files to ensure the executi
 
 First, remove the `ent/generate.go` file. Then, update the `ent/flc.go` file with the correct path, because the Ent codegen will be run from the project root directory.
 
-```diff title="ent/flc.go"
+```diff title="fluent/flc.go"
 func main() {
 	ex, err := fluent_gql.NewExtension(
 		 fluent_gql.WithWhereInputs(true),

@@ -73,7 +73,7 @@ and for the node(s) API.
 For the purpose of the example, we **disable the automatic field collection**, change the `ent.Client` to run in
 debug mode in the `Todos` resolver, and restart our GraphQL server:
 
-```diff title="ent.resolvers.go"
+```diff title="fluent.resolvers.go"
 func (r *queryResolver) Todos(ctx context.Context, after *fluent.Cursor, first *int, before *fluent.Cursor, last *int, orderBy *fluent.TodoOrder) (*fluent.TodoConnection, error) {
 -	return r.client.Todo.Query().
 +	return r.client.Debug().Todo.Query().
@@ -123,7 +123,7 @@ SELECT DISTINCT `todos`.`id`, `todos`.`text`, `todos`.`created_at`, `todos`.`sta
 Let's see how Ent can automatically solve our problem: when defining an Ent edge, ` fluent_gql` auto binds it to its usage in
 GraphQL and generates edge-resolvers for the nodes under the `gql_edge.go` file:
 
-```go title="ent/gql_edge.go"
+```go title="fluent/gql_edge.go"
 func (t *Todo) Children(ctx context.Context) ([]*Todo, error) {
 	if fc := graphql.GetFieldContext(ctx); fc != nil && fc.Field.Alias != "" {
 		result, err = t.NamedChildren(graphql.GetFieldContext(ctx).Field.Alias)

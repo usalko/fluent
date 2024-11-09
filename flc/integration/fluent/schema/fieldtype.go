@@ -229,7 +229,7 @@ func (FieldType) Fields() []fluent.Field { //nolint:funlen
 			}).
 			Validate(func(i []byte) error {
 				if net.ParseIP(string(i)) == nil {
-					return fmt.Errorf("ent/schema: invalid ip %q", string(i))
+					return fmt.Errorf("fluent/schema: invalid ip %q", string(i))
 				}
 				return nil
 			}),

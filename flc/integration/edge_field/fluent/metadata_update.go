@@ -484,7 +484,7 @@ func (muo *MetadataUpdateOne) sqlSave(ctx context.Context) (_node *Metadata, err
 		_spec.Node.Columns = append(_spec.Node.Columns, metadata.FieldID)
 		for _, f := range fields {
 			if !metadata.ValidColumn(f) {
-				return nil, &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
+				return nil, &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 			}
 			if f != metadata.FieldID {
 				_spec.Node.Columns = append(_spec.Node.Columns, f)

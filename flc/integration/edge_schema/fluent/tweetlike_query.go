@@ -202,7 +202,7 @@ func (tlq *TweetLikeQuery) Exist(ctx context.Context) (bool, error) {
 	case IsNotFound(err):
 		return false, nil
 	case err != nil:
-		return false, fmt.Errorf("ent: check existence: %w", err)
+		return false, fmt.Errorf("fluent: check existence: %w", err)
 	default:
 		return true, nil
 	}
@@ -310,7 +310,7 @@ func (tlq *TweetLikeQuery) Aggregate(fns ...AggregateFunc) *TweetLikeSelect {
 func (tlq *TweetLikeQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range tlq.inters {
 		if inter == nil {
-			return fmt.Errorf("ent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, tlq); err != nil {
@@ -320,7 +320,7 @@ func (tlq *TweetLikeQuery) prepareQuery(ctx context.Context) error {
 	}
 	for _, f := range tlq.ctx.Fields {
 		if !tweetlike.ValidColumn(f) {
-			return &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
+			return &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 		}
 	}
 	if tlq.path != nil {
@@ -331,7 +331,7 @@ func (tlq *TweetLikeQuery) prepareQuery(ctx context.Context) error {
 		tlq.sql = prev
 	}
 	if tweetlike.Policy == nil {
-		return errors.New("ent: uninitialized tweetlike.Policy (forgotten import ent/runtime?)")
+		return errors.New("fluent: uninitialized tweetlike.Policy (forgotten import ent/runtime?)")
 	}
 	if err := tweetlike.Policy.EvalQuery(ctx, tlq); err != nil {
 		return err

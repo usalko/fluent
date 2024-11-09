@@ -396,7 +396,7 @@ func (puo *ProcessUpdateOne) sqlSave(ctx context.Context) (_node *Process, err e
 		_spec.Node.Columns = append(_spec.Node.Columns, process.FieldID)
 		for _, f := range fields {
 			if !process.ValidColumn(f) {
-				return nil, &ValidationError{Name: f, err: fmt.Errorf("ent: invalid field %q for query", f)}
+				return nil, &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 			}
 			if f != process.FieldID {
 				_spec.Node.Columns = append(_spec.Node.Columns, f)

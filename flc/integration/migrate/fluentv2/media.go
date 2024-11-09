@@ -101,7 +101,7 @@ func (m *Media) Update() *MediaUpdateOne {
 func (m *Media) Unwrap() *Media {
 	_tx, ok := m.config.driver.(*txDriver)
 	if !ok {
-		panic("entv2: Media is not a transactional entity")
+		panic("fluentv2: Media is not a transactional entity")
 	}
 	m.config.driver = _tx.drv
 	return m

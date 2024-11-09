@@ -96,7 +96,7 @@ var (
 	GraphTemplates = []GraphTemplate{
 		{
 			Name:   "base",
-			Format: "ent.go",
+			Format: "fluent.go",
 		},
 		{
 			Name:   "client",
@@ -158,8 +158,8 @@ var (
 			Format: "runtime.go",
 		},
 		{
-			Name:   "enttest",
-			Format: "enttest/fluent_test.go",
+			Name:   "fluenttest",
+			Format: "fluenttest/fluent_test.go",
 		},
 		{
 			Name:   "runtime/pkg",
@@ -220,7 +220,7 @@ var (
 		"math":    "math",
 		"strings": "strings",
 		"time":    "time",
-		"ent":     "github.com/usalko/fluent",
+		"fluent":  "github.com/usalko/fluent",
 		"dialect": "github.com/usalko/fluent/dialect",
 		"field":   "github.com/usalko/fluent/schema/field",
 	}

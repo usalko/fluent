@@ -94,7 +94,7 @@ func (mi *MixinID) Update() *MixinIDUpdateOne {
 func (mi *MixinID) Unwrap() *MixinID {
 	_tx, ok := mi.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: MixinID is not a transactional entity")
+		panic("fluent: MixinID is not a transactional entity")
 	}
 	mi.config.driver = _tx.drv
 	return mi

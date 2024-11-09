@@ -76,7 +76,7 @@ func (o *Other) Update() *OtherUpdateOne {
 func (o *Other) Unwrap() *Other {
 	_tx, ok := o.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: Other is not a transactional entity")
+		panic("fluent: Other is not a transactional entity")
 	}
 	o.config.driver = _tx.drv
 	return o

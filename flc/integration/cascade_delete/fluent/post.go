@@ -138,7 +138,7 @@ func (po *Post) Update() *PostUpdateOne {
 func (po *Post) Unwrap() *Post {
 	_tx, ok := po.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: Post is not a transactional entity")
+		panic("fluent: Post is not a transactional entity")
 	}
 	po.config.driver = _tx.drv
 	return po

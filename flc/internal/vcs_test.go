@@ -13,7 +13,7 @@ import (
 )
 
 func TestCheckDir(t *testing.T) {
-	target := filepath.Join(os.TempDir(), "entvcs")
+	target := filepath.Join(os.TempDir(), "fluentvcs")
 	require.NoError(t, os.MkdirAll(target, os.ModePerm), "creating tmpdir")
 	defer os.RemoveAll(target)
 	err := os.WriteFile(filepath.Join(target, "a.go"), []byte(`package schema`), 0644)

@@ -20,16 +20,16 @@ func TestPString(t *testing.T) {
 		{
 			P: fluent_ql.And(
 				fluent_ql.FieldEQ("name", "a8m"),
-				fluent_ql.FieldIn("org", "fb", "ent"),
+				fluent_ql.FieldIn("org", "fb", "fluent"),
 			),
-			S: `name == "a8m" && org in ["fb","ent"]`,
+			S: `name == "a8m" && org in ["fb","fluent"]`,
 		},
 		{
 			P: fluent_ql.Or(
 				fluent_ql.Not(fluent_ql.FieldEQ("name", "mashraki")),
-				fluent_ql.FieldIn("org", "fb", "ent"),
+				fluent_ql.FieldIn("org", "fb", "fluent"),
 			),
-			S: `!(name == "mashraki") || org in ["fb","ent"]`,
+			S: `!(name == "mashraki") || org in ["fb","fluent"]`,
 		},
 		{
 			P: fluent_ql.HasEdgeWith(

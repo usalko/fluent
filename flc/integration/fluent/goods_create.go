@@ -174,7 +174,7 @@ func (u *GoodsUpsertOne) Update(set func(*GoodsUpsert)) *GoodsUpsertOne {
 // Exec executes the query.
 func (u *GoodsUpsertOne) Exec(ctx context.Context) error {
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for GoodsCreate.OnConflict")
+		return errors.New("fluent: missing options for GoodsCreate.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }
@@ -376,11 +376,11 @@ func (u *GoodsUpsertBulk) Exec(ctx context.Context) error {
 	}
 	for i, b := range u.create.builders {
 		if len(b.conflict) != 0 {
-			return fmt.Errorf("ent: OnConflict was set for builder %d. Set it on the GoodsCreateBulk instead", i)
+			return fmt.Errorf("fluent: OnConflict was set for builder %d. Set it on the GoodsCreateBulk instead", i)
 		}
 	}
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for GoodsCreateBulk.OnConflict")
+		return errors.New("fluent: missing options for GoodsCreateBulk.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }

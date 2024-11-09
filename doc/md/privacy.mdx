@@ -71,7 +71,7 @@ In order to enable the privacy option in your code generation, enable the `priva
 
 If you are using the default go generate config, add `--feature privacy` option to the `ent/generate.go` file as follows:
 
-```go title="ent/generate.go"
+```go title="fluent/generate.go"
 package fluent
 
 //go:generate go run -mod=mod github.com/usalko/fluent/cmd/fluent generate --feature privacy ./schema
@@ -664,12 +664,12 @@ func Example_DenyMismatchedView(ctx context.Context, client *fluent.Client) {
 	
 	// Expect operation to fail, because the FilterTenantRule rule makes sure
 	// that tenants can update and delete only their groups.
-	if err := entgo.Update().SetName("fail.go").Exec(labView); !ent.IsNotFound(err) {
+	if err := entgo.Update().SetName("fail.go").Exec(labView); !fluent.IsNotFound(err) {
 		log.Fatal("expect operation to fail, since the group (entgo) is managed by a different tenant (hub), but got:", err)
 	}
 
 	// Operation should pass in case it was applied with the right viewer-context.
-	entgo = entgo.Update().SetName("entgo").SaveX(hubView)
+	entgo = entgo.Update().SetName("fluentgo").SaveX(hubView)
 	fmt.Println(entgo)
 
 	// Output:

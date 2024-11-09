@@ -125,7 +125,7 @@ func (t *Token) Update() *TokenUpdateOne {
 func (t *Token) Unwrap() *Token {
 	_tx, ok := t.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: Token is not a transactional entity")
+		panic("fluent: Token is not a transactional entity")
 	}
 	t.config.driver = _tx.drv
 	return t

@@ -94,7 +94,7 @@ func (l *License) Update() *LicenseUpdateOne {
 func (l *License) Unwrap() *License {
 	_tx, ok := l.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: License is not a transactional entity")
+		panic("fluent: License is not a transactional entity")
 	}
 	l.config.driver = _tx.drv
 	return l

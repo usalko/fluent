@@ -378,7 +378,7 @@ func (u *FriendshipUpsertOne) UpdateCreatedAt() *FriendshipUpsertOne {
 // Exec executes the query.
 func (u *FriendshipUpsertOne) Exec(ctx context.Context) error {
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for FriendshipCreate.OnConflict")
+		return errors.New("fluent: missing options for FriendshipCreate.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }
@@ -631,11 +631,11 @@ func (u *FriendshipUpsertBulk) Exec(ctx context.Context) error {
 	}
 	for i, b := range u.create.builders {
 		if len(b.conflict) != 0 {
-			return fmt.Errorf("ent: OnConflict was set for builder %d. Set it on the FriendshipCreateBulk instead", i)
+			return fmt.Errorf("fluent: OnConflict was set for builder %d. Set it on the FriendshipCreateBulk instead", i)
 		}
 	}
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for FriendshipCreateBulk.OnConflict")
+		return errors.New("fluent: missing options for FriendshipCreateBulk.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }

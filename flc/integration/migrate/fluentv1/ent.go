@@ -93,7 +93,7 @@ func Asc(fields ...string) func(*sql.Selector) {
 	return func(s *sql.Selector) {
 		for _, f := range fields {
 			if err := checkColumn(s.TableName(), f); err != nil {
-				s.AddError(&ValidationError{Name: f, err: fmt.Errorf("entv1: %w", err)})
+				s.AddError(&ValidationError{Name: f, err: fmt.Errorf("fluentv1: %w", err)})
 			}
 			s.OrderBy(sql.Asc(s.C(f)))
 		}
@@ -105,7 +105,7 @@ func Desc(fields ...string) func(*sql.Selector) {
 	return func(s *sql.Selector) {
 		for _, f := range fields {
 			if err := checkColumn(s.TableName(), f); err != nil {
-				s.AddError(&ValidationError{Name: f, err: fmt.Errorf("entv1: %w", err)})
+				s.AddError(&ValidationError{Name: f, err: fmt.Errorf("fluentv1: %w", err)})
 			}
 			s.OrderBy(sql.Desc(s.C(f)))
 		}
@@ -118,7 +118,7 @@ type AggregateFunc func(*sql.Selector) string
 // As is a pseudo aggregation function for renaming another other functions with custom names. For example:
 //
 //	GroupBy(field1, field2).
-//	Aggregate(entv1.As(entv1.Sum(field1), "sum_field1"), (entv1.As(entv1.Sum(field2), "sum_field2")).
+//	Aggregate(fluentv1.As(fluentv1.Sum(field1), "sum_field1"), (fluentv1.As(fluentv1.Sum(field2), "sum_field2")).
 //	Scan(ctx, &v)
 func As(fn AggregateFunc, end string) AggregateFunc {
 	return func(s *sql.Selector) string {
@@ -137,7 +137,7 @@ func Count() AggregateFunc {
 func Max(field string) AggregateFunc {
 	return func(s *sql.Selector) string {
 		if err := checkColumn(s.TableName(), field); err != nil {
-			s.AddError(&ValidationError{Name: field, err: fmt.Errorf("entv1: %w", err)})
+			s.AddError(&ValidationError{Name: field, err: fmt.Errorf("fluentv1: %w", err)})
 			return ""
 		}
 		return sql.Max(s.C(field))
@@ -148,7 +148,7 @@ func Max(field string) AggregateFunc {
 func Mean(field string) AggregateFunc {
 	return func(s *sql.Selector) string {
 		if err := checkColumn(s.TableName(), field); err != nil {
-			s.AddError(&ValidationError{Name: field, err: fmt.Errorf("entv1: %w", err)})
+			s.AddError(&ValidationError{Name: field, err: fmt.Errorf("fluentv1: %w", err)})
 			return ""
 		}
 		return sql.Avg(s.C(field))
@@ -159,7 +159,7 @@ func Mean(field string) AggregateFunc {
 func Min(field string) AggregateFunc {
 	return func(s *sql.Selector) string {
 		if err := checkColumn(s.TableName(), field); err != nil {
-			s.AddError(&ValidationError{Name: field, err: fmt.Errorf("entv1: %w", err)})
+			s.AddError(&ValidationError{Name: field, err: fmt.Errorf("fluentv1: %w", err)})
 			return ""
 		}
 		return sql.Min(s.C(field))
@@ -170,7 +170,7 @@ func Min(field string) AggregateFunc {
 func Sum(field string) AggregateFunc {
 	return func(s *sql.Selector) string {
 		if err := checkColumn(s.TableName(), field); err != nil {
-			s.AddError(&ValidationError{Name: field, err: fmt.Errorf("entv1: %w", err)})
+			s.AddError(&ValidationError{Name: field, err: fmt.Errorf("fluentv1: %w", err)})
 			return ""
 		}
 		return sql.Sum(s.C(field))
@@ -209,7 +209,7 @@ type NotFoundError struct {
 
 // Error implements the error interface.
 func (e *NotFoundError) Error() string {
-	return "entv1: " + e.label + " not found"
+	return "fluentv1: " + e.label + " not found"
 }
 
 // IsNotFound returns a boolean indicating whether the error is a not found error.
@@ -236,7 +236,7 @@ type NotSingularError struct {
 
 // Error implements the error interface.
 func (e *NotSingularError) Error() string {
-	return "entv1: " + e.label + " not singular"
+	return "fluentv1: " + e.label + " not singular"
 }
 
 // IsNotSingular returns a boolean indicating whether the error is a not singular error.
@@ -255,7 +255,7 @@ type NotLoadedError struct {
 
 // Error implements the error interface.
 func (e *NotLoadedError) Error() string {
-	return "entv1: " + e.edge + " edge was not loaded"
+	return "fluentv1: " + e.edge + " edge was not loaded"
 }
 
 // IsNotLoaded returns a boolean indicating whether the error is a not loaded error.
@@ -277,7 +277,7 @@ type ConstraintError struct {
 
 // Error implements the error interface.
 func (e ConstraintError) Error() string {
-	return "entv1: constraint failed: " + e.msg
+	return "fluentv1: constraint failed: " + e.msg
 }
 
 // Unwrap implements the errors.Wrapper interface.
@@ -312,7 +312,7 @@ func (s *selector) ScanX(ctx context.Context, v any) {
 // Strings returns list of strings from a selector. It is only allowed when selecting one field.
 func (s *selector) Strings(ctx context.Context) ([]string, error) {
 	if len(*s.flds) > 1 {
-		return nil, errors.New("entv1: Strings is not achievable when selecting more than 1 field")
+		return nil, errors.New("fluentv1: Strings is not achievable when selecting more than 1 field")
 	}
 	var v []string
 	if err := s.scan(ctx, &v); err != nil {
@@ -342,7 +342,7 @@ func (s *selector) String(ctx context.Context) (_ string, err error) {
 	case 0:
 		err = &NotFoundError{s.label}
 	default:
-		err = fmt.Errorf("entv1: Strings returned %d results when one was expected", len(v))
+		err = fmt.Errorf("fluentv1: Strings returned %d results when one was expected", len(v))
 	}
 	return
 }
@@ -359,7 +359,7 @@ func (s *selector) StringX(ctx context.Context) string {
 // Ints returns list of ints from a selector. It is only allowed when selecting one field.
 func (s *selector) Ints(ctx context.Context) ([]int, error) {
 	if len(*s.flds) > 1 {
-		return nil, errors.New("entv1: Ints is not achievable when selecting more than 1 field")
+		return nil, errors.New("fluentv1: Ints is not achievable when selecting more than 1 field")
 	}
 	var v []int
 	if err := s.scan(ctx, &v); err != nil {
@@ -389,7 +389,7 @@ func (s *selector) Int(ctx context.Context) (_ int, err error) {
 	case 0:
 		err = &NotFoundError{s.label}
 	default:
-		err = fmt.Errorf("entv1: Ints returned %d results when one was expected", len(v))
+		err = fmt.Errorf("fluentv1: Ints returned %d results when one was expected", len(v))
 	}
 	return
 }
@@ -406,7 +406,7 @@ func (s *selector) IntX(ctx context.Context) int {
 // Float64s returns list of float64s from a selector. It is only allowed when selecting one field.
 func (s *selector) Float64s(ctx context.Context) ([]float64, error) {
 	if len(*s.flds) > 1 {
-		return nil, errors.New("entv1: Float64s is not achievable when selecting more than 1 field")
+		return nil, errors.New("fluentv1: Float64s is not achievable when selecting more than 1 field")
 	}
 	var v []float64
 	if err := s.scan(ctx, &v); err != nil {
@@ -436,7 +436,7 @@ func (s *selector) Float64(ctx context.Context) (_ float64, err error) {
 	case 0:
 		err = &NotFoundError{s.label}
 	default:
-		err = fmt.Errorf("entv1: Float64s returned %d results when one was expected", len(v))
+		err = fmt.Errorf("fluentv1: Float64s returned %d results when one was expected", len(v))
 	}
 	return
 }
@@ -453,7 +453,7 @@ func (s *selector) Float64X(ctx context.Context) float64 {
 // Bools returns list of bools from a selector. It is only allowed when selecting one field.
 func (s *selector) Bools(ctx context.Context) ([]bool, error) {
 	if len(*s.flds) > 1 {
-		return nil, errors.New("entv1: Bools is not achievable when selecting more than 1 field")
+		return nil, errors.New("fluentv1: Bools is not achievable when selecting more than 1 field")
 	}
 	var v []bool
 	if err := s.scan(ctx, &v); err != nil {
@@ -483,7 +483,7 @@ func (s *selector) Bool(ctx context.Context) (_ bool, err error) {
 	case 0:
 		err = &NotFoundError{s.label}
 	default:
-		err = fmt.Errorf("entv1: Bools returned %d results when one was expected", len(v))
+		err = fmt.Errorf("fluentv1: Bools returned %d results when one was expected", len(v))
 	}
 	return
 }
@@ -516,7 +516,7 @@ func withHooks[V Value, M any, PM interface {
 	})
 	for i := len(hooks) - 1; i >= 0; i-- {
 		if hooks[i] == nil {
-			return value, fmt.Errorf("ent: uninitialized hook (forgotten import ent/runtime?)")
+			return value, fmt.Errorf("fluent: uninitialized hook (forgotten import ent/runtime?)")
 		}
 		mut = hooks[i](mut)
 	}

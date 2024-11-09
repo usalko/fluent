@@ -34,7 +34,7 @@ import (
 	"context"
 	"log"
 
-    "entdemo/fluent"
+    "fluentdemo/fluent"
 
 	_ "github.com/mattn/go-sqlite3"
 )
@@ -62,7 +62,7 @@ import (
 	"context"
 	"log"
 
-    "entdemo/fluent"
+    "fluentdemo/fluent"
 
 	_ "github.com/lib/pq"
 )
@@ -90,7 +90,7 @@ import (
 	"context"
 	"log"
 
-	"entdemo/fluent"
+	"fluentdemo/fluent"
 
 	_ "github.com/go-sql-driver/mysql"
 )
@@ -117,7 +117,7 @@ package main
 import (
 	"log"
 
-	"entdemo/fluent"
+	"fluentdemo/fluent"
 )
 
 func main() {
@@ -218,7 +218,7 @@ err := client.Todo.
     Exec(ctx)
 switch {
 // If the entity does not meet a specific condition,
-// the operation will return an "ent.NotFoundError".
+// the operation will return an "fluent.NotFoundError".
 case fluent.IsNotFound(err):
     fmt.Println("todo item was not found")
 // Any other error.
@@ -240,7 +240,7 @@ err := client.Todo.
     Exec(ctx)
 switch {
 // If the entity does not meet a specific condition,
-// the operation will return an "ent.NotFoundError".
+// the operation will return an "fluent.NotFoundError".
 case fluent.IsNotFound(err):
     fmt.Println("todo item was not found")
 // Any other error.
@@ -263,7 +263,7 @@ firstTodo, err = firstTodo.
     Save(ctx)
 switch {
 // If the entity does not meet a specific condition,
-// the operation will return an "ent.NotFoundError".
+// the operation will return an "fluent.NotFoundError".
 case fluent.IsNotFound(err):
     fmt.Println("todo item was not found")
 // Any other error.
@@ -564,7 +564,7 @@ err := client.Todo.
     Exec(ctx)
 switch {
 // If the entity does not meet a specific condition,
-// the operation will return an "ent.NotFoundError".
+// the operation will return an "fluent.NotFoundError".
 case fluent.IsNotFound(err):
     fmt.Println("todo item was not found")
 // Any other error.

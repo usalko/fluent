@@ -661,7 +661,7 @@ func (ft *FieldType) Update() *FieldTypeUpdateOne {
 func (ft *FieldType) Unwrap() *FieldType {
 	_tx, ok := ft.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: FieldType is not a transactional entity")
+		panic("fluent: FieldType is not a transactional entity")
 	}
 	ft.config.driver = _tx.drv
 	return ft

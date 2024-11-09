@@ -142,7 +142,7 @@ func (tl *TweetLike) Update() *TweetLikeUpdateOne {
 func (tl *TweetLike) Unwrap() *TweetLike {
 	_tx, ok := tl.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: TweetLike is not a transactional entity")
+		panic("fluent: TweetLike is not a transactional entity")
 	}
 	tl.config.driver = _tx.drv
 	return tl

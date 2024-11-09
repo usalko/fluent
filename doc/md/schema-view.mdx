@@ -14,7 +14,7 @@ in Ent. For more details on the different options, follow the rest of the guide.
 <Tabs>
 <TabItem value="Builder Definition">
 
-```go title="ent/schema/user.go"
+```go title="fluent/schema/user.go"
 // CleanUser represents a user without its PII field.
 type CleanUser struct {
 	fluent.View
@@ -40,7 +40,7 @@ func (CleanUser) Fields() []fluent.Field {
 </TabItem>
 <TabItem value="Raw Definition">
 
-```go title="ent/schema/user.go"
+```go title="fluent/schema/user.go"
 // CleanUser represents a user without its PII field.
 type CleanUser struct {
 	fluent.View
@@ -67,7 +67,7 @@ func (CleanUser) Fields() []fluent.Field {
 </TabItem>
 <TabItem value="External Definition">
 
-```go title="ent/schema/user.go"
+```go title="fluent/schema/user.go"
 // CleanUser represents a user without its PII field.
 type CleanUser struct {
 	fluent.View
@@ -103,7 +103,7 @@ func (CleanUser) Fields() []fluent.Field {
 Views defined in the `ent/schema` package embed the `ent.View` type instead of the `ent.Schema` type. Besides fields,
 they can have edges, interceptors, and annotations to enable additional integrations. For example:
 
-```go title="ent/schema/user.go"
+```go title="fluent/schema/user.go"
 // CleanUser represents a user without its PII field.
 type CleanUser struct {
 	fluent.View
@@ -169,7 +169,7 @@ Here's an example of a view defined along with its fields and its `SELECT` query
 Using the `fluent_sql.ViewFor` API, you can use a dialect-aware builder to define the view. Note that you can have multiple
 view definitions for different dialects, and Atlas will use the one that matches the dialect of the migration.
 
-```go title="ent/schema/user.go"
+```go title="fluent/schema/user.go"
 // CleanUser represents a user without its PII field.
 type CleanUser struct {
 	fluent.View
@@ -201,7 +201,7 @@ func (CleanUser) Fields() []fluent.Field {
 Alternatively, you can use raw definitions to define the view. But note, this definition is skipped if the `ViewFor`
 annotation is defined for the dialect we generated migration to (Postgres in this case).
 
-```go title="ent/schema/user.go"
+```go title="fluent/schema/user.go"
 // CleanUser represents a user without its PII field.
 type CleanUser struct {
 	fluent.View
@@ -233,19 +233,19 @@ file in the [usage](#usage) section below:
 
 ```hcl title="atlas.hcl"
 env "local" {
-  src = "ent://fluent/schema"
+  src = "fluent://fluent/schema"
   dev = "docker://postgres/16/dev?search_path=public"
 }
 ```
 
-The full example exists in [Ent repository](https://github.com/usalko/fluent/tree/master/examples/viewschema).
+The full example exists in [Ent repository](https://github.com/usalko/fluent/tree/master/examples/view_schema).
 
 ### External Definition
 
 This example demonstrates how to define an `ent.View`, but keeps its definition in a separate file (`schema.sql`) or
 create manually in the database.
 
-```go title="ent/schema/user.go"
+```go title="fluent/schema/user.go"
 // CleanUser represents a user without its PII field.
 type CleanUser struct {
 	fluent.View
@@ -282,7 +282,7 @@ Next, we create an `atlas.hcl` config file with a `composite_schema` that includ
 data "composite_schema" "app" {
   # Load the ent schema first with all its tables.
   schema "public" {
-    url = "ent://fluent/schema"
+    url = "fluent://fluent/schema"
   }
   # Then, load the views defined in the schema.sql file.
   schema "public" {
@@ -402,7 +402,7 @@ set it as regular type (`ent.Schema`) and add the `fluent_sql.Skip()` annotation
 the `CREATE TABLE` statement for this view. Then, define the view in the database as described in the
 [external definition](#external-definition) section above.
 
-```go title="ent/schema/user.go"
+```go title="fluent/schema/user.go"
 // CleanUser represents a user without its PII field.
 type CleanUser struct {
     fluent.Schema

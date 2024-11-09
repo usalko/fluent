@@ -206,7 +206,7 @@ func (u *SpecUpsertOne) Update(set func(*SpecUpsert)) *SpecUpsertOne {
 // Exec executes the query.
 func (u *SpecUpsertOne) Exec(ctx context.Context) error {
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for SpecCreate.OnConflict")
+		return errors.New("fluent: missing options for SpecCreate.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }
@@ -408,11 +408,11 @@ func (u *SpecUpsertBulk) Exec(ctx context.Context) error {
 	}
 	for i, b := range u.create.builders {
 		if len(b.conflict) != 0 {
-			return fmt.Errorf("ent: OnConflict was set for builder %d. Set it on the SpecCreateBulk instead", i)
+			return fmt.Errorf("fluent: OnConflict was set for builder %d. Set it on the SpecCreateBulk instead", i)
 		}
 	}
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for SpecCreateBulk.OnConflict")
+		return errors.New("fluent: missing options for SpecCreateBulk.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }

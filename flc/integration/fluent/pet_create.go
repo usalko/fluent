@@ -585,7 +585,7 @@ func (u *PetUpsertOne) ClearOptionalTime() *PetUpsertOne {
 // Exec executes the query.
 func (u *PetUpsertOne) Exec(ctx context.Context) error {
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for PetCreate.OnConflict")
+		return errors.New("fluent: missing options for PetCreate.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }
@@ -905,11 +905,11 @@ func (u *PetUpsertBulk) Exec(ctx context.Context) error {
 	}
 	for i, b := range u.create.builders {
 		if len(b.conflict) != 0 {
-			return fmt.Errorf("ent: OnConflict was set for builder %d. Set it on the PetCreateBulk instead", i)
+			return fmt.Errorf("fluent: OnConflict was set for builder %d. Set it on the PetCreateBulk instead", i)
 		}
 	}
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for PetCreateBulk.OnConflict")
+		return errors.New("fluent: missing options for PetCreateBulk.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }

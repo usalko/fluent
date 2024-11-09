@@ -147,7 +147,7 @@ func (f *File) Update() *FileUpdateOne {
 func (f *File) Unwrap() *File {
 	_tx, ok := f.config.driver.(*txDriver)
 	if !ok {
-		panic("ent: File is not a transactional entity")
+		panic("fluent: File is not a transactional entity")
 	}
 	f.config.driver = _tx.drv
 	return f

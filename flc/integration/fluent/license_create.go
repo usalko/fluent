@@ -285,7 +285,7 @@ func (u *LicenseUpsertOne) UpdateUpdateTime() *LicenseUpsertOne {
 // Exec executes the query.
 func (u *LicenseUpsertOne) Exec(ctx context.Context) error {
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for LicenseCreate.OnConflict")
+		return errors.New("fluent: missing options for LicenseCreate.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }
@@ -520,11 +520,11 @@ func (u *LicenseUpsertBulk) Exec(ctx context.Context) error {
 	}
 	for i, b := range u.create.builders {
 		if len(b.conflict) != 0 {
-			return fmt.Errorf("ent: OnConflict was set for builder %d. Set it on the LicenseCreateBulk instead", i)
+			return fmt.Errorf("fluent: OnConflict was set for builder %d. Set it on the LicenseCreateBulk instead", i)
 		}
 	}
 	if len(u.create.conflict) == 0 {
-		return errors.New("ent: missing options for LicenseCreateBulk.OnConflict")
+		return errors.New("fluent: missing options for LicenseCreateBulk.OnConflict")
 	}
 	return u.create.Exec(ctx)
 }
