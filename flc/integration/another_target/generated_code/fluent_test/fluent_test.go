@@ -8,12 +8,12 @@ package fluent_test
 import (
 	"context"
 
-	"github.com/usalko/fluent/flc/integration/fluent"
+	"github.com/usalko/fluent/flc/integration/another_target/generated_code"
 	// required by schema hooks.
-	_ "github.com/usalko/fluent/flc/integration/fluent/runtime"
+	_ "github.com/usalko/fluent/flc/integration/another_target/generated_code/runtime"
 
 	"github.com/usalko/fluent/dialect/sql/schema"
-	"github.com/usalko/fluent/flc/integration/fluent/migrate"
+	"github.com/usalko/fluent/flc/integration/another_target/generated_code/migrate"
 )
 
 type (
@@ -28,13 +28,13 @@ type (
 	Option func(*options)
 
 	options struct {
-		opts        []fluent.Option
+		opts        []generated_code.Option
 		migrateOpts []schema.MigrateOption
 	}
 )
 
 // WithOptions forwards options to client creation.
-func WithOptions(opts ...fluent.Option) Option {
+func WithOptions(opts ...generated_code.Option) Option {
 	return func(o *options) {
 		o.opts = append(o.opts, opts...)
 	}
@@ -55,10 +55,10 @@ func newOptions(opts []Option) *options {
 	return o
 }
 
-// Open calls fluent.Open and auto-run migration.
-func Open(t TestingT, driverName, dataSourceName string, opts ...Option) *fluent.Client {
+// Open calls generated_code.Open and auto-run migration.
+func Open(t TestingT, driverName, dataSourceName string, opts ...Option) *generated_code.Client {
 	o := newOptions(opts)
-	c, err := fluent.Open(driverName, dataSourceName, o.opts...)
+	c, err := generated_code.Open(driverName, dataSourceName, o.opts...)
 	if err != nil {
 		t.Error(err)
 		t.FailNow()
@@ -67,14 +67,14 @@ func Open(t TestingT, driverName, dataSourceName string, opts ...Option) *fluent
 	return c
 }
 
-// NewClient calls fluent.NewClient and auto-run migration.
-func NewClient(t TestingT, opts ...Option) *fluent.Client {
+// NewClient calls generated_code.NewClient and auto-run migration.
+func NewClient(t TestingT, opts ...Option) *generated_code.Client {
 	o := newOptions(opts)
-	c := fluent.NewClient(o.opts...)
+	c := generated_code.NewClient(o.opts...)
 	migrateSchema(t, c, o)
 	return c
 }
-func migrateSchema(t TestingT, c *fluent.Client, o *options) {
+func migrateSchema(t TestingT, c *generated_code.Client, o *options) {
 	tables, err := schema.CopyTables(migrate.Tables)
 	if err != nil {
 		t.Error(err)
