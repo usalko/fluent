@@ -28,7 +28,6 @@ import (
 	"time"
 
 	"github.com/usalko/fluent/dialect/sql"
-	"github.com/usalko/fluent/flc/integration/fluent/fluent_test"
 
 	"github.com/AlekSi/pointer"
 	"github.com/stretchr/testify/require"
@@ -42,6 +41,7 @@ import (
 	gen "github.com/usalko/fluent/fluent_gql/internal/todo"
 	todo_fluent "github.com/usalko/fluent/fluent_gql/internal/todo/fluent"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/category"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/fluent_test"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/migrate"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/todo"
 	"github.com/vektah/gqlparser/v2/gqlerror"
