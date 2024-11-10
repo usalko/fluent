@@ -18,7 +18,7 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/billproduct"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/bill_product"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/friendship"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/group"
@@ -26,22 +26,22 @@ import (
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/schema/pulid"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/todo"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/user"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/verysecret"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/very_secret"
 )
 
 // The init function reads all schema descriptors with runtime code
 // (default values, validators, hooks and policies) and stitches it
 // to their package variables.
 func init() {
-	billproductMixin := schema.BillProduct{}.Mixin()
-	billproductMixinFields0 := billproductMixin[0].Fields()
-	_ = billproductMixinFields0
-	billproductFields := schema.BillProduct{}.Fields()
-	_ = billproductFields
-	// billproductDescID is the schema descriptor for id field.
-	billproductDescID := billproductMixinFields0[0].Descriptor()
-	// billproduct.DefaultID holds the default value on creation for the id field.
-	billproduct.DefaultID = billproductDescID.Default.(func() pulid.ID)
+	bill_productMixin := schema.BillProduct{}.Mixin()
+	bill_productMixinFields0 := bill_productMixin[0].Fields()
+	_ = bill_productMixinFields0
+	bill_productFields := schema.BillProduct{}.Fields()
+	_ = bill_productFields
+	// bill_productDescID is the schema descriptor for id field.
+	bill_productDescID := bill_productMixinFields0[0].Descriptor()
+	// bill_product.DefaultID holds the default value on creation for the id field.
+	bill_product.DefaultID = bill_productDescID.Default.(func() pulid.ID)
 	categoryMixin := schema.Category{}.Mixin()
 	categoryMixinFields0 := categoryMixin[0].Fields()
 	_ = categoryMixinFields0
@@ -131,13 +131,13 @@ func init() {
 	userDescID := userMixinFields0[0].Descriptor()
 	// user.DefaultID holds the default value on creation for the id field.
 	user.DefaultID = userDescID.Default.(func() pulid.ID)
-	verysecretMixin := schema.VerySecret{}.Mixin()
-	verysecretMixinFields0 := verysecretMixin[0].Fields()
-	_ = verysecretMixinFields0
-	verysecretFields := schema.VerySecret{}.Fields()
-	_ = verysecretFields
-	// verysecretDescID is the schema descriptor for id field.
-	verysecretDescID := verysecretMixinFields0[0].Descriptor()
-	// verysecret.DefaultID holds the default value on creation for the id field.
-	verysecret.DefaultID = verysecretDescID.Default.(func() pulid.ID)
+	very_secretMixin := schema.VerySecret{}.Mixin()
+	very_secretMixinFields0 := very_secretMixin[0].Fields()
+	_ = very_secretMixinFields0
+	very_secretFields := schema.VerySecret{}.Fields()
+	_ = very_secretFields
+	// very_secretDescID is the schema descriptor for id field.
+	very_secretDescID := very_secretMixinFields0[0].Descriptor()
+	// very_secret.DefaultID holds the default value on creation for the id field.
+	very_secret.DefaultID = very_secretDescID.Default.(func() pulid.ID)
 }

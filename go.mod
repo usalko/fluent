@@ -1,6 +1,8 @@
 module github.com/usalko/fluent
 
-go 1.23
+go 1.23.0
+
+toolchain go1.23.2
 
 require (
 	ariga.io/atlas v0.28.1
@@ -12,7 +14,7 @@ require (
 	github.com/gorilla/websocket v1.5.0
 	github.com/hashicorp/go-multierror v1.1.1
 	github.com/jessevdk/go-flags v1.6.1
-	github.com/mattn/go-sqlite3 v1.14.16
+	github.com/mattn/go-sqlite3 v1.14.17
 	github.com/mitchellh/mapstructure v1.5.0
 	github.com/modern-go/reflect2 v1.0.2
 	github.com/olekukonko/tablewriter v0.0.5
@@ -29,14 +31,14 @@ require (
 	github.com/99designs/gqlgen v0.17.55
 	github.com/json-iterator/go v1.1.12
 	github.com/oklog/ulid/v2 v2.1.0
+	github.com/usalko/fluent/flc/integration v0.0.0-20241110093929-430a0ff4ceb1
 	go.opencensus.io v0.24.0
 	golang.org/x/exp v0.0.0-20241108190413-2d47ceb2692f
 )
 
 require (
-	github.com/agext/levenshtein v1.2.1 // indirect
+	github.com/agext/levenshtein v1.2.3 // indirect
 	github.com/agnivade/levenshtein v1.1.1 // indirect
-	github.com/apparentlymart/go-textseg/v13 v13.0.0 // indirect
 	github.com/apparentlymart/go-textseg/v15 v15.0.0 // indirect
 	github.com/bmatcuk/doublestar v1.3.4 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
@@ -45,7 +47,7 @@ require (
 	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/hashicorp/errwrap v1.0.0 // indirect
 	github.com/hashicorp/golang-lru/v2 v2.0.7 // indirect
-	github.com/hashicorp/hcl/v2 v2.13.0 // indirect
+	github.com/hashicorp/hcl/v2 v2.18.1 // indirect
 	github.com/inconshreveable/mousetrap v1.1.0 // indirect
 	github.com/logrusorgru/aurora/v4 v4.0.0 // indirect
 	github.com/mattn/go-colorable v0.1.13 // indirect

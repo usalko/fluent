@@ -12,7 +12,7 @@ import (
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/examples/triggers/fluent/predicate"
 	"github.com/usalko/fluent/examples/triggers/fluent/user"
-	"github.com/usalko/fluent/examples/triggers/fluent/userauditlog"
+	"github.com/usalko/fluent/examples/triggers/fluent/user_audit_log"
 )
 
 const (
@@ -574,19 +574,19 @@ func (m *UserAuditLogMutation) OldOldValue(ctx context.Context) (v string, err e
 // ClearOldValue clears the value of the "old_value" field.
 func (m *UserAuditLogMutation) ClearOldValue() {
 	m.old_value = nil
-	m.clearedFields[userauditlog.FieldOldValue] = struct{}{}
+	m.clearedFields[user_audit_log.FieldOldValue] = struct{}{}
 }
 
 // OldValueCleared returns if the "old_value" field was cleared in this mutation.
 func (m *UserAuditLogMutation) OldValueCleared() bool {
-	_, ok := m.clearedFields[userauditlog.FieldOldValue]
+	_, ok := m.clearedFields[user_audit_log.FieldOldValue]
 	return ok
 }
 
 // ResetOldValue resets all changes to the "old_value" field.
 func (m *UserAuditLogMutation) ResetOldValue() {
 	m.old_value = nil
-	delete(m.clearedFields, userauditlog.FieldOldValue)
+	delete(m.clearedFields, user_audit_log.FieldOldValue)
 }
 
 // SetNewValue sets the "new_value" field.
@@ -623,19 +623,19 @@ func (m *UserAuditLogMutation) OldNewValue(ctx context.Context) (v string, err e
 // ClearNewValue clears the value of the "new_value" field.
 func (m *UserAuditLogMutation) ClearNewValue() {
 	m.new_value = nil
-	m.clearedFields[userauditlog.FieldNewValue] = struct{}{}
+	m.clearedFields[user_audit_log.FieldNewValue] = struct{}{}
 }
 
 // NewValueCleared returns if the "new_value" field was cleared in this mutation.
 func (m *UserAuditLogMutation) NewValueCleared() bool {
-	_, ok := m.clearedFields[userauditlog.FieldNewValue]
+	_, ok := m.clearedFields[user_audit_log.FieldNewValue]
 	return ok
 }
 
 // ResetNewValue resets all changes to the "new_value" field.
 func (m *UserAuditLogMutation) ResetNewValue() {
 	m.new_value = nil
-	delete(m.clearedFields, userauditlog.FieldNewValue)
+	delete(m.clearedFields, user_audit_log.FieldNewValue)
 }
 
 // Where appends a list predicates to the UserAuditLogMutation builder.
@@ -674,16 +674,16 @@ func (m *UserAuditLogMutation) Type() string {
 func (m *UserAuditLogMutation) Fields() []string {
 	fields := make([]string, 0, 4)
 	if m.operation_type != nil {
-		fields = append(fields, userauditlog.FieldOperationType)
+		fields = append(fields, user_audit_log.FieldOperationType)
 	}
 	if m.operation_time != nil {
-		fields = append(fields, userauditlog.FieldOperationTime)
+		fields = append(fields, user_audit_log.FieldOperationTime)
 	}
 	if m.old_value != nil {
-		fields = append(fields, userauditlog.FieldOldValue)
+		fields = append(fields, user_audit_log.FieldOldValue)
 	}
 	if m.new_value != nil {
-		fields = append(fields, userauditlog.FieldNewValue)
+		fields = append(fields, user_audit_log.FieldNewValue)
 	}
 	return fields
 }
@@ -693,13 +693,13 @@ func (m *UserAuditLogMutation) Fields() []string {
 // schema.
 func (m *UserAuditLogMutation) Field(name string) (fluent.Value, bool) {
 	switch name {
-	case userauditlog.FieldOperationType:
+	case user_audit_log.FieldOperationType:
 		return m.OperationType()
-	case userauditlog.FieldOperationTime:
+	case user_audit_log.FieldOperationTime:
 		return m.OperationTime()
-	case userauditlog.FieldOldValue:
+	case user_audit_log.FieldOldValue:
 		return m.OldValue()
-	case userauditlog.FieldNewValue:
+	case user_audit_log.FieldNewValue:
 		return m.NewValue()
 	}
 	return nil, false
@@ -710,13 +710,13 @@ func (m *UserAuditLogMutation) Field(name string) (fluent.Value, bool) {
 // database failed.
 func (m *UserAuditLogMutation) OldField(ctx context.Context, name string) (fluent.Value, error) {
 	switch name {
-	case userauditlog.FieldOperationType:
+	case user_audit_log.FieldOperationType:
 		return m.OldOperationType(ctx)
-	case userauditlog.FieldOperationTime:
+	case user_audit_log.FieldOperationTime:
 		return m.OldOperationTime(ctx)
-	case userauditlog.FieldOldValue:
+	case user_audit_log.FieldOldValue:
 		return m.OldOldValue(ctx)
-	case userauditlog.FieldNewValue:
+	case user_audit_log.FieldNewValue:
 		return m.OldNewValue(ctx)
 	}
 	return nil, fmt.Errorf("unknown UserAuditLog field %s", name)
@@ -727,28 +727,28 @@ func (m *UserAuditLogMutation) OldField(ctx context.Context, name string) (fluen
 // type.
 func (m *UserAuditLogMutation) SetField(name string, value fluent.Value) error {
 	switch name {
-	case userauditlog.FieldOperationType:
+	case user_audit_log.FieldOperationType:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetOperationType(v)
 		return nil
-	case userauditlog.FieldOperationTime:
+	case user_audit_log.FieldOperationTime:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetOperationTime(v)
 		return nil
-	case userauditlog.FieldOldValue:
+	case user_audit_log.FieldOldValue:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetOldValue(v)
 		return nil
-	case userauditlog.FieldNewValue:
+	case user_audit_log.FieldNewValue:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -785,11 +785,11 @@ func (m *UserAuditLogMutation) AddField(name string, value fluent.Value) error {
 // mutation.
 func (m *UserAuditLogMutation) ClearedFields() []string {
 	var fields []string
-	if m.FieldCleared(userauditlog.FieldOldValue) {
-		fields = append(fields, userauditlog.FieldOldValue)
+	if m.FieldCleared(user_audit_log.FieldOldValue) {
+		fields = append(fields, user_audit_log.FieldOldValue)
 	}
-	if m.FieldCleared(userauditlog.FieldNewValue) {
-		fields = append(fields, userauditlog.FieldNewValue)
+	if m.FieldCleared(user_audit_log.FieldNewValue) {
+		fields = append(fields, user_audit_log.FieldNewValue)
 	}
 	return fields
 }
@@ -805,10 +805,10 @@ func (m *UserAuditLogMutation) FieldCleared(name string) bool {
 // error if the field is not defined in the schema.
 func (m *UserAuditLogMutation) ClearField(name string) error {
 	switch name {
-	case userauditlog.FieldOldValue:
+	case user_audit_log.FieldOldValue:
 		m.ClearOldValue()
 		return nil
-	case userauditlog.FieldNewValue:
+	case user_audit_log.FieldNewValue:
 		m.ClearNewValue()
 		return nil
 	}
@@ -819,16 +819,16 @@ func (m *UserAuditLogMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *UserAuditLogMutation) ResetField(name string) error {
 	switch name {
-	case userauditlog.FieldOperationType:
+	case user_audit_log.FieldOperationType:
 		m.ResetOperationType()
 		return nil
-	case userauditlog.FieldOperationTime:
+	case user_audit_log.FieldOperationTime:
 		m.ResetOperationTime()
 		return nil
-	case userauditlog.FieldOldValue:
+	case user_audit_log.FieldOldValue:
 		m.ResetOldValue()
 		return nil
-	case userauditlog.FieldNewValue:
+	case user_audit_log.FieldNewValue:
 		m.ResetNewValue()
 		return nil
 	}

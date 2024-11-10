@@ -35,7 +35,7 @@ const (
 	// RolesUsersTable is the table that holds the roles_users relation/edge.
 	RolesUsersTable = "role_users"
 	// RolesUsersInverseTable is the table name for the RoleUser entity.
-	// It exists in this package in order to avoid circular dependency with the "roleuser" package.
+	// It exists in this package in order to avoid circular dependency with the "role_user" package.
 	RolesUsersInverseTable = "role_users"
 	// RolesUsersColumn is the table column denoting the roles_users relation/edge.
 	RolesUsersColumn = "role_id"

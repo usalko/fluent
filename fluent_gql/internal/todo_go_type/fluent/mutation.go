@@ -25,7 +25,7 @@ import (
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/schema/customstruct"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/schema/schematype"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/billproduct"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/bill_product"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/friendship"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/group"
@@ -35,7 +35,7 @@ import (
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/schema/uintgql"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/todo"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/user"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/verysecret"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/very_secret"
 )
 
 const (
@@ -335,13 +335,13 @@ func (m *BillProductMutation) Type() string {
 func (m *BillProductMutation) Fields() []string {
 	fields := make([]string, 0, 3)
 	if m.name != nil {
-		fields = append(fields, billproduct.FieldName)
+		fields = append(fields, bill_product.FieldName)
 	}
 	if m.sku != nil {
-		fields = append(fields, billproduct.FieldSku)
+		fields = append(fields, bill_product.FieldSku)
 	}
 	if m.quantity != nil {
-		fields = append(fields, billproduct.FieldQuantity)
+		fields = append(fields, bill_product.FieldQuantity)
 	}
 	return fields
 }
@@ -351,11 +351,11 @@ func (m *BillProductMutation) Fields() []string {
 // schema.
 func (m *BillProductMutation) Field(name string) (fluent.Value, bool) {
 	switch name {
-	case billproduct.FieldName:
+	case bill_product.FieldName:
 		return m.Name()
-	case billproduct.FieldSku:
+	case bill_product.FieldSku:
 		return m.Sku()
-	case billproduct.FieldQuantity:
+	case bill_product.FieldQuantity:
 		return m.Quantity()
 	}
 	return nil, false
@@ -366,11 +366,11 @@ func (m *BillProductMutation) Field(name string) (fluent.Value, bool) {
 // database failed.
 func (m *BillProductMutation) OldField(ctx context.Context, name string) (fluent.Value, error) {
 	switch name {
-	case billproduct.FieldName:
+	case bill_product.FieldName:
 		return m.OldName(ctx)
-	case billproduct.FieldSku:
+	case bill_product.FieldSku:
 		return m.OldSku(ctx)
-	case billproduct.FieldQuantity:
+	case bill_product.FieldQuantity:
 		return m.OldQuantity(ctx)
 	}
 	return nil, fmt.Errorf("unknown BillProduct field %s", name)
@@ -381,21 +381,21 @@ func (m *BillProductMutation) OldField(ctx context.Context, name string) (fluent
 // type.
 func (m *BillProductMutation) SetField(name string, value fluent.Value) error {
 	switch name {
-	case billproduct.FieldName:
+	case bill_product.FieldName:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetName(v)
 		return nil
-	case billproduct.FieldSku:
+	case bill_product.FieldSku:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetSku(v)
 		return nil
-	case billproduct.FieldQuantity:
+	case bill_product.FieldQuantity:
 		v, ok := value.(uint64)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -411,7 +411,7 @@ func (m *BillProductMutation) SetField(name string, value fluent.Value) error {
 func (m *BillProductMutation) AddedFields() []string {
 	var fields []string
 	if m.addquantity != nil {
-		fields = append(fields, billproduct.FieldQuantity)
+		fields = append(fields, bill_product.FieldQuantity)
 	}
 	return fields
 }
@@ -421,7 +421,7 @@ func (m *BillProductMutation) AddedFields() []string {
 // was not set, or was not defined in the schema.
 func (m *BillProductMutation) AddedField(name string) (fluent.Value, bool) {
 	switch name {
-	case billproduct.FieldQuantity:
+	case bill_product.FieldQuantity:
 		return m.AddedQuantity()
 	}
 	return nil, false
@@ -432,7 +432,7 @@ func (m *BillProductMutation) AddedField(name string) (fluent.Value, bool) {
 // type.
 func (m *BillProductMutation) AddField(name string, value fluent.Value) error {
 	switch name {
-	case billproduct.FieldQuantity:
+	case bill_product.FieldQuantity:
 		v, ok := value.(int64)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -466,13 +466,13 @@ func (m *BillProductMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *BillProductMutation) ResetField(name string) error {
 	switch name {
-	case billproduct.FieldName:
+	case bill_product.FieldName:
 		m.ResetName()
 		return nil
-	case billproduct.FieldSku:
+	case bill_product.FieldSku:
 		m.ResetSku()
 		return nil
-	case billproduct.FieldQuantity:
+	case bill_product.FieldQuantity:
 		m.ResetQuantity()
 		return nil
 	}
@@ -4892,7 +4892,7 @@ func (m *VerySecretMutation) Type() string {
 func (m *VerySecretMutation) Fields() []string {
 	fields := make([]string, 0, 1)
 	if m.password != nil {
-		fields = append(fields, verysecret.FieldPassword)
+		fields = append(fields, very_secret.FieldPassword)
 	}
 	return fields
 }
@@ -4902,7 +4902,7 @@ func (m *VerySecretMutation) Fields() []string {
 // schema.
 func (m *VerySecretMutation) Field(name string) (fluent.Value, bool) {
 	switch name {
-	case verysecret.FieldPassword:
+	case very_secret.FieldPassword:
 		return m.Password()
 	}
 	return nil, false
@@ -4913,7 +4913,7 @@ func (m *VerySecretMutation) Field(name string) (fluent.Value, bool) {
 // database failed.
 func (m *VerySecretMutation) OldField(ctx context.Context, name string) (fluent.Value, error) {
 	switch name {
-	case verysecret.FieldPassword:
+	case very_secret.FieldPassword:
 		return m.OldPassword(ctx)
 	}
 	return nil, fmt.Errorf("unknown VerySecret field %s", name)
@@ -4924,7 +4924,7 @@ func (m *VerySecretMutation) OldField(ctx context.Context, name string) (fluent.
 // type.
 func (m *VerySecretMutation) SetField(name string, value fluent.Value) error {
 	switch name {
-	case verysecret.FieldPassword:
+	case very_secret.FieldPassword:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -4980,7 +4980,7 @@ func (m *VerySecretMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *VerySecretMutation) ResetField(name string) error {
 	switch name {
-	case verysecret.FieldPassword:
+	case very_secret.FieldPassword:
 		m.ResetPassword()
 		return nil
 	}

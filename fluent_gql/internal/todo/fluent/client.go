@@ -27,15 +27,15 @@ import (
 	"github.com/usalko/fluent/dialect"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/billproduct"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/bill_product"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/friendship"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/group"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/onetomany"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/one_to_many"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/project"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/todo"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/user"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/verysecret"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/very_secret"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/workspace"
 )
 
@@ -304,13 +304,13 @@ func NewBillProductClient(c config) *BillProductClient {
 }
 
 // Use adds a list of mutation hooks to the hooks stack.
-// A call to `Use(f, g, h)` equals to `billproduct.Hooks(f(g(h())))`.
+// A call to `Use(f, g, h)` equals to `bill_product.Hooks(f(g(h())))`.
 func (c *BillProductClient) Use(hooks ...Hook) {
 	c.hooks.BillProduct = append(c.hooks.BillProduct, hooks...)
 }
 
 // Intercept adds a list of query interceptors to the interceptors stack.
-// A call to `Intercept(f, g, h)` equals to `billproduct.Intercept(f(g(h())))`.
+// A call to `Intercept(f, g, h)` equals to `bill_product.Intercept(f(g(h())))`.
 func (c *BillProductClient) Intercept(interceptors ...Interceptor) {
 	c.inters.BillProduct = append(c.inters.BillProduct, interceptors...)
 }
@@ -372,7 +372,7 @@ func (c *BillProductClient) DeleteOne(bp *BillProduct) *BillProductDeleteOne {
 
 // DeleteOneID returns a builder for deleting the given entity by its id.
 func (c *BillProductClient) DeleteOneID(id int) *BillProductDeleteOne {
-	builder := c.Delete().Where(billproduct.ID(id))
+	builder := c.Delete().Where(bill_product.ID(id))
 	builder.mutation.id = &id
 	builder.mutation.op = OpDeleteOne
 	return &BillProductDeleteOne{builder}
@@ -389,7 +389,7 @@ func (c *BillProductClient) Query() *BillProductQuery {
 
 // Get returns a BillProduct entity by its id.
 func (c *BillProductClient) Get(ctx context.Context, id int) (*BillProduct, error) {
-	return c.Query().Where(billproduct.ID(id)).Only(ctx)
+	return c.Query().Where(bill_product.ID(id)).Only(ctx)
 }
 
 // GetX is like Get, but panics if an error occurs.
@@ -916,13 +916,13 @@ func NewOneToManyClient(c config) *OneToManyClient {
 }
 
 // Use adds a list of mutation hooks to the hooks stack.
-// A call to `Use(f, g, h)` equals to `onetomany.Hooks(f(g(h())))`.
+// A call to `Use(f, g, h)` equals to `one_to_many.Hooks(f(g(h())))`.
 func (c *OneToManyClient) Use(hooks ...Hook) {
 	c.hooks.OneToMany = append(c.hooks.OneToMany, hooks...)
 }
 
 // Intercept adds a list of query interceptors to the interceptors stack.
-// A call to `Intercept(f, g, h)` equals to `onetomany.Intercept(f(g(h())))`.
+// A call to `Intercept(f, g, h)` equals to `one_to_many.Intercept(f(g(h())))`.
 func (c *OneToManyClient) Intercept(interceptors ...Interceptor) {
 	c.inters.OneToMany = append(c.inters.OneToMany, interceptors...)
 }
@@ -984,7 +984,7 @@ func (c *OneToManyClient) DeleteOne(otm *OneToMany) *OneToManyDeleteOne {
 
 // DeleteOneID returns a builder for deleting the given entity by its id.
 func (c *OneToManyClient) DeleteOneID(id int) *OneToManyDeleteOne {
-	builder := c.Delete().Where(onetomany.ID(id))
+	builder := c.Delete().Where(one_to_many.ID(id))
 	builder.mutation.id = &id
 	builder.mutation.op = OpDeleteOne
 	return &OneToManyDeleteOne{builder}
@@ -1001,7 +1001,7 @@ func (c *OneToManyClient) Query() *OneToManyQuery {
 
 // Get returns a OneToMany entity by its id.
 func (c *OneToManyClient) Get(ctx context.Context, id int) (*OneToMany, error) {
-	return c.Query().Where(onetomany.ID(id)).Only(ctx)
+	return c.Query().Where(one_to_many.ID(id)).Only(ctx)
 }
 
 // GetX is like Get, but panics if an error occurs.
@@ -1019,9 +1019,9 @@ func (c *OneToManyClient) QueryParent(otm *OneToMany) *OneToManyQuery {
 	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
 		id := otm.ID
 		step := sqlgraph.NewStep(
-			sqlgraph.From(onetomany.Table, onetomany.FieldID, id),
-			sqlgraph.To(onetomany.Table, onetomany.FieldID),
-			sqlgraph.Edge(sqlgraph.M2O, true, onetomany.ParentTable, onetomany.ParentColumn),
+			sqlgraph.From(one_to_many.Table, one_to_many.FieldID, id),
+			sqlgraph.To(one_to_many.Table, one_to_many.FieldID),
+			sqlgraph.Edge(sqlgraph.M2O, true, one_to_many.ParentTable, one_to_many.ParentColumn),
 		)
 		fromV = sqlgraph.Neighbors(otm.driver.Dialect(), step)
 		return fromV, nil
@@ -1035,9 +1035,9 @@ func (c *OneToManyClient) QueryChildren(otm *OneToMany) *OneToManyQuery {
 	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
 		id := otm.ID
 		step := sqlgraph.NewStep(
-			sqlgraph.From(onetomany.Table, onetomany.FieldID, id),
-			sqlgraph.To(onetomany.Table, onetomany.FieldID),
-			sqlgraph.Edge(sqlgraph.O2M, false, onetomany.ChildrenTable, onetomany.ChildrenColumn),
+			sqlgraph.From(one_to_many.Table, one_to_many.FieldID, id),
+			sqlgraph.To(one_to_many.Table, one_to_many.FieldID),
+			sqlgraph.Edge(sqlgraph.O2M, false, one_to_many.ChildrenTable, one_to_many.ChildrenColumn),
 		)
 		fromV = sqlgraph.Neighbors(otm.driver.Dialect(), step)
 		return fromV, nil
@@ -1382,7 +1382,7 @@ func (c *TodoClient) QuerySecret(t *Todo) *VerySecretQuery {
 		id := t.ID
 		step := sqlgraph.NewStep(
 			sqlgraph.From(todo.Table, todo.FieldID, id),
-			sqlgraph.To(verysecret.Table, verysecret.FieldID),
+			sqlgraph.To(very_secret.Table, very_secret.FieldID),
 			sqlgraph.Edge(sqlgraph.M2O, false, todo.SecretTable, todo.SecretColumn),
 		)
 		fromV = sqlgraph.Neighbors(t.driver.Dialect(), step)
@@ -1608,13 +1608,13 @@ func NewVerySecretClient(c config) *VerySecretClient {
 }
 
 // Use adds a list of mutation hooks to the hooks stack.
-// A call to `Use(f, g, h)` equals to `verysecret.Hooks(f(g(h())))`.
+// A call to `Use(f, g, h)` equals to `very_secret.Hooks(f(g(h())))`.
 func (c *VerySecretClient) Use(hooks ...Hook) {
 	c.hooks.VerySecret = append(c.hooks.VerySecret, hooks...)
 }
 
 // Intercept adds a list of query interceptors to the interceptors stack.
-// A call to `Intercept(f, g, h)` equals to `verysecret.Intercept(f(g(h())))`.
+// A call to `Intercept(f, g, h)` equals to `very_secret.Intercept(f(g(h())))`.
 func (c *VerySecretClient) Intercept(interceptors ...Interceptor) {
 	c.inters.VerySecret = append(c.inters.VerySecret, interceptors...)
 }
@@ -1676,7 +1676,7 @@ func (c *VerySecretClient) DeleteOne(vs *VerySecret) *VerySecretDeleteOne {
 
 // DeleteOneID returns a builder for deleting the given entity by its id.
 func (c *VerySecretClient) DeleteOneID(id int) *VerySecretDeleteOne {
-	builder := c.Delete().Where(verysecret.ID(id))
+	builder := c.Delete().Where(very_secret.ID(id))
 	builder.mutation.id = &id
 	builder.mutation.op = OpDeleteOne
 	return &VerySecretDeleteOne{builder}
@@ -1693,7 +1693,7 @@ func (c *VerySecretClient) Query() *VerySecretQuery {
 
 // Get returns a VerySecret entity by its id.
 func (c *VerySecretClient) Get(ctx context.Context, id int) (*VerySecret, error) {
-	return c.Query().Where(verysecret.ID(id)).Only(ctx)
+	return c.Query().Where(very_secret.ID(id)).Only(ctx)
 }
 
 // GetX is like Get, but panics if an error occurs.

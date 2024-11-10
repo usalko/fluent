@@ -10,17 +10,17 @@ import (
 	"github.com/usalko/fluent/flc/integration/fluent/builder"
 	"github.com/usalko/fluent/flc/integration/fluent/card"
 	"github.com/usalko/fluent/flc/integration/fluent/comment"
-	"github.com/usalko/fluent/flc/integration/fluent/exvaluescan"
-	"github.com/usalko/fluent/flc/integration/fluent/fieldtype"
+	"github.com/usalko/fluent/flc/integration/fluent/ex_value_scan"
+	"github.com/usalko/fluent/flc/integration/fluent/field_type"
 	"github.com/usalko/fluent/flc/integration/fluent/file"
-	"github.com/usalko/fluent/flc/integration/fluent/filetype"
+	"github.com/usalko/fluent/flc/integration/fluent/file_type"
 	"github.com/usalko/fluent/flc/integration/fluent/goods"
 	"github.com/usalko/fluent/flc/integration/fluent/group"
-	"github.com/usalko/fluent/flc/integration/fluent/groupinfo"
+	"github.com/usalko/fluent/flc/integration/fluent/group_info"
 	"github.com/usalko/fluent/flc/integration/fluent/item"
 	"github.com/usalko/fluent/flc/integration/fluent/license"
 	"github.com/usalko/fluent/flc/integration/fluent/node"
-	"github.com/usalko/fluent/flc/integration/fluent/pc"
+	"github.com/usalko/fluent/flc/integration/fluent/p_c"
 	"github.com/usalko/fluent/flc/integration/fluent/pet"
 	"github.com/usalko/fluent/flc/integration/fluent/predicate"
 	"github.com/usalko/fluent/flc/integration/fluent/spec"
@@ -99,101 +99,101 @@ var schemaGraph = func() *sqlgraph.Schema {
 	}
 	graph.Nodes[4] = &sqlgraph.Node{
 		NodeSpec: sqlgraph.NodeSpec{
-			Table:   exvaluescan.Table,
-			Columns: exvaluescan.Columns,
+			Table:   ex_value_scan.Table,
+			Columns: ex_value_scan.Columns,
 			ID: &sqlgraph.FieldSpec{
 				Type:   field.TypeInt,
-				Column: exvaluescan.FieldID,
+				Column: ex_value_scan.FieldID,
 			},
 		},
 		Type: "ExValueScan",
 		Fields: map[string]*sqlgraph.FieldSpec{
-			exvaluescan.FieldBinary:         {Type: field.TypeString, Column: exvaluescan.FieldBinary},
-			exvaluescan.FieldBinaryBytes:    {Type: field.TypeBytes, Column: exvaluescan.FieldBinaryBytes},
-			exvaluescan.FieldBinaryOptional: {Type: field.TypeString, Column: exvaluescan.FieldBinaryOptional},
-			exvaluescan.FieldText:           {Type: field.TypeString, Column: exvaluescan.FieldText},
-			exvaluescan.FieldTextOptional:   {Type: field.TypeString, Column: exvaluescan.FieldTextOptional},
-			exvaluescan.FieldBase64:         {Type: field.TypeString, Column: exvaluescan.FieldBase64},
-			exvaluescan.FieldCustom:         {Type: field.TypeString, Column: exvaluescan.FieldCustom},
-			exvaluescan.FieldCustomOptional: {Type: field.TypeString, Column: exvaluescan.FieldCustomOptional},
+			ex_value_scan.FieldBinary:         {Type: field.TypeString, Column: ex_value_scan.FieldBinary},
+			ex_value_scan.FieldBinaryBytes:    {Type: field.TypeBytes, Column: ex_value_scan.FieldBinaryBytes},
+			ex_value_scan.FieldBinaryOptional: {Type: field.TypeString, Column: ex_value_scan.FieldBinaryOptional},
+			ex_value_scan.FieldText:           {Type: field.TypeString, Column: ex_value_scan.FieldText},
+			ex_value_scan.FieldTextOptional:   {Type: field.TypeString, Column: ex_value_scan.FieldTextOptional},
+			ex_value_scan.FieldBase64:         {Type: field.TypeString, Column: ex_value_scan.FieldBase64},
+			ex_value_scan.FieldCustom:         {Type: field.TypeString, Column: ex_value_scan.FieldCustom},
+			ex_value_scan.FieldCustomOptional: {Type: field.TypeString, Column: ex_value_scan.FieldCustomOptional},
 		},
 	}
 	graph.Nodes[5] = &sqlgraph.Node{
 		NodeSpec: sqlgraph.NodeSpec{
-			Table:   fieldtype.Table,
-			Columns: fieldtype.Columns,
+			Table:   field_type.Table,
+			Columns: field_type.Columns,
 			ID: &sqlgraph.FieldSpec{
 				Type:   field.TypeInt,
-				Column: fieldtype.FieldID,
+				Column: field_type.FieldID,
 			},
 		},
 		Type: "FieldType",
 		Fields: map[string]*sqlgraph.FieldSpec{
-			fieldtype.FieldInt:                   {Type: field.TypeInt, Column: fieldtype.FieldInt},
-			fieldtype.FieldInt8:                  {Type: field.TypeInt8, Column: fieldtype.FieldInt8},
-			fieldtype.FieldInt16:                 {Type: field.TypeInt16, Column: fieldtype.FieldInt16},
-			fieldtype.FieldInt32:                 {Type: field.TypeInt32, Column: fieldtype.FieldInt32},
-			fieldtype.FieldInt64:                 {Type: field.TypeInt64, Column: fieldtype.FieldInt64},
-			fieldtype.FieldOptionalInt:           {Type: field.TypeInt, Column: fieldtype.FieldOptionalInt},
-			fieldtype.FieldOptionalInt8:          {Type: field.TypeInt8, Column: fieldtype.FieldOptionalInt8},
-			fieldtype.FieldOptionalInt16:         {Type: field.TypeInt16, Column: fieldtype.FieldOptionalInt16},
-			fieldtype.FieldOptionalInt32:         {Type: field.TypeInt32, Column: fieldtype.FieldOptionalInt32},
-			fieldtype.FieldOptionalInt64:         {Type: field.TypeInt64, Column: fieldtype.FieldOptionalInt64},
-			fieldtype.FieldNillableInt:           {Type: field.TypeInt, Column: fieldtype.FieldNillableInt},
-			fieldtype.FieldNillableInt8:          {Type: field.TypeInt8, Column: fieldtype.FieldNillableInt8},
-			fieldtype.FieldNillableInt16:         {Type: field.TypeInt16, Column: fieldtype.FieldNillableInt16},
-			fieldtype.FieldNillableInt32:         {Type: field.TypeInt32, Column: fieldtype.FieldNillableInt32},
-			fieldtype.FieldNillableInt64:         {Type: field.TypeInt64, Column: fieldtype.FieldNillableInt64},
-			fieldtype.FieldValidateOptionalInt32: {Type: field.TypeInt32, Column: fieldtype.FieldValidateOptionalInt32},
-			fieldtype.FieldOptionalUint:          {Type: field.TypeUint, Column: fieldtype.FieldOptionalUint},
-			fieldtype.FieldOptionalUint8:         {Type: field.TypeUint8, Column: fieldtype.FieldOptionalUint8},
-			fieldtype.FieldOptionalUint16:        {Type: field.TypeUint16, Column: fieldtype.FieldOptionalUint16},
-			fieldtype.FieldOptionalUint32:        {Type: field.TypeUint32, Column: fieldtype.FieldOptionalUint32},
-			fieldtype.FieldOptionalUint64:        {Type: field.TypeUint64, Column: fieldtype.FieldOptionalUint64},
-			fieldtype.FieldState:                 {Type: field.TypeEnum, Column: fieldtype.FieldState},
-			fieldtype.FieldOptionalFloat:         {Type: field.TypeFloat64, Column: fieldtype.FieldOptionalFloat},
-			fieldtype.FieldOptionalFloat32:       {Type: field.TypeFloat32, Column: fieldtype.FieldOptionalFloat32},
-			fieldtype.FieldText:                  {Type: field.TypeString, Column: fieldtype.FieldText},
-			fieldtype.FieldDatetime:              {Type: field.TypeTime, Column: fieldtype.FieldDatetime},
-			fieldtype.FieldDecimal:               {Type: field.TypeFloat64, Column: fieldtype.FieldDecimal},
-			fieldtype.FieldLinkOther:             {Type: field.TypeOther, Column: fieldtype.FieldLinkOther},
-			fieldtype.FieldLinkOtherFunc:         {Type: field.TypeOther, Column: fieldtype.FieldLinkOtherFunc},
-			fieldtype.FieldMAC:                   {Type: field.TypeString, Column: fieldtype.FieldMAC},
-			fieldtype.FieldStringArray:           {Type: field.TypeOther, Column: fieldtype.FieldStringArray},
-			fieldtype.FieldPassword:              {Type: field.TypeString, Column: fieldtype.FieldPassword},
-			fieldtype.FieldStringScanner:         {Type: field.TypeString, Column: fieldtype.FieldStringScanner},
-			fieldtype.FieldDuration:              {Type: field.TypeInt64, Column: fieldtype.FieldDuration},
-			fieldtype.FieldDir:                   {Type: field.TypeString, Column: fieldtype.FieldDir},
-			fieldtype.FieldNdir:                  {Type: field.TypeString, Column: fieldtype.FieldNdir},
-			fieldtype.FieldStr:                   {Type: field.TypeString, Column: fieldtype.FieldStr},
-			fieldtype.FieldNullStr:               {Type: field.TypeString, Column: fieldtype.FieldNullStr},
-			fieldtype.FieldLink:                  {Type: field.TypeString, Column: fieldtype.FieldLink},
-			fieldtype.FieldNullLink:              {Type: field.TypeString, Column: fieldtype.FieldNullLink},
-			fieldtype.FieldActive:                {Type: field.TypeBool, Column: fieldtype.FieldActive},
-			fieldtype.FieldNullActive:            {Type: field.TypeBool, Column: fieldtype.FieldNullActive},
-			fieldtype.FieldDeleted:               {Type: field.TypeBool, Column: fieldtype.FieldDeleted},
-			fieldtype.FieldDeletedAt:             {Type: field.TypeTime, Column: fieldtype.FieldDeletedAt},
-			fieldtype.FieldRawData:               {Type: field.TypeBytes, Column: fieldtype.FieldRawData},
-			fieldtype.FieldSensitive:             {Type: field.TypeBytes, Column: fieldtype.FieldSensitive},
-			fieldtype.FieldIP:                    {Type: field.TypeBytes, Column: fieldtype.FieldIP},
-			fieldtype.FieldNullInt64:             {Type: field.TypeInt, Column: fieldtype.FieldNullInt64},
-			fieldtype.FieldSchemaInt:             {Type: field.TypeInt, Column: fieldtype.FieldSchemaInt},
-			fieldtype.FieldSchemaInt8:            {Type: field.TypeInt8, Column: fieldtype.FieldSchemaInt8},
-			fieldtype.FieldSchemaInt64:           {Type: field.TypeInt64, Column: fieldtype.FieldSchemaInt64},
-			fieldtype.FieldSchemaFloat:           {Type: field.TypeFloat64, Column: fieldtype.FieldSchemaFloat},
-			fieldtype.FieldSchemaFloat32:         {Type: field.TypeFloat32, Column: fieldtype.FieldSchemaFloat32},
-			fieldtype.FieldNullFloat:             {Type: field.TypeFloat64, Column: fieldtype.FieldNullFloat},
-			fieldtype.FieldRole:                  {Type: field.TypeEnum, Column: fieldtype.FieldRole},
-			fieldtype.FieldPriority:              {Type: field.TypeEnum, Column: fieldtype.FieldPriority},
-			fieldtype.FieldOptionalUUID:          {Type: field.TypeUUID, Column: fieldtype.FieldOptionalUUID},
-			fieldtype.FieldNillableUUID:          {Type: field.TypeUUID, Column: fieldtype.FieldNillableUUID},
-			fieldtype.FieldStrings:               {Type: field.TypeJSON, Column: fieldtype.FieldStrings},
-			fieldtype.FieldPair:                  {Type: field.TypeBytes, Column: fieldtype.FieldPair},
-			fieldtype.FieldNilPair:               {Type: field.TypeBytes, Column: fieldtype.FieldNilPair},
-			fieldtype.FieldVstring:               {Type: field.TypeString, Column: fieldtype.FieldVstring},
-			fieldtype.FieldTriple:                {Type: field.TypeString, Column: fieldtype.FieldTriple},
-			fieldtype.FieldBigInt:                {Type: field.TypeInt, Column: fieldtype.FieldBigInt},
-			fieldtype.FieldPasswordOther:         {Type: field.TypeOther, Column: fieldtype.FieldPasswordOther},
+			field_type.FieldInt:                   {Type: field.TypeInt, Column: field_type.FieldInt},
+			field_type.FieldInt8:                  {Type: field.TypeInt8, Column: field_type.FieldInt8},
+			field_type.FieldInt16:                 {Type: field.TypeInt16, Column: field_type.FieldInt16},
+			field_type.FieldInt32:                 {Type: field.TypeInt32, Column: field_type.FieldInt32},
+			field_type.FieldInt64:                 {Type: field.TypeInt64, Column: field_type.FieldInt64},
+			field_type.FieldOptionalInt:           {Type: field.TypeInt, Column: field_type.FieldOptionalInt},
+			field_type.FieldOptionalInt8:          {Type: field.TypeInt8, Column: field_type.FieldOptionalInt8},
+			field_type.FieldOptionalInt16:         {Type: field.TypeInt16, Column: field_type.FieldOptionalInt16},
+			field_type.FieldOptionalInt32:         {Type: field.TypeInt32, Column: field_type.FieldOptionalInt32},
+			field_type.FieldOptionalInt64:         {Type: field.TypeInt64, Column: field_type.FieldOptionalInt64},
+			field_type.FieldNillableInt:           {Type: field.TypeInt, Column: field_type.FieldNillableInt},
+			field_type.FieldNillableInt8:          {Type: field.TypeInt8, Column: field_type.FieldNillableInt8},
+			field_type.FieldNillableInt16:         {Type: field.TypeInt16, Column: field_type.FieldNillableInt16},
+			field_type.FieldNillableInt32:         {Type: field.TypeInt32, Column: field_type.FieldNillableInt32},
+			field_type.FieldNillableInt64:         {Type: field.TypeInt64, Column: field_type.FieldNillableInt64},
+			field_type.FieldValidateOptionalInt32: {Type: field.TypeInt32, Column: field_type.FieldValidateOptionalInt32},
+			field_type.FieldOptionalUint:          {Type: field.TypeUint, Column: field_type.FieldOptionalUint},
+			field_type.FieldOptionalUint8:         {Type: field.TypeUint8, Column: field_type.FieldOptionalUint8},
+			field_type.FieldOptionalUint16:        {Type: field.TypeUint16, Column: field_type.FieldOptionalUint16},
+			field_type.FieldOptionalUint32:        {Type: field.TypeUint32, Column: field_type.FieldOptionalUint32},
+			field_type.FieldOptionalUint64:        {Type: field.TypeUint64, Column: field_type.FieldOptionalUint64},
+			field_type.FieldState:                 {Type: field.TypeEnum, Column: field_type.FieldState},
+			field_type.FieldOptionalFloat:         {Type: field.TypeFloat64, Column: field_type.FieldOptionalFloat},
+			field_type.FieldOptionalFloat32:       {Type: field.TypeFloat32, Column: field_type.FieldOptionalFloat32},
+			field_type.FieldText:                  {Type: field.TypeString, Column: field_type.FieldText},
+			field_type.FieldDatetime:              {Type: field.TypeTime, Column: field_type.FieldDatetime},
+			field_type.FieldDecimal:               {Type: field.TypeFloat64, Column: field_type.FieldDecimal},
+			field_type.FieldLinkOther:             {Type: field.TypeOther, Column: field_type.FieldLinkOther},
+			field_type.FieldLinkOtherFunc:         {Type: field.TypeOther, Column: field_type.FieldLinkOtherFunc},
+			field_type.FieldMAC:                   {Type: field.TypeString, Column: field_type.FieldMAC},
+			field_type.FieldStringArray:           {Type: field.TypeOther, Column: field_type.FieldStringArray},
+			field_type.FieldPassword:              {Type: field.TypeString, Column: field_type.FieldPassword},
+			field_type.FieldStringScanner:         {Type: field.TypeString, Column: field_type.FieldStringScanner},
+			field_type.FieldDuration:              {Type: field.TypeInt64, Column: field_type.FieldDuration},
+			field_type.FieldDir:                   {Type: field.TypeString, Column: field_type.FieldDir},
+			field_type.FieldNdir:                  {Type: field.TypeString, Column: field_type.FieldNdir},
+			field_type.FieldStr:                   {Type: field.TypeString, Column: field_type.FieldStr},
+			field_type.FieldNullStr:               {Type: field.TypeString, Column: field_type.FieldNullStr},
+			field_type.FieldLink:                  {Type: field.TypeString, Column: field_type.FieldLink},
+			field_type.FieldNullLink:              {Type: field.TypeString, Column: field_type.FieldNullLink},
+			field_type.FieldActive:                {Type: field.TypeBool, Column: field_type.FieldActive},
+			field_type.FieldNullActive:            {Type: field.TypeBool, Column: field_type.FieldNullActive},
+			field_type.FieldDeleted:               {Type: field.TypeBool, Column: field_type.FieldDeleted},
+			field_type.FieldDeletedAt:             {Type: field.TypeTime, Column: field_type.FieldDeletedAt},
+			field_type.FieldRawData:               {Type: field.TypeBytes, Column: field_type.FieldRawData},
+			field_type.FieldSensitive:             {Type: field.TypeBytes, Column: field_type.FieldSensitive},
+			field_type.FieldIP:                    {Type: field.TypeBytes, Column: field_type.FieldIP},
+			field_type.FieldNullInt64:             {Type: field.TypeInt, Column: field_type.FieldNullInt64},
+			field_type.FieldSchemaInt:             {Type: field.TypeInt, Column: field_type.FieldSchemaInt},
+			field_type.FieldSchemaInt8:            {Type: field.TypeInt8, Column: field_type.FieldSchemaInt8},
+			field_type.FieldSchemaInt64:           {Type: field.TypeInt64, Column: field_type.FieldSchemaInt64},
+			field_type.FieldSchemaFloat:           {Type: field.TypeFloat64, Column: field_type.FieldSchemaFloat},
+			field_type.FieldSchemaFloat32:         {Type: field.TypeFloat32, Column: field_type.FieldSchemaFloat32},
+			field_type.FieldNullFloat:             {Type: field.TypeFloat64, Column: field_type.FieldNullFloat},
+			field_type.FieldRole:                  {Type: field.TypeEnum, Column: field_type.FieldRole},
+			field_type.FieldPriority:              {Type: field.TypeEnum, Column: field_type.FieldPriority},
+			field_type.FieldOptionalUUID:          {Type: field.TypeUUID, Column: field_type.FieldOptionalUUID},
+			field_type.FieldNillableUUID:          {Type: field.TypeUUID, Column: field_type.FieldNillableUUID},
+			field_type.FieldStrings:               {Type: field.TypeJSON, Column: field_type.FieldStrings},
+			field_type.FieldPair:                  {Type: field.TypeBytes, Column: field_type.FieldPair},
+			field_type.FieldNilPair:               {Type: field.TypeBytes, Column: field_type.FieldNilPair},
+			field_type.FieldVstring:               {Type: field.TypeString, Column: field_type.FieldVstring},
+			field_type.FieldTriple:                {Type: field.TypeString, Column: field_type.FieldTriple},
+			field_type.FieldBigInt:                {Type: field.TypeInt, Column: field_type.FieldBigInt},
+			field_type.FieldPasswordOther:         {Type: field.TypeOther, Column: field_type.FieldPasswordOther},
 		},
 	}
 	graph.Nodes[6] = &sqlgraph.Node{
@@ -219,18 +219,18 @@ var schemaGraph = func() *sqlgraph.Schema {
 	}
 	graph.Nodes[7] = &sqlgraph.Node{
 		NodeSpec: sqlgraph.NodeSpec{
-			Table:   filetype.Table,
-			Columns: filetype.Columns,
+			Table:   file_type.Table,
+			Columns: file_type.Columns,
 			ID: &sqlgraph.FieldSpec{
 				Type:   field.TypeInt,
-				Column: filetype.FieldID,
+				Column: file_type.FieldID,
 			},
 		},
 		Type: "FileType",
 		Fields: map[string]*sqlgraph.FieldSpec{
-			filetype.FieldName:  {Type: field.TypeString, Column: filetype.FieldName},
-			filetype.FieldType:  {Type: field.TypeEnum, Column: filetype.FieldType},
-			filetype.FieldState: {Type: field.TypeEnum, Column: filetype.FieldState},
+			file_type.FieldName:  {Type: field.TypeString, Column: file_type.FieldName},
+			file_type.FieldType:  {Type: field.TypeEnum, Column: file_type.FieldType},
+			file_type.FieldState: {Type: field.TypeEnum, Column: file_type.FieldState},
 		},
 	}
 	graph.Nodes[8] = &sqlgraph.Node{
@@ -265,17 +265,17 @@ var schemaGraph = func() *sqlgraph.Schema {
 	}
 	graph.Nodes[10] = &sqlgraph.Node{
 		NodeSpec: sqlgraph.NodeSpec{
-			Table:   groupinfo.Table,
-			Columns: groupinfo.Columns,
+			Table:   group_info.Table,
+			Columns: group_info.Columns,
 			ID: &sqlgraph.FieldSpec{
 				Type:   field.TypeInt,
-				Column: groupinfo.FieldID,
+				Column: group_info.FieldID,
 			},
 		},
 		Type: "GroupInfo",
 		Fields: map[string]*sqlgraph.FieldSpec{
-			groupinfo.FieldDesc:     {Type: field.TypeString, Column: groupinfo.FieldDesc},
-			groupinfo.FieldMaxUsers: {Type: field.TypeInt, Column: groupinfo.FieldMaxUsers},
+			group_info.FieldDesc:     {Type: field.TypeString, Column: group_info.FieldDesc},
+			group_info.FieldMaxUsers: {Type: field.TypeInt, Column: group_info.FieldMaxUsers},
 		},
 	}
 	graph.Nodes[11] = &sqlgraph.Node{
@@ -324,11 +324,11 @@ var schemaGraph = func() *sqlgraph.Schema {
 	}
 	graph.Nodes[14] = &sqlgraph.Node{
 		NodeSpec: sqlgraph.NodeSpec{
-			Table:   pc.Table,
-			Columns: pc.Columns,
+			Table:   p_c.Table,
+			Columns: p_c.Columns,
 			ID: &sqlgraph.FieldSpec{
 				Type:   field.TypeInt,
-				Column: pc.FieldID,
+				Column: p_c.FieldID,
 			},
 		},
 		Type:   "PC",
@@ -476,8 +476,8 @@ var schemaGraph = func() *sqlgraph.Schema {
 		&sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: false,
-			Table:   filetype.FilesTable,
-			Columns: []string{filetype.FilesColumn},
+			Table:   file_type.FilesTable,
+			Columns: []string{file_type.FilesColumn},
 			Bidi:    false,
 		},
 		"FileType",
@@ -536,8 +536,8 @@ var schemaGraph = func() *sqlgraph.Schema {
 		&sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: true,
-			Table:   groupinfo.GroupsTable,
-			Columns: []string{groupinfo.GroupsColumn},
+			Table:   group_info.GroupsTable,
+			Columns: []string{group_info.GroupsColumn},
 			Bidi:    false,
 		},
 		"GroupInfo",
@@ -1024,47 +1024,47 @@ func (f *ExValueScanFilter) Where(p fluent_ql.P) {
 
 // WhereID applies the fluent_ql int predicate on the id field.
 func (f *ExValueScanFilter) WhereID(p fluent_ql.IntP) {
-	f.Where(p.Field(exvaluescan.FieldID))
+	f.Where(p.Field(ex_value_scan.FieldID))
 }
 
 // WhereBinary applies the fluent_ql string predicate on the binary field.
 func (f *ExValueScanFilter) WhereBinary(p fluent_ql.StringP) {
-	f.Where(p.Field(exvaluescan.FieldBinary))
+	f.Where(p.Field(ex_value_scan.FieldBinary))
 }
 
 // WhereBinaryBytes applies the fluent_ql []byte predicate on the binary_bytes field.
 func (f *ExValueScanFilter) WhereBinaryBytes(p fluent_ql.BytesP) {
-	f.Where(p.Field(exvaluescan.FieldBinaryBytes))
+	f.Where(p.Field(ex_value_scan.FieldBinaryBytes))
 }
 
 // WhereBinaryOptional applies the fluent_ql string predicate on the binary_optional field.
 func (f *ExValueScanFilter) WhereBinaryOptional(p fluent_ql.StringP) {
-	f.Where(p.Field(exvaluescan.FieldBinaryOptional))
+	f.Where(p.Field(ex_value_scan.FieldBinaryOptional))
 }
 
 // WhereText applies the fluent_ql string predicate on the text field.
 func (f *ExValueScanFilter) WhereText(p fluent_ql.StringP) {
-	f.Where(p.Field(exvaluescan.FieldText))
+	f.Where(p.Field(ex_value_scan.FieldText))
 }
 
 // WhereTextOptional applies the fluent_ql string predicate on the text_optional field.
 func (f *ExValueScanFilter) WhereTextOptional(p fluent_ql.StringP) {
-	f.Where(p.Field(exvaluescan.FieldTextOptional))
+	f.Where(p.Field(ex_value_scan.FieldTextOptional))
 }
 
 // WhereBase64 applies the fluent_ql string predicate on the base64 field.
 func (f *ExValueScanFilter) WhereBase64(p fluent_ql.StringP) {
-	f.Where(p.Field(exvaluescan.FieldBase64))
+	f.Where(p.Field(ex_value_scan.FieldBase64))
 }
 
 // WhereCustom applies the fluent_ql string predicate on the custom field.
 func (f *ExValueScanFilter) WhereCustom(p fluent_ql.StringP) {
-	f.Where(p.Field(exvaluescan.FieldCustom))
+	f.Where(p.Field(ex_value_scan.FieldCustom))
 }
 
 // WhereCustomOptional applies the fluent_ql string predicate on the custom_optional field.
 func (f *ExValueScanFilter) WhereCustomOptional(p fluent_ql.StringP) {
-	f.Where(p.Field(exvaluescan.FieldCustomOptional))
+	f.Where(p.Field(ex_value_scan.FieldCustomOptional))
 }
 
 // addPredicate implements the predicateAdder interface.
@@ -1104,332 +1104,332 @@ func (f *FieldTypeFilter) Where(p fluent_ql.P) {
 
 // WhereID applies the fluent_ql int predicate on the id field.
 func (f *FieldTypeFilter) WhereID(p fluent_ql.IntP) {
-	f.Where(p.Field(fieldtype.FieldID))
+	f.Where(p.Field(field_type.FieldID))
 }
 
 // WhereInt applies the fluent_ql int predicate on the int field.
 func (f *FieldTypeFilter) WhereInt(p fluent_ql.IntP) {
-	f.Where(p.Field(fieldtype.FieldInt))
+	f.Where(p.Field(field_type.FieldInt))
 }
 
 // WhereInt8 applies the fluent_ql int8 predicate on the int8 field.
 func (f *FieldTypeFilter) WhereInt8(p fluent_ql.Int8P) {
-	f.Where(p.Field(fieldtype.FieldInt8))
+	f.Where(p.Field(field_type.FieldInt8))
 }
 
 // WhereInt16 applies the fluent_ql int16 predicate on the int16 field.
 func (f *FieldTypeFilter) WhereInt16(p fluent_ql.Int16P) {
-	f.Where(p.Field(fieldtype.FieldInt16))
+	f.Where(p.Field(field_type.FieldInt16))
 }
 
 // WhereInt32 applies the fluent_ql int32 predicate on the int32 field.
 func (f *FieldTypeFilter) WhereInt32(p fluent_ql.Int32P) {
-	f.Where(p.Field(fieldtype.FieldInt32))
+	f.Where(p.Field(field_type.FieldInt32))
 }
 
 // WhereInt64 applies the fluent_ql int64 predicate on the int64 field.
 func (f *FieldTypeFilter) WhereInt64(p fluent_ql.Int64P) {
-	f.Where(p.Field(fieldtype.FieldInt64))
+	f.Where(p.Field(field_type.FieldInt64))
 }
 
 // WhereOptionalInt applies the fluent_ql int predicate on the optional_int field.
 func (f *FieldTypeFilter) WhereOptionalInt(p fluent_ql.IntP) {
-	f.Where(p.Field(fieldtype.FieldOptionalInt))
+	f.Where(p.Field(field_type.FieldOptionalInt))
 }
 
 // WhereOptionalInt8 applies the fluent_ql int8 predicate on the optional_int8 field.
 func (f *FieldTypeFilter) WhereOptionalInt8(p fluent_ql.Int8P) {
-	f.Where(p.Field(fieldtype.FieldOptionalInt8))
+	f.Where(p.Field(field_type.FieldOptionalInt8))
 }
 
 // WhereOptionalInt16 applies the fluent_ql int16 predicate on the optional_int16 field.
 func (f *FieldTypeFilter) WhereOptionalInt16(p fluent_ql.Int16P) {
-	f.Where(p.Field(fieldtype.FieldOptionalInt16))
+	f.Where(p.Field(field_type.FieldOptionalInt16))
 }
 
 // WhereOptionalInt32 applies the fluent_ql int32 predicate on the optional_int32 field.
 func (f *FieldTypeFilter) WhereOptionalInt32(p fluent_ql.Int32P) {
-	f.Where(p.Field(fieldtype.FieldOptionalInt32))
+	f.Where(p.Field(field_type.FieldOptionalInt32))
 }
 
 // WhereOptionalInt64 applies the fluent_ql int64 predicate on the optional_int64 field.
 func (f *FieldTypeFilter) WhereOptionalInt64(p fluent_ql.Int64P) {
-	f.Where(p.Field(fieldtype.FieldOptionalInt64))
+	f.Where(p.Field(field_type.FieldOptionalInt64))
 }
 
 // WhereNillableInt applies the fluent_ql int predicate on the nillable_int field.
 func (f *FieldTypeFilter) WhereNillableInt(p fluent_ql.IntP) {
-	f.Where(p.Field(fieldtype.FieldNillableInt))
+	f.Where(p.Field(field_type.FieldNillableInt))
 }
 
 // WhereNillableInt8 applies the fluent_ql int8 predicate on the nillable_int8 field.
 func (f *FieldTypeFilter) WhereNillableInt8(p fluent_ql.Int8P) {
-	f.Where(p.Field(fieldtype.FieldNillableInt8))
+	f.Where(p.Field(field_type.FieldNillableInt8))
 }
 
 // WhereNillableInt16 applies the fluent_ql int16 predicate on the nillable_int16 field.
 func (f *FieldTypeFilter) WhereNillableInt16(p fluent_ql.Int16P) {
-	f.Where(p.Field(fieldtype.FieldNillableInt16))
+	f.Where(p.Field(field_type.FieldNillableInt16))
 }
 
 // WhereNillableInt32 applies the fluent_ql int32 predicate on the nillable_int32 field.
 func (f *FieldTypeFilter) WhereNillableInt32(p fluent_ql.Int32P) {
-	f.Where(p.Field(fieldtype.FieldNillableInt32))
+	f.Where(p.Field(field_type.FieldNillableInt32))
 }
 
 // WhereNillableInt64 applies the fluent_ql int64 predicate on the nillable_int64 field.
 func (f *FieldTypeFilter) WhereNillableInt64(p fluent_ql.Int64P) {
-	f.Where(p.Field(fieldtype.FieldNillableInt64))
+	f.Where(p.Field(field_type.FieldNillableInt64))
 }
 
 // WhereValidateOptionalInt32 applies the fluent_ql int32 predicate on the validate_optional_int32 field.
 func (f *FieldTypeFilter) WhereValidateOptionalInt32(p fluent_ql.Int32P) {
-	f.Where(p.Field(fieldtype.FieldValidateOptionalInt32))
+	f.Where(p.Field(field_type.FieldValidateOptionalInt32))
 }
 
 // WhereOptionalUint applies the fluent_ql uint predicate on the optional_uint field.
 func (f *FieldTypeFilter) WhereOptionalUint(p fluent_ql.UintP) {
-	f.Where(p.Field(fieldtype.FieldOptionalUint))
+	f.Where(p.Field(field_type.FieldOptionalUint))
 }
 
 // WhereOptionalUint8 applies the fluent_ql uint8 predicate on the optional_uint8 field.
 func (f *FieldTypeFilter) WhereOptionalUint8(p fluent_ql.Uint8P) {
-	f.Where(p.Field(fieldtype.FieldOptionalUint8))
+	f.Where(p.Field(field_type.FieldOptionalUint8))
 }
 
 // WhereOptionalUint16 applies the fluent_ql uint16 predicate on the optional_uint16 field.
 func (f *FieldTypeFilter) WhereOptionalUint16(p fluent_ql.Uint16P) {
-	f.Where(p.Field(fieldtype.FieldOptionalUint16))
+	f.Where(p.Field(field_type.FieldOptionalUint16))
 }
 
 // WhereOptionalUint32 applies the fluent_ql uint32 predicate on the optional_uint32 field.
 func (f *FieldTypeFilter) WhereOptionalUint32(p fluent_ql.Uint32P) {
-	f.Where(p.Field(fieldtype.FieldOptionalUint32))
+	f.Where(p.Field(field_type.FieldOptionalUint32))
 }
 
 // WhereOptionalUint64 applies the fluent_ql uint64 predicate on the optional_uint64 field.
 func (f *FieldTypeFilter) WhereOptionalUint64(p fluent_ql.Uint64P) {
-	f.Where(p.Field(fieldtype.FieldOptionalUint64))
+	f.Where(p.Field(field_type.FieldOptionalUint64))
 }
 
 // WhereState applies the fluent_ql string predicate on the state field.
 func (f *FieldTypeFilter) WhereState(p fluent_ql.StringP) {
-	f.Where(p.Field(fieldtype.FieldState))
+	f.Where(p.Field(field_type.FieldState))
 }
 
 // WhereOptionalFloat applies the fluent_ql float64 predicate on the optional_float field.
 func (f *FieldTypeFilter) WhereOptionalFloat(p fluent_ql.Float64P) {
-	f.Where(p.Field(fieldtype.FieldOptionalFloat))
+	f.Where(p.Field(field_type.FieldOptionalFloat))
 }
 
 // WhereOptionalFloat32 applies the fluent_ql float32 predicate on the optional_float32 field.
 func (f *FieldTypeFilter) WhereOptionalFloat32(p fluent_ql.Float32P) {
-	f.Where(p.Field(fieldtype.FieldOptionalFloat32))
+	f.Where(p.Field(field_type.FieldOptionalFloat32))
 }
 
 // WhereText applies the fluent_ql string predicate on the text field.
 func (f *FieldTypeFilter) WhereText(p fluent_ql.StringP) {
-	f.Where(p.Field(fieldtype.FieldText))
+	f.Where(p.Field(field_type.FieldText))
 }
 
 // WhereDatetime applies the fluent_ql time.Time predicate on the datetime field.
 func (f *FieldTypeFilter) WhereDatetime(p fluent_ql.TimeP) {
-	f.Where(p.Field(fieldtype.FieldDatetime))
+	f.Where(p.Field(field_type.FieldDatetime))
 }
 
 // WhereDecimal applies the fluent_ql float64 predicate on the decimal field.
 func (f *FieldTypeFilter) WhereDecimal(p fluent_ql.Float64P) {
-	f.Where(p.Field(fieldtype.FieldDecimal))
+	f.Where(p.Field(field_type.FieldDecimal))
 }
 
 // WhereLinkOther applies the fluent_ql other predicate on the link_other field.
 func (f *FieldTypeFilter) WhereLinkOther(p fluent_ql.OtherP) {
-	f.Where(p.Field(fieldtype.FieldLinkOther))
+	f.Where(p.Field(field_type.FieldLinkOther))
 }
 
 // WhereLinkOtherFunc applies the fluent_ql other predicate on the link_other_func field.
 func (f *FieldTypeFilter) WhereLinkOtherFunc(p fluent_ql.OtherP) {
-	f.Where(p.Field(fieldtype.FieldLinkOtherFunc))
+	f.Where(p.Field(field_type.FieldLinkOtherFunc))
 }
 
 // WhereMAC applies the fluent_ql string predicate on the mac field.
 func (f *FieldTypeFilter) WhereMAC(p fluent_ql.StringP) {
-	f.Where(p.Field(fieldtype.FieldMAC))
+	f.Where(p.Field(field_type.FieldMAC))
 }
 
 // WhereStringArray applies the fluent_ql other predicate on the string_array field.
 func (f *FieldTypeFilter) WhereStringArray(p fluent_ql.OtherP) {
-	f.Where(p.Field(fieldtype.FieldStringArray))
+	f.Where(p.Field(field_type.FieldStringArray))
 }
 
 // WherePassword applies the fluent_ql string predicate on the password field.
 func (f *FieldTypeFilter) WherePassword(p fluent_ql.StringP) {
-	f.Where(p.Field(fieldtype.FieldPassword))
+	f.Where(p.Field(field_type.FieldPassword))
 }
 
 // WhereStringScanner applies the fluent_ql string predicate on the string_scanner field.
 func (f *FieldTypeFilter) WhereStringScanner(p fluent_ql.StringP) {
-	f.Where(p.Field(fieldtype.FieldStringScanner))
+	f.Where(p.Field(field_type.FieldStringScanner))
 }
 
 // WhereDuration applies the fluent_ql int64 predicate on the duration field.
 func (f *FieldTypeFilter) WhereDuration(p fluent_ql.Int64P) {
-	f.Where(p.Field(fieldtype.FieldDuration))
+	f.Where(p.Field(field_type.FieldDuration))
 }
 
 // WhereDir applies the fluent_ql string predicate on the dir field.
 func (f *FieldTypeFilter) WhereDir(p fluent_ql.StringP) {
-	f.Where(p.Field(fieldtype.FieldDir))
+	f.Where(p.Field(field_type.FieldDir))
 }
 
 // WhereNdir applies the fluent_ql string predicate on the ndir field.
 func (f *FieldTypeFilter) WhereNdir(p fluent_ql.StringP) {
-	f.Where(p.Field(fieldtype.FieldNdir))
+	f.Where(p.Field(field_type.FieldNdir))
 }
 
 // WhereStr applies the fluent_ql string predicate on the str field.
 func (f *FieldTypeFilter) WhereStr(p fluent_ql.StringP) {
-	f.Where(p.Field(fieldtype.FieldStr))
+	f.Where(p.Field(field_type.FieldStr))
 }
 
 // WhereNullStr applies the fluent_ql string predicate on the null_str field.
 func (f *FieldTypeFilter) WhereNullStr(p fluent_ql.StringP) {
-	f.Where(p.Field(fieldtype.FieldNullStr))
+	f.Where(p.Field(field_type.FieldNullStr))
 }
 
 // WhereLink applies the fluent_ql string predicate on the link field.
 func (f *FieldTypeFilter) WhereLink(p fluent_ql.StringP) {
-	f.Where(p.Field(fieldtype.FieldLink))
+	f.Where(p.Field(field_type.FieldLink))
 }
 
 // WhereNullLink applies the fluent_ql string predicate on the null_link field.
 func (f *FieldTypeFilter) WhereNullLink(p fluent_ql.StringP) {
-	f.Where(p.Field(fieldtype.FieldNullLink))
+	f.Where(p.Field(field_type.FieldNullLink))
 }
 
 // WhereActive applies the fluent_ql bool predicate on the active field.
 func (f *FieldTypeFilter) WhereActive(p fluent_ql.BoolP) {
-	f.Where(p.Field(fieldtype.FieldActive))
+	f.Where(p.Field(field_type.FieldActive))
 }
 
 // WhereNullActive applies the fluent_ql bool predicate on the null_active field.
 func (f *FieldTypeFilter) WhereNullActive(p fluent_ql.BoolP) {
-	f.Where(p.Field(fieldtype.FieldNullActive))
+	f.Where(p.Field(field_type.FieldNullActive))
 }
 
 // WhereDeleted applies the fluent_ql bool predicate on the deleted field.
 func (f *FieldTypeFilter) WhereDeleted(p fluent_ql.BoolP) {
-	f.Where(p.Field(fieldtype.FieldDeleted))
+	f.Where(p.Field(field_type.FieldDeleted))
 }
 
 // WhereDeletedAt applies the fluent_ql time.Time predicate on the deleted_at field.
 func (f *FieldTypeFilter) WhereDeletedAt(p fluent_ql.TimeP) {
-	f.Where(p.Field(fieldtype.FieldDeletedAt))
+	f.Where(p.Field(field_type.FieldDeletedAt))
 }
 
 // WhereRawData applies the fluent_ql []byte predicate on the raw_data field.
 func (f *FieldTypeFilter) WhereRawData(p fluent_ql.BytesP) {
-	f.Where(p.Field(fieldtype.FieldRawData))
+	f.Where(p.Field(field_type.FieldRawData))
 }
 
 // WhereSensitive applies the fluent_ql []byte predicate on the sensitive field.
 func (f *FieldTypeFilter) WhereSensitive(p fluent_ql.BytesP) {
-	f.Where(p.Field(fieldtype.FieldSensitive))
+	f.Where(p.Field(field_type.FieldSensitive))
 }
 
 // WhereIP applies the fluent_ql []byte predicate on the ip field.
 func (f *FieldTypeFilter) WhereIP(p fluent_ql.BytesP) {
-	f.Where(p.Field(fieldtype.FieldIP))
+	f.Where(p.Field(field_type.FieldIP))
 }
 
 // WhereNullInt64 applies the fluent_ql int predicate on the null_int64 field.
 func (f *FieldTypeFilter) WhereNullInt64(p fluent_ql.IntP) {
-	f.Where(p.Field(fieldtype.FieldNullInt64))
+	f.Where(p.Field(field_type.FieldNullInt64))
 }
 
 // WhereSchemaInt applies the fluent_ql int predicate on the schema_int field.
 func (f *FieldTypeFilter) WhereSchemaInt(p fluent_ql.IntP) {
-	f.Where(p.Field(fieldtype.FieldSchemaInt))
+	f.Where(p.Field(field_type.FieldSchemaInt))
 }
 
 // WhereSchemaInt8 applies the fluent_ql int8 predicate on the schema_int8 field.
 func (f *FieldTypeFilter) WhereSchemaInt8(p fluent_ql.Int8P) {
-	f.Where(p.Field(fieldtype.FieldSchemaInt8))
+	f.Where(p.Field(field_type.FieldSchemaInt8))
 }
 
 // WhereSchemaInt64 applies the fluent_ql int64 predicate on the schema_int64 field.
 func (f *FieldTypeFilter) WhereSchemaInt64(p fluent_ql.Int64P) {
-	f.Where(p.Field(fieldtype.FieldSchemaInt64))
+	f.Where(p.Field(field_type.FieldSchemaInt64))
 }
 
 // WhereSchemaFloat applies the fluent_ql float64 predicate on the schema_float field.
 func (f *FieldTypeFilter) WhereSchemaFloat(p fluent_ql.Float64P) {
-	f.Where(p.Field(fieldtype.FieldSchemaFloat))
+	f.Where(p.Field(field_type.FieldSchemaFloat))
 }
 
 // WhereSchemaFloat32 applies the fluent_ql float32 predicate on the schema_float32 field.
 func (f *FieldTypeFilter) WhereSchemaFloat32(p fluent_ql.Float32P) {
-	f.Where(p.Field(fieldtype.FieldSchemaFloat32))
+	f.Where(p.Field(field_type.FieldSchemaFloat32))
 }
 
 // WhereNullFloat applies the fluent_ql float64 predicate on the null_float field.
 func (f *FieldTypeFilter) WhereNullFloat(p fluent_ql.Float64P) {
-	f.Where(p.Field(fieldtype.FieldNullFloat))
+	f.Where(p.Field(field_type.FieldNullFloat))
 }
 
 // WhereRole applies the fluent_ql string predicate on the role field.
 func (f *FieldTypeFilter) WhereRole(p fluent_ql.StringP) {
-	f.Where(p.Field(fieldtype.FieldRole))
+	f.Where(p.Field(field_type.FieldRole))
 }
 
 // WherePriority applies the fluent_ql string predicate on the priority field.
 func (f *FieldTypeFilter) WherePriority(p fluent_ql.StringP) {
-	f.Where(p.Field(fieldtype.FieldPriority))
+	f.Where(p.Field(field_type.FieldPriority))
 }
 
 // WhereOptionalUUID applies the fluent_ql [16]byte predicate on the optional_uuid field.
 func (f *FieldTypeFilter) WhereOptionalUUID(p fluent_ql.ValueP) {
-	f.Where(p.Field(fieldtype.FieldOptionalUUID))
+	f.Where(p.Field(field_type.FieldOptionalUUID))
 }
 
 // WhereNillableUUID applies the fluent_ql [16]byte predicate on the nillable_uuid field.
 func (f *FieldTypeFilter) WhereNillableUUID(p fluent_ql.ValueP) {
-	f.Where(p.Field(fieldtype.FieldNillableUUID))
+	f.Where(p.Field(field_type.FieldNillableUUID))
 }
 
 // WhereStrings applies the fluent_ql json.RawMessage predicate on the strings field.
 func (f *FieldTypeFilter) WhereStrings(p fluent_ql.BytesP) {
-	f.Where(p.Field(fieldtype.FieldStrings))
+	f.Where(p.Field(field_type.FieldStrings))
 }
 
 // WherePair applies the fluent_ql []byte predicate on the pair field.
 func (f *FieldTypeFilter) WherePair(p fluent_ql.BytesP) {
-	f.Where(p.Field(fieldtype.FieldPair))
+	f.Where(p.Field(field_type.FieldPair))
 }
 
 // WhereNilPair applies the fluent_ql []byte predicate on the nil_pair field.
 func (f *FieldTypeFilter) WhereNilPair(p fluent_ql.BytesP) {
-	f.Where(p.Field(fieldtype.FieldNilPair))
+	f.Where(p.Field(field_type.FieldNilPair))
 }
 
 // WhereVstring applies the fluent_ql string predicate on the vstring field.
 func (f *FieldTypeFilter) WhereVstring(p fluent_ql.StringP) {
-	f.Where(p.Field(fieldtype.FieldVstring))
+	f.Where(p.Field(field_type.FieldVstring))
 }
 
 // WhereTriple applies the fluent_ql string predicate on the triple field.
 func (f *FieldTypeFilter) WhereTriple(p fluent_ql.StringP) {
-	f.Where(p.Field(fieldtype.FieldTriple))
+	f.Where(p.Field(field_type.FieldTriple))
 }
 
 // WhereBigInt applies the fluent_ql int predicate on the big_int field.
 func (f *FieldTypeFilter) WhereBigInt(p fluent_ql.IntP) {
-	f.Where(p.Field(fieldtype.FieldBigInt))
+	f.Where(p.Field(field_type.FieldBigInt))
 }
 
 // WherePasswordOther applies the fluent_ql other predicate on the password_other field.
 func (f *FieldTypeFilter) WherePasswordOther(p fluent_ql.OtherP) {
-	f.Where(p.Field(fieldtype.FieldPasswordOther))
+	f.Where(p.Field(field_type.FieldPasswordOther))
 }
 
 // addPredicate implements the predicateAdder interface.
@@ -1591,22 +1591,22 @@ func (f *FileTypeFilter) Where(p fluent_ql.P) {
 
 // WhereID applies the fluent_ql int predicate on the id field.
 func (f *FileTypeFilter) WhereID(p fluent_ql.IntP) {
-	f.Where(p.Field(filetype.FieldID))
+	f.Where(p.Field(file_type.FieldID))
 }
 
 // WhereName applies the fluent_ql string predicate on the name field.
 func (f *FileTypeFilter) WhereName(p fluent_ql.StringP) {
-	f.Where(p.Field(filetype.FieldName))
+	f.Where(p.Field(file_type.FieldName))
 }
 
 // WhereType applies the fluent_ql string predicate on the type field.
 func (f *FileTypeFilter) WhereType(p fluent_ql.StringP) {
-	f.Where(p.Field(filetype.FieldType))
+	f.Where(p.Field(file_type.FieldType))
 }
 
 // WhereState applies the fluent_ql string predicate on the state field.
 func (f *FileTypeFilter) WhereState(p fluent_ql.StringP) {
-	f.Where(p.Field(filetype.FieldState))
+	f.Where(p.Field(file_type.FieldState))
 }
 
 // WhereHasFiles applies a predicate to check if query has an edge files.
@@ -1821,17 +1821,17 @@ func (f *GroupInfoFilter) Where(p fluent_ql.P) {
 
 // WhereID applies the fluent_ql int predicate on the id field.
 func (f *GroupInfoFilter) WhereID(p fluent_ql.IntP) {
-	f.Where(p.Field(groupinfo.FieldID))
+	f.Where(p.Field(group_info.FieldID))
 }
 
 // WhereDesc applies the fluent_ql string predicate on the desc field.
 func (f *GroupInfoFilter) WhereDesc(p fluent_ql.StringP) {
-	f.Where(p.Field(groupinfo.FieldDesc))
+	f.Where(p.Field(group_info.FieldDesc))
 }
 
 // WhereMaxUsers applies the fluent_ql int predicate on the max_users field.
 func (f *GroupInfoFilter) WhereMaxUsers(p fluent_ql.IntP) {
-	f.Where(p.Field(groupinfo.FieldMaxUsers))
+	f.Where(p.Field(group_info.FieldMaxUsers))
 }
 
 // WhereHasGroups applies a predicate to check if query has an edge groups.
@@ -2058,7 +2058,7 @@ func (f *PCFilter) Where(p fluent_ql.P) {
 
 // WhereID applies the fluent_ql int predicate on the id field.
 func (f *PCFilter) WhereID(p fluent_ql.IntP) {
-	f.Where(p.Field(pc.FieldID))
+	f.Where(p.Field(p_c.FieldID))
 }
 
 // addPredicate implements the predicateAdder interface.

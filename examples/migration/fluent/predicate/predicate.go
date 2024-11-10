@@ -21,7 +21,7 @@ type Pet func(*sql.Selector)
 // Session is the predicate function for session builders.
 type Session func(*sql.Selector)
 
-// SessionDevice is the predicate function for sessiondevice builders.
+// SessionDevice is the predicate function for session_device builders.
 type SessionDevice func(*sql.Selector)
 
 // User is the predicate function for user builders.

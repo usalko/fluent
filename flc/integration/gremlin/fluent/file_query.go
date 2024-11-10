@@ -16,7 +16,7 @@ import (
 	"github.com/usalko/fluent/dialect/gremlin/graph/dsl/__"
 	"github.com/usalko/fluent/dialect/gremlin/graph/dsl/g"
 	"github.com/usalko/fluent/flc/integration/gremlin/fluent/file"
-	"github.com/usalko/fluent/flc/integration/gremlin/fluent/filetype"
+	"github.com/usalko/fluent/flc/integration/gremlin/fluent/file_type"
 	"github.com/usalko/fluent/flc/integration/gremlin/fluent/predicate"
 	"github.com/usalko/fluent/flc/integration/gremlin/fluent/user"
 )
@@ -89,7 +89,7 @@ func (fq *FileQuery) QueryType() *FileTypeQuery {
 			return nil, err
 		}
 		gremlin := fq.gremlinQuery(ctx)
-		fromU = gremlin.InE(filetype.FilesLabel).OutV()
+		fromU = gremlin.InE(file_type.FilesLabel).OutV()
 		return fromU, nil
 	}
 	return query

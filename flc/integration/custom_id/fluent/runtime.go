@@ -11,12 +11,12 @@ import (
 	"github.com/google/uuid"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/account"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/blob"
-	"github.com/usalko/fluent/flc/integration/custom_id/fluent/bloblink"
+	"github.com/usalko/fluent/flc/integration/custom_id/fluent/blob_link"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/car"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/device"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/doc"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/link"
-	"github.com/usalko/fluent/flc/integration/custom_id/fluent/mixinid"
+	"github.com/usalko/fluent/flc/integration/custom_id/fluent/mixin_i_d"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/note"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/other"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/pet"
@@ -55,12 +55,12 @@ func init() {
 	blobDescID := blobFields[0].Descriptor()
 	// blob.DefaultID holds the default value on creation for the id field.
 	blob.DefaultID = blobDescID.Default.(func() uuid.UUID)
-	bloblinkFields := schema.BlobLink{}.Fields()
-	_ = bloblinkFields
-	// bloblinkDescCreatedAt is the schema descriptor for created_at field.
-	bloblinkDescCreatedAt := bloblinkFields[0].Descriptor()
-	// bloblink.DefaultCreatedAt holds the default value on creation for the created_at field.
-	bloblink.DefaultCreatedAt = bloblinkDescCreatedAt.Default.(func() time.Time)
+	blob_linkFields := schema.BlobLink{}.Fields()
+	_ = blob_linkFields
+	// blob_linkDescCreatedAt is the schema descriptor for created_at field.
+	blob_linkDescCreatedAt := blob_linkFields[0].Descriptor()
+	// blob_link.DefaultCreatedAt holds the default value on creation for the created_at field.
+	blob_link.DefaultCreatedAt = blob_linkDescCreatedAt.Default.(func() time.Time)
 	carMixin := schema.Car{}.Mixin()
 	carMixinFields0 := carMixin[0].Fields()
 	_ = carMixinFields0
@@ -118,15 +118,15 @@ func init() {
 	linkDescID := linkFields[0].Descriptor()
 	// link.DefaultID holds the default value on creation for the id field.
 	link.DefaultID = linkDescID.Default.(func() uuidc.UUIDC)
-	mixinidMixin := schema.MixinID{}.Mixin()
-	mixinidMixinFields0 := mixinidMixin[0].Fields()
-	_ = mixinidMixinFields0
-	mixinidFields := schema.MixinID{}.Fields()
-	_ = mixinidFields
-	// mixinidDescID is the schema descriptor for id field.
-	mixinidDescID := mixinidMixinFields0[0].Descriptor()
-	// mixinid.DefaultID holds the default value on creation for the id field.
-	mixinid.DefaultID = mixinidDescID.Default.(func() uuid.UUID)
+	mixin_i_dMixin := schema.MixinID{}.Mixin()
+	mixin_i_dMixinFields0 := mixin_i_dMixin[0].Fields()
+	_ = mixin_i_dMixinFields0
+	mixin_i_dFields := schema.MixinID{}.Fields()
+	_ = mixin_i_dFields
+	// mixin_i_dDescID is the schema descriptor for id field.
+	mixin_i_dDescID := mixin_i_dMixinFields0[0].Descriptor()
+	// mixin_i_d.DefaultID holds the default value on creation for the id field.
+	mixin_i_d.DefaultID = mixin_i_dDescID.Default.(func() uuid.UUID)
 	noteFields := schema.Note{}.Fields()
 	_ = noteFields
 	// noteDescID is the schema descriptor for id field.

@@ -25,7 +25,7 @@ import (
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/schema/pulid"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/todo"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/verysecret"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/very_secret"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -409,7 +409,7 @@ func (tc *TodoCreate) createSpec() (*Todo, *sqlgraph.CreateSpec) {
 			Columns: []string{todo.SecretColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(verysecret.FieldID, field.TypeString),
+				IDSpec: sqlgraph.NewFieldSpec(very_secret.FieldID, field.TypeString),
 			},
 		}
 		for _, k := range nodes {

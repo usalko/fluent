@@ -13,7 +13,7 @@ import (
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/examples/triggers/fluent/user"
-	"github.com/usalko/fluent/examples/triggers/fluent/userauditlog"
+	"github.com/usalko/fluent/examples/triggers/fluent/user_audit_log"
 )
 
 // fluent aliases to avoid import conflicts in user's code.
@@ -74,8 +74,8 @@ var (
 func checkColumn(table, column string) error {
 	initCheck.Do(func() {
 		columnCheck = sql.NewColumnCheck(map[string]func(string) bool{
-			user.Table:         user.ValidColumn,
-			userauditlog.Table: userauditlog.ValidColumn,
+			user.Table:           user.ValidColumn,
+			user_audit_log.Table: user_audit_log.ValidColumn,
 		})
 	})
 	return columnCheck(table, column)

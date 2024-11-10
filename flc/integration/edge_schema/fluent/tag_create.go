@@ -14,10 +14,10 @@ import (
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/group"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/grouptag"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/group_tag"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tag"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweet"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweettag"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweet_tag"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -210,7 +210,7 @@ func (tc *TagCreate) createSpec() (*Tag, *sqlgraph.CreateSpec) {
 			Columns: []string{tag.TweetTagsColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(tweettag.FieldID, field.TypeUUID),
+				IDSpec: sqlgraph.NewFieldSpec(tweet_tag.FieldID, field.TypeUUID),
 			},
 		}
 		for _, k := range nodes {
@@ -226,7 +226,7 @@ func (tc *TagCreate) createSpec() (*Tag, *sqlgraph.CreateSpec) {
 			Columns: []string{tag.GroupTagsColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(grouptag.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(group_tag.FieldID, field.TypeInt),
 			},
 		}
 		for _, k := range nodes {

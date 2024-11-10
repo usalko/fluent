@@ -26,7 +26,7 @@ import (
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/fluent_gql"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/billproduct"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/bill_product"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/friendship"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/group"
@@ -329,7 +329,7 @@ type BillProductOrderField struct {
 	// Value extracts the ordering value from the given BillProduct.
 	Value    func(*BillProduct) (fluent.Value, error)
 	column   string // field or computed.
-	toTerm   func(...sql.OrderTermOption) billproduct.OrderOption
+	toTerm   func(...sql.OrderTermOption) bill_product.OrderOption
 	toCursor func(*BillProduct) Cursor
 }
 
@@ -346,8 +346,8 @@ var DefaultBillProductOrder = &BillProductOrder{
 		Value: func(bp *BillProduct) (fluent.Value, error) {
 			return bp.ID, nil
 		},
-		column: billproduct.FieldID,
-		toTerm: billproduct.ByID,
+		column: bill_product.FieldID,
+		toTerm: bill_product.ByID,
 		toCursor: func(bp *BillProduct) Cursor {
 			return Cursor{ID: bp.ID}
 		},

@@ -8,14 +8,14 @@ package fluent
 import (
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/account"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/blob"
-	"github.com/usalko/fluent/flc/integration/custom_id/fluent/bloblink"
+	"github.com/usalko/fluent/flc/integration/custom_id/fluent/blob_link"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/car"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/device"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/doc"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/group"
-	"github.com/usalko/fluent/flc/integration/custom_id/fluent/intsid"
+	"github.com/usalko/fluent/flc/integration/custom_id/fluent/int_s_i_d"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/link"
-	"github.com/usalko/fluent/flc/integration/custom_id/fluent/mixinid"
+	"github.com/usalko/fluent/flc/integration/custom_id/fluent/mixin_i_d"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/note"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/other"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/pet"
@@ -65,24 +65,24 @@ var schemaGraph = func() *sqlgraph.Schema {
 	}
 	graph.Nodes[2] = &sqlgraph.Node{
 		NodeSpec: sqlgraph.NodeSpec{
-			Table:   bloblink.Table,
-			Columns: bloblink.Columns,
+			Table:   blob_link.Table,
+			Columns: blob_link.Columns,
 			CompositeID: []*sqlgraph.FieldSpec{
 				{
 					Type:   field.TypeUUID,
-					Column: bloblink.FieldBlobID,
+					Column: blob_link.FieldBlobID,
 				},
 				{
 					Type:   field.TypeUUID,
-					Column: bloblink.FieldLinkID,
+					Column: blob_link.FieldLinkID,
 				},
 			},
 		},
 		Type: "BlobLink",
 		Fields: map[string]*sqlgraph.FieldSpec{
-			bloblink.FieldCreatedAt: {Type: field.TypeTime, Column: bloblink.FieldCreatedAt},
-			bloblink.FieldBlobID:    {Type: field.TypeUUID, Column: bloblink.FieldBlobID},
-			bloblink.FieldLinkID:    {Type: field.TypeUUID, Column: bloblink.FieldLinkID},
+			blob_link.FieldCreatedAt: {Type: field.TypeTime, Column: blob_link.FieldCreatedAt},
+			blob_link.FieldBlobID:    {Type: field.TypeUUID, Column: blob_link.FieldBlobID},
+			blob_link.FieldLinkID:    {Type: field.TypeUUID, Column: blob_link.FieldLinkID},
 		},
 	}
 	graph.Nodes[3] = &sqlgraph.Node{
@@ -141,11 +141,11 @@ var schemaGraph = func() *sqlgraph.Schema {
 	}
 	graph.Nodes[7] = &sqlgraph.Node{
 		NodeSpec: sqlgraph.NodeSpec{
-			Table:   intsid.Table,
-			Columns: intsid.Columns,
+			Table:   int_s_i_d.Table,
+			Columns: int_s_i_d.Columns,
 			ID: &sqlgraph.FieldSpec{
 				Type:   field.TypeInt64,
-				Column: intsid.FieldID,
+				Column: int_s_i_d.FieldID,
 			},
 		},
 		Type:   "IntSID",
@@ -167,17 +167,17 @@ var schemaGraph = func() *sqlgraph.Schema {
 	}
 	graph.Nodes[9] = &sqlgraph.Node{
 		NodeSpec: sqlgraph.NodeSpec{
-			Table:   mixinid.Table,
-			Columns: mixinid.Columns,
+			Table:   mixin_i_d.Table,
+			Columns: mixin_i_d.Columns,
 			ID: &sqlgraph.FieldSpec{
 				Type:   field.TypeUUID,
-				Column: mixinid.FieldID,
+				Column: mixin_i_d.FieldID,
 			},
 		},
 		Type: "MixinID",
 		Fields: map[string]*sqlgraph.FieldSpec{
-			mixinid.FieldSomeField:  {Type: field.TypeString, Column: mixinid.FieldSomeField},
-			mixinid.FieldMixinField: {Type: field.TypeString, Column: mixinid.FieldMixinField},
+			mixin_i_d.FieldSomeField:  {Type: field.TypeString, Column: mixin_i_d.FieldSomeField},
+			mixin_i_d.FieldMixinField: {Type: field.TypeString, Column: mixin_i_d.FieldMixinField},
 		},
 	}
 	graph.Nodes[10] = &sqlgraph.Node{
@@ -321,8 +321,8 @@ var schemaGraph = func() *sqlgraph.Schema {
 		&sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: false,
-			Table:   bloblink.BlobTable,
-			Columns: []string{bloblink.BlobColumn},
+			Table:   blob_link.BlobTable,
+			Columns: []string{blob_link.BlobColumn},
 			Bidi:    false,
 		},
 		"BlobLink",
@@ -333,8 +333,8 @@ var schemaGraph = func() *sqlgraph.Schema {
 		&sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: false,
-			Table:   bloblink.LinkTable,
-			Columns: []string{bloblink.LinkColumn},
+			Table:   blob_link.LinkTable,
+			Columns: []string{blob_link.LinkColumn},
 			Bidi:    false,
 		},
 		"BlobLink",
@@ -429,8 +429,8 @@ var schemaGraph = func() *sqlgraph.Schema {
 		&sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: false,
-			Table:   intsid.ParentTable,
-			Columns: []string{intsid.ParentColumn},
+			Table:   int_s_i_d.ParentTable,
+			Columns: []string{int_s_i_d.ParentColumn},
 			Bidi:    true,
 		},
 		"IntSID",
@@ -441,8 +441,8 @@ var schemaGraph = func() *sqlgraph.Schema {
 		&sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: true,
-			Table:   intsid.ChildrenTable,
-			Columns: []string{intsid.ChildrenColumn},
+			Table:   int_s_i_d.ChildrenTable,
+			Columns: []string{int_s_i_d.ChildrenColumn},
 			Bidi:    false,
 		},
 		"IntSID",
@@ -789,17 +789,17 @@ func (f *BlobLinkFilter) Where(p fluent_ql.P) {
 
 // WhereCreatedAt applies the fluent_ql time.Time predicate on the created_at field.
 func (f *BlobLinkFilter) WhereCreatedAt(p fluent_ql.TimeP) {
-	f.Where(p.Field(bloblink.FieldCreatedAt))
+	f.Where(p.Field(blob_link.FieldCreatedAt))
 }
 
 // WhereBlobID applies the fluent_ql [16]byte predicate on the blob_id field.
 func (f *BlobLinkFilter) WhereBlobID(p fluent_ql.ValueP) {
-	f.Where(p.Field(bloblink.FieldBlobID))
+	f.Where(p.Field(blob_link.FieldBlobID))
 }
 
 // WhereLinkID applies the fluent_ql [16]byte predicate on the link_id field.
 func (f *BlobLinkFilter) WhereLinkID(p fluent_ql.ValueP) {
-	f.Where(p.Field(bloblink.FieldLinkID))
+	f.Where(p.Field(blob_link.FieldLinkID))
 }
 
 // WhereHasBlob applies a predicate to check if query has an edge blob.
@@ -1145,7 +1145,7 @@ func (f *IntSIDFilter) Where(p fluent_ql.P) {
 
 // WhereID applies the fluent_ql int64 predicate on the id field.
 func (f *IntSIDFilter) WhereID(p fluent_ql.Int64P) {
-	f.Where(p.Field(intsid.FieldID))
+	f.Where(p.Field(int_s_i_d.FieldID))
 }
 
 // WhereHasParent applies a predicate to check if query has an edge parent.
@@ -1258,17 +1258,17 @@ func (f *MixinIDFilter) Where(p fluent_ql.P) {
 
 // WhereID applies the fluent_ql [16]byte predicate on the id field.
 func (f *MixinIDFilter) WhereID(p fluent_ql.ValueP) {
-	f.Where(p.Field(mixinid.FieldID))
+	f.Where(p.Field(mixin_i_d.FieldID))
 }
 
 // WhereSomeField applies the fluent_ql string predicate on the some_field field.
 func (f *MixinIDFilter) WhereSomeField(p fluent_ql.StringP) {
-	f.Where(p.Field(mixinid.FieldSomeField))
+	f.Where(p.Field(mixin_i_d.FieldSomeField))
 }
 
 // WhereMixinField applies the fluent_ql string predicate on the mixin_field field.
 func (f *MixinIDFilter) WhereMixinField(p fluent_ql.StringP) {
-	f.Where(p.Field(mixinid.FieldMixinField))
+	f.Where(p.Field(mixin_i_d.FieldMixinField))
 }
 
 // addPredicate implements the predicateAdder interface.

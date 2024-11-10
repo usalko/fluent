@@ -21,7 +21,7 @@ type Card func(*dsl.Traversal)
 // Comment is the predicate function for comment builders.
 type Comment func(*dsl.Traversal)
 
-// ExValueScan is the predicate function for exvaluescan builders.
+// ExValueScan is the predicate function for ex_value_scan builders.
 type ExValueScan func(*dsl.Traversal)
 
 // ExValueScanOrErr calls the predicate only if the error is not nit.
@@ -35,13 +35,13 @@ func ExValueScanOrErr(p ExValueScan, err error) ExValueScan {
 	}
 }
 
-// FieldType is the predicate function for fieldtype builders.
+// FieldType is the predicate function for field_type builders.
 type FieldType func(*dsl.Traversal)
 
 // File is the predicate function for file builders.
 type File func(*dsl.Traversal)
 
-// FileType is the predicate function for filetype builders.
+// FileType is the predicate function for file_type builders.
 type FileType func(*dsl.Traversal)
 
 // Goods is the predicate function for goods builders.
@@ -50,7 +50,7 @@ type Goods func(*dsl.Traversal)
 // Group is the predicate function for group builders.
 type Group func(*dsl.Traversal)
 
-// GroupInfo is the predicate function for groupinfo builders.
+// GroupInfo is the predicate function for group_info builders.
 type GroupInfo func(*dsl.Traversal)
 
 // Item is the predicate function for item builders.
@@ -62,7 +62,7 @@ type License func(*dsl.Traversal)
 // Node is the predicate function for node builders.
 type Node func(*dsl.Traversal)
 
-// PC is the predicate function for pc builders.
+// PC is the predicate function for p_c builders.
 type PC func(*dsl.Traversal)
 
 // Pet is the predicate function for pet builders.

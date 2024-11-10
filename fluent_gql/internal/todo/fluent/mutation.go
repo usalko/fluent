@@ -24,18 +24,18 @@ import (
 	"github.com/google/uuid"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/billproduct"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/bill_product"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/friendship"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/group"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/onetomany"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/one_to_many"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/predicate"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/project"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/schema/customstruct"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/schema/schematype"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/todo"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/user"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/verysecret"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/very_secret"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/workspace"
 )
 
@@ -338,13 +338,13 @@ func (m *BillProductMutation) Type() string {
 func (m *BillProductMutation) Fields() []string {
 	fields := make([]string, 0, 3)
 	if m.name != nil {
-		fields = append(fields, billproduct.FieldName)
+		fields = append(fields, bill_product.FieldName)
 	}
 	if m.sku != nil {
-		fields = append(fields, billproduct.FieldSku)
+		fields = append(fields, bill_product.FieldSku)
 	}
 	if m.quantity != nil {
-		fields = append(fields, billproduct.FieldQuantity)
+		fields = append(fields, bill_product.FieldQuantity)
 	}
 	return fields
 }
@@ -354,11 +354,11 @@ func (m *BillProductMutation) Fields() []string {
 // schema.
 func (m *BillProductMutation) Field(name string) (fluent.Value, bool) {
 	switch name {
-	case billproduct.FieldName:
+	case bill_product.FieldName:
 		return m.Name()
-	case billproduct.FieldSku:
+	case bill_product.FieldSku:
 		return m.Sku()
-	case billproduct.FieldQuantity:
+	case bill_product.FieldQuantity:
 		return m.Quantity()
 	}
 	return nil, false
@@ -369,11 +369,11 @@ func (m *BillProductMutation) Field(name string) (fluent.Value, bool) {
 // database failed.
 func (m *BillProductMutation) OldField(ctx context.Context, name string) (fluent.Value, error) {
 	switch name {
-	case billproduct.FieldName:
+	case bill_product.FieldName:
 		return m.OldName(ctx)
-	case billproduct.FieldSku:
+	case bill_product.FieldSku:
 		return m.OldSku(ctx)
-	case billproduct.FieldQuantity:
+	case bill_product.FieldQuantity:
 		return m.OldQuantity(ctx)
 	}
 	return nil, fmt.Errorf("unknown BillProduct field %s", name)
@@ -384,21 +384,21 @@ func (m *BillProductMutation) OldField(ctx context.Context, name string) (fluent
 // type.
 func (m *BillProductMutation) SetField(name string, value fluent.Value) error {
 	switch name {
-	case billproduct.FieldName:
+	case bill_product.FieldName:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetName(v)
 		return nil
-	case billproduct.FieldSku:
+	case bill_product.FieldSku:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetSku(v)
 		return nil
-	case billproduct.FieldQuantity:
+	case bill_product.FieldQuantity:
 		v, ok := value.(uint64)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -414,7 +414,7 @@ func (m *BillProductMutation) SetField(name string, value fluent.Value) error {
 func (m *BillProductMutation) AddedFields() []string {
 	var fields []string
 	if m.addquantity != nil {
-		fields = append(fields, billproduct.FieldQuantity)
+		fields = append(fields, bill_product.FieldQuantity)
 	}
 	return fields
 }
@@ -424,7 +424,7 @@ func (m *BillProductMutation) AddedFields() []string {
 // was not set, or was not defined in the schema.
 func (m *BillProductMutation) AddedField(name string) (fluent.Value, bool) {
 	switch name {
-	case billproduct.FieldQuantity:
+	case bill_product.FieldQuantity:
 		return m.AddedQuantity()
 	}
 	return nil, false
@@ -435,7 +435,7 @@ func (m *BillProductMutation) AddedField(name string) (fluent.Value, bool) {
 // type.
 func (m *BillProductMutation) AddField(name string, value fluent.Value) error {
 	switch name {
-	case billproduct.FieldQuantity:
+	case bill_product.FieldQuantity:
 		v, ok := value.(int64)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -469,13 +469,13 @@ func (m *BillProductMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *BillProductMutation) ResetField(name string) error {
 	switch name {
-	case billproduct.FieldName:
+	case bill_product.FieldName:
 		m.ResetName()
 		return nil
-	case billproduct.FieldSku:
+	case bill_product.FieldSku:
 		m.ResetSku()
 		return nil
-	case billproduct.FieldQuantity:
+	case bill_product.FieldQuantity:
 		m.ResetQuantity()
 		return nil
 	}
@@ -2691,19 +2691,19 @@ func (m *OneToManyMutation) OldField2(ctx context.Context) (v string, err error)
 // ClearField2 clears the value of the "field2" field.
 func (m *OneToManyMutation) ClearField2() {
 	m.field2 = nil
-	m.clearedFields[onetomany.FieldField2] = struct{}{}
+	m.clearedFields[one_to_many.FieldField2] = struct{}{}
 }
 
 // Field2Cleared returns if the "field2" field was cleared in this mutation.
 func (m *OneToManyMutation) Field2Cleared() bool {
-	_, ok := m.clearedFields[onetomany.FieldField2]
+	_, ok := m.clearedFields[one_to_many.FieldField2]
 	return ok
 }
 
 // ResetField2 resets all changes to the "field2" field.
 func (m *OneToManyMutation) ResetField2() {
 	m.field2 = nil
-	delete(m.clearedFields, onetomany.FieldField2)
+	delete(m.clearedFields, one_to_many.FieldField2)
 }
 
 // SetParentID sets the "parent_id" field.
@@ -2740,25 +2740,25 @@ func (m *OneToManyMutation) OldParentID(ctx context.Context) (v int, err error) 
 // ClearParentID clears the value of the "parent_id" field.
 func (m *OneToManyMutation) ClearParentID() {
 	m.parent = nil
-	m.clearedFields[onetomany.FieldParentID] = struct{}{}
+	m.clearedFields[one_to_many.FieldParentID] = struct{}{}
 }
 
 // ParentIDCleared returns if the "parent_id" field was cleared in this mutation.
 func (m *OneToManyMutation) ParentIDCleared() bool {
-	_, ok := m.clearedFields[onetomany.FieldParentID]
+	_, ok := m.clearedFields[one_to_many.FieldParentID]
 	return ok
 }
 
 // ResetParentID resets all changes to the "parent_id" field.
 func (m *OneToManyMutation) ResetParentID() {
 	m.parent = nil
-	delete(m.clearedFields, onetomany.FieldParentID)
+	delete(m.clearedFields, one_to_many.FieldParentID)
 }
 
 // ClearParent clears the "parent" edge to the OneToMany entity.
 func (m *OneToManyMutation) ClearParent() {
 	m.clearedparent = true
-	m.clearedFields[onetomany.FieldParentID] = struct{}{}
+	m.clearedFields[one_to_many.FieldParentID] = struct{}{}
 }
 
 // ParentCleared reports if the "parent" edge to the OneToMany entity was cleared.
@@ -2872,13 +2872,13 @@ func (m *OneToManyMutation) Type() string {
 func (m *OneToManyMutation) Fields() []string {
 	fields := make([]string, 0, 3)
 	if m.name != nil {
-		fields = append(fields, onetomany.FieldName)
+		fields = append(fields, one_to_many.FieldName)
 	}
 	if m.field2 != nil {
-		fields = append(fields, onetomany.FieldField2)
+		fields = append(fields, one_to_many.FieldField2)
 	}
 	if m.parent != nil {
-		fields = append(fields, onetomany.FieldParentID)
+		fields = append(fields, one_to_many.FieldParentID)
 	}
 	return fields
 }
@@ -2888,11 +2888,11 @@ func (m *OneToManyMutation) Fields() []string {
 // schema.
 func (m *OneToManyMutation) Field(name string) (fluent.Value, bool) {
 	switch name {
-	case onetomany.FieldName:
+	case one_to_many.FieldName:
 		return m.Name()
-	case onetomany.FieldField2:
+	case one_to_many.FieldField2:
 		return m.Field2()
-	case onetomany.FieldParentID:
+	case one_to_many.FieldParentID:
 		return m.ParentID()
 	}
 	return nil, false
@@ -2903,11 +2903,11 @@ func (m *OneToManyMutation) Field(name string) (fluent.Value, bool) {
 // database failed.
 func (m *OneToManyMutation) OldField(ctx context.Context, name string) (fluent.Value, error) {
 	switch name {
-	case onetomany.FieldName:
+	case one_to_many.FieldName:
 		return m.OldName(ctx)
-	case onetomany.FieldField2:
+	case one_to_many.FieldField2:
 		return m.OldField2(ctx)
-	case onetomany.FieldParentID:
+	case one_to_many.FieldParentID:
 		return m.OldParentID(ctx)
 	}
 	return nil, fmt.Errorf("unknown OneToMany field %s", name)
@@ -2918,21 +2918,21 @@ func (m *OneToManyMutation) OldField(ctx context.Context, name string) (fluent.V
 // type.
 func (m *OneToManyMutation) SetField(name string, value fluent.Value) error {
 	switch name {
-	case onetomany.FieldName:
+	case one_to_many.FieldName:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetName(v)
 		return nil
-	case onetomany.FieldField2:
+	case one_to_many.FieldField2:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetField2(v)
 		return nil
-	case onetomany.FieldParentID:
+	case one_to_many.FieldParentID:
 		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -2972,11 +2972,11 @@ func (m *OneToManyMutation) AddField(name string, value fluent.Value) error {
 // mutation.
 func (m *OneToManyMutation) ClearedFields() []string {
 	var fields []string
-	if m.FieldCleared(onetomany.FieldField2) {
-		fields = append(fields, onetomany.FieldField2)
+	if m.FieldCleared(one_to_many.FieldField2) {
+		fields = append(fields, one_to_many.FieldField2)
 	}
-	if m.FieldCleared(onetomany.FieldParentID) {
-		fields = append(fields, onetomany.FieldParentID)
+	if m.FieldCleared(one_to_many.FieldParentID) {
+		fields = append(fields, one_to_many.FieldParentID)
 	}
 	return fields
 }
@@ -2992,10 +2992,10 @@ func (m *OneToManyMutation) FieldCleared(name string) bool {
 // error if the field is not defined in the schema.
 func (m *OneToManyMutation) ClearField(name string) error {
 	switch name {
-	case onetomany.FieldField2:
+	case one_to_many.FieldField2:
 		m.ClearField2()
 		return nil
-	case onetomany.FieldParentID:
+	case one_to_many.FieldParentID:
 		m.ClearParentID()
 		return nil
 	}
@@ -3006,13 +3006,13 @@ func (m *OneToManyMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *OneToManyMutation) ResetField(name string) error {
 	switch name {
-	case onetomany.FieldName:
+	case one_to_many.FieldName:
 		m.ResetName()
 		return nil
-	case onetomany.FieldField2:
+	case one_to_many.FieldField2:
 		m.ResetField2()
 		return nil
-	case onetomany.FieldParentID:
+	case one_to_many.FieldParentID:
 		m.ResetParentID()
 		return nil
 	}
@@ -3023,10 +3023,10 @@ func (m *OneToManyMutation) ResetField(name string) error {
 func (m *OneToManyMutation) AddedEdges() []string {
 	edges := make([]string, 0, 2)
 	if m.parent != nil {
-		edges = append(edges, onetomany.EdgeParent)
+		edges = append(edges, one_to_many.EdgeParent)
 	}
 	if m.children != nil {
-		edges = append(edges, onetomany.EdgeChildren)
+		edges = append(edges, one_to_many.EdgeChildren)
 	}
 	return edges
 }
@@ -3035,11 +3035,11 @@ func (m *OneToManyMutation) AddedEdges() []string {
 // name in this mutation.
 func (m *OneToManyMutation) AddedIDs(name string) []fluent.Value {
 	switch name {
-	case onetomany.EdgeParent:
+	case one_to_many.EdgeParent:
 		if id := m.parent; id != nil {
 			return []fluent.Value{*id}
 		}
-	case onetomany.EdgeChildren:
+	case one_to_many.EdgeChildren:
 		ids := make([]fluent.Value, 0, len(m.children))
 		for id := range m.children {
 			ids = append(ids, id)
@@ -3053,7 +3053,7 @@ func (m *OneToManyMutation) AddedIDs(name string) []fluent.Value {
 func (m *OneToManyMutation) RemovedEdges() []string {
 	edges := make([]string, 0, 2)
 	if m.removedchildren != nil {
-		edges = append(edges, onetomany.EdgeChildren)
+		edges = append(edges, one_to_many.EdgeChildren)
 	}
 	return edges
 }
@@ -3062,7 +3062,7 @@ func (m *OneToManyMutation) RemovedEdges() []string {
 // the given name in this mutation.
 func (m *OneToManyMutation) RemovedIDs(name string) []fluent.Value {
 	switch name {
-	case onetomany.EdgeChildren:
+	case one_to_many.EdgeChildren:
 		ids := make([]fluent.Value, 0, len(m.removedchildren))
 		for id := range m.removedchildren {
 			ids = append(ids, id)
@@ -3076,10 +3076,10 @@ func (m *OneToManyMutation) RemovedIDs(name string) []fluent.Value {
 func (m *OneToManyMutation) ClearedEdges() []string {
 	edges := make([]string, 0, 2)
 	if m.clearedparent {
-		edges = append(edges, onetomany.EdgeParent)
+		edges = append(edges, one_to_many.EdgeParent)
 	}
 	if m.clearedchildren {
-		edges = append(edges, onetomany.EdgeChildren)
+		edges = append(edges, one_to_many.EdgeChildren)
 	}
 	return edges
 }
@@ -3088,9 +3088,9 @@ func (m *OneToManyMutation) ClearedEdges() []string {
 // was cleared in this mutation.
 func (m *OneToManyMutation) EdgeCleared(name string) bool {
 	switch name {
-	case onetomany.EdgeParent:
+	case one_to_many.EdgeParent:
 		return m.clearedparent
-	case onetomany.EdgeChildren:
+	case one_to_many.EdgeChildren:
 		return m.clearedchildren
 	}
 	return false
@@ -3100,7 +3100,7 @@ func (m *OneToManyMutation) EdgeCleared(name string) bool {
 // if that edge is not defined in the schema.
 func (m *OneToManyMutation) ClearEdge(name string) error {
 	switch name {
-	case onetomany.EdgeParent:
+	case one_to_many.EdgeParent:
 		m.ClearParent()
 		return nil
 	}
@@ -3111,10 +3111,10 @@ func (m *OneToManyMutation) ClearEdge(name string) error {
 // It returns an error if the edge is not defined in the schema.
 func (m *OneToManyMutation) ResetEdge(name string) error {
 	switch name {
-	case onetomany.EdgeParent:
+	case one_to_many.EdgeParent:
 		m.ResetParent()
 		return nil
-	case onetomany.EdgeChildren:
+	case one_to_many.EdgeChildren:
 		m.ResetChildren()
 		return nil
 	}
@@ -5773,7 +5773,7 @@ func (m *VerySecretMutation) Type() string {
 func (m *VerySecretMutation) Fields() []string {
 	fields := make([]string, 0, 1)
 	if m.password != nil {
-		fields = append(fields, verysecret.FieldPassword)
+		fields = append(fields, very_secret.FieldPassword)
 	}
 	return fields
 }
@@ -5783,7 +5783,7 @@ func (m *VerySecretMutation) Fields() []string {
 // schema.
 func (m *VerySecretMutation) Field(name string) (fluent.Value, bool) {
 	switch name {
-	case verysecret.FieldPassword:
+	case very_secret.FieldPassword:
 		return m.Password()
 	}
 	return nil, false
@@ -5794,7 +5794,7 @@ func (m *VerySecretMutation) Field(name string) (fluent.Value, bool) {
 // database failed.
 func (m *VerySecretMutation) OldField(ctx context.Context, name string) (fluent.Value, error) {
 	switch name {
-	case verysecret.FieldPassword:
+	case very_secret.FieldPassword:
 		return m.OldPassword(ctx)
 	}
 	return nil, fmt.Errorf("unknown VerySecret field %s", name)
@@ -5805,7 +5805,7 @@ func (m *VerySecretMutation) OldField(ctx context.Context, name string) (fluent.
 // type.
 func (m *VerySecretMutation) SetField(name string, value fluent.Value) error {
 	switch name {
-	case verysecret.FieldPassword:
+	case very_secret.FieldPassword:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -5861,7 +5861,7 @@ func (m *VerySecretMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *VerySecretMutation) ResetField(name string) error {
 	switch name {
-	case verysecret.FieldPassword:
+	case very_secret.FieldPassword:
 		m.ResetPassword()
 		return nil
 	}

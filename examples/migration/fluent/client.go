@@ -23,7 +23,7 @@ import (
 	"github.com/usalko/fluent/examples/migration/fluent/payment"
 	"github.com/usalko/fluent/examples/migration/fluent/pet"
 	"github.com/usalko/fluent/examples/migration/fluent/session"
-	"github.com/usalko/fluent/examples/migration/fluent/sessiondevice"
+	"github.com/usalko/fluent/examples/migration/fluent/session_device"
 	"github.com/usalko/fluent/examples/migration/fluent/user"
 )
 
@@ -843,7 +843,7 @@ func (c *SessionClient) QueryDevice(s *Session) *SessionDeviceQuery {
 		id := s.ID
 		step := sqlgraph.NewStep(
 			sqlgraph.From(session.Table, session.FieldID, id),
-			sqlgraph.To(sessiondevice.Table, sessiondevice.FieldID),
+			sqlgraph.To(session_device.Table, session_device.FieldID),
 			sqlgraph.Edge(sqlgraph.M2O, true, session.DeviceTable, session.DeviceColumn),
 		)
 		fromV = sqlgraph.Neighbors(s.driver.Dialect(), step)
@@ -888,13 +888,13 @@ func NewSessionDeviceClient(c config) *SessionDeviceClient {
 }
 
 // Use adds a list of mutation hooks to the hooks stack.
-// A call to `Use(f, g, h)` equals to `sessiondevice.Hooks(f(g(h())))`.
+// A call to `Use(f, g, h)` equals to `session_device.Hooks(f(g(h())))`.
 func (c *SessionDeviceClient) Use(hooks ...Hook) {
 	c.hooks.SessionDevice = append(c.hooks.SessionDevice, hooks...)
 }
 
 // Intercept adds a list of query interceptors to the interceptors stack.
-// A call to `Intercept(f, g, h)` equals to `sessiondevice.Intercept(f(g(h())))`.
+// A call to `Intercept(f, g, h)` equals to `session_device.Intercept(f(g(h())))`.
 func (c *SessionDeviceClient) Intercept(interceptors ...Interceptor) {
 	c.inters.SessionDevice = append(c.inters.SessionDevice, interceptors...)
 }
@@ -956,7 +956,7 @@ func (c *SessionDeviceClient) DeleteOne(sd *SessionDevice) *SessionDeviceDeleteO
 
 // DeleteOneID returns a builder for deleting the given entity by its id.
 func (c *SessionDeviceClient) DeleteOneID(id uuid.UUID) *SessionDeviceDeleteOne {
-	builder := c.Delete().Where(sessiondevice.ID(id))
+	builder := c.Delete().Where(session_device.ID(id))
 	builder.mutation.id = &id
 	builder.mutation.op = OpDeleteOne
 	return &SessionDeviceDeleteOne{builder}
@@ -973,7 +973,7 @@ func (c *SessionDeviceClient) Query() *SessionDeviceQuery {
 
 // Get returns a SessionDevice entity by its id.
 func (c *SessionDeviceClient) Get(ctx context.Context, id uuid.UUID) (*SessionDevice, error) {
-	return c.Query().Where(sessiondevice.ID(id)).Only(ctx)
+	return c.Query().Where(session_device.ID(id)).Only(ctx)
 }
 
 // GetX is like Get, but panics if an error occurs.
@@ -991,9 +991,9 @@ func (c *SessionDeviceClient) QuerySessions(sd *SessionDevice) *SessionQuery {
 	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
 		id := sd.ID
 		step := sqlgraph.NewStep(
-			sqlgraph.From(sessiondevice.Table, sessiondevice.FieldID, id),
+			sqlgraph.From(session_device.Table, session_device.FieldID, id),
 			sqlgraph.To(session.Table, session.FieldID),
-			sqlgraph.Edge(sqlgraph.O2M, false, sessiondevice.SessionsTable, sessiondevice.SessionsColumn),
+			sqlgraph.Edge(sqlgraph.O2M, false, session_device.SessionsTable, session_device.SessionsColumn),
 		)
 		fromV = sqlgraph.Neighbors(sd.driver.Dialect(), step)
 		return fromV, nil

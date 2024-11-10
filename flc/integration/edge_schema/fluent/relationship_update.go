@@ -14,7 +14,7 @@ import (
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/predicate"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/relationship"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/relationshipinfo"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/relationship_info"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user"
 	"github.com/usalko/fluent/schema/field"
 )
@@ -261,7 +261,7 @@ func (ru *RelationshipUpdate) sqlSave(ctx context.Context) (n int, err error) {
 			Columns: []string{relationship.InfoColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(relationshipinfo.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(relationship_info.FieldID, field.TypeInt),
 			},
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
@@ -274,7 +274,7 @@ func (ru *RelationshipUpdate) sqlSave(ctx context.Context) (n int, err error) {
 			Columns: []string{relationship.InfoColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(relationshipinfo.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(relationship_info.FieldID, field.TypeInt),
 			},
 		}
 		for _, k := range nodes {
@@ -563,7 +563,7 @@ func (ruo *RelationshipUpdateOne) sqlSave(ctx context.Context) (_node *Relations
 			Columns: []string{relationship.InfoColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(relationshipinfo.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(relationship_info.FieldID, field.TypeInt),
 			},
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
@@ -576,7 +576,7 @@ func (ruo *RelationshipUpdateOne) sqlSave(ctx context.Context) (_node *Relations
 			Columns: []string{relationship.InfoColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(relationshipinfo.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(relationship_info.FieldID, field.TypeInt),
 			},
 		}
 		for _, k := range nodes {

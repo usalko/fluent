@@ -13,7 +13,7 @@ import (
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/relationship"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/relationshipinfo"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/relationship_info"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user"
 	"github.com/usalko/fluent/schema/field"
 )
@@ -211,7 +211,7 @@ func (rc *RelationshipCreate) createSpec() (*Relationship, *sqlgraph.CreateSpec)
 			Columns: []string{relationship.InfoColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(relationshipinfo.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(relationship_info.FieldID, field.TypeInt),
 			},
 		}
 		for _, k := range nodes {

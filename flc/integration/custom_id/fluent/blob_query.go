@@ -16,7 +16,7 @@ import (
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/blob"
-	"github.com/usalko/fluent/flc/integration/custom_id/fluent/bloblink"
+	"github.com/usalko/fluent/flc/integration/custom_id/fluent/blob_link"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/predicate"
 	"github.com/usalko/fluent/schema/field"
 )
@@ -125,7 +125,7 @@ func (bq *BlobQuery) QueryBlobLinks() *BlobLinkQuery {
 		}
 		step := sqlgraph.NewStep(
 			sqlgraph.From(blob.Table, blob.FieldID, selector),
-			sqlgraph.To(bloblink.Table, bloblink.BlobColumn),
+			sqlgraph.To(blob_link.Table, blob_link.BlobColumn),
 			sqlgraph.Edge(sqlgraph.O2M, true, blob.BlobLinksTable, blob.BlobLinksColumn),
 		)
 		fromU = sqlgraph.SetNeighbors(bq.driver.Dialect(), step)
@@ -604,7 +604,7 @@ func (bq *BlobQuery) loadBlobLinks(ctx context.Context, query *BlobLinkQuery, no
 		}
 	}
 	if len(query.ctx.Fields) > 0 {
-		query.ctx.AppendFieldOnce(bloblink.FieldBlobID)
+		query.ctx.AppendFieldOnce(blob_link.FieldBlobID)
 	}
 	query.Where(predicate.BlobLink(func(s *sql.Selector) {
 		s.Where(sql.InValues(s.C(blob.BlobLinksColumn), fks...))

@@ -16,7 +16,7 @@ import (
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/examples/migration/fluent/predicate"
 	"github.com/usalko/fluent/examples/migration/fluent/session"
-	"github.com/usalko/fluent/examples/migration/fluent/sessiondevice"
+	"github.com/usalko/fluent/examples/migration/fluent/session_device"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -77,7 +77,7 @@ func (sq *SessionQuery) QueryDevice() *SessionDeviceQuery {
 		}
 		step := sqlgraph.NewStep(
 			sqlgraph.From(session.Table, session.FieldID, selector),
-			sqlgraph.To(sessiondevice.Table, sessiondevice.FieldID),
+			sqlgraph.To(session_device.Table, session_device.FieldID),
 			sqlgraph.Edge(sqlgraph.M2O, true, session.DeviceTable, session.DeviceColumn),
 		)
 		fromU = sqlgraph.SetNeighbors(sq.driver.Dialect(), step)
@@ -418,7 +418,7 @@ func (sq *SessionQuery) loadDevice(ctx context.Context, query *SessionDeviceQuer
 	if len(ids) == 0 {
 		return nil
 	}
-	query.Where(sessiondevice.IDIn(ids...))
+	query.Where(session_device.IDIn(ids...))
 	neighbors, err := query.All(ctx)
 	if err != nil {
 		return err

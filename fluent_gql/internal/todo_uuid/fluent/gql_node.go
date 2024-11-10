@@ -22,7 +22,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/hashicorp/go-multierror"
 	"github.com/usalko/fluent/fluent_gql"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/billproduct"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/bill_product"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/friendship"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/group"
@@ -126,9 +126,9 @@ func (c *Client) Noder(ctx context.Context, id uuid.UUID, opts ...NodeOption) (_
 
 func (c *Client) noder(ctx context.Context, table string, id uuid.UUID) (Noder, error) {
 	switch table {
-	case billproduct.Table:
+	case bill_product.Table:
 		query := c.BillProduct.Query().
-			Where(billproduct.ID(id))
+			Where(bill_product.ID(id))
 		if fc := graphql.GetFieldContext(ctx); fc != nil {
 			if err := query.collectField(ctx, true, graphql.GetOperationContext(ctx), fc.Field, nil, billproductImplementors...); err != nil {
 				return nil, err
@@ -253,9 +253,9 @@ func (c *Client) noders(ctx context.Context, table string, ids []uuid.UUID) ([]N
 		idmap[id] = append(idmap[id], &noders[i])
 	}
 	switch table {
-	case billproduct.Table:
+	case bill_product.Table:
 		query := c.BillProduct.Query().
-			Where(billproduct.IDIn(ids...))
+			Where(bill_product.IDIn(ids...))
 		query, err := query.CollectFields(ctx, billproductImplementors...)
 		if err != nil {
 			return nil, err

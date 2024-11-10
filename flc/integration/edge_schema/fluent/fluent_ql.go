@@ -6,24 +6,24 @@
 package fluent
 
 import (
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/attachedfile"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/attached_file"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/file"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/friendship"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/group"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/grouptag"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/group_tag"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/predicate"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/process"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/relationship"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/relationshipinfo"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/relationship_info"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/role"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/roleuser"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/role_user"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tag"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweet"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweetlike"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweettag"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweet_like"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweet_tag"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/usergroup"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/usertweet"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user_group"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user_tweet"
 
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
@@ -36,18 +36,18 @@ var schemaGraph = func() *sqlgraph.Schema {
 	graph := &sqlgraph.Schema{Nodes: make([]*sqlgraph.Node, 17)}
 	graph.Nodes[0] = &sqlgraph.Node{
 		NodeSpec: sqlgraph.NodeSpec{
-			Table:   attachedfile.Table,
-			Columns: attachedfile.Columns,
+			Table:   attached_file.Table,
+			Columns: attached_file.Columns,
 			ID: &sqlgraph.FieldSpec{
 				Type:   field.TypeInt,
-				Column: attachedfile.FieldID,
+				Column: attached_file.FieldID,
 			},
 		},
 		Type: "AttachedFile",
 		Fields: map[string]*sqlgraph.FieldSpec{
-			attachedfile.FieldAttachTime: {Type: field.TypeTime, Column: attachedfile.FieldAttachTime},
-			attachedfile.FieldFID:        {Type: field.TypeInt, Column: attachedfile.FieldFID},
-			attachedfile.FieldProcID:     {Type: field.TypeInt, Column: attachedfile.FieldProcID},
+			attached_file.FieldAttachTime: {Type: field.TypeTime, Column: attached_file.FieldAttachTime},
+			attached_file.FieldFID:        {Type: field.TypeInt, Column: attached_file.FieldFID},
+			attached_file.FieldProcID:     {Type: field.TypeInt, Column: attached_file.FieldProcID},
 		},
 	}
 	graph.Nodes[1] = &sqlgraph.Node{
@@ -97,17 +97,17 @@ var schemaGraph = func() *sqlgraph.Schema {
 	}
 	graph.Nodes[4] = &sqlgraph.Node{
 		NodeSpec: sqlgraph.NodeSpec{
-			Table:   grouptag.Table,
-			Columns: grouptag.Columns,
+			Table:   group_tag.Table,
+			Columns: group_tag.Columns,
 			ID: &sqlgraph.FieldSpec{
 				Type:   field.TypeInt,
-				Column: grouptag.FieldID,
+				Column: group_tag.FieldID,
 			},
 		},
 		Type: "GroupTag",
 		Fields: map[string]*sqlgraph.FieldSpec{
-			grouptag.FieldTagID:   {Type: field.TypeInt, Column: grouptag.FieldTagID},
-			grouptag.FieldGroupID: {Type: field.TypeInt, Column: grouptag.FieldGroupID},
+			group_tag.FieldTagID:   {Type: field.TypeInt, Column: group_tag.FieldTagID},
+			group_tag.FieldGroupID: {Type: field.TypeInt, Column: group_tag.FieldGroupID},
 		},
 	}
 	graph.Nodes[5] = &sqlgraph.Node{
@@ -147,16 +147,16 @@ var schemaGraph = func() *sqlgraph.Schema {
 	}
 	graph.Nodes[7] = &sqlgraph.Node{
 		NodeSpec: sqlgraph.NodeSpec{
-			Table:   relationshipinfo.Table,
-			Columns: relationshipinfo.Columns,
+			Table:   relationship_info.Table,
+			Columns: relationship_info.Columns,
 			ID: &sqlgraph.FieldSpec{
 				Type:   field.TypeInt,
-				Column: relationshipinfo.FieldID,
+				Column: relationship_info.FieldID,
 			},
 		},
 		Type: "RelationshipInfo",
 		Fields: map[string]*sqlgraph.FieldSpec{
-			relationshipinfo.FieldText: {Type: field.TypeString, Column: relationshipinfo.FieldText},
+			relationship_info.FieldText: {Type: field.TypeString, Column: relationship_info.FieldText},
 		},
 	}
 	graph.Nodes[8] = &sqlgraph.Node{
@@ -176,24 +176,24 @@ var schemaGraph = func() *sqlgraph.Schema {
 	}
 	graph.Nodes[9] = &sqlgraph.Node{
 		NodeSpec: sqlgraph.NodeSpec{
-			Table:   roleuser.Table,
-			Columns: roleuser.Columns,
+			Table:   role_user.Table,
+			Columns: role_user.Columns,
 			CompositeID: []*sqlgraph.FieldSpec{
 				{
 					Type:   field.TypeInt,
-					Column: roleuser.FieldUserID,
+					Column: role_user.FieldUserID,
 				},
 				{
 					Type:   field.TypeInt,
-					Column: roleuser.FieldRoleID,
+					Column: role_user.FieldRoleID,
 				},
 			},
 		},
 		Type: "RoleUser",
 		Fields: map[string]*sqlgraph.FieldSpec{
-			roleuser.FieldCreatedAt: {Type: field.TypeTime, Column: roleuser.FieldCreatedAt},
-			roleuser.FieldRoleID:    {Type: field.TypeInt, Column: roleuser.FieldRoleID},
-			roleuser.FieldUserID:    {Type: field.TypeInt, Column: roleuser.FieldUserID},
+			role_user.FieldCreatedAt: {Type: field.TypeTime, Column: role_user.FieldCreatedAt},
+			role_user.FieldRoleID:    {Type: field.TypeInt, Column: role_user.FieldRoleID},
+			role_user.FieldUserID:    {Type: field.TypeInt, Column: role_user.FieldUserID},
 		},
 	}
 	graph.Nodes[10] = &sqlgraph.Node{
@@ -226,40 +226,40 @@ var schemaGraph = func() *sqlgraph.Schema {
 	}
 	graph.Nodes[12] = &sqlgraph.Node{
 		NodeSpec: sqlgraph.NodeSpec{
-			Table:   tweetlike.Table,
-			Columns: tweetlike.Columns,
+			Table:   tweet_like.Table,
+			Columns: tweet_like.Columns,
 			CompositeID: []*sqlgraph.FieldSpec{
 				{
 					Type:   field.TypeInt,
-					Column: tweetlike.FieldUserID,
+					Column: tweet_like.FieldUserID,
 				},
 				{
 					Type:   field.TypeInt,
-					Column: tweetlike.FieldTweetID,
+					Column: tweet_like.FieldTweetID,
 				},
 			},
 		},
 		Type: "TweetLike",
 		Fields: map[string]*sqlgraph.FieldSpec{
-			tweetlike.FieldLikedAt: {Type: field.TypeTime, Column: tweetlike.FieldLikedAt},
-			tweetlike.FieldUserID:  {Type: field.TypeInt, Column: tweetlike.FieldUserID},
-			tweetlike.FieldTweetID: {Type: field.TypeInt, Column: tweetlike.FieldTweetID},
+			tweet_like.FieldLikedAt: {Type: field.TypeTime, Column: tweet_like.FieldLikedAt},
+			tweet_like.FieldUserID:  {Type: field.TypeInt, Column: tweet_like.FieldUserID},
+			tweet_like.FieldTweetID: {Type: field.TypeInt, Column: tweet_like.FieldTweetID},
 		},
 	}
 	graph.Nodes[13] = &sqlgraph.Node{
 		NodeSpec: sqlgraph.NodeSpec{
-			Table:   tweettag.Table,
-			Columns: tweettag.Columns,
+			Table:   tweet_tag.Table,
+			Columns: tweet_tag.Columns,
 			ID: &sqlgraph.FieldSpec{
 				Type:   field.TypeUUID,
-				Column: tweettag.FieldID,
+				Column: tweet_tag.FieldID,
 			},
 		},
 		Type: "TweetTag",
 		Fields: map[string]*sqlgraph.FieldSpec{
-			tweettag.FieldAddedAt: {Type: field.TypeTime, Column: tweettag.FieldAddedAt},
-			tweettag.FieldTagID:   {Type: field.TypeInt, Column: tweettag.FieldTagID},
-			tweettag.FieldTweetID: {Type: field.TypeInt, Column: tweettag.FieldTweetID},
+			tweet_tag.FieldAddedAt: {Type: field.TypeTime, Column: tweet_tag.FieldAddedAt},
+			tweet_tag.FieldTagID:   {Type: field.TypeInt, Column: tweet_tag.FieldTagID},
+			tweet_tag.FieldTweetID: {Type: field.TypeInt, Column: tweet_tag.FieldTweetID},
 		},
 	}
 	graph.Nodes[14] = &sqlgraph.Node{
@@ -278,34 +278,34 @@ var schemaGraph = func() *sqlgraph.Schema {
 	}
 	graph.Nodes[15] = &sqlgraph.Node{
 		NodeSpec: sqlgraph.NodeSpec{
-			Table:   usergroup.Table,
-			Columns: usergroup.Columns,
+			Table:   user_group.Table,
+			Columns: user_group.Columns,
 			ID: &sqlgraph.FieldSpec{
 				Type:   field.TypeInt,
-				Column: usergroup.FieldID,
+				Column: user_group.FieldID,
 			},
 		},
 		Type: "UserGroup",
 		Fields: map[string]*sqlgraph.FieldSpec{
-			usergroup.FieldJoinedAt: {Type: field.TypeTime, Column: usergroup.FieldJoinedAt},
-			usergroup.FieldUserID:   {Type: field.TypeInt, Column: usergroup.FieldUserID},
-			usergroup.FieldGroupID:  {Type: field.TypeInt, Column: usergroup.FieldGroupID},
+			user_group.FieldJoinedAt: {Type: field.TypeTime, Column: user_group.FieldJoinedAt},
+			user_group.FieldUserID:   {Type: field.TypeInt, Column: user_group.FieldUserID},
+			user_group.FieldGroupID:  {Type: field.TypeInt, Column: user_group.FieldGroupID},
 		},
 	}
 	graph.Nodes[16] = &sqlgraph.Node{
 		NodeSpec: sqlgraph.NodeSpec{
-			Table:   usertweet.Table,
-			Columns: usertweet.Columns,
+			Table:   user_tweet.Table,
+			Columns: user_tweet.Columns,
 			ID: &sqlgraph.FieldSpec{
 				Type:   field.TypeInt,
-				Column: usertweet.FieldID,
+				Column: user_tweet.FieldID,
 			},
 		},
 		Type: "UserTweet",
 		Fields: map[string]*sqlgraph.FieldSpec{
-			usertweet.FieldCreatedAt: {Type: field.TypeTime, Column: usertweet.FieldCreatedAt},
-			usertweet.FieldUserID:    {Type: field.TypeInt, Column: usertweet.FieldUserID},
-			usertweet.FieldTweetID:   {Type: field.TypeInt, Column: usertweet.FieldTweetID},
+			user_tweet.FieldCreatedAt: {Type: field.TypeTime, Column: user_tweet.FieldCreatedAt},
+			user_tweet.FieldUserID:    {Type: field.TypeInt, Column: user_tweet.FieldUserID},
+			user_tweet.FieldTweetID:   {Type: field.TypeInt, Column: user_tweet.FieldTweetID},
 		},
 	}
 	graph.MustAddE(
@@ -313,8 +313,8 @@ var schemaGraph = func() *sqlgraph.Schema {
 		&sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: false,
-			Table:   attachedfile.FiTable,
-			Columns: []string{attachedfile.FiColumn},
+			Table:   attached_file.FiTable,
+			Columns: []string{attached_file.FiColumn},
 			Bidi:    false,
 		},
 		"AttachedFile",
@@ -325,8 +325,8 @@ var schemaGraph = func() *sqlgraph.Schema {
 		&sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: false,
-			Table:   attachedfile.ProcTable,
-			Columns: []string{attachedfile.ProcColumn},
+			Table:   attached_file.ProcTable,
+			Columns: []string{attached_file.ProcColumn},
 			Bidi:    false,
 		},
 		"AttachedFile",
@@ -421,8 +421,8 @@ var schemaGraph = func() *sqlgraph.Schema {
 		&sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: false,
-			Table:   grouptag.TagTable,
-			Columns: []string{grouptag.TagColumn},
+			Table:   group_tag.TagTable,
+			Columns: []string{group_tag.TagColumn},
 			Bidi:    false,
 		},
 		"GroupTag",
@@ -433,8 +433,8 @@ var schemaGraph = func() *sqlgraph.Schema {
 		&sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: false,
-			Table:   grouptag.GroupTable,
-			Columns: []string{grouptag.GroupColumn},
+			Table:   group_tag.GroupTable,
+			Columns: []string{group_tag.GroupColumn},
 			Bidi:    false,
 		},
 		"GroupTag",
@@ -529,8 +529,8 @@ var schemaGraph = func() *sqlgraph.Schema {
 		&sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: false,
-			Table:   roleuser.RoleTable,
-			Columns: []string{roleuser.RoleColumn},
+			Table:   role_user.RoleTable,
+			Columns: []string{role_user.RoleColumn},
 			Bidi:    false,
 		},
 		"RoleUser",
@@ -541,8 +541,8 @@ var schemaGraph = func() *sqlgraph.Schema {
 		&sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: false,
-			Table:   roleuser.UserTable,
-			Columns: []string{roleuser.UserColumn},
+			Table:   role_user.UserTable,
+			Columns: []string{role_user.UserColumn},
 			Bidi:    false,
 		},
 		"RoleUser",
@@ -673,8 +673,8 @@ var schemaGraph = func() *sqlgraph.Schema {
 		&sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: false,
-			Table:   tweetlike.TweetTable,
-			Columns: []string{tweetlike.TweetColumn},
+			Table:   tweet_like.TweetTable,
+			Columns: []string{tweet_like.TweetColumn},
 			Bidi:    false,
 		},
 		"TweetLike",
@@ -685,8 +685,8 @@ var schemaGraph = func() *sqlgraph.Schema {
 		&sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: false,
-			Table:   tweetlike.UserTable,
-			Columns: []string{tweetlike.UserColumn},
+			Table:   tweet_like.UserTable,
+			Columns: []string{tweet_like.UserColumn},
 			Bidi:    false,
 		},
 		"TweetLike",
@@ -697,8 +697,8 @@ var schemaGraph = func() *sqlgraph.Schema {
 		&sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: false,
-			Table:   tweettag.TagTable,
-			Columns: []string{tweettag.TagColumn},
+			Table:   tweet_tag.TagTable,
+			Columns: []string{tweet_tag.TagColumn},
 			Bidi:    false,
 		},
 		"TweetTag",
@@ -709,8 +709,8 @@ var schemaGraph = func() *sqlgraph.Schema {
 		&sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: false,
-			Table:   tweettag.TweetTable,
-			Columns: []string{tweettag.TweetColumn},
+			Table:   tweet_tag.TweetTable,
+			Columns: []string{tweet_tag.TweetColumn},
 			Bidi:    false,
 		},
 		"TweetTag",
@@ -865,8 +865,8 @@ var schemaGraph = func() *sqlgraph.Schema {
 		&sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: false,
-			Table:   usergroup.UserTable,
-			Columns: []string{usergroup.UserColumn},
+			Table:   user_group.UserTable,
+			Columns: []string{user_group.UserColumn},
 			Bidi:    false,
 		},
 		"UserGroup",
@@ -877,8 +877,8 @@ var schemaGraph = func() *sqlgraph.Schema {
 		&sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: false,
-			Table:   usergroup.GroupTable,
-			Columns: []string{usergroup.GroupColumn},
+			Table:   user_group.GroupTable,
+			Columns: []string{user_group.GroupColumn},
 			Bidi:    false,
 		},
 		"UserGroup",
@@ -889,8 +889,8 @@ var schemaGraph = func() *sqlgraph.Schema {
 		&sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: false,
-			Table:   usertweet.UserTable,
-			Columns: []string{usertweet.UserColumn},
+			Table:   user_tweet.UserTable,
+			Columns: []string{user_tweet.UserColumn},
 			Bidi:    false,
 		},
 		"UserTweet",
@@ -901,8 +901,8 @@ var schemaGraph = func() *sqlgraph.Schema {
 		&sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: false,
-			Table:   usertweet.TweetTable,
-			Columns: []string{usertweet.TweetColumn},
+			Table:   user_tweet.TweetTable,
+			Columns: []string{user_tweet.TweetColumn},
 			Bidi:    false,
 		},
 		"UserTweet",
@@ -954,22 +954,22 @@ func (f *AttachedFileFilter) Where(p fluent_ql.P) {
 
 // WhereID applies the fluent_ql int predicate on the id field.
 func (f *AttachedFileFilter) WhereID(p fluent_ql.IntP) {
-	f.Where(p.Field(attachedfile.FieldID))
+	f.Where(p.Field(attached_file.FieldID))
 }
 
 // WhereAttachTime applies the fluent_ql time.Time predicate on the attach_time field.
 func (f *AttachedFileFilter) WhereAttachTime(p fluent_ql.TimeP) {
-	f.Where(p.Field(attachedfile.FieldAttachTime))
+	f.Where(p.Field(attached_file.FieldAttachTime))
 }
 
 // WhereFID applies the fluent_ql int predicate on the f_id field.
 func (f *AttachedFileFilter) WhereFID(p fluent_ql.IntP) {
-	f.Where(p.Field(attachedfile.FieldFID))
+	f.Where(p.Field(attached_file.FieldFID))
 }
 
 // WhereProcID applies the fluent_ql int predicate on the proc_id field.
 func (f *AttachedFileFilter) WhereProcID(p fluent_ql.IntP) {
-	f.Where(p.Field(attachedfile.FieldProcID))
+	f.Where(p.Field(attached_file.FieldProcID))
 }
 
 // WhereHasFi applies a predicate to check if query has an edge fi.
@@ -1285,17 +1285,17 @@ func (f *GroupTagFilter) Where(p fluent_ql.P) {
 
 // WhereID applies the fluent_ql int predicate on the id field.
 func (f *GroupTagFilter) WhereID(p fluent_ql.IntP) {
-	f.Where(p.Field(grouptag.FieldID))
+	f.Where(p.Field(group_tag.FieldID))
 }
 
 // WhereTagID applies the fluent_ql int predicate on the tag_id field.
 func (f *GroupTagFilter) WhereTagID(p fluent_ql.IntP) {
-	f.Where(p.Field(grouptag.FieldTagID))
+	f.Where(p.Field(group_tag.FieldTagID))
 }
 
 // WhereGroupID applies the fluent_ql int predicate on the group_id field.
 func (f *GroupTagFilter) WhereGroupID(p fluent_ql.IntP) {
-	f.Where(p.Field(grouptag.FieldGroupID))
+	f.Where(p.Field(group_tag.FieldGroupID))
 }
 
 // WhereHasTag applies a predicate to check if query has an edge tag.
@@ -1528,12 +1528,12 @@ func (f *RelationshipInfoFilter) Where(p fluent_ql.P) {
 
 // WhereID applies the fluent_ql int predicate on the id field.
 func (f *RelationshipInfoFilter) WhereID(p fluent_ql.IntP) {
-	f.Where(p.Field(relationshipinfo.FieldID))
+	f.Where(p.Field(relationship_info.FieldID))
 }
 
 // WhereText applies the fluent_ql string predicate on the text field.
 func (f *RelationshipInfoFilter) WhereText(p fluent_ql.StringP) {
-	f.Where(p.Field(relationshipinfo.FieldText))
+	f.Where(p.Field(relationship_info.FieldText))
 }
 
 // addPredicate implements the predicateAdder interface.
@@ -1651,17 +1651,17 @@ func (f *RoleUserFilter) Where(p fluent_ql.P) {
 
 // WhereCreatedAt applies the fluent_ql time.Time predicate on the created_at field.
 func (f *RoleUserFilter) WhereCreatedAt(p fluent_ql.TimeP) {
-	f.Where(p.Field(roleuser.FieldCreatedAt))
+	f.Where(p.Field(role_user.FieldCreatedAt))
 }
 
 // WhereRoleID applies the fluent_ql int predicate on the role_id field.
 func (f *RoleUserFilter) WhereRoleID(p fluent_ql.IntP) {
-	f.Where(p.Field(roleuser.FieldRoleID))
+	f.Where(p.Field(role_user.FieldRoleID))
 }
 
 // WhereUserID applies the fluent_ql int predicate on the user_id field.
 func (f *RoleUserFilter) WhereUserID(p fluent_ql.IntP) {
-	f.Where(p.Field(roleuser.FieldUserID))
+	f.Where(p.Field(role_user.FieldUserID))
 }
 
 // WhereHasRole applies a predicate to check if query has an edge role.
@@ -1959,17 +1959,17 @@ func (f *TweetLikeFilter) Where(p fluent_ql.P) {
 
 // WhereLikedAt applies the fluent_ql time.Time predicate on the liked_at field.
 func (f *TweetLikeFilter) WhereLikedAt(p fluent_ql.TimeP) {
-	f.Where(p.Field(tweetlike.FieldLikedAt))
+	f.Where(p.Field(tweet_like.FieldLikedAt))
 }
 
 // WhereUserID applies the fluent_ql int predicate on the user_id field.
 func (f *TweetLikeFilter) WhereUserID(p fluent_ql.IntP) {
-	f.Where(p.Field(tweetlike.FieldUserID))
+	f.Where(p.Field(tweet_like.FieldUserID))
 }
 
 // WhereTweetID applies the fluent_ql int predicate on the tweet_id field.
 func (f *TweetLikeFilter) WhereTweetID(p fluent_ql.IntP) {
-	f.Where(p.Field(tweetlike.FieldTweetID))
+	f.Where(p.Field(tweet_like.FieldTweetID))
 }
 
 // WhereHasTweet applies a predicate to check if query has an edge tweet.
@@ -2037,22 +2037,22 @@ func (f *TweetTagFilter) Where(p fluent_ql.P) {
 
 // WhereID applies the fluent_ql [16]byte predicate on the id field.
 func (f *TweetTagFilter) WhereID(p fluent_ql.ValueP) {
-	f.Where(p.Field(tweettag.FieldID))
+	f.Where(p.Field(tweet_tag.FieldID))
 }
 
 // WhereAddedAt applies the fluent_ql time.Time predicate on the added_at field.
 func (f *TweetTagFilter) WhereAddedAt(p fluent_ql.TimeP) {
-	f.Where(p.Field(tweettag.FieldAddedAt))
+	f.Where(p.Field(tweet_tag.FieldAddedAt))
 }
 
 // WhereTagID applies the fluent_ql int predicate on the tag_id field.
 func (f *TweetTagFilter) WhereTagID(p fluent_ql.IntP) {
-	f.Where(p.Field(tweettag.FieldTagID))
+	f.Where(p.Field(tweet_tag.FieldTagID))
 }
 
 // WhereTweetID applies the fluent_ql int predicate on the tweet_id field.
 func (f *TweetTagFilter) WhereTweetID(p fluent_ql.IntP) {
-	f.Where(p.Field(tweettag.FieldTweetID))
+	f.Where(p.Field(tweet_tag.FieldTweetID))
 }
 
 // WhereHasTag applies a predicate to check if query has an edge tag.
@@ -2333,22 +2333,22 @@ func (f *UserGroupFilter) Where(p fluent_ql.P) {
 
 // WhereID applies the fluent_ql int predicate on the id field.
 func (f *UserGroupFilter) WhereID(p fluent_ql.IntP) {
-	f.Where(p.Field(usergroup.FieldID))
+	f.Where(p.Field(user_group.FieldID))
 }
 
 // WhereJoinedAt applies the fluent_ql time.Time predicate on the joined_at field.
 func (f *UserGroupFilter) WhereJoinedAt(p fluent_ql.TimeP) {
-	f.Where(p.Field(usergroup.FieldJoinedAt))
+	f.Where(p.Field(user_group.FieldJoinedAt))
 }
 
 // WhereUserID applies the fluent_ql int predicate on the user_id field.
 func (f *UserGroupFilter) WhereUserID(p fluent_ql.IntP) {
-	f.Where(p.Field(usergroup.FieldUserID))
+	f.Where(p.Field(user_group.FieldUserID))
 }
 
 // WhereGroupID applies the fluent_ql int predicate on the group_id field.
 func (f *UserGroupFilter) WhereGroupID(p fluent_ql.IntP) {
-	f.Where(p.Field(usergroup.FieldGroupID))
+	f.Where(p.Field(user_group.FieldGroupID))
 }
 
 // WhereHasUser applies a predicate to check if query has an edge user.
@@ -2416,22 +2416,22 @@ func (f *UserTweetFilter) Where(p fluent_ql.P) {
 
 // WhereID applies the fluent_ql int predicate on the id field.
 func (f *UserTweetFilter) WhereID(p fluent_ql.IntP) {
-	f.Where(p.Field(usertweet.FieldID))
+	f.Where(p.Field(user_tweet.FieldID))
 }
 
 // WhereCreatedAt applies the fluent_ql time.Time predicate on the created_at field.
 func (f *UserTweetFilter) WhereCreatedAt(p fluent_ql.TimeP) {
-	f.Where(p.Field(usertweet.FieldCreatedAt))
+	f.Where(p.Field(user_tweet.FieldCreatedAt))
 }
 
 // WhereUserID applies the fluent_ql int predicate on the user_id field.
 func (f *UserTweetFilter) WhereUserID(p fluent_ql.IntP) {
-	f.Where(p.Field(usertweet.FieldUserID))
+	f.Where(p.Field(user_tweet.FieldUserID))
 }
 
 // WhereTweetID applies the fluent_ql int predicate on the tweet_id field.
 func (f *UserTweetFilter) WhereTweetID(p fluent_ql.IntP) {
-	f.Where(p.Field(usertweet.FieldTweetID))
+	f.Where(p.Field(user_tweet.FieldTweetID))
 }
 
 // WhereHasUser applies a predicate to check if query has an edge user.

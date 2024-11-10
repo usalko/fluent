@@ -25,7 +25,7 @@ import (
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/schema/customstruct"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/todo"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/verysecret"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/very_secret"
 )
 
 // Todo is the model entity for the Todo schema.
@@ -118,7 +118,7 @@ func (e TodoEdges) SecretOrErr() (*VerySecret, error) {
 	if e.Secret != nil {
 		return e.Secret, nil
 	} else if e.loadedTypes[3] {
-		return nil, &NotFoundError{label: verysecret.Label}
+		return nil, &NotFoundError{label: very_secret.Label}
 	}
 	return nil, &NotLoadedError{edge: "secret"}
 }

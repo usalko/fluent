@@ -6,13 +6,13 @@ import (
 	"github.com/usalko/fluent/dialect/sql"
 )
 
-// CleanUser is the predicate function for cleanuser builders.
+// CleanUser is the predicate function for clean_user builders.
 type CleanUser func(*sql.Selector)
 
 // Pet is the predicate function for pet builders.
 type Pet func(*sql.Selector)
 
-// PetUserName is the predicate function for petusername builders.
+// PetUserName is the predicate function for pet_user_name builders.
 type PetUserName func(*sql.Selector)
 
 // User is the predicate function for user builders.

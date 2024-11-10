@@ -12,9 +12,9 @@ import (
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
-	"github.com/usalko/fluent/examples/viewcomposite/fluent/cleanuser"
+	"github.com/usalko/fluent/examples/viewcomposite/fluent/clean_user"
 	"github.com/usalko/fluent/examples/viewcomposite/fluent/pet"
-	"github.com/usalko/fluent/examples/viewcomposite/fluent/petusername"
+	"github.com/usalko/fluent/examples/viewcomposite/fluent/pet_user_name"
 	"github.com/usalko/fluent/examples/viewcomposite/fluent/user"
 )
 
@@ -76,10 +76,10 @@ var (
 func checkColumn(table, column string) error {
 	initCheck.Do(func() {
 		columnCheck = sql.NewColumnCheck(map[string]func(string) bool{
-			cleanuser.Table:   cleanuser.ValidColumn,
-			pet.Table:         pet.ValidColumn,
-			petusername.Table: petusername.ValidColumn,
-			user.Table:        user.ValidColumn,
+			clean_user.Table:    clean_user.ValidColumn,
+			pet.Table:           pet.ValidColumn,
+			pet_user_name.Table: pet_user_name.ValidColumn,
+			user.Table:          user.ValidColumn,
 		})
 	})
 	return columnCheck(table, column)

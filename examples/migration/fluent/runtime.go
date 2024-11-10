@@ -12,7 +12,7 @@ import (
 	"github.com/usalko/fluent/examples/migration/fluent/pet"
 	"github.com/usalko/fluent/examples/migration/fluent/schema"
 	"github.com/usalko/fluent/examples/migration/fluent/session"
-	"github.com/usalko/fluent/examples/migration/fluent/sessiondevice"
+	"github.com/usalko/fluent/examples/migration/fluent/session_device"
 )
 
 // The init function reads all schema descriptors with runtime code
@@ -55,22 +55,22 @@ func init() {
 	sessionDescID := sessionFields[0].Descriptor()
 	// session.DefaultID holds the default value on creation for the id field.
 	session.DefaultID = sessionDescID.Default.(func() uuid.UUID)
-	sessiondeviceFields := schema.SessionDevice{}.Fields()
-	_ = sessiondeviceFields
-	// sessiondeviceDescIPAddress is the schema descriptor for ip_address field.
-	sessiondeviceDescIPAddress := sessiondeviceFields[1].Descriptor()
-	// sessiondevice.IPAddressValidator is a validator for the "ip_address" field. It is called by the builders before save.
-	sessiondevice.IPAddressValidator = sessiondeviceDescIPAddress.Validators[0].(func(string) error)
-	// sessiondeviceDescUserAgent is the schema descriptor for user_agent field.
-	sessiondeviceDescUserAgent := sessiondeviceFields[2].Descriptor()
-	// sessiondevice.UserAgentValidator is a validator for the "user_agent" field. It is called by the builders before save.
-	sessiondevice.UserAgentValidator = sessiondeviceDescUserAgent.Validators[0].(func(string) error)
-	// sessiondeviceDescLocation is the schema descriptor for location field.
-	sessiondeviceDescLocation := sessiondeviceFields[3].Descriptor()
-	// sessiondevice.LocationValidator is a validator for the "location" field. It is called by the builders before save.
-	sessiondevice.LocationValidator = sessiondeviceDescLocation.Validators[0].(func(string) error)
-	// sessiondeviceDescID is the schema descriptor for id field.
-	sessiondeviceDescID := sessiondeviceFields[0].Descriptor()
-	// sessiondevice.DefaultID holds the default value on creation for the id field.
-	sessiondevice.DefaultID = sessiondeviceDescID.Default.(func() uuid.UUID)
+	session_deviceFields := schema.SessionDevice{}.Fields()
+	_ = session_deviceFields
+	// session_deviceDescIPAddress is the schema descriptor for ip_address field.
+	session_deviceDescIPAddress := session_deviceFields[1].Descriptor()
+	// session_device.IPAddressValidator is a validator for the "ip_address" field. It is called by the builders before save.
+	session_device.IPAddressValidator = session_deviceDescIPAddress.Validators[0].(func(string) error)
+	// session_deviceDescUserAgent is the schema descriptor for user_agent field.
+	session_deviceDescUserAgent := session_deviceFields[2].Descriptor()
+	// session_device.UserAgentValidator is a validator for the "user_agent" field. It is called by the builders before save.
+	session_device.UserAgentValidator = session_deviceDescUserAgent.Validators[0].(func(string) error)
+	// session_deviceDescLocation is the schema descriptor for location field.
+	session_deviceDescLocation := session_deviceFields[3].Descriptor()
+	// session_device.LocationValidator is a validator for the "location" field. It is called by the builders before save.
+	session_device.LocationValidator = session_deviceDescLocation.Validators[0].(func(string) error)
+	// session_deviceDescID is the schema descriptor for id field.
+	session_deviceDescID := session_deviceFields[0].Descriptor()
+	// session_device.DefaultID holds the default value on creation for the id field.
+	session_device.DefaultID = session_deviceDescID.Default.(func() uuid.UUID)
 }

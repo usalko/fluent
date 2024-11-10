@@ -12,7 +12,7 @@ import (
 
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/attachedfile"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/attached_file"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/file"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/predicate"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/process"
@@ -210,7 +210,7 @@ func (pu *ProcessUpdate) sqlSave(ctx context.Context) (n int, err error) {
 			Columns: []string{process.AttachedFilesColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(attachedfile.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(attached_file.FieldID, field.TypeInt),
 			},
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
@@ -223,7 +223,7 @@ func (pu *ProcessUpdate) sqlSave(ctx context.Context) (n int, err error) {
 			Columns: []string{process.AttachedFilesColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(attachedfile.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(attached_file.FieldID, field.TypeInt),
 			},
 		}
 		for _, k := range nodes {
@@ -239,7 +239,7 @@ func (pu *ProcessUpdate) sqlSave(ctx context.Context) (n int, err error) {
 			Columns: []string{process.AttachedFilesColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(attachedfile.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(attached_file.FieldID, field.TypeInt),
 			},
 		}
 		for _, k := range nodes {
@@ -475,7 +475,7 @@ func (puo *ProcessUpdateOne) sqlSave(ctx context.Context) (_node *Process, err e
 			Columns: []string{process.AttachedFilesColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(attachedfile.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(attached_file.FieldID, field.TypeInt),
 			},
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
@@ -488,7 +488,7 @@ func (puo *ProcessUpdateOne) sqlSave(ctx context.Context) (_node *Process, err e
 			Columns: []string{process.AttachedFilesColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(attachedfile.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(attached_file.FieldID, field.TypeInt),
 			},
 		}
 		for _, k := range nodes {
@@ -504,7 +504,7 @@ func (puo *ProcessUpdateOne) sqlSave(ctx context.Context) (_node *Process, err e
 			Columns: []string{process.AttachedFilesColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(attachedfile.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(attached_file.FieldID, field.TypeInt),
 			},
 		}
 		for _, k := range nodes {

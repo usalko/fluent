@@ -24,15 +24,15 @@ import (
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/billproduct"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/bill_product"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/friendship"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/group"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/onetomany"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/one_to_many"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/project"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/todo"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/user"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/verysecret"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/very_secret"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/workspace"
 )
 
@@ -94,16 +94,16 @@ var (
 func checkColumn(table, column string) error {
 	initCheck.Do(func() {
 		columnCheck = sql.NewColumnCheck(map[string]func(string) bool{
-			billproduct.Table: billproduct.ValidColumn,
-			category.Table:    category.ValidColumn,
-			friendship.Table:  friendship.ValidColumn,
-			group.Table:       group.ValidColumn,
-			onetomany.Table:   onetomany.ValidColumn,
-			project.Table:     project.ValidColumn,
-			todo.Table:        todo.ValidColumn,
-			user.Table:        user.ValidColumn,
-			verysecret.Table:  verysecret.ValidColumn,
-			workspace.Table:   workspace.ValidColumn,
+			bill_product.Table: bill_product.ValidColumn,
+			category.Table:     category.ValidColumn,
+			friendship.Table:   friendship.ValidColumn,
+			group.Table:        group.ValidColumn,
+			one_to_many.Table:  one_to_many.ValidColumn,
+			project.Table:      project.ValidColumn,
+			todo.Table:         todo.ValidColumn,
+			user.Table:         user.ValidColumn,
+			very_secret.Table:  very_secret.ValidColumn,
+			workspace.Table:    workspace.ValidColumn,
 		})
 	})
 	return columnCheck(table, column)

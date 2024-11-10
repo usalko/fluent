@@ -26,7 +26,7 @@ import (
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/schema/customstruct"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/predicate"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/todo"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/verysecret"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/very_secret"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -452,7 +452,7 @@ func (tu *TodoUpdate) sqlSave(ctx context.Context) (n int, err error) {
 			Columns: []string{todo.SecretColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(verysecret.FieldID, field.TypeUUID),
+				IDSpec: sqlgraph.NewFieldSpec(very_secret.FieldID, field.TypeUUID),
 			},
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
@@ -465,7 +465,7 @@ func (tu *TodoUpdate) sqlSave(ctx context.Context) (n int, err error) {
 			Columns: []string{todo.SecretColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(verysecret.FieldID, field.TypeUUID),
+				IDSpec: sqlgraph.NewFieldSpec(very_secret.FieldID, field.TypeUUID),
 			},
 		}
 		for _, k := range nodes {
@@ -932,7 +932,7 @@ func (tuo *TodoUpdateOne) sqlSave(ctx context.Context) (_node *Todo, err error) 
 			Columns: []string{todo.SecretColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(verysecret.FieldID, field.TypeUUID),
+				IDSpec: sqlgraph.NewFieldSpec(very_secret.FieldID, field.TypeUUID),
 			},
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
@@ -945,7 +945,7 @@ func (tuo *TodoUpdateOne) sqlSave(ctx context.Context) (_node *Todo, err error) 
 			Columns: []string{todo.SecretColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(verysecret.FieldID, field.TypeUUID),
+				IDSpec: sqlgraph.NewFieldSpec(very_secret.FieldID, field.TypeUUID),
 			},
 		}
 		for _, k := range nodes {

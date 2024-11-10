@@ -26,11 +26,11 @@ import (
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/fluent_gql"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/billproduct"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/bill_product"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/friendship"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/group"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/onetomany"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/one_to_many"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/project"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/todo"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/user"
@@ -331,7 +331,7 @@ type BillProductOrderField struct {
 	// Value extracts the ordering value from the given BillProduct.
 	Value    func(*BillProduct) (fluent.Value, error)
 	column   string // field or computed.
-	toTerm   func(...sql.OrderTermOption) billproduct.OrderOption
+	toTerm   func(...sql.OrderTermOption) bill_product.OrderOption
 	toCursor func(*BillProduct) Cursor
 }
 
@@ -348,8 +348,8 @@ var DefaultBillProductOrder = &BillProductOrder{
 		Value: func(bp *BillProduct) (fluent.Value, error) {
 			return bp.ID, nil
 		},
-		column: billproduct.FieldID,
-		toTerm: billproduct.ByID,
+		column: bill_product.FieldID,
+		toTerm: bill_product.ByID,
 		toCursor: func(bp *BillProduct) Cursor {
 			return Cursor{ID: bp.ID}
 		},
@@ -1555,8 +1555,8 @@ var (
 		Value: func(otm *OneToMany) (fluent.Value, error) {
 			return otm.Name, nil
 		},
-		column: onetomany.FieldName,
-		toTerm: onetomany.ByName,
+		column: one_to_many.FieldName,
+		toTerm: one_to_many.ByName,
 		toCursor: func(otm *OneToMany) Cursor {
 			return Cursor{
 				ID:    otm.ID,
@@ -1601,7 +1601,7 @@ type OneToManyOrderField struct {
 	// Value extracts the ordering value from the given OneToMany.
 	Value    func(*OneToMany) (fluent.Value, error)
 	column   string // field or computed.
-	toTerm   func(...sql.OrderTermOption) onetomany.OrderOption
+	toTerm   func(...sql.OrderTermOption) one_to_many.OrderOption
 	toCursor func(*OneToMany) Cursor
 }
 
@@ -1618,8 +1618,8 @@ var DefaultOneToManyOrder = &OneToManyOrder{
 		Value: func(otm *OneToMany) (fluent.Value, error) {
 			return otm.ID, nil
 		},
-		column: onetomany.FieldID,
-		toTerm: onetomany.ByID,
+		column: one_to_many.FieldID,
+		toTerm: one_to_many.ByID,
 		toCursor: func(otm *OneToMany) Cursor {
 			return Cursor{ID: otm.ID}
 		},

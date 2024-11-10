@@ -13,7 +13,7 @@ import (
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/flc/integration/fluent/group"
-	"github.com/usalko/fluent/flc/integration/fluent/groupinfo"
+	"github.com/usalko/fluent/flc/integration/fluent/group_info"
 )
 
 // Group is the model entity for the Group schema.
@@ -89,7 +89,7 @@ func (e GroupEdges) InfoOrErr() (*GroupInfo, error) {
 	if e.Info != nil {
 		return e.Info, nil
 	} else if e.loadedTypes[3] {
-		return nil, &NotFoundError{label: groupinfo.Label}
+		return nil, &NotFoundError{label: group_info.Label}
 	}
 	return nil, &NotLoadedError{edge: "info"}
 }

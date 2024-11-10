@@ -15,7 +15,7 @@ type Car func(*sql.Selector)
 // Conversion is the predicate function for conversion builders.
 type Conversion func(*sql.Selector)
 
-// CustomType is the predicate function for customtype builders.
+// CustomType is the predicate function for custom_type builders.
 type CustomType func(*sql.Selector)
 
 // User is the predicate function for user builders.

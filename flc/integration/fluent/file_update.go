@@ -13,9 +13,9 @@ import (
 
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
-	"github.com/usalko/fluent/flc/integration/fluent/fieldtype"
+	"github.com/usalko/fluent/flc/integration/fluent/field_type"
 	"github.com/usalko/fluent/flc/integration/fluent/file"
-	"github.com/usalko/fluent/flc/integration/fluent/filetype"
+	"github.com/usalko/fluent/flc/integration/fluent/file_type"
 	"github.com/usalko/fluent/flc/integration/fluent/predicate"
 	"github.com/usalko/fluent/flc/integration/fluent/user"
 	"github.com/usalko/fluent/schema/field"
@@ -443,7 +443,7 @@ func (fu *FileUpdate) sqlSave(ctx context.Context) (n int, err error) {
 			Columns: []string{file.TypeColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(filetype.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(file_type.FieldID, field.TypeInt),
 			},
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
@@ -456,7 +456,7 @@ func (fu *FileUpdate) sqlSave(ctx context.Context) (n int, err error) {
 			Columns: []string{file.TypeColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(filetype.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(file_type.FieldID, field.TypeInt),
 			},
 		}
 		for _, k := range nodes {
@@ -472,7 +472,7 @@ func (fu *FileUpdate) sqlSave(ctx context.Context) (n int, err error) {
 			Columns: []string{file.FieldColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(fieldtype.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(field_type.FieldID, field.TypeInt),
 			},
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
@@ -485,7 +485,7 @@ func (fu *FileUpdate) sqlSave(ctx context.Context) (n int, err error) {
 			Columns: []string{file.FieldColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(fieldtype.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(field_type.FieldID, field.TypeInt),
 			},
 		}
 		for _, k := range nodes {
@@ -501,7 +501,7 @@ func (fu *FileUpdate) sqlSave(ctx context.Context) (n int, err error) {
 			Columns: []string{file.FieldColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(fieldtype.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(field_type.FieldID, field.TypeInt),
 			},
 		}
 		for _, k := range nodes {
@@ -969,7 +969,7 @@ func (fuo *FileUpdateOne) sqlSave(ctx context.Context) (_node *File, err error) 
 			Columns: []string{file.TypeColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(filetype.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(file_type.FieldID, field.TypeInt),
 			},
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
@@ -982,7 +982,7 @@ func (fuo *FileUpdateOne) sqlSave(ctx context.Context) (_node *File, err error) 
 			Columns: []string{file.TypeColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(filetype.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(file_type.FieldID, field.TypeInt),
 			},
 		}
 		for _, k := range nodes {
@@ -998,7 +998,7 @@ func (fuo *FileUpdateOne) sqlSave(ctx context.Context) (_node *File, err error) 
 			Columns: []string{file.FieldColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(fieldtype.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(field_type.FieldID, field.TypeInt),
 			},
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
@@ -1011,7 +1011,7 @@ func (fuo *FileUpdateOne) sqlSave(ctx context.Context) (_node *File, err error) 
 			Columns: []string{file.FieldColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(fieldtype.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(field_type.FieldID, field.TypeInt),
 			},
 		}
 		for _, k := range nodes {
@@ -1027,7 +1027,7 @@ func (fuo *FileUpdateOne) sqlSave(ctx context.Context) (_node *File, err error) 
 			Columns: []string{file.FieldColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(fieldtype.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(field_type.FieldID, field.TypeInt),
 			},
 		}
 		for _, k := range nodes {

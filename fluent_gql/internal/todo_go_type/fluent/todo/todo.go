@@ -77,7 +77,7 @@ const (
 	// SecretTable is the table that holds the secret relation/edge.
 	SecretTable = "todos"
 	// SecretInverseTable is the table name for the VerySecret entity.
-	// It exists in this package in order to avoid circular dependency with the "verysecret" package.
+	// It exists in this package in order to avoid circular dependency with the "very_secret" package.
 	SecretInverseTable = "very_secrets"
 	// SecretColumn is the table column denoting the secret relation/edge.
 	SecretColumn = "todo_secret"

@@ -24,13 +24,13 @@ import (
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/billproduct"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/bill_product"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/friendship"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/group"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/todo"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/user"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/verysecret"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/very_secret"
 )
 
 // fluent aliases to avoid import conflicts in user's code.
@@ -91,13 +91,13 @@ var (
 func checkColumn(table, column string) error {
 	initCheck.Do(func() {
 		columnCheck = sql.NewColumnCheck(map[string]func(string) bool{
-			billproduct.Table: billproduct.ValidColumn,
-			category.Table:    category.ValidColumn,
-			friendship.Table:  friendship.ValidColumn,
-			group.Table:       group.ValidColumn,
-			todo.Table:        todo.ValidColumn,
-			user.Table:        user.ValidColumn,
-			verysecret.Table:  verysecret.ValidColumn,
+			bill_product.Table: bill_product.ValidColumn,
+			category.Table:     category.ValidColumn,
+			friendship.Table:   friendship.ValidColumn,
+			group.Table:        group.ValidColumn,
+			todo.Table:         todo.ValidColumn,
+			user.Table:         user.ValidColumn,
+			very_secret.Table:  very_secret.ValidColumn,
 		})
 	})
 	return columnCheck(table, column)

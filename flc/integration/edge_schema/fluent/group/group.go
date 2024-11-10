@@ -40,14 +40,14 @@ const (
 	// JoinedUsersTable is the table that holds the joined_users relation/edge.
 	JoinedUsersTable = "user_groups"
 	// JoinedUsersInverseTable is the table name for the UserGroup entity.
-	// It exists in this package in order to avoid circular dependency with the "usergroup" package.
+	// It exists in this package in order to avoid circular dependency with the "user_group" package.
 	JoinedUsersInverseTable = "user_groups"
 	// JoinedUsersColumn is the table column denoting the joined_users relation/edge.
 	JoinedUsersColumn = "group_id"
 	// GroupTagsTable is the table that holds the group_tags relation/edge.
 	GroupTagsTable = "group_tags"
 	// GroupTagsInverseTable is the table name for the GroupTag entity.
-	// It exists in this package in order to avoid circular dependency with the "grouptag" package.
+	// It exists in this package in order to avoid circular dependency with the "group_tag" package.
 	GroupTagsInverseTable = "group_tags"
 	// GroupTagsColumn is the table column denoting the group_tags relation/edge.
 	GroupTagsColumn = "group_id"

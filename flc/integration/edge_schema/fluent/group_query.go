@@ -15,11 +15,11 @@ import (
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/group"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/grouptag"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/group_tag"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/predicate"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tag"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/usergroup"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user_group"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -127,7 +127,7 @@ func (gq *GroupQuery) QueryJoinedUsers() *UserGroupQuery {
 		}
 		step := sqlgraph.NewStep(
 			sqlgraph.From(group.Table, group.FieldID, selector),
-			sqlgraph.To(usergroup.Table, usergroup.FieldID),
+			sqlgraph.To(user_group.Table, user_group.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, true, group.JoinedUsersTable, group.JoinedUsersColumn),
 		)
 		fromU = sqlgraph.SetNeighbors(gq.driver.Dialect(), step)
@@ -149,7 +149,7 @@ func (gq *GroupQuery) QueryGroupTags() *GroupTagQuery {
 		}
 		step := sqlgraph.NewStep(
 			sqlgraph.From(group.Table, group.FieldID, selector),
-			sqlgraph.To(grouptag.Table, grouptag.FieldID),
+			sqlgraph.To(group_tag.Table, group_tag.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, true, group.GroupTagsTable, group.GroupTagsColumn),
 		)
 		fromU = sqlgraph.SetNeighbors(gq.driver.Dialect(), step)
@@ -671,7 +671,7 @@ func (gq *GroupQuery) loadJoinedUsers(ctx context.Context, query *UserGroupQuery
 		}
 	}
 	if len(query.ctx.Fields) > 0 {
-		query.ctx.AppendFieldOnce(usergroup.FieldGroupID)
+		query.ctx.AppendFieldOnce(user_group.FieldGroupID)
 	}
 	query.Where(predicate.UserGroup(func(s *sql.Selector) {
 		s.Where(sql.InValues(s.C(group.JoinedUsersColumn), fks...))
@@ -701,7 +701,7 @@ func (gq *GroupQuery) loadGroupTags(ctx context.Context, query *GroupTagQuery, n
 		}
 	}
 	if len(query.ctx.Fields) > 0 {
-		query.ctx.AppendFieldOnce(grouptag.FieldGroupID)
+		query.ctx.AppendFieldOnce(group_tag.FieldGroupID)
 	}
 	query.Where(predicate.GroupTag(func(s *sql.Selector) {
 		s.Where(sql.InValues(s.C(group.GroupTagsColumn), fks...))

@@ -17,7 +17,7 @@ import (
 	"github.com/usalko/fluent/flc/integration/migrate/fluentv2/blog"
 	"github.com/usalko/fluent/flc/integration/migrate/fluentv2/car"
 	"github.com/usalko/fluent/flc/integration/migrate/fluentv2/conversion"
-	"github.com/usalko/fluent/flc/integration/migrate/fluentv2/customtype"
+	"github.com/usalko/fluent/flc/integration/migrate/fluentv2/custom_type"
 	"github.com/usalko/fluent/flc/integration/migrate/fluentv2/media"
 	"github.com/usalko/fluent/flc/integration/migrate/fluentv2/pet"
 	"github.com/usalko/fluent/flc/integration/migrate/fluentv2/predicate"
@@ -1999,19 +1999,19 @@ func (m *CustomTypeMutation) OldCustom(ctx context.Context) (v string, err error
 // ClearCustom clears the value of the "custom" field.
 func (m *CustomTypeMutation) ClearCustom() {
 	m.custom = nil
-	m.clearedFields[customtype.FieldCustom] = struct{}{}
+	m.clearedFields[custom_type.FieldCustom] = struct{}{}
 }
 
 // CustomCleared returns if the "custom" field was cleared in this mutation.
 func (m *CustomTypeMutation) CustomCleared() bool {
-	_, ok := m.clearedFields[customtype.FieldCustom]
+	_, ok := m.clearedFields[custom_type.FieldCustom]
 	return ok
 }
 
 // ResetCustom resets all changes to the "custom" field.
 func (m *CustomTypeMutation) ResetCustom() {
 	m.custom = nil
-	delete(m.clearedFields, customtype.FieldCustom)
+	delete(m.clearedFields, custom_type.FieldCustom)
 }
 
 // SetTz0 sets the "tz0" field.
@@ -2048,19 +2048,19 @@ func (m *CustomTypeMutation) OldTz0(ctx context.Context) (v time.Time, err error
 // ClearTz0 clears the value of the "tz0" field.
 func (m *CustomTypeMutation) ClearTz0() {
 	m.tz0 = nil
-	m.clearedFields[customtype.FieldTz0] = struct{}{}
+	m.clearedFields[custom_type.FieldTz0] = struct{}{}
 }
 
 // Tz0Cleared returns if the "tz0" field was cleared in this mutation.
 func (m *CustomTypeMutation) Tz0Cleared() bool {
-	_, ok := m.clearedFields[customtype.FieldTz0]
+	_, ok := m.clearedFields[custom_type.FieldTz0]
 	return ok
 }
 
 // ResetTz0 resets all changes to the "tz0" field.
 func (m *CustomTypeMutation) ResetTz0() {
 	m.tz0 = nil
-	delete(m.clearedFields, customtype.FieldTz0)
+	delete(m.clearedFields, custom_type.FieldTz0)
 }
 
 // SetTz3 sets the "tz3" field.
@@ -2097,19 +2097,19 @@ func (m *CustomTypeMutation) OldTz3(ctx context.Context) (v time.Time, err error
 // ClearTz3 clears the value of the "tz3" field.
 func (m *CustomTypeMutation) ClearTz3() {
 	m.tz3 = nil
-	m.clearedFields[customtype.FieldTz3] = struct{}{}
+	m.clearedFields[custom_type.FieldTz3] = struct{}{}
 }
 
 // Tz3Cleared returns if the "tz3" field was cleared in this mutation.
 func (m *CustomTypeMutation) Tz3Cleared() bool {
-	_, ok := m.clearedFields[customtype.FieldTz3]
+	_, ok := m.clearedFields[custom_type.FieldTz3]
 	return ok
 }
 
 // ResetTz3 resets all changes to the "tz3" field.
 func (m *CustomTypeMutation) ResetTz3() {
 	m.tz3 = nil
-	delete(m.clearedFields, customtype.FieldTz3)
+	delete(m.clearedFields, custom_type.FieldTz3)
 }
 
 // Where appends a list predicates to the CustomTypeMutation builder.
@@ -2148,13 +2148,13 @@ func (m *CustomTypeMutation) Type() string {
 func (m *CustomTypeMutation) Fields() []string {
 	fields := make([]string, 0, 3)
 	if m.custom != nil {
-		fields = append(fields, customtype.FieldCustom)
+		fields = append(fields, custom_type.FieldCustom)
 	}
 	if m.tz0 != nil {
-		fields = append(fields, customtype.FieldTz0)
+		fields = append(fields, custom_type.FieldTz0)
 	}
 	if m.tz3 != nil {
-		fields = append(fields, customtype.FieldTz3)
+		fields = append(fields, custom_type.FieldTz3)
 	}
 	return fields
 }
@@ -2164,11 +2164,11 @@ func (m *CustomTypeMutation) Fields() []string {
 // schema.
 func (m *CustomTypeMutation) Field(name string) (fluent.Value, bool) {
 	switch name {
-	case customtype.FieldCustom:
+	case custom_type.FieldCustom:
 		return m.Custom()
-	case customtype.FieldTz0:
+	case custom_type.FieldTz0:
 		return m.Tz0()
-	case customtype.FieldTz3:
+	case custom_type.FieldTz3:
 		return m.Tz3()
 	}
 	return nil, false
@@ -2179,11 +2179,11 @@ func (m *CustomTypeMutation) Field(name string) (fluent.Value, bool) {
 // database failed.
 func (m *CustomTypeMutation) OldField(ctx context.Context, name string) (fluent.Value, error) {
 	switch name {
-	case customtype.FieldCustom:
+	case custom_type.FieldCustom:
 		return m.OldCustom(ctx)
-	case customtype.FieldTz0:
+	case custom_type.FieldTz0:
 		return m.OldTz0(ctx)
-	case customtype.FieldTz3:
+	case custom_type.FieldTz3:
 		return m.OldTz3(ctx)
 	}
 	return nil, fmt.Errorf("unknown CustomType field %s", name)
@@ -2194,21 +2194,21 @@ func (m *CustomTypeMutation) OldField(ctx context.Context, name string) (fluent.
 // type.
 func (m *CustomTypeMutation) SetField(name string, value fluent.Value) error {
 	switch name {
-	case customtype.FieldCustom:
+	case custom_type.FieldCustom:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetCustom(v)
 		return nil
-	case customtype.FieldTz0:
+	case custom_type.FieldTz0:
 		v, ok := value.(time.Time)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetTz0(v)
 		return nil
-	case customtype.FieldTz3:
+	case custom_type.FieldTz3:
 		v, ok := value.(time.Time)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -2245,14 +2245,14 @@ func (m *CustomTypeMutation) AddField(name string, value fluent.Value) error {
 // mutation.
 func (m *CustomTypeMutation) ClearedFields() []string {
 	var fields []string
-	if m.FieldCleared(customtype.FieldCustom) {
-		fields = append(fields, customtype.FieldCustom)
+	if m.FieldCleared(custom_type.FieldCustom) {
+		fields = append(fields, custom_type.FieldCustom)
 	}
-	if m.FieldCleared(customtype.FieldTz0) {
-		fields = append(fields, customtype.FieldTz0)
+	if m.FieldCleared(custom_type.FieldTz0) {
+		fields = append(fields, custom_type.FieldTz0)
 	}
-	if m.FieldCleared(customtype.FieldTz3) {
-		fields = append(fields, customtype.FieldTz3)
+	if m.FieldCleared(custom_type.FieldTz3) {
+		fields = append(fields, custom_type.FieldTz3)
 	}
 	return fields
 }
@@ -2268,13 +2268,13 @@ func (m *CustomTypeMutation) FieldCleared(name string) bool {
 // error if the field is not defined in the schema.
 func (m *CustomTypeMutation) ClearField(name string) error {
 	switch name {
-	case customtype.FieldCustom:
+	case custom_type.FieldCustom:
 		m.ClearCustom()
 		return nil
-	case customtype.FieldTz0:
+	case custom_type.FieldTz0:
 		m.ClearTz0()
 		return nil
-	case customtype.FieldTz3:
+	case custom_type.FieldTz3:
 		m.ClearTz3()
 		return nil
 	}
@@ -2285,13 +2285,13 @@ func (m *CustomTypeMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *CustomTypeMutation) ResetField(name string) error {
 	switch name {
-	case customtype.FieldCustom:
+	case custom_type.FieldCustom:
 		m.ResetCustom()
 		return nil
-	case customtype.FieldTz0:
+	case custom_type.FieldTz0:
 		m.ResetTz0()
 		return nil
-	case customtype.FieldTz3:
+	case custom_type.FieldTz3:
 		m.ResetTz3()
 		return nil
 	}

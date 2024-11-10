@@ -13,9 +13,9 @@ import (
 
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
-	"github.com/usalko/fluent/flc/integration/fluent/fieldtype"
+	"github.com/usalko/fluent/flc/integration/fluent/field_type"
 	"github.com/usalko/fluent/flc/integration/fluent/file"
-	"github.com/usalko/fluent/flc/integration/fluent/filetype"
+	"github.com/usalko/fluent/flc/integration/fluent/file_type"
 	"github.com/usalko/fluent/flc/integration/fluent/user"
 	"github.com/usalko/fluent/schema/field"
 )
@@ -328,7 +328,7 @@ func (fc *FileCreate) createSpec() (*File, *sqlgraph.CreateSpec) {
 			Columns: []string{file.TypeColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(filetype.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(file_type.FieldID, field.TypeInt),
 			},
 		}
 		for _, k := range nodes {
@@ -345,7 +345,7 @@ func (fc *FileCreate) createSpec() (*File, *sqlgraph.CreateSpec) {
 			Columns: []string{file.FieldColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(fieldtype.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(field_type.FieldID, field.TypeInt),
 			},
 		}
 		for _, k := range nodes {

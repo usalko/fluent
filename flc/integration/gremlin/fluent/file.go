@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"github.com/usalko/fluent/dialect/gremlin"
-	"github.com/usalko/fluent/flc/integration/gremlin/fluent/filetype"
+	"github.com/usalko/fluent/flc/integration/gremlin/fluent/file_type"
 	"github.com/usalko/fluent/flc/integration/gremlin/fluent/user"
 )
 
@@ -71,7 +71,7 @@ func (e FileEdges) TypeOrErr() (*FileType, error) {
 	if e.Type != nil {
 		return e.Type, nil
 	} else if e.loadedTypes[1] {
-		return nil, &NotFoundError{label: filetype.Label}
+		return nil, &NotFoundError{label: file_type.Label}
 	}
 	return nil, &NotLoadedError{edge: "type"}
 }

@@ -16,7 +16,7 @@ import (
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/predicate"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/relationship"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/relationshipinfo"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/relationship_info"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user"
 )
 
@@ -123,7 +123,7 @@ func (rq *RelationshipQuery) QueryInfo() *RelationshipInfoQuery {
 		}
 		step := sqlgraph.NewStep(
 			sqlgraph.From(relationship.Table, relationship.InfoColumn, selector),
-			sqlgraph.To(relationshipinfo.Table, relationshipinfo.FieldID),
+			sqlgraph.To(relationship_info.Table, relationship_info.FieldID),
 			sqlgraph.Edge(sqlgraph.M2O, false, relationship.InfoTable, relationship.InfoColumn),
 		)
 		fromU = sqlgraph.SetNeighbors(rq.driver.Dialect(), step)
@@ -494,7 +494,7 @@ func (rq *RelationshipQuery) loadInfo(ctx context.Context, query *RelationshipIn
 	if len(ids) == 0 {
 		return nil
 	}
-	query.Where(relationshipinfo.IDIn(ids...))
+	query.Where(relationship_info.IDIn(ids...))
 	neighbors, err := query.All(ctx)
 	if err != nil {
 		return err

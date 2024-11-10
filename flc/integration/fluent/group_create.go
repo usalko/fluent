@@ -15,7 +15,7 @@ import (
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/flc/integration/fluent/file"
 	"github.com/usalko/fluent/flc/integration/fluent/group"
-	"github.com/usalko/fluent/flc/integration/fluent/groupinfo"
+	"github.com/usalko/fluent/flc/integration/fluent/group_info"
 	"github.com/usalko/fluent/flc/integration/fluent/user"
 	"github.com/usalko/fluent/schema/field"
 )
@@ -315,7 +315,7 @@ func (gc *GroupCreate) createSpec() (*Group, *sqlgraph.CreateSpec) {
 			Columns: []string{group.InfoColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(groupinfo.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(group_info.FieldID, field.TypeInt),
 			},
 		}
 		for _, k := range nodes {

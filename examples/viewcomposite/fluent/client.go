@@ -229,7 +229,7 @@ func NewCleanUserClient(c config) *CleanUserClient {
 }
 
 // Intercept adds a list of query interceptors to the interceptors stack.
-// A call to `Intercept(f, g, h)` equals to `cleanuser.Intercept(f(g(h())))`.
+// A call to `Intercept(f, g, h)` equals to `clean_user.Intercept(f(g(h())))`.
 func (c *CleanUserClient) Intercept(interceptors ...Interceptor) {
 	c.inters.CleanUser = append(c.inters.CleanUser, interceptors...)
 }
@@ -392,7 +392,7 @@ func NewPetUserNameClient(c config) *PetUserNameClient {
 }
 
 // Intercept adds a list of query interceptors to the interceptors stack.
-// A call to `Intercept(f, g, h)` equals to `petusername.Intercept(f(g(h())))`.
+// A call to `Intercept(f, g, h)` equals to `pet_user_name.Intercept(f(g(h())))`.
 func (c *PetUserNameClient) Intercept(interceptors ...Interceptor) {
 	c.inters.PetUserName = append(c.inters.PetUserName, interceptors...)
 }

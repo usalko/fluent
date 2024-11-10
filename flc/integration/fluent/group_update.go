@@ -15,7 +15,7 @@ import (
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/flc/integration/fluent/file"
 	"github.com/usalko/fluent/flc/integration/fluent/group"
-	"github.com/usalko/fluent/flc/integration/fluent/groupinfo"
+	"github.com/usalko/fluent/flc/integration/fluent/group_info"
 	"github.com/usalko/fluent/flc/integration/fluent/predicate"
 	"github.com/usalko/fluent/flc/integration/fluent/user"
 	"github.com/usalko/fluent/schema/field"
@@ -489,7 +489,7 @@ func (gu *GroupUpdate) sqlSave(ctx context.Context) (n int, err error) {
 			Columns: []string{group.InfoColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(groupinfo.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(group_info.FieldID, field.TypeInt),
 			},
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
@@ -502,7 +502,7 @@ func (gu *GroupUpdate) sqlSave(ctx context.Context) (n int, err error) {
 			Columns: []string{group.InfoColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(groupinfo.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(group_info.FieldID, field.TypeInt),
 			},
 		}
 		for _, k := range nodes {
@@ -1016,7 +1016,7 @@ func (guo *GroupUpdateOne) sqlSave(ctx context.Context) (_node *Group, err error
 			Columns: []string{group.InfoColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(groupinfo.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(group_info.FieldID, field.TypeInt),
 			},
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
@@ -1029,7 +1029,7 @@ func (guo *GroupUpdateOne) sqlSave(ctx context.Context) (_node *Group, err error
 			Columns: []string{group.InfoColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(groupinfo.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(group_info.FieldID, field.TypeInt),
 			},
 		}
 		for _, k := range nodes {

@@ -22,7 +22,7 @@ import (
 	"github.com/99designs/gqlgen/graphql"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/fluent_gql"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/billproduct"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/bill_product"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/friendship"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/group"
@@ -47,25 +47,25 @@ func (bp *BillProductQuery) collectField(ctx context.Context, oneNode bool, opCt
 	path = append([]string(nil), path...)
 	var (
 		unknownSeen    bool
-		fieldSeen      = make(map[string]struct{}, len(billproduct.Columns))
-		selectedFields = []string{billproduct.FieldID}
+		fieldSeen      = make(map[string]struct{}, len(bill_product.Columns))
+		selectedFields = []string{bill_product.FieldID}
 	)
 	for _, field := range graphql.CollectFields(opCtx, collected.Selections, satisfies) {
 		switch field.Name {
 		case "name":
-			if _, ok := fieldSeen[billproduct.FieldName]; !ok {
-				selectedFields = append(selectedFields, billproduct.FieldName)
-				fieldSeen[billproduct.FieldName] = struct{}{}
+			if _, ok := fieldSeen[bill_product.FieldName]; !ok {
+				selectedFields = append(selectedFields, bill_product.FieldName)
+				fieldSeen[bill_product.FieldName] = struct{}{}
 			}
 		case "sku":
-			if _, ok := fieldSeen[billproduct.FieldSku]; !ok {
-				selectedFields = append(selectedFields, billproduct.FieldSku)
-				fieldSeen[billproduct.FieldSku] = struct{}{}
+			if _, ok := fieldSeen[bill_product.FieldSku]; !ok {
+				selectedFields = append(selectedFields, bill_product.FieldSku)
+				fieldSeen[bill_product.FieldSku] = struct{}{}
 			}
 		case "quantity":
-			if _, ok := fieldSeen[billproduct.FieldQuantity]; !ok {
-				selectedFields = append(selectedFields, billproduct.FieldQuantity)
-				fieldSeen[billproduct.FieldQuantity] = struct{}{}
+			if _, ok := fieldSeen[bill_product.FieldQuantity]; !ok {
+				selectedFields = append(selectedFields, bill_product.FieldQuantity)
+				fieldSeen[bill_product.FieldQuantity] = struct{}{}
 			}
 		case "id":
 		case "__typename":

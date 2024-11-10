@@ -21,7 +21,7 @@ import (
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/friendship"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/group"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/onetomany"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/one_to_many"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/schema"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/todo"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/user"
@@ -49,12 +49,12 @@ func init() {
 	groupDescName := groupFields[0].Descriptor()
 	// group.DefaultName holds the default value on creation for the name field.
 	group.DefaultName = groupDescName.Default.(string)
-	onetomanyFields := schema.OneToMany{}.Fields()
-	_ = onetomanyFields
-	// onetomanyDescName is the schema descriptor for name field.
-	onetomanyDescName := onetomanyFields[0].Descriptor()
-	// onetomany.NameValidator is a validator for the "name" field. It is called by the builders before save.
-	onetomany.NameValidator = onetomanyDescName.Validators[0].(func(string) error)
+	one_to_manyFields := schema.OneToMany{}.Fields()
+	_ = one_to_manyFields
+	// one_to_manyDescName is the schema descriptor for name field.
+	one_to_manyDescName := one_to_manyFields[0].Descriptor()
+	// one_to_many.NameValidator is a validator for the "name" field. It is called by the builders before save.
+	one_to_many.NameValidator = one_to_manyDescName.Validators[0].(func(string) error)
 	todoFields := schema.Todo{}.Fields()
 	_ = todoFields
 	// todoDescCreatedAt is the schema descriptor for created_at field.

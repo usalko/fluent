@@ -18,26 +18,26 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/billproduct"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/bill_product"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/friendship"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/group"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/schema"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/todo"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/user"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/verysecret"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/very_secret"
 )
 
 // The init function reads all schema descriptors with runtime code
 // (default values, validators, hooks and policies) and stitches it
 // to their package variables.
 func init() {
-	billproductFields := schema.BillProduct{}.Fields()
-	_ = billproductFields
-	// billproductDescID is the schema descriptor for id field.
-	billproductDescID := billproductFields[0].Descriptor()
-	// billproduct.DefaultID holds the default value on creation for the id field.
-	billproduct.DefaultID = billproductDescID.Default.(func() uuid.UUID)
+	bill_productFields := schema.BillProduct{}.Fields()
+	_ = bill_productFields
+	// bill_productDescID is the schema descriptor for id field.
+	bill_productDescID := bill_productFields[0].Descriptor()
+	// bill_product.DefaultID holds the default value on creation for the id field.
+	bill_product.DefaultID = bill_productDescID.Default.(func() uuid.UUID)
 	categoryMixin := schema.Category{}.Mixin()
 	categoryMixinFields0 := categoryMixin[0].Fields()
 	_ = categoryMixinFields0
@@ -116,10 +116,10 @@ func init() {
 	userDescID := userFields[0].Descriptor()
 	// user.DefaultID holds the default value on creation for the id field.
 	user.DefaultID = userDescID.Default.(func() uuid.UUID)
-	verysecretFields := schema.VerySecret{}.Fields()
-	_ = verysecretFields
-	// verysecretDescID is the schema descriptor for id field.
-	verysecretDescID := verysecretFields[0].Descriptor()
-	// verysecret.DefaultID holds the default value on creation for the id field.
-	verysecret.DefaultID = verysecretDescID.Default.(func() uuid.UUID)
+	very_secretFields := schema.VerySecret{}.Fields()
+	_ = very_secretFields
+	// very_secretDescID is the schema descriptor for id field.
+	very_secretDescID := very_secretFields[0].Descriptor()
+	// very_secret.DefaultID holds the default value on creation for the id field.
+	very_secret.DefaultID = very_secretDescID.Default.(func() uuid.UUID)
 }

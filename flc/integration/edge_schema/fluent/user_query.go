@@ -20,12 +20,12 @@ import (
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/predicate"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/relationship"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/role"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/roleuser"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/role_user"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweet"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweetlike"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweet_like"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/usergroup"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/usertweet"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user_group"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user_tweet"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -229,7 +229,7 @@ func (uq *UserQuery) QueryJoinedGroups() *UserGroupQuery {
 		}
 		step := sqlgraph.NewStep(
 			sqlgraph.From(user.Table, user.FieldID, selector),
-			sqlgraph.To(usergroup.Table, usergroup.FieldID),
+			sqlgraph.To(user_group.Table, user_group.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, true, user.JoinedGroupsTable, user.JoinedGroupsColumn),
 		)
 		fromU = sqlgraph.SetNeighbors(uq.driver.Dialect(), step)
@@ -295,7 +295,7 @@ func (uq *UserQuery) QueryLikes() *TweetLikeQuery {
 		}
 		step := sqlgraph.NewStep(
 			sqlgraph.From(user.Table, user.FieldID, selector),
-			sqlgraph.To(tweetlike.Table, tweetlike.UserColumn),
+			sqlgraph.To(tweet_like.Table, tweet_like.UserColumn),
 			sqlgraph.Edge(sqlgraph.O2M, true, user.LikesTable, user.LikesColumn),
 		)
 		fromU = sqlgraph.SetNeighbors(uq.driver.Dialect(), step)
@@ -317,7 +317,7 @@ func (uq *UserQuery) QueryUserTweets() *UserTweetQuery {
 		}
 		step := sqlgraph.NewStep(
 			sqlgraph.From(user.Table, user.FieldID, selector),
-			sqlgraph.To(usertweet.Table, usertweet.FieldID),
+			sqlgraph.To(user_tweet.Table, user_tweet.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, true, user.UserTweetsTable, user.UserTweetsColumn),
 		)
 		fromU = sqlgraph.SetNeighbors(uq.driver.Dialect(), step)
@@ -339,7 +339,7 @@ func (uq *UserQuery) QueryRolesUsers() *RoleUserQuery {
 		}
 		step := sqlgraph.NewStep(
 			sqlgraph.From(user.Table, user.FieldID, selector),
-			sqlgraph.To(roleuser.Table, roleuser.UserColumn),
+			sqlgraph.To(role_user.Table, role_user.UserColumn),
 			sqlgraph.Edge(sqlgraph.O2M, true, user.RolesUsersTable, user.RolesUsersColumn),
 		)
 		fromU = sqlgraph.SetNeighbors(uq.driver.Dialect(), step)
@@ -1271,7 +1271,7 @@ func (uq *UserQuery) loadJoinedGroups(ctx context.Context, query *UserGroupQuery
 		}
 	}
 	if len(query.ctx.Fields) > 0 {
-		query.ctx.AppendFieldOnce(usergroup.FieldUserID)
+		query.ctx.AppendFieldOnce(user_group.FieldUserID)
 	}
 	query.Where(predicate.UserGroup(func(s *sql.Selector) {
 		s.Where(sql.InValues(s.C(user.JoinedGroupsColumn), fks...))
@@ -1361,7 +1361,7 @@ func (uq *UserQuery) loadLikes(ctx context.Context, query *TweetLikeQuery, nodes
 		}
 	}
 	if len(query.ctx.Fields) > 0 {
-		query.ctx.AppendFieldOnce(tweetlike.FieldUserID)
+		query.ctx.AppendFieldOnce(tweet_like.FieldUserID)
 	}
 	query.Where(predicate.TweetLike(func(s *sql.Selector) {
 		s.Where(sql.InValues(s.C(user.LikesColumn), fks...))
@@ -1391,7 +1391,7 @@ func (uq *UserQuery) loadUserTweets(ctx context.Context, query *UserTweetQuery, 
 		}
 	}
 	if len(query.ctx.Fields) > 0 {
-		query.ctx.AppendFieldOnce(usertweet.FieldUserID)
+		query.ctx.AppendFieldOnce(user_tweet.FieldUserID)
 	}
 	query.Where(predicate.UserTweet(func(s *sql.Selector) {
 		s.Where(sql.InValues(s.C(user.UserTweetsColumn), fks...))
@@ -1421,7 +1421,7 @@ func (uq *UserQuery) loadRolesUsers(ctx context.Context, query *RoleUserQuery, n
 		}
 	}
 	if len(query.ctx.Fields) > 0 {
-		query.ctx.AppendFieldOnce(roleuser.FieldUserID)
+		query.ctx.AppendFieldOnce(role_user.FieldUserID)
 	}
 	query.Where(predicate.RoleUser(func(s *sql.Selector) {
 		s.Where(sql.InValues(s.C(user.RolesUsersColumn), fks...))

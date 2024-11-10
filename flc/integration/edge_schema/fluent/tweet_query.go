@@ -17,10 +17,10 @@ import (
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/predicate"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tag"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweet"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweetlike"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweettag"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweet_like"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweet_tag"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/usertweet"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user_tweet"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -152,7 +152,7 @@ func (tq *TweetQuery) QueryLikes() *TweetLikeQuery {
 		}
 		step := sqlgraph.NewStep(
 			sqlgraph.From(tweet.Table, tweet.FieldID, selector),
-			sqlgraph.To(tweetlike.Table, tweetlike.TweetColumn),
+			sqlgraph.To(tweet_like.Table, tweet_like.TweetColumn),
 			sqlgraph.Edge(sqlgraph.O2M, true, tweet.LikesTable, tweet.LikesColumn),
 		)
 		fromU = sqlgraph.SetNeighbors(tq.driver.Dialect(), step)
@@ -174,7 +174,7 @@ func (tq *TweetQuery) QueryTweetUser() *UserTweetQuery {
 		}
 		step := sqlgraph.NewStep(
 			sqlgraph.From(tweet.Table, tweet.FieldID, selector),
-			sqlgraph.To(usertweet.Table, usertweet.FieldID),
+			sqlgraph.To(user_tweet.Table, user_tweet.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, true, tweet.TweetUserTable, tweet.TweetUserColumn),
 		)
 		fromU = sqlgraph.SetNeighbors(tq.driver.Dialect(), step)
@@ -196,7 +196,7 @@ func (tq *TweetQuery) QueryTweetTags() *TweetTagQuery {
 		}
 		step := sqlgraph.NewStep(
 			sqlgraph.From(tweet.Table, tweet.FieldID, selector),
-			sqlgraph.To(tweettag.Table, tweettag.FieldID),
+			sqlgraph.To(tweet_tag.Table, tweet_tag.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, true, tweet.TweetTagsTable, tweet.TweetTagsColumn),
 		)
 		fromU = sqlgraph.SetNeighbors(tq.driver.Dialect(), step)
@@ -819,7 +819,7 @@ func (tq *TweetQuery) loadLikes(ctx context.Context, query *TweetLikeQuery, node
 		}
 	}
 	if len(query.ctx.Fields) > 0 {
-		query.ctx.AppendFieldOnce(tweetlike.FieldTweetID)
+		query.ctx.AppendFieldOnce(tweet_like.FieldTweetID)
 	}
 	query.Where(predicate.TweetLike(func(s *sql.Selector) {
 		s.Where(sql.InValues(s.C(tweet.LikesColumn), fks...))
@@ -849,7 +849,7 @@ func (tq *TweetQuery) loadTweetUser(ctx context.Context, query *UserTweetQuery, 
 		}
 	}
 	if len(query.ctx.Fields) > 0 {
-		query.ctx.AppendFieldOnce(usertweet.FieldTweetID)
+		query.ctx.AppendFieldOnce(user_tweet.FieldTweetID)
 	}
 	query.Where(predicate.UserTweet(func(s *sql.Selector) {
 		s.Where(sql.InValues(s.C(tweet.TweetUserColumn), fks...))
@@ -879,7 +879,7 @@ func (tq *TweetQuery) loadTweetTags(ctx context.Context, query *TweetTagQuery, n
 		}
 	}
 	if len(query.ctx.Fields) > 0 {
-		query.ctx.AppendFieldOnce(tweettag.FieldTweetID)
+		query.ctx.AppendFieldOnce(tweet_tag.FieldTweetID)
 	}
 	query.Where(predicate.TweetTag(func(s *sql.Selector) {
 		s.Where(sql.InValues(s.C(tweet.TweetTagsColumn), fks...))

@@ -15,7 +15,7 @@ import (
 	"github.com/usalko/fluent/dialect"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/examples/triggers/fluent/user"
-	"github.com/usalko/fluent/examples/triggers/fluent/userauditlog"
+	"github.com/usalko/fluent/examples/triggers/fluent/user_audit_log"
 )
 
 // Client is the client that holds all fluent builders.
@@ -350,13 +350,13 @@ func NewUserAuditLogClient(c config) *UserAuditLogClient {
 }
 
 // Use adds a list of mutation hooks to the hooks stack.
-// A call to `Use(f, g, h)` equals to `userauditlog.Hooks(f(g(h())))`.
+// A call to `Use(f, g, h)` equals to `user_audit_log.Hooks(f(g(h())))`.
 func (c *UserAuditLogClient) Use(hooks ...Hook) {
 	c.hooks.UserAuditLog = append(c.hooks.UserAuditLog, hooks...)
 }
 
 // Intercept adds a list of query interceptors to the interceptors stack.
-// A call to `Intercept(f, g, h)` equals to `userauditlog.Intercept(f(g(h())))`.
+// A call to `Intercept(f, g, h)` equals to `user_audit_log.Intercept(f(g(h())))`.
 func (c *UserAuditLogClient) Intercept(interceptors ...Interceptor) {
 	c.inters.UserAuditLog = append(c.inters.UserAuditLog, interceptors...)
 }
@@ -418,7 +418,7 @@ func (c *UserAuditLogClient) DeleteOne(ual *UserAuditLog) *UserAuditLogDeleteOne
 
 // DeleteOneID returns a builder for deleting the given entity by its id.
 func (c *UserAuditLogClient) DeleteOneID(id int) *UserAuditLogDeleteOne {
-	builder := c.Delete().Where(userauditlog.ID(id))
+	builder := c.Delete().Where(user_audit_log.ID(id))
 	builder.mutation.id = &id
 	builder.mutation.op = OpDeleteOne
 	return &UserAuditLogDeleteOne{builder}
@@ -435,7 +435,7 @@ func (c *UserAuditLogClient) Query() *UserAuditLogQuery {
 
 // Get returns a UserAuditLog entity by its id.
 func (c *UserAuditLogClient) Get(ctx context.Context, id int) (*UserAuditLog, error) {
-	return c.Query().Where(userauditlog.ID(id)).Only(ctx)
+	return c.Query().Where(user_audit_log.ID(id)).Only(ctx)
 }
 
 // GetX is like Get, but panics if an error occurs.

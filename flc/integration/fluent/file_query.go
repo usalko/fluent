@@ -15,9 +15,9 @@ import (
 	"github.com/usalko/fluent/dialect"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
-	"github.com/usalko/fluent/flc/integration/fluent/fieldtype"
+	"github.com/usalko/fluent/flc/integration/fluent/field_type"
 	"github.com/usalko/fluent/flc/integration/fluent/file"
-	"github.com/usalko/fluent/flc/integration/fluent/filetype"
+	"github.com/usalko/fluent/flc/integration/fluent/file_type"
 	"github.com/usalko/fluent/flc/integration/fluent/predicate"
 	"github.com/usalko/fluent/flc/integration/fluent/user"
 	"github.com/usalko/fluent/schema/field"
@@ -107,7 +107,7 @@ func (fq *FileQuery) QueryType() *FileTypeQuery {
 		}
 		step := sqlgraph.NewStep(
 			sqlgraph.From(file.Table, file.FieldID, selector),
-			sqlgraph.To(filetype.Table, filetype.FieldID),
+			sqlgraph.To(file_type.Table, file_type.FieldID),
 			sqlgraph.Edge(sqlgraph.M2O, true, file.TypeTable, file.TypeColumn),
 		)
 		fromU = sqlgraph.SetNeighbors(fq.driver.Dialect(), step)
@@ -129,7 +129,7 @@ func (fq *FileQuery) QueryField() *FieldTypeQuery {
 		}
 		step := sqlgraph.NewStep(
 			sqlgraph.From(file.Table, file.FieldID, selector),
-			sqlgraph.To(fieldtype.Table, fieldtype.FieldID),
+			sqlgraph.To(field_type.Table, field_type.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, false, file.FieldTable, file.FieldColumn),
 		)
 		fromU = sqlgraph.SetNeighbors(fq.driver.Dialect(), step)
@@ -562,7 +562,7 @@ func (fq *FileQuery) loadType(ctx context.Context, query *FileTypeQuery, nodes [
 	if len(ids) == 0 {
 		return nil
 	}
-	query.Where(filetype.IDIn(ids...))
+	query.Where(file_type.IDIn(ids...))
 	neighbors, err := query.All(ctx)
 	if err != nil {
 		return err

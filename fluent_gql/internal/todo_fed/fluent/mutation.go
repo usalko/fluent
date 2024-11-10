@@ -27,7 +27,7 @@ import (
 	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/predicate"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/schema/schematype"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/todo"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/verysecret"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/very_secret"
 )
 
 const (
@@ -1953,7 +1953,7 @@ func (m *VerySecretMutation) Type() string {
 func (m *VerySecretMutation) Fields() []string {
 	fields := make([]string, 0, 1)
 	if m.password != nil {
-		fields = append(fields, verysecret.FieldPassword)
+		fields = append(fields, very_secret.FieldPassword)
 	}
 	return fields
 }
@@ -1963,7 +1963,7 @@ func (m *VerySecretMutation) Fields() []string {
 // schema.
 func (m *VerySecretMutation) Field(name string) (fluent.Value, bool) {
 	switch name {
-	case verysecret.FieldPassword:
+	case very_secret.FieldPassword:
 		return m.Password()
 	}
 	return nil, false
@@ -1974,7 +1974,7 @@ func (m *VerySecretMutation) Field(name string) (fluent.Value, bool) {
 // database failed.
 func (m *VerySecretMutation) OldField(ctx context.Context, name string) (fluent.Value, error) {
 	switch name {
-	case verysecret.FieldPassword:
+	case very_secret.FieldPassword:
 		return m.OldPassword(ctx)
 	}
 	return nil, fmt.Errorf("unknown VerySecret field %s", name)
@@ -1985,7 +1985,7 @@ func (m *VerySecretMutation) OldField(ctx context.Context, name string) (fluent.
 // type.
 func (m *VerySecretMutation) SetField(name string, value fluent.Value) error {
 	switch name {
-	case verysecret.FieldPassword:
+	case very_secret.FieldPassword:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -2041,7 +2041,7 @@ func (m *VerySecretMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *VerySecretMutation) ResetField(name string) error {
 	switch name {
-	case verysecret.FieldPassword:
+	case very_secret.FieldPassword:
 		m.ResetPassword()
 		return nil
 	}

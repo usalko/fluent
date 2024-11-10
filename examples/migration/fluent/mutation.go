@@ -20,7 +20,7 @@ import (
 	"github.com/usalko/fluent/examples/migration/fluent/pet"
 	"github.com/usalko/fluent/examples/migration/fluent/predicate"
 	"github.com/usalko/fluent/examples/migration/fluent/session"
-	"github.com/usalko/fluent/examples/migration/fluent/sessiondevice"
+	"github.com/usalko/fluent/examples/migration/fluent/session_device"
 	"github.com/usalko/fluent/examples/migration/fluent/user"
 )
 
@@ -3187,19 +3187,19 @@ func (m *SessionDeviceMutation) OldUpdatedAt(ctx context.Context) (v time.Time, 
 // ClearUpdatedAt clears the value of the "updated_at" field.
 func (m *SessionDeviceMutation) ClearUpdatedAt() {
 	m.updated_at = nil
-	m.clearedFields[sessiondevice.FieldUpdatedAt] = struct{}{}
+	m.clearedFields[session_device.FieldUpdatedAt] = struct{}{}
 }
 
 // UpdatedAtCleared returns if the "updated_at" field was cleared in this mutation.
 func (m *SessionDeviceMutation) UpdatedAtCleared() bool {
-	_, ok := m.clearedFields[sessiondevice.FieldUpdatedAt]
+	_, ok := m.clearedFields[session_device.FieldUpdatedAt]
 	return ok
 }
 
 // ResetUpdatedAt resets all changes to the "updated_at" field.
 func (m *SessionDeviceMutation) ResetUpdatedAt() {
 	m.updated_at = nil
-	delete(m.clearedFields, sessiondevice.FieldUpdatedAt)
+	delete(m.clearedFields, session_device.FieldUpdatedAt)
 }
 
 // AddSessionIDs adds the "sessions" edge to the Session entity by ids.
@@ -3292,19 +3292,19 @@ func (m *SessionDeviceMutation) Type() string {
 func (m *SessionDeviceMutation) Fields() []string {
 	fields := make([]string, 0, 5)
 	if m.ip_address != nil {
-		fields = append(fields, sessiondevice.FieldIPAddress)
+		fields = append(fields, session_device.FieldIPAddress)
 	}
 	if m.user_agent != nil {
-		fields = append(fields, sessiondevice.FieldUserAgent)
+		fields = append(fields, session_device.FieldUserAgent)
 	}
 	if m.location != nil {
-		fields = append(fields, sessiondevice.FieldLocation)
+		fields = append(fields, session_device.FieldLocation)
 	}
 	if m.created_at != nil {
-		fields = append(fields, sessiondevice.FieldCreatedAt)
+		fields = append(fields, session_device.FieldCreatedAt)
 	}
 	if m.updated_at != nil {
-		fields = append(fields, sessiondevice.FieldUpdatedAt)
+		fields = append(fields, session_device.FieldUpdatedAt)
 	}
 	return fields
 }
@@ -3314,15 +3314,15 @@ func (m *SessionDeviceMutation) Fields() []string {
 // schema.
 func (m *SessionDeviceMutation) Field(name string) (fluent.Value, bool) {
 	switch name {
-	case sessiondevice.FieldIPAddress:
+	case session_device.FieldIPAddress:
 		return m.IPAddress()
-	case sessiondevice.FieldUserAgent:
+	case session_device.FieldUserAgent:
 		return m.UserAgent()
-	case sessiondevice.FieldLocation:
+	case session_device.FieldLocation:
 		return m.Location()
-	case sessiondevice.FieldCreatedAt:
+	case session_device.FieldCreatedAt:
 		return m.CreatedAt()
-	case sessiondevice.FieldUpdatedAt:
+	case session_device.FieldUpdatedAt:
 		return m.UpdatedAt()
 	}
 	return nil, false
@@ -3333,15 +3333,15 @@ func (m *SessionDeviceMutation) Field(name string) (fluent.Value, bool) {
 // database failed.
 func (m *SessionDeviceMutation) OldField(ctx context.Context, name string) (fluent.Value, error) {
 	switch name {
-	case sessiondevice.FieldIPAddress:
+	case session_device.FieldIPAddress:
 		return m.OldIPAddress(ctx)
-	case sessiondevice.FieldUserAgent:
+	case session_device.FieldUserAgent:
 		return m.OldUserAgent(ctx)
-	case sessiondevice.FieldLocation:
+	case session_device.FieldLocation:
 		return m.OldLocation(ctx)
-	case sessiondevice.FieldCreatedAt:
+	case session_device.FieldCreatedAt:
 		return m.OldCreatedAt(ctx)
-	case sessiondevice.FieldUpdatedAt:
+	case session_device.FieldUpdatedAt:
 		return m.OldUpdatedAt(ctx)
 	}
 	return nil, fmt.Errorf("unknown SessionDevice field %s", name)
@@ -3352,35 +3352,35 @@ func (m *SessionDeviceMutation) OldField(ctx context.Context, name string) (flue
 // type.
 func (m *SessionDeviceMutation) SetField(name string, value fluent.Value) error {
 	switch name {
-	case sessiondevice.FieldIPAddress:
+	case session_device.FieldIPAddress:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetIPAddress(v)
 		return nil
-	case sessiondevice.FieldUserAgent:
+	case session_device.FieldUserAgent:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetUserAgent(v)
 		return nil
-	case sessiondevice.FieldLocation:
+	case session_device.FieldLocation:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetLocation(v)
 		return nil
-	case sessiondevice.FieldCreatedAt:
+	case session_device.FieldCreatedAt:
 		v, ok := value.(time.Time)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetCreatedAt(v)
 		return nil
-	case sessiondevice.FieldUpdatedAt:
+	case session_device.FieldUpdatedAt:
 		v, ok := value.(time.Time)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -3417,8 +3417,8 @@ func (m *SessionDeviceMutation) AddField(name string, value fluent.Value) error 
 // mutation.
 func (m *SessionDeviceMutation) ClearedFields() []string {
 	var fields []string
-	if m.FieldCleared(sessiondevice.FieldUpdatedAt) {
-		fields = append(fields, sessiondevice.FieldUpdatedAt)
+	if m.FieldCleared(session_device.FieldUpdatedAt) {
+		fields = append(fields, session_device.FieldUpdatedAt)
 	}
 	return fields
 }
@@ -3434,7 +3434,7 @@ func (m *SessionDeviceMutation) FieldCleared(name string) bool {
 // error if the field is not defined in the schema.
 func (m *SessionDeviceMutation) ClearField(name string) error {
 	switch name {
-	case sessiondevice.FieldUpdatedAt:
+	case session_device.FieldUpdatedAt:
 		m.ClearUpdatedAt()
 		return nil
 	}
@@ -3445,19 +3445,19 @@ func (m *SessionDeviceMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *SessionDeviceMutation) ResetField(name string) error {
 	switch name {
-	case sessiondevice.FieldIPAddress:
+	case session_device.FieldIPAddress:
 		m.ResetIPAddress()
 		return nil
-	case sessiondevice.FieldUserAgent:
+	case session_device.FieldUserAgent:
 		m.ResetUserAgent()
 		return nil
-	case sessiondevice.FieldLocation:
+	case session_device.FieldLocation:
 		m.ResetLocation()
 		return nil
-	case sessiondevice.FieldCreatedAt:
+	case session_device.FieldCreatedAt:
 		m.ResetCreatedAt()
 		return nil
-	case sessiondevice.FieldUpdatedAt:
+	case session_device.FieldUpdatedAt:
 		m.ResetUpdatedAt()
 		return nil
 	}
@@ -3468,7 +3468,7 @@ func (m *SessionDeviceMutation) ResetField(name string) error {
 func (m *SessionDeviceMutation) AddedEdges() []string {
 	edges := make([]string, 0, 1)
 	if m.sessions != nil {
-		edges = append(edges, sessiondevice.EdgeSessions)
+		edges = append(edges, session_device.EdgeSessions)
 	}
 	return edges
 }
@@ -3477,7 +3477,7 @@ func (m *SessionDeviceMutation) AddedEdges() []string {
 // name in this mutation.
 func (m *SessionDeviceMutation) AddedIDs(name string) []fluent.Value {
 	switch name {
-	case sessiondevice.EdgeSessions:
+	case session_device.EdgeSessions:
 		ids := make([]fluent.Value, 0, len(m.sessions))
 		for id := range m.sessions {
 			ids = append(ids, id)
@@ -3491,7 +3491,7 @@ func (m *SessionDeviceMutation) AddedIDs(name string) []fluent.Value {
 func (m *SessionDeviceMutation) RemovedEdges() []string {
 	edges := make([]string, 0, 1)
 	if m.removedsessions != nil {
-		edges = append(edges, sessiondevice.EdgeSessions)
+		edges = append(edges, session_device.EdgeSessions)
 	}
 	return edges
 }
@@ -3500,7 +3500,7 @@ func (m *SessionDeviceMutation) RemovedEdges() []string {
 // the given name in this mutation.
 func (m *SessionDeviceMutation) RemovedIDs(name string) []fluent.Value {
 	switch name {
-	case sessiondevice.EdgeSessions:
+	case session_device.EdgeSessions:
 		ids := make([]fluent.Value, 0, len(m.removedsessions))
 		for id := range m.removedsessions {
 			ids = append(ids, id)
@@ -3514,7 +3514,7 @@ func (m *SessionDeviceMutation) RemovedIDs(name string) []fluent.Value {
 func (m *SessionDeviceMutation) ClearedEdges() []string {
 	edges := make([]string, 0, 1)
 	if m.clearedsessions {
-		edges = append(edges, sessiondevice.EdgeSessions)
+		edges = append(edges, session_device.EdgeSessions)
 	}
 	return edges
 }
@@ -3523,7 +3523,7 @@ func (m *SessionDeviceMutation) ClearedEdges() []string {
 // was cleared in this mutation.
 func (m *SessionDeviceMutation) EdgeCleared(name string) bool {
 	switch name {
-	case sessiondevice.EdgeSessions:
+	case session_device.EdgeSessions:
 		return m.clearedsessions
 	}
 	return false
@@ -3541,7 +3541,7 @@ func (m *SessionDeviceMutation) ClearEdge(name string) error {
 // It returns an error if the edge is not defined in the schema.
 func (m *SessionDeviceMutation) ResetEdge(name string) error {
 	switch name {
-	case sessiondevice.EdgeSessions:
+	case session_device.EdgeSessions:
 		m.ResetSessions()
 		return nil
 	}

@@ -12,18 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
 package todo_test
 
 import (
@@ -40,6 +28,7 @@ import (
 	"time"
 
 	"github.com/usalko/fluent/dialect/sql"
+	"github.com/usalko/fluent/flc/integration/fluent/fluent_test"
 
 	"github.com/AlekSi/pointer"
 	"github.com/stretchr/testify/require"
@@ -51,7 +40,7 @@ import (
 	"github.com/usalko/fluent/dialect"
 	"github.com/usalko/fluent/fluent_gql"
 	gen "github.com/usalko/fluent/fluent_gql/internal/todo"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent"
+	todo_fluent "github.com/usalko/fluent/fluent_gql/internal/todo/fluent"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/migrate"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/todo"
@@ -63,7 +52,7 @@ import (
 type todoTestSuite struct {
 	suite.Suite
 	*client.Client
-	ent *fluent.Client
+	fluent *todo_fluent.Client
 }
 
 const (
@@ -91,15 +80,15 @@ const (
 
 func (s *todoTestSuite) SetupTest() {
 	time.Local = time.UTC
-	s.ent = fluent_test.Open(s.T(), dialect.SQLite,
+	s.fluent = fluent_test.Open(s.T(), dialect.SQLite,
 		fmt.Sprintf("file:%s-%d?mode=memory&cache=shared&_fk=1",
 			s.T().Name(), time.Now().UnixNano(),
 		),
 		fluent_test.WithMigrateOptions(migrate.WithGlobalUniqueID(true)),
 	)
 
-	srv := handler.NewDefaultServer(gen.NewSchema(s.ent))
-	srv.Use(fluent_gql.Transactioner{TxOpener: s.ent})
+	srv := handler.NewDefaultServer(gen.NewSchema(s.fluent))
+	srv.Use(fluent_gql.Transactioner{TxOpener: s.fluent})
 	s.Client = client.New(srv)
 
 	const mutation = `mutation($priority: Int!, $text: String!, $parent: ID) {
@@ -617,7 +606,7 @@ func (s *todoTestSuite) TestPaginationFiltering() {
 
 	s.Run("WithCategory", func() {
 		ctx := context.Background()
-		id := s.fluent.Todo.Query().Order(fluent.Asc(todo.FieldID)).FirstIDX(ctx)
+		id := s.fluent.Todo.Query().Order(todo_fluent.Asc(todo.FieldID)).FirstIDX(ctx)
 		s.fluent.Category.Create().SetText("Disabled").SetStatus(category.StatusDisabled).AddTodoIDs(id).SetDuration(time.Second).ExecX(ctx)
 
 		var (
@@ -1081,15 +1070,15 @@ func (s *todoTestSuite) TestNodeOptions() {
 
 	nr, err := s.fluent.Noder(ctx, td.ID)
 	s.Require().NoError(err)
-	s.Require().IsType(nr, (*fluent.Todo)(nil))
-	s.Require().Equal(td.ID, nr.(*fluent.Todo).ID)
+	s.Require().IsType(nr, (*todo_fluent.Todo)(nil))
+	s.Require().Equal(td.ID, nr.(*todo_fluent.Todo).ID)
 
-	nr, err = s.fluent.Noder(ctx, td.ID, fluent.WithFixedNodeType(todo.Table))
+	nr, err = s.fluent.Noder(ctx, td.ID, todo_fluent.WithFixedNodeType(todo.Table))
 	s.Require().NoError(err)
-	s.Require().IsType(nr, (*fluent.Todo)(nil))
-	s.Require().Equal(td.ID, nr.(*fluent.Todo).ID)
+	s.Require().IsType(nr, (*todo_fluent.Todo)(nil))
+	s.Require().Equal(td.ID, nr.(*todo_fluent.Todo).ID)
 
-	_, err = s.fluent.Noder(ctx, td.ID, fluent.WithNodeType(func(context.Context, int) (string, error) {
+	_, err = s.fluent.Noder(ctx, td.ID, todo_fluent.WithNodeType(func(context.Context, int) (string, error) {
 		return "", errors.New("bad node type")
 	}))
 	s.Require().EqualError(err, "bad node type")
@@ -1308,18 +1297,18 @@ func TestNestedConnection(t *testing.T) {
 	require.NoError(t, err)
 	count := &queryCount{Driver: drv}
 	ec := fluent_test.NewClient(t,
-		fluent_test.WithOptions(fluent.Driver(count)),
+		fluent_test.WithOptions(todo_fluent.Driver(count)),
 		fluent_test.WithMigrateOptions(migrate.WithGlobalUniqueID(true)),
 	)
 	srv := handler.NewDefaultServer(gen.NewSchema(ec))
 	gqlc := client.New(srv)
 
-	bulkG := make([]*fluent.GroupCreate, 10)
+	bulkG := make([]*todo_fluent.GroupCreate, 10)
 	for i := range bulkG {
 		bulkG[i] = ec.Group.Create().SetName(fmt.Sprintf("group-%d", i))
 	}
 	groups := ec.Group.CreateBulk(bulkG...).SaveX(ctx)
-	bulkU := make([]*fluent.UserCreate, 10)
+	bulkU := make([]*todo_fluent.UserCreate, 10)
 	for i := range bulkU {
 		bulkU[i] = ec.User.Create().
 			SetName(fmt.Sprintf("user-%d", i)).
@@ -1712,7 +1701,7 @@ func TestEdgesFiltering(t *testing.T) {
 	require.NoError(t, err)
 	count := &queryCount{Driver: drv}
 	ec := fluent_test.NewClient(t,
-		fluent_test.WithOptions(fluent.Driver(count)),
+		fluent_test.WithOptions(todo_fluent.Driver(count)),
 		fluent_test.WithMigrateOptions(migrate.WithGlobalUniqueID(true)),
 	)
 	srv := handler.NewDefaultServer(gen.NewSchema(ec))
@@ -2271,7 +2260,7 @@ func TestReduceQueryComplexity(t *testing.T) {
 	require.NoError(t, err)
 	rec := &queryRecorder{Driver: drv}
 	ec := fluent_test.NewClient(t,
-		fluent_test.WithOptions(fluent.Driver(rec)),
+		fluent_test.WithOptions(todo_fluent.Driver(rec)),
 		fluent_test.WithMigrateOptions(migrate.WithGlobalUniqueID(true)),
 	)
 	var (
@@ -2433,7 +2422,7 @@ func TestFieldSelection(t *testing.T) {
 	require.NoError(t, err)
 	rec := &queryRecorder{Driver: drv}
 	ec := fluent_test.NewClient(t,
-		fluent_test.WithOptions(fluent.Driver(rec)),
+		fluent_test.WithOptions(todo_fluent.Driver(rec)),
 		fluent_test.WithMigrateOptions(migrate.WithGlobalUniqueID(true)),
 	)
 	root := ec.Todo.CreateBulk(
@@ -3083,7 +3072,7 @@ func TestPrivateFieldSelectionForPagination(t *testing.T) {
 	require.NoError(t, err)
 	rec := &queryRecorder{Driver: drv}
 	ec := fluent_test.NewClient(t,
-		fluent_test.WithOptions(fluent.Driver(rec)),
+		fluent_test.WithOptions(todo_fluent.Driver(rec)),
 		fluent_test.WithMigrateOptions(migrate.WithGlobalUniqueID(true)),
 	)
 	ec.Todo.CreateBulk(

@@ -15,24 +15,24 @@ import (
 	"github.com/google/uuid"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/attachedfile"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/attached_file"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/file"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/friendship"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/group"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/grouptag"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/group_tag"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/predicate"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/process"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/relationship"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/relationshipinfo"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/relationship_info"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/role"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/roleuser"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/role_user"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tag"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweet"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweetlike"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweettag"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweet_like"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweet_tag"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/usergroup"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/usertweet"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user_group"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user_tweet"
 )
 
 const (
@@ -294,7 +294,7 @@ func (m *AttachedFileMutation) SetFiID(id int) {
 // ClearFi clears the "fi" edge to the File entity.
 func (m *AttachedFileMutation) ClearFi() {
 	m.clearedfi = true
-	m.clearedFields[attachedfile.FieldFID] = struct{}{}
+	m.clearedFields[attached_file.FieldFID] = struct{}{}
 }
 
 // FiCleared reports if the "fi" edge to the File entity was cleared.
@@ -329,7 +329,7 @@ func (m *AttachedFileMutation) ResetFi() {
 // ClearProc clears the "proc" edge to the Process entity.
 func (m *AttachedFileMutation) ClearProc() {
 	m.clearedproc = true
-	m.clearedFields[attachedfile.FieldProcID] = struct{}{}
+	m.clearedFields[attached_file.FieldProcID] = struct{}{}
 }
 
 // ProcCleared reports if the "proc" edge to the Process entity was cleared.
@@ -389,13 +389,13 @@ func (m *AttachedFileMutation) Type() string {
 func (m *AttachedFileMutation) Fields() []string {
 	fields := make([]string, 0, 3)
 	if m.attach_time != nil {
-		fields = append(fields, attachedfile.FieldAttachTime)
+		fields = append(fields, attached_file.FieldAttachTime)
 	}
 	if m.fi != nil {
-		fields = append(fields, attachedfile.FieldFID)
+		fields = append(fields, attached_file.FieldFID)
 	}
 	if m.proc != nil {
-		fields = append(fields, attachedfile.FieldProcID)
+		fields = append(fields, attached_file.FieldProcID)
 	}
 	return fields
 }
@@ -405,11 +405,11 @@ func (m *AttachedFileMutation) Fields() []string {
 // schema.
 func (m *AttachedFileMutation) Field(name string) (fluent.Value, bool) {
 	switch name {
-	case attachedfile.FieldAttachTime:
+	case attached_file.FieldAttachTime:
 		return m.AttachTime()
-	case attachedfile.FieldFID:
+	case attached_file.FieldFID:
 		return m.FID()
-	case attachedfile.FieldProcID:
+	case attached_file.FieldProcID:
 		return m.ProcID()
 	}
 	return nil, false
@@ -420,11 +420,11 @@ func (m *AttachedFileMutation) Field(name string) (fluent.Value, bool) {
 // database failed.
 func (m *AttachedFileMutation) OldField(ctx context.Context, name string) (fluent.Value, error) {
 	switch name {
-	case attachedfile.FieldAttachTime:
+	case attached_file.FieldAttachTime:
 		return m.OldAttachTime(ctx)
-	case attachedfile.FieldFID:
+	case attached_file.FieldFID:
 		return m.OldFID(ctx)
-	case attachedfile.FieldProcID:
+	case attached_file.FieldProcID:
 		return m.OldProcID(ctx)
 	}
 	return nil, fmt.Errorf("unknown AttachedFile field %s", name)
@@ -435,21 +435,21 @@ func (m *AttachedFileMutation) OldField(ctx context.Context, name string) (fluen
 // type.
 func (m *AttachedFileMutation) SetField(name string, value fluent.Value) error {
 	switch name {
-	case attachedfile.FieldAttachTime:
+	case attached_file.FieldAttachTime:
 		v, ok := value.(time.Time)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetAttachTime(v)
 		return nil
-	case attachedfile.FieldFID:
+	case attached_file.FieldFID:
 		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetFID(v)
 		return nil
-	case attachedfile.FieldProcID:
+	case attached_file.FieldProcID:
 		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -508,13 +508,13 @@ func (m *AttachedFileMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *AttachedFileMutation) ResetField(name string) error {
 	switch name {
-	case attachedfile.FieldAttachTime:
+	case attached_file.FieldAttachTime:
 		m.ResetAttachTime()
 		return nil
-	case attachedfile.FieldFID:
+	case attached_file.FieldFID:
 		m.ResetFID()
 		return nil
-	case attachedfile.FieldProcID:
+	case attached_file.FieldProcID:
 		m.ResetProcID()
 		return nil
 	}
@@ -525,10 +525,10 @@ func (m *AttachedFileMutation) ResetField(name string) error {
 func (m *AttachedFileMutation) AddedEdges() []string {
 	edges := make([]string, 0, 2)
 	if m.fi != nil {
-		edges = append(edges, attachedfile.EdgeFi)
+		edges = append(edges, attached_file.EdgeFi)
 	}
 	if m.proc != nil {
-		edges = append(edges, attachedfile.EdgeProc)
+		edges = append(edges, attached_file.EdgeProc)
 	}
 	return edges
 }
@@ -537,11 +537,11 @@ func (m *AttachedFileMutation) AddedEdges() []string {
 // name in this mutation.
 func (m *AttachedFileMutation) AddedIDs(name string) []fluent.Value {
 	switch name {
-	case attachedfile.EdgeFi:
+	case attached_file.EdgeFi:
 		if id := m.fi; id != nil {
 			return []fluent.Value{*id}
 		}
-	case attachedfile.EdgeProc:
+	case attached_file.EdgeProc:
 		if id := m.proc; id != nil {
 			return []fluent.Value{*id}
 		}
@@ -565,10 +565,10 @@ func (m *AttachedFileMutation) RemovedIDs(name string) []fluent.Value {
 func (m *AttachedFileMutation) ClearedEdges() []string {
 	edges := make([]string, 0, 2)
 	if m.clearedfi {
-		edges = append(edges, attachedfile.EdgeFi)
+		edges = append(edges, attached_file.EdgeFi)
 	}
 	if m.clearedproc {
-		edges = append(edges, attachedfile.EdgeProc)
+		edges = append(edges, attached_file.EdgeProc)
 	}
 	return edges
 }
@@ -577,9 +577,9 @@ func (m *AttachedFileMutation) ClearedEdges() []string {
 // was cleared in this mutation.
 func (m *AttachedFileMutation) EdgeCleared(name string) bool {
 	switch name {
-	case attachedfile.EdgeFi:
+	case attached_file.EdgeFi:
 		return m.clearedfi
-	case attachedfile.EdgeProc:
+	case attached_file.EdgeProc:
 		return m.clearedproc
 	}
 	return false
@@ -589,10 +589,10 @@ func (m *AttachedFileMutation) EdgeCleared(name string) bool {
 // if that edge is not defined in the schema.
 func (m *AttachedFileMutation) ClearEdge(name string) error {
 	switch name {
-	case attachedfile.EdgeFi:
+	case attached_file.EdgeFi:
 		m.ClearFi()
 		return nil
-	case attachedfile.EdgeProc:
+	case attached_file.EdgeProc:
 		m.ClearProc()
 		return nil
 	}
@@ -603,10 +603,10 @@ func (m *AttachedFileMutation) ClearEdge(name string) error {
 // It returns an error if the edge is not defined in the schema.
 func (m *AttachedFileMutation) ResetEdge(name string) error {
 	switch name {
-	case attachedfile.EdgeFi:
+	case attached_file.EdgeFi:
 		m.ResetFi()
 		return nil
-	case attachedfile.EdgeProc:
+	case attached_file.EdgeProc:
 		m.ResetProc()
 		return nil
 	}
@@ -2513,7 +2513,7 @@ func (m *GroupTagMutation) ResetGroupID() {
 // ClearTag clears the "tag" edge to the Tag entity.
 func (m *GroupTagMutation) ClearTag() {
 	m.clearedtag = true
-	m.clearedFields[grouptag.FieldTagID] = struct{}{}
+	m.clearedFields[group_tag.FieldTagID] = struct{}{}
 }
 
 // TagCleared reports if the "tag" edge to the Tag entity was cleared.
@@ -2540,7 +2540,7 @@ func (m *GroupTagMutation) ResetTag() {
 // ClearGroup clears the "group" edge to the Group entity.
 func (m *GroupTagMutation) ClearGroup() {
 	m.clearedgroup = true
-	m.clearedFields[grouptag.FieldGroupID] = struct{}{}
+	m.clearedFields[group_tag.FieldGroupID] = struct{}{}
 }
 
 // GroupCleared reports if the "group" edge to the Group entity was cleared.
@@ -2600,10 +2600,10 @@ func (m *GroupTagMutation) Type() string {
 func (m *GroupTagMutation) Fields() []string {
 	fields := make([]string, 0, 2)
 	if m.tag != nil {
-		fields = append(fields, grouptag.FieldTagID)
+		fields = append(fields, group_tag.FieldTagID)
 	}
 	if m.group != nil {
-		fields = append(fields, grouptag.FieldGroupID)
+		fields = append(fields, group_tag.FieldGroupID)
 	}
 	return fields
 }
@@ -2613,9 +2613,9 @@ func (m *GroupTagMutation) Fields() []string {
 // schema.
 func (m *GroupTagMutation) Field(name string) (fluent.Value, bool) {
 	switch name {
-	case grouptag.FieldTagID:
+	case group_tag.FieldTagID:
 		return m.TagID()
-	case grouptag.FieldGroupID:
+	case group_tag.FieldGroupID:
 		return m.GroupID()
 	}
 	return nil, false
@@ -2626,9 +2626,9 @@ func (m *GroupTagMutation) Field(name string) (fluent.Value, bool) {
 // database failed.
 func (m *GroupTagMutation) OldField(ctx context.Context, name string) (fluent.Value, error) {
 	switch name {
-	case grouptag.FieldTagID:
+	case group_tag.FieldTagID:
 		return m.OldTagID(ctx)
-	case grouptag.FieldGroupID:
+	case group_tag.FieldGroupID:
 		return m.OldGroupID(ctx)
 	}
 	return nil, fmt.Errorf("unknown GroupTag field %s", name)
@@ -2639,14 +2639,14 @@ func (m *GroupTagMutation) OldField(ctx context.Context, name string) (fluent.Va
 // type.
 func (m *GroupTagMutation) SetField(name string, value fluent.Value) error {
 	switch name {
-	case grouptag.FieldTagID:
+	case group_tag.FieldTagID:
 		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetTagID(v)
 		return nil
-	case grouptag.FieldGroupID:
+	case group_tag.FieldGroupID:
 		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -2705,10 +2705,10 @@ func (m *GroupTagMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *GroupTagMutation) ResetField(name string) error {
 	switch name {
-	case grouptag.FieldTagID:
+	case group_tag.FieldTagID:
 		m.ResetTagID()
 		return nil
-	case grouptag.FieldGroupID:
+	case group_tag.FieldGroupID:
 		m.ResetGroupID()
 		return nil
 	}
@@ -2719,10 +2719,10 @@ func (m *GroupTagMutation) ResetField(name string) error {
 func (m *GroupTagMutation) AddedEdges() []string {
 	edges := make([]string, 0, 2)
 	if m.tag != nil {
-		edges = append(edges, grouptag.EdgeTag)
+		edges = append(edges, group_tag.EdgeTag)
 	}
 	if m.group != nil {
-		edges = append(edges, grouptag.EdgeGroup)
+		edges = append(edges, group_tag.EdgeGroup)
 	}
 	return edges
 }
@@ -2731,11 +2731,11 @@ func (m *GroupTagMutation) AddedEdges() []string {
 // name in this mutation.
 func (m *GroupTagMutation) AddedIDs(name string) []fluent.Value {
 	switch name {
-	case grouptag.EdgeTag:
+	case group_tag.EdgeTag:
 		if id := m.tag; id != nil {
 			return []fluent.Value{*id}
 		}
-	case grouptag.EdgeGroup:
+	case group_tag.EdgeGroup:
 		if id := m.group; id != nil {
 			return []fluent.Value{*id}
 		}
@@ -2759,10 +2759,10 @@ func (m *GroupTagMutation) RemovedIDs(name string) []fluent.Value {
 func (m *GroupTagMutation) ClearedEdges() []string {
 	edges := make([]string, 0, 2)
 	if m.clearedtag {
-		edges = append(edges, grouptag.EdgeTag)
+		edges = append(edges, group_tag.EdgeTag)
 	}
 	if m.clearedgroup {
-		edges = append(edges, grouptag.EdgeGroup)
+		edges = append(edges, group_tag.EdgeGroup)
 	}
 	return edges
 }
@@ -2771,9 +2771,9 @@ func (m *GroupTagMutation) ClearedEdges() []string {
 // was cleared in this mutation.
 func (m *GroupTagMutation) EdgeCleared(name string) bool {
 	switch name {
-	case grouptag.EdgeTag:
+	case group_tag.EdgeTag:
 		return m.clearedtag
-	case grouptag.EdgeGroup:
+	case group_tag.EdgeGroup:
 		return m.clearedgroup
 	}
 	return false
@@ -2783,10 +2783,10 @@ func (m *GroupTagMutation) EdgeCleared(name string) bool {
 // if that edge is not defined in the schema.
 func (m *GroupTagMutation) ClearEdge(name string) error {
 	switch name {
-	case grouptag.EdgeTag:
+	case group_tag.EdgeTag:
 		m.ClearTag()
 		return nil
-	case grouptag.EdgeGroup:
+	case group_tag.EdgeGroup:
 		m.ClearGroup()
 		return nil
 	}
@@ -2797,10 +2797,10 @@ func (m *GroupTagMutation) ClearEdge(name string) error {
 // It returns an error if the edge is not defined in the schema.
 func (m *GroupTagMutation) ResetEdge(name string) error {
 	switch name {
-	case grouptag.EdgeTag:
+	case group_tag.EdgeTag:
 		m.ResetTag()
 		return nil
-	case grouptag.EdgeGroup:
+	case group_tag.EdgeGroup:
 		m.ResetGroup()
 		return nil
 	}
@@ -3983,7 +3983,7 @@ func (m *RelationshipInfoMutation) Type() string {
 func (m *RelationshipInfoMutation) Fields() []string {
 	fields := make([]string, 0, 1)
 	if m.text != nil {
-		fields = append(fields, relationshipinfo.FieldText)
+		fields = append(fields, relationship_info.FieldText)
 	}
 	return fields
 }
@@ -3993,7 +3993,7 @@ func (m *RelationshipInfoMutation) Fields() []string {
 // schema.
 func (m *RelationshipInfoMutation) Field(name string) (fluent.Value, bool) {
 	switch name {
-	case relationshipinfo.FieldText:
+	case relationship_info.FieldText:
 		return m.Text()
 	}
 	return nil, false
@@ -4004,7 +4004,7 @@ func (m *RelationshipInfoMutation) Field(name string) (fluent.Value, bool) {
 // database failed.
 func (m *RelationshipInfoMutation) OldField(ctx context.Context, name string) (fluent.Value, error) {
 	switch name {
-	case relationshipinfo.FieldText:
+	case relationship_info.FieldText:
 		return m.OldText(ctx)
 	}
 	return nil, fmt.Errorf("unknown RelationshipInfo field %s", name)
@@ -4015,7 +4015,7 @@ func (m *RelationshipInfoMutation) OldField(ctx context.Context, name string) (f
 // type.
 func (m *RelationshipInfoMutation) SetField(name string, value fluent.Value) error {
 	switch name {
-	case relationshipinfo.FieldText:
+	case relationship_info.FieldText:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -4071,7 +4071,7 @@ func (m *RelationshipInfoMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *RelationshipInfoMutation) ResetField(name string) error {
 	switch name {
-	case relationshipinfo.FieldText:
+	case relationship_info.FieldText:
 		m.ResetText()
 		return nil
 	}
@@ -4713,7 +4713,7 @@ func (m *RoleUserMutation) ResetUserID() {
 // ClearRole clears the "role" edge to the Role entity.
 func (m *RoleUserMutation) ClearRole() {
 	m.clearedrole = true
-	m.clearedFields[roleuser.FieldRoleID] = struct{}{}
+	m.clearedFields[role_user.FieldRoleID] = struct{}{}
 }
 
 // RoleCleared reports if the "role" edge to the Role entity was cleared.
@@ -4740,7 +4740,7 @@ func (m *RoleUserMutation) ResetRole() {
 // ClearUser clears the "user" edge to the User entity.
 func (m *RoleUserMutation) ClearUser() {
 	m.cleareduser = true
-	m.clearedFields[roleuser.FieldUserID] = struct{}{}
+	m.clearedFields[role_user.FieldUserID] = struct{}{}
 }
 
 // UserCleared reports if the "user" edge to the User entity was cleared.
@@ -4800,13 +4800,13 @@ func (m *RoleUserMutation) Type() string {
 func (m *RoleUserMutation) Fields() []string {
 	fields := make([]string, 0, 3)
 	if m.created_at != nil {
-		fields = append(fields, roleuser.FieldCreatedAt)
+		fields = append(fields, role_user.FieldCreatedAt)
 	}
 	if m.role != nil {
-		fields = append(fields, roleuser.FieldRoleID)
+		fields = append(fields, role_user.FieldRoleID)
 	}
 	if m.user != nil {
-		fields = append(fields, roleuser.FieldUserID)
+		fields = append(fields, role_user.FieldUserID)
 	}
 	return fields
 }
@@ -4816,11 +4816,11 @@ func (m *RoleUserMutation) Fields() []string {
 // schema.
 func (m *RoleUserMutation) Field(name string) (fluent.Value, bool) {
 	switch name {
-	case roleuser.FieldCreatedAt:
+	case role_user.FieldCreatedAt:
 		return m.CreatedAt()
-	case roleuser.FieldRoleID:
+	case role_user.FieldRoleID:
 		return m.RoleID()
-	case roleuser.FieldUserID:
+	case role_user.FieldUserID:
 		return m.UserID()
 	}
 	return nil, false
@@ -4838,21 +4838,21 @@ func (m *RoleUserMutation) OldField(ctx context.Context, name string) (fluent.Va
 // type.
 func (m *RoleUserMutation) SetField(name string, value fluent.Value) error {
 	switch name {
-	case roleuser.FieldCreatedAt:
+	case role_user.FieldCreatedAt:
 		v, ok := value.(time.Time)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetCreatedAt(v)
 		return nil
-	case roleuser.FieldRoleID:
+	case role_user.FieldRoleID:
 		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetRoleID(v)
 		return nil
-	case roleuser.FieldUserID:
+	case role_user.FieldUserID:
 		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -4911,13 +4911,13 @@ func (m *RoleUserMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *RoleUserMutation) ResetField(name string) error {
 	switch name {
-	case roleuser.FieldCreatedAt:
+	case role_user.FieldCreatedAt:
 		m.ResetCreatedAt()
 		return nil
-	case roleuser.FieldRoleID:
+	case role_user.FieldRoleID:
 		m.ResetRoleID()
 		return nil
-	case roleuser.FieldUserID:
+	case role_user.FieldUserID:
 		m.ResetUserID()
 		return nil
 	}
@@ -4928,10 +4928,10 @@ func (m *RoleUserMutation) ResetField(name string) error {
 func (m *RoleUserMutation) AddedEdges() []string {
 	edges := make([]string, 0, 2)
 	if m.role != nil {
-		edges = append(edges, roleuser.EdgeRole)
+		edges = append(edges, role_user.EdgeRole)
 	}
 	if m.user != nil {
-		edges = append(edges, roleuser.EdgeUser)
+		edges = append(edges, role_user.EdgeUser)
 	}
 	return edges
 }
@@ -4940,11 +4940,11 @@ func (m *RoleUserMutation) AddedEdges() []string {
 // name in this mutation.
 func (m *RoleUserMutation) AddedIDs(name string) []fluent.Value {
 	switch name {
-	case roleuser.EdgeRole:
+	case role_user.EdgeRole:
 		if id := m.role; id != nil {
 			return []fluent.Value{*id}
 		}
-	case roleuser.EdgeUser:
+	case role_user.EdgeUser:
 		if id := m.user; id != nil {
 			return []fluent.Value{*id}
 		}
@@ -4968,10 +4968,10 @@ func (m *RoleUserMutation) RemovedIDs(name string) []fluent.Value {
 func (m *RoleUserMutation) ClearedEdges() []string {
 	edges := make([]string, 0, 2)
 	if m.clearedrole {
-		edges = append(edges, roleuser.EdgeRole)
+		edges = append(edges, role_user.EdgeRole)
 	}
 	if m.cleareduser {
-		edges = append(edges, roleuser.EdgeUser)
+		edges = append(edges, role_user.EdgeUser)
 	}
 	return edges
 }
@@ -4980,9 +4980,9 @@ func (m *RoleUserMutation) ClearedEdges() []string {
 // was cleared in this mutation.
 func (m *RoleUserMutation) EdgeCleared(name string) bool {
 	switch name {
-	case roleuser.EdgeRole:
+	case role_user.EdgeRole:
 		return m.clearedrole
-	case roleuser.EdgeUser:
+	case role_user.EdgeUser:
 		return m.cleareduser
 	}
 	return false
@@ -4992,10 +4992,10 @@ func (m *RoleUserMutation) EdgeCleared(name string) bool {
 // if that edge is not defined in the schema.
 func (m *RoleUserMutation) ClearEdge(name string) error {
 	switch name {
-	case roleuser.EdgeRole:
+	case role_user.EdgeRole:
 		m.ClearRole()
 		return nil
-	case roleuser.EdgeUser:
+	case role_user.EdgeUser:
 		m.ClearUser()
 		return nil
 	}
@@ -5006,10 +5006,10 @@ func (m *RoleUserMutation) ClearEdge(name string) error {
 // It returns an error if the edge is not defined in the schema.
 func (m *RoleUserMutation) ResetEdge(name string) error {
 	switch name {
-	case roleuser.EdgeRole:
+	case role_user.EdgeRole:
 		m.ResetRole()
 		return nil
-	case roleuser.EdgeUser:
+	case role_user.EdgeUser:
 		m.ResetUser()
 		return nil
 	}
@@ -6549,7 +6549,7 @@ func (m *TweetLikeMutation) ResetTweetID() {
 // ClearTweet clears the "tweet" edge to the Tweet entity.
 func (m *TweetLikeMutation) ClearTweet() {
 	m.clearedtweet = true
-	m.clearedFields[tweetlike.FieldTweetID] = struct{}{}
+	m.clearedFields[tweet_like.FieldTweetID] = struct{}{}
 }
 
 // TweetCleared reports if the "tweet" edge to the Tweet entity was cleared.
@@ -6576,7 +6576,7 @@ func (m *TweetLikeMutation) ResetTweet() {
 // ClearUser clears the "user" edge to the User entity.
 func (m *TweetLikeMutation) ClearUser() {
 	m.cleareduser = true
-	m.clearedFields[tweetlike.FieldUserID] = struct{}{}
+	m.clearedFields[tweet_like.FieldUserID] = struct{}{}
 }
 
 // UserCleared reports if the "user" edge to the User entity was cleared.
@@ -6636,13 +6636,13 @@ func (m *TweetLikeMutation) Type() string {
 func (m *TweetLikeMutation) Fields() []string {
 	fields := make([]string, 0, 3)
 	if m.liked_at != nil {
-		fields = append(fields, tweetlike.FieldLikedAt)
+		fields = append(fields, tweet_like.FieldLikedAt)
 	}
 	if m.user != nil {
-		fields = append(fields, tweetlike.FieldUserID)
+		fields = append(fields, tweet_like.FieldUserID)
 	}
 	if m.tweet != nil {
-		fields = append(fields, tweetlike.FieldTweetID)
+		fields = append(fields, tweet_like.FieldTweetID)
 	}
 	return fields
 }
@@ -6652,11 +6652,11 @@ func (m *TweetLikeMutation) Fields() []string {
 // schema.
 func (m *TweetLikeMutation) Field(name string) (fluent.Value, bool) {
 	switch name {
-	case tweetlike.FieldLikedAt:
+	case tweet_like.FieldLikedAt:
 		return m.LikedAt()
-	case tweetlike.FieldUserID:
+	case tweet_like.FieldUserID:
 		return m.UserID()
-	case tweetlike.FieldTweetID:
+	case tweet_like.FieldTweetID:
 		return m.TweetID()
 	}
 	return nil, false
@@ -6674,21 +6674,21 @@ func (m *TweetLikeMutation) OldField(ctx context.Context, name string) (fluent.V
 // type.
 func (m *TweetLikeMutation) SetField(name string, value fluent.Value) error {
 	switch name {
-	case tweetlike.FieldLikedAt:
+	case tweet_like.FieldLikedAt:
 		v, ok := value.(time.Time)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetLikedAt(v)
 		return nil
-	case tweetlike.FieldUserID:
+	case tweet_like.FieldUserID:
 		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetUserID(v)
 		return nil
-	case tweetlike.FieldTweetID:
+	case tweet_like.FieldTweetID:
 		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -6747,13 +6747,13 @@ func (m *TweetLikeMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *TweetLikeMutation) ResetField(name string) error {
 	switch name {
-	case tweetlike.FieldLikedAt:
+	case tweet_like.FieldLikedAt:
 		m.ResetLikedAt()
 		return nil
-	case tweetlike.FieldUserID:
+	case tweet_like.FieldUserID:
 		m.ResetUserID()
 		return nil
-	case tweetlike.FieldTweetID:
+	case tweet_like.FieldTweetID:
 		m.ResetTweetID()
 		return nil
 	}
@@ -6764,10 +6764,10 @@ func (m *TweetLikeMutation) ResetField(name string) error {
 func (m *TweetLikeMutation) AddedEdges() []string {
 	edges := make([]string, 0, 2)
 	if m.tweet != nil {
-		edges = append(edges, tweetlike.EdgeTweet)
+		edges = append(edges, tweet_like.EdgeTweet)
 	}
 	if m.user != nil {
-		edges = append(edges, tweetlike.EdgeUser)
+		edges = append(edges, tweet_like.EdgeUser)
 	}
 	return edges
 }
@@ -6776,11 +6776,11 @@ func (m *TweetLikeMutation) AddedEdges() []string {
 // name in this mutation.
 func (m *TweetLikeMutation) AddedIDs(name string) []fluent.Value {
 	switch name {
-	case tweetlike.EdgeTweet:
+	case tweet_like.EdgeTweet:
 		if id := m.tweet; id != nil {
 			return []fluent.Value{*id}
 		}
-	case tweetlike.EdgeUser:
+	case tweet_like.EdgeUser:
 		if id := m.user; id != nil {
 			return []fluent.Value{*id}
 		}
@@ -6804,10 +6804,10 @@ func (m *TweetLikeMutation) RemovedIDs(name string) []fluent.Value {
 func (m *TweetLikeMutation) ClearedEdges() []string {
 	edges := make([]string, 0, 2)
 	if m.clearedtweet {
-		edges = append(edges, tweetlike.EdgeTweet)
+		edges = append(edges, tweet_like.EdgeTweet)
 	}
 	if m.cleareduser {
-		edges = append(edges, tweetlike.EdgeUser)
+		edges = append(edges, tweet_like.EdgeUser)
 	}
 	return edges
 }
@@ -6816,9 +6816,9 @@ func (m *TweetLikeMutation) ClearedEdges() []string {
 // was cleared in this mutation.
 func (m *TweetLikeMutation) EdgeCleared(name string) bool {
 	switch name {
-	case tweetlike.EdgeTweet:
+	case tweet_like.EdgeTweet:
 		return m.clearedtweet
-	case tweetlike.EdgeUser:
+	case tweet_like.EdgeUser:
 		return m.cleareduser
 	}
 	return false
@@ -6828,10 +6828,10 @@ func (m *TweetLikeMutation) EdgeCleared(name string) bool {
 // if that edge is not defined in the schema.
 func (m *TweetLikeMutation) ClearEdge(name string) error {
 	switch name {
-	case tweetlike.EdgeTweet:
+	case tweet_like.EdgeTweet:
 		m.ClearTweet()
 		return nil
-	case tweetlike.EdgeUser:
+	case tweet_like.EdgeUser:
 		m.ClearUser()
 		return nil
 	}
@@ -6842,10 +6842,10 @@ func (m *TweetLikeMutation) ClearEdge(name string) error {
 // It returns an error if the edge is not defined in the schema.
 func (m *TweetLikeMutation) ResetEdge(name string) error {
 	switch name {
-	case tweetlike.EdgeTweet:
+	case tweet_like.EdgeTweet:
 		m.ResetTweet()
 		return nil
-	case tweetlike.EdgeUser:
+	case tweet_like.EdgeUser:
 		m.ResetUser()
 		return nil
 	}
@@ -7084,7 +7084,7 @@ func (m *TweetTagMutation) ResetTweetID() {
 // ClearTag clears the "tag" edge to the Tag entity.
 func (m *TweetTagMutation) ClearTag() {
 	m.clearedtag = true
-	m.clearedFields[tweettag.FieldTagID] = struct{}{}
+	m.clearedFields[tweet_tag.FieldTagID] = struct{}{}
 }
 
 // TagCleared reports if the "tag" edge to the Tag entity was cleared.
@@ -7111,7 +7111,7 @@ func (m *TweetTagMutation) ResetTag() {
 // ClearTweet clears the "tweet" edge to the Tweet entity.
 func (m *TweetTagMutation) ClearTweet() {
 	m.clearedtweet = true
-	m.clearedFields[tweettag.FieldTweetID] = struct{}{}
+	m.clearedFields[tweet_tag.FieldTweetID] = struct{}{}
 }
 
 // TweetCleared reports if the "tweet" edge to the Tweet entity was cleared.
@@ -7171,13 +7171,13 @@ func (m *TweetTagMutation) Type() string {
 func (m *TweetTagMutation) Fields() []string {
 	fields := make([]string, 0, 3)
 	if m.added_at != nil {
-		fields = append(fields, tweettag.FieldAddedAt)
+		fields = append(fields, tweet_tag.FieldAddedAt)
 	}
 	if m.tag != nil {
-		fields = append(fields, tweettag.FieldTagID)
+		fields = append(fields, tweet_tag.FieldTagID)
 	}
 	if m.tweet != nil {
-		fields = append(fields, tweettag.FieldTweetID)
+		fields = append(fields, tweet_tag.FieldTweetID)
 	}
 	return fields
 }
@@ -7187,11 +7187,11 @@ func (m *TweetTagMutation) Fields() []string {
 // schema.
 func (m *TweetTagMutation) Field(name string) (fluent.Value, bool) {
 	switch name {
-	case tweettag.FieldAddedAt:
+	case tweet_tag.FieldAddedAt:
 		return m.AddedAt()
-	case tweettag.FieldTagID:
+	case tweet_tag.FieldTagID:
 		return m.TagID()
-	case tweettag.FieldTweetID:
+	case tweet_tag.FieldTweetID:
 		return m.TweetID()
 	}
 	return nil, false
@@ -7202,11 +7202,11 @@ func (m *TweetTagMutation) Field(name string) (fluent.Value, bool) {
 // database failed.
 func (m *TweetTagMutation) OldField(ctx context.Context, name string) (fluent.Value, error) {
 	switch name {
-	case tweettag.FieldAddedAt:
+	case tweet_tag.FieldAddedAt:
 		return m.OldAddedAt(ctx)
-	case tweettag.FieldTagID:
+	case tweet_tag.FieldTagID:
 		return m.OldTagID(ctx)
-	case tweettag.FieldTweetID:
+	case tweet_tag.FieldTweetID:
 		return m.OldTweetID(ctx)
 	}
 	return nil, fmt.Errorf("unknown TweetTag field %s", name)
@@ -7217,21 +7217,21 @@ func (m *TweetTagMutation) OldField(ctx context.Context, name string) (fluent.Va
 // type.
 func (m *TweetTagMutation) SetField(name string, value fluent.Value) error {
 	switch name {
-	case tweettag.FieldAddedAt:
+	case tweet_tag.FieldAddedAt:
 		v, ok := value.(time.Time)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetAddedAt(v)
 		return nil
-	case tweettag.FieldTagID:
+	case tweet_tag.FieldTagID:
 		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetTagID(v)
 		return nil
-	case tweettag.FieldTweetID:
+	case tweet_tag.FieldTweetID:
 		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -7290,13 +7290,13 @@ func (m *TweetTagMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *TweetTagMutation) ResetField(name string) error {
 	switch name {
-	case tweettag.FieldAddedAt:
+	case tweet_tag.FieldAddedAt:
 		m.ResetAddedAt()
 		return nil
-	case tweettag.FieldTagID:
+	case tweet_tag.FieldTagID:
 		m.ResetTagID()
 		return nil
-	case tweettag.FieldTweetID:
+	case tweet_tag.FieldTweetID:
 		m.ResetTweetID()
 		return nil
 	}
@@ -7307,10 +7307,10 @@ func (m *TweetTagMutation) ResetField(name string) error {
 func (m *TweetTagMutation) AddedEdges() []string {
 	edges := make([]string, 0, 2)
 	if m.tag != nil {
-		edges = append(edges, tweettag.EdgeTag)
+		edges = append(edges, tweet_tag.EdgeTag)
 	}
 	if m.tweet != nil {
-		edges = append(edges, tweettag.EdgeTweet)
+		edges = append(edges, tweet_tag.EdgeTweet)
 	}
 	return edges
 }
@@ -7319,11 +7319,11 @@ func (m *TweetTagMutation) AddedEdges() []string {
 // name in this mutation.
 func (m *TweetTagMutation) AddedIDs(name string) []fluent.Value {
 	switch name {
-	case tweettag.EdgeTag:
+	case tweet_tag.EdgeTag:
 		if id := m.tag; id != nil {
 			return []fluent.Value{*id}
 		}
-	case tweettag.EdgeTweet:
+	case tweet_tag.EdgeTweet:
 		if id := m.tweet; id != nil {
 			return []fluent.Value{*id}
 		}
@@ -7347,10 +7347,10 @@ func (m *TweetTagMutation) RemovedIDs(name string) []fluent.Value {
 func (m *TweetTagMutation) ClearedEdges() []string {
 	edges := make([]string, 0, 2)
 	if m.clearedtag {
-		edges = append(edges, tweettag.EdgeTag)
+		edges = append(edges, tweet_tag.EdgeTag)
 	}
 	if m.clearedtweet {
-		edges = append(edges, tweettag.EdgeTweet)
+		edges = append(edges, tweet_tag.EdgeTweet)
 	}
 	return edges
 }
@@ -7359,9 +7359,9 @@ func (m *TweetTagMutation) ClearedEdges() []string {
 // was cleared in this mutation.
 func (m *TweetTagMutation) EdgeCleared(name string) bool {
 	switch name {
-	case tweettag.EdgeTag:
+	case tweet_tag.EdgeTag:
 		return m.clearedtag
-	case tweettag.EdgeTweet:
+	case tweet_tag.EdgeTweet:
 		return m.clearedtweet
 	}
 	return false
@@ -7371,10 +7371,10 @@ func (m *TweetTagMutation) EdgeCleared(name string) bool {
 // if that edge is not defined in the schema.
 func (m *TweetTagMutation) ClearEdge(name string) error {
 	switch name {
-	case tweettag.EdgeTag:
+	case tweet_tag.EdgeTag:
 		m.ClearTag()
 		return nil
-	case tweettag.EdgeTweet:
+	case tweet_tag.EdgeTweet:
 		m.ClearTweet()
 		return nil
 	}
@@ -7385,10 +7385,10 @@ func (m *TweetTagMutation) ClearEdge(name string) error {
 // It returns an error if the edge is not defined in the schema.
 func (m *TweetTagMutation) ResetEdge(name string) error {
 	switch name {
-	case tweettag.EdgeTag:
+	case tweet_tag.EdgeTag:
 		m.ResetTag()
 		return nil
-	case tweettag.EdgeTweet:
+	case tweet_tag.EdgeTweet:
 		m.ResetTweet()
 		return nil
 	}
@@ -8704,7 +8704,7 @@ func (m *UserGroupMutation) ResetGroupID() {
 // ClearUser clears the "user" edge to the User entity.
 func (m *UserGroupMutation) ClearUser() {
 	m.cleareduser = true
-	m.clearedFields[usergroup.FieldUserID] = struct{}{}
+	m.clearedFields[user_group.FieldUserID] = struct{}{}
 }
 
 // UserCleared reports if the "user" edge to the User entity was cleared.
@@ -8731,7 +8731,7 @@ func (m *UserGroupMutation) ResetUser() {
 // ClearGroup clears the "group" edge to the Group entity.
 func (m *UserGroupMutation) ClearGroup() {
 	m.clearedgroup = true
-	m.clearedFields[usergroup.FieldGroupID] = struct{}{}
+	m.clearedFields[user_group.FieldGroupID] = struct{}{}
 }
 
 // GroupCleared reports if the "group" edge to the Group entity was cleared.
@@ -8791,13 +8791,13 @@ func (m *UserGroupMutation) Type() string {
 func (m *UserGroupMutation) Fields() []string {
 	fields := make([]string, 0, 3)
 	if m.joined_at != nil {
-		fields = append(fields, usergroup.FieldJoinedAt)
+		fields = append(fields, user_group.FieldJoinedAt)
 	}
 	if m.user != nil {
-		fields = append(fields, usergroup.FieldUserID)
+		fields = append(fields, user_group.FieldUserID)
 	}
 	if m.group != nil {
-		fields = append(fields, usergroup.FieldGroupID)
+		fields = append(fields, user_group.FieldGroupID)
 	}
 	return fields
 }
@@ -8807,11 +8807,11 @@ func (m *UserGroupMutation) Fields() []string {
 // schema.
 func (m *UserGroupMutation) Field(name string) (fluent.Value, bool) {
 	switch name {
-	case usergroup.FieldJoinedAt:
+	case user_group.FieldJoinedAt:
 		return m.JoinedAt()
-	case usergroup.FieldUserID:
+	case user_group.FieldUserID:
 		return m.UserID()
-	case usergroup.FieldGroupID:
+	case user_group.FieldGroupID:
 		return m.GroupID()
 	}
 	return nil, false
@@ -8822,11 +8822,11 @@ func (m *UserGroupMutation) Field(name string) (fluent.Value, bool) {
 // database failed.
 func (m *UserGroupMutation) OldField(ctx context.Context, name string) (fluent.Value, error) {
 	switch name {
-	case usergroup.FieldJoinedAt:
+	case user_group.FieldJoinedAt:
 		return m.OldJoinedAt(ctx)
-	case usergroup.FieldUserID:
+	case user_group.FieldUserID:
 		return m.OldUserID(ctx)
-	case usergroup.FieldGroupID:
+	case user_group.FieldGroupID:
 		return m.OldGroupID(ctx)
 	}
 	return nil, fmt.Errorf("unknown UserGroup field %s", name)
@@ -8837,21 +8837,21 @@ func (m *UserGroupMutation) OldField(ctx context.Context, name string) (fluent.V
 // type.
 func (m *UserGroupMutation) SetField(name string, value fluent.Value) error {
 	switch name {
-	case usergroup.FieldJoinedAt:
+	case user_group.FieldJoinedAt:
 		v, ok := value.(time.Time)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetJoinedAt(v)
 		return nil
-	case usergroup.FieldUserID:
+	case user_group.FieldUserID:
 		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetUserID(v)
 		return nil
-	case usergroup.FieldGroupID:
+	case user_group.FieldGroupID:
 		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -8910,13 +8910,13 @@ func (m *UserGroupMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *UserGroupMutation) ResetField(name string) error {
 	switch name {
-	case usergroup.FieldJoinedAt:
+	case user_group.FieldJoinedAt:
 		m.ResetJoinedAt()
 		return nil
-	case usergroup.FieldUserID:
+	case user_group.FieldUserID:
 		m.ResetUserID()
 		return nil
-	case usergroup.FieldGroupID:
+	case user_group.FieldGroupID:
 		m.ResetGroupID()
 		return nil
 	}
@@ -8927,10 +8927,10 @@ func (m *UserGroupMutation) ResetField(name string) error {
 func (m *UserGroupMutation) AddedEdges() []string {
 	edges := make([]string, 0, 2)
 	if m.user != nil {
-		edges = append(edges, usergroup.EdgeUser)
+		edges = append(edges, user_group.EdgeUser)
 	}
 	if m.group != nil {
-		edges = append(edges, usergroup.EdgeGroup)
+		edges = append(edges, user_group.EdgeGroup)
 	}
 	return edges
 }
@@ -8939,11 +8939,11 @@ func (m *UserGroupMutation) AddedEdges() []string {
 // name in this mutation.
 func (m *UserGroupMutation) AddedIDs(name string) []fluent.Value {
 	switch name {
-	case usergroup.EdgeUser:
+	case user_group.EdgeUser:
 		if id := m.user; id != nil {
 			return []fluent.Value{*id}
 		}
-	case usergroup.EdgeGroup:
+	case user_group.EdgeGroup:
 		if id := m.group; id != nil {
 			return []fluent.Value{*id}
 		}
@@ -8967,10 +8967,10 @@ func (m *UserGroupMutation) RemovedIDs(name string) []fluent.Value {
 func (m *UserGroupMutation) ClearedEdges() []string {
 	edges := make([]string, 0, 2)
 	if m.cleareduser {
-		edges = append(edges, usergroup.EdgeUser)
+		edges = append(edges, user_group.EdgeUser)
 	}
 	if m.clearedgroup {
-		edges = append(edges, usergroup.EdgeGroup)
+		edges = append(edges, user_group.EdgeGroup)
 	}
 	return edges
 }
@@ -8979,9 +8979,9 @@ func (m *UserGroupMutation) ClearedEdges() []string {
 // was cleared in this mutation.
 func (m *UserGroupMutation) EdgeCleared(name string) bool {
 	switch name {
-	case usergroup.EdgeUser:
+	case user_group.EdgeUser:
 		return m.cleareduser
-	case usergroup.EdgeGroup:
+	case user_group.EdgeGroup:
 		return m.clearedgroup
 	}
 	return false
@@ -8991,10 +8991,10 @@ func (m *UserGroupMutation) EdgeCleared(name string) bool {
 // if that edge is not defined in the schema.
 func (m *UserGroupMutation) ClearEdge(name string) error {
 	switch name {
-	case usergroup.EdgeUser:
+	case user_group.EdgeUser:
 		m.ClearUser()
 		return nil
-	case usergroup.EdgeGroup:
+	case user_group.EdgeGroup:
 		m.ClearGroup()
 		return nil
 	}
@@ -9005,10 +9005,10 @@ func (m *UserGroupMutation) ClearEdge(name string) error {
 // It returns an error if the edge is not defined in the schema.
 func (m *UserGroupMutation) ResetEdge(name string) error {
 	switch name {
-	case usergroup.EdgeUser:
+	case user_group.EdgeUser:
 		m.ResetUser()
 		return nil
-	case usergroup.EdgeGroup:
+	case user_group.EdgeGroup:
 		m.ResetGroup()
 		return nil
 	}
@@ -9241,7 +9241,7 @@ func (m *UserTweetMutation) ResetTweetID() {
 // ClearUser clears the "user" edge to the User entity.
 func (m *UserTweetMutation) ClearUser() {
 	m.cleareduser = true
-	m.clearedFields[usertweet.FieldUserID] = struct{}{}
+	m.clearedFields[user_tweet.FieldUserID] = struct{}{}
 }
 
 // UserCleared reports if the "user" edge to the User entity was cleared.
@@ -9268,7 +9268,7 @@ func (m *UserTweetMutation) ResetUser() {
 // ClearTweet clears the "tweet" edge to the Tweet entity.
 func (m *UserTweetMutation) ClearTweet() {
 	m.clearedtweet = true
-	m.clearedFields[usertweet.FieldTweetID] = struct{}{}
+	m.clearedFields[user_tweet.FieldTweetID] = struct{}{}
 }
 
 // TweetCleared reports if the "tweet" edge to the Tweet entity was cleared.
@@ -9328,13 +9328,13 @@ func (m *UserTweetMutation) Type() string {
 func (m *UserTweetMutation) Fields() []string {
 	fields := make([]string, 0, 3)
 	if m.created_at != nil {
-		fields = append(fields, usertweet.FieldCreatedAt)
+		fields = append(fields, user_tweet.FieldCreatedAt)
 	}
 	if m.user != nil {
-		fields = append(fields, usertweet.FieldUserID)
+		fields = append(fields, user_tweet.FieldUserID)
 	}
 	if m.tweet != nil {
-		fields = append(fields, usertweet.FieldTweetID)
+		fields = append(fields, user_tweet.FieldTweetID)
 	}
 	return fields
 }
@@ -9344,11 +9344,11 @@ func (m *UserTweetMutation) Fields() []string {
 // schema.
 func (m *UserTweetMutation) Field(name string) (fluent.Value, bool) {
 	switch name {
-	case usertweet.FieldCreatedAt:
+	case user_tweet.FieldCreatedAt:
 		return m.CreatedAt()
-	case usertweet.FieldUserID:
+	case user_tweet.FieldUserID:
 		return m.UserID()
-	case usertweet.FieldTweetID:
+	case user_tweet.FieldTweetID:
 		return m.TweetID()
 	}
 	return nil, false
@@ -9359,11 +9359,11 @@ func (m *UserTweetMutation) Field(name string) (fluent.Value, bool) {
 // database failed.
 func (m *UserTweetMutation) OldField(ctx context.Context, name string) (fluent.Value, error) {
 	switch name {
-	case usertweet.FieldCreatedAt:
+	case user_tweet.FieldCreatedAt:
 		return m.OldCreatedAt(ctx)
-	case usertweet.FieldUserID:
+	case user_tweet.FieldUserID:
 		return m.OldUserID(ctx)
-	case usertweet.FieldTweetID:
+	case user_tweet.FieldTweetID:
 		return m.OldTweetID(ctx)
 	}
 	return nil, fmt.Errorf("unknown UserTweet field %s", name)
@@ -9374,21 +9374,21 @@ func (m *UserTweetMutation) OldField(ctx context.Context, name string) (fluent.V
 // type.
 func (m *UserTweetMutation) SetField(name string, value fluent.Value) error {
 	switch name {
-	case usertweet.FieldCreatedAt:
+	case user_tweet.FieldCreatedAt:
 		v, ok := value.(time.Time)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetCreatedAt(v)
 		return nil
-	case usertweet.FieldUserID:
+	case user_tweet.FieldUserID:
 		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetUserID(v)
 		return nil
-	case usertweet.FieldTweetID:
+	case user_tweet.FieldTweetID:
 		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -9447,13 +9447,13 @@ func (m *UserTweetMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *UserTweetMutation) ResetField(name string) error {
 	switch name {
-	case usertweet.FieldCreatedAt:
+	case user_tweet.FieldCreatedAt:
 		m.ResetCreatedAt()
 		return nil
-	case usertweet.FieldUserID:
+	case user_tweet.FieldUserID:
 		m.ResetUserID()
 		return nil
-	case usertweet.FieldTweetID:
+	case user_tweet.FieldTweetID:
 		m.ResetTweetID()
 		return nil
 	}
@@ -9464,10 +9464,10 @@ func (m *UserTweetMutation) ResetField(name string) error {
 func (m *UserTweetMutation) AddedEdges() []string {
 	edges := make([]string, 0, 2)
 	if m.user != nil {
-		edges = append(edges, usertweet.EdgeUser)
+		edges = append(edges, user_tweet.EdgeUser)
 	}
 	if m.tweet != nil {
-		edges = append(edges, usertweet.EdgeTweet)
+		edges = append(edges, user_tweet.EdgeTweet)
 	}
 	return edges
 }
@@ -9476,11 +9476,11 @@ func (m *UserTweetMutation) AddedEdges() []string {
 // name in this mutation.
 func (m *UserTweetMutation) AddedIDs(name string) []fluent.Value {
 	switch name {
-	case usertweet.EdgeUser:
+	case user_tweet.EdgeUser:
 		if id := m.user; id != nil {
 			return []fluent.Value{*id}
 		}
-	case usertweet.EdgeTweet:
+	case user_tweet.EdgeTweet:
 		if id := m.tweet; id != nil {
 			return []fluent.Value{*id}
 		}
@@ -9504,10 +9504,10 @@ func (m *UserTweetMutation) RemovedIDs(name string) []fluent.Value {
 func (m *UserTweetMutation) ClearedEdges() []string {
 	edges := make([]string, 0, 2)
 	if m.cleareduser {
-		edges = append(edges, usertweet.EdgeUser)
+		edges = append(edges, user_tweet.EdgeUser)
 	}
 	if m.clearedtweet {
-		edges = append(edges, usertweet.EdgeTweet)
+		edges = append(edges, user_tweet.EdgeTweet)
 	}
 	return edges
 }
@@ -9516,9 +9516,9 @@ func (m *UserTweetMutation) ClearedEdges() []string {
 // was cleared in this mutation.
 func (m *UserTweetMutation) EdgeCleared(name string) bool {
 	switch name {
-	case usertweet.EdgeUser:
+	case user_tweet.EdgeUser:
 		return m.cleareduser
-	case usertweet.EdgeTweet:
+	case user_tweet.EdgeTweet:
 		return m.clearedtweet
 	}
 	return false
@@ -9528,10 +9528,10 @@ func (m *UserTweetMutation) EdgeCleared(name string) bool {
 // if that edge is not defined in the schema.
 func (m *UserTweetMutation) ClearEdge(name string) error {
 	switch name {
-	case usertweet.EdgeUser:
+	case user_tweet.EdgeUser:
 		m.ClearUser()
 		return nil
-	case usertweet.EdgeTweet:
+	case user_tweet.EdgeTweet:
 		m.ClearTweet()
 		return nil
 	}
@@ -9542,10 +9542,10 @@ func (m *UserTweetMutation) ClearEdge(name string) error {
 // It returns an error if the edge is not defined in the schema.
 func (m *UserTweetMutation) ResetEdge(name string) error {
 	switch name {
-	case usertweet.EdgeUser:
+	case user_tweet.EdgeUser:
 		m.ResetUser()
 		return nil
-	case usertweet.EdgeTweet:
+	case user_tweet.EdgeTweet:
 		m.ResetTweet()
 		return nil
 	}

@@ -14,7 +14,7 @@ import (
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/attachedfile"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/attached_file"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/file"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/predicate"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/process"
@@ -101,7 +101,7 @@ func (pq *ProcessQuery) QueryAttachedFiles() *AttachedFileQuery {
 		}
 		step := sqlgraph.NewStep(
 			sqlgraph.From(process.Table, process.FieldID, selector),
-			sqlgraph.To(attachedfile.Table, attachedfile.FieldID),
+			sqlgraph.To(attached_file.Table, attached_file.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, true, process.AttachedFilesTable, process.AttachedFilesColumn),
 		)
 		fromU = sqlgraph.SetNeighbors(pq.driver.Dialect(), step)
@@ -500,7 +500,7 @@ func (pq *ProcessQuery) loadAttachedFiles(ctx context.Context, query *AttachedFi
 		}
 	}
 	if len(query.ctx.Fields) > 0 {
-		query.ctx.AppendFieldOnce(attachedfile.FieldProcID)
+		query.ctx.AppendFieldOnce(attached_file.FieldProcID)
 	}
 	query.Where(predicate.AttachedFile(func(s *sql.Selector) {
 		s.Where(sql.InValues(s.C(process.AttachedFilesColumn), fks...))

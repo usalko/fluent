@@ -21,7 +21,7 @@ import (
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/friendship"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/group"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/onetomany"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/one_to_many"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/todo"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/user"
 )
@@ -288,7 +288,7 @@ func (otm *OneToMany) Node(ctx context.Context) (node *Node, err error) {
 		Name: "parent",
 	}
 	err = otm.QueryParent().
-		Select(onetomany.FieldID).
+		Select(one_to_many.FieldID).
 		Scan(ctx, &node.Edges[0].IDs)
 	if err != nil {
 		return nil, err
@@ -298,7 +298,7 @@ func (otm *OneToMany) Node(ctx context.Context) (node *Node, err error) {
 		Name: "children",
 	}
 	err = otm.QueryChildren().
-		Select(onetomany.FieldID).
+		Select(one_to_many.FieldID).
 		Scan(ctx, &node.Edges[1].IDs)
 	if err != nil {
 		return nil, err

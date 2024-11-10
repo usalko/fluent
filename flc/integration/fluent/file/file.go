@@ -49,14 +49,14 @@ const (
 	// TypeTable is the table that holds the type relation/edge.
 	TypeTable = "files"
 	// TypeInverseTable is the table name for the FileType entity.
-	// It exists in this package in order to avoid circular dependency with the "filetype" package.
+	// It exists in this package in order to avoid circular dependency with the "file_type" package.
 	TypeInverseTable = "file_types"
 	// TypeColumn is the table column denoting the type relation/edge.
 	TypeColumn = "file_type_files"
 	// FieldTable is the table that holds the field relation/edge.
 	FieldTable = "field_types"
 	// FieldInverseTable is the table name for the FieldType entity.
-	// It exists in this package in order to avoid circular dependency with the "fieldtype" package.
+	// It exists in this package in order to avoid circular dependency with the "field_type" package.
 	FieldInverseTable = "field_types"
 	// FieldColumn is the table column denoting the field relation/edge.
 	FieldColumn = "file_field"

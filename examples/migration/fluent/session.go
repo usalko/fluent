@@ -15,7 +15,7 @@ import (
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/examples/migration/fluent/session"
-	"github.com/usalko/fluent/examples/migration/fluent/sessiondevice"
+	"github.com/usalko/fluent/examples/migration/fluent/session_device"
 )
 
 // Session is the model entity for the Session schema.
@@ -56,7 +56,7 @@ func (e SessionEdges) DeviceOrErr() (*SessionDevice, error) {
 	if e.Device != nil {
 		return e.Device, nil
 	} else if e.loadedTypes[0] {
-		return nil, &NotFoundError{label: sessiondevice.Label}
+		return nil, &NotFoundError{label: session_device.Label}
 	}
 	return nil, &NotLoadedError{edge: "device"}
 }

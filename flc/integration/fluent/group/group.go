@@ -57,7 +57,7 @@ const (
 	// InfoTable is the table that holds the info relation/edge.
 	InfoTable = "groups"
 	// InfoInverseTable is the table name for the GroupInfo entity.
-	// It exists in this package in order to avoid circular dependency with the "groupinfo" package.
+	// It exists in this package in order to avoid circular dependency with the "group_info" package.
 	InfoInverseTable = "group_infos"
 	// InfoColumn is the table column denoting the info relation/edge.
 	InfoColumn = "group_info"

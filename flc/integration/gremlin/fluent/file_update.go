@@ -17,7 +17,7 @@ import (
 	"github.com/usalko/fluent/dialect/gremlin/graph/dsl/g"
 	"github.com/usalko/fluent/dialect/gremlin/graph/dsl/p"
 	"github.com/usalko/fluent/flc/integration/gremlin/fluent/file"
-	"github.com/usalko/fluent/flc/integration/gremlin/fluent/filetype"
+	"github.com/usalko/fluent/flc/integration/gremlin/fluent/file_type"
 	"github.com/usalko/fluent/flc/integration/gremlin/fluent/predicate"
 	"github.com/usalko/fluent/flc/integration/gremlin/fluent/user"
 )
@@ -436,11 +436,11 @@ func (fu *FileUpdate) gremlin() *dsl.Traversal {
 		v.AddE(user.FilesLabel).From(g.V(id)).InV()
 	}
 	if fu.mutation.TypeCleared() {
-		tr := rv.Clone().InE(filetype.FilesLabel).Drop().Iterate()
+		tr := rv.Clone().InE(file_type.FilesLabel).Drop().Iterate()
 		trs = append(trs, tr)
 	}
 	for _, id := range fu.mutation.TypeIDs() {
-		v.AddE(filetype.FilesLabel).From(g.V(id)).InV()
+		v.AddE(file_type.FilesLabel).From(g.V(id)).InV()
 	}
 	for _, id := range fu.mutation.RemovedFieldIDs() {
 		tr := rv.Clone().OutE(file.FieldLabel).Where(__.OtherV().HasID(id)).Drop().Iterate()
@@ -895,11 +895,11 @@ func (fuo *FileUpdateOne) gremlin(id string) *dsl.Traversal {
 		v.AddE(user.FilesLabel).From(g.V(id)).InV()
 	}
 	if fuo.mutation.TypeCleared() {
-		tr := rv.Clone().InE(filetype.FilesLabel).Drop().Iterate()
+		tr := rv.Clone().InE(file_type.FilesLabel).Drop().Iterate()
 		trs = append(trs, tr)
 	}
 	for _, id := range fuo.mutation.TypeIDs() {
-		v.AddE(filetype.FilesLabel).From(g.V(id)).InV()
+		v.AddE(file_type.FilesLabel).From(g.V(id)).InV()
 	}
 	for _, id := range fuo.mutation.RemovedFieldIDs() {
 		tr := rv.Clone().OutE(file.FieldLabel).Where(__.OtherV().HasID(id)).Drop().Iterate()

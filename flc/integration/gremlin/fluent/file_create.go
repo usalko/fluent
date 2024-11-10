@@ -17,7 +17,7 @@ import (
 	"github.com/usalko/fluent/dialect/gremlin/graph/dsl/g"
 	"github.com/usalko/fluent/dialect/gremlin/graph/dsl/p"
 	"github.com/usalko/fluent/flc/integration/gremlin/fluent/file"
-	"github.com/usalko/fluent/flc/integration/gremlin/fluent/filetype"
+	"github.com/usalko/fluent/flc/integration/gremlin/fluent/file_type"
 	"github.com/usalko/fluent/flc/integration/gremlin/fluent/user"
 )
 
@@ -307,7 +307,7 @@ func (fc *FileCreate) gremlin() *dsl.Traversal {
 		v.AddE(user.FilesLabel).From(g.V(id)).InV()
 	}
 	for _, id := range fc.mutation.TypeIDs() {
-		v.AddE(filetype.FilesLabel).From(g.V(id)).InV()
+		v.AddE(file_type.FilesLabel).From(g.V(id)).InV()
 	}
 	for _, id := range fc.mutation.FieldIDs() {
 		v.AddE(file.FieldLabel).To(g.V(id)).OutV()

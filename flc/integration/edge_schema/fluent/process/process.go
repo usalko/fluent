@@ -29,7 +29,7 @@ const (
 	// AttachedFilesTable is the table that holds the attached_files relation/edge.
 	AttachedFilesTable = "attached_files"
 	// AttachedFilesInverseTable is the table name for the AttachedFile entity.
-	// It exists in this package in order to avoid circular dependency with the "attachedfile" package.
+	// It exists in this package in order to avoid circular dependency with the "attached_file" package.
 	AttachedFilesInverseTable = "attached_files"
 	// AttachedFilesColumn is the table column denoting the attached_files relation/edge.
 	AttachedFilesColumn = "proc_id"

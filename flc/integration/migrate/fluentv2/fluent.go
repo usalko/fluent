@@ -18,7 +18,7 @@ import (
 	"github.com/usalko/fluent/flc/integration/migrate/fluentv2/blog"
 	"github.com/usalko/fluent/flc/integration/migrate/fluentv2/car"
 	"github.com/usalko/fluent/flc/integration/migrate/fluentv2/conversion"
-	"github.com/usalko/fluent/flc/integration/migrate/fluentv2/customtype"
+	"github.com/usalko/fluent/flc/integration/migrate/fluentv2/custom_type"
 	"github.com/usalko/fluent/flc/integration/migrate/fluentv2/group"
 	"github.com/usalko/fluent/flc/integration/migrate/fluentv2/media"
 	"github.com/usalko/fluent/flc/integration/migrate/fluentv2/pet"
@@ -84,15 +84,15 @@ var (
 func checkColumn(table, column string) error {
 	initCheck.Do(func() {
 		columnCheck = sql.NewColumnCheck(map[string]func(string) bool{
-			blog.Table:       blog.ValidColumn,
-			car.Table:        car.ValidColumn,
-			conversion.Table: conversion.ValidColumn,
-			customtype.Table: customtype.ValidColumn,
-			group.Table:      group.ValidColumn,
-			media.Table:      media.ValidColumn,
-			pet.Table:        pet.ValidColumn,
-			user.Table:       user.ValidColumn,
-			zoo.Table:        zoo.ValidColumn,
+			blog.Table:        blog.ValidColumn,
+			car.Table:         car.ValidColumn,
+			conversion.Table:  conversion.ValidColumn,
+			custom_type.Table: custom_type.ValidColumn,
+			group.Table:       group.ValidColumn,
+			media.Table:       media.ValidColumn,
+			pet.Table:         pet.ValidColumn,
+			user.Table:        user.ValidColumn,
+			zoo.Table:         zoo.ValidColumn,
 		})
 	})
 	return columnCheck(table, column)

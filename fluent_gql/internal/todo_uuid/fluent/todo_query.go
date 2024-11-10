@@ -27,7 +27,7 @@ import (
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/predicate"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/todo"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/verysecret"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/very_secret"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -161,7 +161,7 @@ func (tq *TodoQuery) QuerySecret() *VerySecretQuery {
 		}
 		step := sqlgraph.NewStep(
 			sqlgraph.From(todo.Table, todo.FieldID, selector),
-			sqlgraph.To(verysecret.Table, verysecret.FieldID),
+			sqlgraph.To(very_secret.Table, very_secret.FieldID),
 			sqlgraph.Edge(sqlgraph.M2O, false, todo.SecretTable, todo.SecretColumn),
 		)
 		fromU = sqlgraph.SetNeighbors(tq.driver.Dialect(), step)
@@ -677,7 +677,7 @@ func (tq *TodoQuery) loadSecret(ctx context.Context, query *VerySecretQuery, nod
 	if len(ids) == 0 {
 		return nil
 	}
-	query.Where(verysecret.IDIn(ids...))
+	query.Where(very_secret.IDIn(ids...))
 	neighbors, err := query.All(ctx)
 	if err != nil {
 		return err

@@ -18,7 +18,7 @@ import (
 	"github.com/usalko/fluent/dialect/sql"
 )
 
-// BillProduct is the predicate function for billproduct builders.
+// BillProduct is the predicate function for bill_product builders.
 type BillProduct func(*sql.Selector)
 
 // Category is the predicate function for category builders.
@@ -30,7 +30,7 @@ type Friendship func(*sql.Selector)
 // Group is the predicate function for group builders.
 type Group func(*sql.Selector)
 
-// OneToMany is the predicate function for onetomany builders.
+// OneToMany is the predicate function for one_to_many builders.
 type OneToMany func(*sql.Selector)
 
 // Project is the predicate function for project builders.
@@ -42,7 +42,7 @@ type Todo func(*sql.Selector)
 // User is the predicate function for user builders.
 type User func(*sql.Selector)
 
-// VerySecret is the predicate function for verysecret builders.
+// VerySecret is the predicate function for very_secret builders.
 type VerySecret func(*sql.Selector)
 
 // Workspace is the predicate function for workspace builders.

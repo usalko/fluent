@@ -37,7 +37,7 @@ const (
 	// BlobLinksTable is the table that holds the blob_links relation/edge.
 	BlobLinksTable = "blob_links"
 	// BlobLinksInverseTable is the table name for the BlobLink entity.
-	// It exists in this package in order to avoid circular dependency with the "bloblink" package.
+	// It exists in this package in order to avoid circular dependency with the "blob_link" package.
 	BlobLinksInverseTable = "blob_links"
 	// BlobLinksColumn is the table column denoting the blob_links relation/edge.
 	BlobLinksColumn = "blob_id"

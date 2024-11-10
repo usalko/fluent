@@ -17,7 +17,7 @@ import (
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/flc/integration/fluent/file"
 	"github.com/usalko/fluent/flc/integration/fluent/group"
-	"github.com/usalko/fluent/flc/integration/fluent/groupinfo"
+	"github.com/usalko/fluent/flc/integration/fluent/group_info"
 	"github.com/usalko/fluent/flc/integration/fluent/predicate"
 	"github.com/usalko/fluent/flc/integration/fluent/user"
 	"github.com/usalko/fluent/schema/field"
@@ -154,7 +154,7 @@ func (gq *GroupQuery) QueryInfo() *GroupInfoQuery {
 		}
 		step := sqlgraph.NewStep(
 			sqlgraph.From(group.Table, group.FieldID, selector),
-			sqlgraph.To(groupinfo.Table, groupinfo.FieldID),
+			sqlgraph.To(group_info.Table, group_info.FieldID),
 			sqlgraph.Edge(sqlgraph.M2O, false, group.InfoTable, group.InfoColumn),
 		)
 		fromU = sqlgraph.SetNeighbors(gq.driver.Dialect(), step)
@@ -713,7 +713,7 @@ func (gq *GroupQuery) loadInfo(ctx context.Context, query *GroupInfoQuery, nodes
 	if len(ids) == 0 {
 		return nil
 	}
-	query.Where(groupinfo.IDIn(ids...))
+	query.Where(group_info.IDIn(ids...))
 	neighbors, err := query.All(ctx)
 	if err != nil {
 		return err

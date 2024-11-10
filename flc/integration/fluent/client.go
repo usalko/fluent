@@ -22,17 +22,17 @@ import (
 	"github.com/usalko/fluent/flc/integration/fluent/builder"
 	"github.com/usalko/fluent/flc/integration/fluent/card"
 	"github.com/usalko/fluent/flc/integration/fluent/comment"
-	"github.com/usalko/fluent/flc/integration/fluent/exvaluescan"
-	"github.com/usalko/fluent/flc/integration/fluent/fieldtype"
+	"github.com/usalko/fluent/flc/integration/fluent/ex_value_scan"
+	"github.com/usalko/fluent/flc/integration/fluent/field_type"
 	"github.com/usalko/fluent/flc/integration/fluent/file"
-	"github.com/usalko/fluent/flc/integration/fluent/filetype"
+	"github.com/usalko/fluent/flc/integration/fluent/file_type"
 	"github.com/usalko/fluent/flc/integration/fluent/goods"
 	"github.com/usalko/fluent/flc/integration/fluent/group"
-	"github.com/usalko/fluent/flc/integration/fluent/groupinfo"
+	"github.com/usalko/fluent/flc/integration/fluent/group_info"
 	"github.com/usalko/fluent/flc/integration/fluent/item"
 	"github.com/usalko/fluent/flc/integration/fluent/license"
 	"github.com/usalko/fluent/flc/integration/fluent/node"
-	"github.com/usalko/fluent/flc/integration/fluent/pc"
+	"github.com/usalko/fluent/flc/integration/fluent/p_c"
 	"github.com/usalko/fluent/flc/integration/fluent/pet"
 	"github.com/usalko/fluent/flc/integration/fluent/spec"
 	fluenttask "github.com/usalko/fluent/flc/integration/fluent/task"
@@ -944,13 +944,13 @@ func NewExValueScanClient(c config) *ExValueScanClient {
 }
 
 // Use adds a list of mutation hooks to the hooks stack.
-// A call to `Use(f, g, h)` equals to `exvaluescan.Hooks(f(g(h())))`.
+// A call to `Use(f, g, h)` equals to `ex_value_scan.Hooks(f(g(h())))`.
 func (c *ExValueScanClient) Use(hooks ...Hook) {
 	c.hooks.ExValueScan = append(c.hooks.ExValueScan, hooks...)
 }
 
 // Intercept adds a list of query interceptors to the interceptors stack.
-// A call to `Intercept(f, g, h)` equals to `exvaluescan.Intercept(f(g(h())))`.
+// A call to `Intercept(f, g, h)` equals to `ex_value_scan.Intercept(f(g(h())))`.
 func (c *ExValueScanClient) Intercept(interceptors ...Interceptor) {
 	c.inters.ExValueScan = append(c.inters.ExValueScan, interceptors...)
 }
@@ -1012,7 +1012,7 @@ func (c *ExValueScanClient) DeleteOne(evs *ExValueScan) *ExValueScanDeleteOne {
 
 // DeleteOneID returns a builder for deleting the given entity by its id.
 func (c *ExValueScanClient) DeleteOneID(id int) *ExValueScanDeleteOne {
-	builder := c.Delete().Where(exvaluescan.ID(id))
+	builder := c.Delete().Where(ex_value_scan.ID(id))
 	builder.mutation.id = &id
 	builder.mutation.op = OpDeleteOne
 	return &ExValueScanDeleteOne{builder}
@@ -1029,7 +1029,7 @@ func (c *ExValueScanClient) Query() *ExValueScanQuery {
 
 // Get returns a ExValueScan entity by its id.
 func (c *ExValueScanClient) Get(ctx context.Context, id int) (*ExValueScan, error) {
-	return c.Query().Where(exvaluescan.ID(id)).Only(ctx)
+	return c.Query().Where(ex_value_scan.ID(id)).Only(ctx)
 }
 
 // GetX is like Get, but panics if an error occurs.
@@ -1077,13 +1077,13 @@ func NewFieldTypeClient(c config) *FieldTypeClient {
 }
 
 // Use adds a list of mutation hooks to the hooks stack.
-// A call to `Use(f, g, h)` equals to `fieldtype.Hooks(f(g(h())))`.
+// A call to `Use(f, g, h)` equals to `field_type.Hooks(f(g(h())))`.
 func (c *FieldTypeClient) Use(hooks ...Hook) {
 	c.hooks.FieldType = append(c.hooks.FieldType, hooks...)
 }
 
 // Intercept adds a list of query interceptors to the interceptors stack.
-// A call to `Intercept(f, g, h)` equals to `fieldtype.Intercept(f(g(h())))`.
+// A call to `Intercept(f, g, h)` equals to `field_type.Intercept(f(g(h())))`.
 func (c *FieldTypeClient) Intercept(interceptors ...Interceptor) {
 	c.inters.FieldType = append(c.inters.FieldType, interceptors...)
 }
@@ -1145,7 +1145,7 @@ func (c *FieldTypeClient) DeleteOne(ft *FieldType) *FieldTypeDeleteOne {
 
 // DeleteOneID returns a builder for deleting the given entity by its id.
 func (c *FieldTypeClient) DeleteOneID(id int) *FieldTypeDeleteOne {
-	builder := c.Delete().Where(fieldtype.ID(id))
+	builder := c.Delete().Where(field_type.ID(id))
 	builder.mutation.id = &id
 	builder.mutation.op = OpDeleteOne
 	return &FieldTypeDeleteOne{builder}
@@ -1162,7 +1162,7 @@ func (c *FieldTypeClient) Query() *FieldTypeQuery {
 
 // Get returns a FieldType entity by its id.
 func (c *FieldTypeClient) Get(ctx context.Context, id int) (*FieldType, error) {
-	return c.Query().Where(fieldtype.ID(id)).Only(ctx)
+	return c.Query().Where(field_type.ID(id)).Only(ctx)
 }
 
 // GetX is like Get, but panics if an error occurs.
@@ -1330,7 +1330,7 @@ func (c *FileClient) QueryType(f *File) *FileTypeQuery {
 		id := f.ID
 		step := sqlgraph.NewStep(
 			sqlgraph.From(file.Table, file.FieldID, id),
-			sqlgraph.To(filetype.Table, filetype.FieldID),
+			sqlgraph.To(file_type.Table, file_type.FieldID),
 			sqlgraph.Edge(sqlgraph.M2O, true, file.TypeTable, file.TypeColumn),
 		)
 		fromV = sqlgraph.Neighbors(f.driver.Dialect(), step)
@@ -1346,7 +1346,7 @@ func (c *FileClient) QueryField(f *File) *FieldTypeQuery {
 		id := f.ID
 		step := sqlgraph.NewStep(
 			sqlgraph.From(file.Table, file.FieldID, id),
-			sqlgraph.To(fieldtype.Table, fieldtype.FieldID),
+			sqlgraph.To(field_type.Table, field_type.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, false, file.FieldTable, file.FieldColumn),
 		)
 		fromV = sqlgraph.Neighbors(f.driver.Dialect(), step)
@@ -1391,13 +1391,13 @@ func NewFileTypeClient(c config) *FileTypeClient {
 }
 
 // Use adds a list of mutation hooks to the hooks stack.
-// A call to `Use(f, g, h)` equals to `filetype.Hooks(f(g(h())))`.
+// A call to `Use(f, g, h)` equals to `file_type.Hooks(f(g(h())))`.
 func (c *FileTypeClient) Use(hooks ...Hook) {
 	c.hooks.FileType = append(c.hooks.FileType, hooks...)
 }
 
 // Intercept adds a list of query interceptors to the interceptors stack.
-// A call to `Intercept(f, g, h)` equals to `filetype.Intercept(f(g(h())))`.
+// A call to `Intercept(f, g, h)` equals to `file_type.Intercept(f(g(h())))`.
 func (c *FileTypeClient) Intercept(interceptors ...Interceptor) {
 	c.inters.FileType = append(c.inters.FileType, interceptors...)
 }
@@ -1459,7 +1459,7 @@ func (c *FileTypeClient) DeleteOne(ft *FileType) *FileTypeDeleteOne {
 
 // DeleteOneID returns a builder for deleting the given entity by its id.
 func (c *FileTypeClient) DeleteOneID(id int) *FileTypeDeleteOne {
-	builder := c.Delete().Where(filetype.ID(id))
+	builder := c.Delete().Where(file_type.ID(id))
 	builder.mutation.id = &id
 	builder.mutation.op = OpDeleteOne
 	return &FileTypeDeleteOne{builder}
@@ -1476,7 +1476,7 @@ func (c *FileTypeClient) Query() *FileTypeQuery {
 
 // Get returns a FileType entity by its id.
 func (c *FileTypeClient) Get(ctx context.Context, id int) (*FileType, error) {
-	return c.Query().Where(filetype.ID(id)).Only(ctx)
+	return c.Query().Where(file_type.ID(id)).Only(ctx)
 }
 
 // GetX is like Get, but panics if an error occurs.
@@ -1494,9 +1494,9 @@ func (c *FileTypeClient) QueryFiles(ft *FileType) *FileQuery {
 	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
 		id := ft.ID
 		step := sqlgraph.NewStep(
-			sqlgraph.From(filetype.Table, filetype.FieldID, id),
+			sqlgraph.From(file_type.Table, file_type.FieldID, id),
 			sqlgraph.To(file.Table, file.FieldID),
-			sqlgraph.Edge(sqlgraph.O2M, false, filetype.FilesTable, filetype.FilesColumn),
+			sqlgraph.Edge(sqlgraph.O2M, false, file_type.FilesTable, file_type.FilesColumn),
 		)
 		fromV = sqlgraph.Neighbors(ft.driver.Dialect(), step)
 		return fromV, nil
@@ -1825,7 +1825,7 @@ func (c *GroupClient) QueryInfo(gr *Group) *GroupInfoQuery {
 		id := gr.ID
 		step := sqlgraph.NewStep(
 			sqlgraph.From(group.Table, group.FieldID, id),
-			sqlgraph.To(groupinfo.Table, groupinfo.FieldID),
+			sqlgraph.To(group_info.Table, group_info.FieldID),
 			sqlgraph.Edge(sqlgraph.M2O, false, group.InfoTable, group.InfoColumn),
 		)
 		fromV = sqlgraph.Neighbors(gr.driver.Dialect(), step)
@@ -1870,13 +1870,13 @@ func NewGroupInfoClient(c config) *GroupInfoClient {
 }
 
 // Use adds a list of mutation hooks to the hooks stack.
-// A call to `Use(f, g, h)` equals to `groupinfo.Hooks(f(g(h())))`.
+// A call to `Use(f, g, h)` equals to `group_info.Hooks(f(g(h())))`.
 func (c *GroupInfoClient) Use(hooks ...Hook) {
 	c.hooks.GroupInfo = append(c.hooks.GroupInfo, hooks...)
 }
 
 // Intercept adds a list of query interceptors to the interceptors stack.
-// A call to `Intercept(f, g, h)` equals to `groupinfo.Intercept(f(g(h())))`.
+// A call to `Intercept(f, g, h)` equals to `group_info.Intercept(f(g(h())))`.
 func (c *GroupInfoClient) Intercept(interceptors ...Interceptor) {
 	c.inters.GroupInfo = append(c.inters.GroupInfo, interceptors...)
 }
@@ -1938,7 +1938,7 @@ func (c *GroupInfoClient) DeleteOne(gi *GroupInfo) *GroupInfoDeleteOne {
 
 // DeleteOneID returns a builder for deleting the given entity by its id.
 func (c *GroupInfoClient) DeleteOneID(id int) *GroupInfoDeleteOne {
-	builder := c.Delete().Where(groupinfo.ID(id))
+	builder := c.Delete().Where(group_info.ID(id))
 	builder.mutation.id = &id
 	builder.mutation.op = OpDeleteOne
 	return &GroupInfoDeleteOne{builder}
@@ -1955,7 +1955,7 @@ func (c *GroupInfoClient) Query() *GroupInfoQuery {
 
 // Get returns a GroupInfo entity by its id.
 func (c *GroupInfoClient) Get(ctx context.Context, id int) (*GroupInfo, error) {
-	return c.Query().Where(groupinfo.ID(id)).Only(ctx)
+	return c.Query().Where(group_info.ID(id)).Only(ctx)
 }
 
 // GetX is like Get, but panics if an error occurs.
@@ -1973,9 +1973,9 @@ func (c *GroupInfoClient) QueryGroups(gi *GroupInfo) *GroupQuery {
 	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
 		id := gi.ID
 		step := sqlgraph.NewStep(
-			sqlgraph.From(groupinfo.Table, groupinfo.FieldID, id),
+			sqlgraph.From(group_info.Table, group_info.FieldID, id),
 			sqlgraph.To(group.Table, group.FieldID),
-			sqlgraph.Edge(sqlgraph.O2M, true, groupinfo.GroupsTable, groupinfo.GroupsColumn),
+			sqlgraph.Edge(sqlgraph.O2M, true, group_info.GroupsTable, group_info.GroupsColumn),
 		)
 		fromV = sqlgraph.Neighbors(gi.driver.Dialect(), step)
 		return fromV, nil
@@ -2450,13 +2450,13 @@ func NewPCClient(c config) *PCClient {
 }
 
 // Use adds a list of mutation hooks to the hooks stack.
-// A call to `Use(f, g, h)` equals to `pc.Hooks(f(g(h())))`.
+// A call to `Use(f, g, h)` equals to `p_c.Hooks(f(g(h())))`.
 func (c *PCClient) Use(hooks ...Hook) {
 	c.hooks.PC = append(c.hooks.PC, hooks...)
 }
 
 // Intercept adds a list of query interceptors to the interceptors stack.
-// A call to `Intercept(f, g, h)` equals to `pc.Intercept(f(g(h())))`.
+// A call to `Intercept(f, g, h)` equals to `p_c.Intercept(f(g(h())))`.
 func (c *PCClient) Intercept(interceptors ...Interceptor) {
 	c.inters.PC = append(c.inters.PC, interceptors...)
 }
@@ -2494,8 +2494,8 @@ func (c *PCClient) Update() *PCUpdate {
 }
 
 // UpdateOne returns an update builder for the given entity.
-func (c *PCClient) UpdateOne(_pc *PC) *PCUpdateOne {
-	mutation := newPCMutation(c.config, OpUpdateOne, withPC(_pc))
+func (c *PCClient) UpdateOne(pc *PC) *PCUpdateOne {
+	mutation := newPCMutation(c.config, OpUpdateOne, withPC(pc))
 	return &PCUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
 }
 
@@ -2512,13 +2512,13 @@ func (c *PCClient) Delete() *PCDelete {
 }
 
 // DeleteOne returns a builder for deleting the given entity.
-func (c *PCClient) DeleteOne(_pc *PC) *PCDeleteOne {
-	return c.DeleteOneID(_pc.ID)
+func (c *PCClient) DeleteOne(pc *PC) *PCDeleteOne {
+	return c.DeleteOneID(pc.ID)
 }
 
 // DeleteOneID returns a builder for deleting the given entity by its id.
 func (c *PCClient) DeleteOneID(id int) *PCDeleteOne {
-	builder := c.Delete().Where(pc.ID(id))
+	builder := c.Delete().Where(p_c.ID(id))
 	builder.mutation.id = &id
 	builder.mutation.op = OpDeleteOne
 	return &PCDeleteOne{builder}
@@ -2535,7 +2535,7 @@ func (c *PCClient) Query() *PCQuery {
 
 // Get returns a PC entity by its id.
 func (c *PCClient) Get(ctx context.Context, id int) (*PC, error) {
-	return c.Query().Where(pc.ID(id)).Only(ctx)
+	return c.Query().Where(p_c.ID(id)).Only(ctx)
 }
 
 // GetX is like Get, but panics if an error occurs.

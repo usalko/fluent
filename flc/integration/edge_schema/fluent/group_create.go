@@ -13,10 +13,10 @@ import (
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/group"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/grouptag"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/group_tag"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tag"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/usergroup"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user_group"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -223,7 +223,7 @@ func (gc *GroupCreate) createSpec() (*Group, *sqlgraph.CreateSpec) {
 			Columns: []string{group.JoinedUsersColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(usergroup.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(user_group.FieldID, field.TypeInt),
 			},
 		}
 		for _, k := range nodes {
@@ -239,7 +239,7 @@ func (gc *GroupCreate) createSpec() (*Group, *sqlgraph.CreateSpec) {
 			Columns: []string{group.GroupTagsColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(grouptag.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(group_tag.FieldID, field.TypeInt),
 			},
 		}
 		for _, k := range nodes {

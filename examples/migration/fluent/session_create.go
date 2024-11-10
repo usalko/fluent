@@ -14,7 +14,7 @@ import (
 	"github.com/google/uuid"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/examples/migration/fluent/session"
-	"github.com/usalko/fluent/examples/migration/fluent/sessiondevice"
+	"github.com/usalko/fluent/examples/migration/fluent/session_device"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -228,7 +228,7 @@ func (sc *SessionCreate) createSpec() (*Session, *sqlgraph.CreateSpec) {
 			Columns: []string{session.DeviceColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(sessiondevice.FieldID, field.TypeUUID),
+				IDSpec: sqlgraph.NewFieldSpec(session_device.FieldID, field.TypeUUID),
 			},
 		}
 		for _, k := range nodes {

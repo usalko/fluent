@@ -12,7 +12,7 @@ import (
 
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/attachedfile"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/attached_file"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/file"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/process"
 	"github.com/usalko/fluent/schema/field"
@@ -145,7 +145,7 @@ func (pc *ProcessCreate) createSpec() (*Process, *sqlgraph.CreateSpec) {
 			Columns: []string{process.AttachedFilesColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(attachedfile.FieldID, field.TypeInt),
+				IDSpec: sqlgraph.NewFieldSpec(attached_file.FieldID, field.TypeInt),
 			},
 		}
 		for _, k := range nodes {

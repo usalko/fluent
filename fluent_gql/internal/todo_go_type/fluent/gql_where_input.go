@@ -20,7 +20,7 @@ import (
 	"time"
 
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/schema/schematype"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/billproduct"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/bill_product"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/friendship"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/group"
@@ -124,7 +124,7 @@ func (i *BillProductWhereInput) P() (predicate.BillProduct, error) {
 		if err != nil {
 			return nil, fmt.Errorf("%w: field 'not'", err)
 		}
-		predicates = append(predicates, billproduct.Not(p))
+		predicates = append(predicates, bill_product.Not(p))
 	}
 	switch n := len(i.Or); {
 	case n == 1:
@@ -142,7 +142,7 @@ func (i *BillProductWhereInput) P() (predicate.BillProduct, error) {
 			}
 			or = append(or, p)
 		}
-		predicates = append(predicates, billproduct.Or(or...))
+		predicates = append(predicates, bill_product.Or(or...))
 	}
 	switch n := len(i.And); {
 	case n == 1:
@@ -160,140 +160,140 @@ func (i *BillProductWhereInput) P() (predicate.BillProduct, error) {
 			}
 			and = append(and, p)
 		}
-		predicates = append(predicates, billproduct.And(and...))
+		predicates = append(predicates, bill_product.And(and...))
 	}
 	predicates = append(predicates, i.Predicates...)
 	if i.ID != nil {
-		predicates = append(predicates, billproduct.IDEQ(*i.ID))
+		predicates = append(predicates, bill_product.IDEQ(*i.ID))
 	}
 	if i.IDNEQ != nil {
-		predicates = append(predicates, billproduct.IDNEQ(*i.IDNEQ))
+		predicates = append(predicates, bill_product.IDNEQ(*i.IDNEQ))
 	}
 	if len(i.IDIn) > 0 {
-		predicates = append(predicates, billproduct.IDIn(i.IDIn...))
+		predicates = append(predicates, bill_product.IDIn(i.IDIn...))
 	}
 	if len(i.IDNotIn) > 0 {
-		predicates = append(predicates, billproduct.IDNotIn(i.IDNotIn...))
+		predicates = append(predicates, bill_product.IDNotIn(i.IDNotIn...))
 	}
 	if i.IDGT != nil {
-		predicates = append(predicates, billproduct.IDGT(*i.IDGT))
+		predicates = append(predicates, bill_product.IDGT(*i.IDGT))
 	}
 	if i.IDGTE != nil {
-		predicates = append(predicates, billproduct.IDGTE(*i.IDGTE))
+		predicates = append(predicates, bill_product.IDGTE(*i.IDGTE))
 	}
 	if i.IDLT != nil {
-		predicates = append(predicates, billproduct.IDLT(*i.IDLT))
+		predicates = append(predicates, bill_product.IDLT(*i.IDLT))
 	}
 	if i.IDLTE != nil {
-		predicates = append(predicates, billproduct.IDLTE(*i.IDLTE))
+		predicates = append(predicates, bill_product.IDLTE(*i.IDLTE))
 	}
 	if i.IDEqualFold != nil {
-		predicates = append(predicates, billproduct.IDEqualFold(*i.IDEqualFold))
+		predicates = append(predicates, bill_product.IDEqualFold(*i.IDEqualFold))
 	}
 	if i.IDContainsFold != nil {
-		predicates = append(predicates, billproduct.IDContainsFold(*i.IDContainsFold))
+		predicates = append(predicates, bill_product.IDContainsFold(*i.IDContainsFold))
 	}
 	if i.Name != nil {
-		predicates = append(predicates, billproduct.NameEQ(*i.Name))
+		predicates = append(predicates, bill_product.NameEQ(*i.Name))
 	}
 	if i.NameNEQ != nil {
-		predicates = append(predicates, billproduct.NameNEQ(*i.NameNEQ))
+		predicates = append(predicates, bill_product.NameNEQ(*i.NameNEQ))
 	}
 	if len(i.NameIn) > 0 {
-		predicates = append(predicates, billproduct.NameIn(i.NameIn...))
+		predicates = append(predicates, bill_product.NameIn(i.NameIn...))
 	}
 	if len(i.NameNotIn) > 0 {
-		predicates = append(predicates, billproduct.NameNotIn(i.NameNotIn...))
+		predicates = append(predicates, bill_product.NameNotIn(i.NameNotIn...))
 	}
 	if i.NameGT != nil {
-		predicates = append(predicates, billproduct.NameGT(*i.NameGT))
+		predicates = append(predicates, bill_product.NameGT(*i.NameGT))
 	}
 	if i.NameGTE != nil {
-		predicates = append(predicates, billproduct.NameGTE(*i.NameGTE))
+		predicates = append(predicates, bill_product.NameGTE(*i.NameGTE))
 	}
 	if i.NameLT != nil {
-		predicates = append(predicates, billproduct.NameLT(*i.NameLT))
+		predicates = append(predicates, bill_product.NameLT(*i.NameLT))
 	}
 	if i.NameLTE != nil {
-		predicates = append(predicates, billproduct.NameLTE(*i.NameLTE))
+		predicates = append(predicates, bill_product.NameLTE(*i.NameLTE))
 	}
 	if i.NameContains != nil {
-		predicates = append(predicates, billproduct.NameContains(*i.NameContains))
+		predicates = append(predicates, bill_product.NameContains(*i.NameContains))
 	}
 	if i.NameHasPrefix != nil {
-		predicates = append(predicates, billproduct.NameHasPrefix(*i.NameHasPrefix))
+		predicates = append(predicates, bill_product.NameHasPrefix(*i.NameHasPrefix))
 	}
 	if i.NameHasSuffix != nil {
-		predicates = append(predicates, billproduct.NameHasSuffix(*i.NameHasSuffix))
+		predicates = append(predicates, bill_product.NameHasSuffix(*i.NameHasSuffix))
 	}
 	if i.NameEqualFold != nil {
-		predicates = append(predicates, billproduct.NameEqualFold(*i.NameEqualFold))
+		predicates = append(predicates, bill_product.NameEqualFold(*i.NameEqualFold))
 	}
 	if i.NameContainsFold != nil {
-		predicates = append(predicates, billproduct.NameContainsFold(*i.NameContainsFold))
+		predicates = append(predicates, bill_product.NameContainsFold(*i.NameContainsFold))
 	}
 	if i.Sku != nil {
-		predicates = append(predicates, billproduct.SkuEQ(*i.Sku))
+		predicates = append(predicates, bill_product.SkuEQ(*i.Sku))
 	}
 	if i.SkuNEQ != nil {
-		predicates = append(predicates, billproduct.SkuNEQ(*i.SkuNEQ))
+		predicates = append(predicates, bill_product.SkuNEQ(*i.SkuNEQ))
 	}
 	if len(i.SkuIn) > 0 {
-		predicates = append(predicates, billproduct.SkuIn(i.SkuIn...))
+		predicates = append(predicates, bill_product.SkuIn(i.SkuIn...))
 	}
 	if len(i.SkuNotIn) > 0 {
-		predicates = append(predicates, billproduct.SkuNotIn(i.SkuNotIn...))
+		predicates = append(predicates, bill_product.SkuNotIn(i.SkuNotIn...))
 	}
 	if i.SkuGT != nil {
-		predicates = append(predicates, billproduct.SkuGT(*i.SkuGT))
+		predicates = append(predicates, bill_product.SkuGT(*i.SkuGT))
 	}
 	if i.SkuGTE != nil {
-		predicates = append(predicates, billproduct.SkuGTE(*i.SkuGTE))
+		predicates = append(predicates, bill_product.SkuGTE(*i.SkuGTE))
 	}
 	if i.SkuLT != nil {
-		predicates = append(predicates, billproduct.SkuLT(*i.SkuLT))
+		predicates = append(predicates, bill_product.SkuLT(*i.SkuLT))
 	}
 	if i.SkuLTE != nil {
-		predicates = append(predicates, billproduct.SkuLTE(*i.SkuLTE))
+		predicates = append(predicates, bill_product.SkuLTE(*i.SkuLTE))
 	}
 	if i.SkuContains != nil {
-		predicates = append(predicates, billproduct.SkuContains(*i.SkuContains))
+		predicates = append(predicates, bill_product.SkuContains(*i.SkuContains))
 	}
 	if i.SkuHasPrefix != nil {
-		predicates = append(predicates, billproduct.SkuHasPrefix(*i.SkuHasPrefix))
+		predicates = append(predicates, bill_product.SkuHasPrefix(*i.SkuHasPrefix))
 	}
 	if i.SkuHasSuffix != nil {
-		predicates = append(predicates, billproduct.SkuHasSuffix(*i.SkuHasSuffix))
+		predicates = append(predicates, bill_product.SkuHasSuffix(*i.SkuHasSuffix))
 	}
 	if i.SkuEqualFold != nil {
-		predicates = append(predicates, billproduct.SkuEqualFold(*i.SkuEqualFold))
+		predicates = append(predicates, bill_product.SkuEqualFold(*i.SkuEqualFold))
 	}
 	if i.SkuContainsFold != nil {
-		predicates = append(predicates, billproduct.SkuContainsFold(*i.SkuContainsFold))
+		predicates = append(predicates, bill_product.SkuContainsFold(*i.SkuContainsFold))
 	}
 	if i.Quantity != nil {
-		predicates = append(predicates, billproduct.QuantityEQ(*i.Quantity))
+		predicates = append(predicates, bill_product.QuantityEQ(*i.Quantity))
 	}
 	if i.QuantityNEQ != nil {
-		predicates = append(predicates, billproduct.QuantityNEQ(*i.QuantityNEQ))
+		predicates = append(predicates, bill_product.QuantityNEQ(*i.QuantityNEQ))
 	}
 	if len(i.QuantityIn) > 0 {
-		predicates = append(predicates, billproduct.QuantityIn(i.QuantityIn...))
+		predicates = append(predicates, bill_product.QuantityIn(i.QuantityIn...))
 	}
 	if len(i.QuantityNotIn) > 0 {
-		predicates = append(predicates, billproduct.QuantityNotIn(i.QuantityNotIn...))
+		predicates = append(predicates, bill_product.QuantityNotIn(i.QuantityNotIn...))
 	}
 	if i.QuantityGT != nil {
-		predicates = append(predicates, billproduct.QuantityGT(*i.QuantityGT))
+		predicates = append(predicates, bill_product.QuantityGT(*i.QuantityGT))
 	}
 	if i.QuantityGTE != nil {
-		predicates = append(predicates, billproduct.QuantityGTE(*i.QuantityGTE))
+		predicates = append(predicates, bill_product.QuantityGTE(*i.QuantityGTE))
 	}
 	if i.QuantityLT != nil {
-		predicates = append(predicates, billproduct.QuantityLT(*i.QuantityLT))
+		predicates = append(predicates, bill_product.QuantityLT(*i.QuantityLT))
 	}
 	if i.QuantityLTE != nil {
-		predicates = append(predicates, billproduct.QuantityLTE(*i.QuantityLTE))
+		predicates = append(predicates, bill_product.QuantityLTE(*i.QuantityLTE))
 	}
 
 	switch len(predicates) {
@@ -302,7 +302,7 @@ func (i *BillProductWhereInput) P() (predicate.BillProduct, error) {
 	case 1:
 		return predicates[0], nil
 	default:
-		return billproduct.And(predicates...), nil
+		return bill_product.And(predicates...), nil
 	}
 }
 

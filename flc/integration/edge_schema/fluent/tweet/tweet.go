@@ -49,21 +49,21 @@ const (
 	// LikesTable is the table that holds the likes relation/edge.
 	LikesTable = "tweet_likes"
 	// LikesInverseTable is the table name for the TweetLike entity.
-	// It exists in this package in order to avoid circular dependency with the "tweetlike" package.
+	// It exists in this package in order to avoid circular dependency with the "tweet_like" package.
 	LikesInverseTable = "tweet_likes"
 	// LikesColumn is the table column denoting the likes relation/edge.
 	LikesColumn = "tweet_id"
 	// TweetUserTable is the table that holds the tweet_user relation/edge.
 	TweetUserTable = "user_tweets"
 	// TweetUserInverseTable is the table name for the UserTweet entity.
-	// It exists in this package in order to avoid circular dependency with the "usertweet" package.
+	// It exists in this package in order to avoid circular dependency with the "user_tweet" package.
 	TweetUserInverseTable = "user_tweets"
 	// TweetUserColumn is the table column denoting the tweet_user relation/edge.
 	TweetUserColumn = "tweet_id"
 	// TweetTagsTable is the table that holds the tweet_tags relation/edge.
 	TweetTagsTable = "tweet_tags"
 	// TweetTagsInverseTable is the table name for the TweetTag entity.
-	// It exists in this package in order to avoid circular dependency with the "tweettag" package.
+	// It exists in this package in order to avoid circular dependency with the "tweet_tag" package.
 	TweetTagsInverseTable = "tweet_tags"
 	// TweetTagsColumn is the table column denoting the tweet_tags relation/edge.
 	TweetTagsColumn = "tweet_id"

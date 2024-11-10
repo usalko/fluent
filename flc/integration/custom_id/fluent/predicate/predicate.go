@@ -15,7 +15,7 @@ type Account func(*sql.Selector)
 // Blob is the predicate function for blob builders.
 type Blob func(*sql.Selector)
 
-// BlobLink is the predicate function for bloblink builders.
+// BlobLink is the predicate function for blob_link builders.
 type BlobLink func(*sql.Selector)
 
 // Car is the predicate function for car builders.
@@ -30,13 +30,13 @@ type Doc func(*sql.Selector)
 // Group is the predicate function for group builders.
 type Group func(*sql.Selector)
 
-// IntSID is the predicate function for intsid builders.
+// IntSID is the predicate function for int_s_i_d builders.
 type IntSID func(*sql.Selector)
 
 // Link is the predicate function for link builders.
 type Link func(*sql.Selector)
 
-// MixinID is the predicate function for mixinid builders.
+// MixinID is the predicate function for mixin_i_d builders.
 type MixinID func(*sql.Selector)
 
 // Note is the predicate function for note builders.

@@ -22,11 +22,11 @@ import (
 	"github.com/99designs/gqlgen/graphql"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/fluent_gql"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/billproduct"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/bill_product"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/friendship"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/group"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/onetomany"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/one_to_many"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/project"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/todo"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/user"
@@ -49,25 +49,25 @@ func (bp *BillProductQuery) collectField(ctx context.Context, oneNode bool, opCt
 	path = append([]string(nil), path...)
 	var (
 		unknownSeen    bool
-		fieldSeen      = make(map[string]struct{}, len(billproduct.Columns))
-		selectedFields = []string{billproduct.FieldID}
+		fieldSeen      = make(map[string]struct{}, len(bill_product.Columns))
+		selectedFields = []string{bill_product.FieldID}
 	)
 	for _, field := range graphql.CollectFields(opCtx, collected.Selections, satisfies) {
 		switch field.Name {
 		case "name":
-			if _, ok := fieldSeen[billproduct.FieldName]; !ok {
-				selectedFields = append(selectedFields, billproduct.FieldName)
-				fieldSeen[billproduct.FieldName] = struct{}{}
+			if _, ok := fieldSeen[bill_product.FieldName]; !ok {
+				selectedFields = append(selectedFields, bill_product.FieldName)
+				fieldSeen[bill_product.FieldName] = struct{}{}
 			}
 		case "sku":
-			if _, ok := fieldSeen[billproduct.FieldSku]; !ok {
-				selectedFields = append(selectedFields, billproduct.FieldSku)
-				fieldSeen[billproduct.FieldSku] = struct{}{}
+			if _, ok := fieldSeen[bill_product.FieldSku]; !ok {
+				selectedFields = append(selectedFields, bill_product.FieldSku)
+				fieldSeen[bill_product.FieldSku] = struct{}{}
 			}
 		case "quantity":
-			if _, ok := fieldSeen[billproduct.FieldQuantity]; !ok {
-				selectedFields = append(selectedFields, billproduct.FieldQuantity)
-				fieldSeen[billproduct.FieldQuantity] = struct{}{}
+			if _, ok := fieldSeen[bill_product.FieldQuantity]; !ok {
+				selectedFields = append(selectedFields, bill_product.FieldQuantity)
+				fieldSeen[bill_product.FieldQuantity] = struct{}{}
 			}
 		case "id":
 		case "__typename":
@@ -700,8 +700,8 @@ func (otm *OneToManyQuery) collectField(ctx context.Context, oneNode bool, opCtx
 	path = append([]string(nil), path...)
 	var (
 		unknownSeen    bool
-		fieldSeen      = make(map[string]struct{}, len(onetomany.Columns))
-		selectedFields = []string{onetomany.FieldID}
+		fieldSeen      = make(map[string]struct{}, len(one_to_many.Columns))
+		selectedFields = []string{one_to_many.FieldID}
 	)
 	for _, field := range graphql.CollectFields(opCtx, collected.Selections, satisfies) {
 		switch field.Name {
@@ -716,9 +716,9 @@ func (otm *OneToManyQuery) collectField(ctx context.Context, oneNode bool, opCtx
 				return err
 			}
 			otm.withParent = query
-			if _, ok := fieldSeen[onetomany.FieldParentID]; !ok {
-				selectedFields = append(selectedFields, onetomany.FieldParentID)
-				fieldSeen[onetomany.FieldParentID] = struct{}{}
+			if _, ok := fieldSeen[one_to_many.FieldParentID]; !ok {
+				selectedFields = append(selectedFields, one_to_many.FieldParentID)
+				fieldSeen[one_to_many.FieldParentID] = struct{}{}
 			}
 
 		case "children":
@@ -734,14 +734,14 @@ func (otm *OneToManyQuery) collectField(ctx context.Context, oneNode bool, opCtx
 				*wq = *query
 			})
 		case "name":
-			if _, ok := fieldSeen[onetomany.FieldName]; !ok {
-				selectedFields = append(selectedFields, onetomany.FieldName)
-				fieldSeen[onetomany.FieldName] = struct{}{}
+			if _, ok := fieldSeen[one_to_many.FieldName]; !ok {
+				selectedFields = append(selectedFields, one_to_many.FieldName)
+				fieldSeen[one_to_many.FieldName] = struct{}{}
 			}
 		case "field2":
-			if _, ok := fieldSeen[onetomany.FieldField2]; !ok {
-				selectedFields = append(selectedFields, onetomany.FieldField2)
-				fieldSeen[onetomany.FieldField2] = struct{}{}
+			if _, ok := fieldSeen[one_to_many.FieldField2]; !ok {
+				selectedFields = append(selectedFields, one_to_many.FieldField2)
+				fieldSeen[one_to_many.FieldField2] = struct{}{}
 			}
 		case "id":
 		case "__typename":

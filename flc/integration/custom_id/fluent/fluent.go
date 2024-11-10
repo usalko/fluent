@@ -17,14 +17,14 @@ import (
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/account"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/blob"
-	"github.com/usalko/fluent/flc/integration/custom_id/fluent/bloblink"
+	"github.com/usalko/fluent/flc/integration/custom_id/fluent/blob_link"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/car"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/device"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/doc"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/group"
-	"github.com/usalko/fluent/flc/integration/custom_id/fluent/intsid"
+	"github.com/usalko/fluent/flc/integration/custom_id/fluent/int_s_i_d"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/link"
-	"github.com/usalko/fluent/flc/integration/custom_id/fluent/mixinid"
+	"github.com/usalko/fluent/flc/integration/custom_id/fluent/mixin_i_d"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/note"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/other"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/pet"
@@ -92,23 +92,23 @@ var (
 func checkColumn(table, column string) error {
 	initCheck.Do(func() {
 		columnCheck = sql.NewColumnCheck(map[string]func(string) bool{
-			account.Table:  account.ValidColumn,
-			blob.Table:     blob.ValidColumn,
-			bloblink.Table: bloblink.ValidColumn,
-			car.Table:      car.ValidColumn,
-			device.Table:   device.ValidColumn,
-			doc.Table:      doc.ValidColumn,
-			group.Table:    group.ValidColumn,
-			intsid.Table:   intsid.ValidColumn,
-			link.Table:     link.ValidColumn,
-			mixinid.Table:  mixinid.ValidColumn,
-			note.Table:     note.ValidColumn,
-			other.Table:    other.ValidColumn,
-			pet.Table:      pet.ValidColumn,
-			revision.Table: revision.ValidColumn,
-			session.Table:  session.ValidColumn,
-			token.Table:    token.ValidColumn,
-			user.Table:     user.ValidColumn,
+			account.Table:   account.ValidColumn,
+			blob.Table:      blob.ValidColumn,
+			blob_link.Table: blob_link.ValidColumn,
+			car.Table:       car.ValidColumn,
+			device.Table:    device.ValidColumn,
+			doc.Table:       doc.ValidColumn,
+			group.Table:     group.ValidColumn,
+			int_s_i_d.Table: int_s_i_d.ValidColumn,
+			link.Table:      link.ValidColumn,
+			mixin_i_d.Table: mixin_i_d.ValidColumn,
+			note.Table:      note.ValidColumn,
+			other.Table:     other.ValidColumn,
+			pet.Table:       pet.ValidColumn,
+			revision.Table:  revision.ValidColumn,
+			session.Table:   session.ValidColumn,
+			token.Table:     token.ValidColumn,
+			user.Table:      user.ValidColumn,
 		})
 	})
 	return columnCheck(table, column)

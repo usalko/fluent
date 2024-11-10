@@ -11,7 +11,7 @@ import (
 	"time"
 
 	"github.com/usalko/fluent/dialect/gremlin"
-	"github.com/usalko/fluent/flc/integration/gremlin/fluent/groupinfo"
+	"github.com/usalko/fluent/flc/integration/gremlin/fluent/group_info"
 )
 
 // Group is the model entity for the Group schema.
@@ -82,7 +82,7 @@ func (e GroupEdges) InfoOrErr() (*GroupInfo, error) {
 	if e.Info != nil {
 		return e.Info, nil
 	} else if e.loadedTypes[3] {
-		return nil, &NotFoundError{label: groupinfo.Label}
+		return nil, &NotFoundError{label: group_info.Label}
 	}
 	return nil, &NotLoadedError{edge: "info"}
 }

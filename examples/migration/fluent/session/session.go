@@ -35,7 +35,7 @@ const (
 	// DeviceTable is the table that holds the device relation/edge.
 	DeviceTable = "sessions"
 	// DeviceInverseTable is the table name for the SessionDevice entity.
-	// It exists in this package in order to avoid circular dependency with the "sessiondevice" package.
+	// It exists in this package in order to avoid circular dependency with the "session_device" package.
 	DeviceInverseTable = "session_devices"
 	// DeviceColumn is the table column denoting the device relation/edge.
 	DeviceColumn = "device_id"

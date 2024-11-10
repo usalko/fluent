@@ -10,18 +10,18 @@ import (
 	"time"
 
 	"github.com/google/uuid"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/attachedfile"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/attached_file"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/friendship"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/group"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/relationship"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/role"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/roleuser"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/role_user"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/schema"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweetlike"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweettag"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweet_like"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweet_tag"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/usergroup"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/usertweet"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user_group"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user_tweet"
 
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/privacy"
@@ -31,12 +31,12 @@ import (
 // (default values, validators, hooks and policies) and stitches it
 // to their package variables.
 func init() {
-	attachedfileFields := schema.AttachedFile{}.Fields()
-	_ = attachedfileFields
-	// attachedfileDescAttachTime is the schema descriptor for attach_time field.
-	attachedfileDescAttachTime := attachedfileFields[0].Descriptor()
-	// attachedfile.DefaultAttachTime holds the default value on creation for the attach_time field.
-	attachedfile.DefaultAttachTime = attachedfileDescAttachTime.Default.(func() time.Time)
+	attached_fileFields := schema.AttachedFile{}.Fields()
+	_ = attached_fileFields
+	// attached_fileDescAttachTime is the schema descriptor for attach_time field.
+	attached_fileDescAttachTime := attached_fileFields[0].Descriptor()
+	// attached_file.DefaultAttachTime holds the default value on creation for the attach_time field.
+	attached_file.DefaultAttachTime = attached_fileDescAttachTime.Default.(func() time.Time)
 	friendshipFields := schema.Friendship{}.Fields()
 	_ = friendshipFields
 	// friendshipDescWeight is the schema descriptor for weight field.
@@ -74,37 +74,37 @@ func init() {
 	roleDescCreatedAt := roleFields[1].Descriptor()
 	// role.DefaultCreatedAt holds the default value on creation for the created_at field.
 	role.DefaultCreatedAt = roleDescCreatedAt.Default.(func() time.Time)
-	roleuserFields := schema.RoleUser{}.Fields()
-	_ = roleuserFields
-	// roleuserDescCreatedAt is the schema descriptor for created_at field.
-	roleuserDescCreatedAt := roleuserFields[0].Descriptor()
-	// roleuser.DefaultCreatedAt holds the default value on creation for the created_at field.
-	roleuser.DefaultCreatedAt = roleuserDescCreatedAt.Default.(func() time.Time)
-	tweetlike.Policy = privacy.NewPolicies(schema.TweetLike{})
-	tweetlike.Hooks[0] = func(next fluent.Mutator) fluent.Mutator {
+	role_userFields := schema.RoleUser{}.Fields()
+	_ = role_userFields
+	// role_userDescCreatedAt is the schema descriptor for created_at field.
+	role_userDescCreatedAt := role_userFields[0].Descriptor()
+	// role_user.DefaultCreatedAt holds the default value on creation for the created_at field.
+	role_user.DefaultCreatedAt = role_userDescCreatedAt.Default.(func() time.Time)
+	tweet_like.Policy = privacy.NewPolicies(schema.TweetLike{})
+	tweet_like.Hooks[0] = func(next fluent.Mutator) fluent.Mutator {
 		return fluent.MutateFunc(func(ctx context.Context, m fluent.Mutation) (fluent.Value, error) {
-			if err := tweetlike.Policy.EvalMutation(ctx, m); err != nil {
+			if err := tweet_like.Policy.EvalMutation(ctx, m); err != nil {
 				return nil, err
 			}
 			return next.Mutate(ctx, m)
 		})
 	}
-	tweetlikeFields := schema.TweetLike{}.Fields()
-	_ = tweetlikeFields
-	// tweetlikeDescLikedAt is the schema descriptor for liked_at field.
-	tweetlikeDescLikedAt := tweetlikeFields[0].Descriptor()
-	// tweetlike.DefaultLikedAt holds the default value on creation for the liked_at field.
-	tweetlike.DefaultLikedAt = tweetlikeDescLikedAt.Default.(func() time.Time)
-	tweettagFields := schema.TweetTag{}.Fields()
-	_ = tweettagFields
-	// tweettagDescAddedAt is the schema descriptor for added_at field.
-	tweettagDescAddedAt := tweettagFields[1].Descriptor()
-	// tweettag.DefaultAddedAt holds the default value on creation for the added_at field.
-	tweettag.DefaultAddedAt = tweettagDescAddedAt.Default.(func() time.Time)
-	// tweettagDescID is the schema descriptor for id field.
-	tweettagDescID := tweettagFields[0].Descriptor()
-	// tweettag.DefaultID holds the default value on creation for the id field.
-	tweettag.DefaultID = tweettagDescID.Default.(func() uuid.UUID)
+	tweet_likeFields := schema.TweetLike{}.Fields()
+	_ = tweet_likeFields
+	// tweet_likeDescLikedAt is the schema descriptor for liked_at field.
+	tweet_likeDescLikedAt := tweet_likeFields[0].Descriptor()
+	// tweet_like.DefaultLikedAt holds the default value on creation for the liked_at field.
+	tweet_like.DefaultLikedAt = tweet_likeDescLikedAt.Default.(func() time.Time)
+	tweet_tagFields := schema.TweetTag{}.Fields()
+	_ = tweet_tagFields
+	// tweet_tagDescAddedAt is the schema descriptor for added_at field.
+	tweet_tagDescAddedAt := tweet_tagFields[1].Descriptor()
+	// tweet_tag.DefaultAddedAt holds the default value on creation for the added_at field.
+	tweet_tag.DefaultAddedAt = tweet_tagDescAddedAt.Default.(func() time.Time)
+	// tweet_tagDescID is the schema descriptor for id field.
+	tweet_tagDescID := tweet_tagFields[0].Descriptor()
+	// tweet_tag.DefaultID holds the default value on creation for the id field.
+	tweet_tag.DefaultID = tweet_tagDescID.Default.(func() uuid.UUID)
 	user.Policy = privacy.NewPolicies(schema.User{})
 	user.Hooks[0] = func(next fluent.Mutator) fluent.Mutator {
 		return fluent.MutateFunc(func(ctx context.Context, m fluent.Mutation) (fluent.Value, error) {
@@ -120,20 +120,20 @@ func init() {
 	userDescName := userFields[0].Descriptor()
 	// user.DefaultName holds the default value on creation for the name field.
 	user.DefaultName = userDescName.Default.(string)
-	usergroupFields := schema.UserGroup{}.Fields()
-	_ = usergroupFields
-	// usergroupDescJoinedAt is the schema descriptor for joined_at field.
-	usergroupDescJoinedAt := usergroupFields[0].Descriptor()
-	// usergroup.DefaultJoinedAt holds the default value on creation for the joined_at field.
-	usergroup.DefaultJoinedAt = usergroupDescJoinedAt.Default.(func() time.Time)
-	usertweetFields := schema.UserTweet{}.Fields()
-	_ = usertweetFields
-	// usertweetDescCreatedAt is the schema descriptor for created_at field.
-	usertweetDescCreatedAt := usertweetFields[0].Descriptor()
-	// usertweet.DefaultCreatedAt holds the default value on creation for the created_at field.
-	usertweet.DefaultCreatedAt = usertweetDescCreatedAt.Default.(func() time.Time)
+	user_groupFields := schema.UserGroup{}.Fields()
+	_ = user_groupFields
+	// user_groupDescJoinedAt is the schema descriptor for joined_at field.
+	user_groupDescJoinedAt := user_groupFields[0].Descriptor()
+	// user_group.DefaultJoinedAt holds the default value on creation for the joined_at field.
+	user_group.DefaultJoinedAt = user_groupDescJoinedAt.Default.(func() time.Time)
+	user_tweetFields := schema.UserTweet{}.Fields()
+	_ = user_tweetFields
+	// user_tweetDescCreatedAt is the schema descriptor for created_at field.
+	user_tweetDescCreatedAt := user_tweetFields[0].Descriptor()
+	// user_tweet.DefaultCreatedAt holds the default value on creation for the created_at field.
+	user_tweet.DefaultCreatedAt = user_tweetDescCreatedAt.Default.(func() time.Time)
 }
 
 const (
-	Version = "v0.1.4" // Version of fluent codegen.
+	Version = "v0.1.5" // Version of fluent codegen.
 )

@@ -16,7 +16,7 @@ import (
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/examples/migration/fluent/predicate"
 	"github.com/usalko/fluent/examples/migration/fluent/session"
-	"github.com/usalko/fluent/examples/migration/fluent/sessiondevice"
+	"github.com/usalko/fluent/examples/migration/fluent/session_device"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -217,7 +217,7 @@ func (su *SessionUpdate) sqlSave(ctx context.Context) (n int, err error) {
 			Columns: []string{session.DeviceColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(sessiondevice.FieldID, field.TypeUUID),
+				IDSpec: sqlgraph.NewFieldSpec(session_device.FieldID, field.TypeUUID),
 			},
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
@@ -230,7 +230,7 @@ func (su *SessionUpdate) sqlSave(ctx context.Context) (n int, err error) {
 			Columns: []string{session.DeviceColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(sessiondevice.FieldID, field.TypeUUID),
+				IDSpec: sqlgraph.NewFieldSpec(session_device.FieldID, field.TypeUUID),
 			},
 		}
 		for _, k := range nodes {
@@ -472,7 +472,7 @@ func (suo *SessionUpdateOne) sqlSave(ctx context.Context) (_node *Session, err e
 			Columns: []string{session.DeviceColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(sessiondevice.FieldID, field.TypeUUID),
+				IDSpec: sqlgraph.NewFieldSpec(session_device.FieldID, field.TypeUUID),
 			},
 		}
 		_spec.Edges.Clear = append(_spec.Edges.Clear, edge)
@@ -485,7 +485,7 @@ func (suo *SessionUpdateOne) sqlSave(ctx context.Context) (_node *Session, err e
 			Columns: []string{session.DeviceColumn},
 			Bidi:    false,
 			Target: &sqlgraph.EdgeTarget{
-				IDSpec: sqlgraph.NewFieldSpec(sessiondevice.FieldID, field.TypeUUID),
+				IDSpec: sqlgraph.NewFieldSpec(session_device.FieldID, field.TypeUUID),
 			},
 		}
 		for _, k := range nodes {

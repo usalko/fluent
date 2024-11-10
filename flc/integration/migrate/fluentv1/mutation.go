@@ -15,7 +15,7 @@ import (
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/flc/integration/migrate/fluentv1/car"
 	"github.com/usalko/fluent/flc/integration/migrate/fluentv1/conversion"
-	"github.com/usalko/fluent/flc/integration/migrate/fluentv1/customtype"
+	"github.com/usalko/fluent/flc/integration/migrate/fluentv1/custom_type"
 	"github.com/usalko/fluent/flc/integration/migrate/fluentv1/predicate"
 	"github.com/usalko/fluent/flc/integration/migrate/fluentv1/user"
 )
@@ -1718,19 +1718,19 @@ func (m *CustomTypeMutation) OldCustom(ctx context.Context) (v string, err error
 // ClearCustom clears the value of the "custom" field.
 func (m *CustomTypeMutation) ClearCustom() {
 	m.custom = nil
-	m.clearedFields[customtype.FieldCustom] = struct{}{}
+	m.clearedFields[custom_type.FieldCustom] = struct{}{}
 }
 
 // CustomCleared returns if the "custom" field was cleared in this mutation.
 func (m *CustomTypeMutation) CustomCleared() bool {
-	_, ok := m.clearedFields[customtype.FieldCustom]
+	_, ok := m.clearedFields[custom_type.FieldCustom]
 	return ok
 }
 
 // ResetCustom resets all changes to the "custom" field.
 func (m *CustomTypeMutation) ResetCustom() {
 	m.custom = nil
-	delete(m.clearedFields, customtype.FieldCustom)
+	delete(m.clearedFields, custom_type.FieldCustom)
 }
 
 // Where appends a list predicates to the CustomTypeMutation builder.
@@ -1769,7 +1769,7 @@ func (m *CustomTypeMutation) Type() string {
 func (m *CustomTypeMutation) Fields() []string {
 	fields := make([]string, 0, 1)
 	if m.custom != nil {
-		fields = append(fields, customtype.FieldCustom)
+		fields = append(fields, custom_type.FieldCustom)
 	}
 	return fields
 }
@@ -1779,7 +1779,7 @@ func (m *CustomTypeMutation) Fields() []string {
 // schema.
 func (m *CustomTypeMutation) Field(name string) (fluent.Value, bool) {
 	switch name {
-	case customtype.FieldCustom:
+	case custom_type.FieldCustom:
 		return m.Custom()
 	}
 	return nil, false
@@ -1790,7 +1790,7 @@ func (m *CustomTypeMutation) Field(name string) (fluent.Value, bool) {
 // database failed.
 func (m *CustomTypeMutation) OldField(ctx context.Context, name string) (fluent.Value, error) {
 	switch name {
-	case customtype.FieldCustom:
+	case custom_type.FieldCustom:
 		return m.OldCustom(ctx)
 	}
 	return nil, fmt.Errorf("unknown CustomType field %s", name)
@@ -1801,7 +1801,7 @@ func (m *CustomTypeMutation) OldField(ctx context.Context, name string) (fluent.
 // type.
 func (m *CustomTypeMutation) SetField(name string, value fluent.Value) error {
 	switch name {
-	case customtype.FieldCustom:
+	case custom_type.FieldCustom:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -1838,8 +1838,8 @@ func (m *CustomTypeMutation) AddField(name string, value fluent.Value) error {
 // mutation.
 func (m *CustomTypeMutation) ClearedFields() []string {
 	var fields []string
-	if m.FieldCleared(customtype.FieldCustom) {
-		fields = append(fields, customtype.FieldCustom)
+	if m.FieldCleared(custom_type.FieldCustom) {
+		fields = append(fields, custom_type.FieldCustom)
 	}
 	return fields
 }
@@ -1855,7 +1855,7 @@ func (m *CustomTypeMutation) FieldCleared(name string) bool {
 // error if the field is not defined in the schema.
 func (m *CustomTypeMutation) ClearField(name string) error {
 	switch name {
-	case customtype.FieldCustom:
+	case custom_type.FieldCustom:
 		m.ClearCustom()
 		return nil
 	}
@@ -1866,7 +1866,7 @@ func (m *CustomTypeMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *CustomTypeMutation) ResetField(name string) error {
 	switch name {
-	case customtype.FieldCustom:
+	case custom_type.FieldCustom:
 		m.ResetCustom()
 		return nil
 	}

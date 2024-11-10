@@ -26,11 +26,11 @@ import (
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/schema"
 	"github.com/usalko/fluent/fluent_gql"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/billproduct"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/bill_product"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/friendship"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/group"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/onetomany"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/one_to_many"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/project"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/todo"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/user"
@@ -150,9 +150,9 @@ func (c *Client) Noder(ctx context.Context, id int, opts ...NodeOption) (_ Noder
 
 func (c *Client) noder(ctx context.Context, table string, id int) (Noder, error) {
 	switch table {
-	case billproduct.Table:
+	case bill_product.Table:
 		query := c.BillProduct.Query().
-			Where(billproduct.ID(id))
+			Where(bill_product.ID(id))
 		if fc := graphql.GetFieldContext(ctx); fc != nil {
 			if err := query.collectField(ctx, true, graphql.GetOperationContext(ctx), fc.Field, nil, billproductImplementors...); err != nil {
 				return nil, err
@@ -186,9 +186,9 @@ func (c *Client) noder(ctx context.Context, table string, id int) (Noder, error)
 			}
 		}
 		return query.Only(ctx)
-	case onetomany.Table:
+	case one_to_many.Table:
 		query := c.OneToMany.Query().
-			Where(onetomany.ID(id))
+			Where(one_to_many.ID(id))
 		if fc := graphql.GetFieldContext(ctx); fc != nil {
 			if err := query.collectField(ctx, true, graphql.GetOperationContext(ctx), fc.Field, nil, onetomanyImplementors...); err != nil {
 				return nil, err
@@ -304,9 +304,9 @@ func (c *Client) noders(ctx context.Context, table string, ids []int) ([]Noder, 
 		idmap[id] = append(idmap[id], &noders[i])
 	}
 	switch table {
-	case billproduct.Table:
+	case bill_product.Table:
 		query := c.BillProduct.Query().
-			Where(billproduct.IDIn(ids...))
+			Where(bill_product.IDIn(ids...))
 		query, err := query.CollectFields(ctx, billproductImplementors...)
 		if err != nil {
 			return nil, err
@@ -368,9 +368,9 @@ func (c *Client) noders(ctx context.Context, table string, ids []int) ([]Noder, 
 				*noder = node
 			}
 		}
-	case onetomany.Table:
+	case one_to_many.Table:
 		query := c.OneToMany.Query().
-			Where(onetomany.IDIn(ids...))
+			Where(one_to_many.IDIn(ids...))
 		query, err := query.CollectFields(ctx, onetomanyImplementors...)
 		if err != nil {
 			return nil, err

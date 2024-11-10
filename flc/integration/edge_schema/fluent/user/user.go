@@ -71,7 +71,7 @@ const (
 	// JoinedGroupsTable is the table that holds the joined_groups relation/edge.
 	JoinedGroupsTable = "user_groups"
 	// JoinedGroupsInverseTable is the table name for the UserGroup entity.
-	// It exists in this package in order to avoid circular dependency with the "usergroup" package.
+	// It exists in this package in order to avoid circular dependency with the "user_group" package.
 	JoinedGroupsInverseTable = "user_groups"
 	// JoinedGroupsColumn is the table column denoting the joined_groups relation/edge.
 	JoinedGroupsColumn = "user_id"
@@ -92,21 +92,21 @@ const (
 	// LikesTable is the table that holds the likes relation/edge.
 	LikesTable = "tweet_likes"
 	// LikesInverseTable is the table name for the TweetLike entity.
-	// It exists in this package in order to avoid circular dependency with the "tweetlike" package.
+	// It exists in this package in order to avoid circular dependency with the "tweet_like" package.
 	LikesInverseTable = "tweet_likes"
 	// LikesColumn is the table column denoting the likes relation/edge.
 	LikesColumn = "user_id"
 	// UserTweetsTable is the table that holds the user_tweets relation/edge.
 	UserTweetsTable = "user_tweets"
 	// UserTweetsInverseTable is the table name for the UserTweet entity.
-	// It exists in this package in order to avoid circular dependency with the "usertweet" package.
+	// It exists in this package in order to avoid circular dependency with the "user_tweet" package.
 	UserTweetsInverseTable = "user_tweets"
 	// UserTweetsColumn is the table column denoting the user_tweets relation/edge.
 	UserTweetsColumn = "user_id"
 	// RolesUsersTable is the table that holds the roles_users relation/edge.
 	RolesUsersTable = "role_users"
 	// RolesUsersInverseTable is the table name for the RoleUser entity.
-	// It exists in this package in order to avoid circular dependency with the "roleuser" package.
+	// It exists in this package in order to avoid circular dependency with the "role_user" package.
 	RolesUsersInverseTable = "role_users"
 	// RolesUsersColumn is the table column denoting the roles_users relation/edge.
 	RolesUsersColumn = "user_id"

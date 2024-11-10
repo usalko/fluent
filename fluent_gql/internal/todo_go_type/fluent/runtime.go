@@ -25,7 +25,7 @@ import (
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/schema/bigintgql"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/todo"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/user"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/verysecret"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/very_secret"
 )
 
 // The init function reads all schema descriptors with runtime code
@@ -94,10 +94,10 @@ func init() {
 	userDescName := userFields[1].Descriptor()
 	// user.DefaultName holds the default value on creation for the name field.
 	user.DefaultName = userDescName.Default.(string)
-	verysecretFields := schema.VerySecret{}.Fields()
-	_ = verysecretFields
-	// verysecretDescID is the schema descriptor for id field.
-	verysecretDescID := verysecretFields[0].Descriptor()
-	// verysecret.DefaultID holds the default value on creation for the id field.
-	verysecret.DefaultID = verysecretDescID.Default.(string)
+	very_secretFields := schema.VerySecret{}.Fields()
+	_ = very_secretFields
+	// very_secretDescID is the schema descriptor for id field.
+	very_secretDescID := very_secretFields[0].Descriptor()
+	// very_secret.DefaultID holds the default value on creation for the id field.
+	very_secret.DefaultID = very_secretDescID.Default.(string)
 }

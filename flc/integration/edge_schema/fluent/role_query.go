@@ -16,7 +16,7 @@ import (
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/predicate"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/role"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/roleuser"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/role_user"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user"
 	"github.com/usalko/fluent/schema/field"
 )
@@ -101,7 +101,7 @@ func (rq *RoleQuery) QueryRolesUsers() *RoleUserQuery {
 		}
 		step := sqlgraph.NewStep(
 			sqlgraph.From(role.Table, role.FieldID, selector),
-			sqlgraph.To(roleuser.Table, roleuser.RoleColumn),
+			sqlgraph.To(role_user.Table, role_user.RoleColumn),
 			sqlgraph.Edge(sqlgraph.O2M, true, role.RolesUsersTable, role.RolesUsersColumn),
 		)
 		fromU = sqlgraph.SetNeighbors(rq.driver.Dialect(), step)
@@ -522,7 +522,7 @@ func (rq *RoleQuery) loadRolesUsers(ctx context.Context, query *RoleUserQuery, n
 		}
 	}
 	if len(query.ctx.Fields) > 0 {
-		query.ctx.AppendFieldOnce(roleuser.FieldRoleID)
+		query.ctx.AppendFieldOnce(role_user.FieldRoleID)
 	}
 	query.Where(predicate.RoleUser(func(s *sql.Selector) {
 		s.Where(sql.InValues(s.C(role.RolesUsersColumn), fks...))

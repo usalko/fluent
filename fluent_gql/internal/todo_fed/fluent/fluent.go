@@ -26,7 +26,7 @@ import (
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/todo"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/verysecret"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/very_secret"
 )
 
 // fluent aliases to avoid import conflicts in user's code.
@@ -87,9 +87,9 @@ var (
 func checkColumn(table, column string) error {
 	initCheck.Do(func() {
 		columnCheck = sql.NewColumnCheck(map[string]func(string) bool{
-			category.Table:   category.ValidColumn,
-			todo.Table:       todo.ValidColumn,
-			verysecret.Table: verysecret.ValidColumn,
+			category.Table:    category.ValidColumn,
+			todo.Table:        todo.ValidColumn,
+			very_secret.Table: very_secret.ValidColumn,
 		})
 	})
 	return columnCheck(table, column)

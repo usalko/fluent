@@ -19,23 +19,23 @@ import (
 	"github.com/usalko/fluent/dialect"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/attachedfile"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/attached_file"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/file"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/friendship"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/group"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/grouptag"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/group_tag"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/process"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/relationship"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/relationshipinfo"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/relationship_info"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/role"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/roleuser"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/role_user"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tag"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweet"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweetlike"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweettag"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweet_like"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweet_tag"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/usergroup"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/usertweet"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user_group"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user_tweet"
 )
 
 // Client is the client that holds all fluent builders.
@@ -352,13 +352,13 @@ func NewAttachedFileClient(c config) *AttachedFileClient {
 }
 
 // Use adds a list of mutation hooks to the hooks stack.
-// A call to `Use(f, g, h)` equals to `attachedfile.Hooks(f(g(h())))`.
+// A call to `Use(f, g, h)` equals to `attached_file.Hooks(f(g(h())))`.
 func (c *AttachedFileClient) Use(hooks ...Hook) {
 	c.hooks.AttachedFile = append(c.hooks.AttachedFile, hooks...)
 }
 
 // Intercept adds a list of query interceptors to the interceptors stack.
-// A call to `Intercept(f, g, h)` equals to `attachedfile.Intercept(f(g(h())))`.
+// A call to `Intercept(f, g, h)` equals to `attached_file.Intercept(f(g(h())))`.
 func (c *AttachedFileClient) Intercept(interceptors ...Interceptor) {
 	c.inters.AttachedFile = append(c.inters.AttachedFile, interceptors...)
 }
@@ -420,7 +420,7 @@ func (c *AttachedFileClient) DeleteOne(af *AttachedFile) *AttachedFileDeleteOne 
 
 // DeleteOneID returns a builder for deleting the given entity by its id.
 func (c *AttachedFileClient) DeleteOneID(id int) *AttachedFileDeleteOne {
-	builder := c.Delete().Where(attachedfile.ID(id))
+	builder := c.Delete().Where(attached_file.ID(id))
 	builder.mutation.id = &id
 	builder.mutation.op = OpDeleteOne
 	return &AttachedFileDeleteOne{builder}
@@ -437,7 +437,7 @@ func (c *AttachedFileClient) Query() *AttachedFileQuery {
 
 // Get returns a AttachedFile entity by its id.
 func (c *AttachedFileClient) Get(ctx context.Context, id int) (*AttachedFile, error) {
-	return c.Query().Where(attachedfile.ID(id)).Only(ctx)
+	return c.Query().Where(attached_file.ID(id)).Only(ctx)
 }
 
 // GetX is like Get, but panics if an error occurs.
@@ -455,9 +455,9 @@ func (c *AttachedFileClient) QueryFi(af *AttachedFile) *FileQuery {
 	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
 		id := af.ID
 		step := sqlgraph.NewStep(
-			sqlgraph.From(attachedfile.Table, attachedfile.FieldID, id),
+			sqlgraph.From(attached_file.Table, attached_file.FieldID, id),
 			sqlgraph.To(file.Table, file.FieldID),
-			sqlgraph.Edge(sqlgraph.M2O, false, attachedfile.FiTable, attachedfile.FiColumn),
+			sqlgraph.Edge(sqlgraph.M2O, false, attached_file.FiTable, attached_file.FiColumn),
 		)
 		fromV = sqlgraph.Neighbors(af.driver.Dialect(), step)
 		return fromV, nil
@@ -471,9 +471,9 @@ func (c *AttachedFileClient) QueryProc(af *AttachedFile) *ProcessQuery {
 	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
 		id := af.ID
 		step := sqlgraph.NewStep(
-			sqlgraph.From(attachedfile.Table, attachedfile.FieldID, id),
+			sqlgraph.From(attached_file.Table, attached_file.FieldID, id),
 			sqlgraph.To(process.Table, process.FieldID),
-			sqlgraph.Edge(sqlgraph.M2O, false, attachedfile.ProcTable, attachedfile.ProcColumn),
+			sqlgraph.Edge(sqlgraph.M2O, false, attached_file.ProcTable, attached_file.ProcColumn),
 		)
 		fromV = sqlgraph.Neighbors(af.driver.Dialect(), step)
 		return fromV, nil
@@ -967,7 +967,7 @@ func (c *GroupClient) QueryJoinedUsers(gr *Group) *UserGroupQuery {
 		id := gr.ID
 		step := sqlgraph.NewStep(
 			sqlgraph.From(group.Table, group.FieldID, id),
-			sqlgraph.To(usergroup.Table, usergroup.FieldID),
+			sqlgraph.To(user_group.Table, user_group.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, true, group.JoinedUsersTable, group.JoinedUsersColumn),
 		)
 		fromV = sqlgraph.Neighbors(gr.driver.Dialect(), step)
@@ -983,7 +983,7 @@ func (c *GroupClient) QueryGroupTags(gr *Group) *GroupTagQuery {
 		id := gr.ID
 		step := sqlgraph.NewStep(
 			sqlgraph.From(group.Table, group.FieldID, id),
-			sqlgraph.To(grouptag.Table, grouptag.FieldID),
+			sqlgraph.To(group_tag.Table, group_tag.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, true, group.GroupTagsTable, group.GroupTagsColumn),
 		)
 		fromV = sqlgraph.Neighbors(gr.driver.Dialect(), step)
@@ -1028,13 +1028,13 @@ func NewGroupTagClient(c config) *GroupTagClient {
 }
 
 // Use adds a list of mutation hooks to the hooks stack.
-// A call to `Use(f, g, h)` equals to `grouptag.Hooks(f(g(h())))`.
+// A call to `Use(f, g, h)` equals to `group_tag.Hooks(f(g(h())))`.
 func (c *GroupTagClient) Use(hooks ...Hook) {
 	c.hooks.GroupTag = append(c.hooks.GroupTag, hooks...)
 }
 
 // Intercept adds a list of query interceptors to the interceptors stack.
-// A call to `Intercept(f, g, h)` equals to `grouptag.Intercept(f(g(h())))`.
+// A call to `Intercept(f, g, h)` equals to `group_tag.Intercept(f(g(h())))`.
 func (c *GroupTagClient) Intercept(interceptors ...Interceptor) {
 	c.inters.GroupTag = append(c.inters.GroupTag, interceptors...)
 }
@@ -1096,7 +1096,7 @@ func (c *GroupTagClient) DeleteOne(gt *GroupTag) *GroupTagDeleteOne {
 
 // DeleteOneID returns a builder for deleting the given entity by its id.
 func (c *GroupTagClient) DeleteOneID(id int) *GroupTagDeleteOne {
-	builder := c.Delete().Where(grouptag.ID(id))
+	builder := c.Delete().Where(group_tag.ID(id))
 	builder.mutation.id = &id
 	builder.mutation.op = OpDeleteOne
 	return &GroupTagDeleteOne{builder}
@@ -1113,7 +1113,7 @@ func (c *GroupTagClient) Query() *GroupTagQuery {
 
 // Get returns a GroupTag entity by its id.
 func (c *GroupTagClient) Get(ctx context.Context, id int) (*GroupTag, error) {
-	return c.Query().Where(grouptag.ID(id)).Only(ctx)
+	return c.Query().Where(group_tag.ID(id)).Only(ctx)
 }
 
 // GetX is like Get, but panics if an error occurs.
@@ -1131,9 +1131,9 @@ func (c *GroupTagClient) QueryTag(gt *GroupTag) *TagQuery {
 	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
 		id := gt.ID
 		step := sqlgraph.NewStep(
-			sqlgraph.From(grouptag.Table, grouptag.FieldID, id),
+			sqlgraph.From(group_tag.Table, group_tag.FieldID, id),
 			sqlgraph.To(tag.Table, tag.FieldID),
-			sqlgraph.Edge(sqlgraph.M2O, false, grouptag.TagTable, grouptag.TagColumn),
+			sqlgraph.Edge(sqlgraph.M2O, false, group_tag.TagTable, group_tag.TagColumn),
 		)
 		fromV = sqlgraph.Neighbors(gt.driver.Dialect(), step)
 		return fromV, nil
@@ -1147,9 +1147,9 @@ func (c *GroupTagClient) QueryGroup(gt *GroupTag) *GroupQuery {
 	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
 		id := gt.ID
 		step := sqlgraph.NewStep(
-			sqlgraph.From(grouptag.Table, grouptag.FieldID, id),
+			sqlgraph.From(group_tag.Table, group_tag.FieldID, id),
 			sqlgraph.To(group.Table, group.FieldID),
-			sqlgraph.Edge(sqlgraph.M2O, false, grouptag.GroupTable, grouptag.GroupColumn),
+			sqlgraph.Edge(sqlgraph.M2O, false, group_tag.GroupTable, group_tag.GroupColumn),
 		)
 		fromV = sqlgraph.Neighbors(gt.driver.Dialect(), step)
 		return fromV, nil
@@ -1313,7 +1313,7 @@ func (c *ProcessClient) QueryAttachedFiles(pr *Process) *AttachedFileQuery {
 		id := pr.ID
 		step := sqlgraph.NewStep(
 			sqlgraph.From(process.Table, process.FieldID, id),
-			sqlgraph.To(attachedfile.Table, attachedfile.FieldID),
+			sqlgraph.To(attached_file.Table, attached_file.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, true, process.AttachedFilesTable, process.AttachedFilesColumn),
 		)
 		fromV = sqlgraph.Neighbors(pr.driver.Dialect(), step)
@@ -1482,13 +1482,13 @@ func NewRelationshipInfoClient(c config) *RelationshipInfoClient {
 }
 
 // Use adds a list of mutation hooks to the hooks stack.
-// A call to `Use(f, g, h)` equals to `relationshipinfo.Hooks(f(g(h())))`.
+// A call to `Use(f, g, h)` equals to `relationship_info.Hooks(f(g(h())))`.
 func (c *RelationshipInfoClient) Use(hooks ...Hook) {
 	c.hooks.RelationshipInfo = append(c.hooks.RelationshipInfo, hooks...)
 }
 
 // Intercept adds a list of query interceptors to the interceptors stack.
-// A call to `Intercept(f, g, h)` equals to `relationshipinfo.Intercept(f(g(h())))`.
+// A call to `Intercept(f, g, h)` equals to `relationship_info.Intercept(f(g(h())))`.
 func (c *RelationshipInfoClient) Intercept(interceptors ...Interceptor) {
 	c.inters.RelationshipInfo = append(c.inters.RelationshipInfo, interceptors...)
 }
@@ -1550,7 +1550,7 @@ func (c *RelationshipInfoClient) DeleteOne(ri *RelationshipInfo) *RelationshipIn
 
 // DeleteOneID returns a builder for deleting the given entity by its id.
 func (c *RelationshipInfoClient) DeleteOneID(id int) *RelationshipInfoDeleteOne {
-	builder := c.Delete().Where(relationshipinfo.ID(id))
+	builder := c.Delete().Where(relationship_info.ID(id))
 	builder.mutation.id = &id
 	builder.mutation.op = OpDeleteOne
 	return &RelationshipInfoDeleteOne{builder}
@@ -1567,7 +1567,7 @@ func (c *RelationshipInfoClient) Query() *RelationshipInfoQuery {
 
 // Get returns a RelationshipInfo entity by its id.
 func (c *RelationshipInfoClient) Get(ctx context.Context, id int) (*RelationshipInfo, error) {
-	return c.Query().Where(relationshipinfo.ID(id)).Only(ctx)
+	return c.Query().Where(relationship_info.ID(id)).Only(ctx)
 }
 
 // GetX is like Get, but panics if an error occurs.
@@ -1735,7 +1735,7 @@ func (c *RoleClient) QueryRolesUsers(r *Role) *RoleUserQuery {
 		id := r.ID
 		step := sqlgraph.NewStep(
 			sqlgraph.From(role.Table, role.FieldID, id),
-			sqlgraph.To(roleuser.Table, roleuser.RoleColumn),
+			sqlgraph.To(role_user.Table, role_user.RoleColumn),
 			sqlgraph.Edge(sqlgraph.O2M, true, role.RolesUsersTable, role.RolesUsersColumn),
 		)
 		fromV = sqlgraph.Neighbors(r.driver.Dialect(), step)
@@ -1780,13 +1780,13 @@ func NewRoleUserClient(c config) *RoleUserClient {
 }
 
 // Use adds a list of mutation hooks to the hooks stack.
-// A call to `Use(f, g, h)` equals to `roleuser.Hooks(f(g(h())))`.
+// A call to `Use(f, g, h)` equals to `role_user.Hooks(f(g(h())))`.
 func (c *RoleUserClient) Use(hooks ...Hook) {
 	c.hooks.RoleUser = append(c.hooks.RoleUser, hooks...)
 }
 
 // Intercept adds a list of query interceptors to the interceptors stack.
-// A call to `Intercept(f, g, h)` equals to `roleuser.Intercept(f(g(h())))`.
+// A call to `Intercept(f, g, h)` equals to `role_user.Intercept(f(g(h())))`.
 func (c *RoleUserClient) Intercept(interceptors ...Interceptor) {
 	c.inters.RoleUser = append(c.inters.RoleUser, interceptors...)
 }
@@ -1849,14 +1849,14 @@ func (c *RoleUserClient) Query() *RoleUserQuery {
 // QueryRole queries the role edge of a RoleUser.
 func (c *RoleUserClient) QueryRole(ru *RoleUser) *RoleQuery {
 	return c.Query().
-		Where(roleuser.UserID(ru.UserID), roleuser.RoleID(ru.RoleID)).
+		Where(role_user.UserID(ru.UserID), role_user.RoleID(ru.RoleID)).
 		QueryRole()
 }
 
 // QueryUser queries the user edge of a RoleUser.
 func (c *RoleUserClient) QueryUser(ru *RoleUser) *UserQuery {
 	return c.Query().
-		Where(roleuser.UserID(ru.UserID), roleuser.RoleID(ru.RoleID)).
+		Where(role_user.UserID(ru.UserID), role_user.RoleID(ru.RoleID)).
 		QueryUser()
 }
 
@@ -2032,7 +2032,7 @@ func (c *TagClient) QueryTweetTags(t *Tag) *TweetTagQuery {
 		id := t.ID
 		step := sqlgraph.NewStep(
 			sqlgraph.From(tag.Table, tag.FieldID, id),
-			sqlgraph.To(tweettag.Table, tweettag.FieldID),
+			sqlgraph.To(tweet_tag.Table, tweet_tag.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, true, tag.TweetTagsTable, tag.TweetTagsColumn),
 		)
 		fromV = sqlgraph.Neighbors(t.driver.Dialect(), step)
@@ -2048,7 +2048,7 @@ func (c *TagClient) QueryGroupTags(t *Tag) *GroupTagQuery {
 		id := t.ID
 		step := sqlgraph.NewStep(
 			sqlgraph.From(tag.Table, tag.FieldID, id),
-			sqlgraph.To(grouptag.Table, grouptag.FieldID),
+			sqlgraph.To(group_tag.Table, group_tag.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, true, tag.GroupTagsTable, tag.GroupTagsColumn),
 		)
 		fromV = sqlgraph.Neighbors(t.driver.Dialect(), step)
@@ -2245,7 +2245,7 @@ func (c *TweetClient) QueryLikes(t *Tweet) *TweetLikeQuery {
 		id := t.ID
 		step := sqlgraph.NewStep(
 			sqlgraph.From(tweet.Table, tweet.FieldID, id),
-			sqlgraph.To(tweetlike.Table, tweetlike.TweetColumn),
+			sqlgraph.To(tweet_like.Table, tweet_like.TweetColumn),
 			sqlgraph.Edge(sqlgraph.O2M, true, tweet.LikesTable, tweet.LikesColumn),
 		)
 		fromV = sqlgraph.Neighbors(t.driver.Dialect(), step)
@@ -2261,7 +2261,7 @@ func (c *TweetClient) QueryTweetUser(t *Tweet) *UserTweetQuery {
 		id := t.ID
 		step := sqlgraph.NewStep(
 			sqlgraph.From(tweet.Table, tweet.FieldID, id),
-			sqlgraph.To(usertweet.Table, usertweet.FieldID),
+			sqlgraph.To(user_tweet.Table, user_tweet.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, true, tweet.TweetUserTable, tweet.TweetUserColumn),
 		)
 		fromV = sqlgraph.Neighbors(t.driver.Dialect(), step)
@@ -2277,7 +2277,7 @@ func (c *TweetClient) QueryTweetTags(t *Tweet) *TweetTagQuery {
 		id := t.ID
 		step := sqlgraph.NewStep(
 			sqlgraph.From(tweet.Table, tweet.FieldID, id),
-			sqlgraph.To(tweettag.Table, tweettag.FieldID),
+			sqlgraph.To(tweet_tag.Table, tweet_tag.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, true, tweet.TweetTagsTable, tweet.TweetTagsColumn),
 		)
 		fromV = sqlgraph.Neighbors(t.driver.Dialect(), step)
@@ -2322,13 +2322,13 @@ func NewTweetLikeClient(c config) *TweetLikeClient {
 }
 
 // Use adds a list of mutation hooks to the hooks stack.
-// A call to `Use(f, g, h)` equals to `tweetlike.Hooks(f(g(h())))`.
+// A call to `Use(f, g, h)` equals to `tweet_like.Hooks(f(g(h())))`.
 func (c *TweetLikeClient) Use(hooks ...Hook) {
 	c.hooks.TweetLike = append(c.hooks.TweetLike, hooks...)
 }
 
 // Intercept adds a list of query interceptors to the interceptors stack.
-// A call to `Intercept(f, g, h)` equals to `tweetlike.Intercept(f(g(h())))`.
+// A call to `Intercept(f, g, h)` equals to `tweet_like.Intercept(f(g(h())))`.
 func (c *TweetLikeClient) Intercept(interceptors ...Interceptor) {
 	c.inters.TweetLike = append(c.inters.TweetLike, interceptors...)
 }
@@ -2391,21 +2391,21 @@ func (c *TweetLikeClient) Query() *TweetLikeQuery {
 // QueryTweet queries the tweet edge of a TweetLike.
 func (c *TweetLikeClient) QueryTweet(tl *TweetLike) *TweetQuery {
 	return c.Query().
-		Where(tweetlike.UserID(tl.UserID), tweetlike.TweetID(tl.TweetID)).
+		Where(tweet_like.UserID(tl.UserID), tweet_like.TweetID(tl.TweetID)).
 		QueryTweet()
 }
 
 // QueryUser queries the user edge of a TweetLike.
 func (c *TweetLikeClient) QueryUser(tl *TweetLike) *UserQuery {
 	return c.Query().
-		Where(tweetlike.UserID(tl.UserID), tweetlike.TweetID(tl.TweetID)).
+		Where(tweet_like.UserID(tl.UserID), tweet_like.TweetID(tl.TweetID)).
 		QueryUser()
 }
 
 // Hooks returns the client hooks.
 func (c *TweetLikeClient) Hooks() []Hook {
 	hooks := c.hooks.TweetLike
-	return append(hooks[:len(hooks):len(hooks)], tweetlike.Hooks[:]...)
+	return append(hooks[:len(hooks):len(hooks)], tweet_like.Hooks[:]...)
 }
 
 // Interceptors returns the client interceptors.
@@ -2439,13 +2439,13 @@ func NewTweetTagClient(c config) *TweetTagClient {
 }
 
 // Use adds a list of mutation hooks to the hooks stack.
-// A call to `Use(f, g, h)` equals to `tweettag.Hooks(f(g(h())))`.
+// A call to `Use(f, g, h)` equals to `tweet_tag.Hooks(f(g(h())))`.
 func (c *TweetTagClient) Use(hooks ...Hook) {
 	c.hooks.TweetTag = append(c.hooks.TweetTag, hooks...)
 }
 
 // Intercept adds a list of query interceptors to the interceptors stack.
-// A call to `Intercept(f, g, h)` equals to `tweettag.Intercept(f(g(h())))`.
+// A call to `Intercept(f, g, h)` equals to `tweet_tag.Intercept(f(g(h())))`.
 func (c *TweetTagClient) Intercept(interceptors ...Interceptor) {
 	c.inters.TweetTag = append(c.inters.TweetTag, interceptors...)
 }
@@ -2507,7 +2507,7 @@ func (c *TweetTagClient) DeleteOne(tt *TweetTag) *TweetTagDeleteOne {
 
 // DeleteOneID returns a builder for deleting the given entity by its id.
 func (c *TweetTagClient) DeleteOneID(id uuid.UUID) *TweetTagDeleteOne {
-	builder := c.Delete().Where(tweettag.ID(id))
+	builder := c.Delete().Where(tweet_tag.ID(id))
 	builder.mutation.id = &id
 	builder.mutation.op = OpDeleteOne
 	return &TweetTagDeleteOne{builder}
@@ -2524,7 +2524,7 @@ func (c *TweetTagClient) Query() *TweetTagQuery {
 
 // Get returns a TweetTag entity by its id.
 func (c *TweetTagClient) Get(ctx context.Context, id uuid.UUID) (*TweetTag, error) {
-	return c.Query().Where(tweettag.ID(id)).Only(ctx)
+	return c.Query().Where(tweet_tag.ID(id)).Only(ctx)
 }
 
 // GetX is like Get, but panics if an error occurs.
@@ -2542,9 +2542,9 @@ func (c *TweetTagClient) QueryTag(tt *TweetTag) *TagQuery {
 	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
 		id := tt.ID
 		step := sqlgraph.NewStep(
-			sqlgraph.From(tweettag.Table, tweettag.FieldID, id),
+			sqlgraph.From(tweet_tag.Table, tweet_tag.FieldID, id),
 			sqlgraph.To(tag.Table, tag.FieldID),
-			sqlgraph.Edge(sqlgraph.M2O, false, tweettag.TagTable, tweettag.TagColumn),
+			sqlgraph.Edge(sqlgraph.M2O, false, tweet_tag.TagTable, tweet_tag.TagColumn),
 		)
 		fromV = sqlgraph.Neighbors(tt.driver.Dialect(), step)
 		return fromV, nil
@@ -2558,9 +2558,9 @@ func (c *TweetTagClient) QueryTweet(tt *TweetTag) *TweetQuery {
 	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
 		id := tt.ID
 		step := sqlgraph.NewStep(
-			sqlgraph.From(tweettag.Table, tweettag.FieldID, id),
+			sqlgraph.From(tweet_tag.Table, tweet_tag.FieldID, id),
 			sqlgraph.To(tweet.Table, tweet.FieldID),
-			sqlgraph.Edge(sqlgraph.M2O, false, tweettag.TweetTable, tweettag.TweetColumn),
+			sqlgraph.Edge(sqlgraph.M2O, false, tweet_tag.TweetTable, tweet_tag.TweetColumn),
 		)
 		fromV = sqlgraph.Neighbors(tt.driver.Dialect(), step)
 		return fromV, nil
@@ -2804,7 +2804,7 @@ func (c *UserClient) QueryJoinedGroups(u *User) *UserGroupQuery {
 		id := u.ID
 		step := sqlgraph.NewStep(
 			sqlgraph.From(user.Table, user.FieldID, id),
-			sqlgraph.To(usergroup.Table, usergroup.FieldID),
+			sqlgraph.To(user_group.Table, user_group.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, true, user.JoinedGroupsTable, user.JoinedGroupsColumn),
 		)
 		fromV = sqlgraph.Neighbors(u.driver.Dialect(), step)
@@ -2852,7 +2852,7 @@ func (c *UserClient) QueryLikes(u *User) *TweetLikeQuery {
 		id := u.ID
 		step := sqlgraph.NewStep(
 			sqlgraph.From(user.Table, user.FieldID, id),
-			sqlgraph.To(tweetlike.Table, tweetlike.UserColumn),
+			sqlgraph.To(tweet_like.Table, tweet_like.UserColumn),
 			sqlgraph.Edge(sqlgraph.O2M, true, user.LikesTable, user.LikesColumn),
 		)
 		fromV = sqlgraph.Neighbors(u.driver.Dialect(), step)
@@ -2868,7 +2868,7 @@ func (c *UserClient) QueryUserTweets(u *User) *UserTweetQuery {
 		id := u.ID
 		step := sqlgraph.NewStep(
 			sqlgraph.From(user.Table, user.FieldID, id),
-			sqlgraph.To(usertweet.Table, usertweet.FieldID),
+			sqlgraph.To(user_tweet.Table, user_tweet.FieldID),
 			sqlgraph.Edge(sqlgraph.O2M, true, user.UserTweetsTable, user.UserTweetsColumn),
 		)
 		fromV = sqlgraph.Neighbors(u.driver.Dialect(), step)
@@ -2884,7 +2884,7 @@ func (c *UserClient) QueryRolesUsers(u *User) *RoleUserQuery {
 		id := u.ID
 		step := sqlgraph.NewStep(
 			sqlgraph.From(user.Table, user.FieldID, id),
-			sqlgraph.To(roleuser.Table, roleuser.UserColumn),
+			sqlgraph.To(role_user.Table, role_user.UserColumn),
 			sqlgraph.Edge(sqlgraph.O2M, true, user.RolesUsersTable, user.RolesUsersColumn),
 		)
 		fromV = sqlgraph.Neighbors(u.driver.Dialect(), step)
@@ -2930,13 +2930,13 @@ func NewUserGroupClient(c config) *UserGroupClient {
 }
 
 // Use adds a list of mutation hooks to the hooks stack.
-// A call to `Use(f, g, h)` equals to `usergroup.Hooks(f(g(h())))`.
+// A call to `Use(f, g, h)` equals to `user_group.Hooks(f(g(h())))`.
 func (c *UserGroupClient) Use(hooks ...Hook) {
 	c.hooks.UserGroup = append(c.hooks.UserGroup, hooks...)
 }
 
 // Intercept adds a list of query interceptors to the interceptors stack.
-// A call to `Intercept(f, g, h)` equals to `usergroup.Intercept(f(g(h())))`.
+// A call to `Intercept(f, g, h)` equals to `user_group.Intercept(f(g(h())))`.
 func (c *UserGroupClient) Intercept(interceptors ...Interceptor) {
 	c.inters.UserGroup = append(c.inters.UserGroup, interceptors...)
 }
@@ -2998,7 +2998,7 @@ func (c *UserGroupClient) DeleteOne(ug *UserGroup) *UserGroupDeleteOne {
 
 // DeleteOneID returns a builder for deleting the given entity by its id.
 func (c *UserGroupClient) DeleteOneID(id int) *UserGroupDeleteOne {
-	builder := c.Delete().Where(usergroup.ID(id))
+	builder := c.Delete().Where(user_group.ID(id))
 	builder.mutation.id = &id
 	builder.mutation.op = OpDeleteOne
 	return &UserGroupDeleteOne{builder}
@@ -3015,7 +3015,7 @@ func (c *UserGroupClient) Query() *UserGroupQuery {
 
 // Get returns a UserGroup entity by its id.
 func (c *UserGroupClient) Get(ctx context.Context, id int) (*UserGroup, error) {
-	return c.Query().Where(usergroup.ID(id)).Only(ctx)
+	return c.Query().Where(user_group.ID(id)).Only(ctx)
 }
 
 // GetX is like Get, but panics if an error occurs.
@@ -3033,9 +3033,9 @@ func (c *UserGroupClient) QueryUser(ug *UserGroup) *UserQuery {
 	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
 		id := ug.ID
 		step := sqlgraph.NewStep(
-			sqlgraph.From(usergroup.Table, usergroup.FieldID, id),
+			sqlgraph.From(user_group.Table, user_group.FieldID, id),
 			sqlgraph.To(user.Table, user.FieldID),
-			sqlgraph.Edge(sqlgraph.M2O, false, usergroup.UserTable, usergroup.UserColumn),
+			sqlgraph.Edge(sqlgraph.M2O, false, user_group.UserTable, user_group.UserColumn),
 		)
 		fromV = sqlgraph.Neighbors(ug.driver.Dialect(), step)
 		return fromV, nil
@@ -3049,9 +3049,9 @@ func (c *UserGroupClient) QueryGroup(ug *UserGroup) *GroupQuery {
 	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
 		id := ug.ID
 		step := sqlgraph.NewStep(
-			sqlgraph.From(usergroup.Table, usergroup.FieldID, id),
+			sqlgraph.From(user_group.Table, user_group.FieldID, id),
 			sqlgraph.To(group.Table, group.FieldID),
-			sqlgraph.Edge(sqlgraph.M2O, false, usergroup.GroupTable, usergroup.GroupColumn),
+			sqlgraph.Edge(sqlgraph.M2O, false, user_group.GroupTable, user_group.GroupColumn),
 		)
 		fromV = sqlgraph.Neighbors(ug.driver.Dialect(), step)
 		return fromV, nil
@@ -3095,13 +3095,13 @@ func NewUserTweetClient(c config) *UserTweetClient {
 }
 
 // Use adds a list of mutation hooks to the hooks stack.
-// A call to `Use(f, g, h)` equals to `usertweet.Hooks(f(g(h())))`.
+// A call to `Use(f, g, h)` equals to `user_tweet.Hooks(f(g(h())))`.
 func (c *UserTweetClient) Use(hooks ...Hook) {
 	c.hooks.UserTweet = append(c.hooks.UserTweet, hooks...)
 }
 
 // Intercept adds a list of query interceptors to the interceptors stack.
-// A call to `Intercept(f, g, h)` equals to `usertweet.Intercept(f(g(h())))`.
+// A call to `Intercept(f, g, h)` equals to `user_tweet.Intercept(f(g(h())))`.
 func (c *UserTweetClient) Intercept(interceptors ...Interceptor) {
 	c.inters.UserTweet = append(c.inters.UserTweet, interceptors...)
 }
@@ -3163,7 +3163,7 @@ func (c *UserTweetClient) DeleteOne(ut *UserTweet) *UserTweetDeleteOne {
 
 // DeleteOneID returns a builder for deleting the given entity by its id.
 func (c *UserTweetClient) DeleteOneID(id int) *UserTweetDeleteOne {
-	builder := c.Delete().Where(usertweet.ID(id))
+	builder := c.Delete().Where(user_tweet.ID(id))
 	builder.mutation.id = &id
 	builder.mutation.op = OpDeleteOne
 	return &UserTweetDeleteOne{builder}
@@ -3180,7 +3180,7 @@ func (c *UserTweetClient) Query() *UserTweetQuery {
 
 // Get returns a UserTweet entity by its id.
 func (c *UserTweetClient) Get(ctx context.Context, id int) (*UserTweet, error) {
-	return c.Query().Where(usertweet.ID(id)).Only(ctx)
+	return c.Query().Where(user_tweet.ID(id)).Only(ctx)
 }
 
 // GetX is like Get, but panics if an error occurs.
@@ -3198,9 +3198,9 @@ func (c *UserTweetClient) QueryUser(ut *UserTweet) *UserQuery {
 	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
 		id := ut.ID
 		step := sqlgraph.NewStep(
-			sqlgraph.From(usertweet.Table, usertweet.FieldID, id),
+			sqlgraph.From(user_tweet.Table, user_tweet.FieldID, id),
 			sqlgraph.To(user.Table, user.FieldID),
-			sqlgraph.Edge(sqlgraph.M2O, false, usertweet.UserTable, usertweet.UserColumn),
+			sqlgraph.Edge(sqlgraph.M2O, false, user_tweet.UserTable, user_tweet.UserColumn),
 		)
 		fromV = sqlgraph.Neighbors(ut.driver.Dialect(), step)
 		return fromV, nil
@@ -3214,9 +3214,9 @@ func (c *UserTweetClient) QueryTweet(ut *UserTweet) *TweetQuery {
 	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
 		id := ut.ID
 		step := sqlgraph.NewStep(
-			sqlgraph.From(usertweet.Table, usertweet.FieldID, id),
+			sqlgraph.From(user_tweet.Table, user_tweet.FieldID, id),
 			sqlgraph.To(tweet.Table, tweet.FieldID),
-			sqlgraph.Edge(sqlgraph.M2O, false, usertweet.TweetTable, usertweet.TweetColumn),
+			sqlgraph.Edge(sqlgraph.M2O, false, user_tweet.TweetTable, user_tweet.TweetColumn),
 		)
 		fromV = sqlgraph.Neighbors(ut.driver.Dialect(), step)
 		return fromV, nil

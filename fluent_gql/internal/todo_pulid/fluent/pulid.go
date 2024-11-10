@@ -18,25 +18,25 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/billproduct"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/bill_product"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/friendship"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/group"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/schema/pulid"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/todo"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/user"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/verysecret"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/very_secret"
 )
 
 // prefixMap maps PULID prefixes to table names.
 var prefixMap = map[pulid.ID]string{
-	"BP": billproduct.Table,
+	"BP": bill_product.Table,
 	"CR": category.Table,
 	"FS": friendship.Table,
 	"GR": group.Table,
 	"TD": todo.Table,
 	"UR": user.Table,
-	"VR": verysecret.Table,
+	"VR": very_secret.Table,
 }
 
 // IDToType maps a pulid.ID to the underlying table.

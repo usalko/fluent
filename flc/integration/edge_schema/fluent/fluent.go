@@ -15,23 +15,23 @@ import (
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/attachedfile"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/attached_file"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/file"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/friendship"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/group"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/grouptag"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/group_tag"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/process"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/relationship"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/relationshipinfo"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/relationship_info"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/role"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/roleuser"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/role_user"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tag"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweet"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweetlike"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweettag"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweet_like"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweet_tag"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/usergroup"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/usertweet"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user_group"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user_tweet"
 )
 
 // fluent aliases to avoid import conflicts in user's code.
@@ -92,23 +92,23 @@ var (
 func checkColumn(table, column string) error {
 	initCheck.Do(func() {
 		columnCheck = sql.NewColumnCheck(map[string]func(string) bool{
-			attachedfile.Table:     attachedfile.ValidColumn,
-			file.Table:             file.ValidColumn,
-			friendship.Table:       friendship.ValidColumn,
-			group.Table:            group.ValidColumn,
-			grouptag.Table:         grouptag.ValidColumn,
-			process.Table:          process.ValidColumn,
-			relationship.Table:     relationship.ValidColumn,
-			relationshipinfo.Table: relationshipinfo.ValidColumn,
-			role.Table:             role.ValidColumn,
-			roleuser.Table:         roleuser.ValidColumn,
-			tag.Table:              tag.ValidColumn,
-			tweet.Table:            tweet.ValidColumn,
-			tweetlike.Table:        tweetlike.ValidColumn,
-			tweettag.Table:         tweettag.ValidColumn,
-			user.Table:             user.ValidColumn,
-			usergroup.Table:        usergroup.ValidColumn,
-			usertweet.Table:        usertweet.ValidColumn,
+			attached_file.Table:     attached_file.ValidColumn,
+			file.Table:              file.ValidColumn,
+			friendship.Table:        friendship.ValidColumn,
+			group.Table:             group.ValidColumn,
+			group_tag.Table:         group_tag.ValidColumn,
+			process.Table:           process.ValidColumn,
+			relationship.Table:      relationship.ValidColumn,
+			relationship_info.Table: relationship_info.ValidColumn,
+			role.Table:              role.ValidColumn,
+			role_user.Table:         role_user.ValidColumn,
+			tag.Table:               tag.ValidColumn,
+			tweet.Table:             tweet.ValidColumn,
+			tweet_like.Table:        tweet_like.ValidColumn,
+			tweet_tag.Table:         tweet_tag.ValidColumn,
+			user.Table:              user.ValidColumn,
+			user_group.Table:        user_group.ValidColumn,
+			user_tweet.Table:        user_tweet.ValidColumn,
 		})
 	})
 	return columnCheck(table, column)

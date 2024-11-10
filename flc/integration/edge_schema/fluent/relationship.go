@@ -12,7 +12,7 @@ import (
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/relationship"
-	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/relationshipinfo"
+	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/relationship_info"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user"
 )
 
@@ -74,7 +74,7 @@ func (e RelationshipEdges) InfoOrErr() (*RelationshipInfo, error) {
 	if e.Info != nil {
 		return e.Info, nil
 	} else if e.loadedTypes[2] {
-		return nil, &NotFoundError{label: relationshipinfo.Label}
+		return nil, &NotFoundError{label: relationship_info.Label}
 	}
 	return nil, &NotLoadedError{edge: "info"}
 }

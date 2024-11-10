@@ -51,7 +51,7 @@ const (
 	// InfoTable is the table that holds the info relation/edge.
 	InfoTable = "relationships"
 	// InfoInverseTable is the table name for the RelationshipInfo entity.
-	// It exists in this package in order to avoid circular dependency with the "relationshipinfo" package.
+	// It exists in this package in order to avoid circular dependency with the "relationship_info" package.
 	InfoInverseTable = "relationship_infos"
 	// InfoColumn is the table column denoting the info relation/edge.
 	InfoColumn = "info_id"

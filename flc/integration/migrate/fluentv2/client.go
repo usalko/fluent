@@ -21,7 +21,7 @@ import (
 	"github.com/usalko/fluent/flc/integration/migrate/fluentv2/blog"
 	"github.com/usalko/fluent/flc/integration/migrate/fluentv2/car"
 	"github.com/usalko/fluent/flc/integration/migrate/fluentv2/conversion"
-	"github.com/usalko/fluent/flc/integration/migrate/fluentv2/customtype"
+	"github.com/usalko/fluent/flc/integration/migrate/fluentv2/custom_type"
 	"github.com/usalko/fluent/flc/integration/migrate/fluentv2/group"
 	"github.com/usalko/fluent/flc/integration/migrate/fluentv2/media"
 	"github.com/usalko/fluent/flc/integration/migrate/fluentv2/pet"
@@ -716,13 +716,13 @@ func NewCustomTypeClient(c config) *CustomTypeClient {
 }
 
 // Use adds a list of mutation hooks to the hooks stack.
-// A call to `Use(f, g, h)` equals to `customtype.Hooks(f(g(h())))`.
+// A call to `Use(f, g, h)` equals to `custom_type.Hooks(f(g(h())))`.
 func (c *CustomTypeClient) Use(hooks ...Hook) {
 	c.hooks.CustomType = append(c.hooks.CustomType, hooks...)
 }
 
 // Intercept adds a list of query interceptors to the interceptors stack.
-// A call to `Intercept(f, g, h)` equals to `customtype.Intercept(f(g(h())))`.
+// A call to `Intercept(f, g, h)` equals to `custom_type.Intercept(f(g(h())))`.
 func (c *CustomTypeClient) Intercept(interceptors ...Interceptor) {
 	c.inters.CustomType = append(c.inters.CustomType, interceptors...)
 }
@@ -784,7 +784,7 @@ func (c *CustomTypeClient) DeleteOne(ct *CustomType) *CustomTypeDeleteOne {
 
 // DeleteOneID returns a builder for deleting the given entity by its id.
 func (c *CustomTypeClient) DeleteOneID(id int) *CustomTypeDeleteOne {
-	builder := c.Delete().Where(customtype.ID(id))
+	builder := c.Delete().Where(custom_type.ID(id))
 	builder.mutation.id = &id
 	builder.mutation.op = OpDeleteOne
 	return &CustomTypeDeleteOne{builder}
@@ -801,7 +801,7 @@ func (c *CustomTypeClient) Query() *CustomTypeQuery {
 
 // Get returns a CustomType entity by its id.
 func (c *CustomTypeClient) Get(ctx context.Context, id int) (*CustomType, error) {
-	return c.Query().Where(customtype.ID(id)).Only(ctx)
+	return c.Query().Where(custom_type.ID(id)).Only(ctx)
 }
 
 // GetX is like Get, but panics if an error occurs.

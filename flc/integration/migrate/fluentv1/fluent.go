@@ -17,7 +17,7 @@ import (
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/flc/integration/migrate/fluentv1/car"
 	"github.com/usalko/fluent/flc/integration/migrate/fluentv1/conversion"
-	"github.com/usalko/fluent/flc/integration/migrate/fluentv1/customtype"
+	"github.com/usalko/fluent/flc/integration/migrate/fluentv1/custom_type"
 	"github.com/usalko/fluent/flc/integration/migrate/fluentv1/user"
 )
 
@@ -79,10 +79,10 @@ var (
 func checkColumn(table, column string) error {
 	initCheck.Do(func() {
 		columnCheck = sql.NewColumnCheck(map[string]func(string) bool{
-			car.Table:        car.ValidColumn,
-			conversion.Table: conversion.ValidColumn,
-			customtype.Table: customtype.ValidColumn,
-			user.Table:       user.ValidColumn,
+			car.Table:         car.ValidColumn,
+			conversion.Table:  conversion.ValidColumn,
+			custom_type.Table: custom_type.ValidColumn,
+			user.Table:        user.ValidColumn,
 		})
 	})
 	return columnCheck(table, column)

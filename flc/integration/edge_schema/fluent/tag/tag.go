@@ -40,14 +40,14 @@ const (
 	// TweetTagsTable is the table that holds the tweet_tags relation/edge.
 	TweetTagsTable = "tweet_tags"
 	// TweetTagsInverseTable is the table name for the TweetTag entity.
-	// It exists in this package in order to avoid circular dependency with the "tweettag" package.
+	// It exists in this package in order to avoid circular dependency with the "tweet_tag" package.
 	TweetTagsInverseTable = "tweet_tags"
 	// TweetTagsColumn is the table column denoting the tweet_tags relation/edge.
 	TweetTagsColumn = "tag_id"
 	// GroupTagsTable is the table that holds the group_tags relation/edge.
 	GroupTagsTable = "group_tags"
 	// GroupTagsInverseTable is the table name for the GroupTag entity.
-	// It exists in this package in order to avoid circular dependency with the "grouptag" package.
+	// It exists in this package in order to avoid circular dependency with the "group_tag" package.
 	GroupTagsInverseTable = "group_tags"
 	// GroupTagsColumn is the table column denoting the group_tags relation/edge.
 	GroupTagsColumn = "tag_id"

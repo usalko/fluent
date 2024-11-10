@@ -26,12 +26,12 @@ import (
 	"github.com/usalko/fluent/flc/integration/fluent/schema/task"
 	"github.com/usalko/fluent/flc/integration/gremlin/fluent/card"
 	"github.com/usalko/fluent/flc/integration/gremlin/fluent/comment"
-	"github.com/usalko/fluent/flc/integration/gremlin/fluent/exvaluescan"
-	"github.com/usalko/fluent/flc/integration/gremlin/fluent/fieldtype"
+	"github.com/usalko/fluent/flc/integration/gremlin/fluent/ex_value_scan"
+	"github.com/usalko/fluent/flc/integration/gremlin/fluent/field_type"
 	"github.com/usalko/fluent/flc/integration/gremlin/fluent/file"
-	"github.com/usalko/fluent/flc/integration/gremlin/fluent/filetype"
+	"github.com/usalko/fluent/flc/integration/gremlin/fluent/file_type"
 	"github.com/usalko/fluent/flc/integration/gremlin/fluent/group"
-	"github.com/usalko/fluent/flc/integration/gremlin/fluent/groupinfo"
+	"github.com/usalko/fluent/flc/integration/gremlin/fluent/group_info"
 	"github.com/usalko/fluent/flc/integration/gremlin/fluent/item"
 	"github.com/usalko/fluent/flc/integration/gremlin/fluent/license"
 	"github.com/usalko/fluent/flc/integration/gremlin/fluent/node"
@@ -2354,19 +2354,19 @@ func (m *ExValueScanMutation) OldBinaryOptional(ctx context.Context) (v *url.URL
 // ClearBinaryOptional clears the value of the "binary_optional" field.
 func (m *ExValueScanMutation) ClearBinaryOptional() {
 	m.binary_optional = nil
-	m.clearedFields[exvaluescan.FieldBinaryOptional] = struct{}{}
+	m.clearedFields[ex_value_scan.FieldBinaryOptional] = struct{}{}
 }
 
 // BinaryOptionalCleared returns if the "binary_optional" field was cleared in this mutation.
 func (m *ExValueScanMutation) BinaryOptionalCleared() bool {
-	_, ok := m.clearedFields[exvaluescan.FieldBinaryOptional]
+	_, ok := m.clearedFields[ex_value_scan.FieldBinaryOptional]
 	return ok
 }
 
 // ResetBinaryOptional resets all changes to the "binary_optional" field.
 func (m *ExValueScanMutation) ResetBinaryOptional() {
 	m.binary_optional = nil
-	delete(m.clearedFields, exvaluescan.FieldBinaryOptional)
+	delete(m.clearedFields, ex_value_scan.FieldBinaryOptional)
 }
 
 // SetText sets the "text" field.
@@ -2439,19 +2439,19 @@ func (m *ExValueScanMutation) OldTextOptional(ctx context.Context) (v *big.Int, 
 // ClearTextOptional clears the value of the "text_optional" field.
 func (m *ExValueScanMutation) ClearTextOptional() {
 	m.text_optional = nil
-	m.clearedFields[exvaluescan.FieldTextOptional] = struct{}{}
+	m.clearedFields[ex_value_scan.FieldTextOptional] = struct{}{}
 }
 
 // TextOptionalCleared returns if the "text_optional" field was cleared in this mutation.
 func (m *ExValueScanMutation) TextOptionalCleared() bool {
-	_, ok := m.clearedFields[exvaluescan.FieldTextOptional]
+	_, ok := m.clearedFields[ex_value_scan.FieldTextOptional]
 	return ok
 }
 
 // ResetTextOptional resets all changes to the "text_optional" field.
 func (m *ExValueScanMutation) ResetTextOptional() {
 	m.text_optional = nil
-	delete(m.clearedFields, exvaluescan.FieldTextOptional)
+	delete(m.clearedFields, ex_value_scan.FieldTextOptional)
 }
 
 // SetBase64 sets the "base64" field.
@@ -2560,19 +2560,19 @@ func (m *ExValueScanMutation) OldCustomOptional(ctx context.Context) (v string, 
 // ClearCustomOptional clears the value of the "custom_optional" field.
 func (m *ExValueScanMutation) ClearCustomOptional() {
 	m.custom_optional = nil
-	m.clearedFields[exvaluescan.FieldCustomOptional] = struct{}{}
+	m.clearedFields[ex_value_scan.FieldCustomOptional] = struct{}{}
 }
 
 // CustomOptionalCleared returns if the "custom_optional" field was cleared in this mutation.
 func (m *ExValueScanMutation) CustomOptionalCleared() bool {
-	_, ok := m.clearedFields[exvaluescan.FieldCustomOptional]
+	_, ok := m.clearedFields[ex_value_scan.FieldCustomOptional]
 	return ok
 }
 
 // ResetCustomOptional resets all changes to the "custom_optional" field.
 func (m *ExValueScanMutation) ResetCustomOptional() {
 	m.custom_optional = nil
-	delete(m.clearedFields, exvaluescan.FieldCustomOptional)
+	delete(m.clearedFields, ex_value_scan.FieldCustomOptional)
 }
 
 // Where appends a list predicates to the ExValueScanMutation builder.
@@ -2611,28 +2611,28 @@ func (m *ExValueScanMutation) Type() string {
 func (m *ExValueScanMutation) Fields() []string {
 	fields := make([]string, 0, 8)
 	if m.binary != nil {
-		fields = append(fields, exvaluescan.FieldBinary)
+		fields = append(fields, ex_value_scan.FieldBinary)
 	}
 	if m.binary_bytes != nil {
-		fields = append(fields, exvaluescan.FieldBinaryBytes)
+		fields = append(fields, ex_value_scan.FieldBinaryBytes)
 	}
 	if m.binary_optional != nil {
-		fields = append(fields, exvaluescan.FieldBinaryOptional)
+		fields = append(fields, ex_value_scan.FieldBinaryOptional)
 	}
 	if m.text != nil {
-		fields = append(fields, exvaluescan.FieldText)
+		fields = append(fields, ex_value_scan.FieldText)
 	}
 	if m.text_optional != nil {
-		fields = append(fields, exvaluescan.FieldTextOptional)
+		fields = append(fields, ex_value_scan.FieldTextOptional)
 	}
 	if m.base64 != nil {
-		fields = append(fields, exvaluescan.FieldBase64)
+		fields = append(fields, ex_value_scan.FieldBase64)
 	}
 	if m.custom != nil {
-		fields = append(fields, exvaluescan.FieldCustom)
+		fields = append(fields, ex_value_scan.FieldCustom)
 	}
 	if m.custom_optional != nil {
-		fields = append(fields, exvaluescan.FieldCustomOptional)
+		fields = append(fields, ex_value_scan.FieldCustomOptional)
 	}
 	return fields
 }
@@ -2642,21 +2642,21 @@ func (m *ExValueScanMutation) Fields() []string {
 // schema.
 func (m *ExValueScanMutation) Field(name string) (fluent.Value, bool) {
 	switch name {
-	case exvaluescan.FieldBinary:
+	case ex_value_scan.FieldBinary:
 		return m.Binary()
-	case exvaluescan.FieldBinaryBytes:
+	case ex_value_scan.FieldBinaryBytes:
 		return m.BinaryBytes()
-	case exvaluescan.FieldBinaryOptional:
+	case ex_value_scan.FieldBinaryOptional:
 		return m.BinaryOptional()
-	case exvaluescan.FieldText:
+	case ex_value_scan.FieldText:
 		return m.Text()
-	case exvaluescan.FieldTextOptional:
+	case ex_value_scan.FieldTextOptional:
 		return m.TextOptional()
-	case exvaluescan.FieldBase64:
+	case ex_value_scan.FieldBase64:
 		return m.Base64()
-	case exvaluescan.FieldCustom:
+	case ex_value_scan.FieldCustom:
 		return m.Custom()
-	case exvaluescan.FieldCustomOptional:
+	case ex_value_scan.FieldCustomOptional:
 		return m.CustomOptional()
 	}
 	return nil, false
@@ -2667,21 +2667,21 @@ func (m *ExValueScanMutation) Field(name string) (fluent.Value, bool) {
 // database failed.
 func (m *ExValueScanMutation) OldField(ctx context.Context, name string) (fluent.Value, error) {
 	switch name {
-	case exvaluescan.FieldBinary:
+	case ex_value_scan.FieldBinary:
 		return m.OldBinary(ctx)
-	case exvaluescan.FieldBinaryBytes:
+	case ex_value_scan.FieldBinaryBytes:
 		return m.OldBinaryBytes(ctx)
-	case exvaluescan.FieldBinaryOptional:
+	case ex_value_scan.FieldBinaryOptional:
 		return m.OldBinaryOptional(ctx)
-	case exvaluescan.FieldText:
+	case ex_value_scan.FieldText:
 		return m.OldText(ctx)
-	case exvaluescan.FieldTextOptional:
+	case ex_value_scan.FieldTextOptional:
 		return m.OldTextOptional(ctx)
-	case exvaluescan.FieldBase64:
+	case ex_value_scan.FieldBase64:
 		return m.OldBase64(ctx)
-	case exvaluescan.FieldCustom:
+	case ex_value_scan.FieldCustom:
 		return m.OldCustom(ctx)
-	case exvaluescan.FieldCustomOptional:
+	case ex_value_scan.FieldCustomOptional:
 		return m.OldCustomOptional(ctx)
 	}
 	return nil, fmt.Errorf("unknown ExValueScan field %s", name)
@@ -2692,56 +2692,56 @@ func (m *ExValueScanMutation) OldField(ctx context.Context, name string) (fluent
 // type.
 func (m *ExValueScanMutation) SetField(name string, value fluent.Value) error {
 	switch name {
-	case exvaluescan.FieldBinary:
+	case ex_value_scan.FieldBinary:
 		v, ok := value.(*url.URL)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetBinary(v)
 		return nil
-	case exvaluescan.FieldBinaryBytes:
+	case ex_value_scan.FieldBinaryBytes:
 		v, ok := value.(*url.URL)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetBinaryBytes(v)
 		return nil
-	case exvaluescan.FieldBinaryOptional:
+	case ex_value_scan.FieldBinaryOptional:
 		v, ok := value.(*url.URL)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetBinaryOptional(v)
 		return nil
-	case exvaluescan.FieldText:
+	case ex_value_scan.FieldText:
 		v, ok := value.(*big.Int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetText(v)
 		return nil
-	case exvaluescan.FieldTextOptional:
+	case ex_value_scan.FieldTextOptional:
 		v, ok := value.(*big.Int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetTextOptional(v)
 		return nil
-	case exvaluescan.FieldBase64:
+	case ex_value_scan.FieldBase64:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetBase64(v)
 		return nil
-	case exvaluescan.FieldCustom:
+	case ex_value_scan.FieldCustom:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetCustom(v)
 		return nil
-	case exvaluescan.FieldCustomOptional:
+	case ex_value_scan.FieldCustomOptional:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -2778,14 +2778,14 @@ func (m *ExValueScanMutation) AddField(name string, value fluent.Value) error {
 // mutation.
 func (m *ExValueScanMutation) ClearedFields() []string {
 	var fields []string
-	if m.FieldCleared(exvaluescan.FieldBinaryOptional) {
-		fields = append(fields, exvaluescan.FieldBinaryOptional)
+	if m.FieldCleared(ex_value_scan.FieldBinaryOptional) {
+		fields = append(fields, ex_value_scan.FieldBinaryOptional)
 	}
-	if m.FieldCleared(exvaluescan.FieldTextOptional) {
-		fields = append(fields, exvaluescan.FieldTextOptional)
+	if m.FieldCleared(ex_value_scan.FieldTextOptional) {
+		fields = append(fields, ex_value_scan.FieldTextOptional)
 	}
-	if m.FieldCleared(exvaluescan.FieldCustomOptional) {
-		fields = append(fields, exvaluescan.FieldCustomOptional)
+	if m.FieldCleared(ex_value_scan.FieldCustomOptional) {
+		fields = append(fields, ex_value_scan.FieldCustomOptional)
 	}
 	return fields
 }
@@ -2801,13 +2801,13 @@ func (m *ExValueScanMutation) FieldCleared(name string) bool {
 // error if the field is not defined in the schema.
 func (m *ExValueScanMutation) ClearField(name string) error {
 	switch name {
-	case exvaluescan.FieldBinaryOptional:
+	case ex_value_scan.FieldBinaryOptional:
 		m.ClearBinaryOptional()
 		return nil
-	case exvaluescan.FieldTextOptional:
+	case ex_value_scan.FieldTextOptional:
 		m.ClearTextOptional()
 		return nil
-	case exvaluescan.FieldCustomOptional:
+	case ex_value_scan.FieldCustomOptional:
 		m.ClearCustomOptional()
 		return nil
 	}
@@ -2818,28 +2818,28 @@ func (m *ExValueScanMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *ExValueScanMutation) ResetField(name string) error {
 	switch name {
-	case exvaluescan.FieldBinary:
+	case ex_value_scan.FieldBinary:
 		m.ResetBinary()
 		return nil
-	case exvaluescan.FieldBinaryBytes:
+	case ex_value_scan.FieldBinaryBytes:
 		m.ResetBinaryBytes()
 		return nil
-	case exvaluescan.FieldBinaryOptional:
+	case ex_value_scan.FieldBinaryOptional:
 		m.ResetBinaryOptional()
 		return nil
-	case exvaluescan.FieldText:
+	case ex_value_scan.FieldText:
 		m.ResetText()
 		return nil
-	case exvaluescan.FieldTextOptional:
+	case ex_value_scan.FieldTextOptional:
 		m.ResetTextOptional()
 		return nil
-	case exvaluescan.FieldBase64:
+	case ex_value_scan.FieldBase64:
 		m.ResetBase64()
 		return nil
-	case exvaluescan.FieldCustom:
+	case ex_value_scan.FieldCustom:
 		m.ResetCustom()
 		return nil
-	case exvaluescan.FieldCustomOptional:
+	case ex_value_scan.FieldCustomOptional:
 		m.ResetCustomOptional()
 		return nil
 	}
@@ -2942,7 +2942,7 @@ type FieldTypeMutation struct {
 	addoptional_uint32         *int32
 	optional_uint64            *uint64
 	addoptional_uint64         *int64
-	state                      *fieldtype.State
+	state                      *field_type.State
 	optional_float             *float64
 	addoptional_float          *float64
 	optional_float32           *float32
@@ -3435,12 +3435,12 @@ func (m *FieldTypeMutation) AddedOptionalInt() (r int, exists bool) {
 func (m *FieldTypeMutation) ClearOptionalInt() {
 	m.optional_int = nil
 	m.addoptional_int = nil
-	m.clearedFields[fieldtype.FieldOptionalInt] = struct{}{}
+	m.clearedFields[field_type.FieldOptionalInt] = struct{}{}
 }
 
 // OptionalIntCleared returns if the "optional_int" field was cleared in this mutation.
 func (m *FieldTypeMutation) OptionalIntCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldOptionalInt]
+	_, ok := m.clearedFields[field_type.FieldOptionalInt]
 	return ok
 }
 
@@ -3448,7 +3448,7 @@ func (m *FieldTypeMutation) OptionalIntCleared() bool {
 func (m *FieldTypeMutation) ResetOptionalInt() {
 	m.optional_int = nil
 	m.addoptional_int = nil
-	delete(m.clearedFields, fieldtype.FieldOptionalInt)
+	delete(m.clearedFields, field_type.FieldOptionalInt)
 }
 
 // SetOptionalInt8 sets the "optional_int8" field.
@@ -3505,12 +3505,12 @@ func (m *FieldTypeMutation) AddedOptionalInt8() (r int8, exists bool) {
 func (m *FieldTypeMutation) ClearOptionalInt8() {
 	m.optional_int8 = nil
 	m.addoptional_int8 = nil
-	m.clearedFields[fieldtype.FieldOptionalInt8] = struct{}{}
+	m.clearedFields[field_type.FieldOptionalInt8] = struct{}{}
 }
 
 // OptionalInt8Cleared returns if the "optional_int8" field was cleared in this mutation.
 func (m *FieldTypeMutation) OptionalInt8Cleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldOptionalInt8]
+	_, ok := m.clearedFields[field_type.FieldOptionalInt8]
 	return ok
 }
 
@@ -3518,7 +3518,7 @@ func (m *FieldTypeMutation) OptionalInt8Cleared() bool {
 func (m *FieldTypeMutation) ResetOptionalInt8() {
 	m.optional_int8 = nil
 	m.addoptional_int8 = nil
-	delete(m.clearedFields, fieldtype.FieldOptionalInt8)
+	delete(m.clearedFields, field_type.FieldOptionalInt8)
 }
 
 // SetOptionalInt16 sets the "optional_int16" field.
@@ -3575,12 +3575,12 @@ func (m *FieldTypeMutation) AddedOptionalInt16() (r int16, exists bool) {
 func (m *FieldTypeMutation) ClearOptionalInt16() {
 	m.optional_int16 = nil
 	m.addoptional_int16 = nil
-	m.clearedFields[fieldtype.FieldOptionalInt16] = struct{}{}
+	m.clearedFields[field_type.FieldOptionalInt16] = struct{}{}
 }
 
 // OptionalInt16Cleared returns if the "optional_int16" field was cleared in this mutation.
 func (m *FieldTypeMutation) OptionalInt16Cleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldOptionalInt16]
+	_, ok := m.clearedFields[field_type.FieldOptionalInt16]
 	return ok
 }
 
@@ -3588,7 +3588,7 @@ func (m *FieldTypeMutation) OptionalInt16Cleared() bool {
 func (m *FieldTypeMutation) ResetOptionalInt16() {
 	m.optional_int16 = nil
 	m.addoptional_int16 = nil
-	delete(m.clearedFields, fieldtype.FieldOptionalInt16)
+	delete(m.clearedFields, field_type.FieldOptionalInt16)
 }
 
 // SetOptionalInt32 sets the "optional_int32" field.
@@ -3645,12 +3645,12 @@ func (m *FieldTypeMutation) AddedOptionalInt32() (r int32, exists bool) {
 func (m *FieldTypeMutation) ClearOptionalInt32() {
 	m.optional_int32 = nil
 	m.addoptional_int32 = nil
-	m.clearedFields[fieldtype.FieldOptionalInt32] = struct{}{}
+	m.clearedFields[field_type.FieldOptionalInt32] = struct{}{}
 }
 
 // OptionalInt32Cleared returns if the "optional_int32" field was cleared in this mutation.
 func (m *FieldTypeMutation) OptionalInt32Cleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldOptionalInt32]
+	_, ok := m.clearedFields[field_type.FieldOptionalInt32]
 	return ok
 }
 
@@ -3658,7 +3658,7 @@ func (m *FieldTypeMutation) OptionalInt32Cleared() bool {
 func (m *FieldTypeMutation) ResetOptionalInt32() {
 	m.optional_int32 = nil
 	m.addoptional_int32 = nil
-	delete(m.clearedFields, fieldtype.FieldOptionalInt32)
+	delete(m.clearedFields, field_type.FieldOptionalInt32)
 }
 
 // SetOptionalInt64 sets the "optional_int64" field.
@@ -3715,12 +3715,12 @@ func (m *FieldTypeMutation) AddedOptionalInt64() (r int64, exists bool) {
 func (m *FieldTypeMutation) ClearOptionalInt64() {
 	m.optional_int64 = nil
 	m.addoptional_int64 = nil
-	m.clearedFields[fieldtype.FieldOptionalInt64] = struct{}{}
+	m.clearedFields[field_type.FieldOptionalInt64] = struct{}{}
 }
 
 // OptionalInt64Cleared returns if the "optional_int64" field was cleared in this mutation.
 func (m *FieldTypeMutation) OptionalInt64Cleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldOptionalInt64]
+	_, ok := m.clearedFields[field_type.FieldOptionalInt64]
 	return ok
 }
 
@@ -3728,7 +3728,7 @@ func (m *FieldTypeMutation) OptionalInt64Cleared() bool {
 func (m *FieldTypeMutation) ResetOptionalInt64() {
 	m.optional_int64 = nil
 	m.addoptional_int64 = nil
-	delete(m.clearedFields, fieldtype.FieldOptionalInt64)
+	delete(m.clearedFields, field_type.FieldOptionalInt64)
 }
 
 // SetNillableInt sets the "nillable_int" field.
@@ -3785,12 +3785,12 @@ func (m *FieldTypeMutation) AddedNillableInt() (r int, exists bool) {
 func (m *FieldTypeMutation) ClearNillableInt() {
 	m.nillable_int = nil
 	m.addnillable_int = nil
-	m.clearedFields[fieldtype.FieldNillableInt] = struct{}{}
+	m.clearedFields[field_type.FieldNillableInt] = struct{}{}
 }
 
 // NillableIntCleared returns if the "nillable_int" field was cleared in this mutation.
 func (m *FieldTypeMutation) NillableIntCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldNillableInt]
+	_, ok := m.clearedFields[field_type.FieldNillableInt]
 	return ok
 }
 
@@ -3798,7 +3798,7 @@ func (m *FieldTypeMutation) NillableIntCleared() bool {
 func (m *FieldTypeMutation) ResetNillableInt() {
 	m.nillable_int = nil
 	m.addnillable_int = nil
-	delete(m.clearedFields, fieldtype.FieldNillableInt)
+	delete(m.clearedFields, field_type.FieldNillableInt)
 }
 
 // SetNillableInt8 sets the "nillable_int8" field.
@@ -3855,12 +3855,12 @@ func (m *FieldTypeMutation) AddedNillableInt8() (r int8, exists bool) {
 func (m *FieldTypeMutation) ClearNillableInt8() {
 	m.nillable_int8 = nil
 	m.addnillable_int8 = nil
-	m.clearedFields[fieldtype.FieldNillableInt8] = struct{}{}
+	m.clearedFields[field_type.FieldNillableInt8] = struct{}{}
 }
 
 // NillableInt8Cleared returns if the "nillable_int8" field was cleared in this mutation.
 func (m *FieldTypeMutation) NillableInt8Cleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldNillableInt8]
+	_, ok := m.clearedFields[field_type.FieldNillableInt8]
 	return ok
 }
 
@@ -3868,7 +3868,7 @@ func (m *FieldTypeMutation) NillableInt8Cleared() bool {
 func (m *FieldTypeMutation) ResetNillableInt8() {
 	m.nillable_int8 = nil
 	m.addnillable_int8 = nil
-	delete(m.clearedFields, fieldtype.FieldNillableInt8)
+	delete(m.clearedFields, field_type.FieldNillableInt8)
 }
 
 // SetNillableInt16 sets the "nillable_int16" field.
@@ -3925,12 +3925,12 @@ func (m *FieldTypeMutation) AddedNillableInt16() (r int16, exists bool) {
 func (m *FieldTypeMutation) ClearNillableInt16() {
 	m.nillable_int16 = nil
 	m.addnillable_int16 = nil
-	m.clearedFields[fieldtype.FieldNillableInt16] = struct{}{}
+	m.clearedFields[field_type.FieldNillableInt16] = struct{}{}
 }
 
 // NillableInt16Cleared returns if the "nillable_int16" field was cleared in this mutation.
 func (m *FieldTypeMutation) NillableInt16Cleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldNillableInt16]
+	_, ok := m.clearedFields[field_type.FieldNillableInt16]
 	return ok
 }
 
@@ -3938,7 +3938,7 @@ func (m *FieldTypeMutation) NillableInt16Cleared() bool {
 func (m *FieldTypeMutation) ResetNillableInt16() {
 	m.nillable_int16 = nil
 	m.addnillable_int16 = nil
-	delete(m.clearedFields, fieldtype.FieldNillableInt16)
+	delete(m.clearedFields, field_type.FieldNillableInt16)
 }
 
 // SetNillableInt32 sets the "nillable_int32" field.
@@ -3995,12 +3995,12 @@ func (m *FieldTypeMutation) AddedNillableInt32() (r int32, exists bool) {
 func (m *FieldTypeMutation) ClearNillableInt32() {
 	m.nillable_int32 = nil
 	m.addnillable_int32 = nil
-	m.clearedFields[fieldtype.FieldNillableInt32] = struct{}{}
+	m.clearedFields[field_type.FieldNillableInt32] = struct{}{}
 }
 
 // NillableInt32Cleared returns if the "nillable_int32" field was cleared in this mutation.
 func (m *FieldTypeMutation) NillableInt32Cleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldNillableInt32]
+	_, ok := m.clearedFields[field_type.FieldNillableInt32]
 	return ok
 }
 
@@ -4008,7 +4008,7 @@ func (m *FieldTypeMutation) NillableInt32Cleared() bool {
 func (m *FieldTypeMutation) ResetNillableInt32() {
 	m.nillable_int32 = nil
 	m.addnillable_int32 = nil
-	delete(m.clearedFields, fieldtype.FieldNillableInt32)
+	delete(m.clearedFields, field_type.FieldNillableInt32)
 }
 
 // SetNillableInt64 sets the "nillable_int64" field.
@@ -4065,12 +4065,12 @@ func (m *FieldTypeMutation) AddedNillableInt64() (r int64, exists bool) {
 func (m *FieldTypeMutation) ClearNillableInt64() {
 	m.nillable_int64 = nil
 	m.addnillable_int64 = nil
-	m.clearedFields[fieldtype.FieldNillableInt64] = struct{}{}
+	m.clearedFields[field_type.FieldNillableInt64] = struct{}{}
 }
 
 // NillableInt64Cleared returns if the "nillable_int64" field was cleared in this mutation.
 func (m *FieldTypeMutation) NillableInt64Cleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldNillableInt64]
+	_, ok := m.clearedFields[field_type.FieldNillableInt64]
 	return ok
 }
 
@@ -4078,7 +4078,7 @@ func (m *FieldTypeMutation) NillableInt64Cleared() bool {
 func (m *FieldTypeMutation) ResetNillableInt64() {
 	m.nillable_int64 = nil
 	m.addnillable_int64 = nil
-	delete(m.clearedFields, fieldtype.FieldNillableInt64)
+	delete(m.clearedFields, field_type.FieldNillableInt64)
 }
 
 // SetValidateOptionalInt32 sets the "validate_optional_int32" field.
@@ -4135,12 +4135,12 @@ func (m *FieldTypeMutation) AddedValidateOptionalInt32() (r int32, exists bool) 
 func (m *FieldTypeMutation) ClearValidateOptionalInt32() {
 	m.validate_optional_int32 = nil
 	m.addvalidate_optional_int32 = nil
-	m.clearedFields[fieldtype.FieldValidateOptionalInt32] = struct{}{}
+	m.clearedFields[field_type.FieldValidateOptionalInt32] = struct{}{}
 }
 
 // ValidateOptionalInt32Cleared returns if the "validate_optional_int32" field was cleared in this mutation.
 func (m *FieldTypeMutation) ValidateOptionalInt32Cleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldValidateOptionalInt32]
+	_, ok := m.clearedFields[field_type.FieldValidateOptionalInt32]
 	return ok
 }
 
@@ -4148,7 +4148,7 @@ func (m *FieldTypeMutation) ValidateOptionalInt32Cleared() bool {
 func (m *FieldTypeMutation) ResetValidateOptionalInt32() {
 	m.validate_optional_int32 = nil
 	m.addvalidate_optional_int32 = nil
-	delete(m.clearedFields, fieldtype.FieldValidateOptionalInt32)
+	delete(m.clearedFields, field_type.FieldValidateOptionalInt32)
 }
 
 // SetOptionalUint sets the "optional_uint" field.
@@ -4205,12 +4205,12 @@ func (m *FieldTypeMutation) AddedOptionalUint() (r int, exists bool) {
 func (m *FieldTypeMutation) ClearOptionalUint() {
 	m.optional_uint = nil
 	m.addoptional_uint = nil
-	m.clearedFields[fieldtype.FieldOptionalUint] = struct{}{}
+	m.clearedFields[field_type.FieldOptionalUint] = struct{}{}
 }
 
 // OptionalUintCleared returns if the "optional_uint" field was cleared in this mutation.
 func (m *FieldTypeMutation) OptionalUintCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldOptionalUint]
+	_, ok := m.clearedFields[field_type.FieldOptionalUint]
 	return ok
 }
 
@@ -4218,7 +4218,7 @@ func (m *FieldTypeMutation) OptionalUintCleared() bool {
 func (m *FieldTypeMutation) ResetOptionalUint() {
 	m.optional_uint = nil
 	m.addoptional_uint = nil
-	delete(m.clearedFields, fieldtype.FieldOptionalUint)
+	delete(m.clearedFields, field_type.FieldOptionalUint)
 }
 
 // SetOptionalUint8 sets the "optional_uint8" field.
@@ -4275,12 +4275,12 @@ func (m *FieldTypeMutation) AddedOptionalUint8() (r int8, exists bool) {
 func (m *FieldTypeMutation) ClearOptionalUint8() {
 	m.optional_uint8 = nil
 	m.addoptional_uint8 = nil
-	m.clearedFields[fieldtype.FieldOptionalUint8] = struct{}{}
+	m.clearedFields[field_type.FieldOptionalUint8] = struct{}{}
 }
 
 // OptionalUint8Cleared returns if the "optional_uint8" field was cleared in this mutation.
 func (m *FieldTypeMutation) OptionalUint8Cleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldOptionalUint8]
+	_, ok := m.clearedFields[field_type.FieldOptionalUint8]
 	return ok
 }
 
@@ -4288,7 +4288,7 @@ func (m *FieldTypeMutation) OptionalUint8Cleared() bool {
 func (m *FieldTypeMutation) ResetOptionalUint8() {
 	m.optional_uint8 = nil
 	m.addoptional_uint8 = nil
-	delete(m.clearedFields, fieldtype.FieldOptionalUint8)
+	delete(m.clearedFields, field_type.FieldOptionalUint8)
 }
 
 // SetOptionalUint16 sets the "optional_uint16" field.
@@ -4345,12 +4345,12 @@ func (m *FieldTypeMutation) AddedOptionalUint16() (r int16, exists bool) {
 func (m *FieldTypeMutation) ClearOptionalUint16() {
 	m.optional_uint16 = nil
 	m.addoptional_uint16 = nil
-	m.clearedFields[fieldtype.FieldOptionalUint16] = struct{}{}
+	m.clearedFields[field_type.FieldOptionalUint16] = struct{}{}
 }
 
 // OptionalUint16Cleared returns if the "optional_uint16" field was cleared in this mutation.
 func (m *FieldTypeMutation) OptionalUint16Cleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldOptionalUint16]
+	_, ok := m.clearedFields[field_type.FieldOptionalUint16]
 	return ok
 }
 
@@ -4358,7 +4358,7 @@ func (m *FieldTypeMutation) OptionalUint16Cleared() bool {
 func (m *FieldTypeMutation) ResetOptionalUint16() {
 	m.optional_uint16 = nil
 	m.addoptional_uint16 = nil
-	delete(m.clearedFields, fieldtype.FieldOptionalUint16)
+	delete(m.clearedFields, field_type.FieldOptionalUint16)
 }
 
 // SetOptionalUint32 sets the "optional_uint32" field.
@@ -4415,12 +4415,12 @@ func (m *FieldTypeMutation) AddedOptionalUint32() (r int32, exists bool) {
 func (m *FieldTypeMutation) ClearOptionalUint32() {
 	m.optional_uint32 = nil
 	m.addoptional_uint32 = nil
-	m.clearedFields[fieldtype.FieldOptionalUint32] = struct{}{}
+	m.clearedFields[field_type.FieldOptionalUint32] = struct{}{}
 }
 
 // OptionalUint32Cleared returns if the "optional_uint32" field was cleared in this mutation.
 func (m *FieldTypeMutation) OptionalUint32Cleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldOptionalUint32]
+	_, ok := m.clearedFields[field_type.FieldOptionalUint32]
 	return ok
 }
 
@@ -4428,7 +4428,7 @@ func (m *FieldTypeMutation) OptionalUint32Cleared() bool {
 func (m *FieldTypeMutation) ResetOptionalUint32() {
 	m.optional_uint32 = nil
 	m.addoptional_uint32 = nil
-	delete(m.clearedFields, fieldtype.FieldOptionalUint32)
+	delete(m.clearedFields, field_type.FieldOptionalUint32)
 }
 
 // SetOptionalUint64 sets the "optional_uint64" field.
@@ -4485,12 +4485,12 @@ func (m *FieldTypeMutation) AddedOptionalUint64() (r int64, exists bool) {
 func (m *FieldTypeMutation) ClearOptionalUint64() {
 	m.optional_uint64 = nil
 	m.addoptional_uint64 = nil
-	m.clearedFields[fieldtype.FieldOptionalUint64] = struct{}{}
+	m.clearedFields[field_type.FieldOptionalUint64] = struct{}{}
 }
 
 // OptionalUint64Cleared returns if the "optional_uint64" field was cleared in this mutation.
 func (m *FieldTypeMutation) OptionalUint64Cleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldOptionalUint64]
+	_, ok := m.clearedFields[field_type.FieldOptionalUint64]
 	return ok
 }
 
@@ -4498,16 +4498,16 @@ func (m *FieldTypeMutation) OptionalUint64Cleared() bool {
 func (m *FieldTypeMutation) ResetOptionalUint64() {
 	m.optional_uint64 = nil
 	m.addoptional_uint64 = nil
-	delete(m.clearedFields, fieldtype.FieldOptionalUint64)
+	delete(m.clearedFields, field_type.FieldOptionalUint64)
 }
 
 // SetState sets the "state" field.
-func (m *FieldTypeMutation) SetState(f fieldtype.State) {
-	m.state = &f
+func (m *FieldTypeMutation) SetState(ft field_type.State) {
+	m.state = &ft
 }
 
 // State returns the value of the "state" field in the mutation.
-func (m *FieldTypeMutation) State() (r fieldtype.State, exists bool) {
+func (m *FieldTypeMutation) State() (r field_type.State, exists bool) {
 	v := m.state
 	if v == nil {
 		return
@@ -4518,7 +4518,7 @@ func (m *FieldTypeMutation) State() (r fieldtype.State, exists bool) {
 // OldState returns the old "state" field's value of the FieldType entity.
 // If the FieldType object wasn't provided to the builder, the object is fetched from the database.
 // An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *FieldTypeMutation) OldState(ctx context.Context) (v fieldtype.State, err error) {
+func (m *FieldTypeMutation) OldState(ctx context.Context) (v field_type.State, err error) {
 	if !m.op.Is(OpUpdateOne) {
 		return v, errors.New("OldState is only allowed on UpdateOne operations")
 	}
@@ -4535,19 +4535,19 @@ func (m *FieldTypeMutation) OldState(ctx context.Context) (v fieldtype.State, er
 // ClearState clears the value of the "state" field.
 func (m *FieldTypeMutation) ClearState() {
 	m.state = nil
-	m.clearedFields[fieldtype.FieldState] = struct{}{}
+	m.clearedFields[field_type.FieldState] = struct{}{}
 }
 
 // StateCleared returns if the "state" field was cleared in this mutation.
 func (m *FieldTypeMutation) StateCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldState]
+	_, ok := m.clearedFields[field_type.FieldState]
 	return ok
 }
 
 // ResetState resets all changes to the "state" field.
 func (m *FieldTypeMutation) ResetState() {
 	m.state = nil
-	delete(m.clearedFields, fieldtype.FieldState)
+	delete(m.clearedFields, field_type.FieldState)
 }
 
 // SetOptionalFloat sets the "optional_float" field.
@@ -4604,12 +4604,12 @@ func (m *FieldTypeMutation) AddedOptionalFloat() (r float64, exists bool) {
 func (m *FieldTypeMutation) ClearOptionalFloat() {
 	m.optional_float = nil
 	m.addoptional_float = nil
-	m.clearedFields[fieldtype.FieldOptionalFloat] = struct{}{}
+	m.clearedFields[field_type.FieldOptionalFloat] = struct{}{}
 }
 
 // OptionalFloatCleared returns if the "optional_float" field was cleared in this mutation.
 func (m *FieldTypeMutation) OptionalFloatCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldOptionalFloat]
+	_, ok := m.clearedFields[field_type.FieldOptionalFloat]
 	return ok
 }
 
@@ -4617,7 +4617,7 @@ func (m *FieldTypeMutation) OptionalFloatCleared() bool {
 func (m *FieldTypeMutation) ResetOptionalFloat() {
 	m.optional_float = nil
 	m.addoptional_float = nil
-	delete(m.clearedFields, fieldtype.FieldOptionalFloat)
+	delete(m.clearedFields, field_type.FieldOptionalFloat)
 }
 
 // SetOptionalFloat32 sets the "optional_float32" field.
@@ -4674,12 +4674,12 @@ func (m *FieldTypeMutation) AddedOptionalFloat32() (r float32, exists bool) {
 func (m *FieldTypeMutation) ClearOptionalFloat32() {
 	m.optional_float32 = nil
 	m.addoptional_float32 = nil
-	m.clearedFields[fieldtype.FieldOptionalFloat32] = struct{}{}
+	m.clearedFields[field_type.FieldOptionalFloat32] = struct{}{}
 }
 
 // OptionalFloat32Cleared returns if the "optional_float32" field was cleared in this mutation.
 func (m *FieldTypeMutation) OptionalFloat32Cleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldOptionalFloat32]
+	_, ok := m.clearedFields[field_type.FieldOptionalFloat32]
 	return ok
 }
 
@@ -4687,7 +4687,7 @@ func (m *FieldTypeMutation) OptionalFloat32Cleared() bool {
 func (m *FieldTypeMutation) ResetOptionalFloat32() {
 	m.optional_float32 = nil
 	m.addoptional_float32 = nil
-	delete(m.clearedFields, fieldtype.FieldOptionalFloat32)
+	delete(m.clearedFields, field_type.FieldOptionalFloat32)
 }
 
 // SetText sets the "text" field.
@@ -4724,19 +4724,19 @@ func (m *FieldTypeMutation) OldText(ctx context.Context) (v string, err error) {
 // ClearText clears the value of the "text" field.
 func (m *FieldTypeMutation) ClearText() {
 	m.text = nil
-	m.clearedFields[fieldtype.FieldText] = struct{}{}
+	m.clearedFields[field_type.FieldText] = struct{}{}
 }
 
 // TextCleared returns if the "text" field was cleared in this mutation.
 func (m *FieldTypeMutation) TextCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldText]
+	_, ok := m.clearedFields[field_type.FieldText]
 	return ok
 }
 
 // ResetText resets all changes to the "text" field.
 func (m *FieldTypeMutation) ResetText() {
 	m.text = nil
-	delete(m.clearedFields, fieldtype.FieldText)
+	delete(m.clearedFields, field_type.FieldText)
 }
 
 // SetDatetime sets the "datetime" field.
@@ -4773,19 +4773,19 @@ func (m *FieldTypeMutation) OldDatetime(ctx context.Context) (v time.Time, err e
 // ClearDatetime clears the value of the "datetime" field.
 func (m *FieldTypeMutation) ClearDatetime() {
 	m.datetime = nil
-	m.clearedFields[fieldtype.FieldDatetime] = struct{}{}
+	m.clearedFields[field_type.FieldDatetime] = struct{}{}
 }
 
 // DatetimeCleared returns if the "datetime" field was cleared in this mutation.
 func (m *FieldTypeMutation) DatetimeCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldDatetime]
+	_, ok := m.clearedFields[field_type.FieldDatetime]
 	return ok
 }
 
 // ResetDatetime resets all changes to the "datetime" field.
 func (m *FieldTypeMutation) ResetDatetime() {
 	m.datetime = nil
-	delete(m.clearedFields, fieldtype.FieldDatetime)
+	delete(m.clearedFields, field_type.FieldDatetime)
 }
 
 // SetDecimal sets the "decimal" field.
@@ -4842,12 +4842,12 @@ func (m *FieldTypeMutation) AddedDecimal() (r float64, exists bool) {
 func (m *FieldTypeMutation) ClearDecimal() {
 	m.decimal = nil
 	m.adddecimal = nil
-	m.clearedFields[fieldtype.FieldDecimal] = struct{}{}
+	m.clearedFields[field_type.FieldDecimal] = struct{}{}
 }
 
 // DecimalCleared returns if the "decimal" field was cleared in this mutation.
 func (m *FieldTypeMutation) DecimalCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldDecimal]
+	_, ok := m.clearedFields[field_type.FieldDecimal]
 	return ok
 }
 
@@ -4855,7 +4855,7 @@ func (m *FieldTypeMutation) DecimalCleared() bool {
 func (m *FieldTypeMutation) ResetDecimal() {
 	m.decimal = nil
 	m.adddecimal = nil
-	delete(m.clearedFields, fieldtype.FieldDecimal)
+	delete(m.clearedFields, field_type.FieldDecimal)
 }
 
 // SetLinkOther sets the "link_other" field.
@@ -4892,19 +4892,19 @@ func (m *FieldTypeMutation) OldLinkOther(ctx context.Context) (v *schema.Link, e
 // ClearLinkOther clears the value of the "link_other" field.
 func (m *FieldTypeMutation) ClearLinkOther() {
 	m.link_other = nil
-	m.clearedFields[fieldtype.FieldLinkOther] = struct{}{}
+	m.clearedFields[field_type.FieldLinkOther] = struct{}{}
 }
 
 // LinkOtherCleared returns if the "link_other" field was cleared in this mutation.
 func (m *FieldTypeMutation) LinkOtherCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldLinkOther]
+	_, ok := m.clearedFields[field_type.FieldLinkOther]
 	return ok
 }
 
 // ResetLinkOther resets all changes to the "link_other" field.
 func (m *FieldTypeMutation) ResetLinkOther() {
 	m.link_other = nil
-	delete(m.clearedFields, fieldtype.FieldLinkOther)
+	delete(m.clearedFields, field_type.FieldLinkOther)
 }
 
 // SetLinkOtherFunc sets the "link_other_func" field.
@@ -4941,19 +4941,19 @@ func (m *FieldTypeMutation) OldLinkOtherFunc(ctx context.Context) (v *schema.Lin
 // ClearLinkOtherFunc clears the value of the "link_other_func" field.
 func (m *FieldTypeMutation) ClearLinkOtherFunc() {
 	m.link_other_func = nil
-	m.clearedFields[fieldtype.FieldLinkOtherFunc] = struct{}{}
+	m.clearedFields[field_type.FieldLinkOtherFunc] = struct{}{}
 }
 
 // LinkOtherFuncCleared returns if the "link_other_func" field was cleared in this mutation.
 func (m *FieldTypeMutation) LinkOtherFuncCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldLinkOtherFunc]
+	_, ok := m.clearedFields[field_type.FieldLinkOtherFunc]
 	return ok
 }
 
 // ResetLinkOtherFunc resets all changes to the "link_other_func" field.
 func (m *FieldTypeMutation) ResetLinkOtherFunc() {
 	m.link_other_func = nil
-	delete(m.clearedFields, fieldtype.FieldLinkOtherFunc)
+	delete(m.clearedFields, field_type.FieldLinkOtherFunc)
 }
 
 // SetMAC sets the "mac" field.
@@ -4990,19 +4990,19 @@ func (m *FieldTypeMutation) OldMAC(ctx context.Context) (v schema.MAC, err error
 // ClearMAC clears the value of the "mac" field.
 func (m *FieldTypeMutation) ClearMAC() {
 	m.mac = nil
-	m.clearedFields[fieldtype.FieldMAC] = struct{}{}
+	m.clearedFields[field_type.FieldMAC] = struct{}{}
 }
 
 // MACCleared returns if the "mac" field was cleared in this mutation.
 func (m *FieldTypeMutation) MACCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldMAC]
+	_, ok := m.clearedFields[field_type.FieldMAC]
 	return ok
 }
 
 // ResetMAC resets all changes to the "mac" field.
 func (m *FieldTypeMutation) ResetMAC() {
 	m.mac = nil
-	delete(m.clearedFields, fieldtype.FieldMAC)
+	delete(m.clearedFields, field_type.FieldMAC)
 }
 
 // SetStringArray sets the "string_array" field.
@@ -5039,19 +5039,19 @@ func (m *FieldTypeMutation) OldStringArray(ctx context.Context) (v schema.String
 // ClearStringArray clears the value of the "string_array" field.
 func (m *FieldTypeMutation) ClearStringArray() {
 	m.string_array = nil
-	m.clearedFields[fieldtype.FieldStringArray] = struct{}{}
+	m.clearedFields[field_type.FieldStringArray] = struct{}{}
 }
 
 // StringArrayCleared returns if the "string_array" field was cleared in this mutation.
 func (m *FieldTypeMutation) StringArrayCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldStringArray]
+	_, ok := m.clearedFields[field_type.FieldStringArray]
 	return ok
 }
 
 // ResetStringArray resets all changes to the "string_array" field.
 func (m *FieldTypeMutation) ResetStringArray() {
 	m.string_array = nil
-	delete(m.clearedFields, fieldtype.FieldStringArray)
+	delete(m.clearedFields, field_type.FieldStringArray)
 }
 
 // SetPassword sets the "password" field.
@@ -5088,19 +5088,19 @@ func (m *FieldTypeMutation) OldPassword(ctx context.Context) (v string, err erro
 // ClearPassword clears the value of the "password" field.
 func (m *FieldTypeMutation) ClearPassword() {
 	m.password = nil
-	m.clearedFields[fieldtype.FieldPassword] = struct{}{}
+	m.clearedFields[field_type.FieldPassword] = struct{}{}
 }
 
 // PasswordCleared returns if the "password" field was cleared in this mutation.
 func (m *FieldTypeMutation) PasswordCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldPassword]
+	_, ok := m.clearedFields[field_type.FieldPassword]
 	return ok
 }
 
 // ResetPassword resets all changes to the "password" field.
 func (m *FieldTypeMutation) ResetPassword() {
 	m.password = nil
-	delete(m.clearedFields, fieldtype.FieldPassword)
+	delete(m.clearedFields, field_type.FieldPassword)
 }
 
 // SetStringScanner sets the "string_scanner" field.
@@ -5137,19 +5137,19 @@ func (m *FieldTypeMutation) OldStringScanner(ctx context.Context) (v *schema.Str
 // ClearStringScanner clears the value of the "string_scanner" field.
 func (m *FieldTypeMutation) ClearStringScanner() {
 	m.string_scanner = nil
-	m.clearedFields[fieldtype.FieldStringScanner] = struct{}{}
+	m.clearedFields[field_type.FieldStringScanner] = struct{}{}
 }
 
 // StringScannerCleared returns if the "string_scanner" field was cleared in this mutation.
 func (m *FieldTypeMutation) StringScannerCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldStringScanner]
+	_, ok := m.clearedFields[field_type.FieldStringScanner]
 	return ok
 }
 
 // ResetStringScanner resets all changes to the "string_scanner" field.
 func (m *FieldTypeMutation) ResetStringScanner() {
 	m.string_scanner = nil
-	delete(m.clearedFields, fieldtype.FieldStringScanner)
+	delete(m.clearedFields, field_type.FieldStringScanner)
 }
 
 // SetDuration sets the "duration" field.
@@ -5206,12 +5206,12 @@ func (m *FieldTypeMutation) AddedDuration() (r time.Duration, exists bool) {
 func (m *FieldTypeMutation) ClearDuration() {
 	m.duration = nil
 	m.addduration = nil
-	m.clearedFields[fieldtype.FieldDuration] = struct{}{}
+	m.clearedFields[field_type.FieldDuration] = struct{}{}
 }
 
 // DurationCleared returns if the "duration" field was cleared in this mutation.
 func (m *FieldTypeMutation) DurationCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldDuration]
+	_, ok := m.clearedFields[field_type.FieldDuration]
 	return ok
 }
 
@@ -5219,7 +5219,7 @@ func (m *FieldTypeMutation) DurationCleared() bool {
 func (m *FieldTypeMutation) ResetDuration() {
 	m.duration = nil
 	m.addduration = nil
-	delete(m.clearedFields, fieldtype.FieldDuration)
+	delete(m.clearedFields, field_type.FieldDuration)
 }
 
 // SetDir sets the "dir" field.
@@ -5292,19 +5292,19 @@ func (m *FieldTypeMutation) OldNdir(ctx context.Context) (v *http.Dir, err error
 // ClearNdir clears the value of the "ndir" field.
 func (m *FieldTypeMutation) ClearNdir() {
 	m.ndir = nil
-	m.clearedFields[fieldtype.FieldNdir] = struct{}{}
+	m.clearedFields[field_type.FieldNdir] = struct{}{}
 }
 
 // NdirCleared returns if the "ndir" field was cleared in this mutation.
 func (m *FieldTypeMutation) NdirCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldNdir]
+	_, ok := m.clearedFields[field_type.FieldNdir]
 	return ok
 }
 
 // ResetNdir resets all changes to the "ndir" field.
 func (m *FieldTypeMutation) ResetNdir() {
 	m.ndir = nil
-	delete(m.clearedFields, fieldtype.FieldNdir)
+	delete(m.clearedFields, field_type.FieldNdir)
 }
 
 // SetStr sets the "str" field.
@@ -5341,19 +5341,19 @@ func (m *FieldTypeMutation) OldStr(ctx context.Context) (v sql.NullString, err e
 // ClearStr clears the value of the "str" field.
 func (m *FieldTypeMutation) ClearStr() {
 	m.str = nil
-	m.clearedFields[fieldtype.FieldStr] = struct{}{}
+	m.clearedFields[field_type.FieldStr] = struct{}{}
 }
 
 // StrCleared returns if the "str" field was cleared in this mutation.
 func (m *FieldTypeMutation) StrCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldStr]
+	_, ok := m.clearedFields[field_type.FieldStr]
 	return ok
 }
 
 // ResetStr resets all changes to the "str" field.
 func (m *FieldTypeMutation) ResetStr() {
 	m.str = nil
-	delete(m.clearedFields, fieldtype.FieldStr)
+	delete(m.clearedFields, field_type.FieldStr)
 }
 
 // SetNullStr sets the "null_str" field.
@@ -5390,19 +5390,19 @@ func (m *FieldTypeMutation) OldNullStr(ctx context.Context) (v *sql.NullString, 
 // ClearNullStr clears the value of the "null_str" field.
 func (m *FieldTypeMutation) ClearNullStr() {
 	m.null_str = nil
-	m.clearedFields[fieldtype.FieldNullStr] = struct{}{}
+	m.clearedFields[field_type.FieldNullStr] = struct{}{}
 }
 
 // NullStrCleared returns if the "null_str" field was cleared in this mutation.
 func (m *FieldTypeMutation) NullStrCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldNullStr]
+	_, ok := m.clearedFields[field_type.FieldNullStr]
 	return ok
 }
 
 // ResetNullStr resets all changes to the "null_str" field.
 func (m *FieldTypeMutation) ResetNullStr() {
 	m.null_str = nil
-	delete(m.clearedFields, fieldtype.FieldNullStr)
+	delete(m.clearedFields, field_type.FieldNullStr)
 }
 
 // SetLink sets the "link" field.
@@ -5439,19 +5439,19 @@ func (m *FieldTypeMutation) OldLink(ctx context.Context) (v schema.Link, err err
 // ClearLink clears the value of the "link" field.
 func (m *FieldTypeMutation) ClearLink() {
 	m.link = nil
-	m.clearedFields[fieldtype.FieldLink] = struct{}{}
+	m.clearedFields[field_type.FieldLink] = struct{}{}
 }
 
 // LinkCleared returns if the "link" field was cleared in this mutation.
 func (m *FieldTypeMutation) LinkCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldLink]
+	_, ok := m.clearedFields[field_type.FieldLink]
 	return ok
 }
 
 // ResetLink resets all changes to the "link" field.
 func (m *FieldTypeMutation) ResetLink() {
 	m.link = nil
-	delete(m.clearedFields, fieldtype.FieldLink)
+	delete(m.clearedFields, field_type.FieldLink)
 }
 
 // SetNullLink sets the "null_link" field.
@@ -5488,19 +5488,19 @@ func (m *FieldTypeMutation) OldNullLink(ctx context.Context) (v *schema.Link, er
 // ClearNullLink clears the value of the "null_link" field.
 func (m *FieldTypeMutation) ClearNullLink() {
 	m.null_link = nil
-	m.clearedFields[fieldtype.FieldNullLink] = struct{}{}
+	m.clearedFields[field_type.FieldNullLink] = struct{}{}
 }
 
 // NullLinkCleared returns if the "null_link" field was cleared in this mutation.
 func (m *FieldTypeMutation) NullLinkCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldNullLink]
+	_, ok := m.clearedFields[field_type.FieldNullLink]
 	return ok
 }
 
 // ResetNullLink resets all changes to the "null_link" field.
 func (m *FieldTypeMutation) ResetNullLink() {
 	m.null_link = nil
-	delete(m.clearedFields, fieldtype.FieldNullLink)
+	delete(m.clearedFields, field_type.FieldNullLink)
 }
 
 // SetActive sets the "active" field.
@@ -5537,19 +5537,19 @@ func (m *FieldTypeMutation) OldActive(ctx context.Context) (v schema.Status, err
 // ClearActive clears the value of the "active" field.
 func (m *FieldTypeMutation) ClearActive() {
 	m.active = nil
-	m.clearedFields[fieldtype.FieldActive] = struct{}{}
+	m.clearedFields[field_type.FieldActive] = struct{}{}
 }
 
 // ActiveCleared returns if the "active" field was cleared in this mutation.
 func (m *FieldTypeMutation) ActiveCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldActive]
+	_, ok := m.clearedFields[field_type.FieldActive]
 	return ok
 }
 
 // ResetActive resets all changes to the "active" field.
 func (m *FieldTypeMutation) ResetActive() {
 	m.active = nil
-	delete(m.clearedFields, fieldtype.FieldActive)
+	delete(m.clearedFields, field_type.FieldActive)
 }
 
 // SetNullActive sets the "null_active" field.
@@ -5586,19 +5586,19 @@ func (m *FieldTypeMutation) OldNullActive(ctx context.Context) (v *schema.Status
 // ClearNullActive clears the value of the "null_active" field.
 func (m *FieldTypeMutation) ClearNullActive() {
 	m.null_active = nil
-	m.clearedFields[fieldtype.FieldNullActive] = struct{}{}
+	m.clearedFields[field_type.FieldNullActive] = struct{}{}
 }
 
 // NullActiveCleared returns if the "null_active" field was cleared in this mutation.
 func (m *FieldTypeMutation) NullActiveCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldNullActive]
+	_, ok := m.clearedFields[field_type.FieldNullActive]
 	return ok
 }
 
 // ResetNullActive resets all changes to the "null_active" field.
 func (m *FieldTypeMutation) ResetNullActive() {
 	m.null_active = nil
-	delete(m.clearedFields, fieldtype.FieldNullActive)
+	delete(m.clearedFields, field_type.FieldNullActive)
 }
 
 // SetDeleted sets the "deleted" field.
@@ -5635,19 +5635,19 @@ func (m *FieldTypeMutation) OldDeleted(ctx context.Context) (v *sql.NullBool, er
 // ClearDeleted clears the value of the "deleted" field.
 func (m *FieldTypeMutation) ClearDeleted() {
 	m.deleted = nil
-	m.clearedFields[fieldtype.FieldDeleted] = struct{}{}
+	m.clearedFields[field_type.FieldDeleted] = struct{}{}
 }
 
 // DeletedCleared returns if the "deleted" field was cleared in this mutation.
 func (m *FieldTypeMutation) DeletedCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldDeleted]
+	_, ok := m.clearedFields[field_type.FieldDeleted]
 	return ok
 }
 
 // ResetDeleted resets all changes to the "deleted" field.
 func (m *FieldTypeMutation) ResetDeleted() {
 	m.deleted = nil
-	delete(m.clearedFields, fieldtype.FieldDeleted)
+	delete(m.clearedFields, field_type.FieldDeleted)
 }
 
 // SetDeletedAt sets the "deleted_at" field.
@@ -5684,19 +5684,19 @@ func (m *FieldTypeMutation) OldDeletedAt(ctx context.Context) (v *sql.NullTime, 
 // ClearDeletedAt clears the value of the "deleted_at" field.
 func (m *FieldTypeMutation) ClearDeletedAt() {
 	m.deleted_at = nil
-	m.clearedFields[fieldtype.FieldDeletedAt] = struct{}{}
+	m.clearedFields[field_type.FieldDeletedAt] = struct{}{}
 }
 
 // DeletedAtCleared returns if the "deleted_at" field was cleared in this mutation.
 func (m *FieldTypeMutation) DeletedAtCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldDeletedAt]
+	_, ok := m.clearedFields[field_type.FieldDeletedAt]
 	return ok
 }
 
 // ResetDeletedAt resets all changes to the "deleted_at" field.
 func (m *FieldTypeMutation) ResetDeletedAt() {
 	m.deleted_at = nil
-	delete(m.clearedFields, fieldtype.FieldDeletedAt)
+	delete(m.clearedFields, field_type.FieldDeletedAt)
 }
 
 // SetRawData sets the "raw_data" field.
@@ -5733,19 +5733,19 @@ func (m *FieldTypeMutation) OldRawData(ctx context.Context) (v []byte, err error
 // ClearRawData clears the value of the "raw_data" field.
 func (m *FieldTypeMutation) ClearRawData() {
 	m.raw_data = nil
-	m.clearedFields[fieldtype.FieldRawData] = struct{}{}
+	m.clearedFields[field_type.FieldRawData] = struct{}{}
 }
 
 // RawDataCleared returns if the "raw_data" field was cleared in this mutation.
 func (m *FieldTypeMutation) RawDataCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldRawData]
+	_, ok := m.clearedFields[field_type.FieldRawData]
 	return ok
 }
 
 // ResetRawData resets all changes to the "raw_data" field.
 func (m *FieldTypeMutation) ResetRawData() {
 	m.raw_data = nil
-	delete(m.clearedFields, fieldtype.FieldRawData)
+	delete(m.clearedFields, field_type.FieldRawData)
 }
 
 // SetSensitive sets the "sensitive" field.
@@ -5782,19 +5782,19 @@ func (m *FieldTypeMutation) OldSensitive(ctx context.Context) (v []byte, err err
 // ClearSensitive clears the value of the "sensitive" field.
 func (m *FieldTypeMutation) ClearSensitive() {
 	m.sensitive = nil
-	m.clearedFields[fieldtype.FieldSensitive] = struct{}{}
+	m.clearedFields[field_type.FieldSensitive] = struct{}{}
 }
 
 // SensitiveCleared returns if the "sensitive" field was cleared in this mutation.
 func (m *FieldTypeMutation) SensitiveCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldSensitive]
+	_, ok := m.clearedFields[field_type.FieldSensitive]
 	return ok
 }
 
 // ResetSensitive resets all changes to the "sensitive" field.
 func (m *FieldTypeMutation) ResetSensitive() {
 	m.sensitive = nil
-	delete(m.clearedFields, fieldtype.FieldSensitive)
+	delete(m.clearedFields, field_type.FieldSensitive)
 }
 
 // SetIP sets the "ip" field.
@@ -5831,19 +5831,19 @@ func (m *FieldTypeMutation) OldIP(ctx context.Context) (v net.IP, err error) {
 // ClearIP clears the value of the "ip" field.
 func (m *FieldTypeMutation) ClearIP() {
 	m.ip = nil
-	m.clearedFields[fieldtype.FieldIP] = struct{}{}
+	m.clearedFields[field_type.FieldIP] = struct{}{}
 }
 
 // IPCleared returns if the "ip" field was cleared in this mutation.
 func (m *FieldTypeMutation) IPCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldIP]
+	_, ok := m.clearedFields[field_type.FieldIP]
 	return ok
 }
 
 // ResetIP resets all changes to the "ip" field.
 func (m *FieldTypeMutation) ResetIP() {
 	m.ip = nil
-	delete(m.clearedFields, fieldtype.FieldIP)
+	delete(m.clearedFields, field_type.FieldIP)
 }
 
 // SetNullInt64 sets the "null_int64" field.
@@ -5880,19 +5880,19 @@ func (m *FieldTypeMutation) OldNullInt64(ctx context.Context) (v *sql.NullInt64,
 // ClearNullInt64 clears the value of the "null_int64" field.
 func (m *FieldTypeMutation) ClearNullInt64() {
 	m.null_int64 = nil
-	m.clearedFields[fieldtype.FieldNullInt64] = struct{}{}
+	m.clearedFields[field_type.FieldNullInt64] = struct{}{}
 }
 
 // NullInt64Cleared returns if the "null_int64" field was cleared in this mutation.
 func (m *FieldTypeMutation) NullInt64Cleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldNullInt64]
+	_, ok := m.clearedFields[field_type.FieldNullInt64]
 	return ok
 }
 
 // ResetNullInt64 resets all changes to the "null_int64" field.
 func (m *FieldTypeMutation) ResetNullInt64() {
 	m.null_int64 = nil
-	delete(m.clearedFields, fieldtype.FieldNullInt64)
+	delete(m.clearedFields, field_type.FieldNullInt64)
 }
 
 // SetSchemaInt sets the "schema_int" field.
@@ -5949,12 +5949,12 @@ func (m *FieldTypeMutation) AddedSchemaInt() (r schema.Int, exists bool) {
 func (m *FieldTypeMutation) ClearSchemaInt() {
 	m.schema_int = nil
 	m.addschema_int = nil
-	m.clearedFields[fieldtype.FieldSchemaInt] = struct{}{}
+	m.clearedFields[field_type.FieldSchemaInt] = struct{}{}
 }
 
 // SchemaIntCleared returns if the "schema_int" field was cleared in this mutation.
 func (m *FieldTypeMutation) SchemaIntCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldSchemaInt]
+	_, ok := m.clearedFields[field_type.FieldSchemaInt]
 	return ok
 }
 
@@ -5962,7 +5962,7 @@ func (m *FieldTypeMutation) SchemaIntCleared() bool {
 func (m *FieldTypeMutation) ResetSchemaInt() {
 	m.schema_int = nil
 	m.addschema_int = nil
-	delete(m.clearedFields, fieldtype.FieldSchemaInt)
+	delete(m.clearedFields, field_type.FieldSchemaInt)
 }
 
 // SetSchemaInt8 sets the "schema_int8" field.
@@ -6019,12 +6019,12 @@ func (m *FieldTypeMutation) AddedSchemaInt8() (r schema.Int8, exists bool) {
 func (m *FieldTypeMutation) ClearSchemaInt8() {
 	m.schema_int8 = nil
 	m.addschema_int8 = nil
-	m.clearedFields[fieldtype.FieldSchemaInt8] = struct{}{}
+	m.clearedFields[field_type.FieldSchemaInt8] = struct{}{}
 }
 
 // SchemaInt8Cleared returns if the "schema_int8" field was cleared in this mutation.
 func (m *FieldTypeMutation) SchemaInt8Cleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldSchemaInt8]
+	_, ok := m.clearedFields[field_type.FieldSchemaInt8]
 	return ok
 }
 
@@ -6032,7 +6032,7 @@ func (m *FieldTypeMutation) SchemaInt8Cleared() bool {
 func (m *FieldTypeMutation) ResetSchemaInt8() {
 	m.schema_int8 = nil
 	m.addschema_int8 = nil
-	delete(m.clearedFields, fieldtype.FieldSchemaInt8)
+	delete(m.clearedFields, field_type.FieldSchemaInt8)
 }
 
 // SetSchemaInt64 sets the "schema_int64" field.
@@ -6089,12 +6089,12 @@ func (m *FieldTypeMutation) AddedSchemaInt64() (r schema.Int64, exists bool) {
 func (m *FieldTypeMutation) ClearSchemaInt64() {
 	m.schema_int64 = nil
 	m.addschema_int64 = nil
-	m.clearedFields[fieldtype.FieldSchemaInt64] = struct{}{}
+	m.clearedFields[field_type.FieldSchemaInt64] = struct{}{}
 }
 
 // SchemaInt64Cleared returns if the "schema_int64" field was cleared in this mutation.
 func (m *FieldTypeMutation) SchemaInt64Cleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldSchemaInt64]
+	_, ok := m.clearedFields[field_type.FieldSchemaInt64]
 	return ok
 }
 
@@ -6102,7 +6102,7 @@ func (m *FieldTypeMutation) SchemaInt64Cleared() bool {
 func (m *FieldTypeMutation) ResetSchemaInt64() {
 	m.schema_int64 = nil
 	m.addschema_int64 = nil
-	delete(m.clearedFields, fieldtype.FieldSchemaInt64)
+	delete(m.clearedFields, field_type.FieldSchemaInt64)
 }
 
 // SetSchemaFloat sets the "schema_float" field.
@@ -6159,12 +6159,12 @@ func (m *FieldTypeMutation) AddedSchemaFloat() (r schema.Float64, exists bool) {
 func (m *FieldTypeMutation) ClearSchemaFloat() {
 	m.schema_float = nil
 	m.addschema_float = nil
-	m.clearedFields[fieldtype.FieldSchemaFloat] = struct{}{}
+	m.clearedFields[field_type.FieldSchemaFloat] = struct{}{}
 }
 
 // SchemaFloatCleared returns if the "schema_float" field was cleared in this mutation.
 func (m *FieldTypeMutation) SchemaFloatCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldSchemaFloat]
+	_, ok := m.clearedFields[field_type.FieldSchemaFloat]
 	return ok
 }
 
@@ -6172,7 +6172,7 @@ func (m *FieldTypeMutation) SchemaFloatCleared() bool {
 func (m *FieldTypeMutation) ResetSchemaFloat() {
 	m.schema_float = nil
 	m.addschema_float = nil
-	delete(m.clearedFields, fieldtype.FieldSchemaFloat)
+	delete(m.clearedFields, field_type.FieldSchemaFloat)
 }
 
 // SetSchemaFloat32 sets the "schema_float32" field.
@@ -6229,12 +6229,12 @@ func (m *FieldTypeMutation) AddedSchemaFloat32() (r schema.Float32, exists bool)
 func (m *FieldTypeMutation) ClearSchemaFloat32() {
 	m.schema_float32 = nil
 	m.addschema_float32 = nil
-	m.clearedFields[fieldtype.FieldSchemaFloat32] = struct{}{}
+	m.clearedFields[field_type.FieldSchemaFloat32] = struct{}{}
 }
 
 // SchemaFloat32Cleared returns if the "schema_float32" field was cleared in this mutation.
 func (m *FieldTypeMutation) SchemaFloat32Cleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldSchemaFloat32]
+	_, ok := m.clearedFields[field_type.FieldSchemaFloat32]
 	return ok
 }
 
@@ -6242,7 +6242,7 @@ func (m *FieldTypeMutation) SchemaFloat32Cleared() bool {
 func (m *FieldTypeMutation) ResetSchemaFloat32() {
 	m.schema_float32 = nil
 	m.addschema_float32 = nil
-	delete(m.clearedFields, fieldtype.FieldSchemaFloat32)
+	delete(m.clearedFields, field_type.FieldSchemaFloat32)
 }
 
 // SetNullFloat sets the "null_float" field.
@@ -6279,19 +6279,19 @@ func (m *FieldTypeMutation) OldNullFloat(ctx context.Context) (v *sql.NullFloat6
 // ClearNullFloat clears the value of the "null_float" field.
 func (m *FieldTypeMutation) ClearNullFloat() {
 	m.null_float = nil
-	m.clearedFields[fieldtype.FieldNullFloat] = struct{}{}
+	m.clearedFields[field_type.FieldNullFloat] = struct{}{}
 }
 
 // NullFloatCleared returns if the "null_float" field was cleared in this mutation.
 func (m *FieldTypeMutation) NullFloatCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldNullFloat]
+	_, ok := m.clearedFields[field_type.FieldNullFloat]
 	return ok
 }
 
 // ResetNullFloat resets all changes to the "null_float" field.
 func (m *FieldTypeMutation) ResetNullFloat() {
 	m.null_float = nil
-	delete(m.clearedFields, fieldtype.FieldNullFloat)
+	delete(m.clearedFields, field_type.FieldNullFloat)
 }
 
 // SetRole sets the "role" field.
@@ -6364,19 +6364,19 @@ func (m *FieldTypeMutation) OldPriority(ctx context.Context) (v role.Priority, e
 // ClearPriority clears the value of the "priority" field.
 func (m *FieldTypeMutation) ClearPriority() {
 	m.priority = nil
-	m.clearedFields[fieldtype.FieldPriority] = struct{}{}
+	m.clearedFields[field_type.FieldPriority] = struct{}{}
 }
 
 // PriorityCleared returns if the "priority" field was cleared in this mutation.
 func (m *FieldTypeMutation) PriorityCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldPriority]
+	_, ok := m.clearedFields[field_type.FieldPriority]
 	return ok
 }
 
 // ResetPriority resets all changes to the "priority" field.
 func (m *FieldTypeMutation) ResetPriority() {
 	m.priority = nil
-	delete(m.clearedFields, fieldtype.FieldPriority)
+	delete(m.clearedFields, field_type.FieldPriority)
 }
 
 // SetOptionalUUID sets the "optional_uuid" field.
@@ -6413,19 +6413,19 @@ func (m *FieldTypeMutation) OldOptionalUUID(ctx context.Context) (v uuid.UUID, e
 // ClearOptionalUUID clears the value of the "optional_uuid" field.
 func (m *FieldTypeMutation) ClearOptionalUUID() {
 	m.optional_uuid = nil
-	m.clearedFields[fieldtype.FieldOptionalUUID] = struct{}{}
+	m.clearedFields[field_type.FieldOptionalUUID] = struct{}{}
 }
 
 // OptionalUUIDCleared returns if the "optional_uuid" field was cleared in this mutation.
 func (m *FieldTypeMutation) OptionalUUIDCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldOptionalUUID]
+	_, ok := m.clearedFields[field_type.FieldOptionalUUID]
 	return ok
 }
 
 // ResetOptionalUUID resets all changes to the "optional_uuid" field.
 func (m *FieldTypeMutation) ResetOptionalUUID() {
 	m.optional_uuid = nil
-	delete(m.clearedFields, fieldtype.FieldOptionalUUID)
+	delete(m.clearedFields, field_type.FieldOptionalUUID)
 }
 
 // SetNillableUUID sets the "nillable_uuid" field.
@@ -6462,19 +6462,19 @@ func (m *FieldTypeMutation) OldNillableUUID(ctx context.Context) (v *uuid.UUID, 
 // ClearNillableUUID clears the value of the "nillable_uuid" field.
 func (m *FieldTypeMutation) ClearNillableUUID() {
 	m.nillable_uuid = nil
-	m.clearedFields[fieldtype.FieldNillableUUID] = struct{}{}
+	m.clearedFields[field_type.FieldNillableUUID] = struct{}{}
 }
 
 // NillableUUIDCleared returns if the "nillable_uuid" field was cleared in this mutation.
 func (m *FieldTypeMutation) NillableUUIDCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldNillableUUID]
+	_, ok := m.clearedFields[field_type.FieldNillableUUID]
 	return ok
 }
 
 // ResetNillableUUID resets all changes to the "nillable_uuid" field.
 func (m *FieldTypeMutation) ResetNillableUUID() {
 	m.nillable_uuid = nil
-	delete(m.clearedFields, fieldtype.FieldNillableUUID)
+	delete(m.clearedFields, field_type.FieldNillableUUID)
 }
 
 // SetStrings sets the "strings" field.
@@ -6526,12 +6526,12 @@ func (m *FieldTypeMutation) AppendedStrings() ([]string, bool) {
 func (m *FieldTypeMutation) ClearStrings() {
 	m.strings = nil
 	m.appendstrings = nil
-	m.clearedFields[fieldtype.FieldStrings] = struct{}{}
+	m.clearedFields[field_type.FieldStrings] = struct{}{}
 }
 
 // StringsCleared returns if the "strings" field was cleared in this mutation.
 func (m *FieldTypeMutation) StringsCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldStrings]
+	_, ok := m.clearedFields[field_type.FieldStrings]
 	return ok
 }
 
@@ -6539,7 +6539,7 @@ func (m *FieldTypeMutation) StringsCleared() bool {
 func (m *FieldTypeMutation) ResetStrings() {
 	m.strings = nil
 	m.appendstrings = nil
-	delete(m.clearedFields, fieldtype.FieldStrings)
+	delete(m.clearedFields, field_type.FieldStrings)
 }
 
 // SetPair sets the "pair" field.
@@ -6612,19 +6612,19 @@ func (m *FieldTypeMutation) OldNilPair(ctx context.Context) (v *schema.Pair, err
 // ClearNilPair clears the value of the "nil_pair" field.
 func (m *FieldTypeMutation) ClearNilPair() {
 	m.nil_pair = nil
-	m.clearedFields[fieldtype.FieldNilPair] = struct{}{}
+	m.clearedFields[field_type.FieldNilPair] = struct{}{}
 }
 
 // NilPairCleared returns if the "nil_pair" field was cleared in this mutation.
 func (m *FieldTypeMutation) NilPairCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldNilPair]
+	_, ok := m.clearedFields[field_type.FieldNilPair]
 	return ok
 }
 
 // ResetNilPair resets all changes to the "nil_pair" field.
 func (m *FieldTypeMutation) ResetNilPair() {
 	m.nil_pair = nil
-	delete(m.clearedFields, fieldtype.FieldNilPair)
+	delete(m.clearedFields, field_type.FieldNilPair)
 }
 
 // SetVstring sets the "vstring" field.
@@ -6753,12 +6753,12 @@ func (m *FieldTypeMutation) AddedBigInt() (r schema.BigInt, exists bool) {
 func (m *FieldTypeMutation) ClearBigInt() {
 	m.big_int = nil
 	m.addbig_int = nil
-	m.clearedFields[fieldtype.FieldBigInt] = struct{}{}
+	m.clearedFields[field_type.FieldBigInt] = struct{}{}
 }
 
 // BigIntCleared returns if the "big_int" field was cleared in this mutation.
 func (m *FieldTypeMutation) BigIntCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldBigInt]
+	_, ok := m.clearedFields[field_type.FieldBigInt]
 	return ok
 }
 
@@ -6766,7 +6766,7 @@ func (m *FieldTypeMutation) BigIntCleared() bool {
 func (m *FieldTypeMutation) ResetBigInt() {
 	m.big_int = nil
 	m.addbig_int = nil
-	delete(m.clearedFields, fieldtype.FieldBigInt)
+	delete(m.clearedFields, field_type.FieldBigInt)
 }
 
 // SetPasswordOther sets the "password_other" field.
@@ -6803,19 +6803,19 @@ func (m *FieldTypeMutation) OldPasswordOther(ctx context.Context) (v schema.Pass
 // ClearPasswordOther clears the value of the "password_other" field.
 func (m *FieldTypeMutation) ClearPasswordOther() {
 	m.password_other = nil
-	m.clearedFields[fieldtype.FieldPasswordOther] = struct{}{}
+	m.clearedFields[field_type.FieldPasswordOther] = struct{}{}
 }
 
 // PasswordOtherCleared returns if the "password_other" field was cleared in this mutation.
 func (m *FieldTypeMutation) PasswordOtherCleared() bool {
-	_, ok := m.clearedFields[fieldtype.FieldPasswordOther]
+	_, ok := m.clearedFields[field_type.FieldPasswordOther]
 	return ok
 }
 
 // ResetPasswordOther resets all changes to the "password_other" field.
 func (m *FieldTypeMutation) ResetPasswordOther() {
 	m.password_other = nil
-	delete(m.clearedFields, fieldtype.FieldPasswordOther)
+	delete(m.clearedFields, field_type.FieldPasswordOther)
 }
 
 // Where appends a list predicates to the FieldTypeMutation builder.
@@ -6854,199 +6854,199 @@ func (m *FieldTypeMutation) Type() string {
 func (m *FieldTypeMutation) Fields() []string {
 	fields := make([]string, 0, 65)
 	if m.int != nil {
-		fields = append(fields, fieldtype.FieldInt)
+		fields = append(fields, field_type.FieldInt)
 	}
 	if m.int8 != nil {
-		fields = append(fields, fieldtype.FieldInt8)
+		fields = append(fields, field_type.FieldInt8)
 	}
 	if m.int16 != nil {
-		fields = append(fields, fieldtype.FieldInt16)
+		fields = append(fields, field_type.FieldInt16)
 	}
 	if m.int32 != nil {
-		fields = append(fields, fieldtype.FieldInt32)
+		fields = append(fields, field_type.FieldInt32)
 	}
 	if m.int64 != nil {
-		fields = append(fields, fieldtype.FieldInt64)
+		fields = append(fields, field_type.FieldInt64)
 	}
 	if m.optional_int != nil {
-		fields = append(fields, fieldtype.FieldOptionalInt)
+		fields = append(fields, field_type.FieldOptionalInt)
 	}
 	if m.optional_int8 != nil {
-		fields = append(fields, fieldtype.FieldOptionalInt8)
+		fields = append(fields, field_type.FieldOptionalInt8)
 	}
 	if m.optional_int16 != nil {
-		fields = append(fields, fieldtype.FieldOptionalInt16)
+		fields = append(fields, field_type.FieldOptionalInt16)
 	}
 	if m.optional_int32 != nil {
-		fields = append(fields, fieldtype.FieldOptionalInt32)
+		fields = append(fields, field_type.FieldOptionalInt32)
 	}
 	if m.optional_int64 != nil {
-		fields = append(fields, fieldtype.FieldOptionalInt64)
+		fields = append(fields, field_type.FieldOptionalInt64)
 	}
 	if m.nillable_int != nil {
-		fields = append(fields, fieldtype.FieldNillableInt)
+		fields = append(fields, field_type.FieldNillableInt)
 	}
 	if m.nillable_int8 != nil {
-		fields = append(fields, fieldtype.FieldNillableInt8)
+		fields = append(fields, field_type.FieldNillableInt8)
 	}
 	if m.nillable_int16 != nil {
-		fields = append(fields, fieldtype.FieldNillableInt16)
+		fields = append(fields, field_type.FieldNillableInt16)
 	}
 	if m.nillable_int32 != nil {
-		fields = append(fields, fieldtype.FieldNillableInt32)
+		fields = append(fields, field_type.FieldNillableInt32)
 	}
 	if m.nillable_int64 != nil {
-		fields = append(fields, fieldtype.FieldNillableInt64)
+		fields = append(fields, field_type.FieldNillableInt64)
 	}
 	if m.validate_optional_int32 != nil {
-		fields = append(fields, fieldtype.FieldValidateOptionalInt32)
+		fields = append(fields, field_type.FieldValidateOptionalInt32)
 	}
 	if m.optional_uint != nil {
-		fields = append(fields, fieldtype.FieldOptionalUint)
+		fields = append(fields, field_type.FieldOptionalUint)
 	}
 	if m.optional_uint8 != nil {
-		fields = append(fields, fieldtype.FieldOptionalUint8)
+		fields = append(fields, field_type.FieldOptionalUint8)
 	}
 	if m.optional_uint16 != nil {
-		fields = append(fields, fieldtype.FieldOptionalUint16)
+		fields = append(fields, field_type.FieldOptionalUint16)
 	}
 	if m.optional_uint32 != nil {
-		fields = append(fields, fieldtype.FieldOptionalUint32)
+		fields = append(fields, field_type.FieldOptionalUint32)
 	}
 	if m.optional_uint64 != nil {
-		fields = append(fields, fieldtype.FieldOptionalUint64)
+		fields = append(fields, field_type.FieldOptionalUint64)
 	}
 	if m.state != nil {
-		fields = append(fields, fieldtype.FieldState)
+		fields = append(fields, field_type.FieldState)
 	}
 	if m.optional_float != nil {
-		fields = append(fields, fieldtype.FieldOptionalFloat)
+		fields = append(fields, field_type.FieldOptionalFloat)
 	}
 	if m.optional_float32 != nil {
-		fields = append(fields, fieldtype.FieldOptionalFloat32)
+		fields = append(fields, field_type.FieldOptionalFloat32)
 	}
 	if m.text != nil {
-		fields = append(fields, fieldtype.FieldText)
+		fields = append(fields, field_type.FieldText)
 	}
 	if m.datetime != nil {
-		fields = append(fields, fieldtype.FieldDatetime)
+		fields = append(fields, field_type.FieldDatetime)
 	}
 	if m.decimal != nil {
-		fields = append(fields, fieldtype.FieldDecimal)
+		fields = append(fields, field_type.FieldDecimal)
 	}
 	if m.link_other != nil {
-		fields = append(fields, fieldtype.FieldLinkOther)
+		fields = append(fields, field_type.FieldLinkOther)
 	}
 	if m.link_other_func != nil {
-		fields = append(fields, fieldtype.FieldLinkOtherFunc)
+		fields = append(fields, field_type.FieldLinkOtherFunc)
 	}
 	if m.mac != nil {
-		fields = append(fields, fieldtype.FieldMAC)
+		fields = append(fields, field_type.FieldMAC)
 	}
 	if m.string_array != nil {
-		fields = append(fields, fieldtype.FieldStringArray)
+		fields = append(fields, field_type.FieldStringArray)
 	}
 	if m.password != nil {
-		fields = append(fields, fieldtype.FieldPassword)
+		fields = append(fields, field_type.FieldPassword)
 	}
 	if m.string_scanner != nil {
-		fields = append(fields, fieldtype.FieldStringScanner)
+		fields = append(fields, field_type.FieldStringScanner)
 	}
 	if m.duration != nil {
-		fields = append(fields, fieldtype.FieldDuration)
+		fields = append(fields, field_type.FieldDuration)
 	}
 	if m.dir != nil {
-		fields = append(fields, fieldtype.FieldDir)
+		fields = append(fields, field_type.FieldDir)
 	}
 	if m.ndir != nil {
-		fields = append(fields, fieldtype.FieldNdir)
+		fields = append(fields, field_type.FieldNdir)
 	}
 	if m.str != nil {
-		fields = append(fields, fieldtype.FieldStr)
+		fields = append(fields, field_type.FieldStr)
 	}
 	if m.null_str != nil {
-		fields = append(fields, fieldtype.FieldNullStr)
+		fields = append(fields, field_type.FieldNullStr)
 	}
 	if m.link != nil {
-		fields = append(fields, fieldtype.FieldLink)
+		fields = append(fields, field_type.FieldLink)
 	}
 	if m.null_link != nil {
-		fields = append(fields, fieldtype.FieldNullLink)
+		fields = append(fields, field_type.FieldNullLink)
 	}
 	if m.active != nil {
-		fields = append(fields, fieldtype.FieldActive)
+		fields = append(fields, field_type.FieldActive)
 	}
 	if m.null_active != nil {
-		fields = append(fields, fieldtype.FieldNullActive)
+		fields = append(fields, field_type.FieldNullActive)
 	}
 	if m.deleted != nil {
-		fields = append(fields, fieldtype.FieldDeleted)
+		fields = append(fields, field_type.FieldDeleted)
 	}
 	if m.deleted_at != nil {
-		fields = append(fields, fieldtype.FieldDeletedAt)
+		fields = append(fields, field_type.FieldDeletedAt)
 	}
 	if m.raw_data != nil {
-		fields = append(fields, fieldtype.FieldRawData)
+		fields = append(fields, field_type.FieldRawData)
 	}
 	if m.sensitive != nil {
-		fields = append(fields, fieldtype.FieldSensitive)
+		fields = append(fields, field_type.FieldSensitive)
 	}
 	if m.ip != nil {
-		fields = append(fields, fieldtype.FieldIP)
+		fields = append(fields, field_type.FieldIP)
 	}
 	if m.null_int64 != nil {
-		fields = append(fields, fieldtype.FieldNullInt64)
+		fields = append(fields, field_type.FieldNullInt64)
 	}
 	if m.schema_int != nil {
-		fields = append(fields, fieldtype.FieldSchemaInt)
+		fields = append(fields, field_type.FieldSchemaInt)
 	}
 	if m.schema_int8 != nil {
-		fields = append(fields, fieldtype.FieldSchemaInt8)
+		fields = append(fields, field_type.FieldSchemaInt8)
 	}
 	if m.schema_int64 != nil {
-		fields = append(fields, fieldtype.FieldSchemaInt64)
+		fields = append(fields, field_type.FieldSchemaInt64)
 	}
 	if m.schema_float != nil {
-		fields = append(fields, fieldtype.FieldSchemaFloat)
+		fields = append(fields, field_type.FieldSchemaFloat)
 	}
 	if m.schema_float32 != nil {
-		fields = append(fields, fieldtype.FieldSchemaFloat32)
+		fields = append(fields, field_type.FieldSchemaFloat32)
 	}
 	if m.null_float != nil {
-		fields = append(fields, fieldtype.FieldNullFloat)
+		fields = append(fields, field_type.FieldNullFloat)
 	}
 	if m.role != nil {
-		fields = append(fields, fieldtype.FieldRole)
+		fields = append(fields, field_type.FieldRole)
 	}
 	if m.priority != nil {
-		fields = append(fields, fieldtype.FieldPriority)
+		fields = append(fields, field_type.FieldPriority)
 	}
 	if m.optional_uuid != nil {
-		fields = append(fields, fieldtype.FieldOptionalUUID)
+		fields = append(fields, field_type.FieldOptionalUUID)
 	}
 	if m.nillable_uuid != nil {
-		fields = append(fields, fieldtype.FieldNillableUUID)
+		fields = append(fields, field_type.FieldNillableUUID)
 	}
 	if m.strings != nil {
-		fields = append(fields, fieldtype.FieldStrings)
+		fields = append(fields, field_type.FieldStrings)
 	}
 	if m.pair != nil {
-		fields = append(fields, fieldtype.FieldPair)
+		fields = append(fields, field_type.FieldPair)
 	}
 	if m.nil_pair != nil {
-		fields = append(fields, fieldtype.FieldNilPair)
+		fields = append(fields, field_type.FieldNilPair)
 	}
 	if m.vstring != nil {
-		fields = append(fields, fieldtype.FieldVstring)
+		fields = append(fields, field_type.FieldVstring)
 	}
 	if m.triple != nil {
-		fields = append(fields, fieldtype.FieldTriple)
+		fields = append(fields, field_type.FieldTriple)
 	}
 	if m.big_int != nil {
-		fields = append(fields, fieldtype.FieldBigInt)
+		fields = append(fields, field_type.FieldBigInt)
 	}
 	if m.password_other != nil {
-		fields = append(fields, fieldtype.FieldPasswordOther)
+		fields = append(fields, field_type.FieldPasswordOther)
 	}
 	return fields
 }
@@ -7056,135 +7056,135 @@ func (m *FieldTypeMutation) Fields() []string {
 // schema.
 func (m *FieldTypeMutation) Field(name string) (fluent.Value, bool) {
 	switch name {
-	case fieldtype.FieldInt:
+	case field_type.FieldInt:
 		return m.Int()
-	case fieldtype.FieldInt8:
+	case field_type.FieldInt8:
 		return m.Int8()
-	case fieldtype.FieldInt16:
+	case field_type.FieldInt16:
 		return m.Int16()
-	case fieldtype.FieldInt32:
+	case field_type.FieldInt32:
 		return m.Int32()
-	case fieldtype.FieldInt64:
+	case field_type.FieldInt64:
 		return m.Int64()
-	case fieldtype.FieldOptionalInt:
+	case field_type.FieldOptionalInt:
 		return m.OptionalInt()
-	case fieldtype.FieldOptionalInt8:
+	case field_type.FieldOptionalInt8:
 		return m.OptionalInt8()
-	case fieldtype.FieldOptionalInt16:
+	case field_type.FieldOptionalInt16:
 		return m.OptionalInt16()
-	case fieldtype.FieldOptionalInt32:
+	case field_type.FieldOptionalInt32:
 		return m.OptionalInt32()
-	case fieldtype.FieldOptionalInt64:
+	case field_type.FieldOptionalInt64:
 		return m.OptionalInt64()
-	case fieldtype.FieldNillableInt:
+	case field_type.FieldNillableInt:
 		return m.NillableInt()
-	case fieldtype.FieldNillableInt8:
+	case field_type.FieldNillableInt8:
 		return m.NillableInt8()
-	case fieldtype.FieldNillableInt16:
+	case field_type.FieldNillableInt16:
 		return m.NillableInt16()
-	case fieldtype.FieldNillableInt32:
+	case field_type.FieldNillableInt32:
 		return m.NillableInt32()
-	case fieldtype.FieldNillableInt64:
+	case field_type.FieldNillableInt64:
 		return m.NillableInt64()
-	case fieldtype.FieldValidateOptionalInt32:
+	case field_type.FieldValidateOptionalInt32:
 		return m.ValidateOptionalInt32()
-	case fieldtype.FieldOptionalUint:
+	case field_type.FieldOptionalUint:
 		return m.OptionalUint()
-	case fieldtype.FieldOptionalUint8:
+	case field_type.FieldOptionalUint8:
 		return m.OptionalUint8()
-	case fieldtype.FieldOptionalUint16:
+	case field_type.FieldOptionalUint16:
 		return m.OptionalUint16()
-	case fieldtype.FieldOptionalUint32:
+	case field_type.FieldOptionalUint32:
 		return m.OptionalUint32()
-	case fieldtype.FieldOptionalUint64:
+	case field_type.FieldOptionalUint64:
 		return m.OptionalUint64()
-	case fieldtype.FieldState:
+	case field_type.FieldState:
 		return m.State()
-	case fieldtype.FieldOptionalFloat:
+	case field_type.FieldOptionalFloat:
 		return m.OptionalFloat()
-	case fieldtype.FieldOptionalFloat32:
+	case field_type.FieldOptionalFloat32:
 		return m.OptionalFloat32()
-	case fieldtype.FieldText:
+	case field_type.FieldText:
 		return m.Text()
-	case fieldtype.FieldDatetime:
+	case field_type.FieldDatetime:
 		return m.Datetime()
-	case fieldtype.FieldDecimal:
+	case field_type.FieldDecimal:
 		return m.Decimal()
-	case fieldtype.FieldLinkOther:
+	case field_type.FieldLinkOther:
 		return m.LinkOther()
-	case fieldtype.FieldLinkOtherFunc:
+	case field_type.FieldLinkOtherFunc:
 		return m.LinkOtherFunc()
-	case fieldtype.FieldMAC:
+	case field_type.FieldMAC:
 		return m.MAC()
-	case fieldtype.FieldStringArray:
+	case field_type.FieldStringArray:
 		return m.StringArray()
-	case fieldtype.FieldPassword:
+	case field_type.FieldPassword:
 		return m.Password()
-	case fieldtype.FieldStringScanner:
+	case field_type.FieldStringScanner:
 		return m.StringScanner()
-	case fieldtype.FieldDuration:
+	case field_type.FieldDuration:
 		return m.Duration()
-	case fieldtype.FieldDir:
+	case field_type.FieldDir:
 		return m.Dir()
-	case fieldtype.FieldNdir:
+	case field_type.FieldNdir:
 		return m.Ndir()
-	case fieldtype.FieldStr:
+	case field_type.FieldStr:
 		return m.Str()
-	case fieldtype.FieldNullStr:
+	case field_type.FieldNullStr:
 		return m.NullStr()
-	case fieldtype.FieldLink:
+	case field_type.FieldLink:
 		return m.Link()
-	case fieldtype.FieldNullLink:
+	case field_type.FieldNullLink:
 		return m.NullLink()
-	case fieldtype.FieldActive:
+	case field_type.FieldActive:
 		return m.Active()
-	case fieldtype.FieldNullActive:
+	case field_type.FieldNullActive:
 		return m.NullActive()
-	case fieldtype.FieldDeleted:
+	case field_type.FieldDeleted:
 		return m.Deleted()
-	case fieldtype.FieldDeletedAt:
+	case field_type.FieldDeletedAt:
 		return m.DeletedAt()
-	case fieldtype.FieldRawData:
+	case field_type.FieldRawData:
 		return m.RawData()
-	case fieldtype.FieldSensitive:
+	case field_type.FieldSensitive:
 		return m.Sensitive()
-	case fieldtype.FieldIP:
+	case field_type.FieldIP:
 		return m.IP()
-	case fieldtype.FieldNullInt64:
+	case field_type.FieldNullInt64:
 		return m.NullInt64()
-	case fieldtype.FieldSchemaInt:
+	case field_type.FieldSchemaInt:
 		return m.SchemaInt()
-	case fieldtype.FieldSchemaInt8:
+	case field_type.FieldSchemaInt8:
 		return m.SchemaInt8()
-	case fieldtype.FieldSchemaInt64:
+	case field_type.FieldSchemaInt64:
 		return m.SchemaInt64()
-	case fieldtype.FieldSchemaFloat:
+	case field_type.FieldSchemaFloat:
 		return m.SchemaFloat()
-	case fieldtype.FieldSchemaFloat32:
+	case field_type.FieldSchemaFloat32:
 		return m.SchemaFloat32()
-	case fieldtype.FieldNullFloat:
+	case field_type.FieldNullFloat:
 		return m.NullFloat()
-	case fieldtype.FieldRole:
+	case field_type.FieldRole:
 		return m.Role()
-	case fieldtype.FieldPriority:
+	case field_type.FieldPriority:
 		return m.Priority()
-	case fieldtype.FieldOptionalUUID:
+	case field_type.FieldOptionalUUID:
 		return m.OptionalUUID()
-	case fieldtype.FieldNillableUUID:
+	case field_type.FieldNillableUUID:
 		return m.NillableUUID()
-	case fieldtype.FieldStrings:
+	case field_type.FieldStrings:
 		return m.Strings()
-	case fieldtype.FieldPair:
+	case field_type.FieldPair:
 		return m.Pair()
-	case fieldtype.FieldNilPair:
+	case field_type.FieldNilPair:
 		return m.NilPair()
-	case fieldtype.FieldVstring:
+	case field_type.FieldVstring:
 		return m.Vstring()
-	case fieldtype.FieldTriple:
+	case field_type.FieldTriple:
 		return m.Triple()
-	case fieldtype.FieldBigInt:
+	case field_type.FieldBigInt:
 		return m.BigInt()
-	case fieldtype.FieldPasswordOther:
+	case field_type.FieldPasswordOther:
 		return m.PasswordOther()
 	}
 	return nil, false
@@ -7195,135 +7195,135 @@ func (m *FieldTypeMutation) Field(name string) (fluent.Value, bool) {
 // database failed.
 func (m *FieldTypeMutation) OldField(ctx context.Context, name string) (fluent.Value, error) {
 	switch name {
-	case fieldtype.FieldInt:
+	case field_type.FieldInt:
 		return m.OldInt(ctx)
-	case fieldtype.FieldInt8:
+	case field_type.FieldInt8:
 		return m.OldInt8(ctx)
-	case fieldtype.FieldInt16:
+	case field_type.FieldInt16:
 		return m.OldInt16(ctx)
-	case fieldtype.FieldInt32:
+	case field_type.FieldInt32:
 		return m.OldInt32(ctx)
-	case fieldtype.FieldInt64:
+	case field_type.FieldInt64:
 		return m.OldInt64(ctx)
-	case fieldtype.FieldOptionalInt:
+	case field_type.FieldOptionalInt:
 		return m.OldOptionalInt(ctx)
-	case fieldtype.FieldOptionalInt8:
+	case field_type.FieldOptionalInt8:
 		return m.OldOptionalInt8(ctx)
-	case fieldtype.FieldOptionalInt16:
+	case field_type.FieldOptionalInt16:
 		return m.OldOptionalInt16(ctx)
-	case fieldtype.FieldOptionalInt32:
+	case field_type.FieldOptionalInt32:
 		return m.OldOptionalInt32(ctx)
-	case fieldtype.FieldOptionalInt64:
+	case field_type.FieldOptionalInt64:
 		return m.OldOptionalInt64(ctx)
-	case fieldtype.FieldNillableInt:
+	case field_type.FieldNillableInt:
 		return m.OldNillableInt(ctx)
-	case fieldtype.FieldNillableInt8:
+	case field_type.FieldNillableInt8:
 		return m.OldNillableInt8(ctx)
-	case fieldtype.FieldNillableInt16:
+	case field_type.FieldNillableInt16:
 		return m.OldNillableInt16(ctx)
-	case fieldtype.FieldNillableInt32:
+	case field_type.FieldNillableInt32:
 		return m.OldNillableInt32(ctx)
-	case fieldtype.FieldNillableInt64:
+	case field_type.FieldNillableInt64:
 		return m.OldNillableInt64(ctx)
-	case fieldtype.FieldValidateOptionalInt32:
+	case field_type.FieldValidateOptionalInt32:
 		return m.OldValidateOptionalInt32(ctx)
-	case fieldtype.FieldOptionalUint:
+	case field_type.FieldOptionalUint:
 		return m.OldOptionalUint(ctx)
-	case fieldtype.FieldOptionalUint8:
+	case field_type.FieldOptionalUint8:
 		return m.OldOptionalUint8(ctx)
-	case fieldtype.FieldOptionalUint16:
+	case field_type.FieldOptionalUint16:
 		return m.OldOptionalUint16(ctx)
-	case fieldtype.FieldOptionalUint32:
+	case field_type.FieldOptionalUint32:
 		return m.OldOptionalUint32(ctx)
-	case fieldtype.FieldOptionalUint64:
+	case field_type.FieldOptionalUint64:
 		return m.OldOptionalUint64(ctx)
-	case fieldtype.FieldState:
+	case field_type.FieldState:
 		return m.OldState(ctx)
-	case fieldtype.FieldOptionalFloat:
+	case field_type.FieldOptionalFloat:
 		return m.OldOptionalFloat(ctx)
-	case fieldtype.FieldOptionalFloat32:
+	case field_type.FieldOptionalFloat32:
 		return m.OldOptionalFloat32(ctx)
-	case fieldtype.FieldText:
+	case field_type.FieldText:
 		return m.OldText(ctx)
-	case fieldtype.FieldDatetime:
+	case field_type.FieldDatetime:
 		return m.OldDatetime(ctx)
-	case fieldtype.FieldDecimal:
+	case field_type.FieldDecimal:
 		return m.OldDecimal(ctx)
-	case fieldtype.FieldLinkOther:
+	case field_type.FieldLinkOther:
 		return m.OldLinkOther(ctx)
-	case fieldtype.FieldLinkOtherFunc:
+	case field_type.FieldLinkOtherFunc:
 		return m.OldLinkOtherFunc(ctx)
-	case fieldtype.FieldMAC:
+	case field_type.FieldMAC:
 		return m.OldMAC(ctx)
-	case fieldtype.FieldStringArray:
+	case field_type.FieldStringArray:
 		return m.OldStringArray(ctx)
-	case fieldtype.FieldPassword:
+	case field_type.FieldPassword:
 		return m.OldPassword(ctx)
-	case fieldtype.FieldStringScanner:
+	case field_type.FieldStringScanner:
 		return m.OldStringScanner(ctx)
-	case fieldtype.FieldDuration:
+	case field_type.FieldDuration:
 		return m.OldDuration(ctx)
-	case fieldtype.FieldDir:
+	case field_type.FieldDir:
 		return m.OldDir(ctx)
-	case fieldtype.FieldNdir:
+	case field_type.FieldNdir:
 		return m.OldNdir(ctx)
-	case fieldtype.FieldStr:
+	case field_type.FieldStr:
 		return m.OldStr(ctx)
-	case fieldtype.FieldNullStr:
+	case field_type.FieldNullStr:
 		return m.OldNullStr(ctx)
-	case fieldtype.FieldLink:
+	case field_type.FieldLink:
 		return m.OldLink(ctx)
-	case fieldtype.FieldNullLink:
+	case field_type.FieldNullLink:
 		return m.OldNullLink(ctx)
-	case fieldtype.FieldActive:
+	case field_type.FieldActive:
 		return m.OldActive(ctx)
-	case fieldtype.FieldNullActive:
+	case field_type.FieldNullActive:
 		return m.OldNullActive(ctx)
-	case fieldtype.FieldDeleted:
+	case field_type.FieldDeleted:
 		return m.OldDeleted(ctx)
-	case fieldtype.FieldDeletedAt:
+	case field_type.FieldDeletedAt:
 		return m.OldDeletedAt(ctx)
-	case fieldtype.FieldRawData:
+	case field_type.FieldRawData:
 		return m.OldRawData(ctx)
-	case fieldtype.FieldSensitive:
+	case field_type.FieldSensitive:
 		return m.OldSensitive(ctx)
-	case fieldtype.FieldIP:
+	case field_type.FieldIP:
 		return m.OldIP(ctx)
-	case fieldtype.FieldNullInt64:
+	case field_type.FieldNullInt64:
 		return m.OldNullInt64(ctx)
-	case fieldtype.FieldSchemaInt:
+	case field_type.FieldSchemaInt:
 		return m.OldSchemaInt(ctx)
-	case fieldtype.FieldSchemaInt8:
+	case field_type.FieldSchemaInt8:
 		return m.OldSchemaInt8(ctx)
-	case fieldtype.FieldSchemaInt64:
+	case field_type.FieldSchemaInt64:
 		return m.OldSchemaInt64(ctx)
-	case fieldtype.FieldSchemaFloat:
+	case field_type.FieldSchemaFloat:
 		return m.OldSchemaFloat(ctx)
-	case fieldtype.FieldSchemaFloat32:
+	case field_type.FieldSchemaFloat32:
 		return m.OldSchemaFloat32(ctx)
-	case fieldtype.FieldNullFloat:
+	case field_type.FieldNullFloat:
 		return m.OldNullFloat(ctx)
-	case fieldtype.FieldRole:
+	case field_type.FieldRole:
 		return m.OldRole(ctx)
-	case fieldtype.FieldPriority:
+	case field_type.FieldPriority:
 		return m.OldPriority(ctx)
-	case fieldtype.FieldOptionalUUID:
+	case field_type.FieldOptionalUUID:
 		return m.OldOptionalUUID(ctx)
-	case fieldtype.FieldNillableUUID:
+	case field_type.FieldNillableUUID:
 		return m.OldNillableUUID(ctx)
-	case fieldtype.FieldStrings:
+	case field_type.FieldStrings:
 		return m.OldStrings(ctx)
-	case fieldtype.FieldPair:
+	case field_type.FieldPair:
 		return m.OldPair(ctx)
-	case fieldtype.FieldNilPair:
+	case field_type.FieldNilPair:
 		return m.OldNilPair(ctx)
-	case fieldtype.FieldVstring:
+	case field_type.FieldVstring:
 		return m.OldVstring(ctx)
-	case fieldtype.FieldTriple:
+	case field_type.FieldTriple:
 		return m.OldTriple(ctx)
-	case fieldtype.FieldBigInt:
+	case field_type.FieldBigInt:
 		return m.OldBigInt(ctx)
-	case fieldtype.FieldPasswordOther:
+	case field_type.FieldPasswordOther:
 		return m.OldPasswordOther(ctx)
 	}
 	return nil, fmt.Errorf("unknown FieldType field %s", name)
@@ -7334,455 +7334,455 @@ func (m *FieldTypeMutation) OldField(ctx context.Context, name string) (fluent.V
 // type.
 func (m *FieldTypeMutation) SetField(name string, value fluent.Value) error {
 	switch name {
-	case fieldtype.FieldInt:
+	case field_type.FieldInt:
 		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetInt(v)
 		return nil
-	case fieldtype.FieldInt8:
+	case field_type.FieldInt8:
 		v, ok := value.(int8)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetInt8(v)
 		return nil
-	case fieldtype.FieldInt16:
+	case field_type.FieldInt16:
 		v, ok := value.(int16)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetInt16(v)
 		return nil
-	case fieldtype.FieldInt32:
+	case field_type.FieldInt32:
 		v, ok := value.(int32)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetInt32(v)
 		return nil
-	case fieldtype.FieldInt64:
+	case field_type.FieldInt64:
 		v, ok := value.(int64)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetInt64(v)
 		return nil
-	case fieldtype.FieldOptionalInt:
+	case field_type.FieldOptionalInt:
 		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetOptionalInt(v)
 		return nil
-	case fieldtype.FieldOptionalInt8:
+	case field_type.FieldOptionalInt8:
 		v, ok := value.(int8)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetOptionalInt8(v)
 		return nil
-	case fieldtype.FieldOptionalInt16:
+	case field_type.FieldOptionalInt16:
 		v, ok := value.(int16)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetOptionalInt16(v)
 		return nil
-	case fieldtype.FieldOptionalInt32:
+	case field_type.FieldOptionalInt32:
 		v, ok := value.(int32)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetOptionalInt32(v)
 		return nil
-	case fieldtype.FieldOptionalInt64:
+	case field_type.FieldOptionalInt64:
 		v, ok := value.(int64)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetOptionalInt64(v)
 		return nil
-	case fieldtype.FieldNillableInt:
+	case field_type.FieldNillableInt:
 		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetNillableInt(v)
 		return nil
-	case fieldtype.FieldNillableInt8:
+	case field_type.FieldNillableInt8:
 		v, ok := value.(int8)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetNillableInt8(v)
 		return nil
-	case fieldtype.FieldNillableInt16:
+	case field_type.FieldNillableInt16:
 		v, ok := value.(int16)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetNillableInt16(v)
 		return nil
-	case fieldtype.FieldNillableInt32:
+	case field_type.FieldNillableInt32:
 		v, ok := value.(int32)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetNillableInt32(v)
 		return nil
-	case fieldtype.FieldNillableInt64:
+	case field_type.FieldNillableInt64:
 		v, ok := value.(int64)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetNillableInt64(v)
 		return nil
-	case fieldtype.FieldValidateOptionalInt32:
+	case field_type.FieldValidateOptionalInt32:
 		v, ok := value.(int32)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetValidateOptionalInt32(v)
 		return nil
-	case fieldtype.FieldOptionalUint:
+	case field_type.FieldOptionalUint:
 		v, ok := value.(uint)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetOptionalUint(v)
 		return nil
-	case fieldtype.FieldOptionalUint8:
+	case field_type.FieldOptionalUint8:
 		v, ok := value.(uint8)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetOptionalUint8(v)
 		return nil
-	case fieldtype.FieldOptionalUint16:
+	case field_type.FieldOptionalUint16:
 		v, ok := value.(uint16)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetOptionalUint16(v)
 		return nil
-	case fieldtype.FieldOptionalUint32:
+	case field_type.FieldOptionalUint32:
 		v, ok := value.(uint32)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetOptionalUint32(v)
 		return nil
-	case fieldtype.FieldOptionalUint64:
+	case field_type.FieldOptionalUint64:
 		v, ok := value.(uint64)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetOptionalUint64(v)
 		return nil
-	case fieldtype.FieldState:
-		v, ok := value.(fieldtype.State)
+	case field_type.FieldState:
+		v, ok := value.(field_type.State)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetState(v)
 		return nil
-	case fieldtype.FieldOptionalFloat:
+	case field_type.FieldOptionalFloat:
 		v, ok := value.(float64)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetOptionalFloat(v)
 		return nil
-	case fieldtype.FieldOptionalFloat32:
+	case field_type.FieldOptionalFloat32:
 		v, ok := value.(float32)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetOptionalFloat32(v)
 		return nil
-	case fieldtype.FieldText:
+	case field_type.FieldText:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetText(v)
 		return nil
-	case fieldtype.FieldDatetime:
+	case field_type.FieldDatetime:
 		v, ok := value.(time.Time)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetDatetime(v)
 		return nil
-	case fieldtype.FieldDecimal:
+	case field_type.FieldDecimal:
 		v, ok := value.(float64)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetDecimal(v)
 		return nil
-	case fieldtype.FieldLinkOther:
+	case field_type.FieldLinkOther:
 		v, ok := value.(*schema.Link)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetLinkOther(v)
 		return nil
-	case fieldtype.FieldLinkOtherFunc:
+	case field_type.FieldLinkOtherFunc:
 		v, ok := value.(*schema.Link)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetLinkOtherFunc(v)
 		return nil
-	case fieldtype.FieldMAC:
+	case field_type.FieldMAC:
 		v, ok := value.(schema.MAC)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetMAC(v)
 		return nil
-	case fieldtype.FieldStringArray:
+	case field_type.FieldStringArray:
 		v, ok := value.(schema.Strings)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetStringArray(v)
 		return nil
-	case fieldtype.FieldPassword:
+	case field_type.FieldPassword:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetPassword(v)
 		return nil
-	case fieldtype.FieldStringScanner:
+	case field_type.FieldStringScanner:
 		v, ok := value.(schema.StringScanner)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetStringScanner(v)
 		return nil
-	case fieldtype.FieldDuration:
+	case field_type.FieldDuration:
 		v, ok := value.(time.Duration)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetDuration(v)
 		return nil
-	case fieldtype.FieldDir:
+	case field_type.FieldDir:
 		v, ok := value.(http.Dir)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetDir(v)
 		return nil
-	case fieldtype.FieldNdir:
+	case field_type.FieldNdir:
 		v, ok := value.(http.Dir)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetNdir(v)
 		return nil
-	case fieldtype.FieldStr:
+	case field_type.FieldStr:
 		v, ok := value.(sql.NullString)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetStr(v)
 		return nil
-	case fieldtype.FieldNullStr:
+	case field_type.FieldNullStr:
 		v, ok := value.(*sql.NullString)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetNullStr(v)
 		return nil
-	case fieldtype.FieldLink:
+	case field_type.FieldLink:
 		v, ok := value.(schema.Link)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetLink(v)
 		return nil
-	case fieldtype.FieldNullLink:
+	case field_type.FieldNullLink:
 		v, ok := value.(*schema.Link)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetNullLink(v)
 		return nil
-	case fieldtype.FieldActive:
+	case field_type.FieldActive:
 		v, ok := value.(schema.Status)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetActive(v)
 		return nil
-	case fieldtype.FieldNullActive:
+	case field_type.FieldNullActive:
 		v, ok := value.(schema.Status)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetNullActive(v)
 		return nil
-	case fieldtype.FieldDeleted:
+	case field_type.FieldDeleted:
 		v, ok := value.(*sql.NullBool)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetDeleted(v)
 		return nil
-	case fieldtype.FieldDeletedAt:
+	case field_type.FieldDeletedAt:
 		v, ok := value.(*sql.NullTime)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetDeletedAt(v)
 		return nil
-	case fieldtype.FieldRawData:
+	case field_type.FieldRawData:
 		v, ok := value.([]byte)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetRawData(v)
 		return nil
-	case fieldtype.FieldSensitive:
+	case field_type.FieldSensitive:
 		v, ok := value.([]byte)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetSensitive(v)
 		return nil
-	case fieldtype.FieldIP:
+	case field_type.FieldIP:
 		v, ok := value.(net.IP)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetIP(v)
 		return nil
-	case fieldtype.FieldNullInt64:
+	case field_type.FieldNullInt64:
 		v, ok := value.(*sql.NullInt64)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetNullInt64(v)
 		return nil
-	case fieldtype.FieldSchemaInt:
+	case field_type.FieldSchemaInt:
 		v, ok := value.(schema.Int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetSchemaInt(v)
 		return nil
-	case fieldtype.FieldSchemaInt8:
+	case field_type.FieldSchemaInt8:
 		v, ok := value.(schema.Int8)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetSchemaInt8(v)
 		return nil
-	case fieldtype.FieldSchemaInt64:
+	case field_type.FieldSchemaInt64:
 		v, ok := value.(schema.Int64)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetSchemaInt64(v)
 		return nil
-	case fieldtype.FieldSchemaFloat:
+	case field_type.FieldSchemaFloat:
 		v, ok := value.(schema.Float64)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetSchemaFloat(v)
 		return nil
-	case fieldtype.FieldSchemaFloat32:
+	case field_type.FieldSchemaFloat32:
 		v, ok := value.(schema.Float32)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetSchemaFloat32(v)
 		return nil
-	case fieldtype.FieldNullFloat:
+	case field_type.FieldNullFloat:
 		v, ok := value.(*sql.NullFloat64)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetNullFloat(v)
 		return nil
-	case fieldtype.FieldRole:
+	case field_type.FieldRole:
 		v, ok := value.(role.Role)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetRole(v)
 		return nil
-	case fieldtype.FieldPriority:
+	case field_type.FieldPriority:
 		v, ok := value.(role.Priority)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetPriority(v)
 		return nil
-	case fieldtype.FieldOptionalUUID:
+	case field_type.FieldOptionalUUID:
 		v, ok := value.(uuid.UUID)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetOptionalUUID(v)
 		return nil
-	case fieldtype.FieldNillableUUID:
+	case field_type.FieldNillableUUID:
 		v, ok := value.(uuid.UUID)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetNillableUUID(v)
 		return nil
-	case fieldtype.FieldStrings:
+	case field_type.FieldStrings:
 		v, ok := value.([]string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetStrings(v)
 		return nil
-	case fieldtype.FieldPair:
+	case field_type.FieldPair:
 		v, ok := value.(schema.Pair)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetPair(v)
 		return nil
-	case fieldtype.FieldNilPair:
+	case field_type.FieldNilPair:
 		v, ok := value.(*schema.Pair)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetNilPair(v)
 		return nil
-	case fieldtype.FieldVstring:
+	case field_type.FieldVstring:
 		v, ok := value.(schema.VString)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetVstring(v)
 		return nil
-	case fieldtype.FieldTriple:
+	case field_type.FieldTriple:
 		v, ok := value.(schema.Triple)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetTriple(v)
 		return nil
-	case fieldtype.FieldBigInt:
+	case field_type.FieldBigInt:
 		v, ok := value.(schema.BigInt)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetBigInt(v)
 		return nil
-	case fieldtype.FieldPasswordOther:
+	case field_type.FieldPasswordOther:
 		v, ok := value.(schema.Password)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -7798,97 +7798,97 @@ func (m *FieldTypeMutation) SetField(name string, value fluent.Value) error {
 func (m *FieldTypeMutation) AddedFields() []string {
 	var fields []string
 	if m.addint != nil {
-		fields = append(fields, fieldtype.FieldInt)
+		fields = append(fields, field_type.FieldInt)
 	}
 	if m.addint8 != nil {
-		fields = append(fields, fieldtype.FieldInt8)
+		fields = append(fields, field_type.FieldInt8)
 	}
 	if m.addint16 != nil {
-		fields = append(fields, fieldtype.FieldInt16)
+		fields = append(fields, field_type.FieldInt16)
 	}
 	if m.addint32 != nil {
-		fields = append(fields, fieldtype.FieldInt32)
+		fields = append(fields, field_type.FieldInt32)
 	}
 	if m.addint64 != nil {
-		fields = append(fields, fieldtype.FieldInt64)
+		fields = append(fields, field_type.FieldInt64)
 	}
 	if m.addoptional_int != nil {
-		fields = append(fields, fieldtype.FieldOptionalInt)
+		fields = append(fields, field_type.FieldOptionalInt)
 	}
 	if m.addoptional_int8 != nil {
-		fields = append(fields, fieldtype.FieldOptionalInt8)
+		fields = append(fields, field_type.FieldOptionalInt8)
 	}
 	if m.addoptional_int16 != nil {
-		fields = append(fields, fieldtype.FieldOptionalInt16)
+		fields = append(fields, field_type.FieldOptionalInt16)
 	}
 	if m.addoptional_int32 != nil {
-		fields = append(fields, fieldtype.FieldOptionalInt32)
+		fields = append(fields, field_type.FieldOptionalInt32)
 	}
 	if m.addoptional_int64 != nil {
-		fields = append(fields, fieldtype.FieldOptionalInt64)
+		fields = append(fields, field_type.FieldOptionalInt64)
 	}
 	if m.addnillable_int != nil {
-		fields = append(fields, fieldtype.FieldNillableInt)
+		fields = append(fields, field_type.FieldNillableInt)
 	}
 	if m.addnillable_int8 != nil {
-		fields = append(fields, fieldtype.FieldNillableInt8)
+		fields = append(fields, field_type.FieldNillableInt8)
 	}
 	if m.addnillable_int16 != nil {
-		fields = append(fields, fieldtype.FieldNillableInt16)
+		fields = append(fields, field_type.FieldNillableInt16)
 	}
 	if m.addnillable_int32 != nil {
-		fields = append(fields, fieldtype.FieldNillableInt32)
+		fields = append(fields, field_type.FieldNillableInt32)
 	}
 	if m.addnillable_int64 != nil {
-		fields = append(fields, fieldtype.FieldNillableInt64)
+		fields = append(fields, field_type.FieldNillableInt64)
 	}
 	if m.addvalidate_optional_int32 != nil {
-		fields = append(fields, fieldtype.FieldValidateOptionalInt32)
+		fields = append(fields, field_type.FieldValidateOptionalInt32)
 	}
 	if m.addoptional_uint != nil {
-		fields = append(fields, fieldtype.FieldOptionalUint)
+		fields = append(fields, field_type.FieldOptionalUint)
 	}
 	if m.addoptional_uint8 != nil {
-		fields = append(fields, fieldtype.FieldOptionalUint8)
+		fields = append(fields, field_type.FieldOptionalUint8)
 	}
 	if m.addoptional_uint16 != nil {
-		fields = append(fields, fieldtype.FieldOptionalUint16)
+		fields = append(fields, field_type.FieldOptionalUint16)
 	}
 	if m.addoptional_uint32 != nil {
-		fields = append(fields, fieldtype.FieldOptionalUint32)
+		fields = append(fields, field_type.FieldOptionalUint32)
 	}
 	if m.addoptional_uint64 != nil {
-		fields = append(fields, fieldtype.FieldOptionalUint64)
+		fields = append(fields, field_type.FieldOptionalUint64)
 	}
 	if m.addoptional_float != nil {
-		fields = append(fields, fieldtype.FieldOptionalFloat)
+		fields = append(fields, field_type.FieldOptionalFloat)
 	}
 	if m.addoptional_float32 != nil {
-		fields = append(fields, fieldtype.FieldOptionalFloat32)
+		fields = append(fields, field_type.FieldOptionalFloat32)
 	}
 	if m.adddecimal != nil {
-		fields = append(fields, fieldtype.FieldDecimal)
+		fields = append(fields, field_type.FieldDecimal)
 	}
 	if m.addduration != nil {
-		fields = append(fields, fieldtype.FieldDuration)
+		fields = append(fields, field_type.FieldDuration)
 	}
 	if m.addschema_int != nil {
-		fields = append(fields, fieldtype.FieldSchemaInt)
+		fields = append(fields, field_type.FieldSchemaInt)
 	}
 	if m.addschema_int8 != nil {
-		fields = append(fields, fieldtype.FieldSchemaInt8)
+		fields = append(fields, field_type.FieldSchemaInt8)
 	}
 	if m.addschema_int64 != nil {
-		fields = append(fields, fieldtype.FieldSchemaInt64)
+		fields = append(fields, field_type.FieldSchemaInt64)
 	}
 	if m.addschema_float != nil {
-		fields = append(fields, fieldtype.FieldSchemaFloat)
+		fields = append(fields, field_type.FieldSchemaFloat)
 	}
 	if m.addschema_float32 != nil {
-		fields = append(fields, fieldtype.FieldSchemaFloat32)
+		fields = append(fields, field_type.FieldSchemaFloat32)
 	}
 	if m.addbig_int != nil {
-		fields = append(fields, fieldtype.FieldBigInt)
+		fields = append(fields, field_type.FieldBigInt)
 	}
 	return fields
 }
@@ -7898,67 +7898,67 @@ func (m *FieldTypeMutation) AddedFields() []string {
 // was not set, or was not defined in the schema.
 func (m *FieldTypeMutation) AddedField(name string) (fluent.Value, bool) {
 	switch name {
-	case fieldtype.FieldInt:
+	case field_type.FieldInt:
 		return m.AddedInt()
-	case fieldtype.FieldInt8:
+	case field_type.FieldInt8:
 		return m.AddedInt8()
-	case fieldtype.FieldInt16:
+	case field_type.FieldInt16:
 		return m.AddedInt16()
-	case fieldtype.FieldInt32:
+	case field_type.FieldInt32:
 		return m.AddedInt32()
-	case fieldtype.FieldInt64:
+	case field_type.FieldInt64:
 		return m.AddedInt64()
-	case fieldtype.FieldOptionalInt:
+	case field_type.FieldOptionalInt:
 		return m.AddedOptionalInt()
-	case fieldtype.FieldOptionalInt8:
+	case field_type.FieldOptionalInt8:
 		return m.AddedOptionalInt8()
-	case fieldtype.FieldOptionalInt16:
+	case field_type.FieldOptionalInt16:
 		return m.AddedOptionalInt16()
-	case fieldtype.FieldOptionalInt32:
+	case field_type.FieldOptionalInt32:
 		return m.AddedOptionalInt32()
-	case fieldtype.FieldOptionalInt64:
+	case field_type.FieldOptionalInt64:
 		return m.AddedOptionalInt64()
-	case fieldtype.FieldNillableInt:
+	case field_type.FieldNillableInt:
 		return m.AddedNillableInt()
-	case fieldtype.FieldNillableInt8:
+	case field_type.FieldNillableInt8:
 		return m.AddedNillableInt8()
-	case fieldtype.FieldNillableInt16:
+	case field_type.FieldNillableInt16:
 		return m.AddedNillableInt16()
-	case fieldtype.FieldNillableInt32:
+	case field_type.FieldNillableInt32:
 		return m.AddedNillableInt32()
-	case fieldtype.FieldNillableInt64:
+	case field_type.FieldNillableInt64:
 		return m.AddedNillableInt64()
-	case fieldtype.FieldValidateOptionalInt32:
+	case field_type.FieldValidateOptionalInt32:
 		return m.AddedValidateOptionalInt32()
-	case fieldtype.FieldOptionalUint:
+	case field_type.FieldOptionalUint:
 		return m.AddedOptionalUint()
-	case fieldtype.FieldOptionalUint8:
+	case field_type.FieldOptionalUint8:
 		return m.AddedOptionalUint8()
-	case fieldtype.FieldOptionalUint16:
+	case field_type.FieldOptionalUint16:
 		return m.AddedOptionalUint16()
-	case fieldtype.FieldOptionalUint32:
+	case field_type.FieldOptionalUint32:
 		return m.AddedOptionalUint32()
-	case fieldtype.FieldOptionalUint64:
+	case field_type.FieldOptionalUint64:
 		return m.AddedOptionalUint64()
-	case fieldtype.FieldOptionalFloat:
+	case field_type.FieldOptionalFloat:
 		return m.AddedOptionalFloat()
-	case fieldtype.FieldOptionalFloat32:
+	case field_type.FieldOptionalFloat32:
 		return m.AddedOptionalFloat32()
-	case fieldtype.FieldDecimal:
+	case field_type.FieldDecimal:
 		return m.AddedDecimal()
-	case fieldtype.FieldDuration:
+	case field_type.FieldDuration:
 		return m.AddedDuration()
-	case fieldtype.FieldSchemaInt:
+	case field_type.FieldSchemaInt:
 		return m.AddedSchemaInt()
-	case fieldtype.FieldSchemaInt8:
+	case field_type.FieldSchemaInt8:
 		return m.AddedSchemaInt8()
-	case fieldtype.FieldSchemaInt64:
+	case field_type.FieldSchemaInt64:
 		return m.AddedSchemaInt64()
-	case fieldtype.FieldSchemaFloat:
+	case field_type.FieldSchemaFloat:
 		return m.AddedSchemaFloat()
-	case fieldtype.FieldSchemaFloat32:
+	case field_type.FieldSchemaFloat32:
 		return m.AddedSchemaFloat32()
-	case fieldtype.FieldBigInt:
+	case field_type.FieldBigInt:
 		return m.AddedBigInt()
 	}
 	return nil, false
@@ -7969,217 +7969,217 @@ func (m *FieldTypeMutation) AddedField(name string) (fluent.Value, bool) {
 // type.
 func (m *FieldTypeMutation) AddField(name string, value fluent.Value) error {
 	switch name {
-	case fieldtype.FieldInt:
+	case field_type.FieldInt:
 		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddInt(v)
 		return nil
-	case fieldtype.FieldInt8:
+	case field_type.FieldInt8:
 		v, ok := value.(int8)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddInt8(v)
 		return nil
-	case fieldtype.FieldInt16:
+	case field_type.FieldInt16:
 		v, ok := value.(int16)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddInt16(v)
 		return nil
-	case fieldtype.FieldInt32:
+	case field_type.FieldInt32:
 		v, ok := value.(int32)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddInt32(v)
 		return nil
-	case fieldtype.FieldInt64:
+	case field_type.FieldInt64:
 		v, ok := value.(int64)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddInt64(v)
 		return nil
-	case fieldtype.FieldOptionalInt:
+	case field_type.FieldOptionalInt:
 		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddOptionalInt(v)
 		return nil
-	case fieldtype.FieldOptionalInt8:
+	case field_type.FieldOptionalInt8:
 		v, ok := value.(int8)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddOptionalInt8(v)
 		return nil
-	case fieldtype.FieldOptionalInt16:
+	case field_type.FieldOptionalInt16:
 		v, ok := value.(int16)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddOptionalInt16(v)
 		return nil
-	case fieldtype.FieldOptionalInt32:
+	case field_type.FieldOptionalInt32:
 		v, ok := value.(int32)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddOptionalInt32(v)
 		return nil
-	case fieldtype.FieldOptionalInt64:
+	case field_type.FieldOptionalInt64:
 		v, ok := value.(int64)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddOptionalInt64(v)
 		return nil
-	case fieldtype.FieldNillableInt:
+	case field_type.FieldNillableInt:
 		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddNillableInt(v)
 		return nil
-	case fieldtype.FieldNillableInt8:
+	case field_type.FieldNillableInt8:
 		v, ok := value.(int8)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddNillableInt8(v)
 		return nil
-	case fieldtype.FieldNillableInt16:
+	case field_type.FieldNillableInt16:
 		v, ok := value.(int16)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddNillableInt16(v)
 		return nil
-	case fieldtype.FieldNillableInt32:
+	case field_type.FieldNillableInt32:
 		v, ok := value.(int32)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddNillableInt32(v)
 		return nil
-	case fieldtype.FieldNillableInt64:
+	case field_type.FieldNillableInt64:
 		v, ok := value.(int64)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddNillableInt64(v)
 		return nil
-	case fieldtype.FieldValidateOptionalInt32:
+	case field_type.FieldValidateOptionalInt32:
 		v, ok := value.(int32)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddValidateOptionalInt32(v)
 		return nil
-	case fieldtype.FieldOptionalUint:
+	case field_type.FieldOptionalUint:
 		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddOptionalUint(v)
 		return nil
-	case fieldtype.FieldOptionalUint8:
+	case field_type.FieldOptionalUint8:
 		v, ok := value.(int8)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddOptionalUint8(v)
 		return nil
-	case fieldtype.FieldOptionalUint16:
+	case field_type.FieldOptionalUint16:
 		v, ok := value.(int16)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddOptionalUint16(v)
 		return nil
-	case fieldtype.FieldOptionalUint32:
+	case field_type.FieldOptionalUint32:
 		v, ok := value.(int32)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddOptionalUint32(v)
 		return nil
-	case fieldtype.FieldOptionalUint64:
+	case field_type.FieldOptionalUint64:
 		v, ok := value.(int64)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddOptionalUint64(v)
 		return nil
-	case fieldtype.FieldOptionalFloat:
+	case field_type.FieldOptionalFloat:
 		v, ok := value.(float64)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddOptionalFloat(v)
 		return nil
-	case fieldtype.FieldOptionalFloat32:
+	case field_type.FieldOptionalFloat32:
 		v, ok := value.(float32)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddOptionalFloat32(v)
 		return nil
-	case fieldtype.FieldDecimal:
+	case field_type.FieldDecimal:
 		v, ok := value.(float64)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddDecimal(v)
 		return nil
-	case fieldtype.FieldDuration:
+	case field_type.FieldDuration:
 		v, ok := value.(time.Duration)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddDuration(v)
 		return nil
-	case fieldtype.FieldSchemaInt:
+	case field_type.FieldSchemaInt:
 		v, ok := value.(schema.Int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddSchemaInt(v)
 		return nil
-	case fieldtype.FieldSchemaInt8:
+	case field_type.FieldSchemaInt8:
 		v, ok := value.(schema.Int8)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddSchemaInt8(v)
 		return nil
-	case fieldtype.FieldSchemaInt64:
+	case field_type.FieldSchemaInt64:
 		v, ok := value.(schema.Int64)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddSchemaInt64(v)
 		return nil
-	case fieldtype.FieldSchemaFloat:
+	case field_type.FieldSchemaFloat:
 		v, ok := value.(schema.Float64)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddSchemaFloat(v)
 		return nil
-	case fieldtype.FieldSchemaFloat32:
+	case field_type.FieldSchemaFloat32:
 		v, ok := value.(schema.Float32)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddSchemaFloat32(v)
 		return nil
-	case fieldtype.FieldBigInt:
+	case field_type.FieldBigInt:
 		v, ok := value.(schema.BigInt)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -8194,170 +8194,170 @@ func (m *FieldTypeMutation) AddField(name string, value fluent.Value) error {
 // mutation.
 func (m *FieldTypeMutation) ClearedFields() []string {
 	var fields []string
-	if m.FieldCleared(fieldtype.FieldOptionalInt) {
-		fields = append(fields, fieldtype.FieldOptionalInt)
+	if m.FieldCleared(field_type.FieldOptionalInt) {
+		fields = append(fields, field_type.FieldOptionalInt)
 	}
-	if m.FieldCleared(fieldtype.FieldOptionalInt8) {
-		fields = append(fields, fieldtype.FieldOptionalInt8)
+	if m.FieldCleared(field_type.FieldOptionalInt8) {
+		fields = append(fields, field_type.FieldOptionalInt8)
 	}
-	if m.FieldCleared(fieldtype.FieldOptionalInt16) {
-		fields = append(fields, fieldtype.FieldOptionalInt16)
+	if m.FieldCleared(field_type.FieldOptionalInt16) {
+		fields = append(fields, field_type.FieldOptionalInt16)
 	}
-	if m.FieldCleared(fieldtype.FieldOptionalInt32) {
-		fields = append(fields, fieldtype.FieldOptionalInt32)
+	if m.FieldCleared(field_type.FieldOptionalInt32) {
+		fields = append(fields, field_type.FieldOptionalInt32)
 	}
-	if m.FieldCleared(fieldtype.FieldOptionalInt64) {
-		fields = append(fields, fieldtype.FieldOptionalInt64)
+	if m.FieldCleared(field_type.FieldOptionalInt64) {
+		fields = append(fields, field_type.FieldOptionalInt64)
 	}
-	if m.FieldCleared(fieldtype.FieldNillableInt) {
-		fields = append(fields, fieldtype.FieldNillableInt)
+	if m.FieldCleared(field_type.FieldNillableInt) {
+		fields = append(fields, field_type.FieldNillableInt)
 	}
-	if m.FieldCleared(fieldtype.FieldNillableInt8) {
-		fields = append(fields, fieldtype.FieldNillableInt8)
+	if m.FieldCleared(field_type.FieldNillableInt8) {
+		fields = append(fields, field_type.FieldNillableInt8)
 	}
-	if m.FieldCleared(fieldtype.FieldNillableInt16) {
-		fields = append(fields, fieldtype.FieldNillableInt16)
+	if m.FieldCleared(field_type.FieldNillableInt16) {
+		fields = append(fields, field_type.FieldNillableInt16)
 	}
-	if m.FieldCleared(fieldtype.FieldNillableInt32) {
-		fields = append(fields, fieldtype.FieldNillableInt32)
+	if m.FieldCleared(field_type.FieldNillableInt32) {
+		fields = append(fields, field_type.FieldNillableInt32)
 	}
-	if m.FieldCleared(fieldtype.FieldNillableInt64) {
-		fields = append(fields, fieldtype.FieldNillableInt64)
+	if m.FieldCleared(field_type.FieldNillableInt64) {
+		fields = append(fields, field_type.FieldNillableInt64)
 	}
-	if m.FieldCleared(fieldtype.FieldValidateOptionalInt32) {
-		fields = append(fields, fieldtype.FieldValidateOptionalInt32)
+	if m.FieldCleared(field_type.FieldValidateOptionalInt32) {
+		fields = append(fields, field_type.FieldValidateOptionalInt32)
 	}
-	if m.FieldCleared(fieldtype.FieldOptionalUint) {
-		fields = append(fields, fieldtype.FieldOptionalUint)
+	if m.FieldCleared(field_type.FieldOptionalUint) {
+		fields = append(fields, field_type.FieldOptionalUint)
 	}
-	if m.FieldCleared(fieldtype.FieldOptionalUint8) {
-		fields = append(fields, fieldtype.FieldOptionalUint8)
+	if m.FieldCleared(field_type.FieldOptionalUint8) {
+		fields = append(fields, field_type.FieldOptionalUint8)
 	}
-	if m.FieldCleared(fieldtype.FieldOptionalUint16) {
-		fields = append(fields, fieldtype.FieldOptionalUint16)
+	if m.FieldCleared(field_type.FieldOptionalUint16) {
+		fields = append(fields, field_type.FieldOptionalUint16)
 	}
-	if m.FieldCleared(fieldtype.FieldOptionalUint32) {
-		fields = append(fields, fieldtype.FieldOptionalUint32)
+	if m.FieldCleared(field_type.FieldOptionalUint32) {
+		fields = append(fields, field_type.FieldOptionalUint32)
 	}
-	if m.FieldCleared(fieldtype.FieldOptionalUint64) {
-		fields = append(fields, fieldtype.FieldOptionalUint64)
+	if m.FieldCleared(field_type.FieldOptionalUint64) {
+		fields = append(fields, field_type.FieldOptionalUint64)
 	}
-	if m.FieldCleared(fieldtype.FieldState) {
-		fields = append(fields, fieldtype.FieldState)
+	if m.FieldCleared(field_type.FieldState) {
+		fields = append(fields, field_type.FieldState)
 	}
-	if m.FieldCleared(fieldtype.FieldOptionalFloat) {
-		fields = append(fields, fieldtype.FieldOptionalFloat)
+	if m.FieldCleared(field_type.FieldOptionalFloat) {
+		fields = append(fields, field_type.FieldOptionalFloat)
 	}
-	if m.FieldCleared(fieldtype.FieldOptionalFloat32) {
-		fields = append(fields, fieldtype.FieldOptionalFloat32)
+	if m.FieldCleared(field_type.FieldOptionalFloat32) {
+		fields = append(fields, field_type.FieldOptionalFloat32)
 	}
-	if m.FieldCleared(fieldtype.FieldText) {
-		fields = append(fields, fieldtype.FieldText)
+	if m.FieldCleared(field_type.FieldText) {
+		fields = append(fields, field_type.FieldText)
 	}
-	if m.FieldCleared(fieldtype.FieldDatetime) {
-		fields = append(fields, fieldtype.FieldDatetime)
+	if m.FieldCleared(field_type.FieldDatetime) {
+		fields = append(fields, field_type.FieldDatetime)
 	}
-	if m.FieldCleared(fieldtype.FieldDecimal) {
-		fields = append(fields, fieldtype.FieldDecimal)
+	if m.FieldCleared(field_type.FieldDecimal) {
+		fields = append(fields, field_type.FieldDecimal)
 	}
-	if m.FieldCleared(fieldtype.FieldLinkOther) {
-		fields = append(fields, fieldtype.FieldLinkOther)
+	if m.FieldCleared(field_type.FieldLinkOther) {
+		fields = append(fields, field_type.FieldLinkOther)
 	}
-	if m.FieldCleared(fieldtype.FieldLinkOtherFunc) {
-		fields = append(fields, fieldtype.FieldLinkOtherFunc)
+	if m.FieldCleared(field_type.FieldLinkOtherFunc) {
+		fields = append(fields, field_type.FieldLinkOtherFunc)
 	}
-	if m.FieldCleared(fieldtype.FieldMAC) {
-		fields = append(fields, fieldtype.FieldMAC)
+	if m.FieldCleared(field_type.FieldMAC) {
+		fields = append(fields, field_type.FieldMAC)
 	}
-	if m.FieldCleared(fieldtype.FieldStringArray) {
-		fields = append(fields, fieldtype.FieldStringArray)
+	if m.FieldCleared(field_type.FieldStringArray) {
+		fields = append(fields, field_type.FieldStringArray)
 	}
-	if m.FieldCleared(fieldtype.FieldPassword) {
-		fields = append(fields, fieldtype.FieldPassword)
+	if m.FieldCleared(field_type.FieldPassword) {
+		fields = append(fields, field_type.FieldPassword)
 	}
-	if m.FieldCleared(fieldtype.FieldStringScanner) {
-		fields = append(fields, fieldtype.FieldStringScanner)
+	if m.FieldCleared(field_type.FieldStringScanner) {
+		fields = append(fields, field_type.FieldStringScanner)
 	}
-	if m.FieldCleared(fieldtype.FieldDuration) {
-		fields = append(fields, fieldtype.FieldDuration)
+	if m.FieldCleared(field_type.FieldDuration) {
+		fields = append(fields, field_type.FieldDuration)
 	}
-	if m.FieldCleared(fieldtype.FieldNdir) {
-		fields = append(fields, fieldtype.FieldNdir)
+	if m.FieldCleared(field_type.FieldNdir) {
+		fields = append(fields, field_type.FieldNdir)
 	}
-	if m.FieldCleared(fieldtype.FieldStr) {
-		fields = append(fields, fieldtype.FieldStr)
+	if m.FieldCleared(field_type.FieldStr) {
+		fields = append(fields, field_type.FieldStr)
 	}
-	if m.FieldCleared(fieldtype.FieldNullStr) {
-		fields = append(fields, fieldtype.FieldNullStr)
+	if m.FieldCleared(field_type.FieldNullStr) {
+		fields = append(fields, field_type.FieldNullStr)
 	}
-	if m.FieldCleared(fieldtype.FieldLink) {
-		fields = append(fields, fieldtype.FieldLink)
+	if m.FieldCleared(field_type.FieldLink) {
+		fields = append(fields, field_type.FieldLink)
 	}
-	if m.FieldCleared(fieldtype.FieldNullLink) {
-		fields = append(fields, fieldtype.FieldNullLink)
+	if m.FieldCleared(field_type.FieldNullLink) {
+		fields = append(fields, field_type.FieldNullLink)
 	}
-	if m.FieldCleared(fieldtype.FieldActive) {
-		fields = append(fields, fieldtype.FieldActive)
+	if m.FieldCleared(field_type.FieldActive) {
+		fields = append(fields, field_type.FieldActive)
 	}
-	if m.FieldCleared(fieldtype.FieldNullActive) {
-		fields = append(fields, fieldtype.FieldNullActive)
+	if m.FieldCleared(field_type.FieldNullActive) {
+		fields = append(fields, field_type.FieldNullActive)
 	}
-	if m.FieldCleared(fieldtype.FieldDeleted) {
-		fields = append(fields, fieldtype.FieldDeleted)
+	if m.FieldCleared(field_type.FieldDeleted) {
+		fields = append(fields, field_type.FieldDeleted)
 	}
-	if m.FieldCleared(fieldtype.FieldDeletedAt) {
-		fields = append(fields, fieldtype.FieldDeletedAt)
+	if m.FieldCleared(field_type.FieldDeletedAt) {
+		fields = append(fields, field_type.FieldDeletedAt)
 	}
-	if m.FieldCleared(fieldtype.FieldRawData) {
-		fields = append(fields, fieldtype.FieldRawData)
+	if m.FieldCleared(field_type.FieldRawData) {
+		fields = append(fields, field_type.FieldRawData)
 	}
-	if m.FieldCleared(fieldtype.FieldSensitive) {
-		fields = append(fields, fieldtype.FieldSensitive)
+	if m.FieldCleared(field_type.FieldSensitive) {
+		fields = append(fields, field_type.FieldSensitive)
 	}
-	if m.FieldCleared(fieldtype.FieldIP) {
-		fields = append(fields, fieldtype.FieldIP)
+	if m.FieldCleared(field_type.FieldIP) {
+		fields = append(fields, field_type.FieldIP)
 	}
-	if m.FieldCleared(fieldtype.FieldNullInt64) {
-		fields = append(fields, fieldtype.FieldNullInt64)
+	if m.FieldCleared(field_type.FieldNullInt64) {
+		fields = append(fields, field_type.FieldNullInt64)
 	}
-	if m.FieldCleared(fieldtype.FieldSchemaInt) {
-		fields = append(fields, fieldtype.FieldSchemaInt)
+	if m.FieldCleared(field_type.FieldSchemaInt) {
+		fields = append(fields, field_type.FieldSchemaInt)
 	}
-	if m.FieldCleared(fieldtype.FieldSchemaInt8) {
-		fields = append(fields, fieldtype.FieldSchemaInt8)
+	if m.FieldCleared(field_type.FieldSchemaInt8) {
+		fields = append(fields, field_type.FieldSchemaInt8)
 	}
-	if m.FieldCleared(fieldtype.FieldSchemaInt64) {
-		fields = append(fields, fieldtype.FieldSchemaInt64)
+	if m.FieldCleared(field_type.FieldSchemaInt64) {
+		fields = append(fields, field_type.FieldSchemaInt64)
 	}
-	if m.FieldCleared(fieldtype.FieldSchemaFloat) {
-		fields = append(fields, fieldtype.FieldSchemaFloat)
+	if m.FieldCleared(field_type.FieldSchemaFloat) {
+		fields = append(fields, field_type.FieldSchemaFloat)
 	}
-	if m.FieldCleared(fieldtype.FieldSchemaFloat32) {
-		fields = append(fields, fieldtype.FieldSchemaFloat32)
+	if m.FieldCleared(field_type.FieldSchemaFloat32) {
+		fields = append(fields, field_type.FieldSchemaFloat32)
 	}
-	if m.FieldCleared(fieldtype.FieldNullFloat) {
-		fields = append(fields, fieldtype.FieldNullFloat)
+	if m.FieldCleared(field_type.FieldNullFloat) {
+		fields = append(fields, field_type.FieldNullFloat)
 	}
-	if m.FieldCleared(fieldtype.FieldPriority) {
-		fields = append(fields, fieldtype.FieldPriority)
+	if m.FieldCleared(field_type.FieldPriority) {
+		fields = append(fields, field_type.FieldPriority)
 	}
-	if m.FieldCleared(fieldtype.FieldOptionalUUID) {
-		fields = append(fields, fieldtype.FieldOptionalUUID)
+	if m.FieldCleared(field_type.FieldOptionalUUID) {
+		fields = append(fields, field_type.FieldOptionalUUID)
 	}
-	if m.FieldCleared(fieldtype.FieldNillableUUID) {
-		fields = append(fields, fieldtype.FieldNillableUUID)
+	if m.FieldCleared(field_type.FieldNillableUUID) {
+		fields = append(fields, field_type.FieldNillableUUID)
 	}
-	if m.FieldCleared(fieldtype.FieldStrings) {
-		fields = append(fields, fieldtype.FieldStrings)
+	if m.FieldCleared(field_type.FieldStrings) {
+		fields = append(fields, field_type.FieldStrings)
 	}
-	if m.FieldCleared(fieldtype.FieldNilPair) {
-		fields = append(fields, fieldtype.FieldNilPair)
+	if m.FieldCleared(field_type.FieldNilPair) {
+		fields = append(fields, field_type.FieldNilPair)
 	}
-	if m.FieldCleared(fieldtype.FieldBigInt) {
-		fields = append(fields, fieldtype.FieldBigInt)
+	if m.FieldCleared(field_type.FieldBigInt) {
+		fields = append(fields, field_type.FieldBigInt)
 	}
-	if m.FieldCleared(fieldtype.FieldPasswordOther) {
-		fields = append(fields, fieldtype.FieldPasswordOther)
+	if m.FieldCleared(field_type.FieldPasswordOther) {
+		fields = append(fields, field_type.FieldPasswordOther)
 	}
 	return fields
 }
@@ -8373,169 +8373,169 @@ func (m *FieldTypeMutation) FieldCleared(name string) bool {
 // error if the field is not defined in the schema.
 func (m *FieldTypeMutation) ClearField(name string) error {
 	switch name {
-	case fieldtype.FieldOptionalInt:
+	case field_type.FieldOptionalInt:
 		m.ClearOptionalInt()
 		return nil
-	case fieldtype.FieldOptionalInt8:
+	case field_type.FieldOptionalInt8:
 		m.ClearOptionalInt8()
 		return nil
-	case fieldtype.FieldOptionalInt16:
+	case field_type.FieldOptionalInt16:
 		m.ClearOptionalInt16()
 		return nil
-	case fieldtype.FieldOptionalInt32:
+	case field_type.FieldOptionalInt32:
 		m.ClearOptionalInt32()
 		return nil
-	case fieldtype.FieldOptionalInt64:
+	case field_type.FieldOptionalInt64:
 		m.ClearOptionalInt64()
 		return nil
-	case fieldtype.FieldNillableInt:
+	case field_type.FieldNillableInt:
 		m.ClearNillableInt()
 		return nil
-	case fieldtype.FieldNillableInt8:
+	case field_type.FieldNillableInt8:
 		m.ClearNillableInt8()
 		return nil
-	case fieldtype.FieldNillableInt16:
+	case field_type.FieldNillableInt16:
 		m.ClearNillableInt16()
 		return nil
-	case fieldtype.FieldNillableInt32:
+	case field_type.FieldNillableInt32:
 		m.ClearNillableInt32()
 		return nil
-	case fieldtype.FieldNillableInt64:
+	case field_type.FieldNillableInt64:
 		m.ClearNillableInt64()
 		return nil
-	case fieldtype.FieldValidateOptionalInt32:
+	case field_type.FieldValidateOptionalInt32:
 		m.ClearValidateOptionalInt32()
 		return nil
-	case fieldtype.FieldOptionalUint:
+	case field_type.FieldOptionalUint:
 		m.ClearOptionalUint()
 		return nil
-	case fieldtype.FieldOptionalUint8:
+	case field_type.FieldOptionalUint8:
 		m.ClearOptionalUint8()
 		return nil
-	case fieldtype.FieldOptionalUint16:
+	case field_type.FieldOptionalUint16:
 		m.ClearOptionalUint16()
 		return nil
-	case fieldtype.FieldOptionalUint32:
+	case field_type.FieldOptionalUint32:
 		m.ClearOptionalUint32()
 		return nil
-	case fieldtype.FieldOptionalUint64:
+	case field_type.FieldOptionalUint64:
 		m.ClearOptionalUint64()
 		return nil
-	case fieldtype.FieldState:
+	case field_type.FieldState:
 		m.ClearState()
 		return nil
-	case fieldtype.FieldOptionalFloat:
+	case field_type.FieldOptionalFloat:
 		m.ClearOptionalFloat()
 		return nil
-	case fieldtype.FieldOptionalFloat32:
+	case field_type.FieldOptionalFloat32:
 		m.ClearOptionalFloat32()
 		return nil
-	case fieldtype.FieldText:
+	case field_type.FieldText:
 		m.ClearText()
 		return nil
-	case fieldtype.FieldDatetime:
+	case field_type.FieldDatetime:
 		m.ClearDatetime()
 		return nil
-	case fieldtype.FieldDecimal:
+	case field_type.FieldDecimal:
 		m.ClearDecimal()
 		return nil
-	case fieldtype.FieldLinkOther:
+	case field_type.FieldLinkOther:
 		m.ClearLinkOther()
 		return nil
-	case fieldtype.FieldLinkOtherFunc:
+	case field_type.FieldLinkOtherFunc:
 		m.ClearLinkOtherFunc()
 		return nil
-	case fieldtype.FieldMAC:
+	case field_type.FieldMAC:
 		m.ClearMAC()
 		return nil
-	case fieldtype.FieldStringArray:
+	case field_type.FieldStringArray:
 		m.ClearStringArray()
 		return nil
-	case fieldtype.FieldPassword:
+	case field_type.FieldPassword:
 		m.ClearPassword()
 		return nil
-	case fieldtype.FieldStringScanner:
+	case field_type.FieldStringScanner:
 		m.ClearStringScanner()
 		return nil
-	case fieldtype.FieldDuration:
+	case field_type.FieldDuration:
 		m.ClearDuration()
 		return nil
-	case fieldtype.FieldNdir:
+	case field_type.FieldNdir:
 		m.ClearNdir()
 		return nil
-	case fieldtype.FieldStr:
+	case field_type.FieldStr:
 		m.ClearStr()
 		return nil
-	case fieldtype.FieldNullStr:
+	case field_type.FieldNullStr:
 		m.ClearNullStr()
 		return nil
-	case fieldtype.FieldLink:
+	case field_type.FieldLink:
 		m.ClearLink()
 		return nil
-	case fieldtype.FieldNullLink:
+	case field_type.FieldNullLink:
 		m.ClearNullLink()
 		return nil
-	case fieldtype.FieldActive:
+	case field_type.FieldActive:
 		m.ClearActive()
 		return nil
-	case fieldtype.FieldNullActive:
+	case field_type.FieldNullActive:
 		m.ClearNullActive()
 		return nil
-	case fieldtype.FieldDeleted:
+	case field_type.FieldDeleted:
 		m.ClearDeleted()
 		return nil
-	case fieldtype.FieldDeletedAt:
+	case field_type.FieldDeletedAt:
 		m.ClearDeletedAt()
 		return nil
-	case fieldtype.FieldRawData:
+	case field_type.FieldRawData:
 		m.ClearRawData()
 		return nil
-	case fieldtype.FieldSensitive:
+	case field_type.FieldSensitive:
 		m.ClearSensitive()
 		return nil
-	case fieldtype.FieldIP:
+	case field_type.FieldIP:
 		m.ClearIP()
 		return nil
-	case fieldtype.FieldNullInt64:
+	case field_type.FieldNullInt64:
 		m.ClearNullInt64()
 		return nil
-	case fieldtype.FieldSchemaInt:
+	case field_type.FieldSchemaInt:
 		m.ClearSchemaInt()
 		return nil
-	case fieldtype.FieldSchemaInt8:
+	case field_type.FieldSchemaInt8:
 		m.ClearSchemaInt8()
 		return nil
-	case fieldtype.FieldSchemaInt64:
+	case field_type.FieldSchemaInt64:
 		m.ClearSchemaInt64()
 		return nil
-	case fieldtype.FieldSchemaFloat:
+	case field_type.FieldSchemaFloat:
 		m.ClearSchemaFloat()
 		return nil
-	case fieldtype.FieldSchemaFloat32:
+	case field_type.FieldSchemaFloat32:
 		m.ClearSchemaFloat32()
 		return nil
-	case fieldtype.FieldNullFloat:
+	case field_type.FieldNullFloat:
 		m.ClearNullFloat()
 		return nil
-	case fieldtype.FieldPriority:
+	case field_type.FieldPriority:
 		m.ClearPriority()
 		return nil
-	case fieldtype.FieldOptionalUUID:
+	case field_type.FieldOptionalUUID:
 		m.ClearOptionalUUID()
 		return nil
-	case fieldtype.FieldNillableUUID:
+	case field_type.FieldNillableUUID:
 		m.ClearNillableUUID()
 		return nil
-	case fieldtype.FieldStrings:
+	case field_type.FieldStrings:
 		m.ClearStrings()
 		return nil
-	case fieldtype.FieldNilPair:
+	case field_type.FieldNilPair:
 		m.ClearNilPair()
 		return nil
-	case fieldtype.FieldBigInt:
+	case field_type.FieldBigInt:
 		m.ClearBigInt()
 		return nil
-	case fieldtype.FieldPasswordOther:
+	case field_type.FieldPasswordOther:
 		m.ClearPasswordOther()
 		return nil
 	}
@@ -8546,199 +8546,199 @@ func (m *FieldTypeMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *FieldTypeMutation) ResetField(name string) error {
 	switch name {
-	case fieldtype.FieldInt:
+	case field_type.FieldInt:
 		m.ResetInt()
 		return nil
-	case fieldtype.FieldInt8:
+	case field_type.FieldInt8:
 		m.ResetInt8()
 		return nil
-	case fieldtype.FieldInt16:
+	case field_type.FieldInt16:
 		m.ResetInt16()
 		return nil
-	case fieldtype.FieldInt32:
+	case field_type.FieldInt32:
 		m.ResetInt32()
 		return nil
-	case fieldtype.FieldInt64:
+	case field_type.FieldInt64:
 		m.ResetInt64()
 		return nil
-	case fieldtype.FieldOptionalInt:
+	case field_type.FieldOptionalInt:
 		m.ResetOptionalInt()
 		return nil
-	case fieldtype.FieldOptionalInt8:
+	case field_type.FieldOptionalInt8:
 		m.ResetOptionalInt8()
 		return nil
-	case fieldtype.FieldOptionalInt16:
+	case field_type.FieldOptionalInt16:
 		m.ResetOptionalInt16()
 		return nil
-	case fieldtype.FieldOptionalInt32:
+	case field_type.FieldOptionalInt32:
 		m.ResetOptionalInt32()
 		return nil
-	case fieldtype.FieldOptionalInt64:
+	case field_type.FieldOptionalInt64:
 		m.ResetOptionalInt64()
 		return nil
-	case fieldtype.FieldNillableInt:
+	case field_type.FieldNillableInt:
 		m.ResetNillableInt()
 		return nil
-	case fieldtype.FieldNillableInt8:
+	case field_type.FieldNillableInt8:
 		m.ResetNillableInt8()
 		return nil
-	case fieldtype.FieldNillableInt16:
+	case field_type.FieldNillableInt16:
 		m.ResetNillableInt16()
 		return nil
-	case fieldtype.FieldNillableInt32:
+	case field_type.FieldNillableInt32:
 		m.ResetNillableInt32()
 		return nil
-	case fieldtype.FieldNillableInt64:
+	case field_type.FieldNillableInt64:
 		m.ResetNillableInt64()
 		return nil
-	case fieldtype.FieldValidateOptionalInt32:
+	case field_type.FieldValidateOptionalInt32:
 		m.ResetValidateOptionalInt32()
 		return nil
-	case fieldtype.FieldOptionalUint:
+	case field_type.FieldOptionalUint:
 		m.ResetOptionalUint()
 		return nil
-	case fieldtype.FieldOptionalUint8:
+	case field_type.FieldOptionalUint8:
 		m.ResetOptionalUint8()
 		return nil
-	case fieldtype.FieldOptionalUint16:
+	case field_type.FieldOptionalUint16:
 		m.ResetOptionalUint16()
 		return nil
-	case fieldtype.FieldOptionalUint32:
+	case field_type.FieldOptionalUint32:
 		m.ResetOptionalUint32()
 		return nil
-	case fieldtype.FieldOptionalUint64:
+	case field_type.FieldOptionalUint64:
 		m.ResetOptionalUint64()
 		return nil
-	case fieldtype.FieldState:
+	case field_type.FieldState:
 		m.ResetState()
 		return nil
-	case fieldtype.FieldOptionalFloat:
+	case field_type.FieldOptionalFloat:
 		m.ResetOptionalFloat()
 		return nil
-	case fieldtype.FieldOptionalFloat32:
+	case field_type.FieldOptionalFloat32:
 		m.ResetOptionalFloat32()
 		return nil
-	case fieldtype.FieldText:
+	case field_type.FieldText:
 		m.ResetText()
 		return nil
-	case fieldtype.FieldDatetime:
+	case field_type.FieldDatetime:
 		m.ResetDatetime()
 		return nil
-	case fieldtype.FieldDecimal:
+	case field_type.FieldDecimal:
 		m.ResetDecimal()
 		return nil
-	case fieldtype.FieldLinkOther:
+	case field_type.FieldLinkOther:
 		m.ResetLinkOther()
 		return nil
-	case fieldtype.FieldLinkOtherFunc:
+	case field_type.FieldLinkOtherFunc:
 		m.ResetLinkOtherFunc()
 		return nil
-	case fieldtype.FieldMAC:
+	case field_type.FieldMAC:
 		m.ResetMAC()
 		return nil
-	case fieldtype.FieldStringArray:
+	case field_type.FieldStringArray:
 		m.ResetStringArray()
 		return nil
-	case fieldtype.FieldPassword:
+	case field_type.FieldPassword:
 		m.ResetPassword()
 		return nil
-	case fieldtype.FieldStringScanner:
+	case field_type.FieldStringScanner:
 		m.ResetStringScanner()
 		return nil
-	case fieldtype.FieldDuration:
+	case field_type.FieldDuration:
 		m.ResetDuration()
 		return nil
-	case fieldtype.FieldDir:
+	case field_type.FieldDir:
 		m.ResetDir()
 		return nil
-	case fieldtype.FieldNdir:
+	case field_type.FieldNdir:
 		m.ResetNdir()
 		return nil
-	case fieldtype.FieldStr:
+	case field_type.FieldStr:
 		m.ResetStr()
 		return nil
-	case fieldtype.FieldNullStr:
+	case field_type.FieldNullStr:
 		m.ResetNullStr()
 		return nil
-	case fieldtype.FieldLink:
+	case field_type.FieldLink:
 		m.ResetLink()
 		return nil
-	case fieldtype.FieldNullLink:
+	case field_type.FieldNullLink:
 		m.ResetNullLink()
 		return nil
-	case fieldtype.FieldActive:
+	case field_type.FieldActive:
 		m.ResetActive()
 		return nil
-	case fieldtype.FieldNullActive:
+	case field_type.FieldNullActive:
 		m.ResetNullActive()
 		return nil
-	case fieldtype.FieldDeleted:
+	case field_type.FieldDeleted:
 		m.ResetDeleted()
 		return nil
-	case fieldtype.FieldDeletedAt:
+	case field_type.FieldDeletedAt:
 		m.ResetDeletedAt()
 		return nil
-	case fieldtype.FieldRawData:
+	case field_type.FieldRawData:
 		m.ResetRawData()
 		return nil
-	case fieldtype.FieldSensitive:
+	case field_type.FieldSensitive:
 		m.ResetSensitive()
 		return nil
-	case fieldtype.FieldIP:
+	case field_type.FieldIP:
 		m.ResetIP()
 		return nil
-	case fieldtype.FieldNullInt64:
+	case field_type.FieldNullInt64:
 		m.ResetNullInt64()
 		return nil
-	case fieldtype.FieldSchemaInt:
+	case field_type.FieldSchemaInt:
 		m.ResetSchemaInt()
 		return nil
-	case fieldtype.FieldSchemaInt8:
+	case field_type.FieldSchemaInt8:
 		m.ResetSchemaInt8()
 		return nil
-	case fieldtype.FieldSchemaInt64:
+	case field_type.FieldSchemaInt64:
 		m.ResetSchemaInt64()
 		return nil
-	case fieldtype.FieldSchemaFloat:
+	case field_type.FieldSchemaFloat:
 		m.ResetSchemaFloat()
 		return nil
-	case fieldtype.FieldSchemaFloat32:
+	case field_type.FieldSchemaFloat32:
 		m.ResetSchemaFloat32()
 		return nil
-	case fieldtype.FieldNullFloat:
+	case field_type.FieldNullFloat:
 		m.ResetNullFloat()
 		return nil
-	case fieldtype.FieldRole:
+	case field_type.FieldRole:
 		m.ResetRole()
 		return nil
-	case fieldtype.FieldPriority:
+	case field_type.FieldPriority:
 		m.ResetPriority()
 		return nil
-	case fieldtype.FieldOptionalUUID:
+	case field_type.FieldOptionalUUID:
 		m.ResetOptionalUUID()
 		return nil
-	case fieldtype.FieldNillableUUID:
+	case field_type.FieldNillableUUID:
 		m.ResetNillableUUID()
 		return nil
-	case fieldtype.FieldStrings:
+	case field_type.FieldStrings:
 		m.ResetStrings()
 		return nil
-	case fieldtype.FieldPair:
+	case field_type.FieldPair:
 		m.ResetPair()
 		return nil
-	case fieldtype.FieldNilPair:
+	case field_type.FieldNilPair:
 		m.ResetNilPair()
 		return nil
-	case fieldtype.FieldVstring:
+	case field_type.FieldVstring:
 		m.ResetVstring()
 		return nil
-	case fieldtype.FieldTriple:
+	case field_type.FieldTriple:
 		m.ResetTriple()
 		return nil
-	case fieldtype.FieldBigInt:
+	case field_type.FieldBigInt:
 		m.ResetBigInt()
 		return nil
-	case fieldtype.FieldPasswordOther:
+	case field_type.FieldPasswordOther:
 		m.ResetPasswordOther()
 		return nil
 	}
@@ -9936,8 +9936,8 @@ type FileTypeMutation struct {
 	typ           string
 	id            *string
 	name          *string
-	_type         *filetype.Type
-	state         *filetype.State
+	_type         *file_type.Type
+	state         *file_type.State
 	clearedFields map[string]struct{}
 	files         map[string]struct{}
 	removedfiles  map[string]struct{}
@@ -10082,12 +10082,12 @@ func (m *FileTypeMutation) ResetName() {
 }
 
 // SetType sets the "type" field.
-func (m *FileTypeMutation) SetType(f filetype.Type) {
-	m._type = &f
+func (m *FileTypeMutation) SetType(ft file_type.Type) {
+	m._type = &ft
 }
 
 // GetType returns the value of the "type" field in the mutation.
-func (m *FileTypeMutation) GetType() (r filetype.Type, exists bool) {
+func (m *FileTypeMutation) GetType() (r file_type.Type, exists bool) {
 	v := m._type
 	if v == nil {
 		return
@@ -10098,7 +10098,7 @@ func (m *FileTypeMutation) GetType() (r filetype.Type, exists bool) {
 // OldType returns the old "type" field's value of the FileType entity.
 // If the FileType object wasn't provided to the builder, the object is fetched from the database.
 // An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *FileTypeMutation) OldType(ctx context.Context) (v filetype.Type, err error) {
+func (m *FileTypeMutation) OldType(ctx context.Context) (v file_type.Type, err error) {
 	if !m.op.Is(OpUpdateOne) {
 		return v, errors.New("OldType is only allowed on UpdateOne operations")
 	}
@@ -10118,12 +10118,12 @@ func (m *FileTypeMutation) ResetType() {
 }
 
 // SetState sets the "state" field.
-func (m *FileTypeMutation) SetState(f filetype.State) {
-	m.state = &f
+func (m *FileTypeMutation) SetState(ft file_type.State) {
+	m.state = &ft
 }
 
 // State returns the value of the "state" field in the mutation.
-func (m *FileTypeMutation) State() (r filetype.State, exists bool) {
+func (m *FileTypeMutation) State() (r file_type.State, exists bool) {
 	v := m.state
 	if v == nil {
 		return
@@ -10134,7 +10134,7 @@ func (m *FileTypeMutation) State() (r filetype.State, exists bool) {
 // OldState returns the old "state" field's value of the FileType entity.
 // If the FileType object wasn't provided to the builder, the object is fetched from the database.
 // An error is returned if the mutation operation is not UpdateOne, or the database query fails.
-func (m *FileTypeMutation) OldState(ctx context.Context) (v filetype.State, err error) {
+func (m *FileTypeMutation) OldState(ctx context.Context) (v file_type.State, err error) {
 	if !m.op.Is(OpUpdateOne) {
 		return v, errors.New("OldState is only allowed on UpdateOne operations")
 	}
@@ -10243,13 +10243,13 @@ func (m *FileTypeMutation) Type() string {
 func (m *FileTypeMutation) Fields() []string {
 	fields := make([]string, 0, 3)
 	if m.name != nil {
-		fields = append(fields, filetype.FieldName)
+		fields = append(fields, file_type.FieldName)
 	}
 	if m._type != nil {
-		fields = append(fields, filetype.FieldType)
+		fields = append(fields, file_type.FieldType)
 	}
 	if m.state != nil {
-		fields = append(fields, filetype.FieldState)
+		fields = append(fields, file_type.FieldState)
 	}
 	return fields
 }
@@ -10259,11 +10259,11 @@ func (m *FileTypeMutation) Fields() []string {
 // schema.
 func (m *FileTypeMutation) Field(name string) (fluent.Value, bool) {
 	switch name {
-	case filetype.FieldName:
+	case file_type.FieldName:
 		return m.Name()
-	case filetype.FieldType:
+	case file_type.FieldType:
 		return m.GetType()
-	case filetype.FieldState:
+	case file_type.FieldState:
 		return m.State()
 	}
 	return nil, false
@@ -10274,11 +10274,11 @@ func (m *FileTypeMutation) Field(name string) (fluent.Value, bool) {
 // database failed.
 func (m *FileTypeMutation) OldField(ctx context.Context, name string) (fluent.Value, error) {
 	switch name {
-	case filetype.FieldName:
+	case file_type.FieldName:
 		return m.OldName(ctx)
-	case filetype.FieldType:
+	case file_type.FieldType:
 		return m.OldType(ctx)
-	case filetype.FieldState:
+	case file_type.FieldState:
 		return m.OldState(ctx)
 	}
 	return nil, fmt.Errorf("unknown FileType field %s", name)
@@ -10289,22 +10289,22 @@ func (m *FileTypeMutation) OldField(ctx context.Context, name string) (fluent.Va
 // type.
 func (m *FileTypeMutation) SetField(name string, value fluent.Value) error {
 	switch name {
-	case filetype.FieldName:
+	case file_type.FieldName:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetName(v)
 		return nil
-	case filetype.FieldType:
-		v, ok := value.(filetype.Type)
+	case file_type.FieldType:
+		v, ok := value.(file_type.Type)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetType(v)
 		return nil
-	case filetype.FieldState:
-		v, ok := value.(filetype.State)
+	case file_type.FieldState:
+		v, ok := value.(file_type.State)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
@@ -10359,13 +10359,13 @@ func (m *FileTypeMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *FileTypeMutation) ResetField(name string) error {
 	switch name {
-	case filetype.FieldName:
+	case file_type.FieldName:
 		m.ResetName()
 		return nil
-	case filetype.FieldType:
+	case file_type.FieldType:
 		m.ResetType()
 		return nil
-	case filetype.FieldState:
+	case file_type.FieldState:
 		m.ResetState()
 		return nil
 	}
@@ -10376,7 +10376,7 @@ func (m *FileTypeMutation) ResetField(name string) error {
 func (m *FileTypeMutation) AddedEdges() []string {
 	edges := make([]string, 0, 1)
 	if m.files != nil {
-		edges = append(edges, filetype.EdgeFiles)
+		edges = append(edges, file_type.EdgeFiles)
 	}
 	return edges
 }
@@ -10385,7 +10385,7 @@ func (m *FileTypeMutation) AddedEdges() []string {
 // name in this mutation.
 func (m *FileTypeMutation) AddedIDs(name string) []fluent.Value {
 	switch name {
-	case filetype.EdgeFiles:
+	case file_type.EdgeFiles:
 		ids := make([]fluent.Value, 0, len(m.files))
 		for id := range m.files {
 			ids = append(ids, id)
@@ -10399,7 +10399,7 @@ func (m *FileTypeMutation) AddedIDs(name string) []fluent.Value {
 func (m *FileTypeMutation) RemovedEdges() []string {
 	edges := make([]string, 0, 1)
 	if m.removedfiles != nil {
-		edges = append(edges, filetype.EdgeFiles)
+		edges = append(edges, file_type.EdgeFiles)
 	}
 	return edges
 }
@@ -10408,7 +10408,7 @@ func (m *FileTypeMutation) RemovedEdges() []string {
 // the given name in this mutation.
 func (m *FileTypeMutation) RemovedIDs(name string) []fluent.Value {
 	switch name {
-	case filetype.EdgeFiles:
+	case file_type.EdgeFiles:
 		ids := make([]fluent.Value, 0, len(m.removedfiles))
 		for id := range m.removedfiles {
 			ids = append(ids, id)
@@ -10422,7 +10422,7 @@ func (m *FileTypeMutation) RemovedIDs(name string) []fluent.Value {
 func (m *FileTypeMutation) ClearedEdges() []string {
 	edges := make([]string, 0, 1)
 	if m.clearedfiles {
-		edges = append(edges, filetype.EdgeFiles)
+		edges = append(edges, file_type.EdgeFiles)
 	}
 	return edges
 }
@@ -10431,7 +10431,7 @@ func (m *FileTypeMutation) ClearedEdges() []string {
 // was cleared in this mutation.
 func (m *FileTypeMutation) EdgeCleared(name string) bool {
 	switch name {
-	case filetype.EdgeFiles:
+	case file_type.EdgeFiles:
 		return m.clearedfiles
 	}
 	return false
@@ -10449,7 +10449,7 @@ func (m *FileTypeMutation) ClearEdge(name string) error {
 // It returns an error if the edge is not defined in the schema.
 func (m *FileTypeMutation) ResetEdge(name string) error {
 	switch name {
-	case filetype.EdgeFiles:
+	case file_type.EdgeFiles:
 		m.ResetFiles()
 		return nil
 	}
@@ -11956,10 +11956,10 @@ func (m *GroupInfoMutation) Type() string {
 func (m *GroupInfoMutation) Fields() []string {
 	fields := make([]string, 0, 2)
 	if m.desc != nil {
-		fields = append(fields, groupinfo.FieldDesc)
+		fields = append(fields, group_info.FieldDesc)
 	}
 	if m.max_users != nil {
-		fields = append(fields, groupinfo.FieldMaxUsers)
+		fields = append(fields, group_info.FieldMaxUsers)
 	}
 	return fields
 }
@@ -11969,9 +11969,9 @@ func (m *GroupInfoMutation) Fields() []string {
 // schema.
 func (m *GroupInfoMutation) Field(name string) (fluent.Value, bool) {
 	switch name {
-	case groupinfo.FieldDesc:
+	case group_info.FieldDesc:
 		return m.Desc()
-	case groupinfo.FieldMaxUsers:
+	case group_info.FieldMaxUsers:
 		return m.MaxUsers()
 	}
 	return nil, false
@@ -11982,9 +11982,9 @@ func (m *GroupInfoMutation) Field(name string) (fluent.Value, bool) {
 // database failed.
 func (m *GroupInfoMutation) OldField(ctx context.Context, name string) (fluent.Value, error) {
 	switch name {
-	case groupinfo.FieldDesc:
+	case group_info.FieldDesc:
 		return m.OldDesc(ctx)
-	case groupinfo.FieldMaxUsers:
+	case group_info.FieldMaxUsers:
 		return m.OldMaxUsers(ctx)
 	}
 	return nil, fmt.Errorf("unknown GroupInfo field %s", name)
@@ -11995,14 +11995,14 @@ func (m *GroupInfoMutation) OldField(ctx context.Context, name string) (fluent.V
 // type.
 func (m *GroupInfoMutation) SetField(name string, value fluent.Value) error {
 	switch name {
-	case groupinfo.FieldDesc:
+	case group_info.FieldDesc:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetDesc(v)
 		return nil
-	case groupinfo.FieldMaxUsers:
+	case group_info.FieldMaxUsers:
 		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -12018,7 +12018,7 @@ func (m *GroupInfoMutation) SetField(name string, value fluent.Value) error {
 func (m *GroupInfoMutation) AddedFields() []string {
 	var fields []string
 	if m.addmax_users != nil {
-		fields = append(fields, groupinfo.FieldMaxUsers)
+		fields = append(fields, group_info.FieldMaxUsers)
 	}
 	return fields
 }
@@ -12028,7 +12028,7 @@ func (m *GroupInfoMutation) AddedFields() []string {
 // was not set, or was not defined in the schema.
 func (m *GroupInfoMutation) AddedField(name string) (fluent.Value, bool) {
 	switch name {
-	case groupinfo.FieldMaxUsers:
+	case group_info.FieldMaxUsers:
 		return m.AddedMaxUsers()
 	}
 	return nil, false
@@ -12039,7 +12039,7 @@ func (m *GroupInfoMutation) AddedField(name string) (fluent.Value, bool) {
 // type.
 func (m *GroupInfoMutation) AddField(name string, value fluent.Value) error {
 	switch name {
-	case groupinfo.FieldMaxUsers:
+	case group_info.FieldMaxUsers:
 		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -12073,10 +12073,10 @@ func (m *GroupInfoMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *GroupInfoMutation) ResetField(name string) error {
 	switch name {
-	case groupinfo.FieldDesc:
+	case group_info.FieldDesc:
 		m.ResetDesc()
 		return nil
-	case groupinfo.FieldMaxUsers:
+	case group_info.FieldMaxUsers:
 		m.ResetMaxUsers()
 		return nil
 	}
@@ -12087,7 +12087,7 @@ func (m *GroupInfoMutation) ResetField(name string) error {
 func (m *GroupInfoMutation) AddedEdges() []string {
 	edges := make([]string, 0, 1)
 	if m.groups != nil {
-		edges = append(edges, groupinfo.EdgeGroups)
+		edges = append(edges, group_info.EdgeGroups)
 	}
 	return edges
 }
@@ -12096,7 +12096,7 @@ func (m *GroupInfoMutation) AddedEdges() []string {
 // name in this mutation.
 func (m *GroupInfoMutation) AddedIDs(name string) []fluent.Value {
 	switch name {
-	case groupinfo.EdgeGroups:
+	case group_info.EdgeGroups:
 		ids := make([]fluent.Value, 0, len(m.groups))
 		for id := range m.groups {
 			ids = append(ids, id)
@@ -12110,7 +12110,7 @@ func (m *GroupInfoMutation) AddedIDs(name string) []fluent.Value {
 func (m *GroupInfoMutation) RemovedEdges() []string {
 	edges := make([]string, 0, 1)
 	if m.removedgroups != nil {
-		edges = append(edges, groupinfo.EdgeGroups)
+		edges = append(edges, group_info.EdgeGroups)
 	}
 	return edges
 }
@@ -12119,7 +12119,7 @@ func (m *GroupInfoMutation) RemovedEdges() []string {
 // the given name in this mutation.
 func (m *GroupInfoMutation) RemovedIDs(name string) []fluent.Value {
 	switch name {
-	case groupinfo.EdgeGroups:
+	case group_info.EdgeGroups:
 		ids := make([]fluent.Value, 0, len(m.removedgroups))
 		for id := range m.removedgroups {
 			ids = append(ids, id)
@@ -12133,7 +12133,7 @@ func (m *GroupInfoMutation) RemovedIDs(name string) []fluent.Value {
 func (m *GroupInfoMutation) ClearedEdges() []string {
 	edges := make([]string, 0, 1)
 	if m.clearedgroups {
-		edges = append(edges, groupinfo.EdgeGroups)
+		edges = append(edges, group_info.EdgeGroups)
 	}
 	return edges
 }
@@ -12142,7 +12142,7 @@ func (m *GroupInfoMutation) ClearedEdges() []string {
 // was cleared in this mutation.
 func (m *GroupInfoMutation) EdgeCleared(name string) bool {
 	switch name {
-	case groupinfo.EdgeGroups:
+	case group_info.EdgeGroups:
 		return m.clearedgroups
 	}
 	return false
@@ -12160,7 +12160,7 @@ func (m *GroupInfoMutation) ClearEdge(name string) error {
 // It returns an error if the edge is not defined in the schema.
 func (m *GroupInfoMutation) ResetEdge(name string) error {
 	switch name {
-	case groupinfo.EdgeGroups:
+	case group_info.EdgeGroups:
 		m.ResetGroups()
 		return nil
 	}

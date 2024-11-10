@@ -17,14 +17,14 @@ import (
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/account"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/blob"
-	"github.com/usalko/fluent/flc/integration/custom_id/fluent/bloblink"
+	"github.com/usalko/fluent/flc/integration/custom_id/fluent/blob_link"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/car"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/device"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/doc"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/group"
-	"github.com/usalko/fluent/flc/integration/custom_id/fluent/intsid"
+	"github.com/usalko/fluent/flc/integration/custom_id/fluent/int_s_i_d"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/link"
-	"github.com/usalko/fluent/flc/integration/custom_id/fluent/mixinid"
+	"github.com/usalko/fluent/flc/integration/custom_id/fluent/mixin_i_d"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/note"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/pet"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/predicate"
@@ -1177,7 +1177,7 @@ func (m *BlobLinkMutation) ResetLinkID() {
 // ClearBlob clears the "blob" edge to the Blob entity.
 func (m *BlobLinkMutation) ClearBlob() {
 	m.clearedblob = true
-	m.clearedFields[bloblink.FieldBlobID] = struct{}{}
+	m.clearedFields[blob_link.FieldBlobID] = struct{}{}
 }
 
 // BlobCleared reports if the "blob" edge to the Blob entity was cleared.
@@ -1204,7 +1204,7 @@ func (m *BlobLinkMutation) ResetBlob() {
 // ClearLink clears the "link" edge to the Blob entity.
 func (m *BlobLinkMutation) ClearLink() {
 	m.clearedlink = true
-	m.clearedFields[bloblink.FieldLinkID] = struct{}{}
+	m.clearedFields[blob_link.FieldLinkID] = struct{}{}
 }
 
 // LinkCleared reports if the "link" edge to the Blob entity was cleared.
@@ -1264,13 +1264,13 @@ func (m *BlobLinkMutation) Type() string {
 func (m *BlobLinkMutation) Fields() []string {
 	fields := make([]string, 0, 3)
 	if m.created_at != nil {
-		fields = append(fields, bloblink.FieldCreatedAt)
+		fields = append(fields, blob_link.FieldCreatedAt)
 	}
 	if m.blob != nil {
-		fields = append(fields, bloblink.FieldBlobID)
+		fields = append(fields, blob_link.FieldBlobID)
 	}
 	if m.link != nil {
-		fields = append(fields, bloblink.FieldLinkID)
+		fields = append(fields, blob_link.FieldLinkID)
 	}
 	return fields
 }
@@ -1280,11 +1280,11 @@ func (m *BlobLinkMutation) Fields() []string {
 // schema.
 func (m *BlobLinkMutation) Field(name string) (fluent.Value, bool) {
 	switch name {
-	case bloblink.FieldCreatedAt:
+	case blob_link.FieldCreatedAt:
 		return m.CreatedAt()
-	case bloblink.FieldBlobID:
+	case blob_link.FieldBlobID:
 		return m.BlobID()
-	case bloblink.FieldLinkID:
+	case blob_link.FieldLinkID:
 		return m.LinkID()
 	}
 	return nil, false
@@ -1302,21 +1302,21 @@ func (m *BlobLinkMutation) OldField(ctx context.Context, name string) (fluent.Va
 // type.
 func (m *BlobLinkMutation) SetField(name string, value fluent.Value) error {
 	switch name {
-	case bloblink.FieldCreatedAt:
+	case blob_link.FieldCreatedAt:
 		v, ok := value.(time.Time)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetCreatedAt(v)
 		return nil
-	case bloblink.FieldBlobID:
+	case blob_link.FieldBlobID:
 		v, ok := value.(uuid.UUID)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetBlobID(v)
 		return nil
-	case bloblink.FieldLinkID:
+	case blob_link.FieldLinkID:
 		v, ok := value.(uuid.UUID)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -1372,13 +1372,13 @@ func (m *BlobLinkMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *BlobLinkMutation) ResetField(name string) error {
 	switch name {
-	case bloblink.FieldCreatedAt:
+	case blob_link.FieldCreatedAt:
 		m.ResetCreatedAt()
 		return nil
-	case bloblink.FieldBlobID:
+	case blob_link.FieldBlobID:
 		m.ResetBlobID()
 		return nil
-	case bloblink.FieldLinkID:
+	case blob_link.FieldLinkID:
 		m.ResetLinkID()
 		return nil
 	}
@@ -1389,10 +1389,10 @@ func (m *BlobLinkMutation) ResetField(name string) error {
 func (m *BlobLinkMutation) AddedEdges() []string {
 	edges := make([]string, 0, 2)
 	if m.blob != nil {
-		edges = append(edges, bloblink.EdgeBlob)
+		edges = append(edges, blob_link.EdgeBlob)
 	}
 	if m.link != nil {
-		edges = append(edges, bloblink.EdgeLink)
+		edges = append(edges, blob_link.EdgeLink)
 	}
 	return edges
 }
@@ -1401,11 +1401,11 @@ func (m *BlobLinkMutation) AddedEdges() []string {
 // name in this mutation.
 func (m *BlobLinkMutation) AddedIDs(name string) []fluent.Value {
 	switch name {
-	case bloblink.EdgeBlob:
+	case blob_link.EdgeBlob:
 		if id := m.blob; id != nil {
 			return []fluent.Value{*id}
 		}
-	case bloblink.EdgeLink:
+	case blob_link.EdgeLink:
 		if id := m.link; id != nil {
 			return []fluent.Value{*id}
 		}
@@ -1429,10 +1429,10 @@ func (m *BlobLinkMutation) RemovedIDs(name string) []fluent.Value {
 func (m *BlobLinkMutation) ClearedEdges() []string {
 	edges := make([]string, 0, 2)
 	if m.clearedblob {
-		edges = append(edges, bloblink.EdgeBlob)
+		edges = append(edges, blob_link.EdgeBlob)
 	}
 	if m.clearedlink {
-		edges = append(edges, bloblink.EdgeLink)
+		edges = append(edges, blob_link.EdgeLink)
 	}
 	return edges
 }
@@ -1441,9 +1441,9 @@ func (m *BlobLinkMutation) ClearedEdges() []string {
 // was cleared in this mutation.
 func (m *BlobLinkMutation) EdgeCleared(name string) bool {
 	switch name {
-	case bloblink.EdgeBlob:
+	case blob_link.EdgeBlob:
 		return m.clearedblob
-	case bloblink.EdgeLink:
+	case blob_link.EdgeLink:
 		return m.clearedlink
 	}
 	return false
@@ -1453,10 +1453,10 @@ func (m *BlobLinkMutation) EdgeCleared(name string) bool {
 // if that edge is not defined in the schema.
 func (m *BlobLinkMutation) ClearEdge(name string) error {
 	switch name {
-	case bloblink.EdgeBlob:
+	case blob_link.EdgeBlob:
 		m.ClearBlob()
 		return nil
-	case bloblink.EdgeLink:
+	case blob_link.EdgeLink:
 		m.ClearLink()
 		return nil
 	}
@@ -1467,10 +1467,10 @@ func (m *BlobLinkMutation) ClearEdge(name string) error {
 // It returns an error if the edge is not defined in the schema.
 func (m *BlobLinkMutation) ResetEdge(name string) error {
 	switch name {
-	case bloblink.EdgeBlob:
+	case blob_link.EdgeBlob:
 		m.ResetBlob()
 		return nil
-	case bloblink.EdgeLink:
+	case blob_link.EdgeLink:
 		m.ResetLink()
 		return nil
 	}
@@ -3794,10 +3794,10 @@ func (m *IntSIDMutation) ResetField(name string) error {
 func (m *IntSIDMutation) AddedEdges() []string {
 	edges := make([]string, 0, 2)
 	if m.parent != nil {
-		edges = append(edges, intsid.EdgeParent)
+		edges = append(edges, int_s_i_d.EdgeParent)
 	}
 	if m.children != nil {
-		edges = append(edges, intsid.EdgeChildren)
+		edges = append(edges, int_s_i_d.EdgeChildren)
 	}
 	return edges
 }
@@ -3806,11 +3806,11 @@ func (m *IntSIDMutation) AddedEdges() []string {
 // name in this mutation.
 func (m *IntSIDMutation) AddedIDs(name string) []fluent.Value {
 	switch name {
-	case intsid.EdgeParent:
+	case int_s_i_d.EdgeParent:
 		if id := m.parent; id != nil {
 			return []fluent.Value{*id}
 		}
-	case intsid.EdgeChildren:
+	case int_s_i_d.EdgeChildren:
 		ids := make([]fluent.Value, 0, len(m.children))
 		for id := range m.children {
 			ids = append(ids, id)
@@ -3824,7 +3824,7 @@ func (m *IntSIDMutation) AddedIDs(name string) []fluent.Value {
 func (m *IntSIDMutation) RemovedEdges() []string {
 	edges := make([]string, 0, 2)
 	if m.removedchildren != nil {
-		edges = append(edges, intsid.EdgeChildren)
+		edges = append(edges, int_s_i_d.EdgeChildren)
 	}
 	return edges
 }
@@ -3833,7 +3833,7 @@ func (m *IntSIDMutation) RemovedEdges() []string {
 // the given name in this mutation.
 func (m *IntSIDMutation) RemovedIDs(name string) []fluent.Value {
 	switch name {
-	case intsid.EdgeChildren:
+	case int_s_i_d.EdgeChildren:
 		ids := make([]fluent.Value, 0, len(m.removedchildren))
 		for id := range m.removedchildren {
 			ids = append(ids, id)
@@ -3847,10 +3847,10 @@ func (m *IntSIDMutation) RemovedIDs(name string) []fluent.Value {
 func (m *IntSIDMutation) ClearedEdges() []string {
 	edges := make([]string, 0, 2)
 	if m.clearedparent {
-		edges = append(edges, intsid.EdgeParent)
+		edges = append(edges, int_s_i_d.EdgeParent)
 	}
 	if m.clearedchildren {
-		edges = append(edges, intsid.EdgeChildren)
+		edges = append(edges, int_s_i_d.EdgeChildren)
 	}
 	return edges
 }
@@ -3859,9 +3859,9 @@ func (m *IntSIDMutation) ClearedEdges() []string {
 // was cleared in this mutation.
 func (m *IntSIDMutation) EdgeCleared(name string) bool {
 	switch name {
-	case intsid.EdgeParent:
+	case int_s_i_d.EdgeParent:
 		return m.clearedparent
-	case intsid.EdgeChildren:
+	case int_s_i_d.EdgeChildren:
 		return m.clearedchildren
 	}
 	return false
@@ -3871,7 +3871,7 @@ func (m *IntSIDMutation) EdgeCleared(name string) bool {
 // if that edge is not defined in the schema.
 func (m *IntSIDMutation) ClearEdge(name string) error {
 	switch name {
-	case intsid.EdgeParent:
+	case int_s_i_d.EdgeParent:
 		m.ClearParent()
 		return nil
 	}
@@ -3882,10 +3882,10 @@ func (m *IntSIDMutation) ClearEdge(name string) error {
 // It returns an error if the edge is not defined in the schema.
 func (m *IntSIDMutation) ResetEdge(name string) error {
 	switch name {
-	case intsid.EdgeParent:
+	case int_s_i_d.EdgeParent:
 		m.ResetParent()
 		return nil
-	case intsid.EdgeChildren:
+	case int_s_i_d.EdgeChildren:
 		m.ResetChildren()
 		return nil
 	}
@@ -4450,10 +4450,10 @@ func (m *MixinIDMutation) Type() string {
 func (m *MixinIDMutation) Fields() []string {
 	fields := make([]string, 0, 2)
 	if m.some_field != nil {
-		fields = append(fields, mixinid.FieldSomeField)
+		fields = append(fields, mixin_i_d.FieldSomeField)
 	}
 	if m.mixin_field != nil {
-		fields = append(fields, mixinid.FieldMixinField)
+		fields = append(fields, mixin_i_d.FieldMixinField)
 	}
 	return fields
 }
@@ -4463,9 +4463,9 @@ func (m *MixinIDMutation) Fields() []string {
 // schema.
 func (m *MixinIDMutation) Field(name string) (fluent.Value, bool) {
 	switch name {
-	case mixinid.FieldSomeField:
+	case mixin_i_d.FieldSomeField:
 		return m.SomeField()
-	case mixinid.FieldMixinField:
+	case mixin_i_d.FieldMixinField:
 		return m.MixinField()
 	}
 	return nil, false
@@ -4476,9 +4476,9 @@ func (m *MixinIDMutation) Field(name string) (fluent.Value, bool) {
 // database failed.
 func (m *MixinIDMutation) OldField(ctx context.Context, name string) (fluent.Value, error) {
 	switch name {
-	case mixinid.FieldSomeField:
+	case mixin_i_d.FieldSomeField:
 		return m.OldSomeField(ctx)
-	case mixinid.FieldMixinField:
+	case mixin_i_d.FieldMixinField:
 		return m.OldMixinField(ctx)
 	}
 	return nil, fmt.Errorf("unknown MixinID field %s", name)
@@ -4489,14 +4489,14 @@ func (m *MixinIDMutation) OldField(ctx context.Context, name string) (fluent.Val
 // type.
 func (m *MixinIDMutation) SetField(name string, value fluent.Value) error {
 	switch name {
-	case mixinid.FieldSomeField:
+	case mixin_i_d.FieldSomeField:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetSomeField(v)
 		return nil
-	case mixinid.FieldMixinField:
+	case mixin_i_d.FieldMixinField:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -4552,10 +4552,10 @@ func (m *MixinIDMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *MixinIDMutation) ResetField(name string) error {
 	switch name {
-	case mixinid.FieldSomeField:
+	case mixin_i_d.FieldSomeField:
 		m.ResetSomeField()
 		return nil
-	case mixinid.FieldMixinField:
+	case mixin_i_d.FieldMixinField:
 		m.ResetMixinField()
 		return nil
 	}

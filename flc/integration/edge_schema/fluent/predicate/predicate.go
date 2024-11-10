@@ -9,7 +9,7 @@ import (
 	"github.com/usalko/fluent/dialect/sql"
 )
 
-// AttachedFile is the predicate function for attachedfile builders.
+// AttachedFile is the predicate function for attached_file builders.
 type AttachedFile func(*sql.Selector)
 
 // File is the predicate function for file builders.
@@ -21,7 +21,7 @@ type Friendship func(*sql.Selector)
 // Group is the predicate function for group builders.
 type Group func(*sql.Selector)
 
-// GroupTag is the predicate function for grouptag builders.
+// GroupTag is the predicate function for group_tag builders.
 type GroupTag func(*sql.Selector)
 
 // Process is the predicate function for process builders.
@@ -30,13 +30,13 @@ type Process func(*sql.Selector)
 // Relationship is the predicate function for relationship builders.
 type Relationship func(*sql.Selector)
 
-// RelationshipInfo is the predicate function for relationshipinfo builders.
+// RelationshipInfo is the predicate function for relationship_info builders.
 type RelationshipInfo func(*sql.Selector)
 
 // Role is the predicate function for role builders.
 type Role func(*sql.Selector)
 
-// RoleUser is the predicate function for roleuser builders.
+// RoleUser is the predicate function for role_user builders.
 type RoleUser func(*sql.Selector)
 
 // Tag is the predicate function for tag builders.
@@ -45,17 +45,17 @@ type Tag func(*sql.Selector)
 // Tweet is the predicate function for tweet builders.
 type Tweet func(*sql.Selector)
 
-// TweetLike is the predicate function for tweetlike builders.
+// TweetLike is the predicate function for tweet_like builders.
 type TweetLike func(*sql.Selector)
 
-// TweetTag is the predicate function for tweettag builders.
+// TweetTag is the predicate function for tweet_tag builders.
 type TweetTag func(*sql.Selector)
 
 // User is the predicate function for user builders.
 type User func(*sql.Selector)
 
-// UserGroup is the predicate function for usergroup builders.
+// UserGroup is the predicate function for user_group builders.
 type UserGroup func(*sql.Selector)
 
-// UserTweet is the predicate function for usertweet builders.
+// UserTweet is the predicate function for user_tweet builders.
 type UserTweet func(*sql.Selector)

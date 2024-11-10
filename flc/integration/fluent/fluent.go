@@ -19,17 +19,17 @@ import (
 	"github.com/usalko/fluent/flc/integration/fluent/builder"
 	"github.com/usalko/fluent/flc/integration/fluent/card"
 	"github.com/usalko/fluent/flc/integration/fluent/comment"
-	"github.com/usalko/fluent/flc/integration/fluent/exvaluescan"
-	"github.com/usalko/fluent/flc/integration/fluent/fieldtype"
+	"github.com/usalko/fluent/flc/integration/fluent/ex_value_scan"
+	"github.com/usalko/fluent/flc/integration/fluent/field_type"
 	"github.com/usalko/fluent/flc/integration/fluent/file"
-	"github.com/usalko/fluent/flc/integration/fluent/filetype"
+	"github.com/usalko/fluent/flc/integration/fluent/file_type"
 	"github.com/usalko/fluent/flc/integration/fluent/goods"
 	"github.com/usalko/fluent/flc/integration/fluent/group"
-	"github.com/usalko/fluent/flc/integration/fluent/groupinfo"
+	"github.com/usalko/fluent/flc/integration/fluent/group_info"
 	"github.com/usalko/fluent/flc/integration/fluent/item"
 	"github.com/usalko/fluent/flc/integration/fluent/license"
 	"github.com/usalko/fluent/flc/integration/fluent/node"
-	"github.com/usalko/fluent/flc/integration/fluent/pc"
+	"github.com/usalko/fluent/flc/integration/fluent/p_c"
 	"github.com/usalko/fluent/flc/integration/fluent/pet"
 	"github.com/usalko/fluent/flc/integration/fluent/spec"
 
@@ -95,25 +95,25 @@ var (
 func checkColumn(table, column string) error {
 	initCheck.Do(func() {
 		columnCheck = sql.NewColumnCheck(map[string]func(string) bool{
-			api.Table:         api.ValidColumn,
-			builder.Table:     builder.ValidColumn,
-			card.Table:        card.ValidColumn,
-			comment.Table:     comment.ValidColumn,
-			exvaluescan.Table: exvaluescan.ValidColumn,
-			fieldtype.Table:   fieldtype.ValidColumn,
-			file.Table:        file.ValidColumn,
-			filetype.Table:    filetype.ValidColumn,
-			goods.Table:       goods.ValidColumn,
-			group.Table:       group.ValidColumn,
-			groupinfo.Table:   groupinfo.ValidColumn,
-			item.Table:        item.ValidColumn,
-			license.Table:     license.ValidColumn,
-			node.Table:        node.ValidColumn,
-			pc.Table:          pc.ValidColumn,
-			pet.Table:         pet.ValidColumn,
-			spec.Table:        spec.ValidColumn,
-			fluenttask.Table:  fluenttask.ValidColumn,
-			user.Table:        user.ValidColumn,
+			api.Table:           api.ValidColumn,
+			builder.Table:       builder.ValidColumn,
+			card.Table:          card.ValidColumn,
+			comment.Table:       comment.ValidColumn,
+			ex_value_scan.Table: ex_value_scan.ValidColumn,
+			field_type.Table:    field_type.ValidColumn,
+			file.Table:          file.ValidColumn,
+			file_type.Table:     file_type.ValidColumn,
+			goods.Table:         goods.ValidColumn,
+			group.Table:         group.ValidColumn,
+			group_info.Table:    group_info.ValidColumn,
+			item.Table:          item.ValidColumn,
+			license.Table:       license.ValidColumn,
+			node.Table:          node.ValidColumn,
+			p_c.Table:           p_c.ValidColumn,
+			pet.Table:           pet.ValidColumn,
+			spec.Table:          spec.ValidColumn,
+			fluenttask.Table:    fluenttask.ValidColumn,
+			user.Table:          user.ValidColumn,
 		})
 	})
 	return columnCheck(table, column)

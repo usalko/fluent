@@ -19,7 +19,7 @@ import (
 	"github.com/usalko/fluent/examples/migration/fluent/payment"
 	"github.com/usalko/fluent/examples/migration/fluent/pet"
 	"github.com/usalko/fluent/examples/migration/fluent/session"
-	"github.com/usalko/fluent/examples/migration/fluent/sessiondevice"
+	"github.com/usalko/fluent/examples/migration/fluent/session_device"
 	"github.com/usalko/fluent/examples/migration/fluent/user"
 )
 
@@ -81,12 +81,12 @@ var (
 func checkColumn(table, column string) error {
 	initCheck.Do(func() {
 		columnCheck = sql.NewColumnCheck(map[string]func(string) bool{
-			card.Table:          card.ValidColumn,
-			payment.Table:       payment.ValidColumn,
-			pet.Table:           pet.ValidColumn,
-			session.Table:       session.ValidColumn,
-			sessiondevice.Table: sessiondevice.ValidColumn,
-			user.Table:          user.ValidColumn,
+			card.Table:           card.ValidColumn,
+			payment.Table:        payment.ValidColumn,
+			pet.Table:            pet.ValidColumn,
+			session.Table:        session.ValidColumn,
+			session_device.Table: session_device.ValidColumn,
+			user.Table:           user.ValidColumn,
 		})
 	})
 	return columnCheck(table, column)
