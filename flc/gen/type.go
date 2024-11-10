@@ -325,7 +325,9 @@ func (t Type) Package() string {
 }
 
 // PackageDir returns the name of the package directory.
-func (t Type) PackageDir() string { return strings.ToLower(t.Name) }
+func (t Type) PackageDir() string {
+	return ToSnakeCaseSpecialFromCamel(t.Name)
+}
 
 // PackageAlias returns local package name of a type if there is one.
 // A package has an alias if its generated name conflicts with
