@@ -30,7 +30,7 @@ require (
 	github.com/json-iterator/go v1.1.12
 	github.com/oklog/ulid/v2 v2.1.0
 	go.opencensus.io v0.24.0
-	golang.org/x/exp v0.0.0-2024110.1.1413-2d47ceb2692f
+	golang.org/x/exp v0.0.0-20241108190413-2d47ceb2692f
 )
 
 require (

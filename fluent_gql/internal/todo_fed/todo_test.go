@@ -33,6 +33,7 @@ import (
 	gen "github.com/usalko/fluent/fluent_gql/internal/todo_fed"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/category"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/fluent_test"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/migrate"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/todo"
 	"github.com/vektah/gqlparser/v2/gqlerror"
