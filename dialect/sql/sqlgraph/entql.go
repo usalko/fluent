@@ -11,7 +11,7 @@ import (
 )
 
 type (
-	// A Schema holds a representation of ent/schema at runtime. Each Node
+	// A Schema holds a representation of fluent/schema at runtime. Each Node
 	// represents a single schema-type and its relations in the graph (storage).
 	//
 	// It is used for translating common graph traversal operations to the
@@ -22,7 +22,7 @@ type (
 		Nodes []*Node
 	}
 
-	// A Node in the graph holds the SQL information for an ent/schema.
+	// A Node in the graph holds the SQL information for an fluent/schema.
 	Node struct {
 		NodeSpec
 

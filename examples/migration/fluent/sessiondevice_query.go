@@ -348,7 +348,7 @@ func (sdq *SessionDeviceQuery) Aggregate(fns ...AggregateFunc) *SessionDeviceSel
 func (sdq *SessionDeviceQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range sdq.inters {
 		if inter == nil {
-			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import fluent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, sdq); err != nil {

@@ -124,7 +124,7 @@ var (
 // WithWhereInputs configures the extension to either add or
 // remove the WhereTemplate from the code generation templates.
 //
-// The WhereTemplate generates GraphQL filters to all types in the ent/schema.
+// The WhereTemplate generates GraphQL filters to all types in the fluent/schema.
 func WithWhereInputs(b bool) ExtensionOption {
 	return func(ex *Extension) error {
 		ex.genWhereInput = b

@@ -86,7 +86,7 @@ func main() {
         flc.FeatureNames("intercept"),
 	}
     if err := flc.Generate("./schema", &gen.Config{}, opts...); err != nil {
-		log.Fatalf("running ent codegen: %v", err)
+		log.Fatalf("running fluent codegen: %v", err)
 	}
 }
 ```
@@ -110,7 +110,7 @@ opts := []flc.Option{
 :::important
 You should notice that similar to [schema hooks](hooks.md#hooks-registration), if you use the **`Interceptors`** option
 in your schema, you **MUST** add the following import in the main package, because a circular import is possible between
-the schema package and the generated ent package:
+the schema package and the generated fluent package:
 ```go
 import _ "<project>/fluent/runtime"
 ```

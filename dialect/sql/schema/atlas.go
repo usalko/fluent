@@ -772,7 +772,7 @@ func (a *Atlas) planReplay(ctx context.Context, name string, tables []*Table) (*
 	if err != nil {
 		return nil, err
 	}
-	// In case of replay mode, normalize the desired state (i.e. ent/schema).
+	// In case of replay mode, normalize the desired state (i.e. fluent/schema).
 	if nr, ok := a.atDriver.(schema.Normalizer); ok {
 		ns, err := nr.NormalizeSchema(ctx, schema.New(current.Name).AddTables(desired...))
 		if err != nil {

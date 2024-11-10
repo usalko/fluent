@@ -321,7 +321,7 @@ func (wq *WorkspaceQuery) Aggregate(fns ...AggregateFunc) *WorkspaceSelect {
 func (wq *WorkspaceQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range wq.inters {
 		if inter == nil {
-			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import fluent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, wq); err != nil {

@@ -310,7 +310,7 @@ func (tlq *TweetLikeQuery) Aggregate(fns ...AggregateFunc) *TweetLikeSelect {
 func (tlq *TweetLikeQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range tlq.inters {
 		if inter == nil {
-			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import fluent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, tlq); err != nil {
@@ -331,7 +331,7 @@ func (tlq *TweetLikeQuery) prepareQuery(ctx context.Context) error {
 		tlq.sql = prev
 	}
 	if tweetlike.Policy == nil {
-		return errors.New("fluent: uninitialized tweetlike.Policy (forgotten import ent/runtime?)")
+		return errors.New("fluent: uninitialized tweetlike.Policy (forgotten import fluent/runtime?)")
 	}
 	if err := tweetlike.Policy.EvalQuery(ctx, tlq); err != nil {
 		return err

@@ -313,7 +313,7 @@ func (tq *TaskQuery) Aggregate(fns ...AggregateFunc) *TaskSelect {
 func (tq *TaskQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range tq.inters {
 		if inter == nil {
-			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import fluent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, tq); err != nil {

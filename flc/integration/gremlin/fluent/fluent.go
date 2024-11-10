@@ -521,7 +521,7 @@ func withHooks[V Value, M any, PM interface {
 	})
 	for i := len(hooks) - 1; i >= 0; i-- {
 		if hooks[i] == nil {
-			return value, fmt.Errorf("fluent: uninitialized hook (forgotten import ent/runtime?)")
+			return value, fmt.Errorf("fluent: uninitialized hook (forgotten import fluent/runtime?)")
 		}
 		mut = hooks[i](mut)
 	}

@@ -12,7 +12,7 @@ cd ent-grpc-example
 go mod init ent-grpc-example
 ```
 
-Next, we use `go run` to invoke the ent code generator to initialize a schema:
+Next, we use `go run` to invoke the fluent code generator to initialize a schema:
 
 ```console
 go run -mod=mod github.com/usalko/fluent/cmd/fluent new User

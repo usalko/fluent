@@ -291,7 +291,7 @@ func (gq *GoodsQuery) Aggregate(fns ...AggregateFunc) *GoodsSelect {
 func (gq *GoodsQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range gq.inters {
 		if inter == nil {
-			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import fluent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, gq); err != nil {

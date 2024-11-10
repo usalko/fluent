@@ -9,7 +9,7 @@ import (
 	"github.com/usalko/fluent/schema/field"
 )
 
-// An example for an ent/schema that uses struct embedding to define default table schema (in the database).
+// An example for an fluent/schema that uses struct embedding to define default table schema (in the database).
 
 // Group holds the schema definition for the Group entity.
 type Group struct {

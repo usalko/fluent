@@ -345,7 +345,7 @@ func (rq *RelationshipQuery) Aggregate(fns ...AggregateFunc) *RelationshipSelect
 func (rq *RelationshipQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range rq.inters {
 		if inter == nil {
-			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import fluent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, rq); err != nil {
@@ -366,7 +366,7 @@ func (rq *RelationshipQuery) prepareQuery(ctx context.Context) error {
 		rq.sql = prev
 	}
 	if relationship.Policy == nil {
-		return errors.New("fluent: uninitialized relationship.Policy (forgotten import ent/runtime?)")
+		return errors.New("fluent: uninitialized relationship.Policy (forgotten import fluent/runtime?)")
 	}
 	if err := relationship.Policy.EvalQuery(ctx, rq); err != nil {
 		return err

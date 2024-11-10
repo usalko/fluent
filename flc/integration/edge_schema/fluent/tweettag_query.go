@@ -383,7 +383,7 @@ func (ttq *TweetTagQuery) Aggregate(fns ...AggregateFunc) *TweetTagSelect {
 func (ttq *TweetTagQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range ttq.inters {
 		if inter == nil {
-			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import fluent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, ttq); err != nil {

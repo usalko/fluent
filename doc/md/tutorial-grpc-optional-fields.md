@@ -18,9 +18,9 @@ message BoolValue {
   bool value = 1;
 }
 ```
-When `entproto` generates a Protobuf message definition, it uses these wrapper types to represent "Optional" ent fields.
+When `entproto` generates a Protobuf message definition, it uses these wrapper types to represent "Optional" fluent fields.
 
-Let's see this in action, modifying our ent schema to include an optional field:
+Let's see this in action, modifying our fluent schema to include an optional field:
 
 ```go title="fluent/schema/user.go" {14-16}
 // Fields of the User.

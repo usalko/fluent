@@ -453,7 +453,7 @@ func (uq *UserQuery) Aggregate(fns ...AggregateFunc) *UserSelect {
 func (uq *UserQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range uq.inters {
 		if inter == nil {
-			return fmt.Errorf("fluentv1: uninitialized interceptor (forgotten import entv1/runtime?)")
+			return fmt.Errorf("fluentv1: uninitialized interceptor (forgotten import fluentv1/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, uq); err != nil {

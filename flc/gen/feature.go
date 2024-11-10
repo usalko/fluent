@@ -60,12 +60,12 @@ var (
 		Description: "This features guides Ent to set two-way references when loading (O2M/O2O) edges",
 	}
 
-	// FeatureSnapshot stores a snapshot of ent/schema and auto-solve merge-conflict (issue #852).
+	// FeatureSnapshot stores a snapshot of fluent/schema and auto-solve merge-conflict (issue #852).
 	FeatureSnapshot = Feature{
 		Name:        "schema/snapshot",
 		Stage:       Experimental,
 		Default:     false,
-		Description: "Schema snapshot stores a snapshot of ent/schema and auto-solve merge-conflict (issue #852)",
+		Description: "Schema snapshot stores a snapshot of fluent/schema and auto-solve merge-conflict (issue #852)",
 		GraphTemplates: []GraphTemplate{
 			{
 				Name:   "internal/schema",
@@ -96,7 +96,7 @@ var (
 		},
 	}
 
-	// featureMultiSchema indicates that ent/schema is annotated with multiple schemas.
+	// featureMultiSchema indicates that fluent/schema is annotated with multiple schemas.
 	// This feature-flag is enabled by default by the storage driver and exists to pass
 	// this info to the templates.
 	featureMultiSchema = Feature{

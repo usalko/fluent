@@ -393,7 +393,7 @@ func (otmq *OneToManyQuery) Aggregate(fns ...AggregateFunc) *OneToManySelect {
 func (otmq *OneToManyQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range otmq.inters {
 		if inter == nil {
-			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import fluent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, otmq); err != nil {

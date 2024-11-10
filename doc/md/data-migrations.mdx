@@ -228,7 +228,7 @@ valid and achieve the intended results. The following process can be done manual
 
 ```shell
 # Total number of files.
-number_of_files=$(ls ent/migrate/migrations/*.sql | wc -l)
+number_of_files=$(ls fluent/migrate/migrations/*.sql | wc -l)
 
 # Execute all files without the latest.
 atlas migrate apply $[number_of_files-1] \

@@ -44,7 +44,7 @@ func main() {
 		},
 	}, opts...)
 	if err != nil {
-		log.Fatal("running ent codegen:", err)
+		log.Fatal("running fluent codegen:", err)
 	}
 }
 ```

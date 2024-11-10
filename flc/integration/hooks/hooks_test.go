@@ -407,7 +407,7 @@ func TestOldValues(t *testing.T) {
 			require.NoError(t, err)
 			return value, nil
 		})
-	}, ^ent.OpUpdateOne))
+	}, ^fluent.OpUpdateOne))
 	a8m := client.User.Create().SetName("a8m").SaveX(ctx)
 	require.Equal(t, "a8m", a8m.Name)
 	err := client.User.UpdateOne(a8m).SetName("Ariel").SetVersion(a8m.Version).Exec(ctx)

@@ -63,7 +63,7 @@ func NewSchemaConfigContext(parent context.Context, config SchemaConfig) context
 		type SchemaConfig = internal.SchemaConfig
 
 		// AlternateSchemas allows alternate schema names to be
-		// passed into ent operations.
+		// passed into fluent operations.
 		func AlternateSchema(schemaConfig SchemaConfig) Option {
 			return func(c *config) {
 				c.schemaConfig = schemaConfig
@@ -202,7 +202,7 @@ func NewSchemaConfigContext(parent context.Context, config SchemaConfig) context
 	{{- if $.FeatureEnabled "sql/multi_schema" }}
 		{{- $all := $.TableSchemas }}
 		var (
-			// DefaultSchemaConfig represents the default schema names for all tables as defined in ent/schema.
+			// DefaultSchemaConfig represents the default schema names for all tables as defined in fluent/schema.
 			DefaultSchemaConfig = SchemaConfig {
 				{{- range $n := $.Nodes }}
 					{{ $n.Name }}: tableSchemas[{{ indexOf $all $n.TableSchema }}],

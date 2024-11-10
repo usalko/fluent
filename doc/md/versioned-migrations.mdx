@@ -122,7 +122,7 @@ To enable the [`GlobalUniqueID`](migrate.md#universal-ids) option in versioned m
 `globalid=1` to the desired state. For example: `--to "fluent://fluent/schema?globalid=1"`.
 :::
 
-Run `ls ent/migrate/migrations` after the command above was passed successfully, and you will notice Atlas created 2
+Run `ls fluent/migrate/migrations` after the command above was passed successfully, and you will notice Atlas created 2
 files:
 
 <Tabs
@@ -204,7 +204,7 @@ func main() {
 		Features: []gen.Feature{gen.FeatureVersionedMigration},
 	})
 	if err != nil {
-		log.Fatalf("running ent codegen: %v", err)
+		log.Fatalf("running fluent codegen: %v", err)
 	}
 }
 ```
@@ -295,7 +295,7 @@ func main() {
 		schema.WithFormatter(atlas.DefaultFormatter),
 	}
 	if len(os.Args) != 2 {
-		log.Fatalln("migration name is required. Use: 'go run -mod=mod ent/migrate/main.go <name>'")
+		log.Fatalln("migration name is required. Use: 'go run -mod=mod fluent/migrate/main.go <name>'")
 	}
 	// Generate migrations using Atlas support for MySQL (note the Ent dialect option passed above).
 	err = migrate.NamedDiff(ctx, "mysql://root:pass@localhost:3306/test", os.Args[1], opts...)
@@ -340,7 +340,7 @@ func main() {
 		schema.WithDialect(dialect.MySQL),           // Ent dialect to use
 	}
 	if len(os.Args) != 2 {
-		log.Fatalln("migration name is required. Use: 'go run -mod=mod ent/migrate/main.go <name>'")
+		log.Fatalln("migration name is required. Use: 'go run -mod=mod fluent/migrate/main.go <name>'")
 	}
 	// Generate migrations using Atlas support for MySQL (note the Ent dialect option passed above).
 	err = migrate.NamedDiff(ctx, "mysql://root:pass@localhost:3306/test", os.Args[1], opts...)
@@ -385,7 +385,7 @@ func main() {
 		schema.WithDialect(dialect.MySQL),           // Ent dialect to use
 	}
 	if len(os.Args) != 2 {
-		log.Fatalln("migration name is required. Use: 'go run -mod=mod ent/migrate/main.go <name>'")
+		log.Fatalln("migration name is required. Use: 'go run -mod=mod fluent/migrate/main.go <name>'")
 	}
 	// Generate migrations using Atlas support for MySQL (note the Ent dialect option passed above).
 	err = migrate.NamedDiff(ctx, "mysql://root:pass@localhost:3306/test", os.Args[1], opts...)
@@ -430,7 +430,7 @@ func main() {
 		schema.WithDialect(dialect.MySQL),           // Ent dialect to use
 	}
 	if len(os.Args) != 2 {
-		log.Fatalln("migration name is required. Use: 'go run -mod=mod ent/migrate/main.go <name>'")
+		log.Fatalln("migration name is required. Use: 'go run -mod=mod fluent/migrate/main.go <name>'")
 	}
 	// Generate migrations using Atlas support for MySQL (note the Ent dialect option passed above).
 	err = migrate.NamedDiff(ctx, "mysql://root:pass@localhost:3306/test", os.Args[1], opts...)
@@ -475,7 +475,7 @@ func main() {
 		schema.WithDialect(dialect.MySQL),           // Ent dialect to use
 	}
 	if len(os.Args) != 2 {
-		log.Fatalln("migration name is required. Use: 'go run -mod=mod ent/migrate/main.go <name>'")
+		log.Fatalln("migration name is required. Use: 'go run -mod=mod fluent/migrate/main.go <name>'")
 	}
 	// Generate migrations using Atlas support for MySQL (note the Ent dialect option passed above).
 	err = migrate.NamedDiff(ctx, "mysql://root:pass@localhost:3306/test", os.Args[1], opts...)
@@ -520,7 +520,7 @@ func main() {
 		schema.WithDialect(dialect.MySQL),           // Ent dialect to use
 	}
 	if len(os.Args) != 2 {
-		log.Fatalln("migration name is required. Use: 'go run -mod=mod ent/migrate/main.go <name>'")
+		log.Fatalln("migration name is required. Use: 'go run -mod=mod fluent/migrate/main.go <name>'")
 	}
 	// Generate migrations using Atlas support for MySQL (note the Ent dialect option passed above).
 	err = migrate.NamedDiff(ctx, "mysql://root:pass@localhost:3306/test", os.Args[1], opts...)
@@ -533,14 +533,14 @@ func main() {
 </TabItem>
 </Tabs>
 
-3\. Trigger migration generation by executing `go run -mod=mod ent/migrate/main.go <name>` from the root of the project.
+3\. Trigger migration generation by executing `go run -mod=mod fluent/migrate/main.go <name>` from the root of the project.
 For example:
 
 ```bash
-go run -mod=mod ent/migrate/main.go create_users
+go run -mod=mod fluent/migrate/main.go create_users
 ```
 
-Run `ls ent/migrate/migrations` after the command above was passed successfully, and you will notice Atlas created 2
+Run `ls fluent/migrate/migrations` after the command above was passed successfully, and you will notice Atlas created 2
 files:
 
 <Tabs

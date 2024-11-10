@@ -12,7 +12,7 @@ import (
 	"github.com/usalko/fluent/schema/index"
 )
 
-// An example for an ent/schema that mixed in an ent/mixin to define default table schema (in the database).
+// An example for an fluent/schema that mixed in an fluent/mixin to define default table schema (in the database).
 
 // Friendship holds the edge schema definition of the Friendship relationship.
 type Friendship struct {

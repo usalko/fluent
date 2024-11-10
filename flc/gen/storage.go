@@ -154,7 +154,7 @@ func opCodes(codes []string) func(Op) string {
 	}
 }
 
-// TableSchemas returns all table schemas in ent/schema (intentionally exported).
+// TableSchemas returns all table schemas in fluent/schema (intentionally exported).
 func (g *Graph) TableSchemas() ([]string, error) {
 	all := make(map[string]struct{})
 	for _, n := range g.Nodes {

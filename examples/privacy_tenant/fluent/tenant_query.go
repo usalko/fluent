@@ -311,7 +311,7 @@ func (tq *TenantQuery) Aggregate(fns ...AggregateFunc) *TenantSelect {
 func (tq *TenantQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range tq.inters {
 		if inter == nil {
-			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import fluent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, tq); err != nil {
@@ -332,7 +332,7 @@ func (tq *TenantQuery) prepareQuery(ctx context.Context) error {
 		tq.sql = prev
 	}
 	if tenant.Policy == nil {
-		return errors.New("fluent: uninitialized tenant.Policy (forgotten import ent/runtime?)")
+		return errors.New("fluent: uninitialized tenant.Policy (forgotten import fluent/runtime?)")
 	}
 	if err := tenant.Policy.EvalQuery(ctx, tq); err != nil {
 		return err

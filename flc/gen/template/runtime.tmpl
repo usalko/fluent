@@ -28,10 +28,10 @@ backwards-compatibility with previous versions of fluent.
 	{{ if or $module.Version $module.Sum }}
 	const (
 		{{- with $module.Version }}
-			Version = "{{ . }}" // Version of ent codegen.
+			Version = "{{ . }}" // Version of fluent codegen.
 		{{- end }}
 		{{- with $module.Sum }}
-			Sum = "{{ . }}" // Sum of ent codegen.
+			Sum = "{{ . }}" // Sum of fluent codegen.
 		{{- end }}
 	)
 	{{ end }}
@@ -54,7 +54,7 @@ backwards-compatibility with previous versions of fluent.
 	{{ else }}
 		// The schema-stitching logic is generated in {{ $.Config.Package }}/runtime.go
 	{{ end }}
-{{ else }}{{/* 2nd format - ent/runtime.go */}}
+{{ else }}{{/* 2nd format - fluent/runtime.go */}}
 	{{ if not $hooks  }}
 		{{ template "runtime/register" $ }}
 	{{ else }}

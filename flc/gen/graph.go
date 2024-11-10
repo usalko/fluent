@@ -31,7 +31,7 @@ type (
 	// The Config holds the global codegen configuration to be
 	// shared between all generated nodes.
 	Config struct {
-		// Schema holds the Go package path for the user ent/schema.
+		// Schema holds the Go package path for the user fluent/schema.
 		// For example, "<project>/fluent/schema".
 		Schema string
 
@@ -1092,7 +1092,7 @@ func cleanOldNodes(assets assets, target string) {
 		if _, ok := assets.dirs[path]; ok {
 			continue
 		}
-		// If it is a node, it must have a model file and a dir (e.g. ent/t.go, ent/t).
+		// If it is a node, it must have a model file and a dir (e.g. fluent/t.go, fluent/t).
 		_, err1 := os.Stat(path + ".go")
 		f2, err2 := os.Stat(path)
 		if err1 == nil && err2 == nil && f2.IsDir() {

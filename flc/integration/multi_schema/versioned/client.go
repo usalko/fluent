@@ -968,7 +968,7 @@ type (
 )
 
 var (
-	// DefaultSchemaConfig represents the default schema names for all tables as defined in ent/schema.
+	// DefaultSchemaConfig represents the default schema names for all tables as defined in fluent/schema.
 	DefaultSchemaConfig = SchemaConfig{
 		Friendship:    tableSchemas[0],
 		Group:         tableSchemas[0],

@@ -741,7 +741,7 @@ func (uq *UserQuery) Aggregate(fns ...AggregateFunc) *UserSelect {
 func (uq *UserQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range uq.inters {
 		if inter == nil {
-			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import fluent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, uq); err != nil {
@@ -762,7 +762,7 @@ func (uq *UserQuery) prepareQuery(ctx context.Context) error {
 		uq.sql = prev
 	}
 	if user.Policy == nil {
-		return errors.New("fluent: uninitialized user.Policy (forgotten import ent/runtime?)")
+		return errors.New("fluent: uninitialized user.Policy (forgotten import fluent/runtime?)")
 	}
 	if err := user.Policy.EvalQuery(ctx, uq); err != nil {
 		return err

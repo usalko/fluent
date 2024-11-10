@@ -60,7 +60,7 @@ func ({{ $receiver }} *{{ $builder }}) sqlAll(ctx context.Context, hooks ...quer
 		{{- end }}
 		return node.assignValues(columns, values)
 	}
-	{{- /* Allow mutating the sqlgraph.QuerySpec by ent extensions or user templates.*/}}
+	{{- /* Allow mutating the sqlgraph.QuerySpec by fluent extensions or user templates.*/}}
 	{{- with $tmpls := matchTemplate "dialect/sql/query/spec/*" }}
 		{{- range $tmpl := $tmpls }}
 			{{- xtemplate $tmpl $ }}
@@ -262,7 +262,7 @@ func ({{ $receiver }} *{{ $builder }}) sqlAll(ctx context.Context, hooks ...quer
 
 func ({{ $receiver }} *{{ $builder }}) sqlCount(ctx context.Context) (int, error) {
 	_spec := {{ $receiver }}.querySpec()
-	{{- /* Allow mutating the sqlgraph.QuerySpec by ent extensions or user templates. */}}
+	{{- /* Allow mutating the sqlgraph.QuerySpec by fluent extensions or user templates. */}}
 	{{- with $tmpls := matchTemplate "dialect/sql/query/spec/*" }}
 		{{- range $tmpl := $tmpls }}
 			{{- xtemplate $tmpl $ }}
@@ -341,7 +341,7 @@ func ({{ $receiver }} *{{ $builder }}) querySpec() *sqlgraph.QuerySpec {
 
 {{ template "dialect/sql/query/selector" $ }}
 
-{{- /* Allow adding methods to the query-builder by ent extensions or user templates.*/}}
+{{- /* Allow adding methods to the query-builder by fluent extensions or user templates.*/}}
 {{- with $tmpls := matchTemplate "dialect/sql/query/additional/*" }}
 	{{- range $tmpl := $tmpls }}
 		{{- xtemplate $tmpl $ }}
@@ -370,7 +370,7 @@ func ({{ $receiver }} *{{ $builder }}) sqlQuery(ctx context.Context) *sql.Select
 	if {{ $receiver }}.ctx.Unique != nil && *{{ $receiver }}.ctx.Unique {
 		selector.Distinct()
 	}
-	{{- /* Allow mutating the sql.Selector by ent extensions or user templates.*/}}
+	{{- /* Allow mutating the sql.Selector by fluent extensions or user templates.*/}}
 	{{- with $tmpls := matchTemplate "dialect/sql/query/selector/*" }}
 		{{- range $tmpl := $tmpls }}
 			{{- xtemplate $tmpl $ }}
@@ -415,7 +415,7 @@ func ({{ $receiver }} *{{ $builder }}) sqlQuery(ctx context.Context) *sql.Select
 			{{- end -}}
 		),
 	)
-	{{- /* Allow mutating the sqlgraph.Step by ent extensions or user templates.*/}}
+	{{- /* Allow mutating the sqlgraph.Step by fluent extensions or user templates.*/}}
 	{{- with $tmpls := matchTemplate "dialect/sql/query/path/*" }}
 		{{- range $tmpl := $tmpls }}
 			{{- xtemplate $tmpl $ }}
@@ -442,7 +442,7 @@ func ({{ $receiver }} *{{ $builder }}) sqlQuery(ctx context.Context) *sql.Select
 			{{- end -}}
 		),
 	)
-	{{- /* Allow mutating the sqlgraph.Step by ent extensions or user templates.*/}}
+	{{- /* Allow mutating the sqlgraph.Step by fluent extensions or user templates.*/}}
 	{{- with $tmpls := matchTemplate "dialect/sql/query/from/*" }}
 		{{- range $tmpl := $tmpls }}
 			{{- xtemplate $tmpl $ }}

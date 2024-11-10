@@ -57,7 +57,7 @@ import (
 	{{- end }}
 {{- end }}
 
-{{/* A template for allowing additional imports by ent extensions or user templates.*/}}
+{{/* A template for allowing additional imports by fluent extensions or user templates.*/}}
 {{ define "import/additional" }}
 	{{- with $tmpls := matchTemplate "import/additional/*" }}
 		{{- range $tmpl := $tmpls }}

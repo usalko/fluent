@@ -6,7 +6,7 @@ the SQL definition itself, that might not be supported by the build-in SQL build
 
 The second approach is to define an `ent.View` with its SQL definition (`AS ...`) in the Ent schema. The big advantage
 of the non-composite_schema approach is that the `CREATE VIEW` correctness is checked during migration and not during queries.
-For example, if one of the `ent.Field`s defined in your ent/schema does not exist in your SQL definition, PostgreSQL will return the
+For example, if one of the `ent.Field`s defined in your fluent/schema does not exist in your SQL definition, PostgreSQL will return the
 following error:
 
 ```text

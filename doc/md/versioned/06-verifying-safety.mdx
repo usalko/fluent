@@ -197,7 +197,7 @@ jobs:
           fetch-depth: 0 # Mandatory unless "latest" is set below.
       - uses: ariga/atlas-action@v0
         with:
-          dir: ent/migrate/migrations
+          dir: fluent/migrate/migrations
           dev-url: mysql://root:pass@localhost:3306/dev
 ```
 Now, whenever we make a pull request with a potentially unsafe migration, the Atlas

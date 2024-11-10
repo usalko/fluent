@@ -105,7 +105,7 @@ func (cu *CommentUpdate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (cu *CommentUpdate) check() error {
 	if cu.mutation.PostCleared() && len(cu.mutation.PostIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "Comment.post"`)
+		return errors.New(`fluent: clearing a required unique edge "Comment.post"`)
 	}
 	return nil
 }
@@ -261,7 +261,7 @@ func (cuo *CommentUpdateOne) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (cuo *CommentUpdateOne) check() error {
 	if cuo.mutation.PostCleared() && len(cuo.mutation.PostIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "Comment.post"`)
+		return errors.New(`fluent: clearing a required unique edge "Comment.post"`)
 	}
 	return nil
 }
@@ -273,7 +273,7 @@ func (cuo *CommentUpdateOne) sqlSave(ctx context.Context) (_node *Comment, err e
 	_spec := sqlgraph.NewUpdateSpec(comment.Table, comment.Columns, sqlgraph.NewFieldSpec(comment.FieldID, field.TypeInt))
 	id, ok := cuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Comment.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Comment.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := cuo.fields; len(fields) > 0 {

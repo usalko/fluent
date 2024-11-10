@@ -338,7 +338,7 @@ func (ftq *FileTypeQuery) Aggregate(fns ...AggregateFunc) *FileTypeSelect {
 func (ftq *FileTypeQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range ftq.inters {
 		if inter == nil {
-			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import fluent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, ftq); err != nil {

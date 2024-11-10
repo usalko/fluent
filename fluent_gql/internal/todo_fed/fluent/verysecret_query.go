@@ -321,7 +321,7 @@ func (vsq *VerySecretQuery) Aggregate(fns ...AggregateFunc) *VerySecretSelect {
 func (vsq *VerySecretQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range vsq.inters {
 		if inter == nil {
-			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import fluent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, vsq); err != nil {

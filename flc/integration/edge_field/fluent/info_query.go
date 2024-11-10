@@ -346,7 +346,7 @@ func (iq *InfoQuery) Aggregate(fns ...AggregateFunc) *InfoSelect {
 func (iq *InfoQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range iq.inters {
 		if inter == nil {
-			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import fluent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, iq); err != nil {

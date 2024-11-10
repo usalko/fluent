@@ -245,7 +245,7 @@ func Skip(flags ...SkipMode) Annotation {
 // RelayConnection returns an annotation indicating that the node/edge should support pagination.
 // Hence,the returned result is a Relay connection rather than a list of nodes.
 //
-// Setting this annotation on schema `T` (reside in ent/schema), enables pagination for this
+// Setting this annotation on schema `T` (reside in fluent/schema), enables pagination for this
 // type and therefore, Ent will generate all Relay types for this schema, such as: `<T>Edge`,
 // `<T>Connection`, and PageInfo. For example:
 //

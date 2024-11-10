@@ -419,7 +419,7 @@ func (bq *BlobQuery) Aggregate(fns ...AggregateFunc) *BlobSelect {
 func (bq *BlobQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range bq.inters {
 		if inter == nil {
-			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import fluent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, bq); err != nil {

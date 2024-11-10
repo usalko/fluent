@@ -27,7 +27,7 @@ func main() {
 		flc.TemplateDir("./template"),
 	}
 	if err := flc.Generate("./schema", &gen.Config{}, opts...); err != nil {
-		log.Fatalf("running ent codegen: %v", err)
+		log.Fatalf("running fluent codegen: %v", err)
 	}
 } 
 ```
@@ -118,7 +118,7 @@ scalar Time
 -  cursor: Cursor!
 -}
 
--"""The following enums match the fluent_gql annotations in the ent/schema."""
+-"""The following enums match the fluent_gql annotations in the fluent/schema."""
 -enum TodoOrderField {
 -  CREATED_AT
 -  PRIORITY
@@ -224,12 +224,12 @@ func main() {
 	}
 -	if err := flc.Generate("./schema", &gen.Config{}, opts...); err != nil {
 +	if err := flc.Generate("./fluent/schema", &gen.Config{}, opts...); err != nil {
-		log.Fatalf("running ent codegen: %v", err)
+		log.Fatalf("running fluent codegen: %v", err)
 	}
 } 
 ```
 
-Update the `generate.go` to include the ent codegen.
+Update the `generate.go` to include the fluent codegen.
 ```go {3} title="generate.go"
 package todo
 

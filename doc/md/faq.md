@@ -820,7 +820,7 @@ func main() {
 	}
 	err := flc.Generate("./schema", &gen.Config{}, opts...)
 	if err != nil {
-		log.Fatalf("running ent codegen: %v", err)
+		log.Fatalf("running fluent codegen: %v", err)
 	}
 }
 

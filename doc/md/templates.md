@@ -141,7 +141,7 @@ func (Annotation) Name() string {
 }
 ```
 
-2\. Annotation usage in ent/schema:
+2\. Annotation usage in fluent/schema:
 
 ```go
 // User schema.
@@ -219,7 +219,7 @@ func main() {
 		Templates: fluent_gql.AllTemplates,
 	}, opts...)
 	if err != nil {
-		log.Fatalf("running ent codegen: %v", err)
+		log.Fatalf("running fluent codegen: %v", err)
 	}
 }
 ```

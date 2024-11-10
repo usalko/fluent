@@ -10,7 +10,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// Package schematype provides custom types for ent/schema.
+// Package schematype provides custom types for fluent/schema.
 package schematype
 
 import (

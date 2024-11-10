@@ -131,7 +131,7 @@ func (p Policy) EvalMutation(ctx context.Context, m fluent.Mutation) error {
 // and fluent.Schema that implement the fluent.Policy interface.
 //
 // Note that, this is a runtime function used by the fluent generated
-// code and should not be used in ent/schemas as a privacy rule.
+// code and should not be used in fluent/schemas as a privacy rule.
 func NewPolicies(schemas ...interface{ Policy() fluent.Policy }) fluent.Policy {
 	policies := make(Policies, 0, len(schemas))
 	for i := range schemas {
@@ -145,7 +145,7 @@ func NewPolicies(schemas ...interface{ Policy() fluent.Policy }) fluent.Policy {
 // Policies combines multiple policies into a single policy.
 //
 // Note that, this is a runtime type used by the fluent generated
-// code and should not be used in ent/schemas as a privacy rule.
+// code and should not be used in fluent/schemas as a privacy rule.
 type Policies []fluent.Policy
 
 // EvalQuery evaluates the query policies. If the Allow error is returned

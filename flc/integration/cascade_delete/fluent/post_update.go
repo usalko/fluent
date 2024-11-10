@@ -381,7 +381,7 @@ func (puo *PostUpdateOne) sqlSave(ctx context.Context) (_node *Post, err error) 
 	_spec := sqlgraph.NewUpdateSpec(post.Table, post.Columns, sqlgraph.NewFieldSpec(post.FieldID, field.TypeInt))
 	id, ok := puo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Post.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Post.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := puo.fields; len(fields) > 0 {

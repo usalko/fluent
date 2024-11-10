@@ -361,7 +361,7 @@ func (isq *IntSIDQuery) Aggregate(fns ...AggregateFunc) *IntSIDSelect {
 func (isq *IntSIDQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range isq.inters {
 		if inter == nil {
-			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import fluent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, isq); err != nil {

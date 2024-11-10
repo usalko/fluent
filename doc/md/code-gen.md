@@ -134,7 +134,7 @@ import (
 
 func main() {
 	if err := flc.Generate("./schema", &gen.Config{}); err != nil {
-		log.Fatal("running ent codegen:", err)
+		log.Fatal("running fluent codegen:", err)
 	}
 }
 ```
@@ -213,7 +213,7 @@ func main() {
 		},
 	})
 	if err != nil {
-		log.Fatalf("running ent codegen: %v", err)
+		log.Fatalf("running fluent codegen: %v", err)
 	}
 }
 
@@ -256,7 +256,7 @@ func main() {
 		),
 	}
 	if err := flc.Generate("./schema", &gen.Config{}, opts...); err != nil {
-		log.Fatalf("running ent codegen: %v", err)
+		log.Fatalf("running fluent codegen: %v", err)
 	}
 }
 ```

@@ -309,7 +309,7 @@ func (ruq *RoleUserQuery) Aggregate(fns ...AggregateFunc) *RoleUserSelect {
 func (ruq *RoleUserQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range ruq.inters {
 		if inter == nil {
-			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import fluent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, ruq); err != nil {

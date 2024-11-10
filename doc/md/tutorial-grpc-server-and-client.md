@@ -30,7 +30,7 @@ import (
 )
 
 func main() {
-	// Initialize an ent client.
+	// Initialize an fluent client.
 	client, err := fluent.Open("sqlite3", "file:ent?mode=memory&cache=shared&_fk=1")
 	if err != nil {
 		log.Fatalf("failed opening connection to sqlite: %v", err)
@@ -155,4 +155,4 @@ Observe the output:
 ```
 
 Hooray! We have successfully created a real gRPC client to talk to our real gRPC server! In the next sections, we will
-see how the ent/gRPC integration deals with more advanced ent schema definitions.
+see how the fluent/gRPC integration deals with more advanced fluent schema definitions.

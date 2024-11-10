@@ -3,7 +3,7 @@ id: grpc-edges
 title: Working with Edges
 sidebar_label: Working with Edges
 ---
-Edges enable us to express the relationship between different entities in our ent application. Let's see how they work
+Edges enable us to express the relationship between different entities in our fluent application. Let's see how they work
 together with generated gRPC services.
 
 Let's start by adding a new entity, `Category` and create edges relating our `User` type to it:
@@ -117,7 +117,7 @@ import (
 )
 
 func TestServiceWithEdges(t *testing.T) {
-	// start by initializing an ent client connected to an in memory sqlite instance
+	// start by initializing an fluent client connected to an in memory sqlite instance
 	ctx := context.Background()
 	client := fluent_test.Open(t, "sqlite3", "file:ent?mode=memory&cache=shared&_fk=1")
 	defer client.Close()
@@ -126,7 +126,7 @@ func TestServiceWithEdges(t *testing.T) {
 	// creating a gRPC server and instead we are just calling the library code directly. 
 	svc := entpb.NewUserService(client)
 
-	// next, we create a category directly using the ent client.
+	// next, we create a category directly using the fluent client.
 	// Notice we are initializing it with no relation to a User.
 	cat := client.Category.Create().SetName("cat_1").SaveX(ctx)
 
@@ -188,7 +188,7 @@ Consider this example test:
 
 ```go
 func TestGet(t *testing.T) {
-	// start by initializing an ent client connected to an in memory sqlite instance
+	// start by initializing an fluent client connected to an in memory sqlite instance
 	ctx := context.Background()
 	client := fluent_test.Open(t, "sqlite3", "file:ent?mode=memory&cache=shared&_fk=1")
 	defer client.Close()

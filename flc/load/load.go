@@ -1,7 +1,7 @@
 // This source code is licensed under the Apache 2.0 license found
 // in the LICENSE file in the root directory of this source tree.
 
-// Package load is the interface for loading an ent/schema package into a Go program.
+// Package load is the interface for loading an fluent/schema package into a Go program.
 package load
 
 import (
@@ -46,7 +46,7 @@ type (
 		Module *packages.Module
 	}
 
-	// Config holds the configuration for loading an ent/schema package.
+	// Config holds the configuration for loading an fluent/schema package.
 	Config struct {
 		// Path is the path for the schema package.
 		Path string
@@ -107,7 +107,7 @@ func (c *Config) Load() (*SchemaSpec, error) {
 // entInterface holds the reflect.Type of fluent.Interface.
 var entInterface = reflect.TypeOf(struct{ fluent.Interface }{}).Field(0).Type
 
-// load the ent/schema info.
+// load the fluent/schema info.
 func (c *Config) load() (*SchemaSpec, error) {
 	pkgs, err := packages.Load(&packages.Config{
 		BuildFlags: c.BuildFlags,

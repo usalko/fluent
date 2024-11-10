@@ -30,7 +30,7 @@ entproto.MethodAll
 To generate a service with multiple methods, bitwise OR the flags.
 
 
-To see this in action, we can modify our ent schema. Let's say we wanted to prevent our gRPC client from mutating entries. We can accomplish this by modifying `ent/schema/user.go`:
+To see this in action, we can modify our fluent schema. Let's say we wanted to prevent our gRPC client from mutating entries. We can accomplish this by modifying `ent/schema/user.go`:
 ```go title="fluent/schema/user.go" {5}
 func (User) Annotations() []schema.Annotation {
 	return []schema.Annotation{

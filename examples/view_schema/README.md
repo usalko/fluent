@@ -6,7 +6,7 @@ The second approach is to define an `ent.View` but keep its definition and creat
 data source (see `examples/viewcomposite` for more information).
 
 The main advantage of this example approach is that the `CREATE VIEW` correctness is checked during migration and not during queries.
-For example, if one of the `ent.Field`s defined in your ent/schema does not exist in your SQL definition, PostgreSQL will return the
+For example, if one of the `ent.Field`s defined in your fluent/schema does not exist in your SQL definition, PostgreSQL will return the
 following error:
 
 ```text

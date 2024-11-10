@@ -78,7 +78,7 @@ func TestMySQL(t *testing.T) {
 	client.Pet.Query().
 		Modify(func(s *sql.Selector) {
 			// The below function is exported using a custom
-			// template defined in ent/template/config.tmpl.
+			// template defined in fluent/template/config.tmpl.
 			cfg := fluent.SchemaConfigFromContext(s.Context())
 			t := sql.Table(user.Table).Schema(cfg.User)
 			s.Join(t).On(s.C(pet.FieldOwnerID), t.C(user.FieldID))
@@ -191,7 +191,7 @@ func TestVersionedMigration(t *testing.T) {
 	client.Pet.Query().
 		Modify(func(s *sql.Selector) {
 			// The below function is exported using a custom
-			// template defined in ent/template/config.tmpl.
+			// template defined in fluent/template/config.tmpl.
 			cfg := versioned.DefaultSchemaConfig
 			t := sql.Table(user.Table).Schema(cfg.User)
 			s.Join(t).On(s.C(pet.FieldOwnerID), t.C(user.FieldID))

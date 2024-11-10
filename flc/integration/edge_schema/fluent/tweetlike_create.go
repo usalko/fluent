@@ -102,7 +102,7 @@ func (tlc *TweetLikeCreate) ExecX(ctx context.Context) {
 func (tlc *TweetLikeCreate) defaults() error {
 	if _, ok := tlc.mutation.LikedAt(); !ok {
 		if tweetlike.DefaultLikedAt == nil {
-			return fmt.Errorf("fluent: uninitialized tweetlike.DefaultLikedAt (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized tweetlike.DefaultLikedAt (forgotten import fluent/runtime?)")
 		}
 		v := tweetlike.DefaultLikedAt()
 		tlc.mutation.SetLikedAt(v)

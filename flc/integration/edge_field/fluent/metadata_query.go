@@ -418,7 +418,7 @@ func (mq *MetadataQuery) Aggregate(fns ...AggregateFunc) *MetadataSelect {
 func (mq *MetadataQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range mq.inters {
 		if inter == nil {
-			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import fluent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, mq); err != nil {

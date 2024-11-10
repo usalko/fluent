@@ -8,5 +8,5 @@ package runtime
 // The schema-stitching logic is generated in github.com/usalko/fluent/flc/integration/cascade_delete/fluent/runtime.go
 
 const (
-	Version = "v0.0.0-00010101000000-000000000000" // Version of ent codegen.
+	Version = "v0.1.3" // Version of ent codegen.
 )

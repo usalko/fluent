@@ -234,7 +234,7 @@ func (cuq *CleanUserQuery) Aggregate(fns ...AggregateFunc) *CleanUserSelect {
 func (cuq *CleanUserQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range cuq.inters {
 		if inter == nil {
-			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import fluent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, cuq); err != nil {

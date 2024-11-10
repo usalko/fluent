@@ -200,7 +200,7 @@ func (Card) Hooks() []fluent.Hook {
 ## Hooks Registration
 
 When using [**schema hooks**](#schema-hooks), there's a chance of a cyclic import between the schema package,
-and the generated ent package. To avoid this scenario, fluent generates an `ent/runtime` package which is responsible
+and the generated fluent package. To avoid this scenario, fluent generates an `ent/runtime` package which is responsible
 for registering the schema-hooks at runtime.
 
 :::important
@@ -217,7 +217,7 @@ import _ "<project>/fluent/runtime"
 
 At the first attempt to set up schema hooks in your project, you may encounter an error like the following:
 ```text
-flc/load: parse schema dir: import cycle not allowed: [ent/schema ent/hook ent/ ent/schema]
+flc/load: parse schema dir: import cycle not allowed: [ent/schema fluent/hook fluent/ fluent/schema]
 To resolve this issue, move the custom types used by the generated code to a separate package: "Type1", "Type2"
 ```
 

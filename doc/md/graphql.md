@@ -42,7 +42,7 @@ func main() {
 		log.Fatalf("creating fluent_gql extension: %v", err)
 	}
 	if err := flc.Generate("./schema", &gen.Config{}, flc.Extensions(ex)); err != nil {
-		log.Fatalf("running ent codegen: %v", err)
+		log.Fatalf("running fluent codegen: %v", err)
 	}
 }
 ```
@@ -59,7 +59,7 @@ Note that `ent/flc.go` is ignored using a build tag, and it's executed by the `g
 through the `generate.go` file. The full example can be found in the [ent/contrib repository](https://github.com/usalko/contrib/blob/master/ fluent_gql/internal/todo).
 
 
-3\. Run codegen for your ent project:
+3\. Run codegen for your fluent project:
 
 ```console
 go generate ./...
@@ -108,7 +108,7 @@ resolver:
   dir: .
 
 # gqlgen will search for any type names in the schema in the generated
-# ent package. If they match it will use them, otherwise it will new ones.
+# fluent package. If they match it will use them, otherwise it will new ones.
 autobind:
   - github.com/usalko/fluent/fluent_gql/internal/todo/fluent
 
@@ -142,9 +142,9 @@ The ordering option allows us to apply an ordering on the edges returned from a 
 Let's go over the steps needed in order to add ordering to an existing GraphQL type.
 The code example is based on a todo-app that can be found in [ent/contrib/fluent_ql/todo](https://github.com/usalko/contrib/tree/master/ fluent_gql/internal/todo).
 
-### Defining order fields in ent/schema
+### Defining order fields in fluent/schema
 
-Ordering can be defined on any comparable field of ent by annotating it with ` fluent_gql.Annotation`.
+Ordering can be defined on any comparable field of fluent by annotating it with ` fluent_gql.Annotation`.
 Note that the given `OrderField` name must match its enum value in graphql schema.
 ```go
 func (Todo) Fields() []fluent.Field {
@@ -199,7 +199,7 @@ input TodoOrder {
   field: TodoOrderField
 }
 ```
-Note that the naming must take the form of `<T>OrderField` / `<T>Order` for `autobind`ing to the generated ent types.
+Note that the naming must take the form of `<T>OrderField` / `<T>Order` for `autobind`ing to the generated fluent types.
 Alternatively [@goModel](https://gqlgen.com/config/#inline-config-with-directives) directive can be used for manual type binding.
 
 ### Adding orderBy argument to the pagination query
@@ -285,7 +285,7 @@ func (Todo) Edges() []fluent.Edge {
             Annotations( fluent_gql.Bind()).
             From("parent").
             // Bind implies the edge name in graphql schema is
-            // equivalent to the name used in ent schema.
+            // equivalent to the name used in fluent schema.
             Annotations( fluent_gql.Bind()).
             Unique(),
         edge.From("owner", User.Type).

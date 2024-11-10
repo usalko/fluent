@@ -311,7 +311,7 @@ func (lq *LinkQuery) Aggregate(fns ...AggregateFunc) *LinkSelect {
 func (lq *LinkQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range lq.inters {
 		if inter == nil {
-			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import fluent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, lq); err != nil {

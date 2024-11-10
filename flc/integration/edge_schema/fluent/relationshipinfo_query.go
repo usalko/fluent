@@ -310,7 +310,7 @@ func (riq *RelationshipInfoQuery) Aggregate(fns ...AggregateFunc) *RelationshipI
 func (riq *RelationshipInfoQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range riq.inters {
 		if inter == nil {
-			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import fluent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, riq); err != nil {

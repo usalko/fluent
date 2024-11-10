@@ -26,7 +26,7 @@ func NewDriver(dialect string, c Conn) *Driver {
 	return &Driver{dialect: dialect, Conn: c}
 }
 
-// Open wraps the database/sql.Open method and returns a dialect.Driver that implements the an ent/dialect.Driver interface.
+// Open wraps the database/sql.Open method and returns a dialect.Driver that implements the an fluent/dialect.Driver interface.
 func Open(dialect, source string) (*Driver, error) {
 	db, err := sql.Open(dialect, source)
 	if err != nil {

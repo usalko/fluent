@@ -384,7 +384,7 @@ func (gq *GroupQuery) Aggregate(fns ...AggregateFunc) *GroupSelect {
 func (gq *GroupQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range gq.inters {
 		if inter == nil {
-			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import fluent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, gq); err != nil {
@@ -405,7 +405,7 @@ func (gq *GroupQuery) prepareQuery(ctx context.Context) error {
 		gq.sql = prev
 	}
 	if group.Policy == nil {
-		return errors.New("fluent: uninitialized group.Policy (forgotten import ent/runtime?)")
+		return errors.New("fluent: uninitialized group.Policy (forgotten import fluent/runtime?)")
 	}
 	if err := group.Policy.EvalQuery(ctx, gq); err != nil {
 		return err

@@ -13,7 +13,7 @@ func main() {
 +		flc.FeatureNames("intercept"),
 +	}
 	if err := flc.Generate("./schema", &gen.Config{}, opts...); err != nil {
-		log.Fatal("running ent codegen:", err)
+		log.Fatal("running fluent codegen:", err)
 	}
 }
 ```

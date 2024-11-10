@@ -61,21 +61,21 @@ func (IDType) String() string {
 	return field.TypeInt.String()
 }
 
-// InitCmd returns the init command for ent/c packages.
+// InitCmd returns the init command for fluent/c packages.
 func InitCmd() *cobra.Command {
 	c := NewCmd()
 	c.Use = "init [flags] [schemas]"
 	c.Short = "initialize an environment with zero or more schemas"
 	c.Example = examples(
 		"fluent init Example",
-		"fluent init --target entv1/schema User Group",
+		"fluent init --target fluentv1/schema User Group",
 		"fluent init --template ./path/to/file.tmpl User",
 	)
 	c.Deprecated = `use "fluent new" instead`
 	return c
 }
 
-// NewCmd returns the new command for ent/c packages.
+// NewCmd returns the new command for fluent/c packages.
 func NewCmd() *cobra.Command {
 	var target, tmplPath string
 	cmd := &cobra.Command{
@@ -83,7 +83,7 @@ func NewCmd() *cobra.Command {
 		Short: "initialize a new environment with zero or more schemas",
 		Example: examples(
 			"fluent new Example",
-			"fluent new --target entv1/schema User Group",
+			"fluent new --target fluentv1/schema User Group",
 			"fluent new --template ./path/to/file.tmpl User",
 		),
 		Args: func(_ *cobra.Command, names []string) error {
@@ -119,7 +119,7 @@ func NewCmd() *cobra.Command {
 	return cmd
 }
 
-// DescribeCmd returns the describe command for ent/c packages.
+// DescribeCmd returns the describe command for fluent/c packages.
 func DescribeCmd() *cobra.Command {
 	return &cobra.Command{
 		Use:   "describe [flags] path",
@@ -139,14 +139,14 @@ func DescribeCmd() *cobra.Command {
 	}
 }
 
-// GenerateCmd returns the generate command for ent/c packages.
+// GenerateCmd returns the generate command for fluent/c packages.
 func GenerateCmd(postRun ...func(*gen.Config)) *cobra.Command {
 	var (
 		cfg       gen.Config
 		storage   string
 		features  []string
 		templates []string
-		idtype    = IDType(field.TypeInt)
+		id_type   = IDType(field.TypeInt)
 		cmd       = &cobra.Command{
 			Use:   "generate [flags] path",
 			Short: "generate go code for the schema directory",
@@ -185,7 +185,7 @@ func GenerateCmd(postRun ...func(*gen.Config)) *cobra.Command {
 					}
 					cfg.Package = pkgPath
 				}
-				cfg.IDType = &field.TypeInfo{Type: field.Type(idtype)}
+				cfg.IDType = &field.TypeInfo{Type: field.Type(id_type)}
 				if err := flc.Generate(path[0], &cfg, opts...); err != nil {
 					log.Fatalln(err)
 				}
@@ -195,15 +195,15 @@ func GenerateCmd(postRun ...func(*gen.Config)) *cobra.Command {
 			},
 		}
 	)
-	cmd.Flags().Var(&idtype, "idtype", "type of the id field")
+	cmd.Flags().Var(&id_type, "id_type", "type of the id field")
 	cmd.Flags().StringVar(&storage, "storage", "sql", "storage driver to support in codegen")
 	cmd.Flags().StringVar(&cfg.Header, "header", "", "override codegen header")
 	cmd.Flags().StringVar(&cfg.Target, "target", "", "target directory for codegen")
 	cmd.Flags().StringSliceVarP(&features, "feature", "", nil, "extend codegen with additional features")
 	cmd.Flags().StringSliceVarP(&templates, "template", "", nil, "external templates to execute")
-	// The --idtype flag predates the field.<Type>("id") option.
+	// The --id_type flag predates the field.<Type>("id") option.
 	// See, https://github.com/usalko/fluent/docs/schema-fields#id-field.
-	cobra.CheckErr(cmd.Flags().MarkHidden("idtype"))
+	cobra.CheckErr(cmd.Flags().MarkHidden("id_type"))
 	return cmd
 }
 
@@ -257,7 +257,7 @@ func fileExists(target, name string) bool {
 const (
 	// default schema package path.
 	defaultSchema = "fluent/schema"
-	// ent/generate.go file used for "go generate" command.
+	// fluent/generate.go file used for "go generate" command.
 	genFile = "package fluent\n\n//go:generate go run -mod=mod github.com/usalko/fluent/cmd/fluent generate ./schema\n"
 	// schema template for the "init" command.
 	defaultTemplate = `package schema

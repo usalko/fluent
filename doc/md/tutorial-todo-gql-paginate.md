@@ -199,7 +199,7 @@ func (r *queryResolver) Todos(ctx context.Context, after *fluent.Cursor, first *
 The ` fluent_gql.RelayConnection()` function indicates that the node or edge should support pagination.
 Hence,the returned result is a Relay connection rather than a list of nodes (`[T!]!` => `<T>Connection!`).
 
-Setting this annotation on schema `T` (reside in ent/schema), enables pagination for this node and therefore, Ent will
+Setting this annotation on schema `T` (reside in fluent/schema), enables pagination for this node and therefore, Ent will
 generate all Relay types for this schema, such as: `<T>Edge`, `<T>Connection`, and `PageInfo`. For example:
 
 ```go

@@ -280,7 +280,7 @@ Next, we create an `atlas.hcl` config file with a `composite_schema` that includ
 
 ```hcl title="atlas.hcl"
 data "composite_schema" "app" {
-  # Load the ent schema first with all its tables.
+  # Load the fluent schema first with all its tables.
   schema "public" {
     url = "fluent://fluent/schema"
   }

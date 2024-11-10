@@ -234,7 +234,7 @@ func (punq *PetUserNameQuery) Aggregate(fns ...AggregateFunc) *PetUserNameSelect
 func (punq *PetUserNameQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range punq.inters {
 		if inter == nil {
-			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized interceptor (forgotten import fluent/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, punq); err != nil {

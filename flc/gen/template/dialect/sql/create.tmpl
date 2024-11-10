@@ -68,7 +68,7 @@ func ({{ $receiver }} *{{ $builder }}) createSpec() (*{{ $.Name }}, *sqlgraph.Cr
 		_node = &{{ $.Name }}{config: {{ $receiver }}.config}
 		_spec = sqlgraph.NewCreateSpec({{ $.Package }}.Table, {{ if $.HasOneFieldID }}sqlgraph.NewFieldSpec({{ $.Package }}.{{ $.ID.Constant }}, field.{{ $.ID.Type.ConstName }}){{ else }}nil{{ end }})
 	)
-	{{- /* Allow mutating the sqlgraph.CreateSpec by ent extensions or user templates.*/}}
+	{{- /* Allow mutating the sqlgraph.CreateSpec by fluent extensions or user templates.*/}}
 	{{- with $tmpls := matchTemplate "dialect/sql/create/spec/*" }}
 		{{- range $tmpl := $tmpls }}
 			{{- xtemplate $tmpl $ }}
@@ -109,7 +109,7 @@ func ({{ $receiver }} *{{ $builder }}) createSpec() (*{{ $.Name }}, *sqlgraph.Cr
 	return _node, _spec{{ if $.HasValueScanner }}, nil{{ end }}
 }
 
-{{- /* Allow adding methods to the create-builder by ent extensions or user templates.*/}}
+{{- /* Allow adding methods to the create-builder by fluent extensions or user templates.*/}}
 {{- with $tmpls := matchTemplate "dialect/sql/create/additional/*" }}
 	{{- range $tmpl := $tmpls }}
 		{{- xtemplate $tmpl $ }}
@@ -175,7 +175,7 @@ func ({{ $receiver }} *{{ $builder }}) Save(ctx context.Context) ([]*{{ $.Name }
 					_, err = mutators[i+1].Mutate(root, {{ $receiver }}.builders[i+1].mutation)
 				} else {
 					spec := &sqlgraph.BatchCreateSpec{Nodes: specs}
-					{{- /* Allow mutating the sqlgraph.BatchCreateSpec by ent extensions or user templates.*/}}
+					{{- /* Allow mutating the sqlgraph.BatchCreateSpec by fluent extensions or user templates.*/}}
 					{{- with $tmpls := matchTemplate "dialect/sql/create_bulk/spec/*" }}
 						{{- range $tmpl := $tmpls }}
 							{{- xtemplate $tmpl $ }}
@@ -247,7 +247,7 @@ func ({{ $receiver }} *{{ $builder }}) ExecX(ctx context.Context) {
 	}
 }
 
-{{- /* Allow adding methods to the create_bulk builder by ent extensions or user templates.*/}}
+{{- /* Allow adding methods to the create_bulk builder by fluent extensions or user templates.*/}}
 {{- with $tmpls := matchTemplate "dialect/sql/create_bulk/additional/*" }}
 	{{- range $tmpl := $tmpls }}
 		{{- xtemplate $tmpl $ }}

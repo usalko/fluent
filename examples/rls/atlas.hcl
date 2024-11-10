@@ -1,5 +1,5 @@
 data "composite_schema" "app" {
-  # Load the ent schema first with all tables.
+  # Load the fluent schema first with all tables.
   schema "public" {
     url = "fluent://fluent/schema"
   }

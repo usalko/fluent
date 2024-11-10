@@ -63,7 +63,7 @@ func main() {
 		Features: []gen.Feature{gen.FeatureVersionedMigration},
 	})
 	if err != nil {
-		log.Fatalf("running ent codegen: %v", err)
+		log.Fatalf("running fluent codegen: %v", err)
 	}
 }
 ```
@@ -153,7 +153,7 @@ func main() {
         schema.WithFormatter(atlas.DefaultFormatter),
     }
     if len(os.Args) != 2 {
-        log.Fatalln("migration name is required. Use: 'go run -mod=mod ent/migrate/main.go <name>'")
+        log.Fatalln("migration name is required. Use: 'go run -mod=mod fluent/migrate/main.go <name>'")
     }
     // Generate migrations using Atlas support for MySQL (note the Ent dialect option passed above).
     //highlight-next-line
@@ -176,13 +176,13 @@ To run the script, first create a `migrations` directory in the `ent/migrate` di
 project:
 
 ```text
-mkdir ent/migrate/migrations
+mkdir fluent/migrate/migrations
 ```
 
 Then, run the script to create the initial migration file for your project:
 
 ```shell
-go run -mod=mod ent/migrate/main.go initial
+go run -mod=mod fluent/migrate/main.go initial
 ```
 Notice that `initial` here is just a label for the migration file. You can use any name you want.
 

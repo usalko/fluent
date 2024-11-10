@@ -47,7 +47,7 @@ in the LICENSE file in the root directory of this source tree.
 				{{- end -}}
 			),
 		)
-		{{- /* Allow mutating the sqlgraph.Step by ent extensions or user templates.*/}}
+		{{- /* Allow mutating the sqlgraph.Step by fluent extensions or user templates.*/}}
 		{{- with $tmpls := matchTemplate "dialect/sql/predicate/edge/has/*" }}
 			{{- range $tmpl := $tmpls }}
 				{{- xtemplate $tmpl $ }}
@@ -62,7 +62,7 @@ in the LICENSE file in the root directory of this source tree.
 	{{- $e := $.Scope.Edge -}}
 	func(s *sql.Selector) {
 		step := new{{ pascal $e.Name }}Step()
-		{{- /* Allow mutating the sqlgraph.Step by ent extensions or user templates.*/}}
+		{{- /* Allow mutating the sqlgraph.Step by fluent extensions or user templates.*/}}
 		{{- with $tmpls := matchTemplate "dialect/sql/predicate/edge/haswith/*" }}
 			{{- range $tmpl := $tmpls }}
 				{{- xtemplate $tmpl $ }}

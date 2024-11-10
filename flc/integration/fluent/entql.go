@@ -33,7 +33,7 @@ import (
 	"github.com/usalko/fluent/schema/field"
 )
 
-// schemaGraph holds a representation of ent/schema at runtime.
+// schemaGraph holds a representation of fluent/schema at runtime.
 var schemaGraph = func() *sqlgraph.Schema {
 	graph := &sqlgraph.Schema{Nodes: make([]*sqlgraph.Node, 19)}
 	graph.Nodes[0] = &sqlgraph.Node{
