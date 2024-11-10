@@ -44,7 +44,7 @@ func main() {
 		"file:ent?mode=memory&cache=shared&_fk=1",
 	)
 	if err != nil {
-		log.Fatal("opening ent client", zap.Error(err))
+		log.Fatal("opening fluent client", zap.Error(err))
 	}
 	if err := client.Schema.Create(
 		context.Background(),

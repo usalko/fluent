@@ -22,7 +22,7 @@ import (
 	"github.com/usalko/fluent/examples/edge_index/fluent/street"
 )
 
-// Client is the client that holds all ent builders.
+// Client is the client that holds all fluent builders.
 type Client struct {
 	config
 	// Schema is the client for creating, migrating and dropping schema.

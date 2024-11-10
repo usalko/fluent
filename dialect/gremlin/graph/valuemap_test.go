@@ -18,7 +18,7 @@ func TestValueMapDecodeOne(t *testing.T) {
 		"age":   []any{int32(29)},
 	}}
 
-	var ent struct {
+	var fluent struct {
 		ID    uint64 `json:"id"`
 		Label string `json:"label"`
 		Name  string `json:"name"`

@@ -38,7 +38,7 @@ import (
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/usertweet"
 )
 
-// Client is the client that holds all ent builders.
+// Client is the client that holds all fluent builders.
 type Client struct {
 	config
 	// Schema is the client for creating, migrating and dropping schema.

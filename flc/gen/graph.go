@@ -111,7 +111,7 @@ type (
 
 	// Generator is the interface that wraps the Generate method.
 	Generator interface {
-		// Generate generates the ent artifacts for the given graph.
+		// Generate generates the fluent artifacts for the given graph.
 		Generate(*Graph) error
 	}
 

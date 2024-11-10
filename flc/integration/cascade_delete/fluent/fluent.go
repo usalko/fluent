@@ -20,7 +20,7 @@ import (
 	"github.com/usalko/fluent/flc/integration/cascade_delete/fluent/user"
 )
 
-// ent aliases to avoid import conflicts in user's code.
+// fluent aliases to avoid import conflicts in user's code.
 type (
 	Op            = fluent.Op
 	Hook          = fluent.Hook

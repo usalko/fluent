@@ -7,7 +7,7 @@ package schema
 // The object must be serializable to JSON raw value (e.g. struct, map or slice).
 //
 // Template extensions can retrieve this metadata and use it inside their templates.
-// Read more about it in ent website: https://github.com/usalko/fluent/docs/templates/#annotations.
+// Read more about it in fluent website: https://github.com/usalko/fluent/docs/templates/#annotations.
 type Annotation interface {
 	// Name defines the name of the annotation to be retrieved by the codegen.
 	Name() string

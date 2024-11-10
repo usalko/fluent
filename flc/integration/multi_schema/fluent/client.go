@@ -26,7 +26,7 @@ import (
 	"github.com/usalko/fluent/flc/integration/multi_schema/fluent/internal"
 )
 
-// Client is the client that holds all ent builders.
+// Client is the client that holds all fluent builders.
 type Client struct {
 	config
 	// Schema is the client for creating, migrating and dropping schema.
@@ -939,7 +939,7 @@ func SchemaConfigFromContext(ctx context.Context) SchemaConfig {
 type SchemaConfig = internal.SchemaConfig
 
 // AlternateSchemas allows alternate schema names to be
-// passed into ent operations.
+// passed into fluent operations.
 func AlternateSchema(schemaConfig SchemaConfig) Option {
 	return func(c *config) {
 		c.schemaConfig = schemaConfig

@@ -63,5 +63,5 @@ func init() {
 }
 
 const (
-	Version = "v0.1.2" // Version of ent codegen.
+	Version = "v0.1.2" // Version of fluent codegen.
 )

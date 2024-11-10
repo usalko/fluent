@@ -129,7 +129,7 @@ func FeatureNames(names ...string) Option {
 // Unlike schema annotations, being serializable to JSON raw value is not mandatory.
 //
 // Template extensions can retrieve this metadata and use it inside their execution.
-// Read more about it in ent website: https://github.com/usalko/fluent/docs/templates/#annotations.
+// Read more about it in fluent website: https://github.com/usalko/fluent/docs/templates/#annotations.
 type Annotation = schema.Annotation
 
 // Annotations appends the given annotations to the codegen config.
@@ -207,7 +207,7 @@ func TemplateDir(path string) Option {
 //		Templates: entswag.Templates,
 //	}, flc.Extensions(ex))
 //	if err != nil {
-//		log.Fatalf("running ent codegen: %v", err)
+//		log.Fatalf("running fluent codegen: %v", err)
 //	}
 type Extension interface {
 	// Hooks holds an optional list of Hooks to apply
@@ -337,7 +337,7 @@ func DependencyName(name string) DependencyOption {
 //		)
 //	}
 //	if err := flc.Generate("./fluent/path", &gen.Config{}, opts...); err != nil {
-//		log.Fatalf("running ent codegen: %v", err)
+//		log.Fatalf("running fluent codegen: %v", err)
 //	}
 func Dependency(opts ...DependencyOption) Option {
 	return func(cfg *gen.Config) error {

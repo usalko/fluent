@@ -249,7 +249,7 @@ func initTemplates() {
 }
 
 // Template wraps the standard template.Template to
-// provide additional functionality for ent extensions.
+// provide additional functionality for fluent extensions.
 type Template struct {
 	*template.Template
 	FuncMap   template.FuncMap

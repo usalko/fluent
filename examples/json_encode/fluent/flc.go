@@ -29,7 +29,7 @@ func main() {
 		`,
 	}, opts...)
 	if err != nil {
-		log.Fatalf("running ent codegen: %v", err)
+		log.Fatalf("running fluent codegen: %v", err)
 	}
 }
 

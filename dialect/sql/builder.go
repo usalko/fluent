@@ -7,7 +7,7 @@
 // Users that are interacting with this package should be aware that the
 // following builders don't check the given SQL syntax nor validate or escape
 // user-inputs. ~All validations are expected to be happened in the generated
-// ent package.
+// fluent package.
 package sql
 
 import (

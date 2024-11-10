@@ -1,7 +1,7 @@
 // This source code is licensed under the Apache 2.0 license found
 // in the LICENSE file in the root directory of this source tree.
 
-// Package base defines shared basic pieces of the ent command.
+// Package base defines shared basic pieces of the fluent command.
 package base
 
 import (
@@ -207,7 +207,7 @@ func GenerateCmd(postRun ...func(*gen.Config)) *cobra.Command {
 	return cmd
 }
 
-// newEnv create a new environment for ent codegen.
+// newEnv create a new environment for fluent codegen.
 func newEnv(target string, names []string, tmpl *template.Template) error {
 	if err := createDir(target); err != nil {
 		return fmt.Errorf("create dir %s: %w", target, err)

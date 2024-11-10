@@ -28,7 +28,7 @@ type (
 		// MultiOrder indicates that orderBy should accept a list of OrderField terms.
 		MultiOrder bool `json:"MultiOrder,omitempty"`
 		// Unbind implies the edge field name in GraphQL schema is not equivalent
-		// to the name used in ent schema. That means, by default, edges with this
+		// to the name used in fluent schema. That means, by default, edges with this
 		// annotation will not be eager-loaded on Paginate calls. See the `MapsTo`
 		// option in order to load edges be different name mapping.
 		Unbind bool `json:"Unbind,omitempty"`
@@ -153,7 +153,7 @@ func Bind() Annotation {
 }
 
 // Unbind implies the edge field name in GraphQL schema is not equivalent
-// to the name used in ent schema. That means, by default, edges with this
+// to the name used in fluent schema. That means, by default, edges with this
 // annotation will not be eager-loaded on Paginate calls. See the `MapsTo`
 // option in order to load edges with different name mapping.
 //

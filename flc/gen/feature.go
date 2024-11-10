@@ -14,7 +14,7 @@ var (
 		Name:        "privacy",
 		Stage:       Alpha,
 		Default:     false,
-		Description: "Privacy provides a privacy layer for ent through the schema configuration",
+		Description: "Privacy provides a privacy layer for fluent through the schema configuration",
 		cleanup: func(c *Config) error {
 			return os.RemoveAll(filepath.Join(c.Target, "privacy"))
 		},
@@ -78,13 +78,13 @@ var (
 	}
 
 	// FeatureSchemaConfig allows users to pass init time alternate schema names
-	// for each ent model. This is useful if your SQL tables are spread out against
+	// for each fluent model. This is useful if your SQL tables are spread out against
 	// multiple databases.
 	FeatureSchemaConfig = Feature{
 		Name:        "sql/schemaconfig",
 		Stage:       Stable,
 		Default:     false,
-		Description: "Allows alternate schema names for each ent model. Useful if SQL tables are spread out against multiple databases",
+		Description: "Allows alternate schema names for each fluent model. Useful if SQL tables are spread out against multiple databases",
 		GraphTemplates: []GraphTemplate{
 			{
 				Name:   "dialect/sql/internal/schemaconfig",
@@ -173,7 +173,7 @@ const (
 	Experimental
 
 	// Alpha features are features whose initial development was finished, tested
-	// on the infra of the ent team, but we expect breaking-changes to their APIs.
+	// on the infra of the fluent team, but we expect breaking-changes to their APIs.
 	Alpha
 
 	// Beta features are Alpha features that were added to the github.com/usalko/fluent
@@ -185,7 +185,7 @@ const (
 	Stable
 )
 
-// A Feature of the ent codegen.
+// A Feature of the fluent codegen.
 type Feature struct {
 	// Name of the feature.
 	Name string

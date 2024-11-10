@@ -329,7 +329,7 @@ func (t Type) PackageDir() string { return strings.ToLower(t.Name) }
 
 // PackageAlias returns local package name of a type if there is one.
 // A package has an alias if its generated name conflicts with
-// one of the imports of the user-defined or ent builtin types.
+// one of the imports of the user-defined or fluent builtin types.
 func (t Type) PackageAlias() string { return t.alias }
 
 // Receiver returns the receiver name of this node. It makes sure the
@@ -1019,10 +1019,10 @@ func ValidSchemaName(name string) error {
 		return fmt.Errorf("schema lowercase name conflicts with Go predeclared identifier %q", pkg)
 	}
 	if _, ok := globalIdent[pkg]; ok {
-		return fmt.Errorf("schema lowercase name conflicts ent predeclared identifier %q", pkg)
+		return fmt.Errorf("schema lowercase name conflicts fluent predeclared identifier %q", pkg)
 	}
 	if _, ok := globalIdent[name]; ok {
-		return fmt.Errorf("schema name conflicts with ent predeclared identifier %q", name)
+		return fmt.Errorf("schema name conflicts with fluent predeclared identifier %q", name)
 	}
 	return nil
 }

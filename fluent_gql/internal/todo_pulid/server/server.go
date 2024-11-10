@@ -45,7 +45,7 @@ func main() {
 	)
 	client = client.Debug()
 	if err != nil {
-		log.Fatal("opening ent client", zap.Error(err))
+		log.Fatal("opening fluent client", zap.Error(err))
 	}
 	ctx := context.Background()
 	if err := client.Schema.Create(ctx); err != nil {

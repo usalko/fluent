@@ -283,7 +283,7 @@ func (d *SQLite) indexes(ctx context.Context, tx dialect.Tx, name string) (Index
 			return nil, err
 		}
 		idx[i].columns = columns
-		// Normalize implicit index names to ent naming convention. See:
+		// Normalize implicit index names to fluent naming convention. See:
 		// https://github.com/sqlite/sqlite/blob/e937df8/src/build.c#L3583
 		if len(columns) == 1 && strings.HasPrefix(idx[i].Name, "sqlite_autoindex_"+name) {
 			idx[i].Name = columns[0]

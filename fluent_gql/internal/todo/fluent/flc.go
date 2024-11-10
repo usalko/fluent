@@ -16,7 +16,7 @@ import (
 
 func main() {
 	// The codegen is executed from internal/todo/gen.go.
-	// So the path for the config file, ent schema, and the GQL schema
+	// So the path for the config file, fluent schema, and the GQL schema
 	// starts from internal/todo.
 	ex, err := fluent_gql.NewExtension(
 		fluent_gql.WithConfigPath("./gqlgen.yml"),
@@ -49,6 +49,6 @@ func main() {
 		},
 	}, flc.Extensions(ex))
 	if err != nil {
-		log.Fatalf("running ent codegen: %v", err)
+		log.Fatalf("running fluent codegen: %v", err)
 	}
 }

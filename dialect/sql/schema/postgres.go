@@ -732,7 +732,7 @@ func (d *Postgres) atTypeC(c1 *Column, c2 *schema.Column) error {
 		t = &schema.TimeType{T: c1.scanTypeOr(postgres.TypeTimestampWTZ)}
 	case field.TypeEnum:
 		// Although atlas supports enum types, we keep backwards compatibility
-		// with previous versions of ent and use varchar (see cType).
+		// with previous versions of fluent and use varchar (see cType).
 		t = &schema.StringType{T: postgres.TypeVarChar}
 	case field.TypeOther:
 		t = &schema.UnsupportedType{T: c1.typ}

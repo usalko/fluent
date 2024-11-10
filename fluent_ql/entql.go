@@ -2,7 +2,7 @@
 // in the LICENSE file in the root directory of this source tree.
 
 // Package fluent_ql provides an experimental API for interacting dynamically
-// with ent queries. For more info, search for it in https://github.com/usalko/fluent.
+// with fluent queries. For more info, search for it in https://github.com/usalko/fluent.
 package fluent_ql
 
 import (

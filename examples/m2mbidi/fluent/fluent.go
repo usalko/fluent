@@ -18,7 +18,7 @@ import (
 	"github.com/usalko/fluent/examples/m2mbidi/fluent/user"
 )
 
-// ent aliases to avoid import conflicts in user's code.
+// fluent aliases to avoid import conflicts in user's code.
 type (
 	Op            = fluent.Op
 	Hook          = fluent.Hook

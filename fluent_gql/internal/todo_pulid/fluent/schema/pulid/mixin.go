@@ -24,7 +24,7 @@ func MixinWithPrefix(prefix string) *Mixin {
 	return &Mixin{prefix: prefix}
 }
 
-// Mixin defines an ent Mixin that captures the PULID prefix for a type.
+// Mixin defines an fluent Mixin that captures the PULID prefix for a type.
 type Mixin struct {
 	mixin.Schema
 	prefix string
@@ -44,7 +44,7 @@ type Annotation struct {
 	Prefix string
 }
 
-// Name implements the ent Annotation interface.
+// Name implements the fluent Annotation interface.
 func (a Annotation) Name() string {
 	return "PULID"
 }

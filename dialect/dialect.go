@@ -31,7 +31,7 @@ type ExecQuerier interface {
 	Query(ctx context.Context, query string, args, v any) error
 }
 
-// Driver is the interface that wraps all necessary operations for ent clients.
+// Driver is the interface that wraps all necessary operations for fluent clients.
 type Driver interface {
 	ExecQuerier
 	// Tx starts and returns a new transaction.

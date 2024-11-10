@@ -32,7 +32,7 @@ import (
 )
 
 var (
-	// CollectionTemplate adds fields collection support using auto eager-load ent edges.
+	// CollectionTemplate adds fields collection support using auto eager-load fluent edges.
 	// More info can be found here: https://spec.graphql.org/June2018/#sec-Field-Collection.
 	CollectionTemplate = parseT("template/collection.tmpl")
 
@@ -62,7 +62,7 @@ var (
 	// MutationInputTemplate adds a template for generating Create<T>Input and Update<T>Input for each schema type.
 	MutationInputTemplate = parseT("template/mutation_input.tmpl").SkipIf(skipMutationTemplate)
 
-	// AllTemplates holds all templates for extending ent to support GraphQL.
+	// AllTemplates holds all templates for extending fluent to support GraphQL.
 	AllTemplates = []*gen.Template{
 		CollectionTemplate,
 		EnumTemplate,

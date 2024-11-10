@@ -24,7 +24,7 @@ func TestRowLevelSecurity(t *testing.T) {
 		t.Skip()
 	}
 	ctx := context.Background()
-	// Note that APP_URL is used for the ent client, and ATLAS_URL is used for the atlas client.
+	// Note that APP_URL is used for the fluent client, and ATLAS_URL is used for the atlas client.
 	// Two different roles. The app role has access to the specific tables, and the atlas role in
 	// this example is the default superuser role.
 	client, err := fluent.Open(dialect.Postgres, os.Getenv("APP_URL"))
