@@ -10,6 +10,7 @@ import (
 	"go/token"
 	"path/filepath"
 	"reflect"
+	"regexp"
 	"sort"
 	"strconv"
 	"strings"
@@ -227,10 +228,11 @@ func SnakeCase(inputString string) string {
 //	[1]T      => t
 //	User      => u
 //	UserQuery => uq
-func receiver(s string) (r string) {
+func receiver(inputString string) (r string) {
 	// Trim invalid tokens for identifier prefix.
-	s = strings.Trim(s, "[]*&0123456789")
-	parts := strings.Split(SnakeCase(s), "_")
+	matches := regexp.MustCompile(`[\[\]\.\!\@\&\*]+`)
+	inputString = matches.ReplaceAllString(strings.Trim(inputString, "[]*&0123456789"), "_")
+	parts := strings.Split(SnakeCase(inputString), "_")
 	min := len(parts[0])
 	for _, w := range parts[1:] {
 		if len(w) < min {
@@ -243,11 +245,11 @@ func receiver(s string) (r string) {
 			r += w[:i]
 		}
 		if _, ok := importPkg[r]; !ok {
-			s = r
+			inputString = r
 			break
 		}
 	}
-	name := strings.ToLower(s)
+	name := strings.ToLower(inputString)
 	if token.Lookup(name).IsKeyword() {
 		name = "_" + name
 	}

@@ -50,29 +50,31 @@ func LoadGraph(schemaPath string, cfg *gen.Config) (*gen.Graph, error) {
 //		Header: "// Custom header",
 //		IDType: &field.TypeInfo{Type: field.TypeInt},
 //	})
-func Generate(schemaPath string, cfg *gen.Config, options ...Option) error {
-	if cfg.Target == "" {
+func Generate(schemaPath string, config *gen.Config, options ...Option) error {
+	if config.Target == "" {
 		abs, err := filepath.Abs(schemaPath)
 		if err != nil {
 			return err
 		}
 		// default target-path for codegen is one dir above
 		// the schema.
-		cfg.Target = filepath.Dir(abs)
+		config.Target = filepath.Dir(abs)
+	} else if config.Package == "" {
+		config.Package = config.Target
 	}
 	for _, opt := range options {
-		if err := opt(cfg); err != nil {
+		if err := opt(config); err != nil {
 			return err
 		}
 	}
-	if cfg.Storage == nil {
+	if config.Storage == nil {
 		driver, err := gen.NewStorage("sql")
 		if err != nil {
 			return err
 		}
-		cfg.Storage = driver
+		config.Storage = driver
 	}
-	undo, err := gen.PrepareEnv(cfg)
+	undo, err := gen.PrepareEnv(config)
 	if err != nil {
 		return err
 	}
@@ -81,14 +83,14 @@ func Generate(schemaPath string, cfg *gen.Config, options ...Option) error {
 			_ = undo()
 		}
 	}()
-	return generate(schemaPath, cfg)
+	return generate(schemaPath, config)
 }
 
-func normalizePkg(c *gen.Config) error {
-	base := path.Base(c.Package)
+func normalizePkg(config *gen.Config) error {
+	base := path.Base(config.Package)
 	if strings.ContainsRune(base, '-') {
 		base = strings.ReplaceAll(base, "-", "_")
-		c.Package = path.Join(path.Dir(c.Package), base)
+		config.Package = path.Join(path.Dir(config.Package), base)
 	}
 	if !token.IsIdentifier(base) {
 		return fmt.Errorf("invalid package identifier: %q", base)
