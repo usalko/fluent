@@ -14,7 +14,7 @@ require (
 	github.com/lib/pq v1.10.7
 	github.com/mattn/go-sqlite3 v1.14.17
 	github.com/stretchr/testify v1.9.0
-	github.com/usalko/fluent v0.1.8
+	github.com/usalko/fluent v0.1.9
 	golang.org/x/sync v0.9.0
 )
 
