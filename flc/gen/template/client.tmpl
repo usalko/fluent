@@ -283,7 +283,7 @@ type {{ $client }} struct {
 	config
 }
 
-{{ $rec := $n.Receiver }}{{ if eq $rec "c" }}{{ $rec = printf "%.2s" $n.Name | lower }}{{ end }}
+{{ $rec := $n.Receiver }}{{ if eq $rec "c" }}{{ $rec = printf "%.2s" $n.Name | snake }}{{ end }}
 
 // New{{ $client }} returns a client for the {{ $n.Name }} from the given config.
 func New{{ $client }}(c config) *{{ $client }} {

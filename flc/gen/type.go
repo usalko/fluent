@@ -326,7 +326,7 @@ func (t Type) Package() string {
 
 // PackageDir returns the name of the package directory.
 func (t Type) PackageDir() string {
-	return ToSnakeCaseSpecialFromCamel(t.Name)
+	return snake(t.Name)
 }
 
 // PackageAlias returns local package name of a type if there is one.

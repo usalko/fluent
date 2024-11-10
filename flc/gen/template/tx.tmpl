@@ -46,7 +46,7 @@ type Tx struct {
 		// signature, {{ $func }}Func(f) is a {{ $iface }} that calls f.
 		{{ $func }}Func func(context.Context, *Tx) error
 
-		// {{ $func }}Hook defines the "{{ lower $func }} middleware". A function that gets a {{ $iface }}
+		// {{ $func }}Hook defines the "{{ snake $func }} middleware". A function that gets a {{ $iface }}
 		// and returns a {{ $iface }}. For example:
 		//
 		//	hook := func(next fluent.{{ $iface }}) fluent.{{ $iface }} {
@@ -69,7 +69,7 @@ type Tx struct {
 	}
 
 	{{- $onFuncs := print "on" $func }}
-	// {{ $func }} {{ lower $func }}s the transaction.
+	// {{ $func }} {{ snake $func }}s the transaction.
 	func (tx *Tx) {{ $func }}() error {
 		txDriver := tx.config.driver.(*txDriver)
 		var fn {{ $iface }} = {{ $func }}Func(func(context.Context, *Tx) error {
@@ -84,7 +84,7 @@ type Tx struct {
 		return fn.{{ $func }}(tx.ctx, tx)
 	}
 
-	// On{{ $func }} adds a hook to call on {{ lower $func }}.
+	// On{{ $func }} adds a hook to call on {{ snake $func }}.
 	func (tx *Tx) On{{ $func }}(f {{ $func }}Hook) {
 		txDriver := tx.config.driver.(*txDriver)
 		txDriver.mu.Lock()

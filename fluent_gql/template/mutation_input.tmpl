@@ -24,9 +24,9 @@ import (
     {{- $fields := $n.InputFields }}
     {{- $edges := $n.InputEdges }}
     {{- if $n.IsCreate }}
-    // {{ $input }} represents a mutation input for creating {{ plural $names.Node | lower }}.
+    // {{ $input }} represents a mutation input for creating {{ plural $names.Node | snake }}.
     {{- else }}
-    // {{ $input }} represents a mutation input for updating {{ plural $names.Node | lower }}.
+    // {{ $input }} represents a mutation input for updating {{ plural $names.Node | snake }}.
     {{- end }}
     type {{ $input }} struct {
         {{- range $f := $fields }}

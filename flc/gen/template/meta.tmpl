@@ -14,7 +14,7 @@ in the LICENSE file in the root directory of this source tree.
 {{ template "import" $ }}
 
 const (
-	// Label holds the string label denoting the {{ lower $.Name }} type in the database.
+	// Label holds the string label denoting the {{ snake $.Name }} type in the database.
 	Label = "{{ $.Label }}"
 	{{- if $.HasOneFieldID }}
 		// {{ $.ID.Constant }} holds the string denoting the id field in the database.
@@ -22,12 +22,12 @@ const (
 	{{- end }}
 	{{- range $f := $.Fields }}
 		{{- $field := $f.Constant }}
-		// {{ $field }} holds the string denoting the {{ lower $f.Name }} field in the database.
+		// {{ $field }} holds the string denoting the {{ snake $f.Name }} field in the database.
 		{{ $field }} = "{{ $f.StorageKey }}"
 	{{- end }}
 	{{- range $e := $.Edges }}
 		{{- $edge := $e.Constant }}
-		// {{ $edge }} holds the string denoting the {{ lower $e.Name }} edge name in mutations.
+		// {{ $edge }} holds the string denoting the {{ snake $e.Name }} edge name in mutations.
 		{{ $edge }} = "{{ $e.Name }}"
 	{{- end }}
 	{{- $tmpl := printf "dialect/%s/meta/constants" $.Storage }}

@@ -107,7 +107,7 @@ import (
     // {{ $err }} is returned in case the {{ $input }} is empty.
     var {{ $err }} = errors.New("{{ base $.Config.Package }}: empty predicate {{ $input }}")
 
-    // P returns a predicate for filtering {{ plural $n.Name | lower }}.
+    // P returns a predicate for filtering {{ plural $n.Name | snake }}.
     // An error is returned if the input is empty or invalid.
     func (i *{{ $input }}) P() (predicate.{{ $n.Name }}, error) {
         var predicates []predicate.{{ $n.Name }}

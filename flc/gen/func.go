@@ -200,27 +200,29 @@ func camel(s string) string {
 //	Username => username
 //	FullName => full_name
 //	HTTPCode => http_code
-func snake(s string) string {
-	var (
-		j int
-		b strings.Builder
-	)
-	for i := 0; i < len(s); i++ {
-		r := rune(s[i])
-		// Put '_' if it is not a start or end of a word, current letter is uppercase,
-		// and previous is lowercase (cases like: "UserInfo"), or next letter is also
-		// a lowercase and previous letter is not "_".
-		if i > 0 && i < len(s)-1 && unicode.IsUpper(r) {
-			if unicode.IsLower(rune(s[i-1])) ||
-				j != i-1 && unicode.IsLower(rune(s[i+1])) && unicode.IsLetter(rune(s[i-1])) {
-				j = i
-				b.WriteString("_")
-			}
-		}
-		b.WriteRune(unicode.ToLower(r))
+func snake(inputString string) string {
+	if len(inputString) == 0 {
+		return ""
 	}
-	return b.String()
+	var result strings.Builder
+	for i, r := range inputString {
+		// Special case - a first letter
+		if i == 0 {
+			result.WriteRune(unicode.ToLower(r))
+			continue
+		}
+		if unicode.IsUpper(r) && unicode.IsLetter(r) {
+			result.WriteRune('_')
+			result.WriteRune(unicode.ToLower(r))
+		} else {
+			result.WriteRune(r)
+		}
+	}
+	return result.String()
 }
+
+// Export
+func SnakeCase(inputString string) string { return snake(inputString) }
 
 // receiver returns the receiver name of the given type.
 //

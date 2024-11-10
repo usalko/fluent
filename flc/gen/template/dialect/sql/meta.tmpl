@@ -17,7 +17,7 @@ in the LICENSE file in the root directory of this source tree.
 			{{ $t.Name }}FieldID = "{{ $t.ID.StorageKey }}"
 		{{- end }}
 	{{- end }}
-	// Table holds the table name of the {{ lower $.Name }} in the database.
+	// Table holds the table name of the {{ snake $.Name }} in the database.
 	Table = "{{ $.Table }}"
 	{{- range $e := $.Edges }}
 		// {{ $e.TableConstant }} is the table that holds the {{ $e.Name }} relation/edge.
@@ -42,7 +42,7 @@ in the LICENSE file in the root directory of this source tree.
 
 {{/* Variables needed for sql dialects. */}}
 {{ define "dialect/sql/meta/variables" }}
-	// Columns holds all SQL columns for {{ lower $.Name }} fields.
+	// Columns holds all SQL columns for {{ snake $.Name }} fields.
 	var Columns = []string{
 		{{- if $.HasOneFieldID }}
 			{{ $.ID.Constant }},

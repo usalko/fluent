@@ -344,7 +344,7 @@ func (m {{ $mutation }}) Tx() (*Tx, error) {
 	}
 
 	{{ if not $e.Unique }}
-		{{ $p := lower (printf "%.1s" $e.Type.Name) }}
+		{{ $p := snake (printf "%.1s" $e.Type.Name) }}
 		// {{ $e.MutationRemove }} removes the "{{ $e.Name }}" edge to the {{ $e.Type.Name }} entity by IDs.
 		func (m *{{ $mutation }}) {{ $e.MutationRemove }}(ids ...{{ $e.Type.ID.Type }}) {
 			if m.removed{{ $e.BuilderField }} == nil {
