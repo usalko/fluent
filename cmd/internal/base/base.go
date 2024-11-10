@@ -178,7 +178,7 @@ func GenerateCmd(postRun ...func(*gen.Config)) *cobra.Command {
 				}
 				// If the target directory is not inferred from
 				// the schema path, resolve its package path.
-				if cfg.Target != "" {
+				if cfg.Target != "" && cfg.Package == "" {
 					pkgPath, err := PkgPath(DefaultConfig, cfg.Target)
 					if err != nil {
 						log.Fatalln(err)
@@ -199,6 +199,7 @@ func GenerateCmd(postRun ...func(*gen.Config)) *cobra.Command {
 	cmd.Flags().StringVar(&storage, "storage", "sql", "storage driver to support in codegen")
 	cmd.Flags().StringVar(&cfg.Header, "header", "", "override codegen header")
 	cmd.Flags().StringVar(&cfg.Target, "target", "", "target directory for codegen")
+	cmd.Flags().StringVar(&cfg.Package, "package", "", "output package for codegen")
 	cmd.Flags().StringSliceVarP(&features, "feature", "", nil, "extend codegen with additional features")
 	cmd.Flags().StringSliceVarP(&templates, "template", "", nil, "external templates to execute")
 	// The --id_type flag predates the field.<Type>("id") option.
