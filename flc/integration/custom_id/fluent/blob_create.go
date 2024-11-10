@@ -27,15 +27,15 @@ type BlobCreate struct {
 }
 
 // SetUUID sets the "uuid" field.
-func (bc *BlobCreate) SetUUID(uu uuid.UUID) *BlobCreate {
-	bc.mutation.SetUUID(uu)
+func (bc *BlobCreate) SetUUID(uuid_uuid uuid.UUID) *BlobCreate {
+	bc.mutation.SetUUID(uuid_uuid)
 	return bc
 }
 
 // SetNillableUUID sets the "uuid" field if the given value is not nil.
-func (bc *BlobCreate) SetNillableUUID(uu *uuid.UUID) *BlobCreate {
-	if uu != nil {
-		bc.SetUUID(*uu)
+func (bc *BlobCreate) SetNillableUUID(uuid_uuid *uuid.UUID) *BlobCreate {
+	if uuid_uuid != nil {
+		bc.SetUUID(*uuid_uuid)
 	}
 	return bc
 }
@@ -55,15 +55,15 @@ func (bc *BlobCreate) SetNillableCount(i *int) *BlobCreate {
 }
 
 // SetID sets the "id" field.
-func (bc *BlobCreate) SetID(uu uuid.UUID) *BlobCreate {
-	bc.mutation.SetID(uu)
+func (bc *BlobCreate) SetID(uuid_uuid uuid.UUID) *BlobCreate {
+	bc.mutation.SetID(uuid_uuid)
 	return bc
 }
 
 // SetNillableID sets the "id" field if the given value is not nil.
-func (bc *BlobCreate) SetNillableID(uu *uuid.UUID) *BlobCreate {
-	if uu != nil {
-		bc.SetID(*uu)
+func (bc *BlobCreate) SetNillableID(uuid_uuid *uuid.UUID) *BlobCreate {
+	if uuid_uuid != nil {
+		bc.SetID(*uuid_uuid)
 	}
 	return bc
 }

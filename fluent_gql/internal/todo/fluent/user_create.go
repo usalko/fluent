@@ -49,15 +49,15 @@ func (uc *UserCreate) SetNillableName(s *string) *UserCreate {
 }
 
 // SetUsername sets the "username" field.
-func (uc *UserCreate) SetUsername(uu uuid.UUID) *UserCreate {
-	uc.mutation.SetUsername(uu)
+func (uc *UserCreate) SetUsername(uuid_uuid uuid.UUID) *UserCreate {
+	uc.mutation.SetUsername(uuid_uuid)
 	return uc
 }
 
 // SetNillableUsername sets the "username" field if the given value is not nil.
-func (uc *UserCreate) SetNillableUsername(uu *uuid.UUID) *UserCreate {
-	if uu != nil {
-		uc.SetUsername(*uu)
+func (uc *UserCreate) SetNillableUsername(uuid_uuid *uuid.UUID) *UserCreate {
+	if uuid_uuid != nil {
+		uc.SetUsername(*uuid_uuid)
 	}
 	return uc
 }
@@ -77,14 +77,14 @@ func (uc *UserCreate) SetNillablePassword(s *string) *UserCreate {
 }
 
 // SetRequiredMetadata sets the "required_metadata" field.
-func (uc *UserCreate) SetRequiredMetadata(m map[string]interface{}) *UserCreate {
-	uc.mutation.SetRequiredMetadata(m)
+func (uc *UserCreate) SetRequiredMetadata(msi map[string]interface{}) *UserCreate {
+	uc.mutation.SetRequiredMetadata(msi)
 	return uc
 }
 
 // SetMetadata sets the "metadata" field.
-func (uc *UserCreate) SetMetadata(m map[string]interface{}) *UserCreate {
-	uc.mutation.SetMetadata(m)
+func (uc *UserCreate) SetMetadata(msi map[string]interface{}) *UserCreate {
+	uc.mutation.SetMetadata(msi)
 	return uc
 }
 

@@ -28,15 +28,15 @@ type RoleUserCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (ruc *RoleUserCreate) SetCreatedAt(tt time.Time) *RoleUserCreate {
-	ruc.mutation.SetCreatedAt(tt)
+func (ruc *RoleUserCreate) SetCreatedAt(time_time time.Time) *RoleUserCreate {
+	ruc.mutation.SetCreatedAt(time_time)
 	return ruc
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (ruc *RoleUserCreate) SetNillableCreatedAt(tt *time.Time) *RoleUserCreate {
-	if tt != nil {
-		ruc.SetCreatedAt(*tt)
+func (ruc *RoleUserCreate) SetNillableCreatedAt(time_time *time.Time) *RoleUserCreate {
+	if time_time != nil {
+		ruc.SetCreatedAt(*time_time)
 	}
 	return ruc
 }

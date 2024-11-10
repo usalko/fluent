@@ -34,15 +34,15 @@ func (ac *AccountCreate) SetEmail(s string) *AccountCreate {
 }
 
 // SetID sets the "id" field.
-func (ac *AccountCreate) SetID(si sid.ID) *AccountCreate {
-	ac.mutation.SetID(si)
+func (ac *AccountCreate) SetID(sid_id sid.ID) *AccountCreate {
+	ac.mutation.SetID(sid_id)
 	return ac
 }
 
 // SetNillableID sets the "id" field if the given value is not nil.
-func (ac *AccountCreate) SetNillableID(si *sid.ID) *AccountCreate {
-	if si != nil {
-		ac.SetID(*si)
+func (ac *AccountCreate) SetNillableID(sid_id *sid.ID) *AccountCreate {
+	if sid_id != nil {
+		ac.SetID(*sid_id)
 	}
 	return ac
 }

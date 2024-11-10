@@ -2015,8 +2015,8 @@ func (m *CustomTypeMutation) ResetCustom() {
 }
 
 // SetTz0 sets the "tz0" field.
-func (m *CustomTypeMutation) SetTz0(tt time.Time) {
-	m.tz0 = &tt
+func (m *CustomTypeMutation) SetTz0(time_time time.Time) {
+	m.tz0 = &time_time
 }
 
 // Tz0 returns the value of the "tz0" field in the mutation.
@@ -2064,8 +2064,8 @@ func (m *CustomTypeMutation) ResetTz0() {
 }
 
 // SetTz3 sets the "tz3" field.
-func (m *CustomTypeMutation) SetTz3(tt time.Time) {
-	m.tz3 = &tt
+func (m *CustomTypeMutation) SetTz3(time_time time.Time) {
+	m.tz3 = &time_time
 }
 
 // Tz3 returns the value of the "tz3" field in the mutation.
@@ -3703,8 +3703,8 @@ func (m *UserMutation) ResetMixedString() {
 }
 
 // SetMixedEnum sets the "mixed_enum" field.
-func (m *UserMutation) SetMixedEnum(ume user.MixedEnum) {
-	m.mixed_enum = &ume
+func (m *UserMutation) SetMixedEnum(user_mixedenum user.MixedEnum) {
+	m.mixed_enum = &user_mixedenum
 }
 
 // MixedEnum returns the value of the "mixed_enum" field in the mutation.
@@ -4207,8 +4207,8 @@ func (m *UserMutation) ResetBlob() {
 }
 
 // SetState sets the "state" field.
-func (m *UserMutation) SetState(us user.State) {
-	m.state = &us
+func (m *UserMutation) SetState(user_state user.State) {
+	m.state = &user_state
 }
 
 // State returns the value of the "state" field in the mutation.
@@ -4256,8 +4256,8 @@ func (m *UserMutation) ResetState() {
 }
 
 // SetStatus sets the "status" field.
-func (m *UserMutation) SetStatus(us user.Status) {
-	m.status = &us
+func (m *UserMutation) SetStatus(user_status user.Status) {
+	m.status = &user_status
 }
 
 // Status returns the value of the "status" field in the mutation.
@@ -4517,8 +4517,8 @@ func (m *UserMutation) ResetDefaultExprs() {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (m *UserMutation) SetCreatedAt(tt time.Time) {
-	m.created_at = &tt
+func (m *UserMutation) SetCreatedAt(time_time time.Time) {
+	m.created_at = &time_time
 }
 
 // CreatedAt returns the value of the "created_at" field in the mutation.

@@ -20,8 +20,8 @@ type UserCreate struct {
 }
 
 // SetStatus sets the "status" field.
-func (uc *UserCreate) SetStatus(us user.Status) *UserCreate {
-	uc.mutation.SetStatus(us)
+func (uc *UserCreate) SetStatus(user_status user.Status) *UserCreate {
+	uc.mutation.SetStatus(user_status)
 	return uc
 }
 

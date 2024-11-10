@@ -35,41 +35,41 @@ type FriendshipCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (fc *FriendshipCreate) SetCreatedAt(tt time.Time) *FriendshipCreate {
-	fc.mutation.SetCreatedAt(tt)
+func (fc *FriendshipCreate) SetCreatedAt(time_time time.Time) *FriendshipCreate {
+	fc.mutation.SetCreatedAt(time_time)
 	return fc
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (fc *FriendshipCreate) SetNillableCreatedAt(tt *time.Time) *FriendshipCreate {
-	if tt != nil {
-		fc.SetCreatedAt(*tt)
+func (fc *FriendshipCreate) SetNillableCreatedAt(time_time *time.Time) *FriendshipCreate {
+	if time_time != nil {
+		fc.SetCreatedAt(*time_time)
 	}
 	return fc
 }
 
 // SetUserID sets the "user_id" field.
-func (fc *FriendshipCreate) SetUserID(uu uuid.UUID) *FriendshipCreate {
-	fc.mutation.SetUserID(uu)
+func (fc *FriendshipCreate) SetUserID(uuid_uuid uuid.UUID) *FriendshipCreate {
+	fc.mutation.SetUserID(uuid_uuid)
 	return fc
 }
 
 // SetFriendID sets the "friend_id" field.
-func (fc *FriendshipCreate) SetFriendID(uu uuid.UUID) *FriendshipCreate {
-	fc.mutation.SetFriendID(uu)
+func (fc *FriendshipCreate) SetFriendID(uuid_uuid uuid.UUID) *FriendshipCreate {
+	fc.mutation.SetFriendID(uuid_uuid)
 	return fc
 }
 
 // SetID sets the "id" field.
-func (fc *FriendshipCreate) SetID(uu uuid.UUID) *FriendshipCreate {
-	fc.mutation.SetID(uu)
+func (fc *FriendshipCreate) SetID(uuid_uuid uuid.UUID) *FriendshipCreate {
+	fc.mutation.SetID(uuid_uuid)
 	return fc
 }
 
 // SetNillableID sets the "id" field if the given value is not nil.
-func (fc *FriendshipCreate) SetNillableID(uu *uuid.UUID) *FriendshipCreate {
-	if uu != nil {
-		fc.SetID(*uu)
+func (fc *FriendshipCreate) SetNillableID(uuid_uuid *uuid.UUID) *FriendshipCreate {
+	if uuid_uuid != nil {
+		fc.SetID(*uuid_uuid)
 	}
 	return fc
 }

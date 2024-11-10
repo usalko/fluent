@@ -35,8 +35,8 @@ func (cu *CardUpdate) Where(ps ...predicate.Card) *CardUpdate {
 }
 
 // SetUpdateTime sets the "update_time" field.
-func (cu *CardUpdate) SetUpdateTime(tt time.Time) *CardUpdate {
-	cu.mutation.SetUpdateTime(tt)
+func (cu *CardUpdate) SetUpdateTime(time_time time.Time) *CardUpdate {
+	cu.mutation.SetUpdateTime(time_time)
 	return cu
 }
 
@@ -323,8 +323,8 @@ type CardUpdateOne struct {
 }
 
 // SetUpdateTime sets the "update_time" field.
-func (cuo *CardUpdateOne) SetUpdateTime(tt time.Time) *CardUpdateOne {
-	cuo.mutation.SetUpdateTime(tt)
+func (cuo *CardUpdateOne) SetUpdateTime(time_time time.Time) *CardUpdateOne {
+	cuo.mutation.SetUpdateTime(time_time)
 	return cuo
 }
 

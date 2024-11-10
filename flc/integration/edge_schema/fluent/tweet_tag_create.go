@@ -30,15 +30,15 @@ type TweetTagCreate struct {
 }
 
 // SetAddedAt sets the "added_at" field.
-func (ttc *TweetTagCreate) SetAddedAt(tt time.Time) *TweetTagCreate {
-	ttc.mutation.SetAddedAt(tt)
+func (ttc *TweetTagCreate) SetAddedAt(time_time time.Time) *TweetTagCreate {
+	ttc.mutation.SetAddedAt(time_time)
 	return ttc
 }
 
 // SetNillableAddedAt sets the "added_at" field if the given value is not nil.
-func (ttc *TweetTagCreate) SetNillableAddedAt(tt *time.Time) *TweetTagCreate {
-	if tt != nil {
-		ttc.SetAddedAt(*tt)
+func (ttc *TweetTagCreate) SetNillableAddedAt(time_time *time.Time) *TweetTagCreate {
+	if time_time != nil {
+		ttc.SetAddedAt(*time_time)
 	}
 	return ttc
 }
@@ -56,15 +56,15 @@ func (ttc *TweetTagCreate) SetTweetID(i int) *TweetTagCreate {
 }
 
 // SetID sets the "id" field.
-func (ttc *TweetTagCreate) SetID(uu uuid.UUID) *TweetTagCreate {
-	ttc.mutation.SetID(uu)
+func (ttc *TweetTagCreate) SetID(uuid_uuid uuid.UUID) *TweetTagCreate {
+	ttc.mutation.SetID(uuid_uuid)
 	return ttc
 }
 
 // SetNillableID sets the "id" field if the given value is not nil.
-func (ttc *TweetTagCreate) SetNillableID(uu *uuid.UUID) *TweetTagCreate {
-	if uu != nil {
-		ttc.SetID(*uu)
+func (ttc *TweetTagCreate) SetNillableID(uuid_uuid *uuid.UUID) *TweetTagCreate {
+	if uuid_uuid != nil {
+		ttc.SetID(*uuid_uuid)
 	}
 	return ttc
 }

@@ -33,29 +33,29 @@ func (tu *TaskUpdate) Where(ps ...predicate.Task) *TaskUpdate {
 }
 
 // SetPriority sets the "priority" field.
-func (tu *TaskUpdate) SetPriority(tp task.Priority) *TaskUpdate {
+func (tu *TaskUpdate) SetPriority(task_priority task.Priority) *TaskUpdate {
 	tu.mutation.ResetPriority()
-	tu.mutation.SetPriority(tp)
+	tu.mutation.SetPriority(task_priority)
 	return tu
 }
 
 // SetNillablePriority sets the "priority" field if the given value is not nil.
-func (tu *TaskUpdate) SetNillablePriority(tp *task.Priority) *TaskUpdate {
-	if tp != nil {
-		tu.SetPriority(*tp)
+func (tu *TaskUpdate) SetNillablePriority(task_priority *task.Priority) *TaskUpdate {
+	if task_priority != nil {
+		tu.SetPriority(*task_priority)
 	}
 	return tu
 }
 
-// AddPriority adds tp to the "priority" field.
-func (tu *TaskUpdate) AddPriority(tp task.Priority) *TaskUpdate {
-	tu.mutation.AddPriority(tp)
+// AddPriority adds task_priority to the "priority" field.
+func (tu *TaskUpdate) AddPriority(task_priority task.Priority) *TaskUpdate {
+	tu.mutation.AddPriority(task_priority)
 	return tu
 }
 
 // SetPriorities sets the "priorities" field.
-func (tu *TaskUpdate) SetPriorities(mp map[string]task.Priority) *TaskUpdate {
-	tu.mutation.SetPriorities(mp)
+func (tu *TaskUpdate) SetPriorities(map_string_task_priority map[string]task.Priority) *TaskUpdate {
+	tu.mutation.SetPriorities(map_string_task_priority)
 	return tu
 }
 
@@ -307,29 +307,29 @@ type TaskUpdateOne struct {
 }
 
 // SetPriority sets the "priority" field.
-func (tuo *TaskUpdateOne) SetPriority(tp task.Priority) *TaskUpdateOne {
+func (tuo *TaskUpdateOne) SetPriority(task_priority task.Priority) *TaskUpdateOne {
 	tuo.mutation.ResetPriority()
-	tuo.mutation.SetPriority(tp)
+	tuo.mutation.SetPriority(task_priority)
 	return tuo
 }
 
 // SetNillablePriority sets the "priority" field if the given value is not nil.
-func (tuo *TaskUpdateOne) SetNillablePriority(tp *task.Priority) *TaskUpdateOne {
-	if tp != nil {
-		tuo.SetPriority(*tp)
+func (tuo *TaskUpdateOne) SetNillablePriority(task_priority *task.Priority) *TaskUpdateOne {
+	if task_priority != nil {
+		tuo.SetPriority(*task_priority)
 	}
 	return tuo
 }
 
-// AddPriority adds tp to the "priority" field.
-func (tuo *TaskUpdateOne) AddPriority(tp task.Priority) *TaskUpdateOne {
-	tuo.mutation.AddPriority(tp)
+// AddPriority adds task_priority to the "priority" field.
+func (tuo *TaskUpdateOne) AddPriority(task_priority task.Priority) *TaskUpdateOne {
+	tuo.mutation.AddPriority(task_priority)
 	return tuo
 }
 
 // SetPriorities sets the "priorities" field.
-func (tuo *TaskUpdateOne) SetPriorities(mp map[string]task.Priority) *TaskUpdateOne {
-	tuo.mutation.SetPriorities(mp)
+func (tuo *TaskUpdateOne) SetPriorities(map_string_task_priority map[string]task.Priority) *TaskUpdateOne {
+	tuo.mutation.SetPriorities(map_string_task_priority)
 	return tuo
 }
 

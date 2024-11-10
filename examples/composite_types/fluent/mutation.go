@@ -139,8 +139,8 @@ func (m *UserMutation) IDs(ctx context.Context) ([]int, error) {
 }
 
 // SetAddress sets the "address" field.
-func (m *UserMutation) SetAddress(sa *schema.Address) {
-	m.address = &sa
+func (m *UserMutation) SetAddress(schema_address *schema.Address) {
+	m.address = &schema_address
 }
 
 // Address returns the value of the "address" field in the mutation.

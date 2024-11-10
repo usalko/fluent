@@ -32,8 +32,8 @@ func (lu *LinkUpdate) Where(ps ...predicate.Link) *LinkUpdate {
 }
 
 // SetLinkInformation sets the "link_information" field.
-func (lu *LinkUpdate) SetLinkInformation(mli map[string]schema.LinkInformation) *LinkUpdate {
-	lu.mutation.SetLinkInformation(mli)
+func (lu *LinkUpdate) SetLinkInformation(map_string_schema_linkinformation map[string]schema.LinkInformation) *LinkUpdate {
+	lu.mutation.SetLinkInformation(map_string_schema_linkinformation)
 	return lu
 }
 
@@ -102,8 +102,8 @@ type LinkUpdateOne struct {
 }
 
 // SetLinkInformation sets the "link_information" field.
-func (luo *LinkUpdateOne) SetLinkInformation(mli map[string]schema.LinkInformation) *LinkUpdateOne {
-	luo.mutation.SetLinkInformation(mli)
+func (luo *LinkUpdateOne) SetLinkInformation(map_string_schema_linkinformation map[string]schema.LinkInformation) *LinkUpdateOne {
+	luo.mutation.SetLinkInformation(map_string_schema_linkinformation)
 	return luo
 }
 

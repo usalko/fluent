@@ -39,15 +39,15 @@ func (mi *MixinIDCreate) SetMixinField(s string) *MixinIDCreate {
 }
 
 // SetID sets the "id" field.
-func (mi *MixinIDCreate) SetID(uu uuid.UUID) *MixinIDCreate {
-	mi.mutation.SetID(uu)
+func (mi *MixinIDCreate) SetID(uuid_uuid uuid.UUID) *MixinIDCreate {
+	mi.mutation.SetID(uuid_uuid)
 	return mi
 }
 
 // SetNillableID sets the "id" field if the given value is not nil.
-func (mi *MixinIDCreate) SetNillableID(uu *uuid.UUID) *MixinIDCreate {
-	if uu != nil {
-		mi.SetID(*uu)
+func (mi *MixinIDCreate) SetNillableID(uuid_uuid *uuid.UUID) *MixinIDCreate {
+	if uuid_uuid != nil {
+		mi.SetID(*uuid_uuid)
 	}
 	return mi
 }

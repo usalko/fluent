@@ -28,15 +28,15 @@ type UserTweetCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (utc *UserTweetCreate) SetCreatedAt(tt time.Time) *UserTweetCreate {
-	utc.mutation.SetCreatedAt(tt)
+func (utc *UserTweetCreate) SetCreatedAt(time_time time.Time) *UserTweetCreate {
+	utc.mutation.SetCreatedAt(time_time)
 	return utc
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (utc *UserTweetCreate) SetNillableCreatedAt(tt *time.Time) *UserTweetCreate {
-	if tt != nil {
-		utc.SetCreatedAt(*tt)
+func (utc *UserTweetCreate) SetNillableCreatedAt(time_time *time.Time) *UserTweetCreate {
+	if time_time != nil {
+		utc.SetCreatedAt(*time_time)
 	}
 	return utc
 }

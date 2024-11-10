@@ -39,15 +39,15 @@ func (fc *FriendshipCreate) SetNillableWeight(i *int) *FriendshipCreate {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (fc *FriendshipCreate) SetCreatedAt(tt time.Time) *FriendshipCreate {
-	fc.mutation.SetCreatedAt(tt)
+func (fc *FriendshipCreate) SetCreatedAt(time_time time.Time) *FriendshipCreate {
+	fc.mutation.SetCreatedAt(time_time)
 	return fc
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (fc *FriendshipCreate) SetNillableCreatedAt(tt *time.Time) *FriendshipCreate {
-	if tt != nil {
-		fc.SetCreatedAt(*tt)
+func (fc *FriendshipCreate) SetNillableCreatedAt(time_time *time.Time) *FriendshipCreate {
+	if time_time != nil {
+		fc.SetCreatedAt(*time_time)
 	}
 	return fc
 }

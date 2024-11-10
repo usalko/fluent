@@ -48,29 +48,29 @@ func (su *SessionUpdate) SetNillableActive(b *bool) *SessionUpdate {
 }
 
 // SetIssuedAt sets the "issued_at" field.
-func (su *SessionUpdate) SetIssuedAt(tt time.Time) *SessionUpdate {
-	su.mutation.SetIssuedAt(tt)
+func (su *SessionUpdate) SetIssuedAt(time_time time.Time) *SessionUpdate {
+	su.mutation.SetIssuedAt(time_time)
 	return su
 }
 
 // SetNillableIssuedAt sets the "issued_at" field if the given value is not nil.
-func (su *SessionUpdate) SetNillableIssuedAt(tt *time.Time) *SessionUpdate {
-	if tt != nil {
-		su.SetIssuedAt(*tt)
+func (su *SessionUpdate) SetNillableIssuedAt(time_time *time.Time) *SessionUpdate {
+	if time_time != nil {
+		su.SetIssuedAt(*time_time)
 	}
 	return su
 }
 
 // SetExpiresAt sets the "expires_at" field.
-func (su *SessionUpdate) SetExpiresAt(tt time.Time) *SessionUpdate {
-	su.mutation.SetExpiresAt(tt)
+func (su *SessionUpdate) SetExpiresAt(time_time time.Time) *SessionUpdate {
+	su.mutation.SetExpiresAt(time_time)
 	return su
 }
 
 // SetNillableExpiresAt sets the "expires_at" field if the given value is not nil.
-func (su *SessionUpdate) SetNillableExpiresAt(tt *time.Time) *SessionUpdate {
-	if tt != nil {
-		su.SetExpiresAt(*tt)
+func (su *SessionUpdate) SetNillableExpiresAt(time_time *time.Time) *SessionUpdate {
+	if time_time != nil {
+		su.SetExpiresAt(*time_time)
 	}
 	return su
 }
@@ -102,8 +102,8 @@ func (su *SessionUpdate) ClearToken() *SessionUpdate {
 }
 
 // SetMethod sets the "method" field.
-func (su *SessionUpdate) SetMethod(m map[string]interface{}) *SessionUpdate {
-	su.mutation.SetMethod(m)
+func (su *SessionUpdate) SetMethod(msi map[string]interface{}) *SessionUpdate {
+	su.mutation.SetMethod(msi)
 	return su
 }
 
@@ -114,15 +114,15 @@ func (su *SessionUpdate) ClearMethod() *SessionUpdate {
 }
 
 // SetDeviceID sets the "device_id" field.
-func (su *SessionUpdate) SetDeviceID(uu uuid.UUID) *SessionUpdate {
-	su.mutation.SetDeviceID(uu)
+func (su *SessionUpdate) SetDeviceID(uuid_uuid uuid.UUID) *SessionUpdate {
+	su.mutation.SetDeviceID(uuid_uuid)
 	return su
 }
 
 // SetNillableDeviceID sets the "device_id" field if the given value is not nil.
-func (su *SessionUpdate) SetNillableDeviceID(uu *uuid.UUID) *SessionUpdate {
-	if uu != nil {
-		su.SetDeviceID(*uu)
+func (su *SessionUpdate) SetNillableDeviceID(uuid_uuid *uuid.UUID) *SessionUpdate {
+	if uuid_uuid != nil {
+		su.SetDeviceID(*uuid_uuid)
 	}
 	return su
 }
@@ -273,29 +273,29 @@ func (suo *SessionUpdateOne) SetNillableActive(b *bool) *SessionUpdateOne {
 }
 
 // SetIssuedAt sets the "issued_at" field.
-func (suo *SessionUpdateOne) SetIssuedAt(tt time.Time) *SessionUpdateOne {
-	suo.mutation.SetIssuedAt(tt)
+func (suo *SessionUpdateOne) SetIssuedAt(time_time time.Time) *SessionUpdateOne {
+	suo.mutation.SetIssuedAt(time_time)
 	return suo
 }
 
 // SetNillableIssuedAt sets the "issued_at" field if the given value is not nil.
-func (suo *SessionUpdateOne) SetNillableIssuedAt(tt *time.Time) *SessionUpdateOne {
-	if tt != nil {
-		suo.SetIssuedAt(*tt)
+func (suo *SessionUpdateOne) SetNillableIssuedAt(time_time *time.Time) *SessionUpdateOne {
+	if time_time != nil {
+		suo.SetIssuedAt(*time_time)
 	}
 	return suo
 }
 
 // SetExpiresAt sets the "expires_at" field.
-func (suo *SessionUpdateOne) SetExpiresAt(tt time.Time) *SessionUpdateOne {
-	suo.mutation.SetExpiresAt(tt)
+func (suo *SessionUpdateOne) SetExpiresAt(time_time time.Time) *SessionUpdateOne {
+	suo.mutation.SetExpiresAt(time_time)
 	return suo
 }
 
 // SetNillableExpiresAt sets the "expires_at" field if the given value is not nil.
-func (suo *SessionUpdateOne) SetNillableExpiresAt(tt *time.Time) *SessionUpdateOne {
-	if tt != nil {
-		suo.SetExpiresAt(*tt)
+func (suo *SessionUpdateOne) SetNillableExpiresAt(time_time *time.Time) *SessionUpdateOne {
+	if time_time != nil {
+		suo.SetExpiresAt(*time_time)
 	}
 	return suo
 }
@@ -327,8 +327,8 @@ func (suo *SessionUpdateOne) ClearToken() *SessionUpdateOne {
 }
 
 // SetMethod sets the "method" field.
-func (suo *SessionUpdateOne) SetMethod(m map[string]interface{}) *SessionUpdateOne {
-	suo.mutation.SetMethod(m)
+func (suo *SessionUpdateOne) SetMethod(msi map[string]interface{}) *SessionUpdateOne {
+	suo.mutation.SetMethod(msi)
 	return suo
 }
 
@@ -339,15 +339,15 @@ func (suo *SessionUpdateOne) ClearMethod() *SessionUpdateOne {
 }
 
 // SetDeviceID sets the "device_id" field.
-func (suo *SessionUpdateOne) SetDeviceID(uu uuid.UUID) *SessionUpdateOne {
-	suo.mutation.SetDeviceID(uu)
+func (suo *SessionUpdateOne) SetDeviceID(uuid_uuid uuid.UUID) *SessionUpdateOne {
+	suo.mutation.SetDeviceID(uuid_uuid)
 	return suo
 }
 
 // SetNillableDeviceID sets the "device_id" field if the given value is not nil.
-func (suo *SessionUpdateOne) SetNillableDeviceID(uu *uuid.UUID) *SessionUpdateOne {
-	if uu != nil {
-		suo.SetDeviceID(*uu)
+func (suo *SessionUpdateOne) SetNillableDeviceID(uuid_uuid *uuid.UUID) *SessionUpdateOne {
+	if uuid_uuid != nil {
+		suo.SetDeviceID(*uuid_uuid)
 	}
 	return suo
 }

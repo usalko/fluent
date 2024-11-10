@@ -52,15 +52,15 @@ func (cc *CardCreate) SetCvvHash(s string) *CardCreate {
 }
 
 // SetExpiresAt sets the "expires_at" field.
-func (cc *CardCreate) SetExpiresAt(tt time.Time) *CardCreate {
-	cc.mutation.SetExpiresAt(tt)
+func (cc *CardCreate) SetExpiresAt(time_time time.Time) *CardCreate {
+	cc.mutation.SetExpiresAt(time_time)
 	return cc
 }
 
 // SetNillableExpiresAt sets the "expires_at" field if the given value is not nil.
-func (cc *CardCreate) SetNillableExpiresAt(tt *time.Time) *CardCreate {
-	if tt != nil {
-		cc.SetExpiresAt(*tt)
+func (cc *CardCreate) SetNillableExpiresAt(time_time *time.Time) *CardCreate {
+	if time_time != nil {
+		cc.SetExpiresAt(*time_time)
 	}
 	return cc
 }

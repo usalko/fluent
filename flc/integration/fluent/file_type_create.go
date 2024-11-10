@@ -32,29 +32,29 @@ func (ftc *FileTypeCreate) SetName(s string) *FileTypeCreate {
 }
 
 // SetType sets the "type" field.
-func (ftc *FileTypeCreate) SetType(ftt file_type.Type) *FileTypeCreate {
-	ftc.mutation.SetType(ftt)
+func (ftc *FileTypeCreate) SetType(file_type_type file_type.Type) *FileTypeCreate {
+	ftc.mutation.SetType(file_type_type)
 	return ftc
 }
 
 // SetNillableType sets the "type" field if the given value is not nil.
-func (ftc *FileTypeCreate) SetNillableType(ftt *file_type.Type) *FileTypeCreate {
-	if ftt != nil {
-		ftc.SetType(*ftt)
+func (ftc *FileTypeCreate) SetNillableType(file_type_type *file_type.Type) *FileTypeCreate {
+	if file_type_type != nil {
+		ftc.SetType(*file_type_type)
 	}
 	return ftc
 }
 
 // SetState sets the "state" field.
-func (ftc *FileTypeCreate) SetState(fts file_type.State) *FileTypeCreate {
-	ftc.mutation.SetState(fts)
+func (ftc *FileTypeCreate) SetState(file_type_state file_type.State) *FileTypeCreate {
+	ftc.mutation.SetState(file_type_state)
 	return ftc
 }
 
 // SetNillableState sets the "state" field if the given value is not nil.
-func (ftc *FileTypeCreate) SetNillableState(fts *file_type.State) *FileTypeCreate {
-	if fts != nil {
-		ftc.SetState(*fts)
+func (ftc *FileTypeCreate) SetNillableState(file_type_state *file_type.State) *FileTypeCreate {
+	if file_type_state != nil {
+		ftc.SetState(*file_type_state)
 	}
 	return ftc
 }

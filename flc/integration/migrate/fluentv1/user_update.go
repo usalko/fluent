@@ -167,15 +167,15 @@ func (uu *UserUpdate) ClearBlob() *UserUpdate {
 }
 
 // SetState sets the "state" field.
-func (uu *UserUpdate) SetState(us user.State) *UserUpdate {
-	uu.mutation.SetState(us)
+func (uu *UserUpdate) SetState(user_state user.State) *UserUpdate {
+	uu.mutation.SetState(user_state)
 	return uu
 }
 
 // SetNillableState sets the "state" field if the given value is not nil.
-func (uu *UserUpdate) SetNillableState(us *user.State) *UserUpdate {
-	if us != nil {
-		uu.SetState(*us)
+func (uu *UserUpdate) SetNillableState(user_state *user.State) *UserUpdate {
+	if user_state != nil {
+		uu.SetState(*user_state)
 	}
 	return uu
 }
@@ -777,15 +777,15 @@ func (uuo *UserUpdateOne) ClearBlob() *UserUpdateOne {
 }
 
 // SetState sets the "state" field.
-func (uuo *UserUpdateOne) SetState(us user.State) *UserUpdateOne {
-	uuo.mutation.SetState(us)
+func (uuo *UserUpdateOne) SetState(user_state user.State) *UserUpdateOne {
+	uuo.mutation.SetState(user_state)
 	return uuo
 }
 
 // SetNillableState sets the "state" field if the given value is not nil.
-func (uuo *UserUpdateOne) SetNillableState(us *user.State) *UserUpdateOne {
-	if us != nil {
-		uuo.SetState(*us)
+func (uuo *UserUpdateOne) SetNillableState(user_state *user.State) *UserUpdateOne {
+	if user_state != nil {
+		uuo.SetState(*user_state)
 	}
 	return uuo
 }

@@ -614,8 +614,8 @@ func (m *BlobMutation) IDs(ctx context.Context) ([]uuid.UUID, error) {
 }
 
 // SetUUID sets the "uuid" field.
-func (m *BlobMutation) SetUUID(uu uuid.UUID) {
-	m.uuid = &uu
+func (m *BlobMutation) SetUUID(uuid_uuid uuid.UUID) {
+	m.uuid = &uuid_uuid
 }
 
 // UUID returns the value of the "uuid" field in the mutation.
@@ -1118,8 +1118,8 @@ func (m BlobLinkMutation) Tx() (*Tx, error) {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (m *BlobLinkMutation) SetCreatedAt(tt time.Time) {
-	m.created_at = &tt
+func (m *BlobLinkMutation) SetCreatedAt(time_time time.Time) {
+	m.created_at = &time_time
 }
 
 // CreatedAt returns the value of the "created_at" field in the mutation.
@@ -1137,8 +1137,8 @@ func (m *BlobLinkMutation) ResetCreatedAt() {
 }
 
 // SetBlobID sets the "blob_id" field.
-func (m *BlobLinkMutation) SetBlobID(uu uuid.UUID) {
-	m.blob = &uu
+func (m *BlobLinkMutation) SetBlobID(uuid_uuid uuid.UUID) {
+	m.blob = &uuid_uuid
 }
 
 // BlobID returns the value of the "blob_id" field in the mutation.
@@ -1156,8 +1156,8 @@ func (m *BlobLinkMutation) ResetBlobID() {
 }
 
 // SetLinkID sets the "link_id" field.
-func (m *BlobLinkMutation) SetLinkID(uu uuid.UUID) {
-	m.link = &uu
+func (m *BlobLinkMutation) SetLinkID(uuid_uuid uuid.UUID) {
+	m.link = &uuid_uuid
 }
 
 // LinkID returns the value of the "link_id" field in the mutation.
@@ -4010,8 +4010,8 @@ func (m *LinkMutation) IDs(ctx context.Context) ([]uuidc.UUIDC, error) {
 }
 
 // SetLinkInformation sets the "link_information" field.
-func (m *LinkMutation) SetLinkInformation(mli map[string]schema.LinkInformation) {
-	m.link_information = &mli
+func (m *LinkMutation) SetLinkInformation(map_string_schema_linkinformation map[string]schema.LinkInformation) {
+	m.link_information = &map_string_schema_linkinformation
 }
 
 // LinkInformation returns the value of the "link_information" field in the mutation.

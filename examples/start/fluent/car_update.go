@@ -47,15 +47,15 @@ func (cu *CarUpdate) SetNillableModel(s *string) *CarUpdate {
 }
 
 // SetRegisteredAt sets the "registered_at" field.
-func (cu *CarUpdate) SetRegisteredAt(tt time.Time) *CarUpdate {
-	cu.mutation.SetRegisteredAt(tt)
+func (cu *CarUpdate) SetRegisteredAt(time_time time.Time) *CarUpdate {
+	cu.mutation.SetRegisteredAt(time_time)
 	return cu
 }
 
 // SetNillableRegisteredAt sets the "registered_at" field if the given value is not nil.
-func (cu *CarUpdate) SetNillableRegisteredAt(tt *time.Time) *CarUpdate {
-	if tt != nil {
-		cu.SetRegisteredAt(*tt)
+func (cu *CarUpdate) SetNillableRegisteredAt(time_time *time.Time) *CarUpdate {
+	if time_time != nil {
+		cu.SetRegisteredAt(*time_time)
 	}
 	return cu
 }
@@ -196,15 +196,15 @@ func (cuo *CarUpdateOne) SetNillableModel(s *string) *CarUpdateOne {
 }
 
 // SetRegisteredAt sets the "registered_at" field.
-func (cuo *CarUpdateOne) SetRegisteredAt(tt time.Time) *CarUpdateOne {
-	cuo.mutation.SetRegisteredAt(tt)
+func (cuo *CarUpdateOne) SetRegisteredAt(time_time time.Time) *CarUpdateOne {
+	cuo.mutation.SetRegisteredAt(time_time)
 	return cuo
 }
 
 // SetNillableRegisteredAt sets the "registered_at" field if the given value is not nil.
-func (cuo *CarUpdateOne) SetNillableRegisteredAt(tt *time.Time) *CarUpdateOne {
-	if tt != nil {
-		cuo.SetRegisteredAt(*tt)
+func (cuo *CarUpdateOne) SetNillableRegisteredAt(time_time *time.Time) *CarUpdateOne {
+	if time_time != nil {
+		cuo.SetRegisteredAt(*time_time)
 	}
 	return cuo
 }

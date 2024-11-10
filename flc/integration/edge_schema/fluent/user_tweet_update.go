@@ -34,15 +34,15 @@ func (utu *UserTweetUpdate) Where(ps ...predicate.UserTweet) *UserTweetUpdate {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (utu *UserTweetUpdate) SetCreatedAt(tt time.Time) *UserTweetUpdate {
-	utu.mutation.SetCreatedAt(tt)
+func (utu *UserTweetUpdate) SetCreatedAt(time_time time.Time) *UserTweetUpdate {
+	utu.mutation.SetCreatedAt(time_time)
 	return utu
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (utu *UserTweetUpdate) SetNillableCreatedAt(tt *time.Time) *UserTweetUpdate {
-	if tt != nil {
-		utu.SetCreatedAt(*tt)
+func (utu *UserTweetUpdate) SetNillableCreatedAt(time_time *time.Time) *UserTweetUpdate {
+	if time_time != nil {
+		utu.SetCreatedAt(*time_time)
 	}
 	return utu
 }
@@ -234,15 +234,15 @@ type UserTweetUpdateOne struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (utuo *UserTweetUpdateOne) SetCreatedAt(tt time.Time) *UserTweetUpdateOne {
-	utuo.mutation.SetCreatedAt(tt)
+func (utuo *UserTweetUpdateOne) SetCreatedAt(time_time time.Time) *UserTweetUpdateOne {
+	utuo.mutation.SetCreatedAt(time_time)
 	return utuo
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (utuo *UserTweetUpdateOne) SetNillableCreatedAt(tt *time.Time) *UserTweetUpdateOne {
-	if tt != nil {
-		utuo.SetCreatedAt(*tt)
+func (utuo *UserTweetUpdateOne) SetNillableCreatedAt(time_time *time.Time) *UserTweetUpdateOne {
+	if time_time != nil {
+		utuo.SetCreatedAt(*time_time)
 	}
 	return utuo
 }

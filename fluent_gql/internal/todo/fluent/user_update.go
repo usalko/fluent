@@ -58,15 +58,15 @@ func (uu *UserUpdate) SetNillableName(s *string) *UserUpdate {
 }
 
 // SetUsername sets the "username" field.
-func (uu *UserUpdate) SetUsername(value uuid.UUID) *UserUpdate {
-	uu.mutation.SetUsername(value)
+func (uu *UserUpdate) SetUsername(uuid_uuid uuid.UUID) *UserUpdate {
+	uu.mutation.SetUsername(uuid_uuid)
 	return uu
 }
 
 // SetNillableUsername sets the "username" field if the given value is not nil.
-func (uu *UserUpdate) SetNillableUsername(value *uuid.UUID) *UserUpdate {
-	if value != nil {
-		uu.SetUsername(*value)
+func (uu *UserUpdate) SetNillableUsername(uuid_uuid *uuid.UUID) *UserUpdate {
+	if uuid_uuid != nil {
+		uu.SetUsername(*uuid_uuid)
 	}
 	return uu
 }
@@ -92,14 +92,14 @@ func (uu *UserUpdate) ClearPassword() *UserUpdate {
 }
 
 // SetRequiredMetadata sets the "required_metadata" field.
-func (uu *UserUpdate) SetRequiredMetadata(m map[string]interface{}) *UserUpdate {
-	uu.mutation.SetRequiredMetadata(m)
+func (uu *UserUpdate) SetRequiredMetadata(msi map[string]interface{}) *UserUpdate {
+	uu.mutation.SetRequiredMetadata(msi)
 	return uu
 }
 
 // SetMetadata sets the "metadata" field.
-func (uu *UserUpdate) SetMetadata(m map[string]interface{}) *UserUpdate {
-	uu.mutation.SetMetadata(m)
+func (uu *UserUpdate) SetMetadata(msi map[string]interface{}) *UserUpdate {
+	uu.mutation.SetMetadata(msi)
 	return uu
 }
 
@@ -469,15 +469,15 @@ func (uuo *UserUpdateOne) SetNillableName(s *string) *UserUpdateOne {
 }
 
 // SetUsername sets the "username" field.
-func (uuo *UserUpdateOne) SetUsername(uu uuid.UUID) *UserUpdateOne {
-	uuo.mutation.SetUsername(uu)
+func (uuo *UserUpdateOne) SetUsername(uuid_uuid uuid.UUID) *UserUpdateOne {
+	uuo.mutation.SetUsername(uuid_uuid)
 	return uuo
 }
 
 // SetNillableUsername sets the "username" field if the given value is not nil.
-func (uuo *UserUpdateOne) SetNillableUsername(uu *uuid.UUID) *UserUpdateOne {
-	if uu != nil {
-		uuo.SetUsername(*uu)
+func (uuo *UserUpdateOne) SetNillableUsername(uuid_uuid *uuid.UUID) *UserUpdateOne {
+	if uuid_uuid != nil {
+		uuo.SetUsername(*uuid_uuid)
 	}
 	return uuo
 }
@@ -503,14 +503,14 @@ func (uuo *UserUpdateOne) ClearPassword() *UserUpdateOne {
 }
 
 // SetRequiredMetadata sets the "required_metadata" field.
-func (uuo *UserUpdateOne) SetRequiredMetadata(m map[string]interface{}) *UserUpdateOne {
-	uuo.mutation.SetRequiredMetadata(m)
+func (uuo *UserUpdateOne) SetRequiredMetadata(msi map[string]interface{}) *UserUpdateOne {
+	uuo.mutation.SetRequiredMetadata(msi)
 	return uuo
 }
 
 // SetMetadata sets the "metadata" field.
-func (uuo *UserUpdateOne) SetMetadata(m map[string]interface{}) *UserUpdateOne {
-	uuo.mutation.SetMetadata(m)
+func (uuo *UserUpdateOne) SetMetadata(msi map[string]interface{}) *UserUpdateOne {
+	uuo.mutation.SetMetadata(msi)
 	return uuo
 }
 

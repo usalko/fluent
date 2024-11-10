@@ -46,29 +46,29 @@ func (tc *TaskCreate) SetNillableDescription(s *string) *TaskCreate {
 }
 
 // SetStatus sets the "status" field.
-func (tc *TaskCreate) SetStatus(ts task.Status) *TaskCreate {
-	tc.mutation.SetStatus(ts)
+func (tc *TaskCreate) SetStatus(task_status task.Status) *TaskCreate {
+	tc.mutation.SetStatus(task_status)
 	return tc
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (tc *TaskCreate) SetNillableStatus(ts *task.Status) *TaskCreate {
-	if ts != nil {
-		tc.SetStatus(*ts)
+func (tc *TaskCreate) SetNillableStatus(task_status *task.Status) *TaskCreate {
+	if task_status != nil {
+		tc.SetStatus(*task_status)
 	}
 	return tc
 }
 
 // SetUUID sets the "uuid" field.
-func (tc *TaskCreate) SetUUID(uu uuid.UUID) *TaskCreate {
-	tc.mutation.SetUUID(uu)
+func (tc *TaskCreate) SetUUID(uuid_uuid uuid.UUID) *TaskCreate {
+	tc.mutation.SetUUID(uuid_uuid)
 	return tc
 }
 
 // SetNillableUUID sets the "uuid" field if the given value is not nil.
-func (tc *TaskCreate) SetNillableUUID(uu *uuid.UUID) *TaskCreate {
-	if uu != nil {
-		tc.SetUUID(*uu)
+func (tc *TaskCreate) SetNillableUUID(uuid_uuid *uuid.UUID) *TaskCreate {
+	if uuid_uuid != nil {
+		tc.SetUUID(*uuid_uuid)
 	}
 	return tc
 }

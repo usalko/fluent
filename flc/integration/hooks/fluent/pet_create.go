@@ -24,15 +24,15 @@ type PetCreate struct {
 }
 
 // SetDeleteTime sets the "delete_time" field.
-func (pc *PetCreate) SetDeleteTime(tt time.Time) *PetCreate {
-	pc.mutation.SetDeleteTime(tt)
+func (pc *PetCreate) SetDeleteTime(time_time time.Time) *PetCreate {
+	pc.mutation.SetDeleteTime(time_time)
 	return pc
 }
 
 // SetNillableDeleteTime sets the "delete_time" field if the given value is not nil.
-func (pc *PetCreate) SetNillableDeleteTime(tt *time.Time) *PetCreate {
-	if tt != nil {
-		pc.SetDeleteTime(*tt)
+func (pc *PetCreate) SetNillableDeleteTime(time_time *time.Time) *PetCreate {
+	if time_time != nil {
+		pc.SetDeleteTime(*time_time)
 	}
 	return pc
 }

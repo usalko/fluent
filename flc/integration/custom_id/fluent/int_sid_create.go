@@ -26,8 +26,8 @@ type IntSIDCreate struct {
 }
 
 // SetID sets the "id" field.
-func (is *IntSIDCreate) SetID(si sid.ID) *IntSIDCreate {
-	is.mutation.SetID(si)
+func (is *IntSIDCreate) SetID(sid_id sid.ID) *IntSIDCreate {
+	is.mutation.SetID(sid_id)
 	return is
 }
 

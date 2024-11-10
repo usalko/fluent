@@ -239,8 +239,8 @@ func (m *TaskMutation) ResetDescription() {
 }
 
 // SetStatus sets the "status" field.
-func (m *TaskMutation) SetStatus(ts task.Status) {
-	m.status = &ts
+func (m *TaskMutation) SetStatus(task_status task.Status) {
+	m.status = &task_status
 }
 
 // Status returns the value of the "status" field in the mutation.
@@ -275,8 +275,8 @@ func (m *TaskMutation) ResetStatus() {
 }
 
 // SetUUID sets the "uuid" field.
-func (m *TaskMutation) SetUUID(uu uuid.UUID) {
-	m.uuid = &uu
+func (m *TaskMutation) SetUUID(uuid_uuid uuid.UUID) {
+	m.uuid = &uuid_uuid
 }
 
 // UUID returns the value of the "uuid" field in the mutation.

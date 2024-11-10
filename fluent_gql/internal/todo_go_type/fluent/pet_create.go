@@ -47,8 +47,8 @@ func (pc *PetCreate) SetNillableName(s *string) *PetCreate {
 }
 
 // SetID sets the "id" field.
-func (pc *PetCreate) SetID(uu uintgql.Uint64) *PetCreate {
-	pc.mutation.SetID(uu)
+func (pc *PetCreate) SetID(uintgql_uint uintgql.Uint64) *PetCreate {
+	pc.mutation.SetID(uintgql_uint)
 	return pc
 }
 

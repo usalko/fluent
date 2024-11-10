@@ -76,29 +76,29 @@ func (sdu *SessionDeviceUpdate) SetNillableLocation(s *string) *SessionDeviceUpd
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (sdu *SessionDeviceUpdate) SetCreatedAt(tt time.Time) *SessionDeviceUpdate {
-	sdu.mutation.SetCreatedAt(tt)
+func (sdu *SessionDeviceUpdate) SetCreatedAt(time_time time.Time) *SessionDeviceUpdate {
+	sdu.mutation.SetCreatedAt(time_time)
 	return sdu
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (sdu *SessionDeviceUpdate) SetNillableCreatedAt(tt *time.Time) *SessionDeviceUpdate {
-	if tt != nil {
-		sdu.SetCreatedAt(*tt)
+func (sdu *SessionDeviceUpdate) SetNillableCreatedAt(time_time *time.Time) *SessionDeviceUpdate {
+	if time_time != nil {
+		sdu.SetCreatedAt(*time_time)
 	}
 	return sdu
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (sdu *SessionDeviceUpdate) SetUpdatedAt(tt time.Time) *SessionDeviceUpdate {
-	sdu.mutation.SetUpdatedAt(tt)
+func (sdu *SessionDeviceUpdate) SetUpdatedAt(time_time time.Time) *SessionDeviceUpdate {
+	sdu.mutation.SetUpdatedAt(time_time)
 	return sdu
 }
 
 // SetNillableUpdatedAt sets the "updated_at" field if the given value is not nil.
-func (sdu *SessionDeviceUpdate) SetNillableUpdatedAt(tt *time.Time) *SessionDeviceUpdate {
-	if tt != nil {
-		sdu.SetUpdatedAt(*tt)
+func (sdu *SessionDeviceUpdate) SetNillableUpdatedAt(time_time *time.Time) *SessionDeviceUpdate {
+	if time_time != nil {
+		sdu.SetUpdatedAt(*time_time)
 	}
 	return sdu
 }
@@ -335,29 +335,29 @@ func (sduo *SessionDeviceUpdateOne) SetNillableLocation(s *string) *SessionDevic
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (sduo *SessionDeviceUpdateOne) SetCreatedAt(tt time.Time) *SessionDeviceUpdateOne {
-	sduo.mutation.SetCreatedAt(tt)
+func (sduo *SessionDeviceUpdateOne) SetCreatedAt(time_time time.Time) *SessionDeviceUpdateOne {
+	sduo.mutation.SetCreatedAt(time_time)
 	return sduo
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (sduo *SessionDeviceUpdateOne) SetNillableCreatedAt(tt *time.Time) *SessionDeviceUpdateOne {
-	if tt != nil {
-		sduo.SetCreatedAt(*tt)
+func (sduo *SessionDeviceUpdateOne) SetNillableCreatedAt(time_time *time.Time) *SessionDeviceUpdateOne {
+	if time_time != nil {
+		sduo.SetCreatedAt(*time_time)
 	}
 	return sduo
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (sduo *SessionDeviceUpdateOne) SetUpdatedAt(tt time.Time) *SessionDeviceUpdateOne {
-	sduo.mutation.SetUpdatedAt(tt)
+func (sduo *SessionDeviceUpdateOne) SetUpdatedAt(time_time time.Time) *SessionDeviceUpdateOne {
+	sduo.mutation.SetUpdatedAt(time_time)
 	return sduo
 }
 
 // SetNillableUpdatedAt sets the "updated_at" field if the given value is not nil.
-func (sduo *SessionDeviceUpdateOne) SetNillableUpdatedAt(tt *time.Time) *SessionDeviceUpdateOne {
-	if tt != nil {
-		sduo.SetUpdatedAt(*tt)
+func (sduo *SessionDeviceUpdateOne) SetNillableUpdatedAt(time_time *time.Time) *SessionDeviceUpdateOne {
+	if time_time != nil {
+		sduo.SetUpdatedAt(*time_time)
 	}
 	return sduo
 }

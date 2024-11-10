@@ -37,14 +37,14 @@ func (pc *PaymentCreate) SetAmount(f float64) *PaymentCreate {
 }
 
 // SetCurrency sets the "currency" field.
-func (pc *PaymentCreate) SetCurrency(value payment.Currency) *PaymentCreate {
-	pc.mutation.SetCurrency(value)
+func (pc *PaymentCreate) SetCurrency(payment_currency payment.Currency) *PaymentCreate {
+	pc.mutation.SetCurrency(payment_currency)
 	return pc
 }
 
 // SetTime sets the "time" field.
-func (pc *PaymentCreate) SetTime(tt time.Time) *PaymentCreate {
-	pc.mutation.SetTime(tt)
+func (pc *PaymentCreate) SetTime(time_time time.Time) *PaymentCreate {
+	pc.mutation.SetTime(time_time)
 	return pc
 }
 
@@ -55,8 +55,8 @@ func (pc *PaymentCreate) SetDescription(s string) *PaymentCreate {
 }
 
 // SetStatus sets the "status" field.
-func (pc *PaymentCreate) SetStatus(ps payment.Status) *PaymentCreate {
-	pc.mutation.SetStatus(ps)
+func (pc *PaymentCreate) SetStatus(payment_status payment.Status) *PaymentCreate {
+	pc.mutation.SetStatus(payment_status)
 	return pc
 }
 

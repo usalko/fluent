@@ -31,15 +31,15 @@ func (pc *PetCreate) SetAge(i int) *PetCreate {
 }
 
 // SetLicensedAt sets the "licensed_at" field.
-func (pc *PetCreate) SetLicensedAt(tt time.Time) *PetCreate {
-	pc.mutation.SetLicensedAt(tt)
+func (pc *PetCreate) SetLicensedAt(time_time time.Time) *PetCreate {
+	pc.mutation.SetLicensedAt(time_time)
 	return pc
 }
 
 // SetNillableLicensedAt sets the "licensed_at" field if the given value is not nil.
-func (pc *PetCreate) SetNillableLicensedAt(tt *time.Time) *PetCreate {
-	if tt != nil {
-		pc.SetLicensedAt(*tt)
+func (pc *PetCreate) SetNillableLicensedAt(time_time *time.Time) *PetCreate {
+	if time_time != nil {
+		pc.SetLicensedAt(*time_time)
 	}
 	return pc
 }

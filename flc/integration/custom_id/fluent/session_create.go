@@ -28,15 +28,15 @@ type SessionCreate struct {
 }
 
 // SetID sets the "id" field.
-func (sc *SessionCreate) SetID(si schema.ID) *SessionCreate {
-	sc.mutation.SetID(si)
+func (sc *SessionCreate) SetID(schema_id schema.ID) *SessionCreate {
+	sc.mutation.SetID(schema_id)
 	return sc
 }
 
 // SetNillableID sets the "id" field if the given value is not nil.
-func (sc *SessionCreate) SetNillableID(si *schema.ID) *SessionCreate {
-	if si != nil {
-		sc.SetID(*si)
+func (sc *SessionCreate) SetNillableID(schema_id *schema.ID) *SessionCreate {
+	if schema_id != nil {
+		sc.SetID(*schema_id)
 	}
 	return sc
 }

@@ -119,15 +119,15 @@ func (fc *FileCreate) SetNillableFieldID(i *int) *FileCreate {
 }
 
 // SetCreateTime sets the "create_time" field.
-func (fc *FileCreate) SetCreateTime(tt time.Time) *FileCreate {
-	fc.mutation.SetCreateTime(tt)
+func (fc *FileCreate) SetCreateTime(time_time time.Time) *FileCreate {
+	fc.mutation.SetCreateTime(time_time)
 	return fc
 }
 
 // SetNillableCreateTime sets the "create_time" field if the given value is not nil.
-func (fc *FileCreate) SetNillableCreateTime(tt *time.Time) *FileCreate {
-	if tt != nil {
-		fc.SetCreateTime(*tt)
+func (fc *FileCreate) SetNillableCreateTime(time_time *time.Time) *FileCreate {
+	if time_time != nil {
+		fc.SetCreateTime(*time_time)
 	}
 	return fc
 }

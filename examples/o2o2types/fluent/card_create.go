@@ -25,8 +25,8 @@ type CardCreate struct {
 }
 
 // SetExpired sets the "expired" field.
-func (cc *CardCreate) SetExpired(tt time.Time) *CardCreate {
-	cc.mutation.SetExpired(tt)
+func (cc *CardCreate) SetExpired(time_time time.Time) *CardCreate {
+	cc.mutation.SetExpired(time_time)
 	return cc
 }
 

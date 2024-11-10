@@ -43,15 +43,15 @@ func (tu *TodoUpdate) Where(ps ...predicate.Todo) *TodoUpdate {
 }
 
 // SetStatus sets the "status" field.
-func (tu *TodoUpdate) SetStatus(ts todo.Status) *TodoUpdate {
-	tu.mutation.SetStatus(ts)
+func (tu *TodoUpdate) SetStatus(todo_status todo.Status) *TodoUpdate {
+	tu.mutation.SetStatus(todo_status)
 	return tu
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (tu *TodoUpdate) SetNillableStatus(ts *todo.Status) *TodoUpdate {
-	if ts != nil {
-		tu.SetStatus(*ts)
+func (tu *TodoUpdate) SetNillableStatus(todo_status *todo.Status) *TodoUpdate {
+	if todo_status != nil {
+		tu.SetStatus(*todo_status)
 	}
 	return tu
 }
@@ -104,8 +104,8 @@ func (tu *TodoUpdate) ClearBlob() *TodoUpdate {
 }
 
 // SetInit sets the "init" field.
-func (tu *TodoUpdate) SetInit(m map[string]interface{}) *TodoUpdate {
-	tu.mutation.SetInit(m)
+func (tu *TodoUpdate) SetInit(msi map[string]interface{}) *TodoUpdate {
+	tu.mutation.SetInit(msi)
 	return tu
 }
 
@@ -116,14 +116,14 @@ func (tu *TodoUpdate) ClearInit() *TodoUpdate {
 }
 
 // SetCustom sets the "custom" field.
-func (tu *TodoUpdate) SetCustom(cc []customstruct.Custom) *TodoUpdate {
-	tu.mutation.SetCustom(cc)
+func (tu *TodoUpdate) SetCustom(customstruct_custom []customstruct.Custom) *TodoUpdate {
+	tu.mutation.SetCustom(customstruct_custom)
 	return tu
 }
 
-// AppendCustom appends cc to the "custom" field.
-func (tu *TodoUpdate) AppendCustom(cc []customstruct.Custom) *TodoUpdate {
-	tu.mutation.AppendCustom(cc)
+// AppendCustom appends customstruct_custom to the "custom" field.
+func (tu *TodoUpdate) AppendCustom(customstruct_custom []customstruct.Custom) *TodoUpdate {
+	tu.mutation.AppendCustom(customstruct_custom)
 	return tu
 }
 
@@ -134,14 +134,14 @@ func (tu *TodoUpdate) ClearCustom() *TodoUpdate {
 }
 
 // SetCustomp sets the "customp" field.
-func (tu *TodoUpdate) SetCustomp(cc []*customstruct.Custom) *TodoUpdate {
-	tu.mutation.SetCustomp(cc)
+func (tu *TodoUpdate) SetCustomp(customstruct_custom []*customstruct.Custom) *TodoUpdate {
+	tu.mutation.SetCustomp(customstruct_custom)
 	return tu
 }
 
-// AppendCustomp appends cc to the "customp" field.
-func (tu *TodoUpdate) AppendCustomp(cc []*customstruct.Custom) *TodoUpdate {
-	tu.mutation.AppendCustomp(cc)
+// AppendCustomp appends customstruct_custom to the "customp" field.
+func (tu *TodoUpdate) AppendCustomp(customstruct_custom []*customstruct.Custom) *TodoUpdate {
+	tu.mutation.AppendCustomp(customstruct_custom)
 	return tu
 }
 
@@ -493,15 +493,15 @@ type TodoUpdateOne struct {
 }
 
 // SetStatus sets the "status" field.
-func (tuo *TodoUpdateOne) SetStatus(ts todo.Status) *TodoUpdateOne {
-	tuo.mutation.SetStatus(ts)
+func (tuo *TodoUpdateOne) SetStatus(todo_status todo.Status) *TodoUpdateOne {
+	tuo.mutation.SetStatus(todo_status)
 	return tuo
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (tuo *TodoUpdateOne) SetNillableStatus(ts *todo.Status) *TodoUpdateOne {
-	if ts != nil {
-		tuo.SetStatus(*ts)
+func (tuo *TodoUpdateOne) SetNillableStatus(todo_status *todo.Status) *TodoUpdateOne {
+	if todo_status != nil {
+		tuo.SetStatus(*todo_status)
 	}
 	return tuo
 }
@@ -554,8 +554,8 @@ func (tuo *TodoUpdateOne) ClearBlob() *TodoUpdateOne {
 }
 
 // SetInit sets the "init" field.
-func (tuo *TodoUpdateOne) SetInit(m map[string]interface{}) *TodoUpdateOne {
-	tuo.mutation.SetInit(m)
+func (tuo *TodoUpdateOne) SetInit(msi map[string]interface{}) *TodoUpdateOne {
+	tuo.mutation.SetInit(msi)
 	return tuo
 }
 
@@ -566,14 +566,14 @@ func (tuo *TodoUpdateOne) ClearInit() *TodoUpdateOne {
 }
 
 // SetCustom sets the "custom" field.
-func (tuo *TodoUpdateOne) SetCustom(cc []customstruct.Custom) *TodoUpdateOne {
-	tuo.mutation.SetCustom(cc)
+func (tuo *TodoUpdateOne) SetCustom(customstruct_custom []customstruct.Custom) *TodoUpdateOne {
+	tuo.mutation.SetCustom(customstruct_custom)
 	return tuo
 }
 
-// AppendCustom appends cc to the "custom" field.
-func (tuo *TodoUpdateOne) AppendCustom(cc []customstruct.Custom) *TodoUpdateOne {
-	tuo.mutation.AppendCustom(cc)
+// AppendCustom appends customstruct_custom to the "custom" field.
+func (tuo *TodoUpdateOne) AppendCustom(customstruct_custom []customstruct.Custom) *TodoUpdateOne {
+	tuo.mutation.AppendCustom(customstruct_custom)
 	return tuo
 }
 
@@ -584,14 +584,14 @@ func (tuo *TodoUpdateOne) ClearCustom() *TodoUpdateOne {
 }
 
 // SetCustomp sets the "customp" field.
-func (tuo *TodoUpdateOne) SetCustomp(cc []*customstruct.Custom) *TodoUpdateOne {
-	tuo.mutation.SetCustomp(cc)
+func (tuo *TodoUpdateOne) SetCustomp(customstruct_custom []*customstruct.Custom) *TodoUpdateOne {
+	tuo.mutation.SetCustomp(customstruct_custom)
 	return tuo
 }
 
-// AppendCustomp appends cc to the "customp" field.
-func (tuo *TodoUpdateOne) AppendCustomp(cc []*customstruct.Custom) *TodoUpdateOne {
-	tuo.mutation.AppendCustomp(cc)
+// AppendCustomp appends customstruct_custom to the "customp" field.
+func (tuo *TodoUpdateOne) AppendCustomp(customstruct_custom []*customstruct.Custom) *TodoUpdateOne {
+	tuo.mutation.AppendCustomp(customstruct_custom)
 	return tuo
 }
 

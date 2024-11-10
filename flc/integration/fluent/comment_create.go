@@ -66,15 +66,15 @@ func (cc *CommentCreate) SetNillableTable(s *string) *CommentCreate {
 }
 
 // SetDir sets the "dir" field.
-func (cc *CommentCreate) SetDir(sd schemadir.Dir) *CommentCreate {
-	cc.mutation.SetDir(sd)
+func (cc *CommentCreate) SetDir(schemadir_dir schemadir.Dir) *CommentCreate {
+	cc.mutation.SetDir(schemadir_dir)
 	return cc
 }
 
 // SetNillableDir sets the "dir" field if the given value is not nil.
-func (cc *CommentCreate) SetNillableDir(sd *schemadir.Dir) *CommentCreate {
-	if sd != nil {
-		cc.SetDir(*sd)
+func (cc *CommentCreate) SetNillableDir(schemadir_dir *schemadir.Dir) *CommentCreate {
+	if schemadir_dir != nil {
+		cc.SetDir(*schemadir_dir)
 	}
 	return cc
 }

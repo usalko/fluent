@@ -28,15 +28,15 @@ func (uu *UserUpdate) Where(ps ...predicate.User) *UserUpdate {
 }
 
 // SetStatus sets the "status" field.
-func (uu *UserUpdate) SetStatus(us user.Status) *UserUpdate {
-	uu.mutation.SetStatus(us)
+func (uu *UserUpdate) SetStatus(user_status user.Status) *UserUpdate {
+	uu.mutation.SetStatus(user_status)
 	return uu
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (uu *UserUpdate) SetNillableStatus(us *user.Status) *UserUpdate {
-	if us != nil {
-		uu.SetStatus(*us)
+func (uu *UserUpdate) SetNillableStatus(user_status *user.Status) *UserUpdate {
+	if user_status != nil {
+		uu.SetStatus(*user_status)
 	}
 	return uu
 }
@@ -119,15 +119,15 @@ type UserUpdateOne struct {
 }
 
 // SetStatus sets the "status" field.
-func (uuo *UserUpdateOne) SetStatus(us user.Status) *UserUpdateOne {
-	uuo.mutation.SetStatus(us)
+func (uuo *UserUpdateOne) SetStatus(user_status user.Status) *UserUpdateOne {
+	uuo.mutation.SetStatus(user_status)
 	return uuo
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (uuo *UserUpdateOne) SetNillableStatus(us *user.Status) *UserUpdateOne {
-	if us != nil {
-		uuo.SetStatus(*us)
+func (uuo *UserUpdateOne) SetNillableStatus(user_status *user.Status) *UserUpdateOne {
+	if user_status != nil {
+		uuo.SetStatus(*user_status)
 	}
 	return uuo
 }

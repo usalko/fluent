@@ -37,5 +37,5 @@ func init() {
 }
 
 const (
-	Version = "v0.1.6" // Version of fluent codegen.
+	Version = "v0.1.7" // Version of fluent codegen.
 )

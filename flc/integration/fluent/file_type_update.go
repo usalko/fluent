@@ -47,29 +47,29 @@ func (ftu *FileTypeUpdate) SetNillableName(s *string) *FileTypeUpdate {
 }
 
 // SetType sets the "type" field.
-func (ftu *FileTypeUpdate) SetType(ftt file_type.Type) *FileTypeUpdate {
-	ftu.mutation.SetType(ftt)
+func (ftu *FileTypeUpdate) SetType(file_type_type file_type.Type) *FileTypeUpdate {
+	ftu.mutation.SetType(file_type_type)
 	return ftu
 }
 
 // SetNillableType sets the "type" field if the given value is not nil.
-func (ftu *FileTypeUpdate) SetNillableType(ftt *file_type.Type) *FileTypeUpdate {
-	if ftt != nil {
-		ftu.SetType(*ftt)
+func (ftu *FileTypeUpdate) SetNillableType(file_type_type *file_type.Type) *FileTypeUpdate {
+	if file_type_type != nil {
+		ftu.SetType(*file_type_type)
 	}
 	return ftu
 }
 
 // SetState sets the "state" field.
-func (ftu *FileTypeUpdate) SetState(fts file_type.State) *FileTypeUpdate {
-	ftu.mutation.SetState(fts)
+func (ftu *FileTypeUpdate) SetState(file_type_state file_type.State) *FileTypeUpdate {
+	ftu.mutation.SetState(file_type_state)
 	return ftu
 }
 
 // SetNillableState sets the "state" field if the given value is not nil.
-func (ftu *FileTypeUpdate) SetNillableState(fts *file_type.State) *FileTypeUpdate {
-	if fts != nil {
-		ftu.SetState(*fts)
+func (ftu *FileTypeUpdate) SetNillableState(file_type_state *file_type.State) *FileTypeUpdate {
+	if file_type_state != nil {
+		ftu.SetState(*file_type_state)
 	}
 	return ftu
 }
@@ -266,29 +266,29 @@ func (ftuo *FileTypeUpdateOne) SetNillableName(s *string) *FileTypeUpdateOne {
 }
 
 // SetType sets the "type" field.
-func (ftuo *FileTypeUpdateOne) SetType(ftt file_type.Type) *FileTypeUpdateOne {
-	ftuo.mutation.SetType(ftt)
+func (ftuo *FileTypeUpdateOne) SetType(file_type_type file_type.Type) *FileTypeUpdateOne {
+	ftuo.mutation.SetType(file_type_type)
 	return ftuo
 }
 
 // SetNillableType sets the "type" field if the given value is not nil.
-func (ftuo *FileTypeUpdateOne) SetNillableType(ftt *file_type.Type) *FileTypeUpdateOne {
-	if ftt != nil {
-		ftuo.SetType(*ftt)
+func (ftuo *FileTypeUpdateOne) SetNillableType(file_type_type *file_type.Type) *FileTypeUpdateOne {
+	if file_type_type != nil {
+		ftuo.SetType(*file_type_type)
 	}
 	return ftuo
 }
 
 // SetState sets the "state" field.
-func (ftuo *FileTypeUpdateOne) SetState(fts file_type.State) *FileTypeUpdateOne {
-	ftuo.mutation.SetState(fts)
+func (ftuo *FileTypeUpdateOne) SetState(file_type_state file_type.State) *FileTypeUpdateOne {
+	ftuo.mutation.SetState(file_type_state)
 	return ftuo
 }
 
 // SetNillableState sets the "state" field if the given value is not nil.
-func (ftuo *FileTypeUpdateOne) SetNillableState(fts *file_type.State) *FileTypeUpdateOne {
-	if fts != nil {
-		ftuo.SetState(*fts)
+func (ftuo *FileTypeUpdateOne) SetNillableState(file_type_state *file_type.State) *FileTypeUpdateOne {
+	if file_type_state != nil {
+		ftuo.SetState(*file_type_state)
 	}
 	return ftuo
 }

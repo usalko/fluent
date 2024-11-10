@@ -54,15 +54,15 @@ func (pu *PetUpdate) AddAge(i int) *PetUpdate {
 }
 
 // SetLicensedAt sets the "licensed_at" field.
-func (pu *PetUpdate) SetLicensedAt(tt time.Time) *PetUpdate {
-	pu.mutation.SetLicensedAt(tt)
+func (pu *PetUpdate) SetLicensedAt(time_time time.Time) *PetUpdate {
+	pu.mutation.SetLicensedAt(time_time)
 	return pu
 }
 
 // SetNillableLicensedAt sets the "licensed_at" field if the given value is not nil.
-func (pu *PetUpdate) SetNillableLicensedAt(tt *time.Time) *PetUpdate {
-	if tt != nil {
-		pu.SetLicensedAt(*tt)
+func (pu *PetUpdate) SetNillableLicensedAt(time_time *time.Time) *PetUpdate {
+	if time_time != nil {
+		pu.SetLicensedAt(*time_time)
 	}
 	return pu
 }
@@ -222,15 +222,15 @@ func (puo *PetUpdateOne) AddAge(i int) *PetUpdateOne {
 }
 
 // SetLicensedAt sets the "licensed_at" field.
-func (puo *PetUpdateOne) SetLicensedAt(tt time.Time) *PetUpdateOne {
-	puo.mutation.SetLicensedAt(tt)
+func (puo *PetUpdateOne) SetLicensedAt(time_time time.Time) *PetUpdateOne {
+	puo.mutation.SetLicensedAt(time_time)
 	return puo
 }
 
 // SetNillableLicensedAt sets the "licensed_at" field if the given value is not nil.
-func (puo *PetUpdateOne) SetNillableLicensedAt(tt *time.Time) *PetUpdateOne {
-	if tt != nil {
-		puo.SetLicensedAt(*tt)
+func (puo *PetUpdateOne) SetNillableLicensedAt(time_time *time.Time) *PetUpdateOne {
+	if time_time != nil {
+		puo.SetLicensedAt(*time_time)
 	}
 	return puo
 }

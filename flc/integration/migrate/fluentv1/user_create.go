@@ -104,15 +104,15 @@ func (uc *UserCreate) SetBlob(b []byte) *UserCreate {
 }
 
 // SetState sets the "state" field.
-func (uc *UserCreate) SetState(us user.State) *UserCreate {
-	uc.mutation.SetState(us)
+func (uc *UserCreate) SetState(user_state user.State) *UserCreate {
+	uc.mutation.SetState(user_state)
 	return uc
 }
 
 // SetNillableState sets the "state" field if the given value is not nil.
-func (uc *UserCreate) SetNillableState(us *user.State) *UserCreate {
-	if us != nil {
-		uc.SetState(*us)
+func (uc *UserCreate) SetNillableState(user_state *user.State) *UserCreate {
+	if user_state != nil {
+		uc.SetState(*user_state)
 	}
 	return uc
 }

@@ -28,15 +28,15 @@ type UserGroupCreate struct {
 }
 
 // SetJoinedAt sets the "joined_at" field.
-func (ugc *UserGroupCreate) SetJoinedAt(tt time.Time) *UserGroupCreate {
-	ugc.mutation.SetJoinedAt(tt)
+func (ugc *UserGroupCreate) SetJoinedAt(time_time time.Time) *UserGroupCreate {
+	ugc.mutation.SetJoinedAt(time_time)
 	return ugc
 }
 
 // SetNillableJoinedAt sets the "joined_at" field if the given value is not nil.
-func (ugc *UserGroupCreate) SetNillableJoinedAt(tt *time.Time) *UserGroupCreate {
-	if tt != nil {
-		ugc.SetJoinedAt(*tt)
+func (ugc *UserGroupCreate) SetNillableJoinedAt(time_time *time.Time) *UserGroupCreate {
+	if time_time != nil {
+		ugc.SetJoinedAt(*time_time)
 	}
 	return ugc
 }

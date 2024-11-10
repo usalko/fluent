@@ -34,20 +34,20 @@ func (evsu *ExValueScanUpdate) Where(ps ...predicate.ExValueScan) *ExValueScanUp
 }
 
 // SetBinary sets the "binary" field.
-func (evsu *ExValueScanUpdate) SetBinary(uu *url.URL) *ExValueScanUpdate {
-	evsu.mutation.SetBinary(uu)
+func (evsu *ExValueScanUpdate) SetBinary(url_url *url.URL) *ExValueScanUpdate {
+	evsu.mutation.SetBinary(url_url)
 	return evsu
 }
 
 // SetBinaryBytes sets the "binary_bytes" field.
-func (evsu *ExValueScanUpdate) SetBinaryBytes(uu *url.URL) *ExValueScanUpdate {
-	evsu.mutation.SetBinaryBytes(uu)
+func (evsu *ExValueScanUpdate) SetBinaryBytes(url_url *url.URL) *ExValueScanUpdate {
+	evsu.mutation.SetBinaryBytes(url_url)
 	return evsu
 }
 
 // SetBinaryOptional sets the "binary_optional" field.
-func (evsu *ExValueScanUpdate) SetBinaryOptional(uu *url.URL) *ExValueScanUpdate {
-	evsu.mutation.SetBinaryOptional(uu)
+func (evsu *ExValueScanUpdate) SetBinaryOptional(url_url *url.URL) *ExValueScanUpdate {
+	evsu.mutation.SetBinaryOptional(url_url)
 	return evsu
 }
 
@@ -58,14 +58,14 @@ func (evsu *ExValueScanUpdate) ClearBinaryOptional() *ExValueScanUpdate {
 }
 
 // SetText sets the "text" field.
-func (evsu *ExValueScanUpdate) SetText(bi *big.Int) *ExValueScanUpdate {
-	evsu.mutation.SetText(bi)
+func (evsu *ExValueScanUpdate) SetText(big_int *big.Int) *ExValueScanUpdate {
+	evsu.mutation.SetText(big_int)
 	return evsu
 }
 
 // SetTextOptional sets the "text_optional" field.
-func (evsu *ExValueScanUpdate) SetTextOptional(bi *big.Int) *ExValueScanUpdate {
-	evsu.mutation.SetTextOptional(bi)
+func (evsu *ExValueScanUpdate) SetTextOptional(big_int *big.Int) *ExValueScanUpdate {
+	evsu.mutation.SetTextOptional(big_int)
 	return evsu
 }
 
@@ -258,20 +258,20 @@ type ExValueScanUpdateOne struct {
 }
 
 // SetBinary sets the "binary" field.
-func (evsuo *ExValueScanUpdateOne) SetBinary(uu *url.URL) *ExValueScanUpdateOne {
-	evsuo.mutation.SetBinary(uu)
+func (evsuo *ExValueScanUpdateOne) SetBinary(url_url *url.URL) *ExValueScanUpdateOne {
+	evsuo.mutation.SetBinary(url_url)
 	return evsuo
 }
 
 // SetBinaryBytes sets the "binary_bytes" field.
-func (evsuo *ExValueScanUpdateOne) SetBinaryBytes(uu *url.URL) *ExValueScanUpdateOne {
-	evsuo.mutation.SetBinaryBytes(uu)
+func (evsuo *ExValueScanUpdateOne) SetBinaryBytes(url_url *url.URL) *ExValueScanUpdateOne {
+	evsuo.mutation.SetBinaryBytes(url_url)
 	return evsuo
 }
 
 // SetBinaryOptional sets the "binary_optional" field.
-func (evsuo *ExValueScanUpdateOne) SetBinaryOptional(uu *url.URL) *ExValueScanUpdateOne {
-	evsuo.mutation.SetBinaryOptional(uu)
+func (evsuo *ExValueScanUpdateOne) SetBinaryOptional(url_url *url.URL) *ExValueScanUpdateOne {
+	evsuo.mutation.SetBinaryOptional(url_url)
 	return evsuo
 }
 
@@ -282,14 +282,14 @@ func (evsuo *ExValueScanUpdateOne) ClearBinaryOptional() *ExValueScanUpdateOne {
 }
 
 // SetText sets the "text" field.
-func (evsuo *ExValueScanUpdateOne) SetText(bi *big.Int) *ExValueScanUpdateOne {
-	evsuo.mutation.SetText(bi)
+func (evsuo *ExValueScanUpdateOne) SetText(big_int *big.Int) *ExValueScanUpdateOne {
+	evsuo.mutation.SetText(big_int)
 	return evsuo
 }
 
 // SetTextOptional sets the "text_optional" field.
-func (evsuo *ExValueScanUpdateOne) SetTextOptional(bi *big.Int) *ExValueScanUpdateOne {
-	evsuo.mutation.SetTextOptional(bi)
+func (evsuo *ExValueScanUpdateOne) SetTextOptional(big_int *big.Int) *ExValueScanUpdateOne {
+	evsuo.mutation.SetTextOptional(big_int)
 	return evsuo
 }
 

@@ -37,29 +37,29 @@ func (ctc *CustomTypeCreate) SetNillableCustom(s *string) *CustomTypeCreate {
 }
 
 // SetTz0 sets the "tz0" field.
-func (ctc *CustomTypeCreate) SetTz0(tt time.Time) *CustomTypeCreate {
-	ctc.mutation.SetTz0(tt)
+func (ctc *CustomTypeCreate) SetTz0(time_time time.Time) *CustomTypeCreate {
+	ctc.mutation.SetTz0(time_time)
 	return ctc
 }
 
 // SetNillableTz0 sets the "tz0" field if the given value is not nil.
-func (ctc *CustomTypeCreate) SetNillableTz0(tt *time.Time) *CustomTypeCreate {
-	if tt != nil {
-		ctc.SetTz0(*tt)
+func (ctc *CustomTypeCreate) SetNillableTz0(time_time *time.Time) *CustomTypeCreate {
+	if time_time != nil {
+		ctc.SetTz0(*time_time)
 	}
 	return ctc
 }
 
 // SetTz3 sets the "tz3" field.
-func (ctc *CustomTypeCreate) SetTz3(tt time.Time) *CustomTypeCreate {
-	ctc.mutation.SetTz3(tt)
+func (ctc *CustomTypeCreate) SetTz3(time_time time.Time) *CustomTypeCreate {
+	ctc.mutation.SetTz3(time_time)
 	return ctc
 }
 
 // SetNillableTz3 sets the "tz3" field if the given value is not nil.
-func (ctc *CustomTypeCreate) SetNillableTz3(tt *time.Time) *CustomTypeCreate {
-	if tt != nil {
-		ctc.SetTz3(*tt)
+func (ctc *CustomTypeCreate) SetNillableTz3(time_time *time.Time) *CustomTypeCreate {
+	if time_time != nil {
+		ctc.SetTz3(*time_time)
 	}
 	return ctc
 }

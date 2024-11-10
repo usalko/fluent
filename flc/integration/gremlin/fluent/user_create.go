@@ -122,29 +122,29 @@ func (uc *UserCreate) SetNillablePassword(s *string) *UserCreate {
 }
 
 // SetRole sets the "role" field.
-func (uc *UserCreate) SetRole(ur user.Role) *UserCreate {
-	uc.mutation.SetRole(ur)
+func (uc *UserCreate) SetRole(user_role user.Role) *UserCreate {
+	uc.mutation.SetRole(user_role)
 	return uc
 }
 
 // SetNillableRole sets the "role" field if the given value is not nil.
-func (uc *UserCreate) SetNillableRole(ur *user.Role) *UserCreate {
-	if ur != nil {
-		uc.SetRole(*ur)
+func (uc *UserCreate) SetNillableRole(user_role *user.Role) *UserCreate {
+	if user_role != nil {
+		uc.SetRole(*user_role)
 	}
 	return uc
 }
 
 // SetEmployment sets the "employment" field.
-func (uc *UserCreate) SetEmployment(ue user.Employment) *UserCreate {
-	uc.mutation.SetEmployment(ue)
+func (uc *UserCreate) SetEmployment(user_employment user.Employment) *UserCreate {
+	uc.mutation.SetEmployment(user_employment)
 	return uc
 }
 
 // SetNillableEmployment sets the "employment" field if the given value is not nil.
-func (uc *UserCreate) SetNillableEmployment(ue *user.Employment) *UserCreate {
-	if ue != nil {
-		uc.SetEmployment(*ue)
+func (uc *UserCreate) SetNillableEmployment(user_employment *user.Employment) *UserCreate {
+	if user_employment != nil {
+		uc.SetEmployment(*user_employment)
 	}
 	return uc
 }

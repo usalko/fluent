@@ -49,15 +49,15 @@ func (uu *UserUpdate) SetNillableMixedString(s *string) *UserUpdate {
 }
 
 // SetMixedEnum sets the "mixed_enum" field.
-func (uu *UserUpdate) SetMixedEnum(ume user.MixedEnum) *UserUpdate {
-	uu.mutation.SetMixedEnum(ume)
+func (uu *UserUpdate) SetMixedEnum(user_mixedenum user.MixedEnum) *UserUpdate {
+	uu.mutation.SetMixedEnum(user_mixedenum)
 	return uu
 }
 
 // SetNillableMixedEnum sets the "mixed_enum" field if the given value is not nil.
-func (uu *UserUpdate) SetNillableMixedEnum(ume *user.MixedEnum) *UserUpdate {
-	if ume != nil {
-		uu.SetMixedEnum(*ume)
+func (uu *UserUpdate) SetNillableMixedEnum(user_mixedenum *user.MixedEnum) *UserUpdate {
+	if user_mixedenum != nil {
+		uu.SetMixedEnum(*user_mixedenum)
 	}
 	return uu
 }
@@ -232,15 +232,15 @@ func (uu *UserUpdate) ClearBlob() *UserUpdate {
 }
 
 // SetState sets the "state" field.
-func (uu *UserUpdate) SetState(us user.State) *UserUpdate {
-	uu.mutation.SetState(us)
+func (uu *UserUpdate) SetState(user_state user.State) *UserUpdate {
+	uu.mutation.SetState(user_state)
 	return uu
 }
 
 // SetNillableState sets the "state" field if the given value is not nil.
-func (uu *UserUpdate) SetNillableState(us *user.State) *UserUpdate {
-	if us != nil {
-		uu.SetState(*us)
+func (uu *UserUpdate) SetNillableState(user_state *user.State) *UserUpdate {
+	if user_state != nil {
+		uu.SetState(*user_state)
 	}
 	return uu
 }
@@ -252,15 +252,15 @@ func (uu *UserUpdate) ClearState() *UserUpdate {
 }
 
 // SetStatus sets the "status" field.
-func (uu *UserUpdate) SetStatus(us user.Status) *UserUpdate {
-	uu.mutation.SetStatus(us)
+func (uu *UserUpdate) SetStatus(user_status user.Status) *UserUpdate {
+	uu.mutation.SetStatus(user_status)
 	return uu
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (uu *UserUpdate) SetNillableStatus(us *user.Status) *UserUpdate {
-	if us != nil {
-		uu.SetStatus(*us)
+func (uu *UserUpdate) SetNillableStatus(user_status *user.Status) *UserUpdate {
+	if user_status != nil {
+		uu.SetStatus(*user_status)
 	}
 	return uu
 }
@@ -350,15 +350,15 @@ func (uu *UserUpdate) ClearDefaultExprs() *UserUpdate {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (uu *UserUpdate) SetCreatedAt(tt time.Time) *UserUpdate {
-	uu.mutation.SetCreatedAt(tt)
+func (uu *UserUpdate) SetCreatedAt(time_time time.Time) *UserUpdate {
+	uu.mutation.SetCreatedAt(time_time)
 	return uu
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (uu *UserUpdate) SetNillableCreatedAt(tt *time.Time) *UserUpdate {
-	if tt != nil {
-		uu.SetCreatedAt(*tt)
+func (uu *UserUpdate) SetNillableCreatedAt(time_time *time.Time) *UserUpdate {
+	if time_time != nil {
+		uu.SetCreatedAt(*time_time)
 	}
 	return uu
 }
@@ -803,15 +803,15 @@ func (uuo *UserUpdateOne) SetNillableMixedString(s *string) *UserUpdateOne {
 }
 
 // SetMixedEnum sets the "mixed_enum" field.
-func (uuo *UserUpdateOne) SetMixedEnum(ume user.MixedEnum) *UserUpdateOne {
-	uuo.mutation.SetMixedEnum(ume)
+func (uuo *UserUpdateOne) SetMixedEnum(user_mixedenum user.MixedEnum) *UserUpdateOne {
+	uuo.mutation.SetMixedEnum(user_mixedenum)
 	return uuo
 }
 
 // SetNillableMixedEnum sets the "mixed_enum" field if the given value is not nil.
-func (uuo *UserUpdateOne) SetNillableMixedEnum(ume *user.MixedEnum) *UserUpdateOne {
-	if ume != nil {
-		uuo.SetMixedEnum(*ume)
+func (uuo *UserUpdateOne) SetNillableMixedEnum(user_mixedenum *user.MixedEnum) *UserUpdateOne {
+	if user_mixedenum != nil {
+		uuo.SetMixedEnum(*user_mixedenum)
 	}
 	return uuo
 }
@@ -986,15 +986,15 @@ func (uuo *UserUpdateOne) ClearBlob() *UserUpdateOne {
 }
 
 // SetState sets the "state" field.
-func (uuo *UserUpdateOne) SetState(us user.State) *UserUpdateOne {
-	uuo.mutation.SetState(us)
+func (uuo *UserUpdateOne) SetState(user_state user.State) *UserUpdateOne {
+	uuo.mutation.SetState(user_state)
 	return uuo
 }
 
 // SetNillableState sets the "state" field if the given value is not nil.
-func (uuo *UserUpdateOne) SetNillableState(us *user.State) *UserUpdateOne {
-	if us != nil {
-		uuo.SetState(*us)
+func (uuo *UserUpdateOne) SetNillableState(user_state *user.State) *UserUpdateOne {
+	if user_state != nil {
+		uuo.SetState(*user_state)
 	}
 	return uuo
 }
@@ -1006,15 +1006,15 @@ func (uuo *UserUpdateOne) ClearState() *UserUpdateOne {
 }
 
 // SetStatus sets the "status" field.
-func (uuo *UserUpdateOne) SetStatus(us user.Status) *UserUpdateOne {
-	uuo.mutation.SetStatus(us)
+func (uuo *UserUpdateOne) SetStatus(user_status user.Status) *UserUpdateOne {
+	uuo.mutation.SetStatus(user_status)
 	return uuo
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (uuo *UserUpdateOne) SetNillableStatus(us *user.Status) *UserUpdateOne {
-	if us != nil {
-		uuo.SetStatus(*us)
+func (uuo *UserUpdateOne) SetNillableStatus(user_status *user.Status) *UserUpdateOne {
+	if user_status != nil {
+		uuo.SetStatus(*user_status)
 	}
 	return uuo
 }
@@ -1104,15 +1104,15 @@ func (uuo *UserUpdateOne) ClearDefaultExprs() *UserUpdateOne {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (uuo *UserUpdateOne) SetCreatedAt(tt time.Time) *UserUpdateOne {
-	uuo.mutation.SetCreatedAt(tt)
+func (uuo *UserUpdateOne) SetCreatedAt(time_time time.Time) *UserUpdateOne {
+	uuo.mutation.SetCreatedAt(time_time)
 	return uuo
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (uuo *UserUpdateOne) SetNillableCreatedAt(tt *time.Time) *UserUpdateOne {
-	if tt != nil {
-		uuo.SetCreatedAt(*tt)
+func (uuo *UserUpdateOne) SetNillableCreatedAt(time_time *time.Time) *UserUpdateOne {
+	if time_time != nil {
+		uuo.SetCreatedAt(*time_time)
 	}
 	return uuo
 }

@@ -41,15 +41,15 @@ func (nc *NoteCreate) SetNillableText(s *string) *NoteCreate {
 }
 
 // SetID sets the "id" field.
-func (nc *NoteCreate) SetID(sni schema.NoteID) *NoteCreate {
-	nc.mutation.SetID(sni)
+func (nc *NoteCreate) SetID(schema_noteid schema.NoteID) *NoteCreate {
+	nc.mutation.SetID(schema_noteid)
 	return nc
 }
 
 // SetNillableID sets the "id" field if the given value is not nil.
-func (nc *NoteCreate) SetNillableID(sni *schema.NoteID) *NoteCreate {
-	if sni != nil {
-		nc.SetID(*sni)
+func (nc *NoteCreate) SetNillableID(schema_noteid *schema.NoteID) *NoteCreate {
+	if schema_noteid != nil {
+		nc.SetID(*schema_noteid)
 	}
 	return nc
 }

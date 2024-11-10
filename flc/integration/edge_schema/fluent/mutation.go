@@ -179,8 +179,8 @@ func (m *AttachedFileMutation) IDs(ctx context.Context) ([]int, error) {
 }
 
 // SetAttachTime sets the "attach_time" field.
-func (m *AttachedFileMutation) SetAttachTime(tt time.Time) {
-	m.attach_time = &tt
+func (m *AttachedFileMutation) SetAttachTime(time_time time.Time) {
+	m.attach_time = &time_time
 }
 
 // AttachTime returns the value of the "attach_time" field in the mutation.
@@ -1206,8 +1206,8 @@ func (m *FriendshipMutation) ResetWeight() {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (m *FriendshipMutation) SetCreatedAt(tt time.Time) {
-	m.created_at = &tt
+func (m *FriendshipMutation) SetCreatedAt(time_time time.Time) {
+	m.created_at = &time_time
 }
 
 // CreatedAt returns the value of the "created_at" field in the mutation.
@@ -4278,8 +4278,8 @@ func (m *RoleMutation) ResetName() {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (m *RoleMutation) SetCreatedAt(tt time.Time) {
-	m.created_at = &tt
+func (m *RoleMutation) SetCreatedAt(time_time time.Time) {
+	m.created_at = &time_time
 }
 
 // CreatedAt returns the value of the "created_at" field in the mutation.
@@ -4654,8 +4654,8 @@ func (m RoleUserMutation) Tx() (*Tx, error) {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (m *RoleUserMutation) SetCreatedAt(tt time.Time) {
-	m.created_at = &tt
+func (m *RoleUserMutation) SetCreatedAt(time_time time.Time) {
+	m.created_at = &time_time
 }
 
 // CreatedAt returns the value of the "created_at" field in the mutation.
@@ -6490,8 +6490,8 @@ func (m TweetLikeMutation) Tx() (*Tx, error) {
 }
 
 // SetLikedAt sets the "liked_at" field.
-func (m *TweetLikeMutation) SetLikedAt(tt time.Time) {
-	m.liked_at = &tt
+func (m *TweetLikeMutation) SetLikedAt(time_time time.Time) {
+	m.liked_at = &time_time
 }
 
 // LikedAt returns the value of the "liked_at" field in the mutation.
@@ -6974,8 +6974,8 @@ func (m *TweetTagMutation) IDs(ctx context.Context) ([]uuid.UUID, error) {
 }
 
 // SetAddedAt sets the "added_at" field.
-func (m *TweetTagMutation) SetAddedAt(tt time.Time) {
-	m.added_at = &tt
+func (m *TweetTagMutation) SetAddedAt(time_time time.Time) {
+	m.added_at = &time_time
 }
 
 // AddedAt returns the value of the "added_at" field in the mutation.
@@ -8594,8 +8594,8 @@ func (m *UserGroupMutation) IDs(ctx context.Context) ([]int, error) {
 }
 
 // SetJoinedAt sets the "joined_at" field.
-func (m *UserGroupMutation) SetJoinedAt(tt time.Time) {
-	m.joined_at = &tt
+func (m *UserGroupMutation) SetJoinedAt(time_time time.Time) {
+	m.joined_at = &time_time
 }
 
 // JoinedAt returns the value of the "joined_at" field in the mutation.
@@ -9131,8 +9131,8 @@ func (m *UserTweetMutation) IDs(ctx context.Context) ([]int, error) {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (m *UserTweetMutation) SetCreatedAt(tt time.Time) {
-	m.created_at = &tt
+func (m *UserTweetMutation) SetCreatedAt(time_time time.Time) {
+	m.created_at = &time_time
 }
 
 // CreatedAt returns the value of the "created_at" field in the mutation.

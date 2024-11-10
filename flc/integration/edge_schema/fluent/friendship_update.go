@@ -53,15 +53,15 @@ func (fu *FriendshipUpdate) AddWeight(i int) *FriendshipUpdate {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (fu *FriendshipUpdate) SetCreatedAt(tt time.Time) *FriendshipUpdate {
-	fu.mutation.SetCreatedAt(tt)
+func (fu *FriendshipUpdate) SetCreatedAt(time_time time.Time) *FriendshipUpdate {
+	fu.mutation.SetCreatedAt(time_time)
 	return fu
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (fu *FriendshipUpdate) SetNillableCreatedAt(tt *time.Time) *FriendshipUpdate {
-	if tt != nil {
-		fu.SetCreatedAt(*tt)
+func (fu *FriendshipUpdate) SetNillableCreatedAt(time_time *time.Time) *FriendshipUpdate {
+	if time_time != nil {
+		fu.SetCreatedAt(*time_time)
 	}
 	return fu
 }
@@ -172,15 +172,15 @@ func (fuo *FriendshipUpdateOne) AddWeight(i int) *FriendshipUpdateOne {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (fuo *FriendshipUpdateOne) SetCreatedAt(tt time.Time) *FriendshipUpdateOne {
-	fuo.mutation.SetCreatedAt(tt)
+func (fuo *FriendshipUpdateOne) SetCreatedAt(time_time time.Time) *FriendshipUpdateOne {
+	fuo.mutation.SetCreatedAt(time_time)
 	return fuo
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (fuo *FriendshipUpdateOne) SetNillableCreatedAt(tt *time.Time) *FriendshipUpdateOne {
-	if tt != nil {
-		fuo.SetCreatedAt(*tt)
+func (fuo *FriendshipUpdateOne) SetNillableCreatedAt(time_time *time.Time) *FriendshipUpdateOne {
+	if time_time != nil {
+		fuo.SetCreatedAt(*time_time)
 	}
 	return fuo
 }

@@ -68,29 +68,29 @@ func (tu *TaskUpdate) ClearDescription() *TaskUpdate {
 }
 
 // SetStatus sets the "status" field.
-func (tu *TaskUpdate) SetStatus(ts task.Status) *TaskUpdate {
-	tu.mutation.SetStatus(ts)
+func (tu *TaskUpdate) SetStatus(task_status task.Status) *TaskUpdate {
+	tu.mutation.SetStatus(task_status)
 	return tu
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (tu *TaskUpdate) SetNillableStatus(ts *task.Status) *TaskUpdate {
-	if ts != nil {
-		tu.SetStatus(*ts)
+func (tu *TaskUpdate) SetNillableStatus(task_status *task.Status) *TaskUpdate {
+	if task_status != nil {
+		tu.SetStatus(*task_status)
 	}
 	return tu
 }
 
 // SetUUID sets the "uuid" field.
-func (tu *TaskUpdate) SetUUID(uu uuid.UUID) *TaskUpdate {
-	tu.mutation.SetUUID(uu)
+func (tu *TaskUpdate) SetUUID(uuid_uuid uuid.UUID) *TaskUpdate {
+	tu.mutation.SetUUID(uuid_uuid)
 	return tu
 }
 
 // SetNillableUUID sets the "uuid" field if the given value is not nil.
-func (tu *TaskUpdate) SetNillableUUID(uu *uuid.UUID) *TaskUpdate {
-	if uu != nil {
-		tu.SetUUID(*uu)
+func (tu *TaskUpdate) SetNillableUUID(uuid_uuid *uuid.UUID) *TaskUpdate {
+	if uuid_uuid != nil {
+		tu.SetUUID(*uuid_uuid)
 	}
 	return tu
 }
@@ -368,29 +368,29 @@ func (tuo *TaskUpdateOne) ClearDescription() *TaskUpdateOne {
 }
 
 // SetStatus sets the "status" field.
-func (tuo *TaskUpdateOne) SetStatus(ts task.Status) *TaskUpdateOne {
-	tuo.mutation.SetStatus(ts)
+func (tuo *TaskUpdateOne) SetStatus(task_status task.Status) *TaskUpdateOne {
+	tuo.mutation.SetStatus(task_status)
 	return tuo
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (tuo *TaskUpdateOne) SetNillableStatus(ts *task.Status) *TaskUpdateOne {
-	if ts != nil {
-		tuo.SetStatus(*ts)
+func (tuo *TaskUpdateOne) SetNillableStatus(task_status *task.Status) *TaskUpdateOne {
+	if task_status != nil {
+		tuo.SetStatus(*task_status)
 	}
 	return tuo
 }
 
 // SetUUID sets the "uuid" field.
-func (tuo *TaskUpdateOne) SetUUID(uu uuid.UUID) *TaskUpdateOne {
-	tuo.mutation.SetUUID(uu)
+func (tuo *TaskUpdateOne) SetUUID(uuid_uuid uuid.UUID) *TaskUpdateOne {
+	tuo.mutation.SetUUID(uuid_uuid)
 	return tuo
 }
 
 // SetNillableUUID sets the "uuid" field if the given value is not nil.
-func (tuo *TaskUpdateOne) SetNillableUUID(uu *uuid.UUID) *TaskUpdateOne {
-	if uu != nil {
-		tuo.SetUUID(*uu)
+func (tuo *TaskUpdateOne) SetNillableUUID(uuid_uuid *uuid.UUID) *TaskUpdateOne {
+	if uuid_uuid != nil {
+		tuo.SetUUID(*uuid_uuid)
 	}
 	return tuo
 }

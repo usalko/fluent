@@ -34,14 +34,14 @@ func (iu *InfoUpdate) Where(ps ...predicate.Info) *InfoUpdate {
 }
 
 // SetContent sets the "content" field.
-func (iu *InfoUpdate) SetContent(jrm json.RawMessage) *InfoUpdate {
-	iu.mutation.SetContent(jrm)
+func (iu *InfoUpdate) SetContent(json_rawmessage json.RawMessage) *InfoUpdate {
+	iu.mutation.SetContent(json_rawmessage)
 	return iu
 }
 
-// AppendContent appends jrm to the "content" field.
-func (iu *InfoUpdate) AppendContent(jrm json.RawMessage) *InfoUpdate {
-	iu.mutation.AppendContent(jrm)
+// AppendContent appends json_rawmessage to the "content" field.
+func (iu *InfoUpdate) AppendContent(json_rawmessage json.RawMessage) *InfoUpdate {
+	iu.mutation.AppendContent(json_rawmessage)
 	return iu
 }
 
@@ -169,14 +169,14 @@ type InfoUpdateOne struct {
 }
 
 // SetContent sets the "content" field.
-func (iuo *InfoUpdateOne) SetContent(jrm json.RawMessage) *InfoUpdateOne {
-	iuo.mutation.SetContent(jrm)
+func (iuo *InfoUpdateOne) SetContent(json_rawmessage json.RawMessage) *InfoUpdateOne {
+	iuo.mutation.SetContent(json_rawmessage)
 	return iuo
 }
 
-// AppendContent appends jrm to the "content" field.
-func (iuo *InfoUpdateOne) AppendContent(jrm json.RawMessage) *InfoUpdateOne {
-	iuo.mutation.AppendContent(jrm)
+// AppendContent appends json_rawmessage to the "content" field.
+func (iuo *InfoUpdateOne) AppendContent(json_rawmessage json.RawMessage) *InfoUpdateOne {
+	iuo.mutation.AppendContent(json_rawmessage)
 	return iuo
 }
 

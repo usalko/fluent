@@ -41,15 +41,15 @@ func (dc *DocCreate) SetNillableText(s *string) *DocCreate {
 }
 
 // SetID sets the "id" field.
-func (dc *DocCreate) SetID(sdi schema.DocID) *DocCreate {
-	dc.mutation.SetID(sdi)
+func (dc *DocCreate) SetID(schema_docid schema.DocID) *DocCreate {
+	dc.mutation.SetID(schema_docid)
 	return dc
 }
 
 // SetNillableID sets the "id" field if the given value is not nil.
-func (dc *DocCreate) SetNillableID(sdi *schema.DocID) *DocCreate {
-	if sdi != nil {
-		dc.SetID(*sdi)
+func (dc *DocCreate) SetNillableID(schema_docid *schema.DocID) *DocCreate {
+	if schema_docid != nil {
+		dc.SetID(*schema_docid)
 	}
 	return dc
 }

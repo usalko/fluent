@@ -203,8 +203,8 @@ func (m *CategoryMutation) ResetText() {
 }
 
 // SetStatus sets the "status" field.
-func (m *CategoryMutation) SetStatus(cs category.Status) {
-	m.status = &cs
+func (m *CategoryMutation) SetStatus(category_status category.Status) {
+	m.status = &category_status
 }
 
 // Status returns the value of the "status" field in the mutation.
@@ -239,8 +239,8 @@ func (m *CategoryMutation) ResetStatus() {
 }
 
 // SetConfig sets the "config" field.
-func (m *CategoryMutation) SetConfig(scc *schematype.CategoryConfig) {
-	m._config = &scc
+func (m *CategoryMutation) SetConfig(schematype_categoryconfig *schematype.CategoryConfig) {
+	m._config = &schematype_categoryconfig
 }
 
 // Config returns the value of the "config" field in the mutation.
@@ -288,8 +288,8 @@ func (m *CategoryMutation) ResetConfig() {
 }
 
 // SetDuration sets the "duration" field.
-func (m *CategoryMutation) SetDuration(td time.Duration) {
-	m.duration = &td
+func (m *CategoryMutation) SetDuration(time_duration time.Duration) {
+	m.duration = &time_duration
 	m.addduration = nil
 }
 
@@ -319,12 +319,12 @@ func (m *CategoryMutation) OldDuration(ctx context.Context) (v time.Duration, er
 	return oldValue.Duration, nil
 }
 
-// AddDuration adds td to the "duration" field.
-func (m *CategoryMutation) AddDuration(td time.Duration) {
+// AddDuration adds time_duration to the "duration" field.
+func (m *CategoryMutation) AddDuration(time_duration time.Duration) {
 	if m.addduration != nil {
-		*m.addduration += td
+		*m.addduration += time_duration
 	} else {
-		m.addduration = &td
+		m.addduration = &time_duration
 	}
 }
 
@@ -1026,8 +1026,8 @@ func (m *TodoMutation) IDs(ctx context.Context) ([]int, error) {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (m *TodoMutation) SetCreatedAt(tt time.Time) {
-	m.created_at = &tt
+func (m *TodoMutation) SetCreatedAt(time_time time.Time) {
+	m.created_at = &time_time
 }
 
 // CreatedAt returns the value of the "created_at" field in the mutation.
@@ -1062,8 +1062,8 @@ func (m *TodoMutation) ResetCreatedAt() {
 }
 
 // SetStatus sets the "status" field.
-func (m *TodoMutation) SetStatus(ts todo.Status) {
-	m.status = &ts
+func (m *TodoMutation) SetStatus(todo_status todo.Status) {
+	m.status = &todo_status
 }
 
 // Status returns the value of the "status" field in the mutation.

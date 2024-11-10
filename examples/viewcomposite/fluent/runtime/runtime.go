@@ -5,5 +5,5 @@ package runtime
 // The schema-stitching logic is generated in github.com/usalko/fluent/examples/viewcomposite/fluent/runtime.go
 
 const (
-	Version = "v0.1.6" // Version of fluent codegen.
+	Version = "v0.1.7" // Version of fluent codegen.
 )

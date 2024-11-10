@@ -31,7 +31,6 @@ require (
 	github.com/99designs/gqlgen v0.17.55
 	github.com/json-iterator/go v1.1.12
 	github.com/oklog/ulid/v2 v2.1.0
-	github.com/usalko/fluent/flc/integration v0.0.0-20241110093929-430a0ff4ceb1
 	go.opencensus.io v0.24.0
 	golang.org/x/exp v0.0.0-20241108190413-2d47ceb2692f
 )

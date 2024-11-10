@@ -25,8 +25,8 @@ type InfoCreate struct {
 }
 
 // SetContent sets the "content" field.
-func (ic *InfoCreate) SetContent(jrm json.RawMessage) *InfoCreate {
-	ic.mutation.SetContent(jrm)
+func (ic *InfoCreate) SetContent(json_rawmessage json.RawMessage) *InfoCreate {
+	ic.mutation.SetContent(json_rawmessage)
 	return ic
 }
 

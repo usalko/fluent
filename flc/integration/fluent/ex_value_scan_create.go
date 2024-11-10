@@ -27,32 +27,32 @@ type ExValueScanCreate struct {
 }
 
 // SetBinary sets the "binary" field.
-func (evsc *ExValueScanCreate) SetBinary(uu *url.URL) *ExValueScanCreate {
-	evsc.mutation.SetBinary(uu)
+func (evsc *ExValueScanCreate) SetBinary(url_url *url.URL) *ExValueScanCreate {
+	evsc.mutation.SetBinary(url_url)
 	return evsc
 }
 
 // SetBinaryBytes sets the "binary_bytes" field.
-func (evsc *ExValueScanCreate) SetBinaryBytes(uu *url.URL) *ExValueScanCreate {
-	evsc.mutation.SetBinaryBytes(uu)
+func (evsc *ExValueScanCreate) SetBinaryBytes(url_url *url.URL) *ExValueScanCreate {
+	evsc.mutation.SetBinaryBytes(url_url)
 	return evsc
 }
 
 // SetBinaryOptional sets the "binary_optional" field.
-func (evsc *ExValueScanCreate) SetBinaryOptional(uu *url.URL) *ExValueScanCreate {
-	evsc.mutation.SetBinaryOptional(uu)
+func (evsc *ExValueScanCreate) SetBinaryOptional(url_url *url.URL) *ExValueScanCreate {
+	evsc.mutation.SetBinaryOptional(url_url)
 	return evsc
 }
 
 // SetText sets the "text" field.
-func (evsc *ExValueScanCreate) SetText(bi *big.Int) *ExValueScanCreate {
-	evsc.mutation.SetText(bi)
+func (evsc *ExValueScanCreate) SetText(big_int *big.Int) *ExValueScanCreate {
+	evsc.mutation.SetText(big_int)
 	return evsc
 }
 
 // SetTextOptional sets the "text_optional" field.
-func (evsc *ExValueScanCreate) SetTextOptional(bi *big.Int) *ExValueScanCreate {
-	evsc.mutation.SetTextOptional(bi)
+func (evsc *ExValueScanCreate) SetTextOptional(big_int *big.Int) *ExValueScanCreate {
+	evsc.mutation.SetTextOptional(big_int)
 	return evsc
 }
 

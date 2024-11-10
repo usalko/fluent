@@ -40,21 +40,21 @@ func (sc *SessionCreate) SetNillableActive(b *bool) *SessionCreate {
 }
 
 // SetIssuedAt sets the "issued_at" field.
-func (sc *SessionCreate) SetIssuedAt(tt time.Time) *SessionCreate {
-	sc.mutation.SetIssuedAt(tt)
+func (sc *SessionCreate) SetIssuedAt(time_time time.Time) *SessionCreate {
+	sc.mutation.SetIssuedAt(time_time)
 	return sc
 }
 
 // SetExpiresAt sets the "expires_at" field.
-func (sc *SessionCreate) SetExpiresAt(tt time.Time) *SessionCreate {
-	sc.mutation.SetExpiresAt(tt)
+func (sc *SessionCreate) SetExpiresAt(time_time time.Time) *SessionCreate {
+	sc.mutation.SetExpiresAt(time_time)
 	return sc
 }
 
 // SetNillableExpiresAt sets the "expires_at" field if the given value is not nil.
-func (sc *SessionCreate) SetNillableExpiresAt(tt *time.Time) *SessionCreate {
-	if tt != nil {
-		sc.SetExpiresAt(*tt)
+func (sc *SessionCreate) SetNillableExpiresAt(time_time *time.Time) *SessionCreate {
+	if time_time != nil {
+		sc.SetExpiresAt(*time_time)
 	}
 	return sc
 }
@@ -74,35 +74,35 @@ func (sc *SessionCreate) SetNillableToken(s *string) *SessionCreate {
 }
 
 // SetMethod sets the "method" field.
-func (sc *SessionCreate) SetMethod(m map[string]interface{}) *SessionCreate {
-	sc.mutation.SetMethod(m)
+func (sc *SessionCreate) SetMethod(msi map[string]interface{}) *SessionCreate {
+	sc.mutation.SetMethod(msi)
 	return sc
 }
 
 // SetDeviceID sets the "device_id" field.
-func (sc *SessionCreate) SetDeviceID(uu uuid.UUID) *SessionCreate {
-	sc.mutation.SetDeviceID(uu)
+func (sc *SessionCreate) SetDeviceID(uuid_uuid uuid.UUID) *SessionCreate {
+	sc.mutation.SetDeviceID(uuid_uuid)
 	return sc
 }
 
 // SetNillableDeviceID sets the "device_id" field if the given value is not nil.
-func (sc *SessionCreate) SetNillableDeviceID(uu *uuid.UUID) *SessionCreate {
-	if uu != nil {
-		sc.SetDeviceID(*uu)
+func (sc *SessionCreate) SetNillableDeviceID(uuid_uuid *uuid.UUID) *SessionCreate {
+	if uuid_uuid != nil {
+		sc.SetDeviceID(*uuid_uuid)
 	}
 	return sc
 }
 
 // SetID sets the "id" field.
-func (sc *SessionCreate) SetID(uu uuid.UUID) *SessionCreate {
-	sc.mutation.SetID(uu)
+func (sc *SessionCreate) SetID(uuid_uuid uuid.UUID) *SessionCreate {
+	sc.mutation.SetID(uuid_uuid)
 	return sc
 }
 
 // SetNillableID sets the "id" field if the given value is not nil.
-func (sc *SessionCreate) SetNillableID(uu *uuid.UUID) *SessionCreate {
-	if uu != nil {
-		sc.SetID(*uu)
+func (sc *SessionCreate) SetNillableID(uuid_uuid *uuid.UUID) *SessionCreate {
+	if uuid_uuid != nil {
+		sc.SetID(*uuid_uuid)
 	}
 	return sc
 }

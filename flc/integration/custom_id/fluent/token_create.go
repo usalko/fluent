@@ -34,15 +34,15 @@ func (tc *TokenCreate) SetBody(s string) *TokenCreate {
 }
 
 // SetID sets the "id" field.
-func (tc *TokenCreate) SetID(si sid.ID) *TokenCreate {
-	tc.mutation.SetID(si)
+func (tc *TokenCreate) SetID(sid_id sid.ID) *TokenCreate {
+	tc.mutation.SetID(sid_id)
 	return tc
 }
 
 // SetNillableID sets the "id" field if the given value is not nil.
-func (tc *TokenCreate) SetNillableID(si *sid.ID) *TokenCreate {
-	if si != nil {
-		tc.SetID(*si)
+func (tc *TokenCreate) SetNillableID(sid_id *sid.ID) *TokenCreate {
+	if sid_id != nil {
+		tc.SetID(*sid_id)
 	}
 	return tc
 }

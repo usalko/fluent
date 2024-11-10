@@ -36,22 +36,22 @@ type TodoCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (tc *TodoCreate) SetCreatedAt(tt time.Time) *TodoCreate {
-	tc.mutation.SetCreatedAt(tt)
+func (tc *TodoCreate) SetCreatedAt(time_time time.Time) *TodoCreate {
+	tc.mutation.SetCreatedAt(time_time)
 	return tc
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (tc *TodoCreate) SetNillableCreatedAt(tt *time.Time) *TodoCreate {
-	if tt != nil {
-		tc.SetCreatedAt(*tt)
+func (tc *TodoCreate) SetNillableCreatedAt(time_time *time.Time) *TodoCreate {
+	if time_time != nil {
+		tc.SetCreatedAt(*time_time)
 	}
 	return tc
 }
 
 // SetStatus sets the "status" field.
-func (tc *TodoCreate) SetStatus(ts todo.Status) *TodoCreate {
-	tc.mutation.SetStatus(ts)
+func (tc *TodoCreate) SetStatus(todo_status todo.Status) *TodoCreate {
+	tc.mutation.SetStatus(todo_status)
 	return tc
 }
 
@@ -96,20 +96,20 @@ func (tc *TodoCreate) SetNillableCategoryID(i *int) *TodoCreate {
 }
 
 // SetInit sets the "init" field.
-func (tc *TodoCreate) SetInit(m map[string]interface{}) *TodoCreate {
-	tc.mutation.SetInit(m)
+func (tc *TodoCreate) SetInit(msi map[string]interface{}) *TodoCreate {
+	tc.mutation.SetInit(msi)
 	return tc
 }
 
 // SetCustom sets the "custom" field.
-func (tc *TodoCreate) SetCustom(cc []customstruct.Custom) *TodoCreate {
-	tc.mutation.SetCustom(cc)
+func (tc *TodoCreate) SetCustom(customstruct_custom []customstruct.Custom) *TodoCreate {
+	tc.mutation.SetCustom(customstruct_custom)
 	return tc
 }
 
 // SetCustomp sets the "customp" field.
-func (tc *TodoCreate) SetCustomp(cc []*customstruct.Custom) *TodoCreate {
-	tc.mutation.SetCustomp(cc)
+func (tc *TodoCreate) SetCustomp(customstruct_custom []*customstruct.Custom) *TodoCreate {
+	tc.mutation.SetCustomp(customstruct_custom)
 	return tc
 }
 

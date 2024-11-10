@@ -2420,8 +2420,8 @@ func (m *UserMutation) ResetBlob() {
 }
 
 // SetState sets the "state" field.
-func (m *UserMutation) SetState(us user.State) {
-	m.state = &us
+func (m *UserMutation) SetState(user_state user.State) {
+	m.state = &user_state
 }
 
 // State returns the value of the "state" field in the mutation.

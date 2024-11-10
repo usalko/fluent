@@ -28,15 +28,15 @@ type AttachedFileCreate struct {
 }
 
 // SetAttachTime sets the "attach_time" field.
-func (afc *AttachedFileCreate) SetAttachTime(tt time.Time) *AttachedFileCreate {
-	afc.mutation.SetAttachTime(tt)
+func (afc *AttachedFileCreate) SetAttachTime(time_time time.Time) *AttachedFileCreate {
+	afc.mutation.SetAttachTime(time_time)
 	return afc
 }
 
 // SetNillableAttachTime sets the "attach_time" field if the given value is not nil.
-func (afc *AttachedFileCreate) SetNillableAttachTime(tt *time.Time) *AttachedFileCreate {
-	if tt != nil {
-		afc.SetAttachTime(*tt)
+func (afc *AttachedFileCreate) SetNillableAttachTime(time_time *time.Time) *AttachedFileCreate {
+	if time_time != nil {
+		afc.SetAttachTime(*time_time)
 	}
 	return afc
 }

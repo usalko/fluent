@@ -721,8 +721,8 @@ func (m *CardMutation) IDs(ctx context.Context) ([]int, error) {
 }
 
 // SetCreateTime sets the "create_time" field.
-func (m *CardMutation) SetCreateTime(tt time.Time) {
-	m.create_time = &tt
+func (m *CardMutation) SetCreateTime(time_time time.Time) {
+	m.create_time = &time_time
 }
 
 // CreateTime returns the value of the "create_time" field in the mutation.
@@ -757,8 +757,8 @@ func (m *CardMutation) ResetCreateTime() {
 }
 
 // SetUpdateTime sets the "update_time" field.
-func (m *CardMutation) SetUpdateTime(tt time.Time) {
-	m.update_time = &tt
+func (m *CardMutation) SetUpdateTime(time_time time.Time) {
+	m.update_time = &time_time
 }
 
 // UpdateTime returns the value of the "update_time" field in the mutation.
@@ -1702,8 +1702,8 @@ func (m *CommentMutation) ResetTable() {
 }
 
 // SetDir sets the "dir" field.
-func (m *CommentMutation) SetDir(sd schemadir.Dir) {
-	m.dir = &sd
+func (m *CommentMutation) SetDir(schemadir_dir schemadir.Dir) {
+	m.dir = &schemadir_dir
 }
 
 // Dir returns the value of the "dir" field in the mutation.
@@ -2248,8 +2248,8 @@ func (m *ExValueScanMutation) IDs(ctx context.Context) ([]int, error) {
 }
 
 // SetBinary sets the "binary" field.
-func (m *ExValueScanMutation) SetBinary(uu *url.URL) {
-	m.binary = &uu
+func (m *ExValueScanMutation) SetBinary(url_url *url.URL) {
+	m.binary = &url_url
 }
 
 // Binary returns the value of the "binary" field in the mutation.
@@ -2284,8 +2284,8 @@ func (m *ExValueScanMutation) ResetBinary() {
 }
 
 // SetBinaryBytes sets the "binary_bytes" field.
-func (m *ExValueScanMutation) SetBinaryBytes(uu *url.URL) {
-	m.binary_bytes = &uu
+func (m *ExValueScanMutation) SetBinaryBytes(url_url *url.URL) {
+	m.binary_bytes = &url_url
 }
 
 // BinaryBytes returns the value of the "binary_bytes" field in the mutation.
@@ -2320,8 +2320,8 @@ func (m *ExValueScanMutation) ResetBinaryBytes() {
 }
 
 // SetBinaryOptional sets the "binary_optional" field.
-func (m *ExValueScanMutation) SetBinaryOptional(uu *url.URL) {
-	m.binary_optional = &uu
+func (m *ExValueScanMutation) SetBinaryOptional(url_url *url.URL) {
+	m.binary_optional = &url_url
 }
 
 // BinaryOptional returns the value of the "binary_optional" field in the mutation.
@@ -2369,8 +2369,8 @@ func (m *ExValueScanMutation) ResetBinaryOptional() {
 }
 
 // SetText sets the "text" field.
-func (m *ExValueScanMutation) SetText(bi *big.Int) {
-	m.text = &bi
+func (m *ExValueScanMutation) SetText(big_int *big.Int) {
+	m.text = &big_int
 }
 
 // Text returns the value of the "text" field in the mutation.
@@ -2405,8 +2405,8 @@ func (m *ExValueScanMutation) ResetText() {
 }
 
 // SetTextOptional sets the "text_optional" field.
-func (m *ExValueScanMutation) SetTextOptional(bi *big.Int) {
-	m.text_optional = &bi
+func (m *ExValueScanMutation) SetTextOptional(big_int *big.Int) {
+	m.text_optional = &big_int
 }
 
 // TextOptional returns the value of the "text_optional" field in the mutation.
@@ -4501,8 +4501,8 @@ func (m *FieldTypeMutation) ResetOptionalUint64() {
 }
 
 // SetState sets the "state" field.
-func (m *FieldTypeMutation) SetState(fts field_type.State) {
-	m.state = &fts
+func (m *FieldTypeMutation) SetState(field_type_state field_type.State) {
+	m.state = &field_type_state
 }
 
 // State returns the value of the "state" field in the mutation.
@@ -4739,8 +4739,8 @@ func (m *FieldTypeMutation) ResetText() {
 }
 
 // SetDatetime sets the "datetime" field.
-func (m *FieldTypeMutation) SetDatetime(tt time.Time) {
-	m.datetime = &tt
+func (m *FieldTypeMutation) SetDatetime(time_time time.Time) {
+	m.datetime = &time_time
 }
 
 // Datetime returns the value of the "datetime" field in the mutation.
@@ -4858,8 +4858,8 @@ func (m *FieldTypeMutation) ResetDecimal() {
 }
 
 // SetLinkOther sets the "link_other" field.
-func (m *FieldTypeMutation) SetLinkOther(sl *schema.Link) {
-	m.link_other = &sl
+func (m *FieldTypeMutation) SetLinkOther(schema_link *schema.Link) {
+	m.link_other = &schema_link
 }
 
 // LinkOther returns the value of the "link_other" field in the mutation.
@@ -4907,8 +4907,8 @@ func (m *FieldTypeMutation) ResetLinkOther() {
 }
 
 // SetLinkOtherFunc sets the "link_other_func" field.
-func (m *FieldTypeMutation) SetLinkOtherFunc(sl *schema.Link) {
-	m.link_other_func = &sl
+func (m *FieldTypeMutation) SetLinkOtherFunc(schema_link *schema.Link) {
+	m.link_other_func = &schema_link
 }
 
 // LinkOtherFunc returns the value of the "link_other_func" field in the mutation.
@@ -4956,8 +4956,8 @@ func (m *FieldTypeMutation) ResetLinkOtherFunc() {
 }
 
 // SetMAC sets the "mac" field.
-func (m *FieldTypeMutation) SetMAC(sm schema.MAC) {
-	m.mac = &sm
+func (m *FieldTypeMutation) SetMAC(schema_mac schema.MAC) {
+	m.mac = &schema_mac
 }
 
 // MAC returns the value of the "mac" field in the mutation.
@@ -5005,8 +5005,8 @@ func (m *FieldTypeMutation) ResetMAC() {
 }
 
 // SetStringArray sets the "string_array" field.
-func (m *FieldTypeMutation) SetStringArray(ss schema.Strings) {
-	m.string_array = &ss
+func (m *FieldTypeMutation) SetStringArray(schema_strings schema.Strings) {
+	m.string_array = &schema_strings
 }
 
 // StringArray returns the value of the "string_array" field in the mutation.
@@ -5103,8 +5103,8 @@ func (m *FieldTypeMutation) ResetPassword() {
 }
 
 // SetStringScanner sets the "string_scanner" field.
-func (m *FieldTypeMutation) SetStringScanner(sss schema.StringScanner) {
-	m.string_scanner = &sss
+func (m *FieldTypeMutation) SetStringScanner(schema_stringscanner schema.StringScanner) {
+	m.string_scanner = &schema_stringscanner
 }
 
 // StringScanner returns the value of the "string_scanner" field in the mutation.
@@ -5152,8 +5152,8 @@ func (m *FieldTypeMutation) ResetStringScanner() {
 }
 
 // SetDuration sets the "duration" field.
-func (m *FieldTypeMutation) SetDuration(td time.Duration) {
-	m.duration = &td
+func (m *FieldTypeMutation) SetDuration(time_duration time.Duration) {
+	m.duration = &time_duration
 	m.addduration = nil
 }
 
@@ -5183,12 +5183,12 @@ func (m *FieldTypeMutation) OldDuration(ctx context.Context) (v time.Duration, e
 	return oldValue.Duration, nil
 }
 
-// AddDuration adds td to the "duration" field.
-func (m *FieldTypeMutation) AddDuration(td time.Duration) {
+// AddDuration adds time_duration to the "duration" field.
+func (m *FieldTypeMutation) AddDuration(time_duration time.Duration) {
 	if m.addduration != nil {
-		*m.addduration += td
+		*m.addduration += time_duration
 	} else {
-		m.addduration = &td
+		m.addduration = &time_duration
 	}
 }
 
@@ -5222,8 +5222,8 @@ func (m *FieldTypeMutation) ResetDuration() {
 }
 
 // SetDir sets the "dir" field.
-func (m *FieldTypeMutation) SetDir(hd http.Dir) {
-	m.dir = &hd
+func (m *FieldTypeMutation) SetDir(http_dir http.Dir) {
+	m.dir = &http_dir
 }
 
 // Dir returns the value of the "dir" field in the mutation.
@@ -5258,8 +5258,8 @@ func (m *FieldTypeMutation) ResetDir() {
 }
 
 // SetNdir sets the "ndir" field.
-func (m *FieldTypeMutation) SetNdir(hd http.Dir) {
-	m.ndir = &hd
+func (m *FieldTypeMutation) SetNdir(http_dir http.Dir) {
+	m.ndir = &http_dir
 }
 
 // Ndir returns the value of the "ndir" field in the mutation.
@@ -5307,8 +5307,8 @@ func (m *FieldTypeMutation) ResetNdir() {
 }
 
 // SetStr sets the "str" field.
-func (m *FieldTypeMutation) SetStr(sns sql.NullString) {
-	m.str = &sns
+func (m *FieldTypeMutation) SetStr(sql_nullstring sql.NullString) {
+	m.str = &sql_nullstring
 }
 
 // Str returns the value of the "str" field in the mutation.
@@ -5356,8 +5356,8 @@ func (m *FieldTypeMutation) ResetStr() {
 }
 
 // SetNullStr sets the "null_str" field.
-func (m *FieldTypeMutation) SetNullStr(sns *sql.NullString) {
-	m.null_str = &sns
+func (m *FieldTypeMutation) SetNullStr(sql_nullstring *sql.NullString) {
+	m.null_str = &sql_nullstring
 }
 
 // NullStr returns the value of the "null_str" field in the mutation.
@@ -5405,8 +5405,8 @@ func (m *FieldTypeMutation) ResetNullStr() {
 }
 
 // SetLink sets the "link" field.
-func (m *FieldTypeMutation) SetLink(sl schema.Link) {
-	m.link = &sl
+func (m *FieldTypeMutation) SetLink(schema_link schema.Link) {
+	m.link = &schema_link
 }
 
 // Link returns the value of the "link" field in the mutation.
@@ -5454,8 +5454,8 @@ func (m *FieldTypeMutation) ResetLink() {
 }
 
 // SetNullLink sets the "null_link" field.
-func (m *FieldTypeMutation) SetNullLink(sl *schema.Link) {
-	m.null_link = &sl
+func (m *FieldTypeMutation) SetNullLink(schema_link *schema.Link) {
+	m.null_link = &schema_link
 }
 
 // NullLink returns the value of the "null_link" field in the mutation.
@@ -5503,8 +5503,8 @@ func (m *FieldTypeMutation) ResetNullLink() {
 }
 
 // SetActive sets the "active" field.
-func (m *FieldTypeMutation) SetActive(ss schema.Status) {
-	m.active = &ss
+func (m *FieldTypeMutation) SetActive(schema_status schema.Status) {
+	m.active = &schema_status
 }
 
 // Active returns the value of the "active" field in the mutation.
@@ -5552,8 +5552,8 @@ func (m *FieldTypeMutation) ResetActive() {
 }
 
 // SetNullActive sets the "null_active" field.
-func (m *FieldTypeMutation) SetNullActive(ss schema.Status) {
-	m.null_active = &ss
+func (m *FieldTypeMutation) SetNullActive(schema_status schema.Status) {
+	m.null_active = &schema_status
 }
 
 // NullActive returns the value of the "null_active" field in the mutation.
@@ -5601,8 +5601,8 @@ func (m *FieldTypeMutation) ResetNullActive() {
 }
 
 // SetDeleted sets the "deleted" field.
-func (m *FieldTypeMutation) SetDeleted(snb *sql.NullBool) {
-	m.deleted = &snb
+func (m *FieldTypeMutation) SetDeleted(sql_nullbool *sql.NullBool) {
+	m.deleted = &sql_nullbool
 }
 
 // Deleted returns the value of the "deleted" field in the mutation.
@@ -5650,8 +5650,8 @@ func (m *FieldTypeMutation) ResetDeleted() {
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (m *FieldTypeMutation) SetDeletedAt(snt *sql.NullTime) {
-	m.deleted_at = &snt
+func (m *FieldTypeMutation) SetDeletedAt(sql_nulltime *sql.NullTime) {
+	m.deleted_at = &sql_nulltime
 }
 
 // DeletedAt returns the value of the "deleted_at" field in the mutation.
@@ -5797,8 +5797,8 @@ func (m *FieldTypeMutation) ResetSensitive() {
 }
 
 // SetIP sets the "ip" field.
-func (m *FieldTypeMutation) SetIP(ni net.IP) {
-	m.ip = &ni
+func (m *FieldTypeMutation) SetIP(net_ip net.IP) {
+	m.ip = &net_ip
 }
 
 // IP returns the value of the "ip" field in the mutation.
@@ -5846,8 +5846,8 @@ func (m *FieldTypeMutation) ResetIP() {
 }
 
 // SetNullInt64 sets the "null_int64" field.
-func (m *FieldTypeMutation) SetNullInt64(sni *sql.NullInt64) {
-	m.null_int64 = &sni
+func (m *FieldTypeMutation) SetNullInt64(sql_nullint *sql.NullInt64) {
+	m.null_int64 = &sql_nullint
 }
 
 // NullInt64 returns the value of the "null_int64" field in the mutation.
@@ -5895,8 +5895,8 @@ func (m *FieldTypeMutation) ResetNullInt64() {
 }
 
 // SetSchemaInt sets the "schema_int" field.
-func (m *FieldTypeMutation) SetSchemaInt(si schema.Int) {
-	m.schema_int = &si
+func (m *FieldTypeMutation) SetSchemaInt(schema_int schema.Int) {
+	m.schema_int = &schema_int
 	m.addschema_int = nil
 }
 
@@ -5926,12 +5926,12 @@ func (m *FieldTypeMutation) OldSchemaInt(ctx context.Context) (v schema.Int, err
 	return oldValue.SchemaInt, nil
 }
 
-// AddSchemaInt adds si to the "schema_int" field.
-func (m *FieldTypeMutation) AddSchemaInt(si schema.Int) {
+// AddSchemaInt adds schema_int to the "schema_int" field.
+func (m *FieldTypeMutation) AddSchemaInt(schema_int schema.Int) {
 	if m.addschema_int != nil {
-		*m.addschema_int += si
+		*m.addschema_int += schema_int
 	} else {
-		m.addschema_int = &si
+		m.addschema_int = &schema_int
 	}
 }
 
@@ -5965,8 +5965,8 @@ func (m *FieldTypeMutation) ResetSchemaInt() {
 }
 
 // SetSchemaInt8 sets the "schema_int8" field.
-func (m *FieldTypeMutation) SetSchemaInt8(si schema.Int8) {
-	m.schema_int8 = &si
+func (m *FieldTypeMutation) SetSchemaInt8(schema_int schema.Int8) {
+	m.schema_int8 = &schema_int
 	m.addschema_int8 = nil
 }
 
@@ -5996,12 +5996,12 @@ func (m *FieldTypeMutation) OldSchemaInt8(ctx context.Context) (v schema.Int8, e
 	return oldValue.SchemaInt8, nil
 }
 
-// AddSchemaInt8 adds si to the "schema_int8" field.
-func (m *FieldTypeMutation) AddSchemaInt8(si schema.Int8) {
+// AddSchemaInt8 adds schema_int to the "schema_int8" field.
+func (m *FieldTypeMutation) AddSchemaInt8(schema_int schema.Int8) {
 	if m.addschema_int8 != nil {
-		*m.addschema_int8 += si
+		*m.addschema_int8 += schema_int
 	} else {
-		m.addschema_int8 = &si
+		m.addschema_int8 = &schema_int
 	}
 }
 
@@ -6035,8 +6035,8 @@ func (m *FieldTypeMutation) ResetSchemaInt8() {
 }
 
 // SetSchemaInt64 sets the "schema_int64" field.
-func (m *FieldTypeMutation) SetSchemaInt64(si schema.Int64) {
-	m.schema_int64 = &si
+func (m *FieldTypeMutation) SetSchemaInt64(schema_int schema.Int64) {
+	m.schema_int64 = &schema_int
 	m.addschema_int64 = nil
 }
 
@@ -6066,12 +6066,12 @@ func (m *FieldTypeMutation) OldSchemaInt64(ctx context.Context) (v schema.Int64,
 	return oldValue.SchemaInt64, nil
 }
 
-// AddSchemaInt64 adds si to the "schema_int64" field.
-func (m *FieldTypeMutation) AddSchemaInt64(si schema.Int64) {
+// AddSchemaInt64 adds schema_int to the "schema_int64" field.
+func (m *FieldTypeMutation) AddSchemaInt64(schema_int schema.Int64) {
 	if m.addschema_int64 != nil {
-		*m.addschema_int64 += si
+		*m.addschema_int64 += schema_int
 	} else {
-		m.addschema_int64 = &si
+		m.addschema_int64 = &schema_int
 	}
 }
 
@@ -6105,8 +6105,8 @@ func (m *FieldTypeMutation) ResetSchemaInt64() {
 }
 
 // SetSchemaFloat sets the "schema_float" field.
-func (m *FieldTypeMutation) SetSchemaFloat(sf schema.Float64) {
-	m.schema_float = &sf
+func (m *FieldTypeMutation) SetSchemaFloat(schema_float schema.Float64) {
+	m.schema_float = &schema_float
 	m.addschema_float = nil
 }
 
@@ -6136,12 +6136,12 @@ func (m *FieldTypeMutation) OldSchemaFloat(ctx context.Context) (v schema.Float6
 	return oldValue.SchemaFloat, nil
 }
 
-// AddSchemaFloat adds sf to the "schema_float" field.
-func (m *FieldTypeMutation) AddSchemaFloat(sf schema.Float64) {
+// AddSchemaFloat adds schema_float to the "schema_float" field.
+func (m *FieldTypeMutation) AddSchemaFloat(schema_float schema.Float64) {
 	if m.addschema_float != nil {
-		*m.addschema_float += sf
+		*m.addschema_float += schema_float
 	} else {
-		m.addschema_float = &sf
+		m.addschema_float = &schema_float
 	}
 }
 
@@ -6175,8 +6175,8 @@ func (m *FieldTypeMutation) ResetSchemaFloat() {
 }
 
 // SetSchemaFloat32 sets the "schema_float32" field.
-func (m *FieldTypeMutation) SetSchemaFloat32(sf schema.Float32) {
-	m.schema_float32 = &sf
+func (m *FieldTypeMutation) SetSchemaFloat32(schema_float schema.Float32) {
+	m.schema_float32 = &schema_float
 	m.addschema_float32 = nil
 }
 
@@ -6206,12 +6206,12 @@ func (m *FieldTypeMutation) OldSchemaFloat32(ctx context.Context) (v schema.Floa
 	return oldValue.SchemaFloat32, nil
 }
 
-// AddSchemaFloat32 adds sf to the "schema_float32" field.
-func (m *FieldTypeMutation) AddSchemaFloat32(sf schema.Float32) {
+// AddSchemaFloat32 adds schema_float to the "schema_float32" field.
+func (m *FieldTypeMutation) AddSchemaFloat32(schema_float schema.Float32) {
 	if m.addschema_float32 != nil {
-		*m.addschema_float32 += sf
+		*m.addschema_float32 += schema_float
 	} else {
-		m.addschema_float32 = &sf
+		m.addschema_float32 = &schema_float
 	}
 }
 
@@ -6245,8 +6245,8 @@ func (m *FieldTypeMutation) ResetSchemaFloat32() {
 }
 
 // SetNullFloat sets the "null_float" field.
-func (m *FieldTypeMutation) SetNullFloat(snf *sql.NullFloat64) {
-	m.null_float = &snf
+func (m *FieldTypeMutation) SetNullFloat(sql_nullfloat *sql.NullFloat64) {
+	m.null_float = &sql_nullfloat
 }
 
 // NullFloat returns the value of the "null_float" field in the mutation.
@@ -6294,8 +6294,8 @@ func (m *FieldTypeMutation) ResetNullFloat() {
 }
 
 // SetRole sets the "role" field.
-func (m *FieldTypeMutation) SetRole(rr role.Role) {
-	m.role = &rr
+func (m *FieldTypeMutation) SetRole(role_role role.Role) {
+	m.role = &role_role
 }
 
 // Role returns the value of the "role" field in the mutation.
@@ -6330,8 +6330,8 @@ func (m *FieldTypeMutation) ResetRole() {
 }
 
 // SetPriority sets the "priority" field.
-func (m *FieldTypeMutation) SetPriority(rp role.Priority) {
-	m.priority = &rp
+func (m *FieldTypeMutation) SetPriority(role_priority role.Priority) {
+	m.priority = &role_priority
 }
 
 // Priority returns the value of the "priority" field in the mutation.
@@ -6379,8 +6379,8 @@ func (m *FieldTypeMutation) ResetPriority() {
 }
 
 // SetOptionalUUID sets the "optional_uuid" field.
-func (m *FieldTypeMutation) SetOptionalUUID(uu uuid.UUID) {
-	m.optional_uuid = &uu
+func (m *FieldTypeMutation) SetOptionalUUID(uuid_uuid uuid.UUID) {
+	m.optional_uuid = &uuid_uuid
 }
 
 // OptionalUUID returns the value of the "optional_uuid" field in the mutation.
@@ -6428,8 +6428,8 @@ func (m *FieldTypeMutation) ResetOptionalUUID() {
 }
 
 // SetNillableUUID sets the "nillable_uuid" field.
-func (m *FieldTypeMutation) SetNillableUUID(uu uuid.UUID) {
-	m.nillable_uuid = &uu
+func (m *FieldTypeMutation) SetNillableUUID(uuid_uuid uuid.UUID) {
+	m.nillable_uuid = &uuid_uuid
 }
 
 // NillableUUID returns the value of the "nillable_uuid" field in the mutation.
@@ -6542,8 +6542,8 @@ func (m *FieldTypeMutation) ResetStrings() {
 }
 
 // SetPair sets the "pair" field.
-func (m *FieldTypeMutation) SetPair(sp schema.Pair) {
-	m.pair = &sp
+func (m *FieldTypeMutation) SetPair(schema_pair schema.Pair) {
+	m.pair = &schema_pair
 }
 
 // Pair returns the value of the "pair" field in the mutation.
@@ -6578,8 +6578,8 @@ func (m *FieldTypeMutation) ResetPair() {
 }
 
 // SetNilPair sets the "nil_pair" field.
-func (m *FieldTypeMutation) SetNilPair(sp *schema.Pair) {
-	m.nil_pair = &sp
+func (m *FieldTypeMutation) SetNilPair(schema_pair *schema.Pair) {
+	m.nil_pair = &schema_pair
 }
 
 // NilPair returns the value of the "nil_pair" field in the mutation.
@@ -6627,8 +6627,8 @@ func (m *FieldTypeMutation) ResetNilPair() {
 }
 
 // SetVstring sets the "vstring" field.
-func (m *FieldTypeMutation) SetVstring(sv schema.VString) {
-	m.vstring = &sv
+func (m *FieldTypeMutation) SetVstring(schema_vstring schema.VString) {
+	m.vstring = &schema_vstring
 }
 
 // Vstring returns the value of the "vstring" field in the mutation.
@@ -6663,8 +6663,8 @@ func (m *FieldTypeMutation) ResetVstring() {
 }
 
 // SetTriple sets the "triple" field.
-func (m *FieldTypeMutation) SetTriple(st schema.Triple) {
-	m.triple = &st
+func (m *FieldTypeMutation) SetTriple(schema_triple schema.Triple) {
+	m.triple = &schema_triple
 }
 
 // Triple returns the value of the "triple" field in the mutation.
@@ -6699,8 +6699,8 @@ func (m *FieldTypeMutation) ResetTriple() {
 }
 
 // SetBigInt sets the "big_int" field.
-func (m *FieldTypeMutation) SetBigInt(sbi schema.BigInt) {
-	m.big_int = &sbi
+func (m *FieldTypeMutation) SetBigInt(schema_bigint schema.BigInt) {
+	m.big_int = &schema_bigint
 	m.addbig_int = nil
 }
 
@@ -6730,12 +6730,12 @@ func (m *FieldTypeMutation) OldBigInt(ctx context.Context) (v schema.BigInt, err
 	return oldValue.BigInt, nil
 }
 
-// AddBigInt adds sbi to the "big_int" field.
-func (m *FieldTypeMutation) AddBigInt(sbi schema.BigInt) {
+// AddBigInt adds schema_bigint to the "big_int" field.
+func (m *FieldTypeMutation) AddBigInt(schema_bigint schema.BigInt) {
 	if m.addbig_int != nil {
-		*m.addbig_int = m.addbig_int.Add(sbi)
+		*m.addbig_int = m.addbig_int.Add(schema_bigint)
 	} else {
-		m.addbig_int = &sbi
+		m.addbig_int = &schema_bigint
 	}
 }
 
@@ -6769,8 +6769,8 @@ func (m *FieldTypeMutation) ResetBigInt() {
 }
 
 // SetPasswordOther sets the "password_other" field.
-func (m *FieldTypeMutation) SetPasswordOther(sp schema.Password) {
-	m.password_other = &sp
+func (m *FieldTypeMutation) SetPasswordOther(schema_password schema.Password) {
+	m.password_other = &schema_password
 }
 
 // PasswordOther returns the value of the "password_other" field in the mutation.
@@ -9300,8 +9300,8 @@ func (m *FileMutation) ResetFieldID() {
 }
 
 // SetCreateTime sets the "create_time" field.
-func (m *FileMutation) SetCreateTime(tt time.Time) {
-	m.create_time = &tt
+func (m *FileMutation) SetCreateTime(time_time time.Time) {
+	m.create_time = &time_time
 }
 
 // CreateTime returns the value of the "create_time" field in the mutation.
@@ -10081,8 +10081,8 @@ func (m *FileTypeMutation) ResetName() {
 }
 
 // SetType sets the "type" field.
-func (m *FileTypeMutation) SetType(ftt file_type.Type) {
-	m._type = &ftt
+func (m *FileTypeMutation) SetType(file_type_type file_type.Type) {
+	m._type = &file_type_type
 }
 
 // GetType returns the value of the "type" field in the mutation.
@@ -10117,8 +10117,8 @@ func (m *FileTypeMutation) ResetType() {
 }
 
 // SetState sets the "state" field.
-func (m *FileTypeMutation) SetState(fts file_type.State) {
-	m.state = &fts
+func (m *FileTypeMutation) SetState(file_type_state file_type.State) {
+	m.state = &file_type_state
 }
 
 // State returns the value of the "state" field in the mutation.
@@ -10883,8 +10883,8 @@ func (m *GroupMutation) ResetActive() {
 }
 
 // SetExpire sets the "expire" field.
-func (m *GroupMutation) SetExpire(tt time.Time) {
-	m.expire = &tt
+func (m *GroupMutation) SetExpire(time_time time.Time) {
+	m.expire = &time_time
 }
 
 // Expire returns the value of the "expire" field in the mutation.
@@ -12639,8 +12639,8 @@ func (m *LicenseMutation) IDs(ctx context.Context) ([]int, error) {
 }
 
 // SetCreateTime sets the "create_time" field.
-func (m *LicenseMutation) SetCreateTime(tt time.Time) {
-	m.create_time = &tt
+func (m *LicenseMutation) SetCreateTime(time_time time.Time) {
+	m.create_time = &time_time
 }
 
 // CreateTime returns the value of the "create_time" field in the mutation.
@@ -12675,8 +12675,8 @@ func (m *LicenseMutation) ResetCreateTime() {
 }
 
 // SetUpdateTime sets the "update_time" field.
-func (m *LicenseMutation) SetUpdateTime(tt time.Time) {
-	m.update_time = &tt
+func (m *LicenseMutation) SetUpdateTime(time_time time.Time) {
+	m.update_time = &time_time
 }
 
 // UpdateTime returns the value of the "update_time" field in the mutation.
@@ -13094,8 +13094,8 @@ func (m *NodeMutation) ResetValue() {
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (m *NodeMutation) SetUpdatedAt(tt time.Time) {
-	m.updated_at = &tt
+func (m *NodeMutation) SetUpdatedAt(time_time time.Time) {
+	m.updated_at = &time_time
 }
 
 // UpdatedAt returns the value of the "updated_at" field in the mutation.
@@ -13968,8 +13968,8 @@ func (m *PetMutation) ResetName() {
 }
 
 // SetUUID sets the "uuid" field.
-func (m *PetMutation) SetUUID(uu uuid.UUID) {
-	m.uuid = &uu
+func (m *PetMutation) SetUUID(uuid_uuid uuid.UUID) {
+	m.uuid = &uuid_uuid
 }
 
 // UUID returns the value of the "uuid" field in the mutation.
@@ -14102,8 +14102,8 @@ func (m *PetMutation) ResetTrained() {
 }
 
 // SetOptionalTime sets the "optional_time" field.
-func (m *PetMutation) SetOptionalTime(tt time.Time) {
-	m.optional_time = &tt
+func (m *PetMutation) SetOptionalTime(time_time time.Time) {
+	m.optional_time = &time_time
 }
 
 // OptionalTime returns the value of the "optional_time" field in the mutation.
@@ -15051,8 +15051,8 @@ func (m *TaskMutation) IDs(ctx context.Context) ([]int, error) {
 }
 
 // SetPriority sets the "priority" field.
-func (m *TaskMutation) SetPriority(tp task.Priority) {
-	m.priority = &tp
+func (m *TaskMutation) SetPriority(task_priority task.Priority) {
+	m.priority = &task_priority
 	m.addpriority = nil
 }
 
@@ -15082,12 +15082,12 @@ func (m *TaskMutation) OldPriority(ctx context.Context) (v task.Priority, err er
 	return oldValue.Priority, nil
 }
 
-// AddPriority adds tp to the "priority" field.
-func (m *TaskMutation) AddPriority(tp task.Priority) {
+// AddPriority adds task_priority to the "priority" field.
+func (m *TaskMutation) AddPriority(task_priority task.Priority) {
 	if m.addpriority != nil {
-		*m.addpriority += tp
+		*m.addpriority += task_priority
 	} else {
-		m.addpriority = &tp
+		m.addpriority = &task_priority
 	}
 }
 
@@ -15107,8 +15107,8 @@ func (m *TaskMutation) ResetPriority() {
 }
 
 // SetPriorities sets the "priorities" field.
-func (m *TaskMutation) SetPriorities(mp map[string]task.Priority) {
-	m.priorities = &mp
+func (m *TaskMutation) SetPriorities(map_string_task_priority map[string]task.Priority) {
+	m.priorities = &map_string_task_priority
 }
 
 // Priorities returns the value of the "priorities" field in the mutation.
@@ -15156,8 +15156,8 @@ func (m *TaskMutation) ResetPriorities() {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (m *TaskMutation) SetCreatedAt(tt time.Time) {
-	m.created_at = &tt
+func (m *TaskMutation) SetCreatedAt(time_time time.Time) {
+	m.created_at = &time_time
 }
 
 // CreatedAt returns the value of the "created_at" field in the mutation.
@@ -16384,8 +16384,8 @@ func (m *UserMutation) ResetPassword() {
 }
 
 // SetRole sets the "role" field.
-func (m *UserMutation) SetRole(ur user.Role) {
-	m.role = &ur
+func (m *UserMutation) SetRole(user_role user.Role) {
+	m.role = &user_role
 }
 
 // Role returns the value of the "role" field in the mutation.
@@ -16420,8 +16420,8 @@ func (m *UserMutation) ResetRole() {
 }
 
 // SetEmployment sets the "employment" field.
-func (m *UserMutation) SetEmployment(ue user.Employment) {
-	m.employment = &ue
+func (m *UserMutation) SetEmployment(user_employment user.Employment) {
+	m.employment = &user_employment
 }
 
 // Employment returns the value of the "employment" field in the mutation.

@@ -52,15 +52,15 @@ func (ctu *CustomTypeUpdate) ClearCustom() *CustomTypeUpdate {
 }
 
 // SetTz0 sets the "tz0" field.
-func (ctu *CustomTypeUpdate) SetTz0(tt time.Time) *CustomTypeUpdate {
-	ctu.mutation.SetTz0(tt)
+func (ctu *CustomTypeUpdate) SetTz0(time_time time.Time) *CustomTypeUpdate {
+	ctu.mutation.SetTz0(time_time)
 	return ctu
 }
 
 // SetNillableTz0 sets the "tz0" field if the given value is not nil.
-func (ctu *CustomTypeUpdate) SetNillableTz0(tt *time.Time) *CustomTypeUpdate {
-	if tt != nil {
-		ctu.SetTz0(*tt)
+func (ctu *CustomTypeUpdate) SetNillableTz0(time_time *time.Time) *CustomTypeUpdate {
+	if time_time != nil {
+		ctu.SetTz0(*time_time)
 	}
 	return ctu
 }
@@ -72,15 +72,15 @@ func (ctu *CustomTypeUpdate) ClearTz0() *CustomTypeUpdate {
 }
 
 // SetTz3 sets the "tz3" field.
-func (ctu *CustomTypeUpdate) SetTz3(tt time.Time) *CustomTypeUpdate {
-	ctu.mutation.SetTz3(tt)
+func (ctu *CustomTypeUpdate) SetTz3(time_time time.Time) *CustomTypeUpdate {
+	ctu.mutation.SetTz3(time_time)
 	return ctu
 }
 
 // SetNillableTz3 sets the "tz3" field if the given value is not nil.
-func (ctu *CustomTypeUpdate) SetNillableTz3(tt *time.Time) *CustomTypeUpdate {
-	if tt != nil {
-		ctu.SetTz3(*tt)
+func (ctu *CustomTypeUpdate) SetNillableTz3(time_time *time.Time) *CustomTypeUpdate {
+	if time_time != nil {
+		ctu.SetTz3(*time_time)
 	}
 	return ctu
 }
@@ -191,15 +191,15 @@ func (ctuo *CustomTypeUpdateOne) ClearCustom() *CustomTypeUpdateOne {
 }
 
 // SetTz0 sets the "tz0" field.
-func (ctuo *CustomTypeUpdateOne) SetTz0(tt time.Time) *CustomTypeUpdateOne {
-	ctuo.mutation.SetTz0(tt)
+func (ctuo *CustomTypeUpdateOne) SetTz0(time_time time.Time) *CustomTypeUpdateOne {
+	ctuo.mutation.SetTz0(time_time)
 	return ctuo
 }
 
 // SetNillableTz0 sets the "tz0" field if the given value is not nil.
-func (ctuo *CustomTypeUpdateOne) SetNillableTz0(tt *time.Time) *CustomTypeUpdateOne {
-	if tt != nil {
-		ctuo.SetTz0(*tt)
+func (ctuo *CustomTypeUpdateOne) SetNillableTz0(time_time *time.Time) *CustomTypeUpdateOne {
+	if time_time != nil {
+		ctuo.SetTz0(*time_time)
 	}
 	return ctuo
 }
@@ -211,15 +211,15 @@ func (ctuo *CustomTypeUpdateOne) ClearTz0() *CustomTypeUpdateOne {
 }
 
 // SetTz3 sets the "tz3" field.
-func (ctuo *CustomTypeUpdateOne) SetTz3(tt time.Time) *CustomTypeUpdateOne {
-	ctuo.mutation.SetTz3(tt)
+func (ctuo *CustomTypeUpdateOne) SetTz3(time_time time.Time) *CustomTypeUpdateOne {
+	ctuo.mutation.SetTz3(time_time)
 	return ctuo
 }
 
 // SetNillableTz3 sets the "tz3" field if the given value is not nil.
-func (ctuo *CustomTypeUpdateOne) SetNillableTz3(tt *time.Time) *CustomTypeUpdateOne {
-	if tt != nil {
-		ctuo.SetTz3(*tt)
+func (ctuo *CustomTypeUpdateOne) SetNillableTz3(time_time *time.Time) *CustomTypeUpdateOne {
+	if time_time != nil {
+		ctuo.SetTz3(*time_time)
 	}
 	return ctuo
 }

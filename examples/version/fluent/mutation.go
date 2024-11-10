@@ -199,8 +199,8 @@ func (m *UserMutation) ResetVersion() {
 }
 
 // SetStatus sets the "status" field.
-func (m *UserMutation) SetStatus(us user.Status) {
-	m.status = &us
+func (m *UserMutation) SetStatus(user_status user.Status) {
+	m.status = &user_status
 }
 
 // Status returns the value of the "status" field in the mutation.

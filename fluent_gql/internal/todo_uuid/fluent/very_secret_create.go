@@ -39,15 +39,15 @@ func (vsc *VerySecretCreate) SetPassword(s string) *VerySecretCreate {
 }
 
 // SetID sets the "id" field.
-func (vsc *VerySecretCreate) SetID(uu uuid.UUID) *VerySecretCreate {
-	vsc.mutation.SetID(uu)
+func (vsc *VerySecretCreate) SetID(uuid_uuid uuid.UUID) *VerySecretCreate {
+	vsc.mutation.SetID(uuid_uuid)
 	return vsc
 }
 
 // SetNillableID sets the "id" field if the given value is not nil.
-func (vsc *VerySecretCreate) SetNillableID(uu *uuid.UUID) *VerySecretCreate {
-	if uu != nil {
-		vsc.SetID(*uu)
+func (vsc *VerySecretCreate) SetNillableID(uuid_uuid *uuid.UUID) *VerySecretCreate {
+	if uuid_uuid != nil {
+		vsc.SetID(*uuid_uuid)
 	}
 	return vsc
 }

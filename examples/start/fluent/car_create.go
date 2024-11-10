@@ -31,8 +31,8 @@ func (cc *CarCreate) SetModel(s string) *CarCreate {
 }
 
 // SetRegisteredAt sets the "registered_at" field.
-func (cc *CarCreate) SetRegisteredAt(tt time.Time) *CarCreate {
-	cc.mutation.SetRegisteredAt(tt)
+func (cc *CarCreate) SetRegisteredAt(time_time time.Time) *CarCreate {
+	cc.mutation.SetRegisteredAt(time_time)
 	return cc
 }
 

@@ -26,35 +26,35 @@ type TaskCreate struct {
 }
 
 // SetPriority sets the "priority" field.
-func (tc *TaskCreate) SetPriority(tp task.Priority) *TaskCreate {
-	tc.mutation.SetPriority(tp)
+func (tc *TaskCreate) SetPriority(task_priority task.Priority) *TaskCreate {
+	tc.mutation.SetPriority(task_priority)
 	return tc
 }
 
 // SetNillablePriority sets the "priority" field if the given value is not nil.
-func (tc *TaskCreate) SetNillablePriority(tp *task.Priority) *TaskCreate {
-	if tp != nil {
-		tc.SetPriority(*tp)
+func (tc *TaskCreate) SetNillablePriority(task_priority *task.Priority) *TaskCreate {
+	if task_priority != nil {
+		tc.SetPriority(*task_priority)
 	}
 	return tc
 }
 
 // SetPriorities sets the "priorities" field.
-func (tc *TaskCreate) SetPriorities(mp map[string]task.Priority) *TaskCreate {
-	tc.mutation.SetPriorities(mp)
+func (tc *TaskCreate) SetPriorities(map_string_task_priority map[string]task.Priority) *TaskCreate {
+	tc.mutation.SetPriorities(map_string_task_priority)
 	return tc
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (tc *TaskCreate) SetCreatedAt(tt time.Time) *TaskCreate {
-	tc.mutation.SetCreatedAt(tt)
+func (tc *TaskCreate) SetCreatedAt(time_time time.Time) *TaskCreate {
+	tc.mutation.SetCreatedAt(time_time)
 	return tc
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (tc *TaskCreate) SetNillableCreatedAt(tt *time.Time) *TaskCreate {
-	if tt != nil {
-		tc.SetCreatedAt(*tt)
+func (tc *TaskCreate) SetNillableCreatedAt(time_time *time.Time) *TaskCreate {
+	if time_time != nil {
+		tc.SetCreatedAt(*time_time)
 	}
 	return tc
 }

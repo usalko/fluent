@@ -32,15 +32,15 @@ func (bu *BlobUpdate) Where(ps ...predicate.Blob) *BlobUpdate {
 }
 
 // SetUUID sets the "uuid" field.
-func (bu *BlobUpdate) SetUUID(uu uuid.UUID) *BlobUpdate {
-	bu.mutation.SetUUID(uu)
+func (bu *BlobUpdate) SetUUID(uuid_uuid uuid.UUID) *BlobUpdate {
+	bu.mutation.SetUUID(uuid_uuid)
 	return bu
 }
 
 // SetNillableUUID sets the "uuid" field if the given value is not nil.
-func (bu *BlobUpdate) SetNillableUUID(uu *uuid.UUID) *BlobUpdate {
-	if uu != nil {
-		bu.SetUUID(*uu)
+func (bu *BlobUpdate) SetNillableUUID(uuid_uuid *uuid.UUID) *BlobUpdate {
+	if uuid_uuid != nil {
+		bu.SetUUID(*uuid_uuid)
 	}
 	return bu
 }
@@ -284,15 +284,15 @@ type BlobUpdateOne struct {
 }
 
 // SetUUID sets the "uuid" field.
-func (buo *BlobUpdateOne) SetUUID(uu uuid.UUID) *BlobUpdateOne {
-	buo.mutation.SetUUID(uu)
+func (buo *BlobUpdateOne) SetUUID(uuid_uuid uuid.UUID) *BlobUpdateOne {
+	buo.mutation.SetUUID(uuid_uuid)
 	return buo
 }
 
 // SetNillableUUID sets the "uuid" field if the given value is not nil.
-func (buo *BlobUpdateOne) SetNillableUUID(uu *uuid.UUID) *BlobUpdateOne {
-	if uu != nil {
-		buo.SetUUID(*uu)
+func (buo *BlobUpdateOne) SetNillableUUID(uuid_uuid *uuid.UUID) *BlobUpdateOne {
+	if uuid_uuid != nil {
+		buo.SetUUID(*uuid_uuid)
 	}
 	return buo
 }

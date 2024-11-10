@@ -185,8 +185,8 @@ func (m *CarMutation) ResetModel() {
 }
 
 // SetRegisteredAt sets the "registered_at" field.
-func (m *CarMutation) SetRegisteredAt(tt time.Time) {
-	m.registered_at = &tt
+func (m *CarMutation) SetRegisteredAt(time_time time.Time) {
+	m.registered_at = &time_time
 }
 
 // RegisteredAt returns the value of the "registered_at" field in the mutation.

@@ -34,43 +34,43 @@ func (blu *BlobLinkUpdate) Where(ps ...predicate.BlobLink) *BlobLinkUpdate {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (blu *BlobLinkUpdate) SetCreatedAt(tt time.Time) *BlobLinkUpdate {
-	blu.mutation.SetCreatedAt(tt)
+func (blu *BlobLinkUpdate) SetCreatedAt(time_time time.Time) *BlobLinkUpdate {
+	blu.mutation.SetCreatedAt(time_time)
 	return blu
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (blu *BlobLinkUpdate) SetNillableCreatedAt(tt *time.Time) *BlobLinkUpdate {
-	if tt != nil {
-		blu.SetCreatedAt(*tt)
+func (blu *BlobLinkUpdate) SetNillableCreatedAt(time_time *time.Time) *BlobLinkUpdate {
+	if time_time != nil {
+		blu.SetCreatedAt(*time_time)
 	}
 	return blu
 }
 
 // SetBlobID sets the "blob_id" field.
-func (blu *BlobLinkUpdate) SetBlobID(uu uuid.UUID) *BlobLinkUpdate {
-	blu.mutation.SetBlobID(uu)
+func (blu *BlobLinkUpdate) SetBlobID(uuid_uuid uuid.UUID) *BlobLinkUpdate {
+	blu.mutation.SetBlobID(uuid_uuid)
 	return blu
 }
 
 // SetNillableBlobID sets the "blob_id" field if the given value is not nil.
-func (blu *BlobLinkUpdate) SetNillableBlobID(uu *uuid.UUID) *BlobLinkUpdate {
-	if uu != nil {
-		blu.SetBlobID(*uu)
+func (blu *BlobLinkUpdate) SetNillableBlobID(uuid_uuid *uuid.UUID) *BlobLinkUpdate {
+	if uuid_uuid != nil {
+		blu.SetBlobID(*uuid_uuid)
 	}
 	return blu
 }
 
 // SetLinkID sets the "link_id" field.
-func (blu *BlobLinkUpdate) SetLinkID(uu uuid.UUID) *BlobLinkUpdate {
-	blu.mutation.SetLinkID(uu)
+func (blu *BlobLinkUpdate) SetLinkID(uuid_uuid uuid.UUID) *BlobLinkUpdate {
+	blu.mutation.SetLinkID(uuid_uuid)
 	return blu
 }
 
 // SetNillableLinkID sets the "link_id" field if the given value is not nil.
-func (blu *BlobLinkUpdate) SetNillableLinkID(uu *uuid.UUID) *BlobLinkUpdate {
-	if uu != nil {
-		blu.SetLinkID(*uu)
+func (blu *BlobLinkUpdate) SetNillableLinkID(uuid_uuid *uuid.UUID) *BlobLinkUpdate {
+	if uuid_uuid != nil {
+		blu.SetLinkID(*uuid_uuid)
 	}
 	return blu
 }
@@ -234,43 +234,43 @@ type BlobLinkUpdateOne struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (bluo *BlobLinkUpdateOne) SetCreatedAt(tt time.Time) *BlobLinkUpdateOne {
-	bluo.mutation.SetCreatedAt(tt)
+func (bluo *BlobLinkUpdateOne) SetCreatedAt(time_time time.Time) *BlobLinkUpdateOne {
+	bluo.mutation.SetCreatedAt(time_time)
 	return bluo
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (bluo *BlobLinkUpdateOne) SetNillableCreatedAt(tt *time.Time) *BlobLinkUpdateOne {
-	if tt != nil {
-		bluo.SetCreatedAt(*tt)
+func (bluo *BlobLinkUpdateOne) SetNillableCreatedAt(time_time *time.Time) *BlobLinkUpdateOne {
+	if time_time != nil {
+		bluo.SetCreatedAt(*time_time)
 	}
 	return bluo
 }
 
 // SetBlobID sets the "blob_id" field.
-func (bluo *BlobLinkUpdateOne) SetBlobID(uu uuid.UUID) *BlobLinkUpdateOne {
-	bluo.mutation.SetBlobID(uu)
+func (bluo *BlobLinkUpdateOne) SetBlobID(uuid_uuid uuid.UUID) *BlobLinkUpdateOne {
+	bluo.mutation.SetBlobID(uuid_uuid)
 	return bluo
 }
 
 // SetNillableBlobID sets the "blob_id" field if the given value is not nil.
-func (bluo *BlobLinkUpdateOne) SetNillableBlobID(uu *uuid.UUID) *BlobLinkUpdateOne {
-	if uu != nil {
-		bluo.SetBlobID(*uu)
+func (bluo *BlobLinkUpdateOne) SetNillableBlobID(uuid_uuid *uuid.UUID) *BlobLinkUpdateOne {
+	if uuid_uuid != nil {
+		bluo.SetBlobID(*uuid_uuid)
 	}
 	return bluo
 }
 
 // SetLinkID sets the "link_id" field.
-func (bluo *BlobLinkUpdateOne) SetLinkID(uu uuid.UUID) *BlobLinkUpdateOne {
-	bluo.mutation.SetLinkID(uu)
+func (bluo *BlobLinkUpdateOne) SetLinkID(uuid_uuid uuid.UUID) *BlobLinkUpdateOne {
+	bluo.mutation.SetLinkID(uuid_uuid)
 	return bluo
 }
 
 // SetNillableLinkID sets the "link_id" field if the given value is not nil.
-func (bluo *BlobLinkUpdateOne) SetNillableLinkID(uu *uuid.UUID) *BlobLinkUpdateOne {
-	if uu != nil {
-		bluo.SetLinkID(*uu)
+func (bluo *BlobLinkUpdateOne) SetNillableLinkID(uuid_uuid *uuid.UUID) *BlobLinkUpdateOne {
+	if uuid_uuid != nil {
+		bluo.SetLinkID(*uuid_uuid)
 	}
 	return bluo
 }
