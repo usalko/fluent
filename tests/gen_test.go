@@ -17,7 +17,14 @@ func TestSnake1(t *testing.T) {
 
 func TestSnake2(t *testing.T) {
 	name := "IsItAString"
-	if result := gen.SnakeCase(name); result != "is_it_a_string" {
+	if result := gen.SnakeCase(name); result != "is_it_astring" {
+		t.Fatalf(`%s != %s`, name, result)
+	}
+}
+
+func TestSnake3(t *testing.T) {
+	name := "UUID"
+	if result := gen.SnakeCase(name); result != "uuid" {
 		t.Fatalf(`%s != %s`, name, result)
 	}
 }

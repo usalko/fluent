@@ -204,18 +204,18 @@ func SnakeCase(inputString string) string {
 	if len(inputString) == 0 {
 		return ""
 	}
+	prevRuneCaseIsUpper := false
 	var result strings.Builder
 	for i, r := range inputString {
-		// Special case - a first letter
-		if i == 0 {
+		if unicode.IsUpper(r) {
+			if i > 0 && unicode.IsLetter(r) && !prevRuneCaseIsUpper {
+				result.WriteRune('_')
+			}
 			result.WriteRune(unicode.ToLower(r))
-			continue
-		}
-		if unicode.IsUpper(r) && unicode.IsLetter(r) {
-			result.WriteRune('_')
-			result.WriteRune(unicode.ToLower(r))
+			prevRuneCaseIsUpper = unicode.IsUpper(r)
 		} else {
 			result.WriteRune(r)
+			prevRuneCaseIsUpper = false
 		}
 	}
 	return result.String()
