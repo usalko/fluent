@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	// Label holds the string label denoting the exvaluescan type in the database.
+	// Label holds the string label denoting the ex_value_scan type in the database.
 	Label = "ex_value_scan"
 	// FieldID holds the string denoting the id field in the database.
 	FieldID = "id"

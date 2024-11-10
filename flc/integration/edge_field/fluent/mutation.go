@@ -1094,8 +1094,8 @@ func (m *InfoMutation) IDs(ctx context.Context) ([]int, error) {
 }
 
 // SetContent sets the "content" field.
-func (m *InfoMutation) SetContent(jm json.RawMessage) {
-	m.content = &jm
+func (m *InfoMutation) SetContent(jrm json.RawMessage) {
+	m.content = &jrm
 	m.appendcontent = nil
 }
 
@@ -1125,9 +1125,9 @@ func (m *InfoMutation) OldContent(ctx context.Context) (v json.RawMessage, err e
 	return oldValue.Content, nil
 }
 
-// AppendContent adds jm to the "content" field.
-func (m *InfoMutation) AppendContent(jm json.RawMessage) {
-	m.appendcontent = append(m.appendcontent, jm...)
+// AppendContent adds jrm to the "content" field.
+func (m *InfoMutation) AppendContent(jrm json.RawMessage) {
+	m.appendcontent = append(m.appendcontent, jrm...)
 }
 
 // AppendedContent returns the list of values that were appended to the "content" field in this mutation.
@@ -3561,8 +3561,8 @@ func (m *RentalMutation) IDs(ctx context.Context) ([]int, error) {
 }
 
 // SetDate sets the "date" field.
-func (m *RentalMutation) SetDate(t time.Time) {
-	m.date = &t
+func (m *RentalMutation) SetDate(tt time.Time) {
+	m.date = &tt
 }
 
 // Date returns the value of the "date" field in the mutation.
@@ -3633,8 +3633,8 @@ func (m *RentalMutation) ResetUserID() {
 }
 
 // SetCarID sets the "car_id" field.
-func (m *RentalMutation) SetCarID(u uuid.UUID) {
-	m.car = &u
+func (m *RentalMutation) SetCarID(uu uuid.UUID) {
+	m.car = &uu
 }
 
 // CarID returns the value of the "car_id" field in the mutation.

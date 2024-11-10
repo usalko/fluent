@@ -37,22 +37,22 @@ type TodoCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (tc *TodoCreate) SetCreatedAt(t time.Time) *TodoCreate {
-	tc.mutation.SetCreatedAt(t)
+func (tc *TodoCreate) SetCreatedAt(tt time.Time) *TodoCreate {
+	tc.mutation.SetCreatedAt(tt)
 	return tc
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (tc *TodoCreate) SetNillableCreatedAt(t *time.Time) *TodoCreate {
-	if t != nil {
-		tc.SetCreatedAt(*t)
+func (tc *TodoCreate) SetNillableCreatedAt(tt *time.Time) *TodoCreate {
+	if tt != nil {
+		tc.SetCreatedAt(*tt)
 	}
 	return tc
 }
 
 // SetStatus sets the "status" field.
-func (tc *TodoCreate) SetStatus(t todo.Status) *TodoCreate {
-	tc.mutation.SetStatus(t)
+func (tc *TodoCreate) SetStatus(ts todo.Status) *TodoCreate {
+	tc.mutation.SetStatus(ts)
 	return tc
 }
 
@@ -89,14 +89,14 @@ func (tc *TodoCreate) SetInit(m map[string]interface{}) *TodoCreate {
 }
 
 // SetCustom sets the "custom" field.
-func (tc *TodoCreate) SetCustom(c []customstruct.Custom) *TodoCreate {
-	tc.mutation.SetCustom(c)
+func (tc *TodoCreate) SetCustom(cc []customstruct.Custom) *TodoCreate {
+	tc.mutation.SetCustom(cc)
 	return tc
 }
 
 // SetCustomp sets the "customp" field.
-func (tc *TodoCreate) SetCustomp(c []*customstruct.Custom) *TodoCreate {
-	tc.mutation.SetCustomp(c)
+func (tc *TodoCreate) SetCustomp(cc []*customstruct.Custom) *TodoCreate {
+	tc.mutation.SetCustomp(cc)
 	return tc
 }
 
@@ -115,15 +115,15 @@ func (tc *TodoCreate) SetNillableValue(i *int) *TodoCreate {
 }
 
 // SetCategoryID sets the "category_id" field.
-func (tc *TodoCreate) SetCategoryID(bi bigintgql.BigInt) *TodoCreate {
-	tc.mutation.SetCategoryID(bi)
+func (tc *TodoCreate) SetCategoryID(bbi bigintgql.BigInt) *TodoCreate {
+	tc.mutation.SetCategoryID(bbi)
 	return tc
 }
 
 // SetNillableCategoryID sets the "category_id" field if the given value is not nil.
-func (tc *TodoCreate) SetNillableCategoryID(bi *bigintgql.BigInt) *TodoCreate {
-	if bi != nil {
-		tc.SetCategoryID(*bi)
+func (tc *TodoCreate) SetNillableCategoryID(bbi *bigintgql.BigInt) *TodoCreate {
+	if bbi != nil {
+		tc.SetCategoryID(*bbi)
 	}
 	return tc
 }

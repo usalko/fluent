@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	// Label holds the string label denoting the customtype type in the database.
+	// Label holds the string label denoting the custom_type type in the database.
 	Label = "custom_type"
 	// FieldID holds the string denoting the id field in the database.
 	FieldID = "id"
@@ -20,11 +20,11 @@ const (
 	FieldTz0 = "tz0"
 	// FieldTz3 holds the string denoting the tz3 field in the database.
 	FieldTz3 = "tz3"
-	// Table holds the table name of the customtype in the database.
+	// Table holds the table name of the custom_type in the database.
 	Table = "custom_types"
 )
 
-// Columns holds all SQL columns for customtype fields.
+// Columns holds all SQL columns for custom_type fields.
 var Columns = []string{
 	FieldID,
 	FieldCustom,

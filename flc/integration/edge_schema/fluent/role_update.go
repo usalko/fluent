@@ -47,15 +47,15 @@ func (ru *RoleUpdate) SetNillableName(s *string) *RoleUpdate {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (ru *RoleUpdate) SetCreatedAt(t time.Time) *RoleUpdate {
-	ru.mutation.SetCreatedAt(t)
+func (ru *RoleUpdate) SetCreatedAt(tt time.Time) *RoleUpdate {
+	ru.mutation.SetCreatedAt(tt)
 	return ru
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (ru *RoleUpdate) SetNillableCreatedAt(t *time.Time) *RoleUpdate {
-	if t != nil {
-		ru.SetCreatedAt(*t)
+func (ru *RoleUpdate) SetNillableCreatedAt(tt *time.Time) *RoleUpdate {
+	if tt != nil {
+		ru.SetCreatedAt(*tt)
 	}
 	return ru
 }
@@ -235,15 +235,15 @@ func (ruo *RoleUpdateOne) SetNillableName(s *string) *RoleUpdateOne {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (ruo *RoleUpdateOne) SetCreatedAt(t time.Time) *RoleUpdateOne {
-	ruo.mutation.SetCreatedAt(t)
+func (ruo *RoleUpdateOne) SetCreatedAt(tt time.Time) *RoleUpdateOne {
+	ruo.mutation.SetCreatedAt(tt)
 	return ruo
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (ruo *RoleUpdateOne) SetNillableCreatedAt(t *time.Time) *RoleUpdateOne {
-	if t != nil {
-		ruo.SetCreatedAt(*t)
+func (ruo *RoleUpdateOne) SetNillableCreatedAt(tt *time.Time) *RoleUpdateOne {
+	if tt != nil {
+		ruo.SetCreatedAt(*tt)
 	}
 	return ruo
 }

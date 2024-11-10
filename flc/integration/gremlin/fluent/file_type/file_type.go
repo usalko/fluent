@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	// Label holds the string label denoting the filetype type in the database.
+	// Label holds the string label denoting the file_type type in the database.
 	Label = "file_type"
 	// FieldID holds the string denoting the id field in the database.
 	FieldID = "id"

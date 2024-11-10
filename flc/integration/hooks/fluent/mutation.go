@@ -237,8 +237,8 @@ func (m *CardMutation) ResetName() {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (m *CardMutation) SetCreatedAt(t time.Time) {
-	m.created_at = &t
+func (m *CardMutation) SetCreatedAt(tt time.Time) {
+	m.created_at = &tt
 }
 
 // CreatedAt returns the value of the "created_at" field in the mutation.
@@ -309,8 +309,8 @@ func (m *CardMutation) ResetInHook() {
 }
 
 // SetExpiredAt sets the "expired_at" field.
-func (m *CardMutation) SetExpiredAt(t time.Time) {
-	m.expired_at = &t
+func (m *CardMutation) SetExpiredAt(tt time.Time) {
+	m.expired_at = &tt
 }
 
 // ExpiredAt returns the value of the "expired_at" field in the mutation.
@@ -799,8 +799,8 @@ func (m *PetMutation) IDs(ctx context.Context) ([]int, error) {
 }
 
 // SetDeleteTime sets the "delete_time" field.
-func (m *PetMutation) SetDeleteTime(t time.Time) {
-	m.delete_time = &t
+func (m *PetMutation) SetDeleteTime(tt time.Time) {
+	m.delete_time = &tt
 }
 
 // DeleteTime returns the value of the "delete_time" field in the mutation.

@@ -38,7 +38,7 @@ const (
 	// FieldEmployment holds the string denoting the employment field in the database.
 	FieldEmployment = "employment"
 	// FieldSSOCert holds the string denoting the ssocert field in the database.
-	FieldSSOCert = "sso_cert"
+	FieldSSOCert = "ssocert"
 	// FieldFilesCount holds the string denoting the files_count field in the database.
 	FieldFilesCount = "files_count"
 	// EdgeCard holds the string denoting the card edge name in mutations.

@@ -114,7 +114,7 @@ func (i *BillProductWhereInput) Filter(q *BillProductQuery) (*BillProductQuery, 
 // ErrEmptyBillProductWhereInput is returned in case the BillProductWhereInput is empty.
 var ErrEmptyBillProductWhereInput = errors.New("fluent: empty predicate BillProductWhereInput")
 
-// P returns a predicate for filtering billproducts.
+// P returns a predicate for filtering bill_products.
 // An error is returned if the input is empty or invalid.
 func (i *BillProductWhereInput) P() (predicate.BillProduct, error) {
 	var predicates []predicate.BillProduct
@@ -1184,7 +1184,7 @@ func (i *OneToManyWhereInput) Filter(q *OneToManyQuery) (*OneToManyQuery, error)
 // ErrEmptyOneToManyWhereInput is returned in case the OneToManyWhereInput is empty.
 var ErrEmptyOneToManyWhereInput = errors.New("fluent: empty predicate OneToManyWhereInput")
 
-// P returns a predicate for filtering onetomanies.
+// P returns a predicate for filtering one_to_manies.
 // An error is returned if the input is empty or invalid.
 func (i *OneToManyWhereInput) P() (predicate.OneToMany, error) {
 	var predicates []predicate.OneToMany

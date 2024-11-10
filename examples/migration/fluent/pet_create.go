@@ -43,8 +43,8 @@ func (pc *PetCreate) SetWeight(f float64) *PetCreate {
 }
 
 // SetBestFriendID sets the "best_friend_id" field.
-func (pc *PetCreate) SetBestFriendID(u uuid.UUID) *PetCreate {
-	pc.mutation.SetBestFriendID(u)
+func (pc *PetCreate) SetBestFriendID(uu uuid.UUID) *PetCreate {
+	pc.mutation.SetBestFriendID(uu)
 	return pc
 }
 
@@ -63,15 +63,15 @@ func (pc *PetCreate) SetNillableOwnerID(i *int) *PetCreate {
 }
 
 // SetID sets the "id" field.
-func (pc *PetCreate) SetID(u uuid.UUID) *PetCreate {
-	pc.mutation.SetID(u)
+func (pc *PetCreate) SetID(uu uuid.UUID) *PetCreate {
+	pc.mutation.SetID(uu)
 	return pc
 }
 
 // SetNillableID sets the "id" field if the given value is not nil.
-func (pc *PetCreate) SetNillableID(u *uuid.UUID) *PetCreate {
-	if u != nil {
-		pc.SetID(*u)
+func (pc *PetCreate) SetNillableID(uu *uuid.UUID) *PetCreate {
+	if uu != nil {
+		pc.SetID(*uu)
 	}
 	return pc
 }

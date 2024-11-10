@@ -32,7 +32,7 @@ import (
 	"github.com/usalko/fluent/flc/integration/fluent/item"
 	"github.com/usalko/fluent/flc/integration/fluent/license"
 	"github.com/usalko/fluent/flc/integration/fluent/node"
-	"github.com/usalko/fluent/flc/integration/fluent/p_c"
+	"github.com/usalko/fluent/flc/integration/fluent/pc"
 	"github.com/usalko/fluent/flc/integration/fluent/pet"
 	"github.com/usalko/fluent/flc/integration/fluent/spec"
 	fluenttask "github.com/usalko/fluent/flc/integration/fluent/task"
@@ -2450,13 +2450,13 @@ func NewPCClient(c config) *PCClient {
 }
 
 // Use adds a list of mutation hooks to the hooks stack.
-// A call to `Use(f, g, h)` equals to `p_c.Hooks(f(g(h())))`.
+// A call to `Use(f, g, h)` equals to `pc.Hooks(f(g(h())))`.
 func (c *PCClient) Use(hooks ...Hook) {
 	c.hooks.PC = append(c.hooks.PC, hooks...)
 }
 
 // Intercept adds a list of query interceptors to the interceptors stack.
-// A call to `Intercept(f, g, h)` equals to `p_c.Intercept(f(g(h())))`.
+// A call to `Intercept(f, g, h)` equals to `pc.Intercept(f(g(h())))`.
 func (c *PCClient) Intercept(interceptors ...Interceptor) {
 	c.inters.PC = append(c.inters.PC, interceptors...)
 }
@@ -2494,8 +2494,8 @@ func (c *PCClient) Update() *PCUpdate {
 }
 
 // UpdateOne returns an update builder for the given entity.
-func (c *PCClient) UpdateOne(pc *PC) *PCUpdateOne {
-	mutation := newPCMutation(c.config, OpUpdateOne, withPC(pc))
+func (c *PCClient) UpdateOne(_pc *PC) *PCUpdateOne {
+	mutation := newPCMutation(c.config, OpUpdateOne, withPC(_pc))
 	return &PCUpdateOne{config: c.config, hooks: c.Hooks(), mutation: mutation}
 }
 
@@ -2512,13 +2512,13 @@ func (c *PCClient) Delete() *PCDelete {
 }
 
 // DeleteOne returns a builder for deleting the given entity.
-func (c *PCClient) DeleteOne(pc *PC) *PCDeleteOne {
-	return c.DeleteOneID(pc.ID)
+func (c *PCClient) DeleteOne(_pc *PC) *PCDeleteOne {
+	return c.DeleteOneID(_pc.ID)
 }
 
 // DeleteOneID returns a builder for deleting the given entity by its id.
 func (c *PCClient) DeleteOneID(id int) *PCDeleteOne {
-	builder := c.Delete().Where(p_c.ID(id))
+	builder := c.Delete().Where(pc.ID(id))
 	builder.mutation.id = &id
 	builder.mutation.op = OpDeleteOne
 	return &PCDeleteOne{builder}
@@ -2535,7 +2535,7 @@ func (c *PCClient) Query() *PCQuery {
 
 // Get returns a PC entity by its id.
 func (c *PCClient) Get(ctx context.Context, id int) (*PC, error) {
-	return c.Query().Where(p_c.ID(id)).Only(ctx)
+	return c.Query().Where(pc.ID(id)).Only(ctx)
 }
 
 // GetX is like Get, but panics if an error occurs.

@@ -122,15 +122,15 @@ func (cu *CommentUpdate) ClearTable() *CommentUpdate {
 }
 
 // SetDir sets the "dir" field.
-func (cu *CommentUpdate) SetDir(s schemadir.Dir) *CommentUpdate {
-	cu.mutation.SetDir(s)
+func (cu *CommentUpdate) SetDir(sd schemadir.Dir) *CommentUpdate {
+	cu.mutation.SetDir(sd)
 	return cu
 }
 
 // SetNillableDir sets the "dir" field if the given value is not nil.
-func (cu *CommentUpdate) SetNillableDir(s *schemadir.Dir) *CommentUpdate {
-	if s != nil {
-		cu.SetDir(*s)
+func (cu *CommentUpdate) SetNillableDir(sd *schemadir.Dir) *CommentUpdate {
+	if sd != nil {
+		cu.SetDir(*sd)
 	}
 	return cu
 }
@@ -359,15 +359,15 @@ func (cuo *CommentUpdateOne) ClearTable() *CommentUpdateOne {
 }
 
 // SetDir sets the "dir" field.
-func (cuo *CommentUpdateOne) SetDir(s schemadir.Dir) *CommentUpdateOne {
-	cuo.mutation.SetDir(s)
+func (cuo *CommentUpdateOne) SetDir(sd schemadir.Dir) *CommentUpdateOne {
+	cuo.mutation.SetDir(sd)
 	return cuo
 }
 
 // SetNillableDir sets the "dir" field if the given value is not nil.
-func (cuo *CommentUpdateOne) SetNillableDir(s *schemadir.Dir) *CommentUpdateOne {
-	if s != nil {
-		cuo.SetDir(*s)
+func (cuo *CommentUpdateOne) SetNillableDir(sd *schemadir.Dir) *CommentUpdateOne {
+	if sd != nil {
+		cuo.SetDir(*sd)
 	}
 	return cuo
 }

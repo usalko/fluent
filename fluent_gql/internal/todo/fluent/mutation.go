@@ -699,8 +699,8 @@ func (m *CategoryMutation) ResetText() {
 }
 
 // SetStatus sets the "status" field.
-func (m *CategoryMutation) SetStatus(c category.Status) {
-	m.status = &c
+func (m *CategoryMutation) SetStatus(cs category.Status) {
+	m.status = &cs
 }
 
 // Status returns the value of the "status" field in the mutation.
@@ -735,8 +735,8 @@ func (m *CategoryMutation) ResetStatus() {
 }
 
 // SetConfig sets the "config" field.
-func (m *CategoryMutation) SetConfig(sc *schematype.CategoryConfig) {
-	m._config = &sc
+func (m *CategoryMutation) SetConfig(scc *schematype.CategoryConfig) {
+	m._config = &scc
 }
 
 // Config returns the value of the "config" field in the mutation.
@@ -784,8 +784,8 @@ func (m *CategoryMutation) ResetConfig() {
 }
 
 // SetTypes sets the "types" field.
-func (m *CategoryMutation) SetTypes(st *schematype.CategoryTypes) {
-	m.types = &st
+func (m *CategoryMutation) SetTypes(sct *schematype.CategoryTypes) {
+	m.types = &sct
 }
 
 // Types returns the value of the "types" field in the mutation.
@@ -833,8 +833,8 @@ func (m *CategoryMutation) ResetTypes() {
 }
 
 // SetDuration sets the "duration" field.
-func (m *CategoryMutation) SetDuration(t time.Duration) {
-	m.duration = &t
+func (m *CategoryMutation) SetDuration(td time.Duration) {
+	m.duration = &td
 	m.addduration = nil
 }
 
@@ -864,12 +864,12 @@ func (m *CategoryMutation) OldDuration(ctx context.Context) (v time.Duration, er
 	return oldValue.Duration, nil
 }
 
-// AddDuration adds t to the "duration" field.
-func (m *CategoryMutation) AddDuration(t time.Duration) {
+// AddDuration adds td to the "duration" field.
+func (m *CategoryMutation) AddDuration(td time.Duration) {
 	if m.addduration != nil {
-		*m.addduration += t
+		*m.addduration += td
 	} else {
-		m.addduration = &t
+		m.addduration = &td
 	}
 }
 
@@ -1664,8 +1664,8 @@ func (m *FriendshipMutation) IDs(ctx context.Context) ([]int, error) {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (m *FriendshipMutation) SetCreatedAt(t time.Time) {
-	m.created_at = &t
+func (m *FriendshipMutation) SetCreatedAt(tt time.Time) {
+	m.created_at = &tt
 }
 
 // CreatedAt returns the value of the "created_at" field in the mutation.
@@ -3611,8 +3611,8 @@ func (m *TodoMutation) IDs(ctx context.Context) ([]int, error) {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (m *TodoMutation) SetCreatedAt(t time.Time) {
-	m.created_at = &t
+func (m *TodoMutation) SetCreatedAt(tt time.Time) {
+	m.created_at = &tt
 }
 
 // CreatedAt returns the value of the "created_at" field in the mutation.
@@ -3647,8 +3647,8 @@ func (m *TodoMutation) ResetCreatedAt() {
 }
 
 // SetStatus sets the "status" field.
-func (m *TodoMutation) SetStatus(t todo.Status) {
-	m.status = &t
+func (m *TodoMutation) SetStatus(ts todo.Status) {
+	m.status = &ts
 }
 
 // Status returns the value of the "status" field in the mutation.
@@ -3922,8 +3922,8 @@ func (m *TodoMutation) ResetInit() {
 }
 
 // SetCustom sets the "custom" field.
-func (m *TodoMutation) SetCustom(c []customstruct.Custom) {
-	m.custom = &c
+func (m *TodoMutation) SetCustom(cc []customstruct.Custom) {
+	m.custom = &cc
 	m.appendcustom = nil
 }
 
@@ -3953,9 +3953,9 @@ func (m *TodoMutation) OldCustom(ctx context.Context) (v []customstruct.Custom, 
 	return oldValue.Custom, nil
 }
 
-// AppendCustom adds c to the "custom" field.
-func (m *TodoMutation) AppendCustom(c []customstruct.Custom) {
-	m.appendcustom = append(m.appendcustom, c...)
+// AppendCustom adds cc to the "custom" field.
+func (m *TodoMutation) AppendCustom(cc []customstruct.Custom) {
+	m.appendcustom = append(m.appendcustom, cc...)
 }
 
 // AppendedCustom returns the list of values that were appended to the "custom" field in this mutation.
@@ -3987,8 +3987,8 @@ func (m *TodoMutation) ResetCustom() {
 }
 
 // SetCustomp sets the "customp" field.
-func (m *TodoMutation) SetCustomp(c []*customstruct.Custom) {
-	m.customp = &c
+func (m *TodoMutation) SetCustomp(cc []*customstruct.Custom) {
+	m.customp = &cc
 	m.appendcustomp = nil
 }
 
@@ -4018,9 +4018,9 @@ func (m *TodoMutation) OldCustomp(ctx context.Context) (v []*customstruct.Custom
 	return oldValue.Customp, nil
 }
 
-// AppendCustomp adds c to the "customp" field.
-func (m *TodoMutation) AppendCustomp(c []*customstruct.Custom) {
-	m.appendcustomp = append(m.appendcustomp, c...)
+// AppendCustomp adds cc to the "customp" field.
+func (m *TodoMutation) AppendCustomp(cc []*customstruct.Custom) {
+	m.appendcustomp = append(m.appendcustomp, cc...)
 }
 
 // AppendedCustomp returns the list of values that were appended to the "customp" field in this mutation.
@@ -4909,8 +4909,8 @@ func (m *UserMutation) ResetName() {
 }
 
 // SetUsername sets the "username" field.
-func (m *UserMutation) SetUsername(u uuid.UUID) {
-	m.username = &u
+func (m *UserMutation) SetUsername(uu uuid.UUID) {
+	m.username = &uu
 }
 
 // Username returns the value of the "username" field in the mutation.

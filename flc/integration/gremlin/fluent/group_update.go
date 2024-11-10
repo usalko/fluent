@@ -49,15 +49,15 @@ func (gu *GroupUpdate) SetNillableActive(b *bool) *GroupUpdate {
 }
 
 // SetExpire sets the "expire" field.
-func (gu *GroupUpdate) SetExpire(t time.Time) *GroupUpdate {
-	gu.mutation.SetExpire(t)
+func (gu *GroupUpdate) SetExpire(tt time.Time) *GroupUpdate {
+	gu.mutation.SetExpire(tt)
 	return gu
 }
 
 // SetNillableExpire sets the "expire" field if the given value is not nil.
-func (gu *GroupUpdate) SetNillableExpire(t *time.Time) *GroupUpdate {
-	if t != nil {
-		gu.SetExpire(*t)
+func (gu *GroupUpdate) SetNillableExpire(tt *time.Time) *GroupUpdate {
+	if tt != nil {
+		gu.SetExpire(*tt)
 	}
 	return gu
 }
@@ -437,15 +437,15 @@ func (guo *GroupUpdateOne) SetNillableActive(b *bool) *GroupUpdateOne {
 }
 
 // SetExpire sets the "expire" field.
-func (guo *GroupUpdateOne) SetExpire(t time.Time) *GroupUpdateOne {
-	guo.mutation.SetExpire(t)
+func (guo *GroupUpdateOne) SetExpire(tt time.Time) *GroupUpdateOne {
+	guo.mutation.SetExpire(tt)
 	return guo
 }
 
 // SetNillableExpire sets the "expire" field if the given value is not nil.
-func (guo *GroupUpdateOne) SetNillableExpire(t *time.Time) *GroupUpdateOne {
-	if t != nil {
-		guo.SetExpire(*t)
+func (guo *GroupUpdateOne) SetNillableExpire(tt *time.Time) *GroupUpdateOne {
+	if tt != nil {
+		guo.SetExpire(*tt)
 	}
 	return guo
 }

@@ -203,7 +203,7 @@ func (u *User) FromResponse(res *gremlin.Response) error {
 		Password    string          `json:"password,omitempty"`
 		Role        user.Role       `json:"role,omitempty"`
 		Employment  user.Employment `json:"employment,omitempty"`
-		SSOCert     string          `json:"sso_cert,omitempty"`
+		SSOCert     string          `json:"ssocert,omitempty"`
 		FilesCount  int             `json:"files_count,omitempty"`
 	}
 	if err := vmap.Decode(&scanu); err != nil {
@@ -362,7 +362,7 @@ func (u *Users) FromResponse(res *gremlin.Response) error {
 		Password    string          `json:"password,omitempty"`
 		Role        user.Role       `json:"role,omitempty"`
 		Employment  user.Employment `json:"employment,omitempty"`
-		SSOCert     string          `json:"sso_cert,omitempty"`
+		SSOCert     string          `json:"ssocert,omitempty"`
 		FilesCount  int             `json:"files_count,omitempty"`
 	}
 	if err := vmap.Decode(&scanu); err != nil {

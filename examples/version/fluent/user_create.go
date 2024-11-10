@@ -37,8 +37,8 @@ func (uc *UserCreate) SetNillableVersion(i *int64) *UserCreate {
 }
 
 // SetStatus sets the "status" field.
-func (uc *UserCreate) SetStatus(u user.Status) *UserCreate {
-	uc.mutation.SetStatus(u)
+func (uc *UserCreate) SetStatus(us user.Status) *UserCreate {
+	uc.mutation.SetStatus(us)
 	return uc
 }
 

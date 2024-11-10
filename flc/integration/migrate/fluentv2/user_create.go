@@ -40,15 +40,15 @@ func (uc *UserCreate) SetNillableMixedString(s *string) *UserCreate {
 }
 
 // SetMixedEnum sets the "mixed_enum" field.
-func (uc *UserCreate) SetMixedEnum(ue user.MixedEnum) *UserCreate {
-	uc.mutation.SetMixedEnum(ue)
+func (uc *UserCreate) SetMixedEnum(ume user.MixedEnum) *UserCreate {
+	uc.mutation.SetMixedEnum(ume)
 	return uc
 }
 
 // SetNillableMixedEnum sets the "mixed_enum" field if the given value is not nil.
-func (uc *UserCreate) SetNillableMixedEnum(ue *user.MixedEnum) *UserCreate {
-	if ue != nil {
-		uc.SetMixedEnum(*ue)
+func (uc *UserCreate) SetNillableMixedEnum(ume *user.MixedEnum) *UserCreate {
+	if ume != nil {
+		uc.SetMixedEnum(*ume)
 	}
 	return uc
 }
@@ -168,29 +168,29 @@ func (uc *UserCreate) SetBlob(b []byte) *UserCreate {
 }
 
 // SetState sets the "state" field.
-func (uc *UserCreate) SetState(u user.State) *UserCreate {
-	uc.mutation.SetState(u)
+func (uc *UserCreate) SetState(us user.State) *UserCreate {
+	uc.mutation.SetState(us)
 	return uc
 }
 
 // SetNillableState sets the "state" field if the given value is not nil.
-func (uc *UserCreate) SetNillableState(u *user.State) *UserCreate {
-	if u != nil {
-		uc.SetState(*u)
+func (uc *UserCreate) SetNillableState(us *user.State) *UserCreate {
+	if us != nil {
+		uc.SetState(*us)
 	}
 	return uc
 }
 
 // SetStatus sets the "status" field.
-func (uc *UserCreate) SetStatus(u user.Status) *UserCreate {
-	uc.mutation.SetStatus(u)
+func (uc *UserCreate) SetStatus(us user.Status) *UserCreate {
+	uc.mutation.SetStatus(us)
 	return uc
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (uc *UserCreate) SetNillableStatus(u *user.Status) *UserCreate {
-	if u != nil {
-		uc.SetStatus(*u)
+func (uc *UserCreate) SetNillableStatus(us *user.Status) *UserCreate {
+	if us != nil {
+		uc.SetStatus(*us)
 	}
 	return uc
 }
@@ -244,15 +244,15 @@ func (uc *UserCreate) SetNillableDefaultExprs(s *string) *UserCreate {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (uc *UserCreate) SetCreatedAt(t time.Time) *UserCreate {
-	uc.mutation.SetCreatedAt(t)
+func (uc *UserCreate) SetCreatedAt(tt time.Time) *UserCreate {
+	uc.mutation.SetCreatedAt(tt)
 	return uc
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (uc *UserCreate) SetNillableCreatedAt(t *time.Time) *UserCreate {
-	if t != nil {
-		uc.SetCreatedAt(*t)
+func (uc *UserCreate) SetNillableCreatedAt(tt *time.Time) *UserCreate {
+	if tt != nil {
+		uc.SetCreatedAt(*tt)
 	}
 	return uc
 }

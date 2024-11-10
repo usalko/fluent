@@ -29,7 +29,7 @@ import (
 	"github.com/usalko/fluent/flc/integration/fluent/item"
 	"github.com/usalko/fluent/flc/integration/fluent/license"
 	"github.com/usalko/fluent/flc/integration/fluent/node"
-	"github.com/usalko/fluent/flc/integration/fluent/p_c"
+	"github.com/usalko/fluent/flc/integration/fluent/pc"
 	"github.com/usalko/fluent/flc/integration/fluent/pet"
 	"github.com/usalko/fluent/flc/integration/fluent/spec"
 
@@ -109,7 +109,7 @@ func checkColumn(table, column string) error {
 			item.Table:          item.ValidColumn,
 			license.Table:       license.ValidColumn,
 			node.Table:          node.ValidColumn,
-			p_c.Table:           p_c.ValidColumn,
+			pc.Table:            pc.ValidColumn,
 			pet.Table:           pet.ValidColumn,
 			spec.Table:          spec.ValidColumn,
 			fluenttask.Table:    fluenttask.ValidColumn,

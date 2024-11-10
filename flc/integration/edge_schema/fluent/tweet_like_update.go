@@ -34,15 +34,15 @@ func (tlu *TweetLikeUpdate) Where(ps ...predicate.TweetLike) *TweetLikeUpdate {
 }
 
 // SetLikedAt sets the "liked_at" field.
-func (tlu *TweetLikeUpdate) SetLikedAt(t time.Time) *TweetLikeUpdate {
-	tlu.mutation.SetLikedAt(t)
+func (tlu *TweetLikeUpdate) SetLikedAt(tt time.Time) *TweetLikeUpdate {
+	tlu.mutation.SetLikedAt(tt)
 	return tlu
 }
 
 // SetNillableLikedAt sets the "liked_at" field if the given value is not nil.
-func (tlu *TweetLikeUpdate) SetNillableLikedAt(t *time.Time) *TweetLikeUpdate {
-	if t != nil {
-		tlu.SetLikedAt(*t)
+func (tlu *TweetLikeUpdate) SetNillableLikedAt(tt *time.Time) *TweetLikeUpdate {
+	if tt != nil {
+		tlu.SetLikedAt(*tt)
 	}
 	return tlu
 }
@@ -234,15 +234,15 @@ type TweetLikeUpdateOne struct {
 }
 
 // SetLikedAt sets the "liked_at" field.
-func (tluo *TweetLikeUpdateOne) SetLikedAt(t time.Time) *TweetLikeUpdateOne {
-	tluo.mutation.SetLikedAt(t)
+func (tluo *TweetLikeUpdateOne) SetLikedAt(tt time.Time) *TweetLikeUpdateOne {
+	tluo.mutation.SetLikedAt(tt)
 	return tluo
 }
 
 // SetNillableLikedAt sets the "liked_at" field if the given value is not nil.
-func (tluo *TweetLikeUpdateOne) SetNillableLikedAt(t *time.Time) *TweetLikeUpdateOne {
-	if t != nil {
-		tluo.SetLikedAt(*t)
+func (tluo *TweetLikeUpdateOne) SetNillableLikedAt(tt *time.Time) *TweetLikeUpdateOne {
+	if tt != nil {
+		tluo.SetLikedAt(*tt)
 	}
 	return tluo
 }

@@ -33,15 +33,15 @@ func (rc *RoleCreate) SetName(s string) *RoleCreate {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (rc *RoleCreate) SetCreatedAt(t time.Time) *RoleCreate {
-	rc.mutation.SetCreatedAt(t)
+func (rc *RoleCreate) SetCreatedAt(tt time.Time) *RoleCreate {
+	rc.mutation.SetCreatedAt(tt)
 	return rc
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (rc *RoleCreate) SetNillableCreatedAt(t *time.Time) *RoleCreate {
-	if t != nil {
-		rc.SetCreatedAt(*t)
+func (rc *RoleCreate) SetNillableCreatedAt(tt *time.Time) *RoleCreate {
+	if tt != nil {
+		rc.SetCreatedAt(*tt)
 	}
 	return rc
 }

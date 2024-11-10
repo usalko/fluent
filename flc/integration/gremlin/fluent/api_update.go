@@ -24,24 +24,24 @@ type APIUpdate struct {
 }
 
 // Where appends a list predicates to the APIUpdate builder.
-func (au *APIUpdate) Where(ps ...predicate.Api) *APIUpdate {
-	au.mutation.Where(ps...)
-	return au
+func (a *APIUpdate) Where(ps ...predicate.Api) *APIUpdate {
+	a.mutation.Where(ps...)
+	return a
 }
 
 // Mutation returns the APIMutation object of the builder.
-func (au *APIUpdate) Mutation() *APIMutation {
-	return au.mutation
+func (a *APIUpdate) Mutation() *APIMutation {
+	return a.mutation
 }
 
 // Save executes the query and returns the number of nodes affected by the update operation.
-func (au *APIUpdate) Save(ctx context.Context) (int, error) {
-	return withHooks(ctx, au.gremlinSave, au.mutation, au.hooks)
+func (a *APIUpdate) Save(ctx context.Context) (int, error) {
+	return withHooks(ctx, a.gremlinSave, a.mutation, a.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (au *APIUpdate) SaveX(ctx context.Context) int {
-	affected, err := au.Save(ctx)
+func (a *APIUpdate) SaveX(ctx context.Context) int {
+	affected, err := a.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -49,34 +49,34 @@ func (au *APIUpdate) SaveX(ctx context.Context) int {
 }
 
 // Exec executes the query.
-func (au *APIUpdate) Exec(ctx context.Context) error {
-	_, err := au.Save(ctx)
+func (a *APIUpdate) Exec(ctx context.Context) error {
+	_, err := a.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (au *APIUpdate) ExecX(ctx context.Context) {
-	if err := au.Exec(ctx); err != nil {
+func (a *APIUpdate) ExecX(ctx context.Context) {
+	if err := a.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
-func (au *APIUpdate) gremlinSave(ctx context.Context) (int, error) {
+func (a *APIUpdate) gremlinSave(ctx context.Context) (int, error) {
 	res := &gremlin.Response{}
-	query, bindings := au.gremlin().Query()
-	if err := au.driver.Exec(ctx, query, bindings, res); err != nil {
+	query, bindings := a.gremlin().Query()
+	if err := a.driver.Exec(ctx, query, bindings, res); err != nil {
 		return 0, err
 	}
 	if err, ok := isConstantError(res); ok {
 		return 0, err
 	}
-	au.mutation.done = true
+	a.mutation.done = true
 	return res.ReadInt()
 }
 
-func (au *APIUpdate) gremlin() *dsl.Traversal {
+func (a *APIUpdate) gremlin() *dsl.Traversal {
 	v := g.V().HasLabel(api.Label)
-	for _, p := range au.mutation.predicates {
+	for _, p := range a.mutation.predicates {
 		p(v)
 	}
 	var (
@@ -96,31 +96,31 @@ type APIUpdateOne struct {
 }
 
 // Mutation returns the APIMutation object of the builder.
-func (auo *APIUpdateOne) Mutation() *APIMutation {
-	return auo.mutation
+func (ao *APIUpdateOne) Mutation() *APIMutation {
+	return ao.mutation
 }
 
 // Where appends a list predicates to the APIUpdate builder.
-func (auo *APIUpdateOne) Where(ps ...predicate.Api) *APIUpdateOne {
-	auo.mutation.Where(ps...)
-	return auo
+func (ao *APIUpdateOne) Where(ps ...predicate.Api) *APIUpdateOne {
+	ao.mutation.Where(ps...)
+	return ao
 }
 
 // Select allows selecting one or more fields (columns) of the returned entity.
 // The default is selecting all fields defined in the entity schema.
-func (auo *APIUpdateOne) Select(field string, fields ...string) *APIUpdateOne {
-	auo.fields = append([]string{field}, fields...)
-	return auo
+func (ao *APIUpdateOne) Select(field string, fields ...string) *APIUpdateOne {
+	ao.fields = append([]string{field}, fields...)
+	return ao
 }
 
 // Save executes the query and returns the updated Api entity.
-func (auo *APIUpdateOne) Save(ctx context.Context) (*Api, error) {
-	return withHooks(ctx, auo.gremlinSave, auo.mutation, auo.hooks)
+func (ao *APIUpdateOne) Save(ctx context.Context) (*Api, error) {
+	return withHooks(ctx, ao.gremlinSave, ao.mutation, ao.hooks)
 }
 
 // SaveX is like Save, but panics if an error occurs.
-func (auo *APIUpdateOne) SaveX(ctx context.Context) *Api {
-	node, err := auo.Save(ctx)
+func (ao *APIUpdateOne) SaveX(ctx context.Context) *Api {
+	node, err := ao.Save(ctx)
 	if err != nil {
 		panic(err)
 	}
@@ -128,48 +128,48 @@ func (auo *APIUpdateOne) SaveX(ctx context.Context) *Api {
 }
 
 // Exec executes the query on the entity.
-func (auo *APIUpdateOne) Exec(ctx context.Context) error {
-	_, err := auo.Save(ctx)
+func (ao *APIUpdateOne) Exec(ctx context.Context) error {
+	_, err := ao.Save(ctx)
 	return err
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (auo *APIUpdateOne) ExecX(ctx context.Context) {
-	if err := auo.Exec(ctx); err != nil {
+func (ao *APIUpdateOne) ExecX(ctx context.Context) {
+	if err := ao.Exec(ctx); err != nil {
 		panic(err)
 	}
 }
 
-func (auo *APIUpdateOne) gremlinSave(ctx context.Context) (*Api, error) {
+func (ao *APIUpdateOne) gremlinSave(ctx context.Context) (*Api, error) {
 	res := &gremlin.Response{}
-	id, ok := auo.mutation.ID()
+	id, ok := ao.mutation.ID()
 	if !ok {
 		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Api.id" for update`)}
 	}
-	query, bindings := auo.gremlin(id).Query()
-	if err := auo.driver.Exec(ctx, query, bindings, res); err != nil {
+	query, bindings := ao.gremlin(id).Query()
+	if err := ao.driver.Exec(ctx, query, bindings, res); err != nil {
 		return nil, err
 	}
 	if err, ok := isConstantError(res); ok {
 		return nil, err
 	}
-	auo.mutation.done = true
-	a := &Api{config: auo.config}
+	ao.mutation.done = true
+	a := &Api{config: ao.config}
 	if err := a.FromResponse(res); err != nil {
 		return nil, err
 	}
 	return a, nil
 }
 
-func (auo *APIUpdateOne) gremlin(id string) *dsl.Traversal {
+func (ao *APIUpdateOne) gremlin(id string) *dsl.Traversal {
 	v := g.V(id)
 	var (
 		trs []*dsl.Traversal
 	)
-	if len(auo.fields) > 0 {
-		fields := make([]any, 0, len(auo.fields)+1)
+	if len(ao.fields) > 0 {
+		fields := make([]any, 0, len(ao.fields)+1)
 		fields = append(fields, true)
-		for _, f := range auo.fields {
+		for _, f := range ao.fields {
 			fields = append(fields, f)
 		}
 		v.ValueMap(fields...)

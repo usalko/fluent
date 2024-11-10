@@ -35,22 +35,22 @@ type TodoCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (tc *TodoCreate) SetCreatedAt(t time.Time) *TodoCreate {
-	tc.mutation.SetCreatedAt(t)
+func (tc *TodoCreate) SetCreatedAt(tt time.Time) *TodoCreate {
+	tc.mutation.SetCreatedAt(tt)
 	return tc
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (tc *TodoCreate) SetNillableCreatedAt(t *time.Time) *TodoCreate {
-	if t != nil {
-		tc.SetCreatedAt(*t)
+func (tc *TodoCreate) SetNillableCreatedAt(tt *time.Time) *TodoCreate {
+	if tt != nil {
+		tc.SetCreatedAt(*tt)
 	}
 	return tc
 }
 
 // SetStatus sets the "status" field.
-func (tc *TodoCreate) SetStatus(t todo.Status) *TodoCreate {
-	tc.mutation.SetStatus(t)
+func (tc *TodoCreate) SetStatus(ts todo.Status) *TodoCreate {
+	tc.mutation.SetStatus(ts)
 	return tc
 }
 

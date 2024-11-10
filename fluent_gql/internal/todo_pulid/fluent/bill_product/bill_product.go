@@ -20,7 +20,7 @@ import (
 )
 
 const (
-	// Label holds the string label denoting the billproduct type in the database.
+	// Label holds the string label denoting the bill_product type in the database.
 	Label = "bill_product"
 	// FieldID holds the string denoting the id field in the database.
 	FieldID = "id"
@@ -30,11 +30,11 @@ const (
 	FieldSku = "sku"
 	// FieldQuantity holds the string denoting the quantity field in the database.
 	FieldQuantity = "quantity"
-	// Table holds the table name of the billproduct in the database.
+	// Table holds the table name of the bill_product in the database.
 	Table = "bill_products"
 )
 
-// Columns holds all SQL columns for billproduct fields.
+// Columns holds all SQL columns for bill_product fields.
 var Columns = []string{
 	FieldID,
 	FieldName,

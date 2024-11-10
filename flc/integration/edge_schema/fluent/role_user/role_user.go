@@ -13,7 +13,7 @@ import (
 )
 
 const (
-	// Label holds the string label denoting the roleuser type in the database.
+	// Label holds the string label denoting the role_user type in the database.
 	Label = "role_user"
 	// FieldCreatedAt holds the string denoting the created_at field in the database.
 	FieldCreatedAt = "created_at"
@@ -29,7 +29,7 @@ const (
 	RoleFieldID = "id"
 	// UserFieldID holds the string denoting the ID field of the User.
 	UserFieldID = "id"
-	// Table holds the table name of the roleuser in the database.
+	// Table holds the table name of the role_user in the database.
 	Table = "role_users"
 	// RoleTable is the table that holds the role relation/edge.
 	RoleTable = "role_users"
@@ -47,7 +47,7 @@ const (
 	UserColumn = "user_id"
 )
 
-// Columns holds all SQL columns for roleuser fields.
+// Columns holds all SQL columns for role_user fields.
 var Columns = []string{
 	FieldCreatedAt,
 	FieldRoleID,

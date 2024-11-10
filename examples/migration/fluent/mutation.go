@@ -269,8 +269,8 @@ func (m *CardMutation) ResetCvvHash() {
 }
 
 // SetExpiresAt sets the "expires_at" field.
-func (m *CardMutation) SetExpiresAt(t time.Time) {
-	m.expires_at = &t
+func (m *CardMutation) SetExpiresAt(tt time.Time) {
+	m.expires_at = &tt
 }
 
 // ExpiresAt returns the value of the "expires_at" field in the mutation.
@@ -958,8 +958,8 @@ func (m *PaymentMutation) ResetAmount() {
 }
 
 // SetCurrency sets the "currency" field.
-func (m *PaymentMutation) SetCurrency(pa payment.Currency) {
-	m.currency = &pa
+func (m *PaymentMutation) SetCurrency(pc payment.Currency) {
+	m.currency = &pc
 }
 
 // Currency returns the value of the "currency" field in the mutation.
@@ -994,8 +994,8 @@ func (m *PaymentMutation) ResetCurrency() {
 }
 
 // SetTime sets the "time" field.
-func (m *PaymentMutation) SetTime(t time.Time) {
-	m.time = &t
+func (m *PaymentMutation) SetTime(tt time.Time) {
+	m.time = &tt
 }
 
 // Time returns the value of the "time" field in the mutation.
@@ -1066,8 +1066,8 @@ func (m *PaymentMutation) ResetDescription() {
 }
 
 // SetStatus sets the "status" field.
-func (m *PaymentMutation) SetStatus(pa payment.Status) {
-	m.status = &pa
+func (m *PaymentMutation) SetStatus(ps payment.Status) {
+	m.status = &ps
 }
 
 // Status returns the value of the "status" field in the mutation.
@@ -1707,8 +1707,8 @@ func (m *PetMutation) ResetWeight() {
 }
 
 // SetBestFriendID sets the "best_friend_id" field.
-func (m *PetMutation) SetBestFriendID(u uuid.UUID) {
-	m.best_friend = &u
+func (m *PetMutation) SetBestFriendID(uu uuid.UUID) {
+	m.best_friend = &uu
 }
 
 // BestFriendID returns the value of the "best_friend_id" field in the mutation.
@@ -2310,8 +2310,8 @@ func (m *SessionMutation) ResetActive() {
 }
 
 // SetIssuedAt sets the "issued_at" field.
-func (m *SessionMutation) SetIssuedAt(t time.Time) {
-	m.issued_at = &t
+func (m *SessionMutation) SetIssuedAt(tt time.Time) {
+	m.issued_at = &tt
 }
 
 // IssuedAt returns the value of the "issued_at" field in the mutation.
@@ -2346,8 +2346,8 @@ func (m *SessionMutation) ResetIssuedAt() {
 }
 
 // SetExpiresAt sets the "expires_at" field.
-func (m *SessionMutation) SetExpiresAt(t time.Time) {
-	m.expires_at = &t
+func (m *SessionMutation) SetExpiresAt(tt time.Time) {
+	m.expires_at = &tt
 }
 
 // ExpiresAt returns the value of the "expires_at" field in the mutation.
@@ -2493,8 +2493,8 @@ func (m *SessionMutation) ResetMethod() {
 }
 
 // SetDeviceID sets the "device_id" field.
-func (m *SessionMutation) SetDeviceID(u uuid.UUID) {
-	m.device = &u
+func (m *SessionMutation) SetDeviceID(uu uuid.UUID) {
+	m.device = &uu
 }
 
 // DeviceID returns the value of the "device_id" field in the mutation.
@@ -3118,8 +3118,8 @@ func (m *SessionDeviceMutation) ResetLocation() {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (m *SessionDeviceMutation) SetCreatedAt(t time.Time) {
-	m.created_at = &t
+func (m *SessionDeviceMutation) SetCreatedAt(tt time.Time) {
+	m.created_at = &tt
 }
 
 // CreatedAt returns the value of the "created_at" field in the mutation.
@@ -3154,8 +3154,8 @@ func (m *SessionDeviceMutation) ResetCreatedAt() {
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (m *SessionDeviceMutation) SetUpdatedAt(t time.Time) {
-	m.updated_at = &t
+func (m *SessionDeviceMutation) SetUpdatedAt(tt time.Time) {
+	m.updated_at = &tt
 }
 
 // UpdatedAt returns the value of the "updated_at" field in the mutation.

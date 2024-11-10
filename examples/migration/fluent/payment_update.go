@@ -68,29 +68,29 @@ func (pu *PaymentUpdate) AddAmount(f float64) *PaymentUpdate {
 }
 
 // SetCurrency sets the "currency" field.
-func (pu *PaymentUpdate) SetCurrency(pa payment.Currency) *PaymentUpdate {
-	pu.mutation.SetCurrency(pa)
+func (pu *PaymentUpdate) SetCurrency(pc payment.Currency) *PaymentUpdate {
+	pu.mutation.SetCurrency(pc)
 	return pu
 }
 
 // SetNillableCurrency sets the "currency" field if the given value is not nil.
-func (pu *PaymentUpdate) SetNillableCurrency(pa *payment.Currency) *PaymentUpdate {
-	if pa != nil {
-		pu.SetCurrency(*pa)
+func (pu *PaymentUpdate) SetNillableCurrency(pc *payment.Currency) *PaymentUpdate {
+	if pc != nil {
+		pu.SetCurrency(*pc)
 	}
 	return pu
 }
 
 // SetTime sets the "time" field.
-func (pu *PaymentUpdate) SetTime(t time.Time) *PaymentUpdate {
-	pu.mutation.SetTime(t)
+func (pu *PaymentUpdate) SetTime(tt time.Time) *PaymentUpdate {
+	pu.mutation.SetTime(tt)
 	return pu
 }
 
 // SetNillableTime sets the "time" field if the given value is not nil.
-func (pu *PaymentUpdate) SetNillableTime(t *time.Time) *PaymentUpdate {
-	if t != nil {
-		pu.SetTime(*t)
+func (pu *PaymentUpdate) SetNillableTime(tt *time.Time) *PaymentUpdate {
+	if tt != nil {
+		pu.SetTime(*tt)
 	}
 	return pu
 }
@@ -110,15 +110,15 @@ func (pu *PaymentUpdate) SetNillableDescription(s *string) *PaymentUpdate {
 }
 
 // SetStatus sets the "status" field.
-func (pu *PaymentUpdate) SetStatus(pa payment.Status) *PaymentUpdate {
-	pu.mutation.SetStatus(pa)
+func (pu *PaymentUpdate) SetStatus(ps payment.Status) *PaymentUpdate {
+	pu.mutation.SetStatus(ps)
 	return pu
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (pu *PaymentUpdate) SetNillableStatus(pa *payment.Status) *PaymentUpdate {
-	if pa != nil {
-		pu.SetStatus(*pa)
+func (pu *PaymentUpdate) SetNillableStatus(ps *payment.Status) *PaymentUpdate {
+	if ps != nil {
+		pu.SetStatus(*ps)
 	}
 	return pu
 }
@@ -304,29 +304,29 @@ func (puo *PaymentUpdateOne) AddAmount(f float64) *PaymentUpdateOne {
 }
 
 // SetCurrency sets the "currency" field.
-func (puo *PaymentUpdateOne) SetCurrency(pa payment.Currency) *PaymentUpdateOne {
-	puo.mutation.SetCurrency(pa)
+func (puo *PaymentUpdateOne) SetCurrency(pc payment.Currency) *PaymentUpdateOne {
+	puo.mutation.SetCurrency(pc)
 	return puo
 }
 
 // SetNillableCurrency sets the "currency" field if the given value is not nil.
-func (puo *PaymentUpdateOne) SetNillableCurrency(pa *payment.Currency) *PaymentUpdateOne {
-	if pa != nil {
-		puo.SetCurrency(*pa)
+func (puo *PaymentUpdateOne) SetNillableCurrency(pc *payment.Currency) *PaymentUpdateOne {
+	if pc != nil {
+		puo.SetCurrency(*pc)
 	}
 	return puo
 }
 
 // SetTime sets the "time" field.
-func (puo *PaymentUpdateOne) SetTime(t time.Time) *PaymentUpdateOne {
-	puo.mutation.SetTime(t)
+func (puo *PaymentUpdateOne) SetTime(tt time.Time) *PaymentUpdateOne {
+	puo.mutation.SetTime(tt)
 	return puo
 }
 
 // SetNillableTime sets the "time" field if the given value is not nil.
-func (puo *PaymentUpdateOne) SetNillableTime(t *time.Time) *PaymentUpdateOne {
-	if t != nil {
-		puo.SetTime(*t)
+func (puo *PaymentUpdateOne) SetNillableTime(tt *time.Time) *PaymentUpdateOne {
+	if tt != nil {
+		puo.SetTime(*tt)
 	}
 	return puo
 }
@@ -346,15 +346,15 @@ func (puo *PaymentUpdateOne) SetNillableDescription(s *string) *PaymentUpdateOne
 }
 
 // SetStatus sets the "status" field.
-func (puo *PaymentUpdateOne) SetStatus(pa payment.Status) *PaymentUpdateOne {
-	puo.mutation.SetStatus(pa)
+func (puo *PaymentUpdateOne) SetStatus(ps payment.Status) *PaymentUpdateOne {
+	puo.mutation.SetStatus(ps)
 	return puo
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (puo *PaymentUpdateOne) SetNillableStatus(pa *payment.Status) *PaymentUpdateOne {
-	if pa != nil {
-		puo.SetStatus(*pa)
+func (puo *PaymentUpdateOne) SetNillableStatus(ps *payment.Status) *PaymentUpdateOne {
+	if ps != nil {
+		puo.SetStatus(*ps)
 	}
 	return puo
 }

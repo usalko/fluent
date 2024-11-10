@@ -43,43 +43,43 @@ func (fu *FriendshipUpdate) Where(ps ...predicate.Friendship) *FriendshipUpdate 
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (fu *FriendshipUpdate) SetCreatedAt(t time.Time) *FriendshipUpdate {
-	fu.mutation.SetCreatedAt(t)
+func (fu *FriendshipUpdate) SetCreatedAt(tt time.Time) *FriendshipUpdate {
+	fu.mutation.SetCreatedAt(tt)
 	return fu
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (fu *FriendshipUpdate) SetNillableCreatedAt(t *time.Time) *FriendshipUpdate {
-	if t != nil {
-		fu.SetCreatedAt(*t)
+func (fu *FriendshipUpdate) SetNillableCreatedAt(tt *time.Time) *FriendshipUpdate {
+	if tt != nil {
+		fu.SetCreatedAt(*tt)
 	}
 	return fu
 }
 
 // SetUserID sets the "user_id" field.
-func (fu *FriendshipUpdate) SetUserID(pu pulid.ID) *FriendshipUpdate {
-	fu.mutation.SetUserID(pu)
+func (fu *FriendshipUpdate) SetUserID(pi pulid.ID) *FriendshipUpdate {
+	fu.mutation.SetUserID(pi)
 	return fu
 }
 
 // SetNillableUserID sets the "user_id" field if the given value is not nil.
-func (fu *FriendshipUpdate) SetNillableUserID(pu *pulid.ID) *FriendshipUpdate {
-	if pu != nil {
-		fu.SetUserID(*pu)
+func (fu *FriendshipUpdate) SetNillableUserID(pi *pulid.ID) *FriendshipUpdate {
+	if pi != nil {
+		fu.SetUserID(*pi)
 	}
 	return fu
 }
 
 // SetFriendID sets the "friend_id" field.
-func (fu *FriendshipUpdate) SetFriendID(pu pulid.ID) *FriendshipUpdate {
-	fu.mutation.SetFriendID(pu)
+func (fu *FriendshipUpdate) SetFriendID(pi pulid.ID) *FriendshipUpdate {
+	fu.mutation.SetFriendID(pi)
 	return fu
 }
 
 // SetNillableFriendID sets the "friend_id" field if the given value is not nil.
-func (fu *FriendshipUpdate) SetNillableFriendID(pu *pulid.ID) *FriendshipUpdate {
-	if pu != nil {
-		fu.SetFriendID(*pu)
+func (fu *FriendshipUpdate) SetNillableFriendID(pi *pulid.ID) *FriendshipUpdate {
+	if pi != nil {
+		fu.SetFriendID(*pi)
 	}
 	return fu
 }
@@ -243,43 +243,43 @@ type FriendshipUpdateOne struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (fuo *FriendshipUpdateOne) SetCreatedAt(t time.Time) *FriendshipUpdateOne {
-	fuo.mutation.SetCreatedAt(t)
+func (fuo *FriendshipUpdateOne) SetCreatedAt(tt time.Time) *FriendshipUpdateOne {
+	fuo.mutation.SetCreatedAt(tt)
 	return fuo
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (fuo *FriendshipUpdateOne) SetNillableCreatedAt(t *time.Time) *FriendshipUpdateOne {
-	if t != nil {
-		fuo.SetCreatedAt(*t)
+func (fuo *FriendshipUpdateOne) SetNillableCreatedAt(tt *time.Time) *FriendshipUpdateOne {
+	if tt != nil {
+		fuo.SetCreatedAt(*tt)
 	}
 	return fuo
 }
 
 // SetUserID sets the "user_id" field.
-func (fuo *FriendshipUpdateOne) SetUserID(pu pulid.ID) *FriendshipUpdateOne {
-	fuo.mutation.SetUserID(pu)
+func (fuo *FriendshipUpdateOne) SetUserID(pi pulid.ID) *FriendshipUpdateOne {
+	fuo.mutation.SetUserID(pi)
 	return fuo
 }
 
 // SetNillableUserID sets the "user_id" field if the given value is not nil.
-func (fuo *FriendshipUpdateOne) SetNillableUserID(pu *pulid.ID) *FriendshipUpdateOne {
-	if pu != nil {
-		fuo.SetUserID(*pu)
+func (fuo *FriendshipUpdateOne) SetNillableUserID(pi *pulid.ID) *FriendshipUpdateOne {
+	if pi != nil {
+		fuo.SetUserID(*pi)
 	}
 	return fuo
 }
 
 // SetFriendID sets the "friend_id" field.
-func (fuo *FriendshipUpdateOne) SetFriendID(pu pulid.ID) *FriendshipUpdateOne {
-	fuo.mutation.SetFriendID(pu)
+func (fuo *FriendshipUpdateOne) SetFriendID(pi pulid.ID) *FriendshipUpdateOne {
+	fuo.mutation.SetFriendID(pi)
 	return fuo
 }
 
 // SetNillableFriendID sets the "friend_id" field if the given value is not nil.
-func (fuo *FriendshipUpdateOne) SetNillableFriendID(pu *pulid.ID) *FriendshipUpdateOne {
-	if pu != nil {
-		fuo.SetFriendID(*pu)
+func (fuo *FriendshipUpdateOne) SetNillableFriendID(pi *pulid.ID) *FriendshipUpdateOne {
+	if pi != nil {
+		fuo.SetFriendID(*pi)
 	}
 	return fuo
 }

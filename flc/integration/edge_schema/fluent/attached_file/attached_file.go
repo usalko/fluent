@@ -13,7 +13,7 @@ import (
 )
 
 const (
-	// Label holds the string label denoting the attachedfile type in the database.
+	// Label holds the string label denoting the attached_file type in the database.
 	Label = "attached_file"
 	// FieldID holds the string denoting the id field in the database.
 	FieldID = "id"
@@ -27,7 +27,7 @@ const (
 	EdgeFi = "fi"
 	// EdgeProc holds the string denoting the proc edge name in mutations.
 	EdgeProc = "proc"
-	// Table holds the table name of the attachedfile in the database.
+	// Table holds the table name of the attached_file in the database.
 	Table = "attached_files"
 	// FiTable is the table that holds the fi relation/edge.
 	FiTable = "attached_files"
@@ -45,7 +45,7 @@ const (
 	ProcColumn = "proc_id"
 )
 
-// Columns holds all SQL columns for attachedfile fields.
+// Columns holds all SQL columns for attached_file fields.
 var Columns = []string{
 	FieldID,
 	FieldAttachTime,

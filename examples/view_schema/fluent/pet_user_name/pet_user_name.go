@@ -7,15 +7,15 @@ import (
 )
 
 const (
-	// Label holds the string label denoting the petusername type in the database.
+	// Label holds the string label denoting the pet_user_name type in the database.
 	Label = "pet_user_name"
 	// FieldName holds the string denoting the name field in the database.
 	FieldName = "name"
-	// Table holds the table name of the petusername in the database.
+	// Table holds the table name of the pet_user_name in the database.
 	Table = "pet_user_names"
 )
 
-// Columns holds all SQL columns for petusername fields.
+// Columns holds all SQL columns for pet_user_name fields.
 var Columns = []string{
 	FieldName,
 }

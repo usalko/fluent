@@ -138,8 +138,8 @@ func (m *UserMutation) IDs(ctx context.Context) ([]int, error) {
 }
 
 // SetStatus sets the "status" field.
-func (m *UserMutation) SetStatus(u user.Status) {
-	m.status = &u
+func (m *UserMutation) SetStatus(us user.Status) {
+	m.status = &us
 }
 
 // Status returns the value of the "status" field in the mutation.

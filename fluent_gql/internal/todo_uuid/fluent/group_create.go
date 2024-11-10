@@ -48,15 +48,15 @@ func (gc *GroupCreate) SetNillableName(s *string) *GroupCreate {
 }
 
 // SetID sets the "id" field.
-func (gc *GroupCreate) SetID(u uuid.UUID) *GroupCreate {
-	gc.mutation.SetID(u)
+func (gc *GroupCreate) SetID(uu uuid.UUID) *GroupCreate {
+	gc.mutation.SetID(uu)
 	return gc
 }
 
 // SetNillableID sets the "id" field if the given value is not nil.
-func (gc *GroupCreate) SetNillableID(u *uuid.UUID) *GroupCreate {
-	if u != nil {
-		gc.SetID(*u)
+func (gc *GroupCreate) SetNillableID(uu *uuid.UUID) *GroupCreate {
+	if uu != nil {
+		gc.SetID(*uu)
 	}
 	return gc
 }

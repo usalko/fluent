@@ -28,28 +28,28 @@ type BlobLinkCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (blc *BlobLinkCreate) SetCreatedAt(t time.Time) *BlobLinkCreate {
-	blc.mutation.SetCreatedAt(t)
+func (blc *BlobLinkCreate) SetCreatedAt(tt time.Time) *BlobLinkCreate {
+	blc.mutation.SetCreatedAt(tt)
 	return blc
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (blc *BlobLinkCreate) SetNillableCreatedAt(t *time.Time) *BlobLinkCreate {
-	if t != nil {
-		blc.SetCreatedAt(*t)
+func (blc *BlobLinkCreate) SetNillableCreatedAt(tt *time.Time) *BlobLinkCreate {
+	if tt != nil {
+		blc.SetCreatedAt(*tt)
 	}
 	return blc
 }
 
 // SetBlobID sets the "blob_id" field.
-func (blc *BlobLinkCreate) SetBlobID(u uuid.UUID) *BlobLinkCreate {
-	blc.mutation.SetBlobID(u)
+func (blc *BlobLinkCreate) SetBlobID(uu uuid.UUID) *BlobLinkCreate {
+	blc.mutation.SetBlobID(uu)
 	return blc
 }
 
 // SetLinkID sets the "link_id" field.
-func (blc *BlobLinkCreate) SetLinkID(u uuid.UUID) *BlobLinkCreate {
-	blc.mutation.SetLinkID(u)
+func (blc *BlobLinkCreate) SetLinkID(uu uuid.UUID) *BlobLinkCreate {
+	blc.mutation.SetLinkID(uu)
 	return blc
 }
 

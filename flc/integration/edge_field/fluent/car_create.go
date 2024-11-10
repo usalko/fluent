@@ -38,15 +38,15 @@ func (cc *CarCreate) SetNillableNumber(s *string) *CarCreate {
 }
 
 // SetID sets the "id" field.
-func (cc *CarCreate) SetID(u uuid.UUID) *CarCreate {
-	cc.mutation.SetID(u)
+func (cc *CarCreate) SetID(uu uuid.UUID) *CarCreate {
+	cc.mutation.SetID(uu)
 	return cc
 }
 
 // SetNillableID sets the "id" field if the given value is not nil.
-func (cc *CarCreate) SetNillableID(u *uuid.UUID) *CarCreate {
-	if u != nil {
-		cc.SetID(*u)
+func (cc *CarCreate) SetNillableID(uu *uuid.UUID) *CarCreate {
+	if uu != nil {
+		cc.SetID(*uu)
 	}
 	return cc
 }

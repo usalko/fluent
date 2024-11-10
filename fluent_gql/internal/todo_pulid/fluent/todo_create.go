@@ -37,22 +37,22 @@ type TodoCreate struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (tc *TodoCreate) SetCreatedAt(t time.Time) *TodoCreate {
-	tc.mutation.SetCreatedAt(t)
+func (tc *TodoCreate) SetCreatedAt(tt time.Time) *TodoCreate {
+	tc.mutation.SetCreatedAt(tt)
 	return tc
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (tc *TodoCreate) SetNillableCreatedAt(t *time.Time) *TodoCreate {
-	if t != nil {
-		tc.SetCreatedAt(*t)
+func (tc *TodoCreate) SetNillableCreatedAt(tt *time.Time) *TodoCreate {
+	if tt != nil {
+		tc.SetCreatedAt(*tt)
 	}
 	return tc
 }
 
 // SetStatus sets the "status" field.
-func (tc *TodoCreate) SetStatus(t todo.Status) *TodoCreate {
-	tc.mutation.SetStatus(t)
+func (tc *TodoCreate) SetStatus(ts todo.Status) *TodoCreate {
+	tc.mutation.SetStatus(ts)
 	return tc
 }
 
@@ -89,14 +89,14 @@ func (tc *TodoCreate) SetInit(m map[string]interface{}) *TodoCreate {
 }
 
 // SetCustom sets the "custom" field.
-func (tc *TodoCreate) SetCustom(c []customstruct.Custom) *TodoCreate {
-	tc.mutation.SetCustom(c)
+func (tc *TodoCreate) SetCustom(cc []customstruct.Custom) *TodoCreate {
+	tc.mutation.SetCustom(cc)
 	return tc
 }
 
 // SetCustomp sets the "customp" field.
-func (tc *TodoCreate) SetCustomp(c []*customstruct.Custom) *TodoCreate {
-	tc.mutation.SetCustomp(c)
+func (tc *TodoCreate) SetCustomp(cc []*customstruct.Custom) *TodoCreate {
+	tc.mutation.SetCustomp(cc)
 	return tc
 }
 
@@ -115,29 +115,29 @@ func (tc *TodoCreate) SetNillableValue(i *int) *TodoCreate {
 }
 
 // SetCategoryID sets the "category_id" field.
-func (tc *TodoCreate) SetCategoryID(pu pulid.ID) *TodoCreate {
-	tc.mutation.SetCategoryID(pu)
+func (tc *TodoCreate) SetCategoryID(pi pulid.ID) *TodoCreate {
+	tc.mutation.SetCategoryID(pi)
 	return tc
 }
 
 // SetNillableCategoryID sets the "category_id" field if the given value is not nil.
-func (tc *TodoCreate) SetNillableCategoryID(pu *pulid.ID) *TodoCreate {
-	if pu != nil {
-		tc.SetCategoryID(*pu)
+func (tc *TodoCreate) SetNillableCategoryID(pi *pulid.ID) *TodoCreate {
+	if pi != nil {
+		tc.SetCategoryID(*pi)
 	}
 	return tc
 }
 
 // SetID sets the "id" field.
-func (tc *TodoCreate) SetID(pu pulid.ID) *TodoCreate {
-	tc.mutation.SetID(pu)
+func (tc *TodoCreate) SetID(pi pulid.ID) *TodoCreate {
+	tc.mutation.SetID(pi)
 	return tc
 }
 
 // SetNillableID sets the "id" field if the given value is not nil.
-func (tc *TodoCreate) SetNillableID(pu *pulid.ID) *TodoCreate {
-	if pu != nil {
-		tc.SetID(*pu)
+func (tc *TodoCreate) SetNillableID(pi *pulid.ID) *TodoCreate {
+	if pi != nil {
+		tc.SetID(*pi)
 	}
 	return tc
 }

@@ -42,15 +42,15 @@ func (fu *FriendshipUpdate) Where(ps ...predicate.Friendship) *FriendshipUpdate 
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (fu *FriendshipUpdate) SetCreatedAt(t time.Time) *FriendshipUpdate {
-	fu.mutation.SetCreatedAt(t)
+func (fu *FriendshipUpdate) SetCreatedAt(tt time.Time) *FriendshipUpdate {
+	fu.mutation.SetCreatedAt(tt)
 	return fu
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (fu *FriendshipUpdate) SetNillableCreatedAt(t *time.Time) *FriendshipUpdate {
-	if t != nil {
-		fu.SetCreatedAt(*t)
+func (fu *FriendshipUpdate) SetNillableCreatedAt(tt *time.Time) *FriendshipUpdate {
+	if tt != nil {
+		fu.SetCreatedAt(*tt)
 	}
 	return fu
 }
@@ -242,15 +242,15 @@ type FriendshipUpdateOne struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (fuo *FriendshipUpdateOne) SetCreatedAt(t time.Time) *FriendshipUpdateOne {
-	fuo.mutation.SetCreatedAt(t)
+func (fuo *FriendshipUpdateOne) SetCreatedAt(tt time.Time) *FriendshipUpdateOne {
+	fuo.mutation.SetCreatedAt(tt)
 	return fuo
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (fuo *FriendshipUpdateOne) SetNillableCreatedAt(t *time.Time) *FriendshipUpdateOne {
-	if t != nil {
-		fuo.SetCreatedAt(*t)
+func (fuo *FriendshipUpdateOne) SetNillableCreatedAt(tt *time.Time) *FriendshipUpdateOne {
+	if tt != nil {
+		fuo.SetCreatedAt(*tt)
 	}
 	return fuo
 }

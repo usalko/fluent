@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	// Label holds the string label denoting the userauditlog type in the database.
+	// Label holds the string label denoting the user_audit_log type in the database.
 	Label = "user_audit_log"
 	// FieldID holds the string denoting the id field in the database.
 	FieldID = "id"
@@ -19,11 +19,11 @@ const (
 	FieldOldValue = "old_value"
 	// FieldNewValue holds the string denoting the new_value field in the database.
 	FieldNewValue = "new_value"
-	// Table holds the table name of the userauditlog in the database.
+	// Table holds the table name of the user_audit_log in the database.
 	Table = "user_audit_logs"
 )
 
-// Columns holds all SQL columns for userauditlog fields.
+// Columns holds all SQL columns for user_audit_log fields.
 var Columns = []string{
 	FieldID,
 	FieldOperationType,

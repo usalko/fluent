@@ -192,29 +192,29 @@ func (uu *UserUpdate) ClearPassword() *UserUpdate {
 }
 
 // SetRole sets the "role" field.
-func (uu *UserUpdate) SetRole(u user.Role) *UserUpdate {
-	uu.mutation.SetRole(u)
+func (uu *UserUpdate) SetRole(ur user.Role) *UserUpdate {
+	uu.mutation.SetRole(ur)
 	return uu
 }
 
 // SetNillableRole sets the "role" field if the given value is not nil.
-func (uu *UserUpdate) SetNillableRole(u *user.Role) *UserUpdate {
-	if u != nil {
-		uu.SetRole(*u)
+func (uu *UserUpdate) SetNillableRole(ur *user.Role) *UserUpdate {
+	if ur != nil {
+		uu.SetRole(*ur)
 	}
 	return uu
 }
 
 // SetEmployment sets the "employment" field.
-func (uu *UserUpdate) SetEmployment(u user.Employment) *UserUpdate {
-	uu.mutation.SetEmployment(u)
+func (uu *UserUpdate) SetEmployment(ue user.Employment) *UserUpdate {
+	uu.mutation.SetEmployment(ue)
 	return uu
 }
 
 // SetNillableEmployment sets the "employment" field if the given value is not nil.
-func (uu *UserUpdate) SetNillableEmployment(u *user.Employment) *UserUpdate {
-	if u != nil {
-		uu.SetEmployment(*u)
+func (uu *UserUpdate) SetNillableEmployment(ue *user.Employment) *UserUpdate {
+	if ue != nil {
+		uu.SetEmployment(*ue)
 	}
 	return uu
 }
@@ -1364,29 +1364,29 @@ func (uuo *UserUpdateOne) ClearPassword() *UserUpdateOne {
 }
 
 // SetRole sets the "role" field.
-func (uuo *UserUpdateOne) SetRole(u user.Role) *UserUpdateOne {
-	uuo.mutation.SetRole(u)
+func (uuo *UserUpdateOne) SetRole(ur user.Role) *UserUpdateOne {
+	uuo.mutation.SetRole(ur)
 	return uuo
 }
 
 // SetNillableRole sets the "role" field if the given value is not nil.
-func (uuo *UserUpdateOne) SetNillableRole(u *user.Role) *UserUpdateOne {
-	if u != nil {
-		uuo.SetRole(*u)
+func (uuo *UserUpdateOne) SetNillableRole(ur *user.Role) *UserUpdateOne {
+	if ur != nil {
+		uuo.SetRole(*ur)
 	}
 	return uuo
 }
 
 // SetEmployment sets the "employment" field.
-func (uuo *UserUpdateOne) SetEmployment(u user.Employment) *UserUpdateOne {
-	uuo.mutation.SetEmployment(u)
+func (uuo *UserUpdateOne) SetEmployment(ue user.Employment) *UserUpdateOne {
+	uuo.mutation.SetEmployment(ue)
 	return uuo
 }
 
 // SetNillableEmployment sets the "employment" field if the given value is not nil.
-func (uuo *UserUpdateOne) SetNillableEmployment(u *user.Employment) *UserUpdateOne {
-	if u != nil {
-		uuo.SetEmployment(*u)
+func (uuo *UserUpdateOne) SetNillableEmployment(ue *user.Employment) *UserUpdateOne {
+	if ue != nil {
+		uuo.SetEmployment(*ue)
 	}
 	return uuo
 }

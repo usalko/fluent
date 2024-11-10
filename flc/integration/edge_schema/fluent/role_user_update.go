@@ -34,15 +34,15 @@ func (ruu *RoleUserUpdate) Where(ps ...predicate.RoleUser) *RoleUserUpdate {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (ruu *RoleUserUpdate) SetCreatedAt(t time.Time) *RoleUserUpdate {
-	ruu.mutation.SetCreatedAt(t)
+func (ruu *RoleUserUpdate) SetCreatedAt(tt time.Time) *RoleUserUpdate {
+	ruu.mutation.SetCreatedAt(tt)
 	return ruu
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (ruu *RoleUserUpdate) SetNillableCreatedAt(t *time.Time) *RoleUserUpdate {
-	if t != nil {
-		ruu.SetCreatedAt(*t)
+func (ruu *RoleUserUpdate) SetNillableCreatedAt(tt *time.Time) *RoleUserUpdate {
+	if tt != nil {
+		ruu.SetCreatedAt(*tt)
 	}
 	return ruu
 }
@@ -234,15 +234,15 @@ type RoleUserUpdateOne struct {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (ruuo *RoleUserUpdateOne) SetCreatedAt(t time.Time) *RoleUserUpdateOne {
-	ruuo.mutation.SetCreatedAt(t)
+func (ruuo *RoleUserUpdateOne) SetCreatedAt(tt time.Time) *RoleUserUpdateOne {
+	ruuo.mutation.SetCreatedAt(tt)
 	return ruuo
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (ruuo *RoleUserUpdateOne) SetNillableCreatedAt(t *time.Time) *RoleUserUpdateOne {
-	if t != nil {
-		ruuo.SetCreatedAt(*t)
+func (ruuo *RoleUserUpdateOne) SetNillableCreatedAt(tt *time.Time) *RoleUserUpdateOne {
+	if tt != nil {
+		ruuo.SetCreatedAt(*tt)
 	}
 	return ruuo
 }

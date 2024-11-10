@@ -13,7 +13,7 @@ import (
 )
 
 const (
-	// Label holds the string label denoting the usergroup type in the database.
+	// Label holds the string label denoting the user_group type in the database.
 	Label = "user_group"
 	// FieldID holds the string denoting the id field in the database.
 	FieldID = "id"
@@ -27,7 +27,7 @@ const (
 	EdgeUser = "user"
 	// EdgeGroup holds the string denoting the group edge name in mutations.
 	EdgeGroup = "group"
-	// Table holds the table name of the usergroup in the database.
+	// Table holds the table name of the user_group in the database.
 	Table = "user_groups"
 	// UserTable is the table that holds the user relation/edge.
 	UserTable = "user_groups"
@@ -45,7 +45,7 @@ const (
 	GroupColumn = "group_id"
 )
 
-// Columns holds all SQL columns for usergroup fields.
+// Columns holds all SQL columns for user_group fields.
 var Columns = []string{
 	FieldID,
 	FieldJoinedAt,

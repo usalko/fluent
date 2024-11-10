@@ -147,8 +147,8 @@ func (m *CardMutation) IDs(ctx context.Context) ([]int, error) {
 }
 
 // SetExpired sets the "expired" field.
-func (m *CardMutation) SetExpired(t time.Time) {
-	m.expired = &t
+func (m *CardMutation) SetExpired(tt time.Time) {
+	m.expired = &tt
 }
 
 // Expired returns the value of the "expired" field in the mutation.

@@ -43,8 +43,8 @@ func (gc *GroupCreate) SetNillableActive(b *bool) *GroupCreate {
 }
 
 // SetExpire sets the "expire" field.
-func (gc *GroupCreate) SetExpire(t time.Time) *GroupCreate {
-	gc.mutation.SetExpire(t)
+func (gc *GroupCreate) SetExpire(tt time.Time) *GroupCreate {
+	gc.mutation.SetExpire(tt)
 	return gc
 }
 

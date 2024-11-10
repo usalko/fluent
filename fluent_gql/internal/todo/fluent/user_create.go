@@ -49,15 +49,15 @@ func (uc *UserCreate) SetNillableName(s *string) *UserCreate {
 }
 
 // SetUsername sets the "username" field.
-func (uc *UserCreate) SetUsername(u uuid.UUID) *UserCreate {
-	uc.mutation.SetUsername(u)
+func (uc *UserCreate) SetUsername(uu uuid.UUID) *UserCreate {
+	uc.mutation.SetUsername(uu)
 	return uc
 }
 
 // SetNillableUsername sets the "username" field if the given value is not nil.
-func (uc *UserCreate) SetNillableUsername(u *uuid.UUID) *UserCreate {
-	if u != nil {
-		uc.SetUsername(*u)
+func (uc *UserCreate) SetNillableUsername(uu *uuid.UUID) *UserCreate {
+	if uu != nil {
+		uc.SetUsername(*uu)
 	}
 	return uc
 }

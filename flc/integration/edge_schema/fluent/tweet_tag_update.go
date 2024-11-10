@@ -34,15 +34,15 @@ func (ttu *TweetTagUpdate) Where(ps ...predicate.TweetTag) *TweetTagUpdate {
 }
 
 // SetAddedAt sets the "added_at" field.
-func (ttu *TweetTagUpdate) SetAddedAt(t time.Time) *TweetTagUpdate {
-	ttu.mutation.SetAddedAt(t)
+func (ttu *TweetTagUpdate) SetAddedAt(tt time.Time) *TweetTagUpdate {
+	ttu.mutation.SetAddedAt(tt)
 	return ttu
 }
 
 // SetNillableAddedAt sets the "added_at" field if the given value is not nil.
-func (ttu *TweetTagUpdate) SetNillableAddedAt(t *time.Time) *TweetTagUpdate {
-	if t != nil {
-		ttu.SetAddedAt(*t)
+func (ttu *TweetTagUpdate) SetNillableAddedAt(tt *time.Time) *TweetTagUpdate {
+	if tt != nil {
+		ttu.SetAddedAt(*tt)
 	}
 	return ttu
 }
@@ -234,15 +234,15 @@ type TweetTagUpdateOne struct {
 }
 
 // SetAddedAt sets the "added_at" field.
-func (ttuo *TweetTagUpdateOne) SetAddedAt(t time.Time) *TweetTagUpdateOne {
-	ttuo.mutation.SetAddedAt(t)
+func (ttuo *TweetTagUpdateOne) SetAddedAt(tt time.Time) *TweetTagUpdateOne {
+	ttuo.mutation.SetAddedAt(tt)
 	return ttuo
 }
 
 // SetNillableAddedAt sets the "added_at" field if the given value is not nil.
-func (ttuo *TweetTagUpdateOne) SetNillableAddedAt(t *time.Time) *TweetTagUpdateOne {
-	if t != nil {
-		ttuo.SetAddedAt(*t)
+func (ttuo *TweetTagUpdateOne) SetNillableAddedAt(tt *time.Time) *TweetTagUpdateOne {
+	if tt != nil {
+		ttuo.SetAddedAt(*tt)
 	}
 	return ttuo
 }

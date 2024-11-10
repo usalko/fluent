@@ -48,15 +48,15 @@ func (gc *GroupCreate) SetNillableName(s *string) *GroupCreate {
 }
 
 // SetID sets the "id" field.
-func (gc *GroupCreate) SetID(pu pulid.ID) *GroupCreate {
-	gc.mutation.SetID(pu)
+func (gc *GroupCreate) SetID(pi pulid.ID) *GroupCreate {
+	gc.mutation.SetID(pi)
 	return gc
 }
 
 // SetNillableID sets the "id" field if the given value is not nil.
-func (gc *GroupCreate) SetNillableID(pu *pulid.ID) *GroupCreate {
-	if pu != nil {
-		gc.SetID(*pu)
+func (gc *GroupCreate) SetNillableID(pi *pulid.ID) *GroupCreate {
+	if pi != nil {
+		gc.SetID(*pi)
 	}
 	return gc
 }

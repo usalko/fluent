@@ -22,9 +22,9 @@ import (
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/device"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/doc"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/group"
-	"github.com/usalko/fluent/flc/integration/custom_id/fluent/int_s_i_d"
+	"github.com/usalko/fluent/flc/integration/custom_id/fluent/int_sid"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/link"
-	"github.com/usalko/fluent/flc/integration/custom_id/fluent/mixin_i_d"
+	"github.com/usalko/fluent/flc/integration/custom_id/fluent/mixin_id"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/note"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/other"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/pet"
@@ -99,9 +99,9 @@ func checkColumn(table, column string) error {
 			device.Table:    device.ValidColumn,
 			doc.Table:       doc.ValidColumn,
 			group.Table:     group.ValidColumn,
-			int_s_i_d.Table: int_s_i_d.ValidColumn,
+			int_sid.Table:   int_sid.ValidColumn,
 			link.Table:      link.ValidColumn,
-			mixin_i_d.Table: mixin_i_d.ValidColumn,
+			mixin_id.Table:  mixin_id.ValidColumn,
 			note.Table:      note.ValidColumn,
 			other.Table:     other.ValidColumn,
 			pet.Table:       pet.ValidColumn,

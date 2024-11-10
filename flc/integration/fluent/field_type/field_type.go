@@ -17,7 +17,7 @@ import (
 )
 
 const (
-	// Label holds the string label denoting the fieldtype type in the database.
+	// Label holds the string label denoting the field_type type in the database.
 	Label = "field_type"
 	// FieldID holds the string denoting the id field in the database.
 	FieldID = "id"
@@ -151,11 +151,11 @@ const (
 	FieldBigInt = "big_int"
 	// FieldPasswordOther holds the string denoting the password_other field in the database.
 	FieldPasswordOther = "password_other"
-	// Table holds the table name of the fieldtype in the database.
+	// Table holds the table name of the field_type in the database.
 	Table = "field_types"
 )
 
-// Columns holds all SQL columns for fieldtype fields.
+// Columns holds all SQL columns for field_type fields.
 var Columns = []string{
 	FieldID,
 	FieldInt,

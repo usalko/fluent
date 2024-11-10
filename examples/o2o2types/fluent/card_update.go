@@ -33,15 +33,15 @@ func (cu *CardUpdate) Where(ps ...predicate.Card) *CardUpdate {
 }
 
 // SetExpired sets the "expired" field.
-func (cu *CardUpdate) SetExpired(t time.Time) *CardUpdate {
-	cu.mutation.SetExpired(t)
+func (cu *CardUpdate) SetExpired(tt time.Time) *CardUpdate {
+	cu.mutation.SetExpired(tt)
 	return cu
 }
 
 // SetNillableExpired sets the "expired" field if the given value is not nil.
-func (cu *CardUpdate) SetNillableExpired(t *time.Time) *CardUpdate {
-	if t != nil {
-		cu.SetExpired(*t)
+func (cu *CardUpdate) SetNillableExpired(tt *time.Time) *CardUpdate {
+	if tt != nil {
+		cu.SetExpired(*tt)
 	}
 	return cu
 }
@@ -185,15 +185,15 @@ type CardUpdateOne struct {
 }
 
 // SetExpired sets the "expired" field.
-func (cuo *CardUpdateOne) SetExpired(t time.Time) *CardUpdateOne {
-	cuo.mutation.SetExpired(t)
+func (cuo *CardUpdateOne) SetExpired(tt time.Time) *CardUpdateOne {
+	cuo.mutation.SetExpired(tt)
 	return cuo
 }
 
 // SetNillableExpired sets the "expired" field if the given value is not nil.
-func (cuo *CardUpdateOne) SetNillableExpired(t *time.Time) *CardUpdateOne {
-	if t != nil {
-		cuo.SetExpired(*t)
+func (cuo *CardUpdateOne) SetNillableExpired(tt *time.Time) *CardUpdateOne {
+	if tt != nil {
+		cuo.SetExpired(*tt)
 	}
 	return cuo
 }

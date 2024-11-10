@@ -34,15 +34,15 @@ func (afu *AttachedFileUpdate) Where(ps ...predicate.AttachedFile) *AttachedFile
 }
 
 // SetAttachTime sets the "attach_time" field.
-func (afu *AttachedFileUpdate) SetAttachTime(t time.Time) *AttachedFileUpdate {
-	afu.mutation.SetAttachTime(t)
+func (afu *AttachedFileUpdate) SetAttachTime(tt time.Time) *AttachedFileUpdate {
+	afu.mutation.SetAttachTime(tt)
 	return afu
 }
 
 // SetNillableAttachTime sets the "attach_time" field if the given value is not nil.
-func (afu *AttachedFileUpdate) SetNillableAttachTime(t *time.Time) *AttachedFileUpdate {
-	if t != nil {
-		afu.SetAttachTime(*t)
+func (afu *AttachedFileUpdate) SetNillableAttachTime(tt *time.Time) *AttachedFileUpdate {
+	if tt != nil {
+		afu.SetAttachTime(*tt)
 	}
 	return afu
 }
@@ -240,15 +240,15 @@ type AttachedFileUpdateOne struct {
 }
 
 // SetAttachTime sets the "attach_time" field.
-func (afuo *AttachedFileUpdateOne) SetAttachTime(t time.Time) *AttachedFileUpdateOne {
-	afuo.mutation.SetAttachTime(t)
+func (afuo *AttachedFileUpdateOne) SetAttachTime(tt time.Time) *AttachedFileUpdateOne {
+	afuo.mutation.SetAttachTime(tt)
 	return afuo
 }
 
 // SetNillableAttachTime sets the "attach_time" field if the given value is not nil.
-func (afuo *AttachedFileUpdateOne) SetNillableAttachTime(t *time.Time) *AttachedFileUpdateOne {
-	if t != nil {
-		afuo.SetAttachTime(*t)
+func (afuo *AttachedFileUpdateOne) SetNillableAttachTime(tt *time.Time) *AttachedFileUpdateOne {
+	if tt != nil {
+		afuo.SetAttachTime(*tt)
 	}
 	return afuo
 }

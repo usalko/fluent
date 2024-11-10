@@ -60,8 +60,8 @@ func (nu *NodeUpdate) ClearValue() *NodeUpdate {
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (nu *NodeUpdate) SetUpdatedAt(t time.Time) *NodeUpdate {
-	nu.mutation.SetUpdatedAt(t)
+func (nu *NodeUpdate) SetUpdatedAt(tt time.Time) *NodeUpdate {
+	nu.mutation.SetUpdatedAt(tt)
 	return nu
 }
 
@@ -283,8 +283,8 @@ func (nuo *NodeUpdateOne) ClearValue() *NodeUpdateOne {
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (nuo *NodeUpdateOne) SetUpdatedAt(t time.Time) *NodeUpdateOne {
-	nuo.mutation.SetUpdatedAt(t)
+func (nuo *NodeUpdateOne) SetUpdatedAt(tt time.Time) *NodeUpdateOne {
+	nuo.mutation.SetUpdatedAt(tt)
 	return nuo
 }
 

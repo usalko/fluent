@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	// Label holds the string label denoting the groupinfo type in the database.
+	// Label holds the string label denoting the group_info type in the database.
 	Label = "group_info"
 	// FieldID holds the string denoting the id field in the database.
 	FieldID = "id"
@@ -21,7 +21,7 @@ const (
 	FieldMaxUsers = "max_users"
 	// EdgeGroups holds the string denoting the groups edge name in mutations.
 	EdgeGroups = "groups"
-	// Table holds the table name of the groupinfo in the database.
+	// Table holds the table name of the group_info in the database.
 	Table = "group_infos"
 	// GroupsTable is the table that holds the groups relation/edge.
 	GroupsTable = "groups"
@@ -32,7 +32,7 @@ const (
 	GroupsColumn = "group_info"
 )
 
-// Columns holds all SQL columns for groupinfo fields.
+// Columns holds all SQL columns for group_info fields.
 var Columns = []string{
 	FieldID,
 	FieldDesc,

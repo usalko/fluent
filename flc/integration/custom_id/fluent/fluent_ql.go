@@ -13,9 +13,9 @@ import (
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/device"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/doc"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/group"
-	"github.com/usalko/fluent/flc/integration/custom_id/fluent/int_s_i_d"
+	"github.com/usalko/fluent/flc/integration/custom_id/fluent/int_sid"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/link"
-	"github.com/usalko/fluent/flc/integration/custom_id/fluent/mixin_i_d"
+	"github.com/usalko/fluent/flc/integration/custom_id/fluent/mixin_id"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/note"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/other"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/pet"
@@ -141,11 +141,11 @@ var schemaGraph = func() *sqlgraph.Schema {
 	}
 	graph.Nodes[7] = &sqlgraph.Node{
 		NodeSpec: sqlgraph.NodeSpec{
-			Table:   int_s_i_d.Table,
-			Columns: int_s_i_d.Columns,
+			Table:   int_sid.Table,
+			Columns: int_sid.Columns,
 			ID: &sqlgraph.FieldSpec{
 				Type:   field.TypeInt64,
-				Column: int_s_i_d.FieldID,
+				Column: int_sid.FieldID,
 			},
 		},
 		Type:   "IntSID",
@@ -167,17 +167,17 @@ var schemaGraph = func() *sqlgraph.Schema {
 	}
 	graph.Nodes[9] = &sqlgraph.Node{
 		NodeSpec: sqlgraph.NodeSpec{
-			Table:   mixin_i_d.Table,
-			Columns: mixin_i_d.Columns,
+			Table:   mixin_id.Table,
+			Columns: mixin_id.Columns,
 			ID: &sqlgraph.FieldSpec{
 				Type:   field.TypeUUID,
-				Column: mixin_i_d.FieldID,
+				Column: mixin_id.FieldID,
 			},
 		},
 		Type: "MixinID",
 		Fields: map[string]*sqlgraph.FieldSpec{
-			mixin_i_d.FieldSomeField:  {Type: field.TypeString, Column: mixin_i_d.FieldSomeField},
-			mixin_i_d.FieldMixinField: {Type: field.TypeString, Column: mixin_i_d.FieldMixinField},
+			mixin_id.FieldSomeField:  {Type: field.TypeString, Column: mixin_id.FieldSomeField},
+			mixin_id.FieldMixinField: {Type: field.TypeString, Column: mixin_id.FieldMixinField},
 		},
 	}
 	graph.Nodes[10] = &sqlgraph.Node{
@@ -429,8 +429,8 @@ var schemaGraph = func() *sqlgraph.Schema {
 		&sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.M2O,
 			Inverse: false,
-			Table:   int_s_i_d.ParentTable,
-			Columns: []string{int_s_i_d.ParentColumn},
+			Table:   int_sid.ParentTable,
+			Columns: []string{int_sid.ParentColumn},
 			Bidi:    true,
 		},
 		"IntSID",
@@ -441,8 +441,8 @@ var schemaGraph = func() *sqlgraph.Schema {
 		&sqlgraph.EdgeSpec{
 			Rel:     sqlgraph.O2M,
 			Inverse: true,
-			Table:   int_s_i_d.ChildrenTable,
-			Columns: []string{int_s_i_d.ChildrenColumn},
+			Table:   int_sid.ChildrenTable,
+			Columns: []string{int_sid.ChildrenColumn},
 			Bidi:    false,
 		},
 		"IntSID",
@@ -1109,13 +1109,13 @@ func (f *GroupFilter) WhereHasUsersWith(preds ...predicate.User) {
 }
 
 // addPredicate implements the predicateAdder interface.
-func (isq *IntSIDQuery) addPredicate(pred func(s *sql.Selector)) {
-	isq.predicates = append(isq.predicates, pred)
+func (is *IntSIDQuery) addPredicate(pred func(s *sql.Selector)) {
+	is.predicates = append(is.predicates, pred)
 }
 
 // Filter returns a Filter implementation to apply filters on the IntSIDQuery builder.
-func (isq *IntSIDQuery) Filter() *IntSIDFilter {
-	return &IntSIDFilter{config: isq.config, predicateAdder: isq}
+func (is *IntSIDQuery) Filter() *IntSIDFilter {
+	return &IntSIDFilter{config: is.config, predicateAdder: is}
 }
 
 // addPredicate implements the predicateAdder interface.
@@ -1145,7 +1145,7 @@ func (f *IntSIDFilter) Where(p fluent_ql.P) {
 
 // WhereID applies the fluent_ql int64 predicate on the id field.
 func (f *IntSIDFilter) WhereID(p fluent_ql.Int64P) {
-	f.Where(p.Field(int_s_i_d.FieldID))
+	f.Where(p.Field(int_sid.FieldID))
 }
 
 // WhereHasParent applies a predicate to check if query has an edge parent.
@@ -1222,13 +1222,13 @@ func (f *LinkFilter) WhereLinkInformation(p fluent_ql.BytesP) {
 }
 
 // addPredicate implements the predicateAdder interface.
-func (miq *MixinIDQuery) addPredicate(pred func(s *sql.Selector)) {
-	miq.predicates = append(miq.predicates, pred)
+func (mi *MixinIDQuery) addPredicate(pred func(s *sql.Selector)) {
+	mi.predicates = append(mi.predicates, pred)
 }
 
 // Filter returns a Filter implementation to apply filters on the MixinIDQuery builder.
-func (miq *MixinIDQuery) Filter() *MixinIDFilter {
-	return &MixinIDFilter{config: miq.config, predicateAdder: miq}
+func (mi *MixinIDQuery) Filter() *MixinIDFilter {
+	return &MixinIDFilter{config: mi.config, predicateAdder: mi}
 }
 
 // addPredicate implements the predicateAdder interface.
@@ -1258,17 +1258,17 @@ func (f *MixinIDFilter) Where(p fluent_ql.P) {
 
 // WhereID applies the fluent_ql [16]byte predicate on the id field.
 func (f *MixinIDFilter) WhereID(p fluent_ql.ValueP) {
-	f.Where(p.Field(mixin_i_d.FieldID))
+	f.Where(p.Field(mixin_id.FieldID))
 }
 
 // WhereSomeField applies the fluent_ql string predicate on the some_field field.
 func (f *MixinIDFilter) WhereSomeField(p fluent_ql.StringP) {
-	f.Where(p.Field(mixin_i_d.FieldSomeField))
+	f.Where(p.Field(mixin_id.FieldSomeField))
 }
 
 // WhereMixinField applies the fluent_ql string predicate on the mixin_field field.
 func (f *MixinIDFilter) WhereMixinField(p fluent_ql.StringP) {
-	f.Where(p.Field(mixin_i_d.FieldMixinField))
+	f.Where(p.Field(mixin_id.FieldMixinField))
 }
 
 // addPredicate implements the predicateAdder interface.

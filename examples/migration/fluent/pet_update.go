@@ -89,15 +89,15 @@ func (pu *PetUpdate) AddWeight(f float64) *PetUpdate {
 }
 
 // SetBestFriendID sets the "best_friend_id" field.
-func (pu *PetUpdate) SetBestFriendID(u uuid.UUID) *PetUpdate {
-	pu.mutation.SetBestFriendID(u)
+func (pu *PetUpdate) SetBestFriendID(uu uuid.UUID) *PetUpdate {
+	pu.mutation.SetBestFriendID(uu)
 	return pu
 }
 
 // SetNillableBestFriendID sets the "best_friend_id" field if the given value is not nil.
-func (pu *PetUpdate) SetNillableBestFriendID(u *uuid.UUID) *PetUpdate {
-	if u != nil {
-		pu.SetBestFriendID(*u)
+func (pu *PetUpdate) SetNillableBestFriendID(uu *uuid.UUID) *PetUpdate {
+	if uu != nil {
+		pu.SetBestFriendID(*uu)
 	}
 	return pu
 }
@@ -343,15 +343,15 @@ func (puo *PetUpdateOne) AddWeight(f float64) *PetUpdateOne {
 }
 
 // SetBestFriendID sets the "best_friend_id" field.
-func (puo *PetUpdateOne) SetBestFriendID(u uuid.UUID) *PetUpdateOne {
-	puo.mutation.SetBestFriendID(u)
+func (puo *PetUpdateOne) SetBestFriendID(uu uuid.UUID) *PetUpdateOne {
+	puo.mutation.SetBestFriendID(uu)
 	return puo
 }
 
 // SetNillableBestFriendID sets the "best_friend_id" field if the given value is not nil.
-func (puo *PetUpdateOne) SetNillableBestFriendID(u *uuid.UUID) *PetUpdateOne {
-	if u != nil {
-		puo.SetBestFriendID(*u)
+func (puo *PetUpdateOne) SetNillableBestFriendID(uu *uuid.UUID) *PetUpdateOne {
+	if uu != nil {
+		puo.SetBestFriendID(*uu)
 	}
 	return puo
 }

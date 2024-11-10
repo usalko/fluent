@@ -29,29 +29,29 @@ type CardCreate struct {
 }
 
 // SetCreateTime sets the "create_time" field.
-func (cc *CardCreate) SetCreateTime(t time.Time) *CardCreate {
-	cc.mutation.SetCreateTime(t)
+func (cc *CardCreate) SetCreateTime(tt time.Time) *CardCreate {
+	cc.mutation.SetCreateTime(tt)
 	return cc
 }
 
 // SetNillableCreateTime sets the "create_time" field if the given value is not nil.
-func (cc *CardCreate) SetNillableCreateTime(t *time.Time) *CardCreate {
-	if t != nil {
-		cc.SetCreateTime(*t)
+func (cc *CardCreate) SetNillableCreateTime(tt *time.Time) *CardCreate {
+	if tt != nil {
+		cc.SetCreateTime(*tt)
 	}
 	return cc
 }
 
 // SetUpdateTime sets the "update_time" field.
-func (cc *CardCreate) SetUpdateTime(t time.Time) *CardCreate {
-	cc.mutation.SetUpdateTime(t)
+func (cc *CardCreate) SetUpdateTime(tt time.Time) *CardCreate {
+	cc.mutation.SetUpdateTime(tt)
 	return cc
 }
 
 // SetNillableUpdateTime sets the "update_time" field if the given value is not nil.
-func (cc *CardCreate) SetNillableUpdateTime(t *time.Time) *CardCreate {
-	if t != nil {
-		cc.SetUpdateTime(*t)
+func (cc *CardCreate) SetNillableUpdateTime(tt *time.Time) *CardCreate {
+	if tt != nil {
+		cc.SetUpdateTime(*tt)
 	}
 	return cc
 }

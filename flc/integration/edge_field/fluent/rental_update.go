@@ -32,15 +32,15 @@ func (ru *RentalUpdate) Where(ps ...predicate.Rental) *RentalUpdate {
 }
 
 // SetDate sets the "date" field.
-func (ru *RentalUpdate) SetDate(t time.Time) *RentalUpdate {
-	ru.mutation.SetDate(t)
+func (ru *RentalUpdate) SetDate(tt time.Time) *RentalUpdate {
+	ru.mutation.SetDate(tt)
 	return ru
 }
 
 // SetNillableDate sets the "date" field if the given value is not nil.
-func (ru *RentalUpdate) SetNillableDate(t *time.Time) *RentalUpdate {
-	if t != nil {
-		ru.SetDate(*t)
+func (ru *RentalUpdate) SetNillableDate(tt *time.Time) *RentalUpdate {
+	if tt != nil {
+		ru.SetDate(*tt)
 	}
 	return ru
 }
@@ -124,15 +124,15 @@ type RentalUpdateOne struct {
 }
 
 // SetDate sets the "date" field.
-func (ruo *RentalUpdateOne) SetDate(t time.Time) *RentalUpdateOne {
-	ruo.mutation.SetDate(t)
+func (ruo *RentalUpdateOne) SetDate(tt time.Time) *RentalUpdateOne {
+	ruo.mutation.SetDate(tt)
 	return ruo
 }
 
 // SetNillableDate sets the "date" field if the given value is not nil.
-func (ruo *RentalUpdateOne) SetNillableDate(t *time.Time) *RentalUpdateOne {
-	if t != nil {
-		ruo.SetDate(*t)
+func (ruo *RentalUpdateOne) SetNillableDate(tt *time.Time) *RentalUpdateOne {
+	if tt != nil {
+		ruo.SetDate(*tt)
 	}
 	return ruo
 }

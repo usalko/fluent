@@ -68,29 +68,29 @@ func (tu *TaskUpdate) ClearDescription() *TaskUpdate {
 }
 
 // SetStatus sets the "status" field.
-func (tu *TaskUpdate) SetStatus(t task.Status) *TaskUpdate {
-	tu.mutation.SetStatus(t)
+func (tu *TaskUpdate) SetStatus(ts task.Status) *TaskUpdate {
+	tu.mutation.SetStatus(ts)
 	return tu
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (tu *TaskUpdate) SetNillableStatus(t *task.Status) *TaskUpdate {
-	if t != nil {
-		tu.SetStatus(*t)
+func (tu *TaskUpdate) SetNillableStatus(ts *task.Status) *TaskUpdate {
+	if ts != nil {
+		tu.SetStatus(*ts)
 	}
 	return tu
 }
 
 // SetUUID sets the "uuid" field.
-func (tu *TaskUpdate) SetUUID(u uuid.UUID) *TaskUpdate {
-	tu.mutation.SetUUID(u)
+func (tu *TaskUpdate) SetUUID(uu uuid.UUID) *TaskUpdate {
+	tu.mutation.SetUUID(uu)
 	return tu
 }
 
 // SetNillableUUID sets the "uuid" field if the given value is not nil.
-func (tu *TaskUpdate) SetNillableUUID(u *uuid.UUID) *TaskUpdate {
-	if u != nil {
-		tu.SetUUID(*u)
+func (tu *TaskUpdate) SetNillableUUID(uu *uuid.UUID) *TaskUpdate {
+	if uu != nil {
+		tu.SetUUID(*uu)
 	}
 	return tu
 }
@@ -368,29 +368,29 @@ func (tuo *TaskUpdateOne) ClearDescription() *TaskUpdateOne {
 }
 
 // SetStatus sets the "status" field.
-func (tuo *TaskUpdateOne) SetStatus(t task.Status) *TaskUpdateOne {
-	tuo.mutation.SetStatus(t)
+func (tuo *TaskUpdateOne) SetStatus(ts task.Status) *TaskUpdateOne {
+	tuo.mutation.SetStatus(ts)
 	return tuo
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (tuo *TaskUpdateOne) SetNillableStatus(t *task.Status) *TaskUpdateOne {
-	if t != nil {
-		tuo.SetStatus(*t)
+func (tuo *TaskUpdateOne) SetNillableStatus(ts *task.Status) *TaskUpdateOne {
+	if ts != nil {
+		tuo.SetStatus(*ts)
 	}
 	return tuo
 }
 
 // SetUUID sets the "uuid" field.
-func (tuo *TaskUpdateOne) SetUUID(u uuid.UUID) *TaskUpdateOne {
-	tuo.mutation.SetUUID(u)
+func (tuo *TaskUpdateOne) SetUUID(uu uuid.UUID) *TaskUpdateOne {
+	tuo.mutation.SetUUID(uu)
 	return tuo
 }
 
 // SetNillableUUID sets the "uuid" field if the given value is not nil.
-func (tuo *TaskUpdateOne) SetNillableUUID(u *uuid.UUID) *TaskUpdateOne {
-	if u != nil {
-		tuo.SetUUID(*u)
+func (tuo *TaskUpdateOne) SetNillableUUID(uu *uuid.UUID) *TaskUpdateOne {
+	if uu != nil {
+		tuo.SetUUID(*uu)
 	}
 	return tuo
 }

@@ -18,7 +18,7 @@ import (
 )
 
 const (
-	// Label holds the string label denoting the fieldtype type in the database.
+	// Label holds the string label denoting the field_type type in the database.
 	Label = "field_type"
 	// FieldID holds the string denoting the id field in the database.
 	FieldID = "id"

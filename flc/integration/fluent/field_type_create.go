@@ -285,15 +285,15 @@ func (ftc *FieldTypeCreate) SetNillableOptionalUint64(u *uint64) *FieldTypeCreat
 }
 
 // SetState sets the "state" field.
-func (ftc *FieldTypeCreate) SetState(ft field_type.State) *FieldTypeCreate {
-	ftc.mutation.SetState(ft)
+func (ftc *FieldTypeCreate) SetState(fts field_type.State) *FieldTypeCreate {
+	ftc.mutation.SetState(fts)
 	return ftc
 }
 
 // SetNillableState sets the "state" field if the given value is not nil.
-func (ftc *FieldTypeCreate) SetNillableState(ft *field_type.State) *FieldTypeCreate {
-	if ft != nil {
-		ftc.SetState(*ft)
+func (ftc *FieldTypeCreate) SetNillableState(fts *field_type.State) *FieldTypeCreate {
+	if fts != nil {
+		ftc.SetState(*fts)
 	}
 	return ftc
 }
@@ -341,15 +341,15 @@ func (ftc *FieldTypeCreate) SetNillableText(s *string) *FieldTypeCreate {
 }
 
 // SetDatetime sets the "datetime" field.
-func (ftc *FieldTypeCreate) SetDatetime(t time.Time) *FieldTypeCreate {
-	ftc.mutation.SetDatetime(t)
+func (ftc *FieldTypeCreate) SetDatetime(tt time.Time) *FieldTypeCreate {
+	ftc.mutation.SetDatetime(tt)
 	return ftc
 }
 
 // SetNillableDatetime sets the "datetime" field if the given value is not nil.
-func (ftc *FieldTypeCreate) SetNillableDatetime(t *time.Time) *FieldTypeCreate {
-	if t != nil {
-		ftc.SetDatetime(*t)
+func (ftc *FieldTypeCreate) SetNillableDatetime(tt *time.Time) *FieldTypeCreate {
+	if tt != nil {
+		ftc.SetDatetime(*tt)
 	}
 	return ftc
 }
@@ -369,34 +369,34 @@ func (ftc *FieldTypeCreate) SetNillableDecimal(f *float64) *FieldTypeCreate {
 }
 
 // SetLinkOther sets the "link_other" field.
-func (ftc *FieldTypeCreate) SetLinkOther(s *schema.Link) *FieldTypeCreate {
-	ftc.mutation.SetLinkOther(s)
+func (ftc *FieldTypeCreate) SetLinkOther(sl *schema.Link) *FieldTypeCreate {
+	ftc.mutation.SetLinkOther(sl)
 	return ftc
 }
 
 // SetLinkOtherFunc sets the "link_other_func" field.
-func (ftc *FieldTypeCreate) SetLinkOtherFunc(s *schema.Link) *FieldTypeCreate {
-	ftc.mutation.SetLinkOtherFunc(s)
+func (ftc *FieldTypeCreate) SetLinkOtherFunc(sl *schema.Link) *FieldTypeCreate {
+	ftc.mutation.SetLinkOtherFunc(sl)
 	return ftc
 }
 
 // SetMAC sets the "mac" field.
-func (ftc *FieldTypeCreate) SetMAC(s schema.MAC) *FieldTypeCreate {
-	ftc.mutation.SetMAC(s)
+func (ftc *FieldTypeCreate) SetMAC(sm schema.MAC) *FieldTypeCreate {
+	ftc.mutation.SetMAC(sm)
 	return ftc
 }
 
 // SetNillableMAC sets the "mac" field if the given value is not nil.
-func (ftc *FieldTypeCreate) SetNillableMAC(s *schema.MAC) *FieldTypeCreate {
-	if s != nil {
-		ftc.SetMAC(*s)
+func (ftc *FieldTypeCreate) SetNillableMAC(sm *schema.MAC) *FieldTypeCreate {
+	if sm != nil {
+		ftc.SetMAC(*sm)
 	}
 	return ftc
 }
 
 // SetStringArray sets the "string_array" field.
-func (ftc *FieldTypeCreate) SetStringArray(s schema.Strings) *FieldTypeCreate {
-	ftc.mutation.SetStringArray(s)
+func (ftc *FieldTypeCreate) SetStringArray(ss schema.Strings) *FieldTypeCreate {
+	ftc.mutation.SetStringArray(ss)
 	return ftc
 }
 
@@ -415,138 +415,138 @@ func (ftc *FieldTypeCreate) SetNillablePassword(s *string) *FieldTypeCreate {
 }
 
 // SetStringScanner sets the "string_scanner" field.
-func (ftc *FieldTypeCreate) SetStringScanner(ss schema.StringScanner) *FieldTypeCreate {
-	ftc.mutation.SetStringScanner(ss)
+func (ftc *FieldTypeCreate) SetStringScanner(sss schema.StringScanner) *FieldTypeCreate {
+	ftc.mutation.SetStringScanner(sss)
 	return ftc
 }
 
 // SetNillableStringScanner sets the "string_scanner" field if the given value is not nil.
-func (ftc *FieldTypeCreate) SetNillableStringScanner(ss *schema.StringScanner) *FieldTypeCreate {
-	if ss != nil {
-		ftc.SetStringScanner(*ss)
+func (ftc *FieldTypeCreate) SetNillableStringScanner(sss *schema.StringScanner) *FieldTypeCreate {
+	if sss != nil {
+		ftc.SetStringScanner(*sss)
 	}
 	return ftc
 }
 
 // SetDuration sets the "duration" field.
-func (ftc *FieldTypeCreate) SetDuration(t time.Duration) *FieldTypeCreate {
-	ftc.mutation.SetDuration(t)
+func (ftc *FieldTypeCreate) SetDuration(td time.Duration) *FieldTypeCreate {
+	ftc.mutation.SetDuration(td)
 	return ftc
 }
 
 // SetNillableDuration sets the "duration" field if the given value is not nil.
-func (ftc *FieldTypeCreate) SetNillableDuration(t *time.Duration) *FieldTypeCreate {
-	if t != nil {
-		ftc.SetDuration(*t)
+func (ftc *FieldTypeCreate) SetNillableDuration(td *time.Duration) *FieldTypeCreate {
+	if td != nil {
+		ftc.SetDuration(*td)
 	}
 	return ftc
 }
 
 // SetDir sets the "dir" field.
-func (ftc *FieldTypeCreate) SetDir(h http.Dir) *FieldTypeCreate {
-	ftc.mutation.SetDir(h)
+func (ftc *FieldTypeCreate) SetDir(hd http.Dir) *FieldTypeCreate {
+	ftc.mutation.SetDir(hd)
 	return ftc
 }
 
 // SetNillableDir sets the "dir" field if the given value is not nil.
-func (ftc *FieldTypeCreate) SetNillableDir(h *http.Dir) *FieldTypeCreate {
-	if h != nil {
-		ftc.SetDir(*h)
+func (ftc *FieldTypeCreate) SetNillableDir(hd *http.Dir) *FieldTypeCreate {
+	if hd != nil {
+		ftc.SetDir(*hd)
 	}
 	return ftc
 }
 
 // SetNdir sets the "ndir" field.
-func (ftc *FieldTypeCreate) SetNdir(h http.Dir) *FieldTypeCreate {
-	ftc.mutation.SetNdir(h)
+func (ftc *FieldTypeCreate) SetNdir(hd http.Dir) *FieldTypeCreate {
+	ftc.mutation.SetNdir(hd)
 	return ftc
 }
 
 // SetNillableNdir sets the "ndir" field if the given value is not nil.
-func (ftc *FieldTypeCreate) SetNillableNdir(h *http.Dir) *FieldTypeCreate {
-	if h != nil {
-		ftc.SetNdir(*h)
+func (ftc *FieldTypeCreate) SetNillableNdir(hd *http.Dir) *FieldTypeCreate {
+	if hd != nil {
+		ftc.SetNdir(*hd)
 	}
 	return ftc
 }
 
 // SetStr sets the "str" field.
-func (ftc *FieldTypeCreate) SetStr(ss sql.NullString) *FieldTypeCreate {
-	ftc.mutation.SetStr(ss)
+func (ftc *FieldTypeCreate) SetStr(sns sql.NullString) *FieldTypeCreate {
+	ftc.mutation.SetStr(sns)
 	return ftc
 }
 
 // SetNillableStr sets the "str" field if the given value is not nil.
-func (ftc *FieldTypeCreate) SetNillableStr(ss *sql.NullString) *FieldTypeCreate {
-	if ss != nil {
-		ftc.SetStr(*ss)
+func (ftc *FieldTypeCreate) SetNillableStr(sns *sql.NullString) *FieldTypeCreate {
+	if sns != nil {
+		ftc.SetStr(*sns)
 	}
 	return ftc
 }
 
 // SetNullStr sets the "null_str" field.
-func (ftc *FieldTypeCreate) SetNullStr(ss *sql.NullString) *FieldTypeCreate {
-	ftc.mutation.SetNullStr(ss)
+func (ftc *FieldTypeCreate) SetNullStr(sns *sql.NullString) *FieldTypeCreate {
+	ftc.mutation.SetNullStr(sns)
 	return ftc
 }
 
 // SetLink sets the "link" field.
-func (ftc *FieldTypeCreate) SetLink(s schema.Link) *FieldTypeCreate {
-	ftc.mutation.SetLink(s)
+func (ftc *FieldTypeCreate) SetLink(sl schema.Link) *FieldTypeCreate {
+	ftc.mutation.SetLink(sl)
 	return ftc
 }
 
 // SetNillableLink sets the "link" field if the given value is not nil.
-func (ftc *FieldTypeCreate) SetNillableLink(s *schema.Link) *FieldTypeCreate {
-	if s != nil {
-		ftc.SetLink(*s)
+func (ftc *FieldTypeCreate) SetNillableLink(sl *schema.Link) *FieldTypeCreate {
+	if sl != nil {
+		ftc.SetLink(*sl)
 	}
 	return ftc
 }
 
 // SetNullLink sets the "null_link" field.
-func (ftc *FieldTypeCreate) SetNullLink(s *schema.Link) *FieldTypeCreate {
-	ftc.mutation.SetNullLink(s)
+func (ftc *FieldTypeCreate) SetNullLink(sl *schema.Link) *FieldTypeCreate {
+	ftc.mutation.SetNullLink(sl)
 	return ftc
 }
 
 // SetActive sets the "active" field.
-func (ftc *FieldTypeCreate) SetActive(s schema.Status) *FieldTypeCreate {
-	ftc.mutation.SetActive(s)
+func (ftc *FieldTypeCreate) SetActive(ss schema.Status) *FieldTypeCreate {
+	ftc.mutation.SetActive(ss)
 	return ftc
 }
 
 // SetNillableActive sets the "active" field if the given value is not nil.
-func (ftc *FieldTypeCreate) SetNillableActive(s *schema.Status) *FieldTypeCreate {
-	if s != nil {
-		ftc.SetActive(*s)
+func (ftc *FieldTypeCreate) SetNillableActive(ss *schema.Status) *FieldTypeCreate {
+	if ss != nil {
+		ftc.SetActive(*ss)
 	}
 	return ftc
 }
 
 // SetNullActive sets the "null_active" field.
-func (ftc *FieldTypeCreate) SetNullActive(s schema.Status) *FieldTypeCreate {
-	ftc.mutation.SetNullActive(s)
+func (ftc *FieldTypeCreate) SetNullActive(ss schema.Status) *FieldTypeCreate {
+	ftc.mutation.SetNullActive(ss)
 	return ftc
 }
 
 // SetNillableNullActive sets the "null_active" field if the given value is not nil.
-func (ftc *FieldTypeCreate) SetNillableNullActive(s *schema.Status) *FieldTypeCreate {
-	if s != nil {
-		ftc.SetNullActive(*s)
+func (ftc *FieldTypeCreate) SetNillableNullActive(ss *schema.Status) *FieldTypeCreate {
+	if ss != nil {
+		ftc.SetNullActive(*ss)
 	}
 	return ftc
 }
 
 // SetDeleted sets the "deleted" field.
-func (ftc *FieldTypeCreate) SetDeleted(sb *sql.NullBool) *FieldTypeCreate {
-	ftc.mutation.SetDeleted(sb)
+func (ftc *FieldTypeCreate) SetDeleted(snb *sql.NullBool) *FieldTypeCreate {
+	ftc.mutation.SetDeleted(snb)
 	return ftc
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (ftc *FieldTypeCreate) SetDeletedAt(st *sql.NullTime) *FieldTypeCreate {
-	ftc.mutation.SetDeletedAt(st)
+func (ftc *FieldTypeCreate) SetDeletedAt(snt *sql.NullTime) *FieldTypeCreate {
+	ftc.mutation.SetDeletedAt(snt)
 	return ftc
 }
 
@@ -563,145 +563,145 @@ func (ftc *FieldTypeCreate) SetSensitive(b []byte) *FieldTypeCreate {
 }
 
 // SetIP sets the "ip" field.
-func (ftc *FieldTypeCreate) SetIP(n net.IP) *FieldTypeCreate {
-	ftc.mutation.SetIP(n)
+func (ftc *FieldTypeCreate) SetIP(ni net.IP) *FieldTypeCreate {
+	ftc.mutation.SetIP(ni)
 	return ftc
 }
 
 // SetNullInt64 sets the "null_int64" field.
-func (ftc *FieldTypeCreate) SetNullInt64(si *sql.NullInt64) *FieldTypeCreate {
-	ftc.mutation.SetNullInt64(si)
+func (ftc *FieldTypeCreate) SetNullInt64(sni *sql.NullInt64) *FieldTypeCreate {
+	ftc.mutation.SetNullInt64(sni)
 	return ftc
 }
 
 // SetSchemaInt sets the "schema_int" field.
-func (ftc *FieldTypeCreate) SetSchemaInt(s schema.Int) *FieldTypeCreate {
-	ftc.mutation.SetSchemaInt(s)
+func (ftc *FieldTypeCreate) SetSchemaInt(si schema.Int) *FieldTypeCreate {
+	ftc.mutation.SetSchemaInt(si)
 	return ftc
 }
 
 // SetNillableSchemaInt sets the "schema_int" field if the given value is not nil.
-func (ftc *FieldTypeCreate) SetNillableSchemaInt(s *schema.Int) *FieldTypeCreate {
-	if s != nil {
-		ftc.SetSchemaInt(*s)
+func (ftc *FieldTypeCreate) SetNillableSchemaInt(si *schema.Int) *FieldTypeCreate {
+	if si != nil {
+		ftc.SetSchemaInt(*si)
 	}
 	return ftc
 }
 
 // SetSchemaInt8 sets the "schema_int8" field.
-func (ftc *FieldTypeCreate) SetSchemaInt8(s schema.Int8) *FieldTypeCreate {
-	ftc.mutation.SetSchemaInt8(s)
+func (ftc *FieldTypeCreate) SetSchemaInt8(si schema.Int8) *FieldTypeCreate {
+	ftc.mutation.SetSchemaInt8(si)
 	return ftc
 }
 
 // SetNillableSchemaInt8 sets the "schema_int8" field if the given value is not nil.
-func (ftc *FieldTypeCreate) SetNillableSchemaInt8(s *schema.Int8) *FieldTypeCreate {
-	if s != nil {
-		ftc.SetSchemaInt8(*s)
+func (ftc *FieldTypeCreate) SetNillableSchemaInt8(si *schema.Int8) *FieldTypeCreate {
+	if si != nil {
+		ftc.SetSchemaInt8(*si)
 	}
 	return ftc
 }
 
 // SetSchemaInt64 sets the "schema_int64" field.
-func (ftc *FieldTypeCreate) SetSchemaInt64(s schema.Int64) *FieldTypeCreate {
-	ftc.mutation.SetSchemaInt64(s)
+func (ftc *FieldTypeCreate) SetSchemaInt64(si schema.Int64) *FieldTypeCreate {
+	ftc.mutation.SetSchemaInt64(si)
 	return ftc
 }
 
 // SetNillableSchemaInt64 sets the "schema_int64" field if the given value is not nil.
-func (ftc *FieldTypeCreate) SetNillableSchemaInt64(s *schema.Int64) *FieldTypeCreate {
-	if s != nil {
-		ftc.SetSchemaInt64(*s)
+func (ftc *FieldTypeCreate) SetNillableSchemaInt64(si *schema.Int64) *FieldTypeCreate {
+	if si != nil {
+		ftc.SetSchemaInt64(*si)
 	}
 	return ftc
 }
 
 // SetSchemaFloat sets the "schema_float" field.
-func (ftc *FieldTypeCreate) SetSchemaFloat(s schema.Float64) *FieldTypeCreate {
-	ftc.mutation.SetSchemaFloat(s)
+func (ftc *FieldTypeCreate) SetSchemaFloat(sf schema.Float64) *FieldTypeCreate {
+	ftc.mutation.SetSchemaFloat(sf)
 	return ftc
 }
 
 // SetNillableSchemaFloat sets the "schema_float" field if the given value is not nil.
-func (ftc *FieldTypeCreate) SetNillableSchemaFloat(s *schema.Float64) *FieldTypeCreate {
-	if s != nil {
-		ftc.SetSchemaFloat(*s)
+func (ftc *FieldTypeCreate) SetNillableSchemaFloat(sf *schema.Float64) *FieldTypeCreate {
+	if sf != nil {
+		ftc.SetSchemaFloat(*sf)
 	}
 	return ftc
 }
 
 // SetSchemaFloat32 sets the "schema_float32" field.
-func (ftc *FieldTypeCreate) SetSchemaFloat32(s schema.Float32) *FieldTypeCreate {
-	ftc.mutation.SetSchemaFloat32(s)
+func (ftc *FieldTypeCreate) SetSchemaFloat32(sf schema.Float32) *FieldTypeCreate {
+	ftc.mutation.SetSchemaFloat32(sf)
 	return ftc
 }
 
 // SetNillableSchemaFloat32 sets the "schema_float32" field if the given value is not nil.
-func (ftc *FieldTypeCreate) SetNillableSchemaFloat32(s *schema.Float32) *FieldTypeCreate {
-	if s != nil {
-		ftc.SetSchemaFloat32(*s)
+func (ftc *FieldTypeCreate) SetNillableSchemaFloat32(sf *schema.Float32) *FieldTypeCreate {
+	if sf != nil {
+		ftc.SetSchemaFloat32(*sf)
 	}
 	return ftc
 }
 
 // SetNullFloat sets the "null_float" field.
-func (ftc *FieldTypeCreate) SetNullFloat(sf *sql.NullFloat64) *FieldTypeCreate {
-	ftc.mutation.SetNullFloat(sf)
+func (ftc *FieldTypeCreate) SetNullFloat(snf *sql.NullFloat64) *FieldTypeCreate {
+	ftc.mutation.SetNullFloat(snf)
 	return ftc
 }
 
 // SetRole sets the "role" field.
-func (ftc *FieldTypeCreate) SetRole(r role.Role) *FieldTypeCreate {
-	ftc.mutation.SetRole(r)
+func (ftc *FieldTypeCreate) SetRole(rr role.Role) *FieldTypeCreate {
+	ftc.mutation.SetRole(rr)
 	return ftc
 }
 
 // SetNillableRole sets the "role" field if the given value is not nil.
-func (ftc *FieldTypeCreate) SetNillableRole(r *role.Role) *FieldTypeCreate {
-	if r != nil {
-		ftc.SetRole(*r)
+func (ftc *FieldTypeCreate) SetNillableRole(rr *role.Role) *FieldTypeCreate {
+	if rr != nil {
+		ftc.SetRole(*rr)
 	}
 	return ftc
 }
 
 // SetPriority sets the "priority" field.
-func (ftc *FieldTypeCreate) SetPriority(r role.Priority) *FieldTypeCreate {
-	ftc.mutation.SetPriority(r)
+func (ftc *FieldTypeCreate) SetPriority(rp role.Priority) *FieldTypeCreate {
+	ftc.mutation.SetPriority(rp)
 	return ftc
 }
 
 // SetNillablePriority sets the "priority" field if the given value is not nil.
-func (ftc *FieldTypeCreate) SetNillablePriority(r *role.Priority) *FieldTypeCreate {
-	if r != nil {
-		ftc.SetPriority(*r)
+func (ftc *FieldTypeCreate) SetNillablePriority(rp *role.Priority) *FieldTypeCreate {
+	if rp != nil {
+		ftc.SetPriority(*rp)
 	}
 	return ftc
 }
 
 // SetOptionalUUID sets the "optional_uuid" field.
-func (ftc *FieldTypeCreate) SetOptionalUUID(u uuid.UUID) *FieldTypeCreate {
-	ftc.mutation.SetOptionalUUID(u)
+func (ftc *FieldTypeCreate) SetOptionalUUID(uu uuid.UUID) *FieldTypeCreate {
+	ftc.mutation.SetOptionalUUID(uu)
 	return ftc
 }
 
 // SetNillableOptionalUUID sets the "optional_uuid" field if the given value is not nil.
-func (ftc *FieldTypeCreate) SetNillableOptionalUUID(u *uuid.UUID) *FieldTypeCreate {
-	if u != nil {
-		ftc.SetOptionalUUID(*u)
+func (ftc *FieldTypeCreate) SetNillableOptionalUUID(uu *uuid.UUID) *FieldTypeCreate {
+	if uu != nil {
+		ftc.SetOptionalUUID(*uu)
 	}
 	return ftc
 }
 
 // SetNillableUUID sets the "nillable_uuid" field.
-func (ftc *FieldTypeCreate) SetNillableUUID(u uuid.UUID) *FieldTypeCreate {
-	ftc.mutation.SetNillableUUID(u)
+func (ftc *FieldTypeCreate) SetNillableUUID(uu uuid.UUID) *FieldTypeCreate {
+	ftc.mutation.SetNillableUUID(uu)
 	return ftc
 }
 
 // SetNillableNillableUUID sets the "nillable_uuid" field if the given value is not nil.
-func (ftc *FieldTypeCreate) SetNillableNillableUUID(u *uuid.UUID) *FieldTypeCreate {
-	if u != nil {
-		ftc.SetNillableUUID(*u)
+func (ftc *FieldTypeCreate) SetNillableNillableUUID(uu *uuid.UUID) *FieldTypeCreate {
+	if uu != nil {
+		ftc.SetNillableUUID(*uu)
 	}
 	return ftc
 }
@@ -713,77 +713,77 @@ func (ftc *FieldTypeCreate) SetStrings(s []string) *FieldTypeCreate {
 }
 
 // SetPair sets the "pair" field.
-func (ftc *FieldTypeCreate) SetPair(s schema.Pair) *FieldTypeCreate {
-	ftc.mutation.SetPair(s)
+func (ftc *FieldTypeCreate) SetPair(sp schema.Pair) *FieldTypeCreate {
+	ftc.mutation.SetPair(sp)
 	return ftc
 }
 
 // SetNillablePair sets the "pair" field if the given value is not nil.
-func (ftc *FieldTypeCreate) SetNillablePair(s *schema.Pair) *FieldTypeCreate {
-	if s != nil {
-		ftc.SetPair(*s)
+func (ftc *FieldTypeCreate) SetNillablePair(sp *schema.Pair) *FieldTypeCreate {
+	if sp != nil {
+		ftc.SetPair(*sp)
 	}
 	return ftc
 }
 
 // SetNilPair sets the "nil_pair" field.
-func (ftc *FieldTypeCreate) SetNilPair(s *schema.Pair) *FieldTypeCreate {
-	ftc.mutation.SetNilPair(s)
+func (ftc *FieldTypeCreate) SetNilPair(sp *schema.Pair) *FieldTypeCreate {
+	ftc.mutation.SetNilPair(sp)
 	return ftc
 }
 
 // SetVstring sets the "vstring" field.
-func (ftc *FieldTypeCreate) SetVstring(ss schema.VString) *FieldTypeCreate {
-	ftc.mutation.SetVstring(ss)
+func (ftc *FieldTypeCreate) SetVstring(sv schema.VString) *FieldTypeCreate {
+	ftc.mutation.SetVstring(sv)
 	return ftc
 }
 
 // SetNillableVstring sets the "vstring" field if the given value is not nil.
-func (ftc *FieldTypeCreate) SetNillableVstring(ss *schema.VString) *FieldTypeCreate {
-	if ss != nil {
-		ftc.SetVstring(*ss)
+func (ftc *FieldTypeCreate) SetNillableVstring(sv *schema.VString) *FieldTypeCreate {
+	if sv != nil {
+		ftc.SetVstring(*sv)
 	}
 	return ftc
 }
 
 // SetTriple sets the "triple" field.
-func (ftc *FieldTypeCreate) SetTriple(s schema.Triple) *FieldTypeCreate {
-	ftc.mutation.SetTriple(s)
+func (ftc *FieldTypeCreate) SetTriple(st schema.Triple) *FieldTypeCreate {
+	ftc.mutation.SetTriple(st)
 	return ftc
 }
 
 // SetNillableTriple sets the "triple" field if the given value is not nil.
-func (ftc *FieldTypeCreate) SetNillableTriple(s *schema.Triple) *FieldTypeCreate {
-	if s != nil {
-		ftc.SetTriple(*s)
+func (ftc *FieldTypeCreate) SetNillableTriple(st *schema.Triple) *FieldTypeCreate {
+	if st != nil {
+		ftc.SetTriple(*st)
 	}
 	return ftc
 }
 
 // SetBigInt sets the "big_int" field.
-func (ftc *FieldTypeCreate) SetBigInt(si schema.BigInt) *FieldTypeCreate {
-	ftc.mutation.SetBigInt(si)
+func (ftc *FieldTypeCreate) SetBigInt(sbi schema.BigInt) *FieldTypeCreate {
+	ftc.mutation.SetBigInt(sbi)
 	return ftc
 }
 
 // SetNillableBigInt sets the "big_int" field if the given value is not nil.
-func (ftc *FieldTypeCreate) SetNillableBigInt(si *schema.BigInt) *FieldTypeCreate {
-	if si != nil {
-		ftc.SetBigInt(*si)
+func (ftc *FieldTypeCreate) SetNillableBigInt(sbi *schema.BigInt) *FieldTypeCreate {
+	if sbi != nil {
+		ftc.SetBigInt(*sbi)
 	}
 	return ftc
 }
 
 // SetPasswordOther sets the "password_other" field.
-func (ftc *FieldTypeCreate) SetPasswordOther(s schema.Password) *FieldTypeCreate {
-	ftc.mutation.SetPasswordOther(s)
+func (ftc *FieldTypeCreate) SetPasswordOther(sp schema.Password) *FieldTypeCreate {
+	ftc.mutation.SetPasswordOther(sp)
 	return ftc
 }
 
 // SetNillablePasswordOther sets the "password_other" field if the given value is not nil.
-func (ftc *FieldTypeCreate) SetNillablePasswordOther(s *schema.Password) *FieldTypeCreate {
-	if s != nil {
-		ftc.SetPasswordOther(*s)
+func (ftc *FieldTypeCreate) SetNillablePasswordOther(sp *schema.Password) *FieldTypeCreate {
+	if sp != nil {
+		ftc.SetPasswordOther(*sp)
 	}
 	return ftc
 }

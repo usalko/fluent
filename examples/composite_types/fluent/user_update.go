@@ -29,8 +29,8 @@ func (uu *UserUpdate) Where(ps ...predicate.User) *UserUpdate {
 }
 
 // SetAddress sets the "address" field.
-func (uu *UserUpdate) SetAddress(s *schema.Address) *UserUpdate {
-	uu.mutation.SetAddress(s)
+func (uu *UserUpdate) SetAddress(sa *schema.Address) *UserUpdate {
+	uu.mutation.SetAddress(sa)
 	return uu
 }
 
@@ -99,8 +99,8 @@ type UserUpdateOne struct {
 }
 
 // SetAddress sets the "address" field.
-func (uuo *UserUpdateOne) SetAddress(s *schema.Address) *UserUpdateOne {
-	uuo.mutation.SetAddress(s)
+func (uuo *UserUpdateOne) SetAddress(sa *schema.Address) *UserUpdateOne {
+	uuo.mutation.SetAddress(sa)
 	return uuo
 }
 

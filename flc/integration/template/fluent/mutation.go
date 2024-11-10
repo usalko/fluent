@@ -568,8 +568,8 @@ func (m *PetMutation) ResetAge() {
 }
 
 // SetLicensedAt sets the "licensed_at" field.
-func (m *PetMutation) SetLicensedAt(t time.Time) {
-	m.licensed_at = &t
+func (m *PetMutation) SetLicensedAt(tt time.Time) {
+	m.licensed_at = &tt
 }
 
 // LicensedAt returns the value of the "licensed_at" field in the mutation.

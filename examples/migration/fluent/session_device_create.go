@@ -44,35 +44,35 @@ func (sdc *SessionDeviceCreate) SetLocation(s string) *SessionDeviceCreate {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (sdc *SessionDeviceCreate) SetCreatedAt(t time.Time) *SessionDeviceCreate {
-	sdc.mutation.SetCreatedAt(t)
+func (sdc *SessionDeviceCreate) SetCreatedAt(tt time.Time) *SessionDeviceCreate {
+	sdc.mutation.SetCreatedAt(tt)
 	return sdc
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (sdc *SessionDeviceCreate) SetUpdatedAt(t time.Time) *SessionDeviceCreate {
-	sdc.mutation.SetUpdatedAt(t)
+func (sdc *SessionDeviceCreate) SetUpdatedAt(tt time.Time) *SessionDeviceCreate {
+	sdc.mutation.SetUpdatedAt(tt)
 	return sdc
 }
 
 // SetNillableUpdatedAt sets the "updated_at" field if the given value is not nil.
-func (sdc *SessionDeviceCreate) SetNillableUpdatedAt(t *time.Time) *SessionDeviceCreate {
-	if t != nil {
-		sdc.SetUpdatedAt(*t)
+func (sdc *SessionDeviceCreate) SetNillableUpdatedAt(tt *time.Time) *SessionDeviceCreate {
+	if tt != nil {
+		sdc.SetUpdatedAt(*tt)
 	}
 	return sdc
 }
 
 // SetID sets the "id" field.
-func (sdc *SessionDeviceCreate) SetID(u uuid.UUID) *SessionDeviceCreate {
-	sdc.mutation.SetID(u)
+func (sdc *SessionDeviceCreate) SetID(uu uuid.UUID) *SessionDeviceCreate {
+	sdc.mutation.SetID(uu)
 	return sdc
 }
 
 // SetNillableID sets the "id" field if the given value is not nil.
-func (sdc *SessionDeviceCreate) SetNillableID(u *uuid.UUID) *SessionDeviceCreate {
-	if u != nil {
-		sdc.SetID(*u)
+func (sdc *SessionDeviceCreate) SetNillableID(uu *uuid.UUID) *SessionDeviceCreate {
+	if uu != nil {
+		sdc.SetID(*uu)
 	}
 	return sdc
 }

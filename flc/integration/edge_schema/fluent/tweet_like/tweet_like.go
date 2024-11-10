@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	// Label holds the string label denoting the tweetlike type in the database.
+	// Label holds the string label denoting the tweet_like type in the database.
 	Label = "tweet_like"
 	// FieldLikedAt holds the string denoting the liked_at field in the database.
 	FieldLikedAt = "liked_at"
@@ -30,7 +30,7 @@ const (
 	TweetFieldID = "id"
 	// UserFieldID holds the string denoting the ID field of the User.
 	UserFieldID = "id"
-	// Table holds the table name of the tweetlike in the database.
+	// Table holds the table name of the tweet_like in the database.
 	Table = "tweet_likes"
 	// TweetTable is the table that holds the tweet relation/edge.
 	TweetTable = "tweet_likes"
@@ -48,7 +48,7 @@ const (
 	UserColumn = "user_id"
 )
 
-// Columns holds all SQL columns for tweetlike fields.
+// Columns holds all SQL columns for tweet_like fields.
 var Columns = []string{
 	FieldLikedAt,
 	FieldUserID,

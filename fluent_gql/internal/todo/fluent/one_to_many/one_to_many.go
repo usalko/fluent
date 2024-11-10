@@ -20,7 +20,7 @@ import (
 )
 
 const (
-	// Label holds the string label denoting the onetomany type in the database.
+	// Label holds the string label denoting the one_to_many type in the database.
 	Label = "one_to_many"
 	// FieldID holds the string denoting the id field in the database.
 	FieldID = "id"
@@ -34,7 +34,7 @@ const (
 	EdgeParent = "parent"
 	// EdgeChildren holds the string denoting the children edge name in mutations.
 	EdgeChildren = "children"
-	// Table holds the table name of the onetomany in the database.
+	// Table holds the table name of the one_to_many in the database.
 	Table = "one_to_manies"
 	// ParentTable is the table that holds the parent relation/edge.
 	ParentTable = "one_to_manies"
@@ -46,7 +46,7 @@ const (
 	ChildrenColumn = "parent_id"
 )
 
-// Columns holds all SQL columns for onetomany fields.
+// Columns holds all SQL columns for one_to_many fields.
 var Columns = []string{
 	FieldID,
 	FieldName,

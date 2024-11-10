@@ -185,15 +185,15 @@ func (fu *FileUpdate) ClearFieldID() *FileUpdate {
 }
 
 // SetCreateTime sets the "create_time" field.
-func (fu *FileUpdate) SetCreateTime(t time.Time) *FileUpdate {
-	fu.mutation.SetCreateTime(t)
+func (fu *FileUpdate) SetCreateTime(tt time.Time) *FileUpdate {
+	fu.mutation.SetCreateTime(tt)
 	return fu
 }
 
 // SetNillableCreateTime sets the "create_time" field if the given value is not nil.
-func (fu *FileUpdate) SetNillableCreateTime(t *time.Time) *FileUpdate {
-	if t != nil {
-		fu.SetCreateTime(*t)
+func (fu *FileUpdate) SetNillableCreateTime(tt *time.Time) *FileUpdate {
+	if tt != nil {
+		fu.SetCreateTime(*tt)
 	}
 	return fu
 }
@@ -626,15 +626,15 @@ func (fuo *FileUpdateOne) ClearFieldID() *FileUpdateOne {
 }
 
 // SetCreateTime sets the "create_time" field.
-func (fuo *FileUpdateOne) SetCreateTime(t time.Time) *FileUpdateOne {
-	fuo.mutation.SetCreateTime(t)
+func (fuo *FileUpdateOne) SetCreateTime(tt time.Time) *FileUpdateOne {
+	fuo.mutation.SetCreateTime(tt)
 	return fuo
 }
 
 // SetNillableCreateTime sets the "create_time" field if the given value is not nil.
-func (fuo *FileUpdateOne) SetNillableCreateTime(t *time.Time) *FileUpdateOne {
-	if t != nil {
-		fuo.SetCreateTime(*t)
+func (fuo *FileUpdateOne) SetNillableCreateTime(tt *time.Time) *FileUpdateOne {
+	if tt != nil {
+		fuo.SetCreateTime(*tt)
 	}
 	return fuo
 }

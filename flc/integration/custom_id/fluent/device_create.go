@@ -28,15 +28,15 @@ type DeviceCreate struct {
 }
 
 // SetID sets the "id" field.
-func (dc *DeviceCreate) SetID(s schema.ID) *DeviceCreate {
-	dc.mutation.SetID(s)
+func (dc *DeviceCreate) SetID(si schema.ID) *DeviceCreate {
+	dc.mutation.SetID(si)
 	return dc
 }
 
 // SetNillableID sets the "id" field if the given value is not nil.
-func (dc *DeviceCreate) SetNillableID(s *schema.ID) *DeviceCreate {
-	if s != nil {
-		dc.SetID(*s)
+func (dc *DeviceCreate) SetNillableID(si *schema.ID) *DeviceCreate {
+	if si != nil {
+		dc.SetID(*si)
 	}
 	return dc
 }

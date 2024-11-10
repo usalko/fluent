@@ -42,33 +42,33 @@ func (cc *CategoryCreate) SetText(s string) *CategoryCreate {
 }
 
 // SetStatus sets the "status" field.
-func (cc *CategoryCreate) SetStatus(c category.Status) *CategoryCreate {
-	cc.mutation.SetStatus(c)
+func (cc *CategoryCreate) SetStatus(cs category.Status) *CategoryCreate {
+	cc.mutation.SetStatus(cs)
 	return cc
 }
 
 // SetConfig sets the "config" field.
-func (cc *CategoryCreate) SetConfig(sc *schematype.CategoryConfig) *CategoryCreate {
-	cc.mutation.SetConfig(sc)
+func (cc *CategoryCreate) SetConfig(scc *schematype.CategoryConfig) *CategoryCreate {
+	cc.mutation.SetConfig(scc)
 	return cc
 }
 
 // SetTypes sets the "types" field.
-func (cc *CategoryCreate) SetTypes(st *schematype.CategoryTypes) *CategoryCreate {
-	cc.mutation.SetTypes(st)
+func (cc *CategoryCreate) SetTypes(sct *schematype.CategoryTypes) *CategoryCreate {
+	cc.mutation.SetTypes(sct)
 	return cc
 }
 
 // SetDuration sets the "duration" field.
-func (cc *CategoryCreate) SetDuration(t time.Duration) *CategoryCreate {
-	cc.mutation.SetDuration(t)
+func (cc *CategoryCreate) SetDuration(td time.Duration) *CategoryCreate {
+	cc.mutation.SetDuration(td)
 	return cc
 }
 
 // SetNillableDuration sets the "duration" field if the given value is not nil.
-func (cc *CategoryCreate) SetNillableDuration(t *time.Duration) *CategoryCreate {
-	if t != nil {
-		cc.SetDuration(*t)
+func (cc *CategoryCreate) SetNillableDuration(td *time.Duration) *CategoryCreate {
+	if td != nil {
+		cc.SetDuration(*td)
 	}
 	return cc
 }
@@ -94,15 +94,15 @@ func (cc *CategoryCreate) SetStrings(s []string) *CategoryCreate {
 }
 
 // SetID sets the "id" field.
-func (cc *CategoryCreate) SetID(bi bigintgql.BigInt) *CategoryCreate {
-	cc.mutation.SetID(bi)
+func (cc *CategoryCreate) SetID(bbi bigintgql.BigInt) *CategoryCreate {
+	cc.mutation.SetID(bbi)
 	return cc
 }
 
 // SetNillableID sets the "id" field if the given value is not nil.
-func (cc *CategoryCreate) SetNillableID(bi *bigintgql.BigInt) *CategoryCreate {
-	if bi != nil {
-		cc.SetID(*bi)
+func (cc *CategoryCreate) SetNillableID(bbi *bigintgql.BigInt) *CategoryCreate {
+	if bbi != nil {
+		cc.SetID(*bbi)
 	}
 	return cc
 }

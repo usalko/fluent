@@ -40,15 +40,15 @@ func (nc *NodeCreate) SetNillableValue(i *int) *NodeCreate {
 }
 
 // SetUpdatedAt sets the "updated_at" field.
-func (nc *NodeCreate) SetUpdatedAt(t time.Time) *NodeCreate {
-	nc.mutation.SetUpdatedAt(t)
+func (nc *NodeCreate) SetUpdatedAt(tt time.Time) *NodeCreate {
+	nc.mutation.SetUpdatedAt(tt)
 	return nc
 }
 
 // SetNillableUpdatedAt sets the "updated_at" field if the given value is not nil.
-func (nc *NodeCreate) SetNillableUpdatedAt(t *time.Time) *NodeCreate {
-	if t != nil {
-		nc.SetUpdatedAt(*t)
+func (nc *NodeCreate) SetNillableUpdatedAt(tt *time.Time) *NodeCreate {
+	if tt != nil {
+		nc.SetUpdatedAt(*tt)
 	}
 	return nc
 }

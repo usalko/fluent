@@ -16,7 +16,7 @@ import (
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/device"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/doc"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/link"
-	"github.com/usalko/fluent/flc/integration/custom_id/fluent/mixin_i_d"
+	"github.com/usalko/fluent/flc/integration/custom_id/fluent/mixin_id"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/note"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/other"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/pet"
@@ -118,15 +118,15 @@ func init() {
 	linkDescID := linkFields[0].Descriptor()
 	// link.DefaultID holds the default value on creation for the id field.
 	link.DefaultID = linkDescID.Default.(func() uuidc.UUIDC)
-	mixin_i_dMixin := schema.MixinID{}.Mixin()
-	mixin_i_dMixinFields0 := mixin_i_dMixin[0].Fields()
-	_ = mixin_i_dMixinFields0
-	mixin_i_dFields := schema.MixinID{}.Fields()
-	_ = mixin_i_dFields
-	// mixin_i_dDescID is the schema descriptor for id field.
-	mixin_i_dDescID := mixin_i_dMixinFields0[0].Descriptor()
-	// mixin_i_d.DefaultID holds the default value on creation for the id field.
-	mixin_i_d.DefaultID = mixin_i_dDescID.Default.(func() uuid.UUID)
+	mixin_idMixin := schema.MixinID{}.Mixin()
+	mixin_idMixinFields0 := mixin_idMixin[0].Fields()
+	_ = mixin_idMixinFields0
+	mixin_idFields := schema.MixinID{}.Fields()
+	_ = mixin_idFields
+	// mixin_idDescID is the schema descriptor for id field.
+	mixin_idDescID := mixin_idMixinFields0[0].Descriptor()
+	// mixin_id.DefaultID holds the default value on creation for the id field.
+	mixin_id.DefaultID = mixin_idDescID.Default.(func() uuid.UUID)
 	noteFields := schema.Note{}.Fields()
 	_ = noteFields
 	// noteDescID is the schema descriptor for id field.

@@ -34,15 +34,15 @@ func (ugu *UserGroupUpdate) Where(ps ...predicate.UserGroup) *UserGroupUpdate {
 }
 
 // SetJoinedAt sets the "joined_at" field.
-func (ugu *UserGroupUpdate) SetJoinedAt(t time.Time) *UserGroupUpdate {
-	ugu.mutation.SetJoinedAt(t)
+func (ugu *UserGroupUpdate) SetJoinedAt(tt time.Time) *UserGroupUpdate {
+	ugu.mutation.SetJoinedAt(tt)
 	return ugu
 }
 
 // SetNillableJoinedAt sets the "joined_at" field if the given value is not nil.
-func (ugu *UserGroupUpdate) SetNillableJoinedAt(t *time.Time) *UserGroupUpdate {
-	if t != nil {
-		ugu.SetJoinedAt(*t)
+func (ugu *UserGroupUpdate) SetNillableJoinedAt(tt *time.Time) *UserGroupUpdate {
+	if tt != nil {
+		ugu.SetJoinedAt(*tt)
 	}
 	return ugu
 }
@@ -234,15 +234,15 @@ type UserGroupUpdateOne struct {
 }
 
 // SetJoinedAt sets the "joined_at" field.
-func (uguo *UserGroupUpdateOne) SetJoinedAt(t time.Time) *UserGroupUpdateOne {
-	uguo.mutation.SetJoinedAt(t)
+func (uguo *UserGroupUpdateOne) SetJoinedAt(tt time.Time) *UserGroupUpdateOne {
+	uguo.mutation.SetJoinedAt(tt)
 	return uguo
 }
 
 // SetNillableJoinedAt sets the "joined_at" field if the given value is not nil.
-func (uguo *UserGroupUpdateOne) SetNillableJoinedAt(t *time.Time) *UserGroupUpdateOne {
-	if t != nil {
-		uguo.SetJoinedAt(*t)
+func (uguo *UserGroupUpdateOne) SetNillableJoinedAt(tt *time.Time) *UserGroupUpdateOne {
+	if tt != nil {
+		uguo.SetJoinedAt(*tt)
 	}
 	return uguo
 }

@@ -13,7 +13,7 @@ import (
 )
 
 const (
-	// Label holds the string label denoting the bloblink type in the database.
+	// Label holds the string label denoting the blob_link type in the database.
 	Label = "blob_link"
 	// FieldCreatedAt holds the string denoting the created_at field in the database.
 	FieldCreatedAt = "created_at"
@@ -27,7 +27,7 @@ const (
 	EdgeLink = "link"
 	// BlobFieldID holds the string denoting the ID field of the Blob.
 	BlobFieldID = "id"
-	// Table holds the table name of the bloblink in the database.
+	// Table holds the table name of the blob_link in the database.
 	Table = "blob_links"
 	// BlobTable is the table that holds the blob relation/edge.
 	BlobTable = "blob_links"
@@ -45,7 +45,7 @@ const (
 	LinkColumn = "link_id"
 )
 
-// Columns holds all SQL columns for bloblink fields.
+// Columns holds all SQL columns for blob_link fields.
 var Columns = []string{
 	FieldCreatedAt,
 	FieldBlobID,

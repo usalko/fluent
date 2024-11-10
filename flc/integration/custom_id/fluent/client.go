@@ -29,9 +29,9 @@ import (
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/device"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/doc"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/group"
-	"github.com/usalko/fluent/flc/integration/custom_id/fluent/int_s_i_d"
+	"github.com/usalko/fluent/flc/integration/custom_id/fluent/int_sid"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/link"
-	"github.com/usalko/fluent/flc/integration/custom_id/fluent/mixin_i_d"
+	"github.com/usalko/fluent/flc/integration/custom_id/fluent/mixin_id"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/note"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/other"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/pet"
@@ -1445,13 +1445,13 @@ func NewIntSIDClient(c config) *IntSIDClient {
 }
 
 // Use adds a list of mutation hooks to the hooks stack.
-// A call to `Use(f, g, h)` equals to `int_s_i_d.Hooks(f(g(h())))`.
+// A call to `Use(f, g, h)` equals to `int_sid.Hooks(f(g(h())))`.
 func (c *IntSIDClient) Use(hooks ...Hook) {
 	c.hooks.IntSID = append(c.hooks.IntSID, hooks...)
 }
 
 // Intercept adds a list of query interceptors to the interceptors stack.
-// A call to `Intercept(f, g, h)` equals to `int_s_i_d.Intercept(f(g(h())))`.
+// A call to `Intercept(f, g, h)` equals to `int_sid.Intercept(f(g(h())))`.
 func (c *IntSIDClient) Intercept(interceptors ...Interceptor) {
 	c.inters.IntSID = append(c.inters.IntSID, interceptors...)
 }
@@ -1513,7 +1513,7 @@ func (c *IntSIDClient) DeleteOne(is *IntSID) *IntSIDDeleteOne {
 
 // DeleteOneID returns a builder for deleting the given entity by its id.
 func (c *IntSIDClient) DeleteOneID(id sid.ID) *IntSIDDeleteOne {
-	builder := c.Delete().Where(int_s_i_d.ID(id))
+	builder := c.Delete().Where(int_sid.ID(id))
 	builder.mutation.id = &id
 	builder.mutation.op = OpDeleteOne
 	return &IntSIDDeleteOne{builder}
@@ -1530,7 +1530,7 @@ func (c *IntSIDClient) Query() *IntSIDQuery {
 
 // Get returns a IntSID entity by its id.
 func (c *IntSIDClient) Get(ctx context.Context, id sid.ID) (*IntSID, error) {
-	return c.Query().Where(int_s_i_d.ID(id)).Only(ctx)
+	return c.Query().Where(int_sid.ID(id)).Only(ctx)
 }
 
 // GetX is like Get, but panics if an error occurs.
@@ -1548,9 +1548,9 @@ func (c *IntSIDClient) QueryParent(is *IntSID) *IntSIDQuery {
 	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
 		id := is.ID
 		step := sqlgraph.NewStep(
-			sqlgraph.From(int_s_i_d.Table, int_s_i_d.FieldID, id),
-			sqlgraph.To(int_s_i_d.Table, int_s_i_d.FieldID),
-			sqlgraph.Edge(sqlgraph.M2O, false, int_s_i_d.ParentTable, int_s_i_d.ParentColumn),
+			sqlgraph.From(int_sid.Table, int_sid.FieldID, id),
+			sqlgraph.To(int_sid.Table, int_sid.FieldID),
+			sqlgraph.Edge(sqlgraph.M2O, false, int_sid.ParentTable, int_sid.ParentColumn),
 		)
 		fromV = sqlgraph.Neighbors(is.driver.Dialect(), step)
 		return fromV, nil
@@ -1564,9 +1564,9 @@ func (c *IntSIDClient) QueryChildren(is *IntSID) *IntSIDQuery {
 	query.path = func(context.Context) (fromV *sql.Selector, _ error) {
 		id := is.ID
 		step := sqlgraph.NewStep(
-			sqlgraph.From(int_s_i_d.Table, int_s_i_d.FieldID, id),
-			sqlgraph.To(int_s_i_d.Table, int_s_i_d.FieldID),
-			sqlgraph.Edge(sqlgraph.O2M, true, int_s_i_d.ChildrenTable, int_s_i_d.ChildrenColumn),
+			sqlgraph.From(int_sid.Table, int_sid.FieldID, id),
+			sqlgraph.To(int_sid.Table, int_sid.FieldID),
+			sqlgraph.Edge(sqlgraph.O2M, true, int_sid.ChildrenTable, int_sid.ChildrenColumn),
 		)
 		fromV = sqlgraph.Neighbors(is.driver.Dialect(), step)
 		return fromV, nil
@@ -1743,13 +1743,13 @@ func NewMixinIDClient(c config) *MixinIDClient {
 }
 
 // Use adds a list of mutation hooks to the hooks stack.
-// A call to `Use(f, g, h)` equals to `mixin_i_d.Hooks(f(g(h())))`.
+// A call to `Use(f, g, h)` equals to `mixin_id.Hooks(f(g(h())))`.
 func (c *MixinIDClient) Use(hooks ...Hook) {
 	c.hooks.MixinID = append(c.hooks.MixinID, hooks...)
 }
 
 // Intercept adds a list of query interceptors to the interceptors stack.
-// A call to `Intercept(f, g, h)` equals to `mixin_i_d.Intercept(f(g(h())))`.
+// A call to `Intercept(f, g, h)` equals to `mixin_id.Intercept(f(g(h())))`.
 func (c *MixinIDClient) Intercept(interceptors ...Interceptor) {
 	c.inters.MixinID = append(c.inters.MixinID, interceptors...)
 }
@@ -1811,7 +1811,7 @@ func (c *MixinIDClient) DeleteOne(mi *MixinID) *MixinIDDeleteOne {
 
 // DeleteOneID returns a builder for deleting the given entity by its id.
 func (c *MixinIDClient) DeleteOneID(id uuid.UUID) *MixinIDDeleteOne {
-	builder := c.Delete().Where(mixin_i_d.ID(id))
+	builder := c.Delete().Where(mixin_id.ID(id))
 	builder.mutation.id = &id
 	builder.mutation.op = OpDeleteOne
 	return &MixinIDDeleteOne{builder}
@@ -1828,7 +1828,7 @@ func (c *MixinIDClient) Query() *MixinIDQuery {
 
 // Get returns a MixinID entity by its id.
 func (c *MixinIDClient) Get(ctx context.Context, id uuid.UUID) (*MixinID, error) {
-	return c.Query().Where(mixin_i_d.ID(id)).Only(ctx)
+	return c.Query().Where(mixin_id.ID(id)).Only(ctx)
 }
 
 // GetX is like Get, but panics if an error occurs.

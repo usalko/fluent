@@ -26,29 +26,29 @@ type LicenseCreate struct {
 }
 
 // SetCreateTime sets the "create_time" field.
-func (lc *LicenseCreate) SetCreateTime(t time.Time) *LicenseCreate {
-	lc.mutation.SetCreateTime(t)
+func (lc *LicenseCreate) SetCreateTime(tt time.Time) *LicenseCreate {
+	lc.mutation.SetCreateTime(tt)
 	return lc
 }
 
 // SetNillableCreateTime sets the "create_time" field if the given value is not nil.
-func (lc *LicenseCreate) SetNillableCreateTime(t *time.Time) *LicenseCreate {
-	if t != nil {
-		lc.SetCreateTime(*t)
+func (lc *LicenseCreate) SetNillableCreateTime(tt *time.Time) *LicenseCreate {
+	if tt != nil {
+		lc.SetCreateTime(*tt)
 	}
 	return lc
 }
 
 // SetUpdateTime sets the "update_time" field.
-func (lc *LicenseCreate) SetUpdateTime(t time.Time) *LicenseCreate {
-	lc.mutation.SetUpdateTime(t)
+func (lc *LicenseCreate) SetUpdateTime(tt time.Time) *LicenseCreate {
+	lc.mutation.SetUpdateTime(tt)
 	return lc
 }
 
 // SetNillableUpdateTime sets the "update_time" field if the given value is not nil.
-func (lc *LicenseCreate) SetNillableUpdateTime(t *time.Time) *LicenseCreate {
-	if t != nil {
-		lc.SetUpdateTime(*t)
+func (lc *LicenseCreate) SetNillableUpdateTime(tt *time.Time) *LicenseCreate {
+	if tt != nil {
+		lc.SetUpdateTime(*tt)
 	}
 	return lc
 }

@@ -70,15 +70,15 @@ func (pu *PetUpdate) SetNillableName(s *string) *PetUpdate {
 }
 
 // SetUUID sets the "uuid" field.
-func (pu *PetUpdate) SetUUID(u uuid.UUID) *PetUpdate {
-	pu.mutation.SetUUID(u)
+func (pu *PetUpdate) SetUUID(uu uuid.UUID) *PetUpdate {
+	pu.mutation.SetUUID(uu)
 	return pu
 }
 
 // SetNillableUUID sets the "uuid" field if the given value is not nil.
-func (pu *PetUpdate) SetNillableUUID(u *uuid.UUID) *PetUpdate {
-	if u != nil {
-		pu.SetUUID(*u)
+func (pu *PetUpdate) SetNillableUUID(uu *uuid.UUID) *PetUpdate {
+	if uu != nil {
+		pu.SetUUID(*uu)
 	}
 	return pu
 }
@@ -124,15 +124,15 @@ func (pu *PetUpdate) SetNillableTrained(b *bool) *PetUpdate {
 }
 
 // SetOptionalTime sets the "optional_time" field.
-func (pu *PetUpdate) SetOptionalTime(t time.Time) *PetUpdate {
-	pu.mutation.SetOptionalTime(t)
+func (pu *PetUpdate) SetOptionalTime(tt time.Time) *PetUpdate {
+	pu.mutation.SetOptionalTime(tt)
 	return pu
 }
 
 // SetNillableOptionalTime sets the "optional_time" field if the given value is not nil.
-func (pu *PetUpdate) SetNillableOptionalTime(t *time.Time) *PetUpdate {
-	if t != nil {
-		pu.SetOptionalTime(*t)
+func (pu *PetUpdate) SetNillableOptionalTime(tt *time.Time) *PetUpdate {
+	if tt != nil {
+		pu.SetOptionalTime(*tt)
 	}
 	return pu
 }
@@ -386,15 +386,15 @@ func (puo *PetUpdateOne) SetNillableName(s *string) *PetUpdateOne {
 }
 
 // SetUUID sets the "uuid" field.
-func (puo *PetUpdateOne) SetUUID(u uuid.UUID) *PetUpdateOne {
-	puo.mutation.SetUUID(u)
+func (puo *PetUpdateOne) SetUUID(uu uuid.UUID) *PetUpdateOne {
+	puo.mutation.SetUUID(uu)
 	return puo
 }
 
 // SetNillableUUID sets the "uuid" field if the given value is not nil.
-func (puo *PetUpdateOne) SetNillableUUID(u *uuid.UUID) *PetUpdateOne {
-	if u != nil {
-		puo.SetUUID(*u)
+func (puo *PetUpdateOne) SetNillableUUID(uu *uuid.UUID) *PetUpdateOne {
+	if uu != nil {
+		puo.SetUUID(*uu)
 	}
 	return puo
 }
@@ -440,15 +440,15 @@ func (puo *PetUpdateOne) SetNillableTrained(b *bool) *PetUpdateOne {
 }
 
 // SetOptionalTime sets the "optional_time" field.
-func (puo *PetUpdateOne) SetOptionalTime(t time.Time) *PetUpdateOne {
-	puo.mutation.SetOptionalTime(t)
+func (puo *PetUpdateOne) SetOptionalTime(tt time.Time) *PetUpdateOne {
+	puo.mutation.SetOptionalTime(tt)
 	return puo
 }
 
 // SetNillableOptionalTime sets the "optional_time" field if the given value is not nil.
-func (puo *PetUpdateOne) SetNillableOptionalTime(t *time.Time) *PetUpdateOne {
-	if t != nil {
-		puo.SetOptionalTime(*t)
+func (puo *PetUpdateOne) SetNillableOptionalTime(tt *time.Time) *PetUpdateOne {
+	if tt != nil {
+		puo.SetOptionalTime(*tt)
 	}
 	return puo
 }

@@ -27,15 +27,15 @@ type RentalCreate struct {
 }
 
 // SetDate sets the "date" field.
-func (rc *RentalCreate) SetDate(t time.Time) *RentalCreate {
-	rc.mutation.SetDate(t)
+func (rc *RentalCreate) SetDate(tt time.Time) *RentalCreate {
+	rc.mutation.SetDate(tt)
 	return rc
 }
 
 // SetNillableDate sets the "date" field if the given value is not nil.
-func (rc *RentalCreate) SetNillableDate(t *time.Time) *RentalCreate {
-	if t != nil {
-		rc.SetDate(*t)
+func (rc *RentalCreate) SetNillableDate(tt *time.Time) *RentalCreate {
+	if tt != nil {
+		rc.SetDate(*tt)
 	}
 	return rc
 }
@@ -47,8 +47,8 @@ func (rc *RentalCreate) SetUserID(i int) *RentalCreate {
 }
 
 // SetCarID sets the "car_id" field.
-func (rc *RentalCreate) SetCarID(u uuid.UUID) *RentalCreate {
-	rc.mutation.SetCarID(u)
+func (rc *RentalCreate) SetCarID(uu uuid.UUID) *RentalCreate {
+	rc.mutation.SetCarID(uu)
 	return rc
 }
 

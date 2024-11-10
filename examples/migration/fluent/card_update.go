@@ -76,15 +76,15 @@ func (cu *CardUpdate) SetNillableCvvHash(s *string) *CardUpdate {
 }
 
 // SetExpiresAt sets the "expires_at" field.
-func (cu *CardUpdate) SetExpiresAt(t time.Time) *CardUpdate {
-	cu.mutation.SetExpiresAt(t)
+func (cu *CardUpdate) SetExpiresAt(tt time.Time) *CardUpdate {
+	cu.mutation.SetExpiresAt(tt)
 	return cu
 }
 
 // SetNillableExpiresAt sets the "expires_at" field if the given value is not nil.
-func (cu *CardUpdate) SetNillableExpiresAt(t *time.Time) *CardUpdate {
-	if t != nil {
-		cu.SetExpiresAt(*t)
+func (cu *CardUpdate) SetNillableExpiresAt(tt *time.Time) *CardUpdate {
+	if tt != nil {
+		cu.SetExpiresAt(*tt)
 	}
 	return cu
 }
@@ -360,15 +360,15 @@ func (cuo *CardUpdateOne) SetNillableCvvHash(s *string) *CardUpdateOne {
 }
 
 // SetExpiresAt sets the "expires_at" field.
-func (cuo *CardUpdateOne) SetExpiresAt(t time.Time) *CardUpdateOne {
-	cuo.mutation.SetExpiresAt(t)
+func (cuo *CardUpdateOne) SetExpiresAt(tt time.Time) *CardUpdateOne {
+	cuo.mutation.SetExpiresAt(tt)
 	return cuo
 }
 
 // SetNillableExpiresAt sets the "expires_at" field if the given value is not nil.
-func (cuo *CardUpdateOne) SetNillableExpiresAt(t *time.Time) *CardUpdateOne {
-	if t != nil {
-		cuo.SetExpiresAt(*t)
+func (cuo *CardUpdateOne) SetNillableExpiresAt(tt *time.Time) *CardUpdateOne {
+	if tt != nil {
+		cuo.SetExpiresAt(*tt)
 	}
 	return cuo
 }

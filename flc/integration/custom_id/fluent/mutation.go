@@ -22,9 +22,9 @@ import (
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/device"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/doc"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/group"
-	"github.com/usalko/fluent/flc/integration/custom_id/fluent/int_s_i_d"
+	"github.com/usalko/fluent/flc/integration/custom_id/fluent/int_sid"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/link"
-	"github.com/usalko/fluent/flc/integration/custom_id/fluent/mixin_i_d"
+	"github.com/usalko/fluent/flc/integration/custom_id/fluent/mixin_id"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/note"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/pet"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/predicate"
@@ -614,8 +614,8 @@ func (m *BlobMutation) IDs(ctx context.Context) ([]uuid.UUID, error) {
 }
 
 // SetUUID sets the "uuid" field.
-func (m *BlobMutation) SetUUID(u uuid.UUID) {
-	m.uuid = &u
+func (m *BlobMutation) SetUUID(uu uuid.UUID) {
+	m.uuid = &uu
 }
 
 // UUID returns the value of the "uuid" field in the mutation.
@@ -1118,8 +1118,8 @@ func (m BlobLinkMutation) Tx() (*Tx, error) {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (m *BlobLinkMutation) SetCreatedAt(t time.Time) {
-	m.created_at = &t
+func (m *BlobLinkMutation) SetCreatedAt(tt time.Time) {
+	m.created_at = &tt
 }
 
 // CreatedAt returns the value of the "created_at" field in the mutation.
@@ -1137,8 +1137,8 @@ func (m *BlobLinkMutation) ResetCreatedAt() {
 }
 
 // SetBlobID sets the "blob_id" field.
-func (m *BlobLinkMutation) SetBlobID(u uuid.UUID) {
-	m.blob = &u
+func (m *BlobLinkMutation) SetBlobID(uu uuid.UUID) {
+	m.blob = &uu
 }
 
 // BlobID returns the value of the "blob_id" field in the mutation.
@@ -1156,8 +1156,8 @@ func (m *BlobLinkMutation) ResetBlobID() {
 }
 
 // SetLinkID sets the "link_id" field.
-func (m *BlobLinkMutation) SetLinkID(u uuid.UUID) {
-	m.link = &u
+func (m *BlobLinkMutation) SetLinkID(uu uuid.UUID) {
+	m.link = &uu
 }
 
 // LinkID returns the value of the "link_id" field in the mutation.
@@ -3794,10 +3794,10 @@ func (m *IntSIDMutation) ResetField(name string) error {
 func (m *IntSIDMutation) AddedEdges() []string {
 	edges := make([]string, 0, 2)
 	if m.parent != nil {
-		edges = append(edges, int_s_i_d.EdgeParent)
+		edges = append(edges, int_sid.EdgeParent)
 	}
 	if m.children != nil {
-		edges = append(edges, int_s_i_d.EdgeChildren)
+		edges = append(edges, int_sid.EdgeChildren)
 	}
 	return edges
 }
@@ -3806,11 +3806,11 @@ func (m *IntSIDMutation) AddedEdges() []string {
 // name in this mutation.
 func (m *IntSIDMutation) AddedIDs(name string) []fluent.Value {
 	switch name {
-	case int_s_i_d.EdgeParent:
+	case int_sid.EdgeParent:
 		if id := m.parent; id != nil {
 			return []fluent.Value{*id}
 		}
-	case int_s_i_d.EdgeChildren:
+	case int_sid.EdgeChildren:
 		ids := make([]fluent.Value, 0, len(m.children))
 		for id := range m.children {
 			ids = append(ids, id)
@@ -3824,7 +3824,7 @@ func (m *IntSIDMutation) AddedIDs(name string) []fluent.Value {
 func (m *IntSIDMutation) RemovedEdges() []string {
 	edges := make([]string, 0, 2)
 	if m.removedchildren != nil {
-		edges = append(edges, int_s_i_d.EdgeChildren)
+		edges = append(edges, int_sid.EdgeChildren)
 	}
 	return edges
 }
@@ -3833,7 +3833,7 @@ func (m *IntSIDMutation) RemovedEdges() []string {
 // the given name in this mutation.
 func (m *IntSIDMutation) RemovedIDs(name string) []fluent.Value {
 	switch name {
-	case int_s_i_d.EdgeChildren:
+	case int_sid.EdgeChildren:
 		ids := make([]fluent.Value, 0, len(m.removedchildren))
 		for id := range m.removedchildren {
 			ids = append(ids, id)
@@ -3847,10 +3847,10 @@ func (m *IntSIDMutation) RemovedIDs(name string) []fluent.Value {
 func (m *IntSIDMutation) ClearedEdges() []string {
 	edges := make([]string, 0, 2)
 	if m.clearedparent {
-		edges = append(edges, int_s_i_d.EdgeParent)
+		edges = append(edges, int_sid.EdgeParent)
 	}
 	if m.clearedchildren {
-		edges = append(edges, int_s_i_d.EdgeChildren)
+		edges = append(edges, int_sid.EdgeChildren)
 	}
 	return edges
 }
@@ -3859,9 +3859,9 @@ func (m *IntSIDMutation) ClearedEdges() []string {
 // was cleared in this mutation.
 func (m *IntSIDMutation) EdgeCleared(name string) bool {
 	switch name {
-	case int_s_i_d.EdgeParent:
+	case int_sid.EdgeParent:
 		return m.clearedparent
-	case int_s_i_d.EdgeChildren:
+	case int_sid.EdgeChildren:
 		return m.clearedchildren
 	}
 	return false
@@ -3871,7 +3871,7 @@ func (m *IntSIDMutation) EdgeCleared(name string) bool {
 // if that edge is not defined in the schema.
 func (m *IntSIDMutation) ClearEdge(name string) error {
 	switch name {
-	case int_s_i_d.EdgeParent:
+	case int_sid.EdgeParent:
 		m.ClearParent()
 		return nil
 	}
@@ -3882,10 +3882,10 @@ func (m *IntSIDMutation) ClearEdge(name string) error {
 // It returns an error if the edge is not defined in the schema.
 func (m *IntSIDMutation) ResetEdge(name string) error {
 	switch name {
-	case int_s_i_d.EdgeParent:
+	case int_sid.EdgeParent:
 		m.ResetParent()
 		return nil
-	case int_s_i_d.EdgeChildren:
+	case int_sid.EdgeChildren:
 		m.ResetChildren()
 		return nil
 	}
@@ -4010,8 +4010,8 @@ func (m *LinkMutation) IDs(ctx context.Context) ([]uuidc.UUIDC, error) {
 }
 
 // SetLinkInformation sets the "link_information" field.
-func (m *LinkMutation) SetLinkInformation(mi map[string]schema.LinkInformation) {
-	m.link_information = &mi
+func (m *LinkMutation) SetLinkInformation(mli map[string]schema.LinkInformation) {
+	m.link_information = &mli
 }
 
 // LinkInformation returns the value of the "link_information" field in the mutation.
@@ -4450,10 +4450,10 @@ func (m *MixinIDMutation) Type() string {
 func (m *MixinIDMutation) Fields() []string {
 	fields := make([]string, 0, 2)
 	if m.some_field != nil {
-		fields = append(fields, mixin_i_d.FieldSomeField)
+		fields = append(fields, mixin_id.FieldSomeField)
 	}
 	if m.mixin_field != nil {
-		fields = append(fields, mixin_i_d.FieldMixinField)
+		fields = append(fields, mixin_id.FieldMixinField)
 	}
 	return fields
 }
@@ -4463,9 +4463,9 @@ func (m *MixinIDMutation) Fields() []string {
 // schema.
 func (m *MixinIDMutation) Field(name string) (fluent.Value, bool) {
 	switch name {
-	case mixin_i_d.FieldSomeField:
+	case mixin_id.FieldSomeField:
 		return m.SomeField()
-	case mixin_i_d.FieldMixinField:
+	case mixin_id.FieldMixinField:
 		return m.MixinField()
 	}
 	return nil, false
@@ -4476,9 +4476,9 @@ func (m *MixinIDMutation) Field(name string) (fluent.Value, bool) {
 // database failed.
 func (m *MixinIDMutation) OldField(ctx context.Context, name string) (fluent.Value, error) {
 	switch name {
-	case mixin_i_d.FieldSomeField:
+	case mixin_id.FieldSomeField:
 		return m.OldSomeField(ctx)
-	case mixin_i_d.FieldMixinField:
+	case mixin_id.FieldMixinField:
 		return m.OldMixinField(ctx)
 	}
 	return nil, fmt.Errorf("unknown MixinID field %s", name)
@@ -4489,14 +4489,14 @@ func (m *MixinIDMutation) OldField(ctx context.Context, name string) (fluent.Val
 // type.
 func (m *MixinIDMutation) SetField(name string, value fluent.Value) error {
 	switch name {
-	case mixin_i_d.FieldSomeField:
+	case mixin_id.FieldSomeField:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetSomeField(v)
 		return nil
-	case mixin_i_d.FieldMixinField:
+	case mixin_id.FieldMixinField:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -4552,10 +4552,10 @@ func (m *MixinIDMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *MixinIDMutation) ResetField(name string) error {
 	switch name {
-	case mixin_i_d.FieldSomeField:
+	case mixin_id.FieldSomeField:
 		m.ResetSomeField()
 		return nil
-	case mixin_i_d.FieldMixinField:
+	case mixin_id.FieldMixinField:
 		m.ResetMixinField()
 		return nil
 	}

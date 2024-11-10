@@ -28,15 +28,15 @@ type TweetLikeCreate struct {
 }
 
 // SetLikedAt sets the "liked_at" field.
-func (tlc *TweetLikeCreate) SetLikedAt(t time.Time) *TweetLikeCreate {
-	tlc.mutation.SetLikedAt(t)
+func (tlc *TweetLikeCreate) SetLikedAt(tt time.Time) *TweetLikeCreate {
+	tlc.mutation.SetLikedAt(tt)
 	return tlc
 }
 
 // SetNillableLikedAt sets the "liked_at" field if the given value is not nil.
-func (tlc *TweetLikeCreate) SetNillableLikedAt(t *time.Time) *TweetLikeCreate {
-	if t != nil {
-		tlc.SetLikedAt(*t)
+func (tlc *TweetLikeCreate) SetNillableLikedAt(tt *time.Time) *TweetLikeCreate {
+	if tt != nil {
+		tlc.SetLikedAt(*tt)
 	}
 	return tlc
 }

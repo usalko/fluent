@@ -53,15 +53,15 @@ func (cu *CardUpdate) ClearName() *CardUpdate {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (cu *CardUpdate) SetCreatedAt(t time.Time) *CardUpdate {
-	cu.mutation.SetCreatedAt(t)
+func (cu *CardUpdate) SetCreatedAt(tt time.Time) *CardUpdate {
+	cu.mutation.SetCreatedAt(tt)
 	return cu
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (cu *CardUpdate) SetNillableCreatedAt(t *time.Time) *CardUpdate {
-	if t != nil {
-		cu.SetCreatedAt(*t)
+func (cu *CardUpdate) SetNillableCreatedAt(tt *time.Time) *CardUpdate {
+	if tt != nil {
+		cu.SetCreatedAt(*tt)
 	}
 	return cu
 }
@@ -81,15 +81,15 @@ func (cu *CardUpdate) SetNillableInHook(s *string) *CardUpdate {
 }
 
 // SetExpiredAt sets the "expired_at" field.
-func (cu *CardUpdate) SetExpiredAt(t time.Time) *CardUpdate {
-	cu.mutation.SetExpiredAt(t)
+func (cu *CardUpdate) SetExpiredAt(tt time.Time) *CardUpdate {
+	cu.mutation.SetExpiredAt(tt)
 	return cu
 }
 
 // SetNillableExpiredAt sets the "expired_at" field if the given value is not nil.
-func (cu *CardUpdate) SetNillableExpiredAt(t *time.Time) *CardUpdate {
-	if t != nil {
-		cu.SetExpiredAt(*t)
+func (cu *CardUpdate) SetNillableExpiredAt(tt *time.Time) *CardUpdate {
+	if tt != nil {
+		cu.SetExpiredAt(*tt)
 	}
 	return cu
 }
@@ -254,15 +254,15 @@ func (cuo *CardUpdateOne) ClearName() *CardUpdateOne {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (cuo *CardUpdateOne) SetCreatedAt(t time.Time) *CardUpdateOne {
-	cuo.mutation.SetCreatedAt(t)
+func (cuo *CardUpdateOne) SetCreatedAt(tt time.Time) *CardUpdateOne {
+	cuo.mutation.SetCreatedAt(tt)
 	return cuo
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (cuo *CardUpdateOne) SetNillableCreatedAt(t *time.Time) *CardUpdateOne {
-	if t != nil {
-		cuo.SetCreatedAt(*t)
+func (cuo *CardUpdateOne) SetNillableCreatedAt(tt *time.Time) *CardUpdateOne {
+	if tt != nil {
+		cuo.SetCreatedAt(*tt)
 	}
 	return cuo
 }
@@ -282,15 +282,15 @@ func (cuo *CardUpdateOne) SetNillableInHook(s *string) *CardUpdateOne {
 }
 
 // SetExpiredAt sets the "expired_at" field.
-func (cuo *CardUpdateOne) SetExpiredAt(t time.Time) *CardUpdateOne {
-	cuo.mutation.SetExpiredAt(t)
+func (cuo *CardUpdateOne) SetExpiredAt(tt time.Time) *CardUpdateOne {
+	cuo.mutation.SetExpiredAt(tt)
 	return cuo
 }
 
 // SetNillableExpiredAt sets the "expired_at" field if the given value is not nil.
-func (cuo *CardUpdateOne) SetNillableExpiredAt(t *time.Time) *CardUpdateOne {
-	if t != nil {
-		cuo.SetExpiredAt(*t)
+func (cuo *CardUpdateOne) SetNillableExpiredAt(tt *time.Time) *CardUpdateOne {
+	if tt != nil {
+		cuo.SetExpiredAt(*tt)
 	}
 	return cuo
 }

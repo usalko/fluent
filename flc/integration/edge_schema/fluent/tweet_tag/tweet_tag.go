@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	// Label holds the string label denoting the tweettag type in the database.
+	// Label holds the string label denoting the tweet_tag type in the database.
 	Label = "tweet_tag"
 	// FieldID holds the string denoting the id field in the database.
 	FieldID = "id"
@@ -28,7 +28,7 @@ const (
 	EdgeTag = "tag"
 	// EdgeTweet holds the string denoting the tweet edge name in mutations.
 	EdgeTweet = "tweet"
-	// Table holds the table name of the tweettag in the database.
+	// Table holds the table name of the tweet_tag in the database.
 	Table = "tweet_tags"
 	// TagTable is the table that holds the tag relation/edge.
 	TagTable = "tweet_tags"
@@ -46,7 +46,7 @@ const (
 	TweetColumn = "tweet_id"
 )
 
-// Columns holds all SQL columns for tweettag fields.
+// Columns holds all SQL columns for tweet_tag fields.
 var Columns = []string{
 	FieldID,
 	FieldAddedAt,

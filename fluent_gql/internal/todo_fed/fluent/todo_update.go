@@ -42,15 +42,15 @@ func (tu *TodoUpdate) Where(ps ...predicate.Todo) *TodoUpdate {
 }
 
 // SetStatus sets the "status" field.
-func (tu *TodoUpdate) SetStatus(t todo.Status) *TodoUpdate {
-	tu.mutation.SetStatus(t)
+func (tu *TodoUpdate) SetStatus(ts todo.Status) *TodoUpdate {
+	tu.mutation.SetStatus(ts)
 	return tu
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (tu *TodoUpdate) SetNillableStatus(t *todo.Status) *TodoUpdate {
-	if t != nil {
-		tu.SetStatus(*t)
+func (tu *TodoUpdate) SetNillableStatus(ts *todo.Status) *TodoUpdate {
+	if ts != nil {
+		tu.SetStatus(*ts)
 	}
 	return tu
 }
@@ -443,15 +443,15 @@ type TodoUpdateOne struct {
 }
 
 // SetStatus sets the "status" field.
-func (tuo *TodoUpdateOne) SetStatus(t todo.Status) *TodoUpdateOne {
-	tuo.mutation.SetStatus(t)
+func (tuo *TodoUpdateOne) SetStatus(ts todo.Status) *TodoUpdateOne {
+	tuo.mutation.SetStatus(ts)
 	return tuo
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (tuo *TodoUpdateOne) SetNillableStatus(t *todo.Status) *TodoUpdateOne {
-	if t != nil {
-		tuo.SetStatus(*t)
+func (tuo *TodoUpdateOne) SetNillableStatus(ts *todo.Status) *TodoUpdateOne {
+	if ts != nil {
+		tuo.SetStatus(*ts)
 	}
 	return tuo
 }

@@ -48,15 +48,15 @@ func (pc *PetCreate) SetName(s string) *PetCreate {
 }
 
 // SetUUID sets the "uuid" field.
-func (pc *PetCreate) SetUUID(u uuid.UUID) *PetCreate {
-	pc.mutation.SetUUID(u)
+func (pc *PetCreate) SetUUID(uu uuid.UUID) *PetCreate {
+	pc.mutation.SetUUID(uu)
 	return pc
 }
 
 // SetNillableUUID sets the "uuid" field if the given value is not nil.
-func (pc *PetCreate) SetNillableUUID(u *uuid.UUID) *PetCreate {
-	if u != nil {
-		pc.SetUUID(*u)
+func (pc *PetCreate) SetNillableUUID(uu *uuid.UUID) *PetCreate {
+	if uu != nil {
+		pc.SetUUID(*uu)
 	}
 	return pc
 }
@@ -90,15 +90,15 @@ func (pc *PetCreate) SetNillableTrained(b *bool) *PetCreate {
 }
 
 // SetOptionalTime sets the "optional_time" field.
-func (pc *PetCreate) SetOptionalTime(t time.Time) *PetCreate {
-	pc.mutation.SetOptionalTime(t)
+func (pc *PetCreate) SetOptionalTime(tt time.Time) *PetCreate {
+	pc.mutation.SetOptionalTime(tt)
 	return pc
 }
 
 // SetNillableOptionalTime sets the "optional_time" field if the given value is not nil.
-func (pc *PetCreate) SetNillableOptionalTime(t *time.Time) *PetCreate {
-	if t != nil {
-		pc.SetOptionalTime(*t)
+func (pc *PetCreate) SetNillableOptionalTime(tt *time.Time) *PetCreate {
+	if tt != nil {
+		pc.SetOptionalTime(*tt)
 	}
 	return pc
 }

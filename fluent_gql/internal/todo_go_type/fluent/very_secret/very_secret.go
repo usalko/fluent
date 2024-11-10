@@ -19,17 +19,17 @@ import (
 )
 
 const (
-	// Label holds the string label denoting the verysecret type in the database.
+	// Label holds the string label denoting the very_secret type in the database.
 	Label = "very_secret"
 	// FieldID holds the string denoting the id field in the database.
 	FieldID = "id"
 	// FieldPassword holds the string denoting the password field in the database.
 	FieldPassword = "password"
-	// Table holds the table name of the verysecret in the database.
+	// Table holds the table name of the very_secret in the database.
 	Table = "very_secrets"
 )
 
-// Columns holds all SQL columns for verysecret fields.
+// Columns holds all SQL columns for very_secret fields.
 var Columns = []string{
 	FieldID,
 	FieldPassword,

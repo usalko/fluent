@@ -58,15 +58,15 @@ func (uu *UserUpdate) SetNillableName(s *string) *UserUpdate {
 }
 
 // SetUsername sets the "username" field.
-func (uu *UserUpdate) SetUsername(u uuid.UUID) *UserUpdate {
-	uu.mutation.SetUsername(u)
+func (uu *UserUpdate) SetUsername(value uuid.UUID) *UserUpdate {
+	uu.mutation.SetUsername(value)
 	return uu
 }
 
 // SetNillableUsername sets the "username" field if the given value is not nil.
-func (uu *UserUpdate) SetNillableUsername(u *uuid.UUID) *UserUpdate {
-	if u != nil {
-		uu.SetUsername(*u)
+func (uu *UserUpdate) SetNillableUsername(value *uuid.UUID) *UserUpdate {
+	if value != nil {
+		uu.SetUsername(*value)
 	}
 	return uu
 }
@@ -470,15 +470,15 @@ func (uuo *UserUpdateOne) SetNillableName(s *string) *UserUpdateOne {
 }
 
 // SetUsername sets the "username" field.
-func (uuo *UserUpdateOne) SetUsername(u uuid.UUID) *UserUpdateOne {
-	uuo.mutation.SetUsername(u)
+func (uuo *UserUpdateOne) SetUsername(uu uuid.UUID) *UserUpdateOne {
+	uuo.mutation.SetUsername(uu)
 	return uuo
 }
 
 // SetNillableUsername sets the "username" field if the given value is not nil.
-func (uuo *UserUpdateOne) SetNillableUsername(u *uuid.UUID) *UserUpdateOne {
-	if u != nil {
-		uuo.SetUsername(*u)
+func (uuo *UserUpdateOne) SetNillableUsername(uu *uuid.UUID) *UserUpdateOne {
+	if uu != nil {
+		uuo.SetUsername(*uu)
 	}
 	return uuo
 }

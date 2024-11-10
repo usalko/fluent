@@ -140,21 +140,21 @@ var (
 		Columns:    GroupsColumns,
 		PrimaryKey: []*schema.Column{GroupsColumns[0]},
 	}
-	// IntSiDsColumns holds the columns for the "int_si_ds" table.
-	IntSiDsColumns = []*schema.Column{
+	// IntSidsColumns holds the columns for the "int_sids" table.
+	IntSidsColumns = []*schema.Column{
 		{Name: "id", Type: field.TypeInt64, Increment: true},
 		{Name: "int_sid_parent", Type: field.TypeInt64, Nullable: true},
 	}
-	// IntSiDsTable holds the schema information for the "int_si_ds" table.
-	IntSiDsTable = &schema.Table{
-		Name:       "int_si_ds",
-		Columns:    IntSiDsColumns,
-		PrimaryKey: []*schema.Column{IntSiDsColumns[0]},
+	// IntSidsTable holds the schema information for the "int_sids" table.
+	IntSidsTable = &schema.Table{
+		Name:       "int_sids",
+		Columns:    IntSidsColumns,
+		PrimaryKey: []*schema.Column{IntSidsColumns[0]},
 		ForeignKeys: []*schema.ForeignKey{
 			{
-				Symbol:     "int_si_ds_int_si_ds_parent",
-				Columns:    []*schema.Column{IntSiDsColumns[1]},
-				RefColumns: []*schema.Column{IntSiDsColumns[0]},
+				Symbol:     "int_sids_int_sids_parent",
+				Columns:    []*schema.Column{IntSidsColumns[1]},
+				RefColumns: []*schema.Column{IntSidsColumns[0]},
 				OnDelete:   schema.SetNull,
 			},
 		},
@@ -412,7 +412,7 @@ var (
 		DevicesTable,
 		DocsTable,
 		GroupsTable,
-		IntSiDsTable,
+		IntSidsTable,
 		LinksTable,
 		MixinIdsTable,
 		NotesTable,
@@ -435,7 +435,7 @@ func init() {
 	CarsTable.ForeignKeys[0].RefTable = PetsTable
 	DevicesTable.ForeignKeys[0].RefTable = SessionsTable
 	DocsTable.ForeignKeys[0].RefTable = DocsTable
-	IntSiDsTable.ForeignKeys[0].RefTable = IntSiDsTable
+	IntSidsTable.ForeignKeys[0].RefTable = IntSidsTable
 	NotesTable.ForeignKeys[0].RefTable = NotesTable
 	PetsTable.ForeignKeys[0].RefTable = PetsTable
 	PetsTable.ForeignKeys[1].RefTable = UsersTable

@@ -536,15 +536,15 @@ func (ftu *FieldTypeUpdate) ClearOptionalUint64() *FieldTypeUpdate {
 }
 
 // SetState sets the "state" field.
-func (ftu *FieldTypeUpdate) SetState(ft field_type.State) *FieldTypeUpdate {
-	ftu.mutation.SetState(ft)
+func (ftu *FieldTypeUpdate) SetState(fts field_type.State) *FieldTypeUpdate {
+	ftu.mutation.SetState(fts)
 	return ftu
 }
 
 // SetNillableState sets the "state" field if the given value is not nil.
-func (ftu *FieldTypeUpdate) SetNillableState(ft *field_type.State) *FieldTypeUpdate {
-	if ft != nil {
-		ftu.SetState(*ft)
+func (ftu *FieldTypeUpdate) SetNillableState(fts *field_type.State) *FieldTypeUpdate {
+	if fts != nil {
+		ftu.SetState(*fts)
 	}
 	return ftu
 }
@@ -630,15 +630,15 @@ func (ftu *FieldTypeUpdate) ClearText() *FieldTypeUpdate {
 }
 
 // SetDatetime sets the "datetime" field.
-func (ftu *FieldTypeUpdate) SetDatetime(t time.Time) *FieldTypeUpdate {
-	ftu.mutation.SetDatetime(t)
+func (ftu *FieldTypeUpdate) SetDatetime(tt time.Time) *FieldTypeUpdate {
+	ftu.mutation.SetDatetime(tt)
 	return ftu
 }
 
 // SetNillableDatetime sets the "datetime" field if the given value is not nil.
-func (ftu *FieldTypeUpdate) SetNillableDatetime(t *time.Time) *FieldTypeUpdate {
-	if t != nil {
-		ftu.SetDatetime(*t)
+func (ftu *FieldTypeUpdate) SetNillableDatetime(tt *time.Time) *FieldTypeUpdate {
+	if tt != nil {
+		ftu.SetDatetime(*tt)
 	}
 	return ftu
 }
@@ -677,8 +677,8 @@ func (ftu *FieldTypeUpdate) ClearDecimal() *FieldTypeUpdate {
 }
 
 // SetLinkOther sets the "link_other" field.
-func (ftu *FieldTypeUpdate) SetLinkOther(s *schema.Link) *FieldTypeUpdate {
-	ftu.mutation.SetLinkOther(s)
+func (ftu *FieldTypeUpdate) SetLinkOther(sl *schema.Link) *FieldTypeUpdate {
+	ftu.mutation.SetLinkOther(sl)
 	return ftu
 }
 
@@ -689,8 +689,8 @@ func (ftu *FieldTypeUpdate) ClearLinkOther() *FieldTypeUpdate {
 }
 
 // SetLinkOtherFunc sets the "link_other_func" field.
-func (ftu *FieldTypeUpdate) SetLinkOtherFunc(s *schema.Link) *FieldTypeUpdate {
-	ftu.mutation.SetLinkOtherFunc(s)
+func (ftu *FieldTypeUpdate) SetLinkOtherFunc(sl *schema.Link) *FieldTypeUpdate {
+	ftu.mutation.SetLinkOtherFunc(sl)
 	return ftu
 }
 
@@ -701,15 +701,15 @@ func (ftu *FieldTypeUpdate) ClearLinkOtherFunc() *FieldTypeUpdate {
 }
 
 // SetMAC sets the "mac" field.
-func (ftu *FieldTypeUpdate) SetMAC(s schema.MAC) *FieldTypeUpdate {
-	ftu.mutation.SetMAC(s)
+func (ftu *FieldTypeUpdate) SetMAC(sm schema.MAC) *FieldTypeUpdate {
+	ftu.mutation.SetMAC(sm)
 	return ftu
 }
 
 // SetNillableMAC sets the "mac" field if the given value is not nil.
-func (ftu *FieldTypeUpdate) SetNillableMAC(s *schema.MAC) *FieldTypeUpdate {
-	if s != nil {
-		ftu.SetMAC(*s)
+func (ftu *FieldTypeUpdate) SetNillableMAC(sm *schema.MAC) *FieldTypeUpdate {
+	if sm != nil {
+		ftu.SetMAC(*sm)
 	}
 	return ftu
 }
@@ -721,8 +721,8 @@ func (ftu *FieldTypeUpdate) ClearMAC() *FieldTypeUpdate {
 }
 
 // SetStringArray sets the "string_array" field.
-func (ftu *FieldTypeUpdate) SetStringArray(s schema.Strings) *FieldTypeUpdate {
-	ftu.mutation.SetStringArray(s)
+func (ftu *FieldTypeUpdate) SetStringArray(ss schema.Strings) *FieldTypeUpdate {
+	ftu.mutation.SetStringArray(ss)
 	return ftu
 }
 
@@ -753,15 +753,15 @@ func (ftu *FieldTypeUpdate) ClearPassword() *FieldTypeUpdate {
 }
 
 // SetStringScanner sets the "string_scanner" field.
-func (ftu *FieldTypeUpdate) SetStringScanner(ss schema.StringScanner) *FieldTypeUpdate {
-	ftu.mutation.SetStringScanner(ss)
+func (ftu *FieldTypeUpdate) SetStringScanner(sss schema.StringScanner) *FieldTypeUpdate {
+	ftu.mutation.SetStringScanner(sss)
 	return ftu
 }
 
 // SetNillableStringScanner sets the "string_scanner" field if the given value is not nil.
-func (ftu *FieldTypeUpdate) SetNillableStringScanner(ss *schema.StringScanner) *FieldTypeUpdate {
-	if ss != nil {
-		ftu.SetStringScanner(*ss)
+func (ftu *FieldTypeUpdate) SetNillableStringScanner(sss *schema.StringScanner) *FieldTypeUpdate {
+	if sss != nil {
+		ftu.SetStringScanner(*sss)
 	}
 	return ftu
 }
@@ -773,15 +773,15 @@ func (ftu *FieldTypeUpdate) ClearStringScanner() *FieldTypeUpdate {
 }
 
 // SetDuration sets the "duration" field.
-func (ftu *FieldTypeUpdate) SetDuration(t time.Duration) *FieldTypeUpdate {
+func (ftu *FieldTypeUpdate) SetDuration(td time.Duration) *FieldTypeUpdate {
 	ftu.mutation.ResetDuration()
-	ftu.mutation.SetDuration(t)
+	ftu.mutation.SetDuration(td)
 	return ftu
 }
 
-// AddDuration adds t to the "duration" field.
-func (ftu *FieldTypeUpdate) AddDuration(t time.Duration) *FieldTypeUpdate {
-	ftu.mutation.AddDuration(t)
+// AddDuration adds td to the "duration" field.
+func (ftu *FieldTypeUpdate) AddDuration(td time.Duration) *FieldTypeUpdate {
+	ftu.mutation.AddDuration(td)
 	return ftu
 }
 
@@ -792,29 +792,29 @@ func (ftu *FieldTypeUpdate) ClearDuration() *FieldTypeUpdate {
 }
 
 // SetDir sets the "dir" field.
-func (ftu *FieldTypeUpdate) SetDir(h http.Dir) *FieldTypeUpdate {
-	ftu.mutation.SetDir(h)
+func (ftu *FieldTypeUpdate) SetDir(hd http.Dir) *FieldTypeUpdate {
+	ftu.mutation.SetDir(hd)
 	return ftu
 }
 
 // SetNillableDir sets the "dir" field if the given value is not nil.
-func (ftu *FieldTypeUpdate) SetNillableDir(h *http.Dir) *FieldTypeUpdate {
-	if h != nil {
-		ftu.SetDir(*h)
+func (ftu *FieldTypeUpdate) SetNillableDir(hd *http.Dir) *FieldTypeUpdate {
+	if hd != nil {
+		ftu.SetDir(*hd)
 	}
 	return ftu
 }
 
 // SetNdir sets the "ndir" field.
-func (ftu *FieldTypeUpdate) SetNdir(h http.Dir) *FieldTypeUpdate {
-	ftu.mutation.SetNdir(h)
+func (ftu *FieldTypeUpdate) SetNdir(hd http.Dir) *FieldTypeUpdate {
+	ftu.mutation.SetNdir(hd)
 	return ftu
 }
 
 // SetNillableNdir sets the "ndir" field if the given value is not nil.
-func (ftu *FieldTypeUpdate) SetNillableNdir(h *http.Dir) *FieldTypeUpdate {
-	if h != nil {
-		ftu.SetNdir(*h)
+func (ftu *FieldTypeUpdate) SetNillableNdir(hd *http.Dir) *FieldTypeUpdate {
+	if hd != nil {
+		ftu.SetNdir(*hd)
 	}
 	return ftu
 }
@@ -826,15 +826,15 @@ func (ftu *FieldTypeUpdate) ClearNdir() *FieldTypeUpdate {
 }
 
 // SetStr sets the "str" field.
-func (ftu *FieldTypeUpdate) SetStr(ss sql.NullString) *FieldTypeUpdate {
-	ftu.mutation.SetStr(ss)
+func (ftu *FieldTypeUpdate) SetStr(sns sql.NullString) *FieldTypeUpdate {
+	ftu.mutation.SetStr(sns)
 	return ftu
 }
 
 // SetNillableStr sets the "str" field if the given value is not nil.
-func (ftu *FieldTypeUpdate) SetNillableStr(ss *sql.NullString) *FieldTypeUpdate {
-	if ss != nil {
-		ftu.SetStr(*ss)
+func (ftu *FieldTypeUpdate) SetNillableStr(sns *sql.NullString) *FieldTypeUpdate {
+	if sns != nil {
+		ftu.SetStr(*sns)
 	}
 	return ftu
 }
@@ -846,8 +846,8 @@ func (ftu *FieldTypeUpdate) ClearStr() *FieldTypeUpdate {
 }
 
 // SetNullStr sets the "null_str" field.
-func (ftu *FieldTypeUpdate) SetNullStr(ss *sql.NullString) *FieldTypeUpdate {
-	ftu.mutation.SetNullStr(ss)
+func (ftu *FieldTypeUpdate) SetNullStr(sns *sql.NullString) *FieldTypeUpdate {
+	ftu.mutation.SetNullStr(sns)
 	return ftu
 }
 
@@ -858,15 +858,15 @@ func (ftu *FieldTypeUpdate) ClearNullStr() *FieldTypeUpdate {
 }
 
 // SetLink sets the "link" field.
-func (ftu *FieldTypeUpdate) SetLink(s schema.Link) *FieldTypeUpdate {
-	ftu.mutation.SetLink(s)
+func (ftu *FieldTypeUpdate) SetLink(sl schema.Link) *FieldTypeUpdate {
+	ftu.mutation.SetLink(sl)
 	return ftu
 }
 
 // SetNillableLink sets the "link" field if the given value is not nil.
-func (ftu *FieldTypeUpdate) SetNillableLink(s *schema.Link) *FieldTypeUpdate {
-	if s != nil {
-		ftu.SetLink(*s)
+func (ftu *FieldTypeUpdate) SetNillableLink(sl *schema.Link) *FieldTypeUpdate {
+	if sl != nil {
+		ftu.SetLink(*sl)
 	}
 	return ftu
 }
@@ -878,8 +878,8 @@ func (ftu *FieldTypeUpdate) ClearLink() *FieldTypeUpdate {
 }
 
 // SetNullLink sets the "null_link" field.
-func (ftu *FieldTypeUpdate) SetNullLink(s *schema.Link) *FieldTypeUpdate {
-	ftu.mutation.SetNullLink(s)
+func (ftu *FieldTypeUpdate) SetNullLink(sl *schema.Link) *FieldTypeUpdate {
+	ftu.mutation.SetNullLink(sl)
 	return ftu
 }
 
@@ -890,15 +890,15 @@ func (ftu *FieldTypeUpdate) ClearNullLink() *FieldTypeUpdate {
 }
 
 // SetActive sets the "active" field.
-func (ftu *FieldTypeUpdate) SetActive(s schema.Status) *FieldTypeUpdate {
-	ftu.mutation.SetActive(s)
+func (ftu *FieldTypeUpdate) SetActive(ss schema.Status) *FieldTypeUpdate {
+	ftu.mutation.SetActive(ss)
 	return ftu
 }
 
 // SetNillableActive sets the "active" field if the given value is not nil.
-func (ftu *FieldTypeUpdate) SetNillableActive(s *schema.Status) *FieldTypeUpdate {
-	if s != nil {
-		ftu.SetActive(*s)
+func (ftu *FieldTypeUpdate) SetNillableActive(ss *schema.Status) *FieldTypeUpdate {
+	if ss != nil {
+		ftu.SetActive(*ss)
 	}
 	return ftu
 }
@@ -910,15 +910,15 @@ func (ftu *FieldTypeUpdate) ClearActive() *FieldTypeUpdate {
 }
 
 // SetNullActive sets the "null_active" field.
-func (ftu *FieldTypeUpdate) SetNullActive(s schema.Status) *FieldTypeUpdate {
-	ftu.mutation.SetNullActive(s)
+func (ftu *FieldTypeUpdate) SetNullActive(ss schema.Status) *FieldTypeUpdate {
+	ftu.mutation.SetNullActive(ss)
 	return ftu
 }
 
 // SetNillableNullActive sets the "null_active" field if the given value is not nil.
-func (ftu *FieldTypeUpdate) SetNillableNullActive(s *schema.Status) *FieldTypeUpdate {
-	if s != nil {
-		ftu.SetNullActive(*s)
+func (ftu *FieldTypeUpdate) SetNillableNullActive(ss *schema.Status) *FieldTypeUpdate {
+	if ss != nil {
+		ftu.SetNullActive(*ss)
 	}
 	return ftu
 }
@@ -930,8 +930,8 @@ func (ftu *FieldTypeUpdate) ClearNullActive() *FieldTypeUpdate {
 }
 
 // SetDeleted sets the "deleted" field.
-func (ftu *FieldTypeUpdate) SetDeleted(sb *sql.NullBool) *FieldTypeUpdate {
-	ftu.mutation.SetDeleted(sb)
+func (ftu *FieldTypeUpdate) SetDeleted(snb *sql.NullBool) *FieldTypeUpdate {
+	ftu.mutation.SetDeleted(snb)
 	return ftu
 }
 
@@ -942,8 +942,8 @@ func (ftu *FieldTypeUpdate) ClearDeleted() *FieldTypeUpdate {
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (ftu *FieldTypeUpdate) SetDeletedAt(st *sql.NullTime) *FieldTypeUpdate {
-	ftu.mutation.SetDeletedAt(st)
+func (ftu *FieldTypeUpdate) SetDeletedAt(snt *sql.NullTime) *FieldTypeUpdate {
+	ftu.mutation.SetDeletedAt(snt)
 	return ftu
 }
 
@@ -978,8 +978,8 @@ func (ftu *FieldTypeUpdate) ClearSensitive() *FieldTypeUpdate {
 }
 
 // SetIP sets the "ip" field.
-func (ftu *FieldTypeUpdate) SetIP(n net.IP) *FieldTypeUpdate {
-	ftu.mutation.SetIP(n)
+func (ftu *FieldTypeUpdate) SetIP(ni net.IP) *FieldTypeUpdate {
+	ftu.mutation.SetIP(ni)
 	return ftu
 }
 
@@ -990,8 +990,8 @@ func (ftu *FieldTypeUpdate) ClearIP() *FieldTypeUpdate {
 }
 
 // SetNullInt64 sets the "null_int64" field.
-func (ftu *FieldTypeUpdate) SetNullInt64(si *sql.NullInt64) *FieldTypeUpdate {
-	ftu.mutation.SetNullInt64(si)
+func (ftu *FieldTypeUpdate) SetNullInt64(sni *sql.NullInt64) *FieldTypeUpdate {
+	ftu.mutation.SetNullInt64(sni)
 	return ftu
 }
 
@@ -1002,23 +1002,23 @@ func (ftu *FieldTypeUpdate) ClearNullInt64() *FieldTypeUpdate {
 }
 
 // SetSchemaInt sets the "schema_int" field.
-func (ftu *FieldTypeUpdate) SetSchemaInt(s schema.Int) *FieldTypeUpdate {
+func (ftu *FieldTypeUpdate) SetSchemaInt(si schema.Int) *FieldTypeUpdate {
 	ftu.mutation.ResetSchemaInt()
-	ftu.mutation.SetSchemaInt(s)
+	ftu.mutation.SetSchemaInt(si)
 	return ftu
 }
 
 // SetNillableSchemaInt sets the "schema_int" field if the given value is not nil.
-func (ftu *FieldTypeUpdate) SetNillableSchemaInt(s *schema.Int) *FieldTypeUpdate {
-	if s != nil {
-		ftu.SetSchemaInt(*s)
+func (ftu *FieldTypeUpdate) SetNillableSchemaInt(si *schema.Int) *FieldTypeUpdate {
+	if si != nil {
+		ftu.SetSchemaInt(*si)
 	}
 	return ftu
 }
 
-// AddSchemaInt adds s to the "schema_int" field.
-func (ftu *FieldTypeUpdate) AddSchemaInt(s schema.Int) *FieldTypeUpdate {
-	ftu.mutation.AddSchemaInt(s)
+// AddSchemaInt adds si to the "schema_int" field.
+func (ftu *FieldTypeUpdate) AddSchemaInt(si schema.Int) *FieldTypeUpdate {
+	ftu.mutation.AddSchemaInt(si)
 	return ftu
 }
 
@@ -1029,23 +1029,23 @@ func (ftu *FieldTypeUpdate) ClearSchemaInt() *FieldTypeUpdate {
 }
 
 // SetSchemaInt8 sets the "schema_int8" field.
-func (ftu *FieldTypeUpdate) SetSchemaInt8(s schema.Int8) *FieldTypeUpdate {
+func (ftu *FieldTypeUpdate) SetSchemaInt8(si schema.Int8) *FieldTypeUpdate {
 	ftu.mutation.ResetSchemaInt8()
-	ftu.mutation.SetSchemaInt8(s)
+	ftu.mutation.SetSchemaInt8(si)
 	return ftu
 }
 
 // SetNillableSchemaInt8 sets the "schema_int8" field if the given value is not nil.
-func (ftu *FieldTypeUpdate) SetNillableSchemaInt8(s *schema.Int8) *FieldTypeUpdate {
-	if s != nil {
-		ftu.SetSchemaInt8(*s)
+func (ftu *FieldTypeUpdate) SetNillableSchemaInt8(si *schema.Int8) *FieldTypeUpdate {
+	if si != nil {
+		ftu.SetSchemaInt8(*si)
 	}
 	return ftu
 }
 
-// AddSchemaInt8 adds s to the "schema_int8" field.
-func (ftu *FieldTypeUpdate) AddSchemaInt8(s schema.Int8) *FieldTypeUpdate {
-	ftu.mutation.AddSchemaInt8(s)
+// AddSchemaInt8 adds si to the "schema_int8" field.
+func (ftu *FieldTypeUpdate) AddSchemaInt8(si schema.Int8) *FieldTypeUpdate {
+	ftu.mutation.AddSchemaInt8(si)
 	return ftu
 }
 
@@ -1056,23 +1056,23 @@ func (ftu *FieldTypeUpdate) ClearSchemaInt8() *FieldTypeUpdate {
 }
 
 // SetSchemaInt64 sets the "schema_int64" field.
-func (ftu *FieldTypeUpdate) SetSchemaInt64(s schema.Int64) *FieldTypeUpdate {
+func (ftu *FieldTypeUpdate) SetSchemaInt64(si schema.Int64) *FieldTypeUpdate {
 	ftu.mutation.ResetSchemaInt64()
-	ftu.mutation.SetSchemaInt64(s)
+	ftu.mutation.SetSchemaInt64(si)
 	return ftu
 }
 
 // SetNillableSchemaInt64 sets the "schema_int64" field if the given value is not nil.
-func (ftu *FieldTypeUpdate) SetNillableSchemaInt64(s *schema.Int64) *FieldTypeUpdate {
-	if s != nil {
-		ftu.SetSchemaInt64(*s)
+func (ftu *FieldTypeUpdate) SetNillableSchemaInt64(si *schema.Int64) *FieldTypeUpdate {
+	if si != nil {
+		ftu.SetSchemaInt64(*si)
 	}
 	return ftu
 }
 
-// AddSchemaInt64 adds s to the "schema_int64" field.
-func (ftu *FieldTypeUpdate) AddSchemaInt64(s schema.Int64) *FieldTypeUpdate {
-	ftu.mutation.AddSchemaInt64(s)
+// AddSchemaInt64 adds si to the "schema_int64" field.
+func (ftu *FieldTypeUpdate) AddSchemaInt64(si schema.Int64) *FieldTypeUpdate {
+	ftu.mutation.AddSchemaInt64(si)
 	return ftu
 }
 
@@ -1083,23 +1083,23 @@ func (ftu *FieldTypeUpdate) ClearSchemaInt64() *FieldTypeUpdate {
 }
 
 // SetSchemaFloat sets the "schema_float" field.
-func (ftu *FieldTypeUpdate) SetSchemaFloat(s schema.Float64) *FieldTypeUpdate {
+func (ftu *FieldTypeUpdate) SetSchemaFloat(sf schema.Float64) *FieldTypeUpdate {
 	ftu.mutation.ResetSchemaFloat()
-	ftu.mutation.SetSchemaFloat(s)
+	ftu.mutation.SetSchemaFloat(sf)
 	return ftu
 }
 
 // SetNillableSchemaFloat sets the "schema_float" field if the given value is not nil.
-func (ftu *FieldTypeUpdate) SetNillableSchemaFloat(s *schema.Float64) *FieldTypeUpdate {
-	if s != nil {
-		ftu.SetSchemaFloat(*s)
+func (ftu *FieldTypeUpdate) SetNillableSchemaFloat(sf *schema.Float64) *FieldTypeUpdate {
+	if sf != nil {
+		ftu.SetSchemaFloat(*sf)
 	}
 	return ftu
 }
 
-// AddSchemaFloat adds s to the "schema_float" field.
-func (ftu *FieldTypeUpdate) AddSchemaFloat(s schema.Float64) *FieldTypeUpdate {
-	ftu.mutation.AddSchemaFloat(s)
+// AddSchemaFloat adds sf to the "schema_float" field.
+func (ftu *FieldTypeUpdate) AddSchemaFloat(sf schema.Float64) *FieldTypeUpdate {
+	ftu.mutation.AddSchemaFloat(sf)
 	return ftu
 }
 
@@ -1110,23 +1110,23 @@ func (ftu *FieldTypeUpdate) ClearSchemaFloat() *FieldTypeUpdate {
 }
 
 // SetSchemaFloat32 sets the "schema_float32" field.
-func (ftu *FieldTypeUpdate) SetSchemaFloat32(s schema.Float32) *FieldTypeUpdate {
+func (ftu *FieldTypeUpdate) SetSchemaFloat32(sf schema.Float32) *FieldTypeUpdate {
 	ftu.mutation.ResetSchemaFloat32()
-	ftu.mutation.SetSchemaFloat32(s)
+	ftu.mutation.SetSchemaFloat32(sf)
 	return ftu
 }
 
 // SetNillableSchemaFloat32 sets the "schema_float32" field if the given value is not nil.
-func (ftu *FieldTypeUpdate) SetNillableSchemaFloat32(s *schema.Float32) *FieldTypeUpdate {
-	if s != nil {
-		ftu.SetSchemaFloat32(*s)
+func (ftu *FieldTypeUpdate) SetNillableSchemaFloat32(sf *schema.Float32) *FieldTypeUpdate {
+	if sf != nil {
+		ftu.SetSchemaFloat32(*sf)
 	}
 	return ftu
 }
 
-// AddSchemaFloat32 adds s to the "schema_float32" field.
-func (ftu *FieldTypeUpdate) AddSchemaFloat32(s schema.Float32) *FieldTypeUpdate {
-	ftu.mutation.AddSchemaFloat32(s)
+// AddSchemaFloat32 adds sf to the "schema_float32" field.
+func (ftu *FieldTypeUpdate) AddSchemaFloat32(sf schema.Float32) *FieldTypeUpdate {
+	ftu.mutation.AddSchemaFloat32(sf)
 	return ftu
 }
 
@@ -1137,8 +1137,8 @@ func (ftu *FieldTypeUpdate) ClearSchemaFloat32() *FieldTypeUpdate {
 }
 
 // SetNullFloat sets the "null_float" field.
-func (ftu *FieldTypeUpdate) SetNullFloat(sf *sql.NullFloat64) *FieldTypeUpdate {
-	ftu.mutation.SetNullFloat(sf)
+func (ftu *FieldTypeUpdate) SetNullFloat(snf *sql.NullFloat64) *FieldTypeUpdate {
+	ftu.mutation.SetNullFloat(snf)
 	return ftu
 }
 
@@ -1149,29 +1149,29 @@ func (ftu *FieldTypeUpdate) ClearNullFloat() *FieldTypeUpdate {
 }
 
 // SetRole sets the "role" field.
-func (ftu *FieldTypeUpdate) SetRole(r role.Role) *FieldTypeUpdate {
-	ftu.mutation.SetRole(r)
+func (ftu *FieldTypeUpdate) SetRole(rr role.Role) *FieldTypeUpdate {
+	ftu.mutation.SetRole(rr)
 	return ftu
 }
 
 // SetNillableRole sets the "role" field if the given value is not nil.
-func (ftu *FieldTypeUpdate) SetNillableRole(r *role.Role) *FieldTypeUpdate {
-	if r != nil {
-		ftu.SetRole(*r)
+func (ftu *FieldTypeUpdate) SetNillableRole(rr *role.Role) *FieldTypeUpdate {
+	if rr != nil {
+		ftu.SetRole(*rr)
 	}
 	return ftu
 }
 
 // SetPriority sets the "priority" field.
-func (ftu *FieldTypeUpdate) SetPriority(r role.Priority) *FieldTypeUpdate {
-	ftu.mutation.SetPriority(r)
+func (ftu *FieldTypeUpdate) SetPriority(rp role.Priority) *FieldTypeUpdate {
+	ftu.mutation.SetPriority(rp)
 	return ftu
 }
 
 // SetNillablePriority sets the "priority" field if the given value is not nil.
-func (ftu *FieldTypeUpdate) SetNillablePriority(r *role.Priority) *FieldTypeUpdate {
-	if r != nil {
-		ftu.SetPriority(*r)
+func (ftu *FieldTypeUpdate) SetNillablePriority(rp *role.Priority) *FieldTypeUpdate {
+	if rp != nil {
+		ftu.SetPriority(*rp)
 	}
 	return ftu
 }
@@ -1183,15 +1183,15 @@ func (ftu *FieldTypeUpdate) ClearPriority() *FieldTypeUpdate {
 }
 
 // SetOptionalUUID sets the "optional_uuid" field.
-func (ftu *FieldTypeUpdate) SetOptionalUUID(u uuid.UUID) *FieldTypeUpdate {
-	ftu.mutation.SetOptionalUUID(u)
+func (ftu *FieldTypeUpdate) SetOptionalUUID(uu uuid.UUID) *FieldTypeUpdate {
+	ftu.mutation.SetOptionalUUID(uu)
 	return ftu
 }
 
 // SetNillableOptionalUUID sets the "optional_uuid" field if the given value is not nil.
-func (ftu *FieldTypeUpdate) SetNillableOptionalUUID(u *uuid.UUID) *FieldTypeUpdate {
-	if u != nil {
-		ftu.SetOptionalUUID(*u)
+func (ftu *FieldTypeUpdate) SetNillableOptionalUUID(uu *uuid.UUID) *FieldTypeUpdate {
+	if uu != nil {
+		ftu.SetOptionalUUID(*uu)
 	}
 	return ftu
 }
@@ -1203,15 +1203,15 @@ func (ftu *FieldTypeUpdate) ClearOptionalUUID() *FieldTypeUpdate {
 }
 
 // SetNillableUUID sets the "nillable_uuid" field.
-func (ftu *FieldTypeUpdate) SetNillableUUID(u uuid.UUID) *FieldTypeUpdate {
-	ftu.mutation.SetNillableUUID(u)
+func (ftu *FieldTypeUpdate) SetNillableUUID(uu uuid.UUID) *FieldTypeUpdate {
+	ftu.mutation.SetNillableUUID(uu)
 	return ftu
 }
 
 // SetNillableNillableUUID sets the "nillable_uuid" field if the given value is not nil.
-func (ftu *FieldTypeUpdate) SetNillableNillableUUID(u *uuid.UUID) *FieldTypeUpdate {
-	if u != nil {
-		ftu.SetNillableUUID(*u)
+func (ftu *FieldTypeUpdate) SetNillableNillableUUID(uu *uuid.UUID) *FieldTypeUpdate {
+	if uu != nil {
+		ftu.SetNillableUUID(*uu)
 	}
 	return ftu
 }
@@ -1241,22 +1241,22 @@ func (ftu *FieldTypeUpdate) ClearStrings() *FieldTypeUpdate {
 }
 
 // SetPair sets the "pair" field.
-func (ftu *FieldTypeUpdate) SetPair(s schema.Pair) *FieldTypeUpdate {
-	ftu.mutation.SetPair(s)
+func (ftu *FieldTypeUpdate) SetPair(sp schema.Pair) *FieldTypeUpdate {
+	ftu.mutation.SetPair(sp)
 	return ftu
 }
 
 // SetNillablePair sets the "pair" field if the given value is not nil.
-func (ftu *FieldTypeUpdate) SetNillablePair(s *schema.Pair) *FieldTypeUpdate {
-	if s != nil {
-		ftu.SetPair(*s)
+func (ftu *FieldTypeUpdate) SetNillablePair(sp *schema.Pair) *FieldTypeUpdate {
+	if sp != nil {
+		ftu.SetPair(*sp)
 	}
 	return ftu
 }
 
 // SetNilPair sets the "nil_pair" field.
-func (ftu *FieldTypeUpdate) SetNilPair(s *schema.Pair) *FieldTypeUpdate {
-	ftu.mutation.SetNilPair(s)
+func (ftu *FieldTypeUpdate) SetNilPair(sp *schema.Pair) *FieldTypeUpdate {
+	ftu.mutation.SetNilPair(sp)
 	return ftu
 }
 
@@ -1267,51 +1267,51 @@ func (ftu *FieldTypeUpdate) ClearNilPair() *FieldTypeUpdate {
 }
 
 // SetVstring sets the "vstring" field.
-func (ftu *FieldTypeUpdate) SetVstring(ss schema.VString) *FieldTypeUpdate {
-	ftu.mutation.SetVstring(ss)
+func (ftu *FieldTypeUpdate) SetVstring(sv schema.VString) *FieldTypeUpdate {
+	ftu.mutation.SetVstring(sv)
 	return ftu
 }
 
 // SetNillableVstring sets the "vstring" field if the given value is not nil.
-func (ftu *FieldTypeUpdate) SetNillableVstring(ss *schema.VString) *FieldTypeUpdate {
-	if ss != nil {
-		ftu.SetVstring(*ss)
+func (ftu *FieldTypeUpdate) SetNillableVstring(sv *schema.VString) *FieldTypeUpdate {
+	if sv != nil {
+		ftu.SetVstring(*sv)
 	}
 	return ftu
 }
 
 // SetTriple sets the "triple" field.
-func (ftu *FieldTypeUpdate) SetTriple(s schema.Triple) *FieldTypeUpdate {
-	ftu.mutation.SetTriple(s)
+func (ftu *FieldTypeUpdate) SetTriple(st schema.Triple) *FieldTypeUpdate {
+	ftu.mutation.SetTriple(st)
 	return ftu
 }
 
 // SetNillableTriple sets the "triple" field if the given value is not nil.
-func (ftu *FieldTypeUpdate) SetNillableTriple(s *schema.Triple) *FieldTypeUpdate {
-	if s != nil {
-		ftu.SetTriple(*s)
+func (ftu *FieldTypeUpdate) SetNillableTriple(st *schema.Triple) *FieldTypeUpdate {
+	if st != nil {
+		ftu.SetTriple(*st)
 	}
 	return ftu
 }
 
 // SetBigInt sets the "big_int" field.
-func (ftu *FieldTypeUpdate) SetBigInt(si schema.BigInt) *FieldTypeUpdate {
+func (ftu *FieldTypeUpdate) SetBigInt(sbi schema.BigInt) *FieldTypeUpdate {
 	ftu.mutation.ResetBigInt()
-	ftu.mutation.SetBigInt(si)
+	ftu.mutation.SetBigInt(sbi)
 	return ftu
 }
 
 // SetNillableBigInt sets the "big_int" field if the given value is not nil.
-func (ftu *FieldTypeUpdate) SetNillableBigInt(si *schema.BigInt) *FieldTypeUpdate {
-	if si != nil {
-		ftu.SetBigInt(*si)
+func (ftu *FieldTypeUpdate) SetNillableBigInt(sbi *schema.BigInt) *FieldTypeUpdate {
+	if sbi != nil {
+		ftu.SetBigInt(*sbi)
 	}
 	return ftu
 }
 
-// AddBigInt adds si to the "big_int" field.
-func (ftu *FieldTypeUpdate) AddBigInt(si schema.BigInt) *FieldTypeUpdate {
-	ftu.mutation.AddBigInt(si)
+// AddBigInt adds sbi to the "big_int" field.
+func (ftu *FieldTypeUpdate) AddBigInt(sbi schema.BigInt) *FieldTypeUpdate {
+	ftu.mutation.AddBigInt(sbi)
 	return ftu
 }
 
@@ -1322,15 +1322,15 @@ func (ftu *FieldTypeUpdate) ClearBigInt() *FieldTypeUpdate {
 }
 
 // SetPasswordOther sets the "password_other" field.
-func (ftu *FieldTypeUpdate) SetPasswordOther(s schema.Password) *FieldTypeUpdate {
-	ftu.mutation.SetPasswordOther(s)
+func (ftu *FieldTypeUpdate) SetPasswordOther(sp schema.Password) *FieldTypeUpdate {
+	ftu.mutation.SetPasswordOther(sp)
 	return ftu
 }
 
 // SetNillablePasswordOther sets the "password_other" field if the given value is not nil.
-func (ftu *FieldTypeUpdate) SetNillablePasswordOther(s *schema.Password) *FieldTypeUpdate {
-	if s != nil {
-		ftu.SetPasswordOther(*s)
+func (ftu *FieldTypeUpdate) SetNillablePasswordOther(sp *schema.Password) *FieldTypeUpdate {
+	if sp != nil {
+		ftu.SetPasswordOther(*sp)
 	}
 	return ftu
 }
@@ -2436,15 +2436,15 @@ func (ftuo *FieldTypeUpdateOne) ClearOptionalUint64() *FieldTypeUpdateOne {
 }
 
 // SetState sets the "state" field.
-func (ftuo *FieldTypeUpdateOne) SetState(ft field_type.State) *FieldTypeUpdateOne {
-	ftuo.mutation.SetState(ft)
+func (ftuo *FieldTypeUpdateOne) SetState(fts field_type.State) *FieldTypeUpdateOne {
+	ftuo.mutation.SetState(fts)
 	return ftuo
 }
 
 // SetNillableState sets the "state" field if the given value is not nil.
-func (ftuo *FieldTypeUpdateOne) SetNillableState(ft *field_type.State) *FieldTypeUpdateOne {
-	if ft != nil {
-		ftuo.SetState(*ft)
+func (ftuo *FieldTypeUpdateOne) SetNillableState(fts *field_type.State) *FieldTypeUpdateOne {
+	if fts != nil {
+		ftuo.SetState(*fts)
 	}
 	return ftuo
 }
@@ -2530,15 +2530,15 @@ func (ftuo *FieldTypeUpdateOne) ClearText() *FieldTypeUpdateOne {
 }
 
 // SetDatetime sets the "datetime" field.
-func (ftuo *FieldTypeUpdateOne) SetDatetime(t time.Time) *FieldTypeUpdateOne {
-	ftuo.mutation.SetDatetime(t)
+func (ftuo *FieldTypeUpdateOne) SetDatetime(tt time.Time) *FieldTypeUpdateOne {
+	ftuo.mutation.SetDatetime(tt)
 	return ftuo
 }
 
 // SetNillableDatetime sets the "datetime" field if the given value is not nil.
-func (ftuo *FieldTypeUpdateOne) SetNillableDatetime(t *time.Time) *FieldTypeUpdateOne {
-	if t != nil {
-		ftuo.SetDatetime(*t)
+func (ftuo *FieldTypeUpdateOne) SetNillableDatetime(tt *time.Time) *FieldTypeUpdateOne {
+	if tt != nil {
+		ftuo.SetDatetime(*tt)
 	}
 	return ftuo
 }
@@ -2577,8 +2577,8 @@ func (ftuo *FieldTypeUpdateOne) ClearDecimal() *FieldTypeUpdateOne {
 }
 
 // SetLinkOther sets the "link_other" field.
-func (ftuo *FieldTypeUpdateOne) SetLinkOther(s *schema.Link) *FieldTypeUpdateOne {
-	ftuo.mutation.SetLinkOther(s)
+func (ftuo *FieldTypeUpdateOne) SetLinkOther(sl *schema.Link) *FieldTypeUpdateOne {
+	ftuo.mutation.SetLinkOther(sl)
 	return ftuo
 }
 
@@ -2589,8 +2589,8 @@ func (ftuo *FieldTypeUpdateOne) ClearLinkOther() *FieldTypeUpdateOne {
 }
 
 // SetLinkOtherFunc sets the "link_other_func" field.
-func (ftuo *FieldTypeUpdateOne) SetLinkOtherFunc(s *schema.Link) *FieldTypeUpdateOne {
-	ftuo.mutation.SetLinkOtherFunc(s)
+func (ftuo *FieldTypeUpdateOne) SetLinkOtherFunc(sl *schema.Link) *FieldTypeUpdateOne {
+	ftuo.mutation.SetLinkOtherFunc(sl)
 	return ftuo
 }
 
@@ -2601,15 +2601,15 @@ func (ftuo *FieldTypeUpdateOne) ClearLinkOtherFunc() *FieldTypeUpdateOne {
 }
 
 // SetMAC sets the "mac" field.
-func (ftuo *FieldTypeUpdateOne) SetMAC(s schema.MAC) *FieldTypeUpdateOne {
-	ftuo.mutation.SetMAC(s)
+func (ftuo *FieldTypeUpdateOne) SetMAC(sm schema.MAC) *FieldTypeUpdateOne {
+	ftuo.mutation.SetMAC(sm)
 	return ftuo
 }
 
 // SetNillableMAC sets the "mac" field if the given value is not nil.
-func (ftuo *FieldTypeUpdateOne) SetNillableMAC(s *schema.MAC) *FieldTypeUpdateOne {
-	if s != nil {
-		ftuo.SetMAC(*s)
+func (ftuo *FieldTypeUpdateOne) SetNillableMAC(sm *schema.MAC) *FieldTypeUpdateOne {
+	if sm != nil {
+		ftuo.SetMAC(*sm)
 	}
 	return ftuo
 }
@@ -2621,8 +2621,8 @@ func (ftuo *FieldTypeUpdateOne) ClearMAC() *FieldTypeUpdateOne {
 }
 
 // SetStringArray sets the "string_array" field.
-func (ftuo *FieldTypeUpdateOne) SetStringArray(s schema.Strings) *FieldTypeUpdateOne {
-	ftuo.mutation.SetStringArray(s)
+func (ftuo *FieldTypeUpdateOne) SetStringArray(ss schema.Strings) *FieldTypeUpdateOne {
+	ftuo.mutation.SetStringArray(ss)
 	return ftuo
 }
 
@@ -2653,15 +2653,15 @@ func (ftuo *FieldTypeUpdateOne) ClearPassword() *FieldTypeUpdateOne {
 }
 
 // SetStringScanner sets the "string_scanner" field.
-func (ftuo *FieldTypeUpdateOne) SetStringScanner(ss schema.StringScanner) *FieldTypeUpdateOne {
-	ftuo.mutation.SetStringScanner(ss)
+func (ftuo *FieldTypeUpdateOne) SetStringScanner(sss schema.StringScanner) *FieldTypeUpdateOne {
+	ftuo.mutation.SetStringScanner(sss)
 	return ftuo
 }
 
 // SetNillableStringScanner sets the "string_scanner" field if the given value is not nil.
-func (ftuo *FieldTypeUpdateOne) SetNillableStringScanner(ss *schema.StringScanner) *FieldTypeUpdateOne {
-	if ss != nil {
-		ftuo.SetStringScanner(*ss)
+func (ftuo *FieldTypeUpdateOne) SetNillableStringScanner(sss *schema.StringScanner) *FieldTypeUpdateOne {
+	if sss != nil {
+		ftuo.SetStringScanner(*sss)
 	}
 	return ftuo
 }
@@ -2673,15 +2673,15 @@ func (ftuo *FieldTypeUpdateOne) ClearStringScanner() *FieldTypeUpdateOne {
 }
 
 // SetDuration sets the "duration" field.
-func (ftuo *FieldTypeUpdateOne) SetDuration(t time.Duration) *FieldTypeUpdateOne {
+func (ftuo *FieldTypeUpdateOne) SetDuration(td time.Duration) *FieldTypeUpdateOne {
 	ftuo.mutation.ResetDuration()
-	ftuo.mutation.SetDuration(t)
+	ftuo.mutation.SetDuration(td)
 	return ftuo
 }
 
-// AddDuration adds t to the "duration" field.
-func (ftuo *FieldTypeUpdateOne) AddDuration(t time.Duration) *FieldTypeUpdateOne {
-	ftuo.mutation.AddDuration(t)
+// AddDuration adds td to the "duration" field.
+func (ftuo *FieldTypeUpdateOne) AddDuration(td time.Duration) *FieldTypeUpdateOne {
+	ftuo.mutation.AddDuration(td)
 	return ftuo
 }
 
@@ -2692,29 +2692,29 @@ func (ftuo *FieldTypeUpdateOne) ClearDuration() *FieldTypeUpdateOne {
 }
 
 // SetDir sets the "dir" field.
-func (ftuo *FieldTypeUpdateOne) SetDir(h http.Dir) *FieldTypeUpdateOne {
-	ftuo.mutation.SetDir(h)
+func (ftuo *FieldTypeUpdateOne) SetDir(hd http.Dir) *FieldTypeUpdateOne {
+	ftuo.mutation.SetDir(hd)
 	return ftuo
 }
 
 // SetNillableDir sets the "dir" field if the given value is not nil.
-func (ftuo *FieldTypeUpdateOne) SetNillableDir(h *http.Dir) *FieldTypeUpdateOne {
-	if h != nil {
-		ftuo.SetDir(*h)
+func (ftuo *FieldTypeUpdateOne) SetNillableDir(hd *http.Dir) *FieldTypeUpdateOne {
+	if hd != nil {
+		ftuo.SetDir(*hd)
 	}
 	return ftuo
 }
 
 // SetNdir sets the "ndir" field.
-func (ftuo *FieldTypeUpdateOne) SetNdir(h http.Dir) *FieldTypeUpdateOne {
-	ftuo.mutation.SetNdir(h)
+func (ftuo *FieldTypeUpdateOne) SetNdir(hd http.Dir) *FieldTypeUpdateOne {
+	ftuo.mutation.SetNdir(hd)
 	return ftuo
 }
 
 // SetNillableNdir sets the "ndir" field if the given value is not nil.
-func (ftuo *FieldTypeUpdateOne) SetNillableNdir(h *http.Dir) *FieldTypeUpdateOne {
-	if h != nil {
-		ftuo.SetNdir(*h)
+func (ftuo *FieldTypeUpdateOne) SetNillableNdir(hd *http.Dir) *FieldTypeUpdateOne {
+	if hd != nil {
+		ftuo.SetNdir(*hd)
 	}
 	return ftuo
 }
@@ -2726,15 +2726,15 @@ func (ftuo *FieldTypeUpdateOne) ClearNdir() *FieldTypeUpdateOne {
 }
 
 // SetStr sets the "str" field.
-func (ftuo *FieldTypeUpdateOne) SetStr(ss sql.NullString) *FieldTypeUpdateOne {
-	ftuo.mutation.SetStr(ss)
+func (ftuo *FieldTypeUpdateOne) SetStr(sns sql.NullString) *FieldTypeUpdateOne {
+	ftuo.mutation.SetStr(sns)
 	return ftuo
 }
 
 // SetNillableStr sets the "str" field if the given value is not nil.
-func (ftuo *FieldTypeUpdateOne) SetNillableStr(ss *sql.NullString) *FieldTypeUpdateOne {
-	if ss != nil {
-		ftuo.SetStr(*ss)
+func (ftuo *FieldTypeUpdateOne) SetNillableStr(sns *sql.NullString) *FieldTypeUpdateOne {
+	if sns != nil {
+		ftuo.SetStr(*sns)
 	}
 	return ftuo
 }
@@ -2746,8 +2746,8 @@ func (ftuo *FieldTypeUpdateOne) ClearStr() *FieldTypeUpdateOne {
 }
 
 // SetNullStr sets the "null_str" field.
-func (ftuo *FieldTypeUpdateOne) SetNullStr(ss *sql.NullString) *FieldTypeUpdateOne {
-	ftuo.mutation.SetNullStr(ss)
+func (ftuo *FieldTypeUpdateOne) SetNullStr(sns *sql.NullString) *FieldTypeUpdateOne {
+	ftuo.mutation.SetNullStr(sns)
 	return ftuo
 }
 
@@ -2758,15 +2758,15 @@ func (ftuo *FieldTypeUpdateOne) ClearNullStr() *FieldTypeUpdateOne {
 }
 
 // SetLink sets the "link" field.
-func (ftuo *FieldTypeUpdateOne) SetLink(s schema.Link) *FieldTypeUpdateOne {
-	ftuo.mutation.SetLink(s)
+func (ftuo *FieldTypeUpdateOne) SetLink(sl schema.Link) *FieldTypeUpdateOne {
+	ftuo.mutation.SetLink(sl)
 	return ftuo
 }
 
 // SetNillableLink sets the "link" field if the given value is not nil.
-func (ftuo *FieldTypeUpdateOne) SetNillableLink(s *schema.Link) *FieldTypeUpdateOne {
-	if s != nil {
-		ftuo.SetLink(*s)
+func (ftuo *FieldTypeUpdateOne) SetNillableLink(sl *schema.Link) *FieldTypeUpdateOne {
+	if sl != nil {
+		ftuo.SetLink(*sl)
 	}
 	return ftuo
 }
@@ -2778,8 +2778,8 @@ func (ftuo *FieldTypeUpdateOne) ClearLink() *FieldTypeUpdateOne {
 }
 
 // SetNullLink sets the "null_link" field.
-func (ftuo *FieldTypeUpdateOne) SetNullLink(s *schema.Link) *FieldTypeUpdateOne {
-	ftuo.mutation.SetNullLink(s)
+func (ftuo *FieldTypeUpdateOne) SetNullLink(sl *schema.Link) *FieldTypeUpdateOne {
+	ftuo.mutation.SetNullLink(sl)
 	return ftuo
 }
 
@@ -2790,15 +2790,15 @@ func (ftuo *FieldTypeUpdateOne) ClearNullLink() *FieldTypeUpdateOne {
 }
 
 // SetActive sets the "active" field.
-func (ftuo *FieldTypeUpdateOne) SetActive(s schema.Status) *FieldTypeUpdateOne {
-	ftuo.mutation.SetActive(s)
+func (ftuo *FieldTypeUpdateOne) SetActive(ss schema.Status) *FieldTypeUpdateOne {
+	ftuo.mutation.SetActive(ss)
 	return ftuo
 }
 
 // SetNillableActive sets the "active" field if the given value is not nil.
-func (ftuo *FieldTypeUpdateOne) SetNillableActive(s *schema.Status) *FieldTypeUpdateOne {
-	if s != nil {
-		ftuo.SetActive(*s)
+func (ftuo *FieldTypeUpdateOne) SetNillableActive(ss *schema.Status) *FieldTypeUpdateOne {
+	if ss != nil {
+		ftuo.SetActive(*ss)
 	}
 	return ftuo
 }
@@ -2810,15 +2810,15 @@ func (ftuo *FieldTypeUpdateOne) ClearActive() *FieldTypeUpdateOne {
 }
 
 // SetNullActive sets the "null_active" field.
-func (ftuo *FieldTypeUpdateOne) SetNullActive(s schema.Status) *FieldTypeUpdateOne {
-	ftuo.mutation.SetNullActive(s)
+func (ftuo *FieldTypeUpdateOne) SetNullActive(ss schema.Status) *FieldTypeUpdateOne {
+	ftuo.mutation.SetNullActive(ss)
 	return ftuo
 }
 
 // SetNillableNullActive sets the "null_active" field if the given value is not nil.
-func (ftuo *FieldTypeUpdateOne) SetNillableNullActive(s *schema.Status) *FieldTypeUpdateOne {
-	if s != nil {
-		ftuo.SetNullActive(*s)
+func (ftuo *FieldTypeUpdateOne) SetNillableNullActive(ss *schema.Status) *FieldTypeUpdateOne {
+	if ss != nil {
+		ftuo.SetNullActive(*ss)
 	}
 	return ftuo
 }
@@ -2830,8 +2830,8 @@ func (ftuo *FieldTypeUpdateOne) ClearNullActive() *FieldTypeUpdateOne {
 }
 
 // SetDeleted sets the "deleted" field.
-func (ftuo *FieldTypeUpdateOne) SetDeleted(sb *sql.NullBool) *FieldTypeUpdateOne {
-	ftuo.mutation.SetDeleted(sb)
+func (ftuo *FieldTypeUpdateOne) SetDeleted(snb *sql.NullBool) *FieldTypeUpdateOne {
+	ftuo.mutation.SetDeleted(snb)
 	return ftuo
 }
 
@@ -2842,8 +2842,8 @@ func (ftuo *FieldTypeUpdateOne) ClearDeleted() *FieldTypeUpdateOne {
 }
 
 // SetDeletedAt sets the "deleted_at" field.
-func (ftuo *FieldTypeUpdateOne) SetDeletedAt(st *sql.NullTime) *FieldTypeUpdateOne {
-	ftuo.mutation.SetDeletedAt(st)
+func (ftuo *FieldTypeUpdateOne) SetDeletedAt(snt *sql.NullTime) *FieldTypeUpdateOne {
+	ftuo.mutation.SetDeletedAt(snt)
 	return ftuo
 }
 
@@ -2878,8 +2878,8 @@ func (ftuo *FieldTypeUpdateOne) ClearSensitive() *FieldTypeUpdateOne {
 }
 
 // SetIP sets the "ip" field.
-func (ftuo *FieldTypeUpdateOne) SetIP(n net.IP) *FieldTypeUpdateOne {
-	ftuo.mutation.SetIP(n)
+func (ftuo *FieldTypeUpdateOne) SetIP(ni net.IP) *FieldTypeUpdateOne {
+	ftuo.mutation.SetIP(ni)
 	return ftuo
 }
 
@@ -2890,8 +2890,8 @@ func (ftuo *FieldTypeUpdateOne) ClearIP() *FieldTypeUpdateOne {
 }
 
 // SetNullInt64 sets the "null_int64" field.
-func (ftuo *FieldTypeUpdateOne) SetNullInt64(si *sql.NullInt64) *FieldTypeUpdateOne {
-	ftuo.mutation.SetNullInt64(si)
+func (ftuo *FieldTypeUpdateOne) SetNullInt64(sni *sql.NullInt64) *FieldTypeUpdateOne {
+	ftuo.mutation.SetNullInt64(sni)
 	return ftuo
 }
 
@@ -2902,23 +2902,23 @@ func (ftuo *FieldTypeUpdateOne) ClearNullInt64() *FieldTypeUpdateOne {
 }
 
 // SetSchemaInt sets the "schema_int" field.
-func (ftuo *FieldTypeUpdateOne) SetSchemaInt(s schema.Int) *FieldTypeUpdateOne {
+func (ftuo *FieldTypeUpdateOne) SetSchemaInt(si schema.Int) *FieldTypeUpdateOne {
 	ftuo.mutation.ResetSchemaInt()
-	ftuo.mutation.SetSchemaInt(s)
+	ftuo.mutation.SetSchemaInt(si)
 	return ftuo
 }
 
 // SetNillableSchemaInt sets the "schema_int" field if the given value is not nil.
-func (ftuo *FieldTypeUpdateOne) SetNillableSchemaInt(s *schema.Int) *FieldTypeUpdateOne {
-	if s != nil {
-		ftuo.SetSchemaInt(*s)
+func (ftuo *FieldTypeUpdateOne) SetNillableSchemaInt(si *schema.Int) *FieldTypeUpdateOne {
+	if si != nil {
+		ftuo.SetSchemaInt(*si)
 	}
 	return ftuo
 }
 
-// AddSchemaInt adds s to the "schema_int" field.
-func (ftuo *FieldTypeUpdateOne) AddSchemaInt(s schema.Int) *FieldTypeUpdateOne {
-	ftuo.mutation.AddSchemaInt(s)
+// AddSchemaInt adds si to the "schema_int" field.
+func (ftuo *FieldTypeUpdateOne) AddSchemaInt(si schema.Int) *FieldTypeUpdateOne {
+	ftuo.mutation.AddSchemaInt(si)
 	return ftuo
 }
 
@@ -2929,23 +2929,23 @@ func (ftuo *FieldTypeUpdateOne) ClearSchemaInt() *FieldTypeUpdateOne {
 }
 
 // SetSchemaInt8 sets the "schema_int8" field.
-func (ftuo *FieldTypeUpdateOne) SetSchemaInt8(s schema.Int8) *FieldTypeUpdateOne {
+func (ftuo *FieldTypeUpdateOne) SetSchemaInt8(si schema.Int8) *FieldTypeUpdateOne {
 	ftuo.mutation.ResetSchemaInt8()
-	ftuo.mutation.SetSchemaInt8(s)
+	ftuo.mutation.SetSchemaInt8(si)
 	return ftuo
 }
 
 // SetNillableSchemaInt8 sets the "schema_int8" field if the given value is not nil.
-func (ftuo *FieldTypeUpdateOne) SetNillableSchemaInt8(s *schema.Int8) *FieldTypeUpdateOne {
-	if s != nil {
-		ftuo.SetSchemaInt8(*s)
+func (ftuo *FieldTypeUpdateOne) SetNillableSchemaInt8(si *schema.Int8) *FieldTypeUpdateOne {
+	if si != nil {
+		ftuo.SetSchemaInt8(*si)
 	}
 	return ftuo
 }
 
-// AddSchemaInt8 adds s to the "schema_int8" field.
-func (ftuo *FieldTypeUpdateOne) AddSchemaInt8(s schema.Int8) *FieldTypeUpdateOne {
-	ftuo.mutation.AddSchemaInt8(s)
+// AddSchemaInt8 adds si to the "schema_int8" field.
+func (ftuo *FieldTypeUpdateOne) AddSchemaInt8(si schema.Int8) *FieldTypeUpdateOne {
+	ftuo.mutation.AddSchemaInt8(si)
 	return ftuo
 }
 
@@ -2956,23 +2956,23 @@ func (ftuo *FieldTypeUpdateOne) ClearSchemaInt8() *FieldTypeUpdateOne {
 }
 
 // SetSchemaInt64 sets the "schema_int64" field.
-func (ftuo *FieldTypeUpdateOne) SetSchemaInt64(s schema.Int64) *FieldTypeUpdateOne {
+func (ftuo *FieldTypeUpdateOne) SetSchemaInt64(si schema.Int64) *FieldTypeUpdateOne {
 	ftuo.mutation.ResetSchemaInt64()
-	ftuo.mutation.SetSchemaInt64(s)
+	ftuo.mutation.SetSchemaInt64(si)
 	return ftuo
 }
 
 // SetNillableSchemaInt64 sets the "schema_int64" field if the given value is not nil.
-func (ftuo *FieldTypeUpdateOne) SetNillableSchemaInt64(s *schema.Int64) *FieldTypeUpdateOne {
-	if s != nil {
-		ftuo.SetSchemaInt64(*s)
+func (ftuo *FieldTypeUpdateOne) SetNillableSchemaInt64(si *schema.Int64) *FieldTypeUpdateOne {
+	if si != nil {
+		ftuo.SetSchemaInt64(*si)
 	}
 	return ftuo
 }
 
-// AddSchemaInt64 adds s to the "schema_int64" field.
-func (ftuo *FieldTypeUpdateOne) AddSchemaInt64(s schema.Int64) *FieldTypeUpdateOne {
-	ftuo.mutation.AddSchemaInt64(s)
+// AddSchemaInt64 adds si to the "schema_int64" field.
+func (ftuo *FieldTypeUpdateOne) AddSchemaInt64(si schema.Int64) *FieldTypeUpdateOne {
+	ftuo.mutation.AddSchemaInt64(si)
 	return ftuo
 }
 
@@ -2983,23 +2983,23 @@ func (ftuo *FieldTypeUpdateOne) ClearSchemaInt64() *FieldTypeUpdateOne {
 }
 
 // SetSchemaFloat sets the "schema_float" field.
-func (ftuo *FieldTypeUpdateOne) SetSchemaFloat(s schema.Float64) *FieldTypeUpdateOne {
+func (ftuo *FieldTypeUpdateOne) SetSchemaFloat(sf schema.Float64) *FieldTypeUpdateOne {
 	ftuo.mutation.ResetSchemaFloat()
-	ftuo.mutation.SetSchemaFloat(s)
+	ftuo.mutation.SetSchemaFloat(sf)
 	return ftuo
 }
 
 // SetNillableSchemaFloat sets the "schema_float" field if the given value is not nil.
-func (ftuo *FieldTypeUpdateOne) SetNillableSchemaFloat(s *schema.Float64) *FieldTypeUpdateOne {
-	if s != nil {
-		ftuo.SetSchemaFloat(*s)
+func (ftuo *FieldTypeUpdateOne) SetNillableSchemaFloat(sf *schema.Float64) *FieldTypeUpdateOne {
+	if sf != nil {
+		ftuo.SetSchemaFloat(*sf)
 	}
 	return ftuo
 }
 
-// AddSchemaFloat adds s to the "schema_float" field.
-func (ftuo *FieldTypeUpdateOne) AddSchemaFloat(s schema.Float64) *FieldTypeUpdateOne {
-	ftuo.mutation.AddSchemaFloat(s)
+// AddSchemaFloat adds sf to the "schema_float" field.
+func (ftuo *FieldTypeUpdateOne) AddSchemaFloat(sf schema.Float64) *FieldTypeUpdateOne {
+	ftuo.mutation.AddSchemaFloat(sf)
 	return ftuo
 }
 
@@ -3010,23 +3010,23 @@ func (ftuo *FieldTypeUpdateOne) ClearSchemaFloat() *FieldTypeUpdateOne {
 }
 
 // SetSchemaFloat32 sets the "schema_float32" field.
-func (ftuo *FieldTypeUpdateOne) SetSchemaFloat32(s schema.Float32) *FieldTypeUpdateOne {
+func (ftuo *FieldTypeUpdateOne) SetSchemaFloat32(sf schema.Float32) *FieldTypeUpdateOne {
 	ftuo.mutation.ResetSchemaFloat32()
-	ftuo.mutation.SetSchemaFloat32(s)
+	ftuo.mutation.SetSchemaFloat32(sf)
 	return ftuo
 }
 
 // SetNillableSchemaFloat32 sets the "schema_float32" field if the given value is not nil.
-func (ftuo *FieldTypeUpdateOne) SetNillableSchemaFloat32(s *schema.Float32) *FieldTypeUpdateOne {
-	if s != nil {
-		ftuo.SetSchemaFloat32(*s)
+func (ftuo *FieldTypeUpdateOne) SetNillableSchemaFloat32(sf *schema.Float32) *FieldTypeUpdateOne {
+	if sf != nil {
+		ftuo.SetSchemaFloat32(*sf)
 	}
 	return ftuo
 }
 
-// AddSchemaFloat32 adds s to the "schema_float32" field.
-func (ftuo *FieldTypeUpdateOne) AddSchemaFloat32(s schema.Float32) *FieldTypeUpdateOne {
-	ftuo.mutation.AddSchemaFloat32(s)
+// AddSchemaFloat32 adds sf to the "schema_float32" field.
+func (ftuo *FieldTypeUpdateOne) AddSchemaFloat32(sf schema.Float32) *FieldTypeUpdateOne {
+	ftuo.mutation.AddSchemaFloat32(sf)
 	return ftuo
 }
 
@@ -3037,8 +3037,8 @@ func (ftuo *FieldTypeUpdateOne) ClearSchemaFloat32() *FieldTypeUpdateOne {
 }
 
 // SetNullFloat sets the "null_float" field.
-func (ftuo *FieldTypeUpdateOne) SetNullFloat(sf *sql.NullFloat64) *FieldTypeUpdateOne {
-	ftuo.mutation.SetNullFloat(sf)
+func (ftuo *FieldTypeUpdateOne) SetNullFloat(snf *sql.NullFloat64) *FieldTypeUpdateOne {
+	ftuo.mutation.SetNullFloat(snf)
 	return ftuo
 }
 
@@ -3049,29 +3049,29 @@ func (ftuo *FieldTypeUpdateOne) ClearNullFloat() *FieldTypeUpdateOne {
 }
 
 // SetRole sets the "role" field.
-func (ftuo *FieldTypeUpdateOne) SetRole(r role.Role) *FieldTypeUpdateOne {
-	ftuo.mutation.SetRole(r)
+func (ftuo *FieldTypeUpdateOne) SetRole(rr role.Role) *FieldTypeUpdateOne {
+	ftuo.mutation.SetRole(rr)
 	return ftuo
 }
 
 // SetNillableRole sets the "role" field if the given value is not nil.
-func (ftuo *FieldTypeUpdateOne) SetNillableRole(r *role.Role) *FieldTypeUpdateOne {
-	if r != nil {
-		ftuo.SetRole(*r)
+func (ftuo *FieldTypeUpdateOne) SetNillableRole(rr *role.Role) *FieldTypeUpdateOne {
+	if rr != nil {
+		ftuo.SetRole(*rr)
 	}
 	return ftuo
 }
 
 // SetPriority sets the "priority" field.
-func (ftuo *FieldTypeUpdateOne) SetPriority(r role.Priority) *FieldTypeUpdateOne {
-	ftuo.mutation.SetPriority(r)
+func (ftuo *FieldTypeUpdateOne) SetPriority(rp role.Priority) *FieldTypeUpdateOne {
+	ftuo.mutation.SetPriority(rp)
 	return ftuo
 }
 
 // SetNillablePriority sets the "priority" field if the given value is not nil.
-func (ftuo *FieldTypeUpdateOne) SetNillablePriority(r *role.Priority) *FieldTypeUpdateOne {
-	if r != nil {
-		ftuo.SetPriority(*r)
+func (ftuo *FieldTypeUpdateOne) SetNillablePriority(rp *role.Priority) *FieldTypeUpdateOne {
+	if rp != nil {
+		ftuo.SetPriority(*rp)
 	}
 	return ftuo
 }
@@ -3083,15 +3083,15 @@ func (ftuo *FieldTypeUpdateOne) ClearPriority() *FieldTypeUpdateOne {
 }
 
 // SetOptionalUUID sets the "optional_uuid" field.
-func (ftuo *FieldTypeUpdateOne) SetOptionalUUID(u uuid.UUID) *FieldTypeUpdateOne {
-	ftuo.mutation.SetOptionalUUID(u)
+func (ftuo *FieldTypeUpdateOne) SetOptionalUUID(uu uuid.UUID) *FieldTypeUpdateOne {
+	ftuo.mutation.SetOptionalUUID(uu)
 	return ftuo
 }
 
 // SetNillableOptionalUUID sets the "optional_uuid" field if the given value is not nil.
-func (ftuo *FieldTypeUpdateOne) SetNillableOptionalUUID(u *uuid.UUID) *FieldTypeUpdateOne {
-	if u != nil {
-		ftuo.SetOptionalUUID(*u)
+func (ftuo *FieldTypeUpdateOne) SetNillableOptionalUUID(uu *uuid.UUID) *FieldTypeUpdateOne {
+	if uu != nil {
+		ftuo.SetOptionalUUID(*uu)
 	}
 	return ftuo
 }
@@ -3103,15 +3103,15 @@ func (ftuo *FieldTypeUpdateOne) ClearOptionalUUID() *FieldTypeUpdateOne {
 }
 
 // SetNillableUUID sets the "nillable_uuid" field.
-func (ftuo *FieldTypeUpdateOne) SetNillableUUID(u uuid.UUID) *FieldTypeUpdateOne {
-	ftuo.mutation.SetNillableUUID(u)
+func (ftuo *FieldTypeUpdateOne) SetNillableUUID(uu uuid.UUID) *FieldTypeUpdateOne {
+	ftuo.mutation.SetNillableUUID(uu)
 	return ftuo
 }
 
 // SetNillableNillableUUID sets the "nillable_uuid" field if the given value is not nil.
-func (ftuo *FieldTypeUpdateOne) SetNillableNillableUUID(u *uuid.UUID) *FieldTypeUpdateOne {
-	if u != nil {
-		ftuo.SetNillableUUID(*u)
+func (ftuo *FieldTypeUpdateOne) SetNillableNillableUUID(uu *uuid.UUID) *FieldTypeUpdateOne {
+	if uu != nil {
+		ftuo.SetNillableUUID(*uu)
 	}
 	return ftuo
 }
@@ -3141,22 +3141,22 @@ func (ftuo *FieldTypeUpdateOne) ClearStrings() *FieldTypeUpdateOne {
 }
 
 // SetPair sets the "pair" field.
-func (ftuo *FieldTypeUpdateOne) SetPair(s schema.Pair) *FieldTypeUpdateOne {
-	ftuo.mutation.SetPair(s)
+func (ftuo *FieldTypeUpdateOne) SetPair(sp schema.Pair) *FieldTypeUpdateOne {
+	ftuo.mutation.SetPair(sp)
 	return ftuo
 }
 
 // SetNillablePair sets the "pair" field if the given value is not nil.
-func (ftuo *FieldTypeUpdateOne) SetNillablePair(s *schema.Pair) *FieldTypeUpdateOne {
-	if s != nil {
-		ftuo.SetPair(*s)
+func (ftuo *FieldTypeUpdateOne) SetNillablePair(sp *schema.Pair) *FieldTypeUpdateOne {
+	if sp != nil {
+		ftuo.SetPair(*sp)
 	}
 	return ftuo
 }
 
 // SetNilPair sets the "nil_pair" field.
-func (ftuo *FieldTypeUpdateOne) SetNilPair(s *schema.Pair) *FieldTypeUpdateOne {
-	ftuo.mutation.SetNilPair(s)
+func (ftuo *FieldTypeUpdateOne) SetNilPair(sp *schema.Pair) *FieldTypeUpdateOne {
+	ftuo.mutation.SetNilPair(sp)
 	return ftuo
 }
 
@@ -3167,51 +3167,51 @@ func (ftuo *FieldTypeUpdateOne) ClearNilPair() *FieldTypeUpdateOne {
 }
 
 // SetVstring sets the "vstring" field.
-func (ftuo *FieldTypeUpdateOne) SetVstring(ss schema.VString) *FieldTypeUpdateOne {
-	ftuo.mutation.SetVstring(ss)
+func (ftuo *FieldTypeUpdateOne) SetVstring(sv schema.VString) *FieldTypeUpdateOne {
+	ftuo.mutation.SetVstring(sv)
 	return ftuo
 }
 
 // SetNillableVstring sets the "vstring" field if the given value is not nil.
-func (ftuo *FieldTypeUpdateOne) SetNillableVstring(ss *schema.VString) *FieldTypeUpdateOne {
-	if ss != nil {
-		ftuo.SetVstring(*ss)
+func (ftuo *FieldTypeUpdateOne) SetNillableVstring(sv *schema.VString) *FieldTypeUpdateOne {
+	if sv != nil {
+		ftuo.SetVstring(*sv)
 	}
 	return ftuo
 }
 
 // SetTriple sets the "triple" field.
-func (ftuo *FieldTypeUpdateOne) SetTriple(s schema.Triple) *FieldTypeUpdateOne {
-	ftuo.mutation.SetTriple(s)
+func (ftuo *FieldTypeUpdateOne) SetTriple(st schema.Triple) *FieldTypeUpdateOne {
+	ftuo.mutation.SetTriple(st)
 	return ftuo
 }
 
 // SetNillableTriple sets the "triple" field if the given value is not nil.
-func (ftuo *FieldTypeUpdateOne) SetNillableTriple(s *schema.Triple) *FieldTypeUpdateOne {
-	if s != nil {
-		ftuo.SetTriple(*s)
+func (ftuo *FieldTypeUpdateOne) SetNillableTriple(st *schema.Triple) *FieldTypeUpdateOne {
+	if st != nil {
+		ftuo.SetTriple(*st)
 	}
 	return ftuo
 }
 
 // SetBigInt sets the "big_int" field.
-func (ftuo *FieldTypeUpdateOne) SetBigInt(si schema.BigInt) *FieldTypeUpdateOne {
+func (ftuo *FieldTypeUpdateOne) SetBigInt(sbi schema.BigInt) *FieldTypeUpdateOne {
 	ftuo.mutation.ResetBigInt()
-	ftuo.mutation.SetBigInt(si)
+	ftuo.mutation.SetBigInt(sbi)
 	return ftuo
 }
 
 // SetNillableBigInt sets the "big_int" field if the given value is not nil.
-func (ftuo *FieldTypeUpdateOne) SetNillableBigInt(si *schema.BigInt) *FieldTypeUpdateOne {
-	if si != nil {
-		ftuo.SetBigInt(*si)
+func (ftuo *FieldTypeUpdateOne) SetNillableBigInt(sbi *schema.BigInt) *FieldTypeUpdateOne {
+	if sbi != nil {
+		ftuo.SetBigInt(*sbi)
 	}
 	return ftuo
 }
 
-// AddBigInt adds si to the "big_int" field.
-func (ftuo *FieldTypeUpdateOne) AddBigInt(si schema.BigInt) *FieldTypeUpdateOne {
-	ftuo.mutation.AddBigInt(si)
+// AddBigInt adds sbi to the "big_int" field.
+func (ftuo *FieldTypeUpdateOne) AddBigInt(sbi schema.BigInt) *FieldTypeUpdateOne {
+	ftuo.mutation.AddBigInt(sbi)
 	return ftuo
 }
 
@@ -3222,15 +3222,15 @@ func (ftuo *FieldTypeUpdateOne) ClearBigInt() *FieldTypeUpdateOne {
 }
 
 // SetPasswordOther sets the "password_other" field.
-func (ftuo *FieldTypeUpdateOne) SetPasswordOther(s schema.Password) *FieldTypeUpdateOne {
-	ftuo.mutation.SetPasswordOther(s)
+func (ftuo *FieldTypeUpdateOne) SetPasswordOther(sp schema.Password) *FieldTypeUpdateOne {
+	ftuo.mutation.SetPasswordOther(sp)
 	return ftuo
 }
 
 // SetNillablePasswordOther sets the "password_other" field if the given value is not nil.
-func (ftuo *FieldTypeUpdateOne) SetNillablePasswordOther(s *schema.Password) *FieldTypeUpdateOne {
-	if s != nil {
-		ftuo.SetPasswordOther(*s)
+func (ftuo *FieldTypeUpdateOne) SetNillablePasswordOther(sp *schema.Password) *FieldTypeUpdateOne {
+	if sp != nil {
+		ftuo.SetPasswordOther(*sp)
 	}
 	return ftuo
 }

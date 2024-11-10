@@ -10,17 +10,17 @@ import (
 )
 
 const (
-	// Label holds the string label denoting the relationshipinfo type in the database.
+	// Label holds the string label denoting the relationship_info type in the database.
 	Label = "relationship_info"
 	// FieldID holds the string denoting the id field in the database.
 	FieldID = "id"
 	// FieldText holds the string denoting the text field in the database.
 	FieldText = "text"
-	// Table holds the table name of the relationshipinfo in the database.
+	// Table holds the table name of the relationship_info in the database.
 	Table = "relationship_infos"
 )
 
-// Columns holds all SQL columns for relationshipinfo fields.
+// Columns holds all SQL columns for relationship_info fields.
 var Columns = []string{
 	FieldID,
 	FieldText,

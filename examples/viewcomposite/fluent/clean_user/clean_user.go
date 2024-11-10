@@ -7,7 +7,7 @@ import (
 )
 
 const (
-	// Label holds the string label denoting the cleanuser type in the database.
+	// Label holds the string label denoting the clean_user type in the database.
 	Label = "clean_user"
 	// FieldID holds the string denoting the id field in the database.
 	FieldID = "id"
@@ -15,11 +15,11 @@ const (
 	FieldName = "name"
 	// FieldPublicInfo holds the string denoting the public_info field in the database.
 	FieldPublicInfo = "public_info"
-	// Table holds the table name of the cleanuser in the database.
+	// Table holds the table name of the clean_user in the database.
 	Table = "clean_users"
 )
 
-// Columns holds all SQL columns for cleanuser fields.
+// Columns holds all SQL columns for clean_user fields.
 var Columns = []string{
 	FieldID,
 	FieldName,

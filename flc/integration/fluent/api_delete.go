@@ -23,56 +23,56 @@ type APIDelete struct {
 }
 
 // Where appends a list predicates to the APIDelete builder.
-func (ad *APIDelete) Where(ps ...predicate.Api) *APIDelete {
-	ad.mutation.Where(ps...)
-	return ad
+func (a *APIDelete) Where(ps ...predicate.Api) *APIDelete {
+	a.mutation.Where(ps...)
+	return a
 }
 
 // Exec executes the deletion query and returns how many vertices were deleted.
-func (ad *APIDelete) Exec(ctx context.Context) (int, error) {
-	return withHooks(ctx, ad.sqlExec, ad.mutation, ad.hooks)
+func (a *APIDelete) Exec(ctx context.Context) (int, error) {
+	return withHooks(ctx, a.sqlExec, a.mutation, a.hooks)
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ad *APIDelete) ExecX(ctx context.Context) int {
-	n, err := ad.Exec(ctx)
+func (a *APIDelete) ExecX(ctx context.Context) int {
+	n, err := a.Exec(ctx)
 	if err != nil {
 		panic(err)
 	}
 	return n
 }
 
-func (ad *APIDelete) sqlExec(ctx context.Context) (int, error) {
+func (a *APIDelete) sqlExec(ctx context.Context) (int, error) {
 	_spec := sqlgraph.NewDeleteSpec(api.Table, sqlgraph.NewFieldSpec(api.FieldID, field.TypeInt))
-	if ps := ad.mutation.predicates; len(ps) > 0 {
+	if ps := a.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
 				ps[i](selector)
 			}
 		}
 	}
-	affected, err := sqlgraph.DeleteNodes(ctx, ad.driver, _spec)
+	affected, err := sqlgraph.DeleteNodes(ctx, a.driver, _spec)
 	if err != nil && sqlgraph.IsConstraintError(err) {
 		err = &ConstraintError{msg: err.Error(), wrap: err}
 	}
-	ad.mutation.done = true
+	a.mutation.done = true
 	return affected, err
 }
 
 // APIDeleteOne is the builder for deleting a single Api entity.
 type APIDeleteOne struct {
-	ad *APIDelete
+	a *APIDelete
 }
 
 // Where appends a list predicates to the APIDelete builder.
-func (ado *APIDeleteOne) Where(ps ...predicate.Api) *APIDeleteOne {
-	ado.ad.mutation.Where(ps...)
-	return ado
+func (ao *APIDeleteOne) Where(ps ...predicate.Api) *APIDeleteOne {
+	ao.a.mutation.Where(ps...)
+	return ao
 }
 
 // Exec executes the deletion query.
-func (ado *APIDeleteOne) Exec(ctx context.Context) error {
-	n, err := ado.ad.Exec(ctx)
+func (ao *APIDeleteOne) Exec(ctx context.Context) error {
+	n, err := ao.a.Exec(ctx)
 	switch {
 	case err != nil:
 		return err
@@ -84,8 +84,8 @@ func (ado *APIDeleteOne) Exec(ctx context.Context) error {
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ado *APIDeleteOne) ExecX(ctx context.Context) {
-	if err := ado.Exec(ctx); err != nil {
+func (ao *APIDeleteOne) ExecX(ctx context.Context) {
+	if err := ao.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	// Label holds the string label denoting the grouptag type in the database.
+	// Label holds the string label denoting the group_tag type in the database.
 	Label = "group_tag"
 	// FieldID holds the string denoting the id field in the database.
 	FieldID = "id"
@@ -23,7 +23,7 @@ const (
 	EdgeTag = "tag"
 	// EdgeGroup holds the string denoting the group edge name in mutations.
 	EdgeGroup = "group"
-	// Table holds the table name of the grouptag in the database.
+	// Table holds the table name of the group_tag in the database.
 	Table = "group_tags"
 	// TagTable is the table that holds the tag relation/edge.
 	TagTable = "group_tags"
@@ -41,7 +41,7 @@ const (
 	GroupColumn = "group_id"
 )
 
-// Columns holds all SQL columns for grouptag fields.
+// Columns holds all SQL columns for group_tag fields.
 var Columns = []string{
 	FieldID,
 	FieldTagID,

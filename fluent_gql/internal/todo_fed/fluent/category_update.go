@@ -58,22 +58,22 @@ func (cu *CategoryUpdate) SetNillableText(s *string) *CategoryUpdate {
 }
 
 // SetStatus sets the "status" field.
-func (cu *CategoryUpdate) SetStatus(c category.Status) *CategoryUpdate {
-	cu.mutation.SetStatus(c)
+func (cu *CategoryUpdate) SetStatus(cs category.Status) *CategoryUpdate {
+	cu.mutation.SetStatus(cs)
 	return cu
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (cu *CategoryUpdate) SetNillableStatus(c *category.Status) *CategoryUpdate {
-	if c != nil {
-		cu.SetStatus(*c)
+func (cu *CategoryUpdate) SetNillableStatus(cs *category.Status) *CategoryUpdate {
+	if cs != nil {
+		cu.SetStatus(*cs)
 	}
 	return cu
 }
 
 // SetConfig sets the "config" field.
-func (cu *CategoryUpdate) SetConfig(sc *schematype.CategoryConfig) *CategoryUpdate {
-	cu.mutation.SetConfig(sc)
+func (cu *CategoryUpdate) SetConfig(scc *schematype.CategoryConfig) *CategoryUpdate {
+	cu.mutation.SetConfig(scc)
 	return cu
 }
 
@@ -84,23 +84,23 @@ func (cu *CategoryUpdate) ClearConfig() *CategoryUpdate {
 }
 
 // SetDuration sets the "duration" field.
-func (cu *CategoryUpdate) SetDuration(t time.Duration) *CategoryUpdate {
+func (cu *CategoryUpdate) SetDuration(td time.Duration) *CategoryUpdate {
 	cu.mutation.ResetDuration()
-	cu.mutation.SetDuration(t)
+	cu.mutation.SetDuration(td)
 	return cu
 }
 
 // SetNillableDuration sets the "duration" field if the given value is not nil.
-func (cu *CategoryUpdate) SetNillableDuration(t *time.Duration) *CategoryUpdate {
-	if t != nil {
-		cu.SetDuration(*t)
+func (cu *CategoryUpdate) SetNillableDuration(td *time.Duration) *CategoryUpdate {
+	if td != nil {
+		cu.SetDuration(*td)
 	}
 	return cu
 }
 
-// AddDuration adds t to the "duration" field.
-func (cu *CategoryUpdate) AddDuration(t time.Duration) *CategoryUpdate {
-	cu.mutation.AddDuration(t)
+// AddDuration adds td to the "duration" field.
+func (cu *CategoryUpdate) AddDuration(td time.Duration) *CategoryUpdate {
+	cu.mutation.AddDuration(td)
 	return cu
 }
 
@@ -371,22 +371,22 @@ func (cuo *CategoryUpdateOne) SetNillableText(s *string) *CategoryUpdateOne {
 }
 
 // SetStatus sets the "status" field.
-func (cuo *CategoryUpdateOne) SetStatus(c category.Status) *CategoryUpdateOne {
-	cuo.mutation.SetStatus(c)
+func (cuo *CategoryUpdateOne) SetStatus(cs category.Status) *CategoryUpdateOne {
+	cuo.mutation.SetStatus(cs)
 	return cuo
 }
 
 // SetNillableStatus sets the "status" field if the given value is not nil.
-func (cuo *CategoryUpdateOne) SetNillableStatus(c *category.Status) *CategoryUpdateOne {
-	if c != nil {
-		cuo.SetStatus(*c)
+func (cuo *CategoryUpdateOne) SetNillableStatus(cs *category.Status) *CategoryUpdateOne {
+	if cs != nil {
+		cuo.SetStatus(*cs)
 	}
 	return cuo
 }
 
 // SetConfig sets the "config" field.
-func (cuo *CategoryUpdateOne) SetConfig(sc *schematype.CategoryConfig) *CategoryUpdateOne {
-	cuo.mutation.SetConfig(sc)
+func (cuo *CategoryUpdateOne) SetConfig(scc *schematype.CategoryConfig) *CategoryUpdateOne {
+	cuo.mutation.SetConfig(scc)
 	return cuo
 }
 
@@ -397,23 +397,23 @@ func (cuo *CategoryUpdateOne) ClearConfig() *CategoryUpdateOne {
 }
 
 // SetDuration sets the "duration" field.
-func (cuo *CategoryUpdateOne) SetDuration(t time.Duration) *CategoryUpdateOne {
+func (cuo *CategoryUpdateOne) SetDuration(td time.Duration) *CategoryUpdateOne {
 	cuo.mutation.ResetDuration()
-	cuo.mutation.SetDuration(t)
+	cuo.mutation.SetDuration(td)
 	return cuo
 }
 
 // SetNillableDuration sets the "duration" field if the given value is not nil.
-func (cuo *CategoryUpdateOne) SetNillableDuration(t *time.Duration) *CategoryUpdateOne {
-	if t != nil {
-		cuo.SetDuration(*t)
+func (cuo *CategoryUpdateOne) SetNillableDuration(td *time.Duration) *CategoryUpdateOne {
+	if td != nil {
+		cuo.SetDuration(*td)
 	}
 	return cuo
 }
 
-// AddDuration adds t to the "duration" field.
-func (cuo *CategoryUpdateOne) AddDuration(t time.Duration) *CategoryUpdateOne {
-	cuo.mutation.AddDuration(t)
+// AddDuration adds td to the "duration" field.
+func (cuo *CategoryUpdateOne) AddDuration(td time.Duration) *CategoryUpdateOne {
+	cuo.mutation.AddDuration(td)
 	return cuo
 }
 

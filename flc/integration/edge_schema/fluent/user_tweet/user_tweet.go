@@ -13,7 +13,7 @@ import (
 )
 
 const (
-	// Label holds the string label denoting the usertweet type in the database.
+	// Label holds the string label denoting the user_tweet type in the database.
 	Label = "user_tweet"
 	// FieldID holds the string denoting the id field in the database.
 	FieldID = "id"
@@ -27,7 +27,7 @@ const (
 	EdgeUser = "user"
 	// EdgeTweet holds the string denoting the tweet edge name in mutations.
 	EdgeTweet = "tweet"
-	// Table holds the table name of the usertweet in the database.
+	// Table holds the table name of the user_tweet in the database.
 	Table = "user_tweets"
 	// UserTable is the table that holds the user relation/edge.
 	UserTable = "user_tweets"
@@ -45,7 +45,7 @@ const (
 	TweetColumn = "tweet_id"
 )
 
-// Columns holds all SQL columns for usertweet fields.
+// Columns holds all SQL columns for user_tweet fields.
 var Columns = []string{
 	FieldID,
 	FieldCreatedAt,

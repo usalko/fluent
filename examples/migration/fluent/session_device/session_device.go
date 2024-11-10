@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	// Label holds the string label denoting the sessiondevice type in the database.
+	// Label holds the string label denoting the session_device type in the database.
 	Label = "session_device"
 	// FieldID holds the string denoting the id field in the database.
 	FieldID = "id"
@@ -28,7 +28,7 @@ const (
 	FieldUpdatedAt = "updated_at"
 	// EdgeSessions holds the string denoting the sessions edge name in mutations.
 	EdgeSessions = "sessions"
-	// Table holds the table name of the sessiondevice in the database.
+	// Table holds the table name of the session_device in the database.
 	Table = "session_devices"
 	// SessionsTable is the table that holds the sessions relation/edge.
 	SessionsTable = "sessions"
@@ -39,7 +39,7 @@ const (
 	SessionsColumn = "device_id"
 )
 
-// Columns holds all SQL columns for sessiondevice fields.
+// Columns holds all SQL columns for session_device fields.
 var Columns = []string{
 	FieldID,
 	FieldIPAddress,

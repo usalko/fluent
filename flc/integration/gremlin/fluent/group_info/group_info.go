@@ -10,7 +10,7 @@ import (
 )
 
 const (
-	// Label holds the string label denoting the groupinfo type in the database.
+	// Label holds the string label denoting the group_info type in the database.
 	Label = "group_info"
 	// FieldID holds the string denoting the id field in the database.
 	FieldID = "id"

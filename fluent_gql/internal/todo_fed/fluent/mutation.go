@@ -203,8 +203,8 @@ func (m *CategoryMutation) ResetText() {
 }
 
 // SetStatus sets the "status" field.
-func (m *CategoryMutation) SetStatus(c category.Status) {
-	m.status = &c
+func (m *CategoryMutation) SetStatus(cs category.Status) {
+	m.status = &cs
 }
 
 // Status returns the value of the "status" field in the mutation.
@@ -239,8 +239,8 @@ func (m *CategoryMutation) ResetStatus() {
 }
 
 // SetConfig sets the "config" field.
-func (m *CategoryMutation) SetConfig(sc *schematype.CategoryConfig) {
-	m._config = &sc
+func (m *CategoryMutation) SetConfig(scc *schematype.CategoryConfig) {
+	m._config = &scc
 }
 
 // Config returns the value of the "config" field in the mutation.
@@ -288,8 +288,8 @@ func (m *CategoryMutation) ResetConfig() {
 }
 
 // SetDuration sets the "duration" field.
-func (m *CategoryMutation) SetDuration(t time.Duration) {
-	m.duration = &t
+func (m *CategoryMutation) SetDuration(td time.Duration) {
+	m.duration = &td
 	m.addduration = nil
 }
 
@@ -319,12 +319,12 @@ func (m *CategoryMutation) OldDuration(ctx context.Context) (v time.Duration, er
 	return oldValue.Duration, nil
 }
 
-// AddDuration adds t to the "duration" field.
-func (m *CategoryMutation) AddDuration(t time.Duration) {
+// AddDuration adds td to the "duration" field.
+func (m *CategoryMutation) AddDuration(td time.Duration) {
 	if m.addduration != nil {
-		*m.addduration += t
+		*m.addduration += td
 	} else {
-		m.addduration = &t
+		m.addduration = &td
 	}
 }
 
@@ -1026,8 +1026,8 @@ func (m *TodoMutation) IDs(ctx context.Context) ([]int, error) {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (m *TodoMutation) SetCreatedAt(t time.Time) {
-	m.created_at = &t
+func (m *TodoMutation) SetCreatedAt(tt time.Time) {
+	m.created_at = &tt
 }
 
 // CreatedAt returns the value of the "created_at" field in the mutation.
@@ -1062,8 +1062,8 @@ func (m *TodoMutation) ResetCreatedAt() {
 }
 
 // SetStatus sets the "status" field.
-func (m *TodoMutation) SetStatus(t todo.Status) {
-	m.status = &t
+func (m *TodoMutation) SetStatus(ts todo.Status) {
+	m.status = &ts
 }
 
 // Status returns the value of the "status" field in the mutation.

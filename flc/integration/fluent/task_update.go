@@ -33,29 +33,29 @@ func (tu *TaskUpdate) Where(ps ...predicate.Task) *TaskUpdate {
 }
 
 // SetPriority sets the "priority" field.
-func (tu *TaskUpdate) SetPriority(t task.Priority) *TaskUpdate {
+func (tu *TaskUpdate) SetPriority(tp task.Priority) *TaskUpdate {
 	tu.mutation.ResetPriority()
-	tu.mutation.SetPriority(t)
+	tu.mutation.SetPriority(tp)
 	return tu
 }
 
 // SetNillablePriority sets the "priority" field if the given value is not nil.
-func (tu *TaskUpdate) SetNillablePriority(t *task.Priority) *TaskUpdate {
-	if t != nil {
-		tu.SetPriority(*t)
+func (tu *TaskUpdate) SetNillablePriority(tp *task.Priority) *TaskUpdate {
+	if tp != nil {
+		tu.SetPriority(*tp)
 	}
 	return tu
 }
 
-// AddPriority adds t to the "priority" field.
-func (tu *TaskUpdate) AddPriority(t task.Priority) *TaskUpdate {
-	tu.mutation.AddPriority(t)
+// AddPriority adds tp to the "priority" field.
+func (tu *TaskUpdate) AddPriority(tp task.Priority) *TaskUpdate {
+	tu.mutation.AddPriority(tp)
 	return tu
 }
 
 // SetPriorities sets the "priorities" field.
-func (tu *TaskUpdate) SetPriorities(m map[string]task.Priority) *TaskUpdate {
-	tu.mutation.SetPriorities(m)
+func (tu *TaskUpdate) SetPriorities(mp map[string]task.Priority) *TaskUpdate {
+	tu.mutation.SetPriorities(mp)
 	return tu
 }
 
@@ -306,29 +306,29 @@ type TaskUpdateOne struct {
 }
 
 // SetPriority sets the "priority" field.
-func (tuo *TaskUpdateOne) SetPriority(t task.Priority) *TaskUpdateOne {
+func (tuo *TaskUpdateOne) SetPriority(tp task.Priority) *TaskUpdateOne {
 	tuo.mutation.ResetPriority()
-	tuo.mutation.SetPriority(t)
+	tuo.mutation.SetPriority(tp)
 	return tuo
 }
 
 // SetNillablePriority sets the "priority" field if the given value is not nil.
-func (tuo *TaskUpdateOne) SetNillablePriority(t *task.Priority) *TaskUpdateOne {
-	if t != nil {
-		tuo.SetPriority(*t)
+func (tuo *TaskUpdateOne) SetNillablePriority(tp *task.Priority) *TaskUpdateOne {
+	if tp != nil {
+		tuo.SetPriority(*tp)
 	}
 	return tuo
 }
 
-// AddPriority adds t to the "priority" field.
-func (tuo *TaskUpdateOne) AddPriority(t task.Priority) *TaskUpdateOne {
-	tuo.mutation.AddPriority(t)
+// AddPriority adds tp to the "priority" field.
+func (tuo *TaskUpdateOne) AddPriority(tp task.Priority) *TaskUpdateOne {
+	tuo.mutation.AddPriority(tp)
 	return tuo
 }
 
 // SetPriorities sets the "priorities" field.
-func (tuo *TaskUpdateOne) SetPriorities(m map[string]task.Priority) *TaskUpdateOne {
-	tuo.mutation.SetPriorities(m)
+func (tuo *TaskUpdateOne) SetPriorities(mp map[string]task.Priority) *TaskUpdateOne {
+	tuo.mutation.SetPriorities(mp)
 	return tuo
 }
 

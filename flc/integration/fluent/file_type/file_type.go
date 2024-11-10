@@ -13,7 +13,7 @@ import (
 )
 
 const (
-	// Label holds the string label denoting the filetype type in the database.
+	// Label holds the string label denoting the file_type type in the database.
 	Label = "file_type"
 	// FieldID holds the string denoting the id field in the database.
 	FieldID = "id"
@@ -25,7 +25,7 @@ const (
 	FieldState = "state"
 	// EdgeFiles holds the string denoting the files edge name in mutations.
 	EdgeFiles = "files"
-	// Table holds the table name of the filetype in the database.
+	// Table holds the table name of the file_type in the database.
 	Table = "file_types"
 	// FilesTable is the table that holds the files relation/edge.
 	FilesTable = "files"
@@ -36,7 +36,7 @@ const (
 	FilesColumn = "file_type_files"
 )
 
-// Columns holds all SQL columns for filetype fields.
+// Columns holds all SQL columns for file_type fields.
 var Columns = []string{
 	FieldID,
 	FieldName,

@@ -24,38 +24,38 @@ type APIDelete struct {
 }
 
 // Where appends a list predicates to the APIDelete builder.
-func (ad *APIDelete) Where(ps ...predicate.Api) *APIDelete {
-	ad.mutation.Where(ps...)
-	return ad
+func (a *APIDelete) Where(ps ...predicate.Api) *APIDelete {
+	a.mutation.Where(ps...)
+	return a
 }
 
 // Exec executes the deletion query and returns how many vertices were deleted.
-func (ad *APIDelete) Exec(ctx context.Context) (int, error) {
-	return withHooks(ctx, ad.gremlinExec, ad.mutation, ad.hooks)
+func (a *APIDelete) Exec(ctx context.Context) (int, error) {
+	return withHooks(ctx, a.gremlinExec, a.mutation, a.hooks)
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ad *APIDelete) ExecX(ctx context.Context) int {
-	n, err := ad.Exec(ctx)
+func (a *APIDelete) ExecX(ctx context.Context) int {
+	n, err := a.Exec(ctx)
 	if err != nil {
 		panic(err)
 	}
 	return n
 }
 
-func (ad *APIDelete) gremlinExec(ctx context.Context) (int, error) {
+func (a *APIDelete) gremlinExec(ctx context.Context) (int, error) {
 	res := &gremlin.Response{}
-	query, bindings := ad.gremlin().Query()
-	if err := ad.driver.Exec(ctx, query, bindings, res); err != nil {
+	query, bindings := a.gremlin().Query()
+	if err := a.driver.Exec(ctx, query, bindings, res); err != nil {
 		return 0, err
 	}
-	ad.mutation.done = true
+	a.mutation.done = true
 	return res.ReadInt()
 }
 
-func (ad *APIDelete) gremlin() *dsl.Traversal {
+func (a *APIDelete) gremlin() *dsl.Traversal {
 	t := g.V().HasLabel(api.Label)
-	for _, p := range ad.mutation.predicates {
+	for _, p := range a.mutation.predicates {
 		p(t)
 	}
 	return t.SideEffect(__.Drop()).Count()
@@ -63,18 +63,18 @@ func (ad *APIDelete) gremlin() *dsl.Traversal {
 
 // APIDeleteOne is the builder for deleting a single Api entity.
 type APIDeleteOne struct {
-	ad *APIDelete
+	a *APIDelete
 }
 
 // Where appends a list predicates to the APIDelete builder.
-func (ado *APIDeleteOne) Where(ps ...predicate.Api) *APIDeleteOne {
-	ado.ad.mutation.Where(ps...)
-	return ado
+func (ao *APIDeleteOne) Where(ps ...predicate.Api) *APIDeleteOne {
+	ao.a.mutation.Where(ps...)
+	return ao
 }
 
 // Exec executes the deletion query.
-func (ado *APIDeleteOne) Exec(ctx context.Context) error {
-	n, err := ado.ad.Exec(ctx)
+func (ao *APIDeleteOne) Exec(ctx context.Context) error {
+	n, err := ao.a.Exec(ctx)
 	switch {
 	case err != nil:
 		return err
@@ -86,8 +86,8 @@ func (ado *APIDeleteOne) Exec(ctx context.Context) error {
 }
 
 // ExecX is like Exec, but panics if an error occurs.
-func (ado *APIDeleteOne) ExecX(ctx context.Context) {
-	if err := ado.Exec(ctx); err != nil {
+func (ao *APIDeleteOne) ExecX(ctx context.Context) {
+	if err := ao.Exec(ctx); err != nil {
 		panic(err)
 	}
 }

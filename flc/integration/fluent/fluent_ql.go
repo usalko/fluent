@@ -20,7 +20,7 @@ import (
 	"github.com/usalko/fluent/flc/integration/fluent/item"
 	"github.com/usalko/fluent/flc/integration/fluent/license"
 	"github.com/usalko/fluent/flc/integration/fluent/node"
-	"github.com/usalko/fluent/flc/integration/fluent/p_c"
+	"github.com/usalko/fluent/flc/integration/fluent/pc"
 	"github.com/usalko/fluent/flc/integration/fluent/pet"
 	"github.com/usalko/fluent/flc/integration/fluent/predicate"
 	"github.com/usalko/fluent/flc/integration/fluent/spec"
@@ -324,11 +324,11 @@ var schemaGraph = func() *sqlgraph.Schema {
 	}
 	graph.Nodes[14] = &sqlgraph.Node{
 		NodeSpec: sqlgraph.NodeSpec{
-			Table:   p_c.Table,
-			Columns: p_c.Columns,
+			Table:   pc.Table,
+			Columns: pc.Columns,
 			ID: &sqlgraph.FieldSpec{
 				Type:   field.TypeInt,
-				Column: p_c.FieldID,
+				Column: pc.FieldID,
 			},
 		},
 		Type:   "PC",
@@ -745,13 +745,13 @@ type predicateAdder interface {
 }
 
 // addPredicate implements the predicateAdder interface.
-func (aq *APIQuery) addPredicate(pred func(s *sql.Selector)) {
-	aq.predicates = append(aq.predicates, pred)
+func (a *APIQuery) addPredicate(pred func(s *sql.Selector)) {
+	a.predicates = append(a.predicates, pred)
 }
 
 // Filter returns a Filter implementation to apply filters on the APIQuery builder.
-func (aq *APIQuery) Filter() *APIFilter {
-	return &APIFilter{config: aq.config, predicateAdder: aq}
+func (a *APIQuery) Filter() *APIFilter {
+	return &APIFilter{config: a.config, predicateAdder: a}
 }
 
 // addPredicate implements the predicateAdder interface.
@@ -2022,13 +2022,13 @@ func (f *NodeFilter) WhereHasNextWith(preds ...predicate.Node) {
 }
 
 // addPredicate implements the predicateAdder interface.
-func (pq *PCQuery) addPredicate(pred func(s *sql.Selector)) {
-	pq.predicates = append(pq.predicates, pred)
+func (pc *PCQuery) addPredicate(pred func(s *sql.Selector)) {
+	pc.predicates = append(pc.predicates, pred)
 }
 
 // Filter returns a Filter implementation to apply filters on the PCQuery builder.
-func (pq *PCQuery) Filter() *PCFilter {
-	return &PCFilter{config: pq.config, predicateAdder: pq}
+func (pc *PCQuery) Filter() *PCFilter {
+	return &PCFilter{config: pc.config, predicateAdder: pc}
 }
 
 // addPredicate implements the predicateAdder interface.
@@ -2058,7 +2058,7 @@ func (f *PCFilter) Where(p fluent_ql.P) {
 
 // WhereID applies the fluent_ql int predicate on the id field.
 func (f *PCFilter) WhereID(p fluent_ql.IntP) {
-	f.Where(p.Field(p_c.FieldID))
+	f.Where(p.Field(pc.FieldID))
 }
 
 // addPredicate implements the predicateAdder interface.

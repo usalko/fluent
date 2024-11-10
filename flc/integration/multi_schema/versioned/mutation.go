@@ -210,8 +210,8 @@ func (m *FriendshipMutation) ResetWeight() {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (m *FriendshipMutation) SetCreatedAt(t time.Time) {
-	m.created_at = &t
+func (m *FriendshipMutation) SetCreatedAt(tt time.Time) {
+	m.created_at = &tt
 }
 
 // CreatedAt returns the value of the "created_at" field in the mutation.

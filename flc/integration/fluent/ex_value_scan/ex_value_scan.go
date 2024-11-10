@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	// Label holds the string label denoting the exvaluescan type in the database.
+	// Label holds the string label denoting the ex_value_scan type in the database.
 	Label = "ex_value_scan"
 	// FieldID holds the string denoting the id field in the database.
 	FieldID = "id"
@@ -34,11 +34,11 @@ const (
 	FieldCustom = "custom"
 	// FieldCustomOptional holds the string denoting the custom_optional field in the database.
 	FieldCustomOptional = "custom_optional"
-	// Table holds the table name of the exvaluescan in the database.
+	// Table holds the table name of the ex_value_scan in the database.
 	Table = "ex_value_scans"
 )
 
-// Columns holds all SQL columns for exvaluescan fields.
+// Columns holds all SQL columns for ex_value_scan fields.
 var Columns = []string{
 	FieldID,
 	FieldBinary,

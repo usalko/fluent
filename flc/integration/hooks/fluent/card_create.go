@@ -53,15 +53,15 @@ func (cc *CardCreate) SetNillableName(s *string) *CardCreate {
 }
 
 // SetCreatedAt sets the "created_at" field.
-func (cc *CardCreate) SetCreatedAt(t time.Time) *CardCreate {
-	cc.mutation.SetCreatedAt(t)
+func (cc *CardCreate) SetCreatedAt(tt time.Time) *CardCreate {
+	cc.mutation.SetCreatedAt(tt)
 	return cc
 }
 
 // SetNillableCreatedAt sets the "created_at" field if the given value is not nil.
-func (cc *CardCreate) SetNillableCreatedAt(t *time.Time) *CardCreate {
-	if t != nil {
-		cc.SetCreatedAt(*t)
+func (cc *CardCreate) SetNillableCreatedAt(tt *time.Time) *CardCreate {
+	if tt != nil {
+		cc.SetCreatedAt(*tt)
 	}
 	return cc
 }
@@ -73,15 +73,15 @@ func (cc *CardCreate) SetInHook(s string) *CardCreate {
 }
 
 // SetExpiredAt sets the "expired_at" field.
-func (cc *CardCreate) SetExpiredAt(t time.Time) *CardCreate {
-	cc.mutation.SetExpiredAt(t)
+func (cc *CardCreate) SetExpiredAt(tt time.Time) *CardCreate {
+	cc.mutation.SetExpiredAt(tt)
 	return cc
 }
 
 // SetNillableExpiredAt sets the "expired_at" field if the given value is not nil.
-func (cc *CardCreate) SetNillableExpiredAt(t *time.Time) *CardCreate {
-	if t != nil {
-		cc.SetExpiredAt(*t)
+func (cc *CardCreate) SetNillableExpiredAt(tt *time.Time) *CardCreate {
+	if tt != nil {
+		cc.SetExpiredAt(*tt)
 	}
 	return cc
 }

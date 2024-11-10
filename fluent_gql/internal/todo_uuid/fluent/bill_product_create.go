@@ -51,15 +51,15 @@ func (bpc *BillProductCreate) SetQuantity(u uint64) *BillProductCreate {
 }
 
 // SetID sets the "id" field.
-func (bpc *BillProductCreate) SetID(u uuid.UUID) *BillProductCreate {
-	bpc.mutation.SetID(u)
+func (bpc *BillProductCreate) SetID(uu uuid.UUID) *BillProductCreate {
+	bpc.mutation.SetID(uu)
 	return bpc
 }
 
 // SetNillableID sets the "id" field if the given value is not nil.
-func (bpc *BillProductCreate) SetNillableID(u *uuid.UUID) *BillProductCreate {
-	if u != nil {
-		bpc.SetID(*u)
+func (bpc *BillProductCreate) SetNillableID(uu *uuid.UUID) *BillProductCreate {
+	if uu != nil {
+		bpc.SetID(*uu)
 	}
 	return bpc
 }

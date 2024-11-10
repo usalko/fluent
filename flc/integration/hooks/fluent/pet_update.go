@@ -33,15 +33,15 @@ func (pu *PetUpdate) Where(ps ...predicate.Pet) *PetUpdate {
 }
 
 // SetDeleteTime sets the "delete_time" field.
-func (pu *PetUpdate) SetDeleteTime(t time.Time) *PetUpdate {
-	pu.mutation.SetDeleteTime(t)
+func (pu *PetUpdate) SetDeleteTime(tt time.Time) *PetUpdate {
+	pu.mutation.SetDeleteTime(tt)
 	return pu
 }
 
 // SetNillableDeleteTime sets the "delete_time" field if the given value is not nil.
-func (pu *PetUpdate) SetNillableDeleteTime(t *time.Time) *PetUpdate {
-	if t != nil {
-		pu.SetDeleteTime(*t)
+func (pu *PetUpdate) SetNillableDeleteTime(tt *time.Time) *PetUpdate {
+	if tt != nil {
+		pu.SetDeleteTime(*tt)
 	}
 	return pu
 }
@@ -200,15 +200,15 @@ type PetUpdateOne struct {
 }
 
 // SetDeleteTime sets the "delete_time" field.
-func (puo *PetUpdateOne) SetDeleteTime(t time.Time) *PetUpdateOne {
-	puo.mutation.SetDeleteTime(t)
+func (puo *PetUpdateOne) SetDeleteTime(tt time.Time) *PetUpdateOne {
+	puo.mutation.SetDeleteTime(tt)
 	return puo
 }
 
 // SetNillableDeleteTime sets the "delete_time" field if the given value is not nil.
-func (puo *PetUpdateOne) SetNillableDeleteTime(t *time.Time) *PetUpdateOne {
-	if t != nil {
-		puo.SetDeleteTime(*t)
+func (puo *PetUpdateOne) SetNillableDeleteTime(tt *time.Time) *PetUpdateOne {
+	if tt != nil {
+		puo.SetDeleteTime(*tt)
 	}
 	return puo
 }

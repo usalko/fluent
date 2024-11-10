@@ -50,15 +50,15 @@ func (uc *UserCreate) SetNillableName(s *string) *UserCreate {
 }
 
 // SetUsername sets the "username" field.
-func (uc *UserCreate) SetUsername(u uuid.UUID) *UserCreate {
-	uc.mutation.SetUsername(u)
+func (uc *UserCreate) SetUsername(uu uuid.UUID) *UserCreate {
+	uc.mutation.SetUsername(uu)
 	return uc
 }
 
 // SetNillableUsername sets the "username" field if the given value is not nil.
-func (uc *UserCreate) SetNillableUsername(u *uuid.UUID) *UserCreate {
-	if u != nil {
-		uc.SetUsername(*u)
+func (uc *UserCreate) SetNillableUsername(uu *uuid.UUID) *UserCreate {
+	if uu != nil {
+		uc.SetUsername(*uu)
 	}
 	return uc
 }
@@ -90,15 +90,15 @@ func (uc *UserCreate) SetMetadata(m map[string]interface{}) *UserCreate {
 }
 
 // SetID sets the "id" field.
-func (uc *UserCreate) SetID(pu pulid.ID) *UserCreate {
-	uc.mutation.SetID(pu)
+func (uc *UserCreate) SetID(pi pulid.ID) *UserCreate {
+	uc.mutation.SetID(pi)
 	return uc
 }
 
 // SetNillableID sets the "id" field if the given value is not nil.
-func (uc *UserCreate) SetNillableID(pu *pulid.ID) *UserCreate {
-	if pu != nil {
-		uc.SetID(*pu)
+func (uc *UserCreate) SetNillableID(pi *pulid.ID) *UserCreate {
+	if pi != nil {
+		uc.SetID(*pi)
 	}
 	return uc
 }
