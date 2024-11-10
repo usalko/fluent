@@ -19,11 +19,11 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/predicate"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/workspace"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/predicate"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/workspace"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -265,8 +265,9 @@ func (wq *WorkspaceQuery) Clone() *WorkspaceQuery {
 		inters:     append([]Interceptor{}, wq.inters...),
 		predicates: append([]predicate.Workspace{}, wq.predicates...),
 		// clone intermediate query.
-		sql:  wq.sql.Clone(),
-		path: wq.path,
+		sql:       wq.sql.Clone(),
+		path:      wq.path,
+		modifiers: append([]func(*sql.Selector){}, wq.modifiers...),
 	}
 }
 

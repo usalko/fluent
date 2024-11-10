@@ -140,7 +140,7 @@ func (ouo *OtherUpdateOne) sqlSave(ctx context.Context) (_node *Other, err error
 	_spec := sqlgraph.NewUpdateSpec(other.Table, other.Columns, sqlgraph.NewFieldSpec(other.FieldID, field.TypeOther))
 	id, ok := ouo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Other.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Other.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := ouo.fields; len(fields) > 0 {

@@ -60,11 +60,11 @@ func (uc *UserCreate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (uc *UserCreate) check() error {
 	if _, ok := uc.mutation.Status(); !ok {
-		return &ValidationError{Name: "status", err: errors.New(`ent: missing required field "User.status"`)}
+		return &ValidationError{Name: "status", err: errors.New(`fluent: missing required field "User.status"`)}
 	}
 	if v, ok := uc.mutation.Status(); ok {
 		if err := user.StatusValidator(v); err != nil {
-			return &ValidationError{Name: "status", err: fmt.Errorf(`ent: validator failed for field "User.status": %w`, err)}
+			return &ValidationError{Name: "status", err: fmt.Errorf(`fluent: validator failed for field "User.status": %w`, err)}
 		}
 	}
 	return nil

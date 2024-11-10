@@ -8,6 +8,7 @@ package fluent
 import (
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/account"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/blob"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/bloblink"
@@ -24,7 +25,6 @@ import (
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/token"
 	"github.com/usalko/fluent/flc/integration/custom_id/sid"
 	uuidc "github.com/usalko/fluent/flc/integration/custom_id/uuidcompatible"
-	"github.com/google/uuid"
 )
 
 // The init function reads all schema descriptors with runtime code

@@ -11,6 +11,7 @@ import (
 	"fmt"
 	"math"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
@@ -18,7 +19,6 @@ import (
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/bloblink"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/predicate"
 	"github.com/usalko/fluent/schema/field"
-	"github.com/google/uuid"
 )
 
 // BlobQuery is the builder for querying Blob entities.

@@ -186,31 +186,31 @@ func (gc *GroupCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (gc *GroupCreate) check() error {
 	if _, ok := gc.mutation.Active(); !ok {
-		return &ValidationError{Name: "active", err: errors.New(`ent: missing required field "Group.active"`)}
+		return &ValidationError{Name: "active", err: errors.New(`fluent: missing required field "Group.active"`)}
 	}
 	if _, ok := gc.mutation.Expire(); !ok {
-		return &ValidationError{Name: "expire", err: errors.New(`ent: missing required field "Group.expire"`)}
+		return &ValidationError{Name: "expire", err: errors.New(`fluent: missing required field "Group.expire"`)}
 	}
 	if v, ok := gc.mutation.GetType(); ok {
 		if err := group.TypeValidator(v); err != nil {
-			return &ValidationError{Name: "type", err: fmt.Errorf(`ent: validator failed for field "Group.type": %w`, err)}
+			return &ValidationError{Name: "type", err: fmt.Errorf(`fluent: validator failed for field "Group.type": %w`, err)}
 		}
 	}
 	if v, ok := gc.mutation.MaxUsers(); ok {
 		if err := group.MaxUsersValidator(v); err != nil {
-			return &ValidationError{Name: "max_users", err: fmt.Errorf(`ent: validator failed for field "Group.max_users": %w`, err)}
+			return &ValidationError{Name: "max_users", err: fmt.Errorf(`fluent: validator failed for field "Group.max_users": %w`, err)}
 		}
 	}
 	if _, ok := gc.mutation.Name(); !ok {
-		return &ValidationError{Name: "name", err: errors.New(`ent: missing required field "Group.name"`)}
+		return &ValidationError{Name: "name", err: errors.New(`fluent: missing required field "Group.name"`)}
 	}
 	if v, ok := gc.mutation.Name(); ok {
 		if err := group.NameValidator(v); err != nil {
-			return &ValidationError{Name: "name", err: fmt.Errorf(`ent: validator failed for field "Group.name": %w`, err)}
+			return &ValidationError{Name: "name", err: fmt.Errorf(`fluent: validator failed for field "Group.name": %w`, err)}
 		}
 	}
 	if len(gc.mutation.InfoIDs()) == 0 {
-		return &ValidationError{Name: "info", err: errors.New(`ent: missing required edge "Group.info"`)}
+		return &ValidationError{Name: "info", err: errors.New(`fluent: missing required edge "Group.info"`)}
 	}
 	return nil
 }

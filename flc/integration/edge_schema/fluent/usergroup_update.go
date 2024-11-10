@@ -132,10 +132,10 @@ func (ugu *UserGroupUpdate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (ugu *UserGroupUpdate) check() error {
 	if ugu.mutation.UserCleared() && len(ugu.mutation.UserIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "UserGroup.user"`)
+		return errors.New(`fluent: clearing a required unique edge "UserGroup.user"`)
 	}
 	if ugu.mutation.GroupCleared() && len(ugu.mutation.GroupIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "UserGroup.group"`)
+		return errors.New(`fluent: clearing a required unique edge "UserGroup.group"`)
 	}
 	return nil
 }
@@ -345,10 +345,10 @@ func (uguo *UserGroupUpdateOne) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (uguo *UserGroupUpdateOne) check() error {
 	if uguo.mutation.UserCleared() && len(uguo.mutation.UserIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "UserGroup.user"`)
+		return errors.New(`fluent: clearing a required unique edge "UserGroup.user"`)
 	}
 	if uguo.mutation.GroupCleared() && len(uguo.mutation.GroupIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "UserGroup.group"`)
+		return errors.New(`fluent: clearing a required unique edge "UserGroup.group"`)
 	}
 	return nil
 }
@@ -360,7 +360,7 @@ func (uguo *UserGroupUpdateOne) sqlSave(ctx context.Context) (_node *UserGroup, 
 	_spec := sqlgraph.NewUpdateSpec(usergroup.Table, usergroup.Columns, sqlgraph.NewFieldSpec(usergroup.FieldID, field.TypeInt))
 	id, ok := uguo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "UserGroup.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "UserGroup.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := uguo.fields; len(fields) > 0 {

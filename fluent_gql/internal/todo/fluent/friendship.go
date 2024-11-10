@@ -20,9 +20,9 @@ import (
 	"time"
 
 	"github.com/usalko/fluent"
+	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/friendship"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/user"
-	"github.com/usalko/fluent/dialect/sql"
 )
 
 // Friendship is the model entity for the Friendship schema.

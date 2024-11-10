@@ -99,11 +99,11 @@ func (tu *TokenUpdate) ExecX(ctx context.Context) {
 func (tu *TokenUpdate) check() error {
 	if v, ok := tu.mutation.Body(); ok {
 		if err := token.BodyValidator(v); err != nil {
-			return &ValidationError{Name: "body", err: fmt.Errorf(`ent: validator failed for field "Token.body": %w`, err)}
+			return &ValidationError{Name: "body", err: fmt.Errorf(`fluent: validator failed for field "Token.body": %w`, err)}
 		}
 	}
 	if tu.mutation.AccountCleared() && len(tu.mutation.AccountIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "Token.account"`)
+		return errors.New(`fluent: clearing a required unique edge "Token.account"`)
 	}
 	return nil
 }
@@ -252,11 +252,11 @@ func (tuo *TokenUpdateOne) ExecX(ctx context.Context) {
 func (tuo *TokenUpdateOne) check() error {
 	if v, ok := tuo.mutation.Body(); ok {
 		if err := token.BodyValidator(v); err != nil {
-			return &ValidationError{Name: "body", err: fmt.Errorf(`ent: validator failed for field "Token.body": %w`, err)}
+			return &ValidationError{Name: "body", err: fmt.Errorf(`fluent: validator failed for field "Token.body": %w`, err)}
 		}
 	}
 	if tuo.mutation.AccountCleared() && len(tuo.mutation.AccountIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "Token.account"`)
+		return errors.New(`fluent: clearing a required unique edge "Token.account"`)
 	}
 	return nil
 }
@@ -268,7 +268,7 @@ func (tuo *TokenUpdateOne) sqlSave(ctx context.Context) (_node *Token, err error
 	_spec := sqlgraph.NewUpdateSpec(token.Table, token.Columns, sqlgraph.NewFieldSpec(token.FieldID, field.TypeOther))
 	id, ok := tuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Token.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Token.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := tuo.fields; len(fields) > 0 {

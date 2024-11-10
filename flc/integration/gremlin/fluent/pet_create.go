@@ -10,6 +10,7 @@ import (
 	"errors"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/dialect/gremlin"
 	"github.com/usalko/fluent/dialect/gremlin/graph/dsl"
 	"github.com/usalko/fluent/dialect/gremlin/graph/dsl/__"
@@ -17,7 +18,6 @@ import (
 	"github.com/usalko/fluent/dialect/gremlin/graph/dsl/p"
 	"github.com/usalko/fluent/flc/integration/gremlin/fluent/pet"
 	"github.com/usalko/fluent/flc/integration/gremlin/fluent/user"
-	"github.com/google/uuid"
 )
 
 // PetCreate is the builder for creating a Pet entity.
@@ -189,13 +189,13 @@ func (pc *PetCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (pc *PetCreate) check() error {
 	if _, ok := pc.mutation.Age(); !ok {
-		return &ValidationError{Name: "age", err: errors.New(`ent: missing required field "Pet.age"`)}
+		return &ValidationError{Name: "age", err: errors.New(`fluent: missing required field "Pet.age"`)}
 	}
 	if _, ok := pc.mutation.Name(); !ok {
-		return &ValidationError{Name: "name", err: errors.New(`ent: missing required field "Pet.name"`)}
+		return &ValidationError{Name: "name", err: errors.New(`fluent: missing required field "Pet.name"`)}
 	}
 	if _, ok := pc.mutation.Trained(); !ok {
-		return &ValidationError{Name: "trained", err: errors.New(`ent: missing required field "Pet.trained"`)}
+		return &ValidationError{Name: "trained", err: errors.New(`fluent: missing required field "Pet.trained"`)}
 	}
 	return nil
 }

@@ -20,14 +20,14 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/usalko/fluent/dialect/sql"
+	"github.com/usalko/fluent/dialect/sql/sqlgraph"
+	"github.com/usalko/fluent/dialect/sql/sqljson"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/schema/schematype"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/predicate"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/schema/pulid"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/todo"
-	"github.com/usalko/fluent/dialect/sql"
-	"github.com/usalko/fluent/dialect/sql/sqlgraph"
-	"github.com/usalko/fluent/dialect/sql/sqljson"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -276,12 +276,12 @@ func (cu *CategoryUpdate) ExecX(ctx context.Context) {
 func (cu *CategoryUpdate) check() error {
 	if v, ok := cu.mutation.Text(); ok {
 		if err := category.TextValidator(v); err != nil {
-			return &ValidationError{Name: "text", err: fmt.Errorf(`ent: validator failed for field "Category.text": %w`, err)}
+			return &ValidationError{Name: "text", err: fmt.Errorf(`fluent: validator failed for field "Category.text": %w`, err)}
 		}
 	}
 	if v, ok := cu.mutation.Status(); ok {
 		if err := category.StatusValidator(v); err != nil {
-			return &ValidationError{Name: "status", err: fmt.Errorf(`ent: validator failed for field "Category.status": %w`, err)}
+			return &ValidationError{Name: "status", err: fmt.Errorf(`fluent: validator failed for field "Category.status": %w`, err)}
 		}
 	}
 	return nil
@@ -701,12 +701,12 @@ func (cuo *CategoryUpdateOne) ExecX(ctx context.Context) {
 func (cuo *CategoryUpdateOne) check() error {
 	if v, ok := cuo.mutation.Text(); ok {
 		if err := category.TextValidator(v); err != nil {
-			return &ValidationError{Name: "text", err: fmt.Errorf(`ent: validator failed for field "Category.text": %w`, err)}
+			return &ValidationError{Name: "text", err: fmt.Errorf(`fluent: validator failed for field "Category.text": %w`, err)}
 		}
 	}
 	if v, ok := cuo.mutation.Status(); ok {
 		if err := category.StatusValidator(v); err != nil {
-			return &ValidationError{Name: "status", err: fmt.Errorf(`ent: validator failed for field "Category.status": %w`, err)}
+			return &ValidationError{Name: "status", err: fmt.Errorf(`fluent: validator failed for field "Category.status": %w`, err)}
 		}
 	}
 	return nil
@@ -719,7 +719,7 @@ func (cuo *CategoryUpdateOne) sqlSave(ctx context.Context) (_node *Category, err
 	_spec := sqlgraph.NewUpdateSpec(category.Table, category.Columns, sqlgraph.NewFieldSpec(category.FieldID, field.TypeString))
 	id, ok := cuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Category.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Category.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := cuo.fields; len(fields) > 0 {

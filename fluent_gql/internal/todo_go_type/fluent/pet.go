@@ -18,10 +18,10 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/pet"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/schema/uintgql"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/pet"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/schema/uintgql"
 )
 
 // Pet is the model entity for the Pet schema.

@@ -15,8 +15,8 @@
 package billproduct
 
 import (
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/predicate"
 	"github.com/usalko/fluent/dialect/sql"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/predicate"
 )
 
 // ID filters vertices based on their ID field.

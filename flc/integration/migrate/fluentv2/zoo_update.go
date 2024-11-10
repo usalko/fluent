@@ -140,7 +140,7 @@ func (zuo *ZooUpdateOne) sqlSave(ctx context.Context) (_node *Zoo, err error) {
 	_spec := sqlgraph.NewUpdateSpec(zoo.Table, zoo.Columns, sqlgraph.NewFieldSpec(zoo.FieldID, field.TypeInt))
 	id, ok := zuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`entv2: missing "Zoo.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluentv2: missing "Zoo.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := zuo.fields; len(fields) > 0 {

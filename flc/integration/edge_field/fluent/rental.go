@@ -10,12 +10,12 @@ import (
 	"strings"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/flc/integration/edge_field/fluent/car"
 	"github.com/usalko/fluent/flc/integration/edge_field/fluent/rental"
 	"github.com/usalko/fluent/flc/integration/edge_field/fluent/user"
-	"github.com/google/uuid"
 )
 
 // Rental is the model entity for the Rental schema.

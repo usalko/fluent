@@ -326,12 +326,12 @@ func (fu *FileUpdate) ExecX(ctx context.Context) {
 func (fu *FileUpdate) check() error {
 	if v, ok := fu.mutation.SetID(); ok {
 		if err := file.SetIDValidator(v); err != nil {
-			return &ValidationError{Name: "set_id", err: fmt.Errorf(`ent: validator failed for field "File.set_id": %w`, err)}
+			return &ValidationError{Name: "set_id", err: fmt.Errorf(`fluent: validator failed for field "File.set_id": %w`, err)}
 		}
 	}
 	if v, ok := fu.mutation.Size(); ok {
 		if err := file.SizeValidator(v); err != nil {
-			return &ValidationError{Name: "size", err: fmt.Errorf(`ent: validator failed for field "File.size": %w`, err)}
+			return &ValidationError{Name: "size", err: fmt.Errorf(`fluent: validator failed for field "File.size": %w`, err)}
 		}
 	}
 	return nil
@@ -835,12 +835,12 @@ func (fuo *FileUpdateOne) ExecX(ctx context.Context) {
 func (fuo *FileUpdateOne) check() error {
 	if v, ok := fuo.mutation.SetID(); ok {
 		if err := file.SetIDValidator(v); err != nil {
-			return &ValidationError{Name: "set_id", err: fmt.Errorf(`ent: validator failed for field "File.set_id": %w`, err)}
+			return &ValidationError{Name: "set_id", err: fmt.Errorf(`fluent: validator failed for field "File.set_id": %w`, err)}
 		}
 	}
 	if v, ok := fuo.mutation.Size(); ok {
 		if err := file.SizeValidator(v); err != nil {
-			return &ValidationError{Name: "size", err: fmt.Errorf(`ent: validator failed for field "File.size": %w`, err)}
+			return &ValidationError{Name: "size", err: fmt.Errorf(`fluent: validator failed for field "File.size": %w`, err)}
 		}
 	}
 	return nil
@@ -859,7 +859,7 @@ func (fuo *FileUpdateOne) sqlSave(ctx context.Context) (_node *File, err error) 
 	_spec := sqlgraph.NewUpdateSpec(file.Table, file.Columns, sqlgraph.NewFieldSpec(file.FieldID, field.TypeInt))
 	id, ok := fuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "File.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "File.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := fuo.fields; len(fields) > 0 {

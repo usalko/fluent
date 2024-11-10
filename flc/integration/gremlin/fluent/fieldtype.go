@@ -13,11 +13,11 @@ import (
 	"strings"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/dialect/gremlin"
 	"github.com/usalko/fluent/flc/integration/fluent/role"
 	"github.com/usalko/fluent/flc/integration/fluent/schema"
 	"github.com/usalko/fluent/flc/integration/gremlin/fluent/fieldtype"
-	"github.com/google/uuid"
 )
 
 // FieldType is the model entity for the FieldType schema.

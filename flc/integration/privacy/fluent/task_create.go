@@ -10,12 +10,12 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/flc/integration/privacy/fluent/task"
 	"github.com/usalko/fluent/flc/integration/privacy/fluent/team"
 	"github.com/usalko/fluent/flc/integration/privacy/fluent/user"
 	"github.com/usalko/fluent/schema/field"
-	"github.com/google/uuid"
 )
 
 // TaskCreate is the builder for creating a Task entity.
@@ -154,19 +154,19 @@ func (tc *TaskCreate) defaults() error {
 // check runs all checks and user-defined validators on the builder.
 func (tc *TaskCreate) check() error {
 	if _, ok := tc.mutation.Title(); !ok {
-		return &ValidationError{Name: "title", err: errors.New(`ent: missing required field "Task.title"`)}
+		return &ValidationError{Name: "title", err: errors.New(`fluent: missing required field "Task.title"`)}
 	}
 	if v, ok := tc.mutation.Title(); ok {
 		if err := task.TitleValidator(v); err != nil {
-			return &ValidationError{Name: "title", err: fmt.Errorf(`ent: validator failed for field "Task.title": %w`, err)}
+			return &ValidationError{Name: "title", err: fmt.Errorf(`fluent: validator failed for field "Task.title": %w`, err)}
 		}
 	}
 	if _, ok := tc.mutation.Status(); !ok {
-		return &ValidationError{Name: "status", err: errors.New(`ent: missing required field "Task.status"`)}
+		return &ValidationError{Name: "status", err: errors.New(`fluent: missing required field "Task.status"`)}
 	}
 	if v, ok := tc.mutation.Status(); ok {
 		if err := task.StatusValidator(v); err != nil {
-			return &ValidationError{Name: "status", err: fmt.Errorf(`ent: validator failed for field "Task.status": %w`, err)}
+			return &ValidationError{Name: "status", err: fmt.Errorf(`fluent: validator failed for field "Task.status": %w`, err)}
 		}
 	}
 	return nil

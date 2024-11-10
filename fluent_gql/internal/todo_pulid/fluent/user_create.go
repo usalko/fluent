@@ -19,13 +19,13 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/google/uuid"
+	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/friendship"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/group"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/schema/pulid"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/user"
-	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/schema/field"
-	"github.com/google/uuid"
 )
 
 // UserCreate is the builder for creating a User entity.
@@ -200,13 +200,13 @@ func (uc *UserCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (uc *UserCreate) check() error {
 	if _, ok := uc.mutation.Name(); !ok {
-		return &ValidationError{Name: "name", err: errors.New(`ent: missing required field "User.name"`)}
+		return &ValidationError{Name: "name", err: errors.New(`fluent: missing required field "User.name"`)}
 	}
 	if _, ok := uc.mutation.Username(); !ok {
-		return &ValidationError{Name: "username", err: errors.New(`ent: missing required field "User.username"`)}
+		return &ValidationError{Name: "username", err: errors.New(`fluent: missing required field "User.username"`)}
 	}
 	if _, ok := uc.mutation.RequiredMetadata(); !ok {
-		return &ValidationError{Name: "required_metadata", err: errors.New(`ent: missing required field "User.required_metadata"`)}
+		return &ValidationError{Name: "required_metadata", err: errors.New(`fluent: missing required field "User.required_metadata"`)}
 	}
 	return nil
 }

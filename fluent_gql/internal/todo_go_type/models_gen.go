@@ -51,7 +51,7 @@ type OneToManyConnection struct {
 	// A list of edges.
 	Edges []*OneToManyEdge `json:"edges,omitempty"`
 	// Information to aid in pagination.
-	PageInfo * fluent_gql.PageInfo[string] `json:"pageInfo"`
+	PageInfo *fluent_gql.PageInfo[string] `json:"pageInfo"`
 	// Identifies the total count of items in the connection.
 	TotalCount int `json:"totalCount"`
 }
@@ -157,7 +157,7 @@ type OrganizationWhereInput struct {
 }
 
 type Project struct {
-	ID    string              `json:"id"`
+	ID    string                 `json:"id"`
 	Todos *fluent.TodoConnection `json:"todos"`
 }
 
@@ -179,7 +179,7 @@ type ProjectWhereInput struct {
 	IDLt    *string  `json:"idLT,omitempty"`
 	IDLte   *string  `json:"idLTE,omitempty"`
 	// todos edge predicates
-	HasTodos     *bool                 `json:"hasTodos,omitempty"`
+	HasTodos     *bool                    `json:"hasTodos,omitempty"`
 	HasTodosWith []*fluent.TodoWhereInput `json:"hasTodosWith,omitempty"`
 }
 

@@ -20,15 +20,15 @@ import (
 	"fmt"
 	"math"
 
+	"github.com/google/uuid"
+	"github.com/usalko/fluent"
+	"github.com/usalko/fluent/dialect/sql"
+	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/friendship"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/group"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/predicate"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/user"
-	"github.com/usalko/fluent"
-	"github.com/usalko/fluent/dialect/sql"
-	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/schema/field"
-	"github.com/google/uuid"
 )
 
 // UserQuery is the builder for querying User entities.

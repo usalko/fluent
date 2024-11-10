@@ -19,10 +19,10 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/onetomany"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/predicate"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/onetomany"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/predicate"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -177,7 +177,7 @@ func (otmu *OneToManyUpdate) ExecX(ctx context.Context) {
 func (otmu *OneToManyUpdate) check() error {
 	if v, ok := otmu.mutation.Name(); ok {
 		if err := onetomany.NameValidator(v); err != nil {
-			return &ValidationError{Name: "name", err: fmt.Errorf(`ent: validator failed for field "OneToMany.name": %w`, err)}
+			return &ValidationError{Name: "name", err: fmt.Errorf(`fluent: validator failed for field "OneToMany.name": %w`, err)}
 		}
 	}
 	return nil
@@ -456,7 +456,7 @@ func (otmuo *OneToManyUpdateOne) ExecX(ctx context.Context) {
 func (otmuo *OneToManyUpdateOne) check() error {
 	if v, ok := otmuo.mutation.Name(); ok {
 		if err := onetomany.NameValidator(v); err != nil {
-			return &ValidationError{Name: "name", err: fmt.Errorf(`ent: validator failed for field "OneToMany.name": %w`, err)}
+			return &ValidationError{Name: "name", err: fmt.Errorf(`fluent: validator failed for field "OneToMany.name": %w`, err)}
 		}
 	}
 	return nil
@@ -475,7 +475,7 @@ func (otmuo *OneToManyUpdateOne) sqlSave(ctx context.Context) (_node *OneToMany,
 	_spec := sqlgraph.NewUpdateSpec(onetomany.Table, onetomany.Columns, sqlgraph.NewFieldSpec(onetomany.FieldID, field.TypeInt))
 	id, ok := otmuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "OneToMany.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "OneToMany.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := otmuo.fields; len(fields) > 0 {

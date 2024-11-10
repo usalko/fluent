@@ -17,10 +17,10 @@ package fluent
 import (
 	"context"
 
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/billproduct"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/predicate"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/billproduct"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/predicate"
 	"github.com/usalko/fluent/schema/field"
 )
 

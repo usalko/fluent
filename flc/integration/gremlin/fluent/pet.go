@@ -10,9 +10,9 @@ import (
 	"strings"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/dialect/gremlin"
 	"github.com/usalko/fluent/flc/integration/gremlin/fluent/user"
-	"github.com/google/uuid"
 )
 
 // Pet is the model entity for the Pet schema.

@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"math"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
@@ -17,7 +18,6 @@ import (
 	"github.com/usalko/fluent/examples/migration/fluent/predicate"
 	"github.com/usalko/fluent/examples/migration/fluent/user"
 	"github.com/usalko/fluent/schema/field"
-	"github.com/google/uuid"
 )
 
 // PetQuery is the builder for querying Pet entities.

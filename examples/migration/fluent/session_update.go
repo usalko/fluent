@@ -11,13 +11,13 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/examples/migration/fluent/predicate"
 	"github.com/usalko/fluent/examples/migration/fluent/session"
 	"github.com/usalko/fluent/examples/migration/fluent/sessiondevice"
 	"github.com/usalko/fluent/schema/field"
-	"github.com/google/uuid"
 )
 
 // SessionUpdate is the builder for updating Session entities.
@@ -418,7 +418,7 @@ func (suo *SessionUpdateOne) sqlSave(ctx context.Context) (_node *Session, err e
 	_spec := sqlgraph.NewUpdateSpec(session.Table, session.Columns, sqlgraph.NewFieldSpec(session.FieldID, field.TypeUUID))
 	id, ok := suo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Session.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Session.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := suo.fields; len(fields) > 0 {

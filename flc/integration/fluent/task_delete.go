@@ -13,7 +13,7 @@ import (
 	"github.com/usalko/fluent/flc/integration/fluent/predicate"
 	"github.com/usalko/fluent/schema/field"
 
-	enttask "github.com/usalko/fluent/flc/integration/fluent/task"
+	fluenttask "github.com/usalko/fluent/flc/integration/fluent/task"
 )
 
 // TaskDelete is the builder for deleting a Task entity.
@@ -44,7 +44,7 @@ func (td *TaskDelete) ExecX(ctx context.Context) int {
 }
 
 func (td *TaskDelete) sqlExec(ctx context.Context) (int, error) {
-	_spec := sqlgraph.NewDeleteSpec(enttask.Table, sqlgraph.NewFieldSpec(enttask.FieldID, field.TypeInt))
+	_spec := sqlgraph.NewDeleteSpec(fluenttask.Table, sqlgraph.NewFieldSpec(fluenttask.FieldID, field.TypeInt))
 	if ps := td.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
@@ -78,7 +78,7 @@ func (tdo *TaskDeleteOne) Exec(ctx context.Context) error {
 	case err != nil:
 		return err
 	case n == 0:
-		return &NotFoundError{enttask.Label}
+		return &NotFoundError{fluenttask.Label}
 	default:
 		return nil
 	}

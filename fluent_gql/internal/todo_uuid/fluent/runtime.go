@@ -17,6 +17,7 @@ package fluent
 import (
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/billproduct"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/friendship"
@@ -25,7 +26,6 @@ import (
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/todo"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/user"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/verysecret"
-	"github.com/google/uuid"
 )
 
 // The init function reads all schema descriptors with runtime code

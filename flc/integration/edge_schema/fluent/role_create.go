@@ -105,10 +105,10 @@ func (rc *RoleCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (rc *RoleCreate) check() error {
 	if _, ok := rc.mutation.Name(); !ok {
-		return &ValidationError{Name: "name", err: errors.New(`ent: missing required field "Role.name"`)}
+		return &ValidationError{Name: "name", err: errors.New(`fluent: missing required field "Role.name"`)}
 	}
 	if _, ok := rc.mutation.CreatedAt(); !ok {
-		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "Role.created_at"`)}
+		return &ValidationError{Name: "created_at", err: errors.New(`fluent: missing required field "Role.created_at"`)}
 	}
 	return nil
 }

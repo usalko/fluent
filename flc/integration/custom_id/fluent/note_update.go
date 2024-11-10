@@ -383,7 +383,7 @@ func (nuo *NoteUpdateOne) sqlSave(ctx context.Context) (_node *Note, err error) 
 	_spec := sqlgraph.NewUpdateSpec(note.Table, note.Columns, sqlgraph.NewFieldSpec(note.FieldID, field.TypeString))
 	id, ok := nuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Note.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Note.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := nuo.fields; len(fields) > 0 {

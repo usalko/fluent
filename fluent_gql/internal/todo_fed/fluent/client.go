@@ -21,15 +21,15 @@ import (
 	"log"
 	"reflect"
 
-	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/migrate"
 	"github.com/usalko/fluent"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/migrate"
 
-	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/category"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/todo"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/verysecret"
 	"github.com/usalko/fluent/dialect"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/category"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/todo"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/verysecret"
 )
 
 // Client is the client that holds all fluent builders.

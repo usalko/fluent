@@ -19,9 +19,9 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/billproduct"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/schema/pulid"
-	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -108,13 +108,13 @@ func (bpc *BillProductCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (bpc *BillProductCreate) check() error {
 	if _, ok := bpc.mutation.Name(); !ok {
-		return &ValidationError{Name: "name", err: errors.New(`ent: missing required field "BillProduct.name"`)}
+		return &ValidationError{Name: "name", err: errors.New(`fluent: missing required field "BillProduct.name"`)}
 	}
 	if _, ok := bpc.mutation.Sku(); !ok {
-		return &ValidationError{Name: "sku", err: errors.New(`ent: missing required field "BillProduct.sku"`)}
+		return &ValidationError{Name: "sku", err: errors.New(`fluent: missing required field "BillProduct.sku"`)}
 	}
 	if _, ok := bpc.mutation.Quantity(); !ok {
-		return &ValidationError{Name: "quantity", err: errors.New(`ent: missing required field "BillProduct.quantity"`)}
+		return &ValidationError{Name: "quantity", err: errors.New(`fluent: missing required field "BillProduct.quantity"`)}
 	}
 	return nil
 }

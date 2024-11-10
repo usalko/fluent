@@ -18,9 +18,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/project"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/project"
 )
 
 // Project is the model entity for the Project schema.

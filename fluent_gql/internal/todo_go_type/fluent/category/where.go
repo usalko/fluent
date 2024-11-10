@@ -17,11 +17,11 @@ package category
 import (
 	"time"
 
+	"github.com/usalko/fluent/dialect/sql"
+	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/schema/schematype"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/predicate"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/schema/bigintgql"
-	"github.com/usalko/fluent/dialect/sql"
-	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 )
 
 // ID filters vertices based on their ID field.

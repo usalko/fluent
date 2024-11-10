@@ -6,9 +6,9 @@
 package blob
 
 import (
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
-	"github.com/google/uuid"
 )
 
 const (

@@ -107,19 +107,19 @@ func (ugc *UserGroupCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (ugc *UserGroupCreate) check() error {
 	if _, ok := ugc.mutation.JoinedAt(); !ok {
-		return &ValidationError{Name: "joined_at", err: errors.New(`ent: missing required field "UserGroup.joined_at"`)}
+		return &ValidationError{Name: "joined_at", err: errors.New(`fluent: missing required field "UserGroup.joined_at"`)}
 	}
 	if _, ok := ugc.mutation.UserID(); !ok {
-		return &ValidationError{Name: "user_id", err: errors.New(`ent: missing required field "UserGroup.user_id"`)}
+		return &ValidationError{Name: "user_id", err: errors.New(`fluent: missing required field "UserGroup.user_id"`)}
 	}
 	if _, ok := ugc.mutation.GroupID(); !ok {
-		return &ValidationError{Name: "group_id", err: errors.New(`ent: missing required field "UserGroup.group_id"`)}
+		return &ValidationError{Name: "group_id", err: errors.New(`fluent: missing required field "UserGroup.group_id"`)}
 	}
 	if len(ugc.mutation.UserIDs()) == 0 {
-		return &ValidationError{Name: "user", err: errors.New(`ent: missing required edge "UserGroup.user"`)}
+		return &ValidationError{Name: "user", err: errors.New(`fluent: missing required edge "UserGroup.user"`)}
 	}
 	if len(ugc.mutation.GroupIDs()) == 0 {
-		return &ValidationError{Name: "group", err: errors.New(`ent: missing required edge "UserGroup.group"`)}
+		return &ValidationError{Name: "group", err: errors.New(`fluent: missing required edge "UserGroup.group"`)}
 	}
 	return nil
 }

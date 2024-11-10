@@ -15,8 +15,8 @@
 package verysecret
 
 import (
-	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/predicate"
 	"github.com/usalko/fluent/dialect/sql"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/predicate"
 )
 
 // ID filters vertices based on their ID field.

@@ -19,8 +19,8 @@ import (
 	"strings"
 
 	"github.com/usalko/fluent"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/billproduct"
 	"github.com/usalko/fluent/dialect/sql"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/billproduct"
 )
 
 // BillProduct is the model entity for the BillProduct schema.

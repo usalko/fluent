@@ -112,7 +112,7 @@ func (cu *CardUpdate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (cu *CardUpdate) check() error {
 	if cu.mutation.OwnerCleared() && len(cu.mutation.OwnerIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "Card.owner"`)
+		return errors.New(`fluent: clearing a required unique edge "Card.owner"`)
 	}
 	return nil
 }
@@ -277,7 +277,7 @@ func (cuo *CardUpdateOne) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (cuo *CardUpdateOne) check() error {
 	if cuo.mutation.OwnerCleared() && len(cuo.mutation.OwnerIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "Card.owner"`)
+		return errors.New(`fluent: clearing a required unique edge "Card.owner"`)
 	}
 	return nil
 }
@@ -289,7 +289,7 @@ func (cuo *CardUpdateOne) sqlSave(ctx context.Context) (_node *Card, err error) 
 	_spec := sqlgraph.NewUpdateSpec(card.Table, card.Columns, sqlgraph.NewFieldSpec(card.FieldID, field.TypeInt))
 	id, ok := cuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Card.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Card.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := cuo.fields; len(fields) > 0 {

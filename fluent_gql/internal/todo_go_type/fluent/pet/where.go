@@ -15,9 +15,9 @@
 package pet
 
 import (
+	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/predicate"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/schema/uintgql"
-	"github.com/usalko/fluent/dialect/sql"
 )
 
 // ID filters vertices based on their ID field.

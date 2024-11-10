@@ -170,21 +170,21 @@ func (pu *PaymentUpdate) ExecX(ctx context.Context) {
 func (pu *PaymentUpdate) check() error {
 	if v, ok := pu.mutation.Amount(); ok {
 		if err := payment.AmountValidator(v); err != nil {
-			return &ValidationError{Name: "amount", err: fmt.Errorf(`ent: validator failed for field "Payment.amount": %w`, err)}
+			return &ValidationError{Name: "amount", err: fmt.Errorf(`fluent: validator failed for field "Payment.amount": %w`, err)}
 		}
 	}
 	if v, ok := pu.mutation.Currency(); ok {
 		if err := payment.CurrencyValidator(v); err != nil {
-			return &ValidationError{Name: "currency", err: fmt.Errorf(`ent: validator failed for field "Payment.currency": %w`, err)}
+			return &ValidationError{Name: "currency", err: fmt.Errorf(`fluent: validator failed for field "Payment.currency": %w`, err)}
 		}
 	}
 	if v, ok := pu.mutation.Status(); ok {
 		if err := payment.StatusValidator(v); err != nil {
-			return &ValidationError{Name: "status", err: fmt.Errorf(`ent: validator failed for field "Payment.status": %w`, err)}
+			return &ValidationError{Name: "status", err: fmt.Errorf(`fluent: validator failed for field "Payment.status": %w`, err)}
 		}
 	}
 	if pu.mutation.CardCleared() && len(pu.mutation.CardIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "Payment.card"`)
+		return errors.New(`fluent: clearing a required unique edge "Payment.card"`)
 	}
 	return nil
 }
@@ -419,21 +419,21 @@ func (puo *PaymentUpdateOne) ExecX(ctx context.Context) {
 func (puo *PaymentUpdateOne) check() error {
 	if v, ok := puo.mutation.Amount(); ok {
 		if err := payment.AmountValidator(v); err != nil {
-			return &ValidationError{Name: "amount", err: fmt.Errorf(`ent: validator failed for field "Payment.amount": %w`, err)}
+			return &ValidationError{Name: "amount", err: fmt.Errorf(`fluent: validator failed for field "Payment.amount": %w`, err)}
 		}
 	}
 	if v, ok := puo.mutation.Currency(); ok {
 		if err := payment.CurrencyValidator(v); err != nil {
-			return &ValidationError{Name: "currency", err: fmt.Errorf(`ent: validator failed for field "Payment.currency": %w`, err)}
+			return &ValidationError{Name: "currency", err: fmt.Errorf(`fluent: validator failed for field "Payment.currency": %w`, err)}
 		}
 	}
 	if v, ok := puo.mutation.Status(); ok {
 		if err := payment.StatusValidator(v); err != nil {
-			return &ValidationError{Name: "status", err: fmt.Errorf(`ent: validator failed for field "Payment.status": %w`, err)}
+			return &ValidationError{Name: "status", err: fmt.Errorf(`fluent: validator failed for field "Payment.status": %w`, err)}
 		}
 	}
 	if puo.mutation.CardCleared() && len(puo.mutation.CardIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "Payment.card"`)
+		return errors.New(`fluent: clearing a required unique edge "Payment.card"`)
 	}
 	return nil
 }
@@ -445,7 +445,7 @@ func (puo *PaymentUpdateOne) sqlSave(ctx context.Context) (_node *Payment, err e
 	_spec := sqlgraph.NewUpdateSpec(payment.Table, payment.Columns, sqlgraph.NewFieldSpec(payment.FieldID, field.TypeInt))
 	id, ok := puo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Payment.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Payment.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := puo.fields; len(fields) > 0 {

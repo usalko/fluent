@@ -20,14 +20,14 @@ import (
 	"fmt"
 	"math"
 
+	"github.com/usalko/fluent"
+	"github.com/usalko/fluent/dialect/sql"
+	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/friendship"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/group"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/predicate"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/schema/pulid"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/user"
-	"github.com/usalko/fluent"
-	"github.com/usalko/fluent/dialect/sql"
-	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/schema/field"
 )
 

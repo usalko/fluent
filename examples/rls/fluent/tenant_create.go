@@ -60,7 +60,7 @@ func (tc *TenantCreate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (tc *TenantCreate) check() error {
 	if _, ok := tc.mutation.Name(); !ok {
-		return &ValidationError{Name: "name", err: errors.New(`ent: missing required field "Tenant.name"`)}
+		return &ValidationError{Name: "name", err: errors.New(`fluent: missing required field "Tenant.name"`)}
 	}
 	return nil
 }

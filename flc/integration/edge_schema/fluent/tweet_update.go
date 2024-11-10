@@ -10,6 +10,7 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/predicate"
@@ -19,7 +20,6 @@ import (
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/usertweet"
 	"github.com/usalko/fluent/schema/field"
-	"github.com/google/uuid"
 )
 
 // TweetUpdate is the builder for updating Tweet entities.
@@ -806,7 +806,7 @@ func (tuo *TweetUpdateOne) sqlSave(ctx context.Context) (_node *Tweet, err error
 	_spec := sqlgraph.NewUpdateSpec(tweet.Table, tweet.Columns, sqlgraph.NewFieldSpec(tweet.FieldID, field.TypeInt))
 	id, ok := tuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Tweet.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Tweet.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := tuo.fields; len(fields) > 0 {

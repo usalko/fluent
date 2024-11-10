@@ -11,13 +11,13 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/blob"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/bloblink"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/predicate"
 	"github.com/usalko/fluent/schema/field"
-	"github.com/google/uuid"
 )
 
 // BlobLinkUpdate is the builder for updating BlobLink entities.
@@ -132,10 +132,10 @@ func (blu *BlobLinkUpdate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (blu *BlobLinkUpdate) check() error {
 	if blu.mutation.BlobCleared() && len(blu.mutation.BlobIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "BlobLink.blob"`)
+		return errors.New(`fluent: clearing a required unique edge "BlobLink.blob"`)
 	}
 	if blu.mutation.LinkCleared() && len(blu.mutation.LinkIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "BlobLink.link"`)
+		return errors.New(`fluent: clearing a required unique edge "BlobLink.link"`)
 	}
 	return nil
 }
@@ -345,10 +345,10 @@ func (bluo *BlobLinkUpdateOne) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (bluo *BlobLinkUpdateOne) check() error {
 	if bluo.mutation.BlobCleared() && len(bluo.mutation.BlobIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "BlobLink.blob"`)
+		return errors.New(`fluent: clearing a required unique edge "BlobLink.blob"`)
 	}
 	if bluo.mutation.LinkCleared() && len(bluo.mutation.LinkIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "BlobLink.link"`)
+		return errors.New(`fluent: clearing a required unique edge "BlobLink.link"`)
 	}
 	return nil
 }
@@ -359,12 +359,12 @@ func (bluo *BlobLinkUpdateOne) sqlSave(ctx context.Context) (_node *BlobLink, er
 	}
 	_spec := sqlgraph.NewUpdateSpec(bloblink.Table, bloblink.Columns, sqlgraph.NewFieldSpec(bloblink.FieldBlobID, field.TypeUUID), sqlgraph.NewFieldSpec(bloblink.FieldLinkID, field.TypeUUID))
 	if id, ok := bluo.mutation.BlobID(); !ok {
-		return nil, &ValidationError{Name: "blob_id", err: errors.New(`ent: missing "BlobLink.blob_id" for update`)}
+		return nil, &ValidationError{Name: "blob_id", err: errors.New(`fluent: missing "BlobLink.blob_id" for update`)}
 	} else {
 		_spec.Node.CompositeID[0].Value = id
 	}
 	if id, ok := bluo.mutation.LinkID(); !ok {
-		return nil, &ValidationError{Name: "link_id", err: errors.New(`ent: missing "BlobLink.link_id" for update`)}
+		return nil, &ValidationError{Name: "link_id", err: errors.New(`fluent: missing "BlobLink.link_id" for update`)}
 	} else {
 		_spec.Node.CompositeID[1].Value = id
 	}

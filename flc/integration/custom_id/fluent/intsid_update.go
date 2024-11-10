@@ -337,7 +337,7 @@ func (isuo *IntSIDUpdateOne) sqlSave(ctx context.Context) (_node *IntSID, err er
 	_spec := sqlgraph.NewUpdateSpec(intsid.Table, intsid.Columns, sqlgraph.NewFieldSpec(intsid.FieldID, field.TypeInt64))
 	id, ok := isuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "IntSID.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "IntSID.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := isuo.fields; len(fields) > 0 {

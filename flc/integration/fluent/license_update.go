@@ -189,7 +189,7 @@ func (luo *LicenseUpdateOne) sqlSave(ctx context.Context) (_node *License, err e
 	_spec := sqlgraph.NewUpdateSpec(license.Table, license.Columns, sqlgraph.NewFieldSpec(license.FieldID, field.TypeInt))
 	id, ok := luo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "License.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "License.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := luo.fields; len(fields) > 0 {

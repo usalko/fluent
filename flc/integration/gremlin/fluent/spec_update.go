@@ -227,7 +227,7 @@ func (suo *SpecUpdateOne) gremlinSave(ctx context.Context) (*Spec, error) {
 	res := &gremlin.Response{}
 	id, ok := suo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Spec.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Spec.id" for update`)}
 	}
 	query, bindings := suo.gremlin(id).Query()
 	if err := suo.driver.Exec(ctx, query, bindings, res); err != nil {

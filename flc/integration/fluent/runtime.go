@@ -25,7 +25,7 @@ import (
 	"github.com/usalko/fluent/flc/integration/fluent/pet"
 	"github.com/usalko/fluent/flc/integration/fluent/schema"
 	"github.com/usalko/fluent/flc/integration/fluent/schema/task"
-	enttask "github.com/usalko/fluent/flc/integration/fluent/task"
+	fluenttask "github.com/usalko/fluent/flc/integration/fluent/task"
 	"github.com/usalko/fluent/flc/integration/fluent/user"
 
 	"github.com/usalko/fluent/schema/field"
@@ -287,22 +287,22 @@ func init() {
 	petDescTrained := petFields[4].Descriptor()
 	// pet.DefaultTrained holds the default value on creation for the trained field.
 	pet.DefaultTrained = petDescTrained.Default.(bool)
-	enttaskFields := schema.Task{}.Fields()
-	_ = enttaskFields
-	// enttaskDescPriority is the schema descriptor for priority field.
-	enttaskDescPriority := enttaskFields[0].Descriptor()
-	// enttask.DefaultPriority holds the default value on creation for the priority field.
-	enttask.DefaultPriority = task.Priority(enttaskDescPriority.Default.(int))
-	// enttaskDescCreatedAt is the schema descriptor for created_at field.
-	enttaskDescCreatedAt := enttaskFields[2].Descriptor()
-	// enttask.DefaultCreatedAt holds the default value on creation for the created_at field.
-	enttask.DefaultCreatedAt = enttaskDescCreatedAt.Default.(func() time.Time)
-	// enttaskDescOp is the schema descriptor for op field.
-	enttaskDescOp := enttaskFields[7].Descriptor()
-	// enttask.DefaultOp holds the default value on creation for the op field.
-	enttask.DefaultOp = enttaskDescOp.Default.(string)
-	// enttask.OpValidator is a validator for the "op" field. It is called by the builders before save.
-	enttask.OpValidator = enttaskDescOp.Validators[0].(func(string) error)
+	fluenttaskFields := schema.Task{}.Fields()
+	_ = fluenttaskFields
+	// fluenttaskDescPriority is the schema descriptor for priority field.
+	fluenttaskDescPriority := fluenttaskFields[0].Descriptor()
+	// fluenttask.DefaultPriority holds the default value on creation for the priority field.
+	fluenttask.DefaultPriority = task.Priority(fluenttaskDescPriority.Default.(int))
+	// fluenttaskDescCreatedAt is the schema descriptor for created_at field.
+	fluenttaskDescCreatedAt := fluenttaskFields[2].Descriptor()
+	// fluenttask.DefaultCreatedAt holds the default value on creation for the created_at field.
+	fluenttask.DefaultCreatedAt = fluenttaskDescCreatedAt.Default.(func() time.Time)
+	// fluenttaskDescOp is the schema descriptor for op field.
+	fluenttaskDescOp := fluenttaskFields[7].Descriptor()
+	// fluenttask.DefaultOp holds the default value on creation for the op field.
+	fluenttask.DefaultOp = fluenttaskDescOp.Default.(string)
+	// fluenttask.OpValidator is a validator for the "op" field. It is called by the builders before save.
+	fluenttask.OpValidator = fluenttaskDescOp.Validators[0].(func(string) error)
 	userMixin := schema.User{}.Mixin()
 	userMixinFields0 := userMixin[0].Fields()
 	_ = userMixinFields0

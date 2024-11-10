@@ -15,7 +15,7 @@ import (
 	"github.com/usalko/fluent/dialect/gremlin/graph/dsl"
 	"github.com/usalko/fluent/dialect/gremlin/graph/dsl/g"
 	"github.com/usalko/fluent/flc/integration/fluent/schema/task"
-	enttask "github.com/usalko/fluent/flc/integration/gremlin/fluent/task"
+	fluenttask "github.com/usalko/fluent/flc/integration/gremlin/fluent/task"
 )
 
 // TaskCreate is the builder for creating a Task entity.
@@ -165,15 +165,15 @@ func (tc *TaskCreate) ExecX(ctx context.Context) {
 // defaults sets the default values of the builder before save.
 func (tc *TaskCreate) defaults() {
 	if _, ok := tc.mutation.Priority(); !ok {
-		v := enttask.DefaultPriority
+		v := fluenttask.DefaultPriority
 		tc.mutation.SetPriority(v)
 	}
 	if _, ok := tc.mutation.CreatedAt(); !ok {
-		v := enttask.DefaultCreatedAt()
+		v := fluenttask.DefaultCreatedAt()
 		tc.mutation.SetCreatedAt(v)
 	}
 	if _, ok := tc.mutation.GetOp(); !ok {
-		v := enttask.DefaultOp
+		v := fluenttask.DefaultOp
 		tc.mutation.SetOpField(v)
 	}
 }
@@ -181,22 +181,22 @@ func (tc *TaskCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (tc *TaskCreate) check() error {
 	if _, ok := tc.mutation.Priority(); !ok {
-		return &ValidationError{Name: "priority", err: errors.New(`ent: missing required field "Task.priority"`)}
+		return &ValidationError{Name: "priority", err: errors.New(`fluent: missing required field "Task.priority"`)}
 	}
 	if v, ok := tc.mutation.Priority(); ok {
 		if err := v.Validate(); err != nil {
-			return &ValidationError{Name: "priority", err: fmt.Errorf(`ent: validator failed for field "Task.priority": %w`, err)}
+			return &ValidationError{Name: "priority", err: fmt.Errorf(`fluent: validator failed for field "Task.priority": %w`, err)}
 		}
 	}
 	if _, ok := tc.mutation.CreatedAt(); !ok {
-		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "Task.created_at"`)}
+		return &ValidationError{Name: "created_at", err: errors.New(`fluent: missing required field "Task.created_at"`)}
 	}
 	if _, ok := tc.mutation.GetOp(); !ok {
-		return &ValidationError{Name: "op", err: errors.New(`ent: missing required field "Task.op"`)}
+		return &ValidationError{Name: "op", err: errors.New(`fluent: missing required field "Task.op"`)}
 	}
 	if v, ok := tc.mutation.GetOp(); ok {
-		if err := enttask.OpValidator(v); err != nil {
-			return &ValidationError{Name: "op", err: fmt.Errorf(`ent: validator failed for field "Task.op": %w`, err)}
+		if err := fluenttask.OpValidator(v); err != nil {
+			return &ValidationError{Name: "op", err: fmt.Errorf(`fluent: validator failed for field "Task.op": %w`, err)}
 		}
 	}
 	return nil
@@ -224,30 +224,30 @@ func (tc *TaskCreate) gremlinSave(ctx context.Context) (*Task, error) {
 }
 
 func (tc *TaskCreate) gremlin() *dsl.Traversal {
-	v := g.AddV(enttask.Label)
+	v := g.AddV(fluenttask.Label)
 	if value, ok := tc.mutation.Priority(); ok {
-		v.Property(dsl.Single, enttask.FieldPriority, value)
+		v.Property(dsl.Single, fluenttask.FieldPriority, value)
 	}
 	if value, ok := tc.mutation.Priorities(); ok {
-		v.Property(dsl.Single, enttask.FieldPriorities, value)
+		v.Property(dsl.Single, fluenttask.FieldPriorities, value)
 	}
 	if value, ok := tc.mutation.CreatedAt(); ok {
-		v.Property(dsl.Single, enttask.FieldCreatedAt, value)
+		v.Property(dsl.Single, fluenttask.FieldCreatedAt, value)
 	}
 	if value, ok := tc.mutation.Name(); ok {
-		v.Property(dsl.Single, enttask.FieldName, value)
+		v.Property(dsl.Single, fluenttask.FieldName, value)
 	}
 	if value, ok := tc.mutation.Owner(); ok {
-		v.Property(dsl.Single, enttask.FieldOwner, value)
+		v.Property(dsl.Single, fluenttask.FieldOwner, value)
 	}
 	if value, ok := tc.mutation.Order(); ok {
-		v.Property(dsl.Single, enttask.FieldOrder, value)
+		v.Property(dsl.Single, fluenttask.FieldOrder, value)
 	}
 	if value, ok := tc.mutation.OrderOption(); ok {
-		v.Property(dsl.Single, enttask.FieldOrderOption, value)
+		v.Property(dsl.Single, fluenttask.FieldOrderOption, value)
 	}
 	if value, ok := tc.mutation.GetOp(); ok {
-		v.Property(dsl.Single, enttask.FieldOp, value)
+		v.Property(dsl.Single, fluenttask.FieldOp, value)
 	}
 	return v.ValueMap(true)
 }

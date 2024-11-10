@@ -21,10 +21,13 @@ import (
 	"log"
 	"reflect"
 
+	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/migrate"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/schema/pulid"
-	"github.com/usalko/fluent"
 
+	"github.com/usalko/fluent/dialect"
+	"github.com/usalko/fluent/dialect/sql"
+	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/billproduct"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/friendship"
@@ -32,9 +35,6 @@ import (
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/todo"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/user"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/verysecret"
-	"github.com/usalko/fluent/dialect"
-	"github.com/usalko/fluent/dialect/sql"
-	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 )
 
 // Client is the client that holds all fluent builders.

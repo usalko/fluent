@@ -17,6 +17,5 @@ package runtime
 // The schema-stitching logic is generated in github.com/usalko/fluent/fluent_gql/internal/todo/fluent/runtime.go
 
 const (
-	Version = "v0.13.2-0.20240717044502-34158f2c129b"           // Version of fluent codegen.
-	Sum     = "h1:kC+uzL8UFWwtXQ+yY0wUdvVUgPlJPGU3Fx1uttM8PJA=" // Sum of fluent codegen.
+	Version = "(devel)" // Version of fluent codegen.
 )

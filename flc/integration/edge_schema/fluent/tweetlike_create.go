@@ -113,19 +113,19 @@ func (tlc *TweetLikeCreate) defaults() error {
 // check runs all checks and user-defined validators on the builder.
 func (tlc *TweetLikeCreate) check() error {
 	if _, ok := tlc.mutation.LikedAt(); !ok {
-		return &ValidationError{Name: "liked_at", err: errors.New(`ent: missing required field "TweetLike.liked_at"`)}
+		return &ValidationError{Name: "liked_at", err: errors.New(`fluent: missing required field "TweetLike.liked_at"`)}
 	}
 	if _, ok := tlc.mutation.UserID(); !ok {
-		return &ValidationError{Name: "user_id", err: errors.New(`ent: missing required field "TweetLike.user_id"`)}
+		return &ValidationError{Name: "user_id", err: errors.New(`fluent: missing required field "TweetLike.user_id"`)}
 	}
 	if _, ok := tlc.mutation.TweetID(); !ok {
-		return &ValidationError{Name: "tweet_id", err: errors.New(`ent: missing required field "TweetLike.tweet_id"`)}
+		return &ValidationError{Name: "tweet_id", err: errors.New(`fluent: missing required field "TweetLike.tweet_id"`)}
 	}
 	if len(tlc.mutation.TweetIDs()) == 0 {
-		return &ValidationError{Name: "tweet", err: errors.New(`ent: missing required edge "TweetLike.tweet"`)}
+		return &ValidationError{Name: "tweet", err: errors.New(`fluent: missing required edge "TweetLike.tweet"`)}
 	}
 	if len(tlc.mutation.UserIDs()) == 0 {
-		return &ValidationError{Name: "user", err: errors.New(`ent: missing required edge "TweetLike.user"`)}
+		return &ValidationError{Name: "user", err: errors.New(`fluent: missing required edge "TweetLike.user"`)}
 	}
 	return nil
 }

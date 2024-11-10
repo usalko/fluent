@@ -12,8 +12,10 @@ import (
 	"sync/atomic"
 	"time"
 
+	"github.com/99designs/gqlgen/graphql"
+	"github.com/99designs/gqlgen/graphql/introspection"
 	"github.com/usalko/fluent/fluent_gql"
-	ent1 "github.com/usalko/fluent/fluent_gql/internal/todo/fluent"
+	fluent1 "github.com/usalko/fluent/fluent_gql/internal/todo/fluent"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/schema/customstruct"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/schema/durationgql"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/schema/schematype"
@@ -21,8 +23,6 @@ import (
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/schema/bigintgql"
-	"github.com/99designs/gqlgen/graphql"
-	"github.com/99designs/gqlgen/graphql/introspection"
 	gqlparser "github.com/vektah/gqlparser/v2"
 	"github.com/vektah/gqlparser/v2/ast"
 )
@@ -80,9 +80,9 @@ type ComplexityRoot struct {
 		ID            func(childComplexity int) int
 		Status        func(childComplexity int) int
 		Strings       func(childComplexity int) int
-		SubCategories func(childComplexity int, after * fluent_gql.Cursor[string], first *int, before * fluent_gql.Cursor[string], last *int, orderBy []*fluent.CategoryOrder, where *fluent.CategoryWhereInput) int
+		SubCategories func(childComplexity int, after *fluent_gql.Cursor[string], first *int, before *fluent_gql.Cursor[string], last *int, orderBy []*fluent.CategoryOrder, where *fluent.CategoryWhereInput) int
 		Text          func(childComplexity int) int
-		Todos         func(childComplexity int, after * fluent_gql.Cursor[string], first *int, before * fluent_gql.Cursor[string], last *int, orderBy []*fluent.TodoOrder, where *fluent.TodoWhereInput) int
+		Todos         func(childComplexity int, after *fluent_gql.Cursor[string], first *int, before *fluent_gql.Cursor[string], last *int, orderBy []*fluent.TodoOrder, where *fluent.TodoWhereInput) int
 		TodosCount    func(childComplexity int) int
 		Types         func(childComplexity int) int
 	}
@@ -133,7 +133,7 @@ type ComplexityRoot struct {
 	Group struct {
 		ID    func(childComplexity int) int
 		Name  func(childComplexity int) int
-		Users func(childComplexity int, after * fluent_gql.Cursor[string], first *int, before * fluent_gql.Cursor[string], last *int, orderBy *fluent.UserOrder, where *fluent.UserWhereInput) int
+		Users func(childComplexity int, after *fluent_gql.Cursor[string], first *int, before *fluent_gql.Cursor[string], last *int, orderBy *fluent.UserOrder, where *fluent.UserWhereInput) int
 	}
 
 	GroupConnection struct {
@@ -188,26 +188,26 @@ type ComplexityRoot struct {
 
 	Project struct {
 		ID    func(childComplexity int) int
-		Todos func(childComplexity int, after * fluent_gql.Cursor[string], first *int, before * fluent_gql.Cursor[string], last *int, orderBy []*fluent.TodoOrder, where *fluent.TodoWhereInput) int
+		Todos func(childComplexity int, after *fluent_gql.Cursor[string], first *int, before *fluent_gql.Cursor[string], last *int, orderBy []*fluent.TodoOrder, where *fluent.TodoWhereInput) int
 	}
 
 	Query struct {
 		BillProducts   func(childComplexity int) int
-		Categories     func(childComplexity int, after * fluent_gql.Cursor[string], first *int, before * fluent_gql.Cursor[string], last *int, orderBy []*fluent.CategoryOrder, where *fluent.CategoryWhereInput) int
-		Groups         func(childComplexity int, after * fluent_gql.Cursor[string], first *int, before * fluent_gql.Cursor[string], last *int, where *fluent.GroupWhereInput) int
+		Categories     func(childComplexity int, after *fluent_gql.Cursor[string], first *int, before *fluent_gql.Cursor[string], last *int, orderBy []*fluent.CategoryOrder, where *fluent.CategoryWhereInput) int
+		Groups         func(childComplexity int, after *fluent_gql.Cursor[string], first *int, before *fluent_gql.Cursor[string], last *int, where *fluent.GroupWhereInput) int
 		Node           func(childComplexity int, id string) int
 		Nodes          func(childComplexity int, ids []string) int
-		OneToMany      func(childComplexity int, after * fluent_gql.Cursor[string], first *int, before * fluent_gql.Cursor[string], last *int, orderBy *OneToManyOrder, where *OneToManyWhereInput) int
+		OneToMany      func(childComplexity int, after *fluent_gql.Cursor[string], first *int, before *fluent_gql.Cursor[string], last *int, orderBy *OneToManyOrder, where *OneToManyWhereInput) int
 		Ping           func(childComplexity int) int
-		Todos          func(childComplexity int, after * fluent_gql.Cursor[string], first *int, before * fluent_gql.Cursor[string], last *int, orderBy []*fluent.TodoOrder, where *fluent.TodoWhereInput) int
-		TodosWithJoins func(childComplexity int, after * fluent_gql.Cursor[string], first *int, before * fluent_gql.Cursor[string], last *int, orderBy []*fluent.TodoOrder, where *fluent.TodoWhereInput) int
-		Users          func(childComplexity int, after * fluent_gql.Cursor[string], first *int, before * fluent_gql.Cursor[string], last *int, orderBy *fluent.UserOrder, where *fluent.UserWhereInput) int
+		Todos          func(childComplexity int, after *fluent_gql.Cursor[string], first *int, before *fluent_gql.Cursor[string], last *int, orderBy []*fluent.TodoOrder, where *fluent.TodoWhereInput) int
+		TodosWithJoins func(childComplexity int, after *fluent_gql.Cursor[string], first *int, before *fluent_gql.Cursor[string], last *int, orderBy []*fluent.TodoOrder, where *fluent.TodoWhereInput) int
+		Users          func(childComplexity int, after *fluent_gql.Cursor[string], first *int, before *fluent_gql.Cursor[string], last *int, orderBy *fluent.UserOrder, where *fluent.UserWhereInput) int
 	}
 
 	Todo struct {
 		Category      func(childComplexity int) int
 		CategoryID    func(childComplexity int) int
-		Children      func(childComplexity int, after * fluent_gql.Cursor[string], first *int, before * fluent_gql.Cursor[string], last *int, orderBy []*fluent.TodoOrder, where *fluent.TodoWhereInput) int
+		Children      func(childComplexity int, after *fluent_gql.Cursor[string], first *int, before *fluent_gql.Cursor[string], last *int, orderBy []*fluent.TodoOrder, where *fluent.TodoWhereInput) int
 		CreatedAt     func(childComplexity int) int
 		Custom        func(childComplexity int) int
 		Customp       func(childComplexity int) int
@@ -233,9 +233,9 @@ type ComplexityRoot struct {
 	}
 
 	User struct {
-		Friends          func(childComplexity int, after * fluent_gql.Cursor[string], first *int, before * fluent_gql.Cursor[string], last *int, orderBy *fluent.UserOrder, where *fluent.UserWhereInput) int
-		Friendships      func(childComplexity int, after * fluent_gql.Cursor[string], first *int, before * fluent_gql.Cursor[string], last *int, where *fluent.FriendshipWhereInput) int
-		Groups           func(childComplexity int, after * fluent_gql.Cursor[string], first *int, before * fluent_gql.Cursor[string], last *int, where *fluent.GroupWhereInput) int
+		Friends          func(childComplexity int, after *fluent_gql.Cursor[string], first *int, before *fluent_gql.Cursor[string], last *int, orderBy *fluent.UserOrder, where *fluent.UserWhereInput) int
+		Friendships      func(childComplexity int, after *fluent_gql.Cursor[string], first *int, before *fluent_gql.Cursor[string], last *int, where *fluent.FriendshipWhereInput) int
+		Groups           func(childComplexity int, after *fluent_gql.Cursor[string], first *int, before *fluent_gql.Cursor[string], last *int, where *fluent.GroupWhereInput) int
 		ID               func(childComplexity int) int
 		Metadata         func(childComplexity int) int
 		Name             func(childComplexity int) int
@@ -268,19 +268,19 @@ type MutationResolver interface {
 	UpdateFriendship(ctx context.Context, id string, input UpdateFriendshipInput) (*fluent.Friendship, error)
 }
 type OrganizationResolver interface {
-	ID(ctx context.Context, obj *ent1.Workspace) (string, error)
+	ID(ctx context.Context, obj *fluent1.Workspace) (string, error)
 }
 type QueryResolver interface {
 	Node(ctx context.Context, id string) (fluent.Noder, error)
 	Nodes(ctx context.Context, ids []string) ([]fluent.Noder, error)
 	BillProducts(ctx context.Context) ([]*fluent.BillProduct, error)
-	Categories(ctx context.Context, after * fluent_gql.Cursor[string], first *int, before * fluent_gql.Cursor[string], last *int, orderBy []*fluent.CategoryOrder, where *fluent.CategoryWhereInput) (*fluent.CategoryConnection, error)
-	Groups(ctx context.Context, after * fluent_gql.Cursor[string], first *int, before * fluent_gql.Cursor[string], last *int, where *fluent.GroupWhereInput) (*fluent.GroupConnection, error)
-	OneToMany(ctx context.Context, after * fluent_gql.Cursor[string], first *int, before * fluent_gql.Cursor[string], last *int, orderBy *OneToManyOrder, where *OneToManyWhereInput) (*OneToManyConnection, error)
-	Todos(ctx context.Context, after * fluent_gql.Cursor[string], first *int, before * fluent_gql.Cursor[string], last *int, orderBy []*fluent.TodoOrder, where *fluent.TodoWhereInput) (*fluent.TodoConnection, error)
-	Users(ctx context.Context, after * fluent_gql.Cursor[string], first *int, before * fluent_gql.Cursor[string], last *int, orderBy *fluent.UserOrder, where *fluent.UserWhereInput) (*fluent.UserConnection, error)
+	Categories(ctx context.Context, after *fluent_gql.Cursor[string], first *int, before *fluent_gql.Cursor[string], last *int, orderBy []*fluent.CategoryOrder, where *fluent.CategoryWhereInput) (*fluent.CategoryConnection, error)
+	Groups(ctx context.Context, after *fluent_gql.Cursor[string], first *int, before *fluent_gql.Cursor[string], last *int, where *fluent.GroupWhereInput) (*fluent.GroupConnection, error)
+	OneToMany(ctx context.Context, after *fluent_gql.Cursor[string], first *int, before *fluent_gql.Cursor[string], last *int, orderBy *OneToManyOrder, where *OneToManyWhereInput) (*OneToManyConnection, error)
+	Todos(ctx context.Context, after *fluent_gql.Cursor[string], first *int, before *fluent_gql.Cursor[string], last *int, orderBy []*fluent.TodoOrder, where *fluent.TodoWhereInput) (*fluent.TodoConnection, error)
+	Users(ctx context.Context, after *fluent_gql.Cursor[string], first *int, before *fluent_gql.Cursor[string], last *int, orderBy *fluent.UserOrder, where *fluent.UserWhereInput) (*fluent.UserConnection, error)
 	Ping(ctx context.Context) (string, error)
-	TodosWithJoins(ctx context.Context, after * fluent_gql.Cursor[string], first *int, before * fluent_gql.Cursor[string], last *int, orderBy []*fluent.TodoOrder, where *fluent.TodoWhereInput) (*fluent.TodoConnection, error)
+	TodosWithJoins(ctx context.Context, after *fluent_gql.Cursor[string], first *int, before *fluent_gql.Cursor[string], last *int, orderBy []*fluent.TodoOrder, where *fluent.TodoWhereInput) (*fluent.TodoConnection, error)
 }
 type TodoResolver interface {
 	Status(ctx context.Context, obj *fluent.Todo) (todo.Status, error)
@@ -292,8 +292,8 @@ type UserResolver interface {
 	RequiredMetadata(ctx context.Context, obj *fluent.User) (map[string]interface{}, error)
 	Metadata(ctx context.Context, obj *fluent.User) (map[string]interface{}, error)
 
-	Friends(ctx context.Context, obj *fluent.User, after * fluent_gql.Cursor[string], first *int, before * fluent_gql.Cursor[string], last *int, orderBy *fluent.UserOrder, where *fluent.UserWhereInput) (*fluent.UserConnection, error)
-	Friendships(ctx context.Context, obj *fluent.User, after * fluent_gql.Cursor[string], first *int, before * fluent_gql.Cursor[string], last *int, where *fluent.FriendshipWhereInput) (*fluent.FriendshipConnection, error)
+	Friends(ctx context.Context, obj *fluent.User, after *fluent_gql.Cursor[string], first *int, before *fluent_gql.Cursor[string], last *int, orderBy *fluent.UserOrder, where *fluent.UserWhereInput) (*fluent.UserConnection, error)
+	Friendships(ctx context.Context, obj *fluent.User, after *fluent_gql.Cursor[string], first *int, before *fluent_gql.Cursor[string], last *int, where *fluent.FriendshipWhereInput) (*fluent.FriendshipConnection, error)
 }
 
 type CreateCategoryInputResolver interface {
@@ -428,7 +428,7 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 			return 0, false
 		}
 
-		return e.complexity.Category.SubCategories(childComplexity, args["after"].(* fluent_gql.Cursor[string]), args["first"].(*int), args["before"].(* fluent_gql.Cursor[string]), args["last"].(*int), args["orderBy"].([]*fluent.CategoryOrder), args["where"].(*fluent.CategoryWhereInput)), true
+		return e.complexity.Category.SubCategories(childComplexity, args["after"].(*fluent_gql.Cursor[string]), args["first"].(*int), args["before"].(*fluent_gql.Cursor[string]), args["last"].(*int), args["orderBy"].([]*fluent.CategoryOrder), args["where"].(*fluent.CategoryWhereInput)), true
 
 	case "Category.text":
 		if e.complexity.Category.Text == nil {
@@ -447,7 +447,7 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 			return 0, false
 		}
 
-		return e.complexity.Category.Todos(childComplexity, args["after"].(* fluent_gql.Cursor[string]), args["first"].(*int), args["before"].(* fluent_gql.Cursor[string]), args["last"].(*int), args["orderBy"].([]*fluent.TodoOrder), args["where"].(*fluent.TodoWhereInput)), true
+		return e.complexity.Category.Todos(childComplexity, args["after"].(*fluent_gql.Cursor[string]), args["first"].(*int), args["before"].(*fluent_gql.Cursor[string]), args["last"].(*int), args["orderBy"].([]*fluent.TodoOrder), args["where"].(*fluent.TodoWhereInput)), true
 
 	case "Category.todosCount":
 		if e.complexity.Category.TodosCount == nil {
@@ -620,7 +620,7 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 			return 0, false
 		}
 
-		return e.complexity.Group.Users(childComplexity, args["after"].(* fluent_gql.Cursor[string]), args["first"].(*int), args["before"].(* fluent_gql.Cursor[string]), args["last"].(*int), args["orderBy"].(*fluent.UserOrder), args["where"].(*fluent.UserWhereInput)), true
+		return e.complexity.Group.Users(childComplexity, args["after"].(*fluent_gql.Cursor[string]), args["first"].(*int), args["before"].(*fluent_gql.Cursor[string]), args["last"].(*int), args["orderBy"].(*fluent.UserOrder), args["where"].(*fluent.UserWhereInput)), true
 
 	case "GroupConnection.edges":
 		if e.complexity.GroupConnection.Edges == nil {
@@ -841,7 +841,7 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 			return 0, false
 		}
 
-		return e.complexity.Project.Todos(childComplexity, args["after"].(* fluent_gql.Cursor[string]), args["first"].(*int), args["before"].(* fluent_gql.Cursor[string]), args["last"].(*int), args["orderBy"].([]*fluent.TodoOrder), args["where"].(*fluent.TodoWhereInput)), true
+		return e.complexity.Project.Todos(childComplexity, args["after"].(*fluent_gql.Cursor[string]), args["first"].(*int), args["before"].(*fluent_gql.Cursor[string]), args["last"].(*int), args["orderBy"].([]*fluent.TodoOrder), args["where"].(*fluent.TodoWhereInput)), true
 
 	case "Query.billProducts":
 		if e.complexity.Query.BillProducts == nil {
@@ -860,7 +860,7 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 			return 0, false
 		}
 
-		return e.complexity.Query.Categories(childComplexity, args["after"].(* fluent_gql.Cursor[string]), args["first"].(*int), args["before"].(* fluent_gql.Cursor[string]), args["last"].(*int), args["orderBy"].([]*fluent.CategoryOrder), args["where"].(*fluent.CategoryWhereInput)), true
+		return e.complexity.Query.Categories(childComplexity, args["after"].(*fluent_gql.Cursor[string]), args["first"].(*int), args["before"].(*fluent_gql.Cursor[string]), args["last"].(*int), args["orderBy"].([]*fluent.CategoryOrder), args["where"].(*fluent.CategoryWhereInput)), true
 
 	case "Query.groups":
 		if e.complexity.Query.Groups == nil {
@@ -872,7 +872,7 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 			return 0, false
 		}
 
-		return e.complexity.Query.Groups(childComplexity, args["after"].(* fluent_gql.Cursor[string]), args["first"].(*int), args["before"].(* fluent_gql.Cursor[string]), args["last"].(*int), args["where"].(*fluent.GroupWhereInput)), true
+		return e.complexity.Query.Groups(childComplexity, args["after"].(*fluent_gql.Cursor[string]), args["first"].(*int), args["before"].(*fluent_gql.Cursor[string]), args["last"].(*int), args["where"].(*fluent.GroupWhereInput)), true
 
 	case "Query.node":
 		if e.complexity.Query.Node == nil {
@@ -908,7 +908,7 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 			return 0, false
 		}
 
-		return e.complexity.Query.OneToMany(childComplexity, args["after"].(* fluent_gql.Cursor[string]), args["first"].(*int), args["before"].(* fluent_gql.Cursor[string]), args["last"].(*int), args["orderBy"].(*OneToManyOrder), args["where"].(*OneToManyWhereInput)), true
+		return e.complexity.Query.OneToMany(childComplexity, args["after"].(*fluent_gql.Cursor[string]), args["first"].(*int), args["before"].(*fluent_gql.Cursor[string]), args["last"].(*int), args["orderBy"].(*OneToManyOrder), args["where"].(*OneToManyWhereInput)), true
 
 	case "Query.ping":
 		if e.complexity.Query.Ping == nil {
@@ -927,7 +927,7 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 			return 0, false
 		}
 
-		return e.complexity.Query.Todos(childComplexity, args["after"].(* fluent_gql.Cursor[string]), args["first"].(*int), args["before"].(* fluent_gql.Cursor[string]), args["last"].(*int), args["orderBy"].([]*fluent.TodoOrder), args["where"].(*fluent.TodoWhereInput)), true
+		return e.complexity.Query.Todos(childComplexity, args["after"].(*fluent_gql.Cursor[string]), args["first"].(*int), args["before"].(*fluent_gql.Cursor[string]), args["last"].(*int), args["orderBy"].([]*fluent.TodoOrder), args["where"].(*fluent.TodoWhereInput)), true
 
 	case "Query.todosWithJoins":
 		if e.complexity.Query.TodosWithJoins == nil {
@@ -939,7 +939,7 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 			return 0, false
 		}
 
-		return e.complexity.Query.TodosWithJoins(childComplexity, args["after"].(* fluent_gql.Cursor[string]), args["first"].(*int), args["before"].(* fluent_gql.Cursor[string]), args["last"].(*int), args["orderBy"].([]*fluent.TodoOrder), args["where"].(*fluent.TodoWhereInput)), true
+		return e.complexity.Query.TodosWithJoins(childComplexity, args["after"].(*fluent_gql.Cursor[string]), args["first"].(*int), args["before"].(*fluent_gql.Cursor[string]), args["last"].(*int), args["orderBy"].([]*fluent.TodoOrder), args["where"].(*fluent.TodoWhereInput)), true
 
 	case "Query.users":
 		if e.complexity.Query.Users == nil {
@@ -951,7 +951,7 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 			return 0, false
 		}
 
-		return e.complexity.Query.Users(childComplexity, args["after"].(* fluent_gql.Cursor[string]), args["first"].(*int), args["before"].(* fluent_gql.Cursor[string]), args["last"].(*int), args["orderBy"].(*fluent.UserOrder), args["where"].(*fluent.UserWhereInput)), true
+		return e.complexity.Query.Users(childComplexity, args["after"].(*fluent_gql.Cursor[string]), args["first"].(*int), args["before"].(*fluent_gql.Cursor[string]), args["last"].(*int), args["orderBy"].(*fluent.UserOrder), args["where"].(*fluent.UserWhereInput)), true
 
 	case "Todo.category":
 		if e.complexity.Todo.Category == nil {
@@ -977,7 +977,7 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 			return 0, false
 		}
 
-		return e.complexity.Todo.Children(childComplexity, args["after"].(* fluent_gql.Cursor[string]), args["first"].(*int), args["before"].(* fluent_gql.Cursor[string]), args["last"].(*int), args["orderBy"].([]*fluent.TodoOrder), args["where"].(*fluent.TodoWhereInput)), true
+		return e.complexity.Todo.Children(childComplexity, args["after"].(*fluent_gql.Cursor[string]), args["first"].(*int), args["before"].(*fluent_gql.Cursor[string]), args["last"].(*int), args["orderBy"].([]*fluent.TodoOrder), args["where"].(*fluent.TodoWhereInput)), true
 
 	case "Todo.createdAt":
 		if e.complexity.Todo.CreatedAt == nil {
@@ -1101,7 +1101,7 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 			return 0, false
 		}
 
-		return e.complexity.User.Friends(childComplexity, args["after"].(* fluent_gql.Cursor[string]), args["first"].(*int), args["before"].(* fluent_gql.Cursor[string]), args["last"].(*int), args["orderBy"].(*fluent.UserOrder), args["where"].(*fluent.UserWhereInput)), true
+		return e.complexity.User.Friends(childComplexity, args["after"].(*fluent_gql.Cursor[string]), args["first"].(*int), args["before"].(*fluent_gql.Cursor[string]), args["last"].(*int), args["orderBy"].(*fluent.UserOrder), args["where"].(*fluent.UserWhereInput)), true
 
 	case "User.friendships":
 		if e.complexity.User.Friendships == nil {
@@ -1113,7 +1113,7 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 			return 0, false
 		}
 
-		return e.complexity.User.Friendships(childComplexity, args["after"].(* fluent_gql.Cursor[string]), args["first"].(*int), args["before"].(* fluent_gql.Cursor[string]), args["last"].(*int), args["where"].(*fluent.FriendshipWhereInput)), true
+		return e.complexity.User.Friendships(childComplexity, args["after"].(*fluent_gql.Cursor[string]), args["first"].(*int), args["before"].(*fluent_gql.Cursor[string]), args["last"].(*int), args["where"].(*fluent.FriendshipWhereInput)), true
 
 	case "User.groups":
 		if e.complexity.User.Groups == nil {
@@ -1125,7 +1125,7 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 			return 0, false
 		}
 
-		return e.complexity.User.Groups(childComplexity, args["after"].(* fluent_gql.Cursor[string]), args["first"].(*int), args["before"].(* fluent_gql.Cursor[string]), args["last"].(*int), args["where"].(*fluent.GroupWhereInput)), true
+		return e.complexity.User.Groups(childComplexity, args["after"].(*fluent_gql.Cursor[string]), args["first"].(*int), args["before"].(*fluent_gql.Cursor[string]), args["last"].(*int), args["where"].(*fluent.GroupWhereInput)), true
 
 	case "User.id":
 		if e.complexity.User.ID == nil {
@@ -2870,982 +2870,2632 @@ var parsedSchema = gqlparser.MustLoadSchema(sources...)
 func (ec *executionContext) dir_hasPermissions_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
 	var err error
 	args := map[string]interface{}{}
-	var arg0 []string
-	if tmp, ok := rawArgs["permissions"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("permissions"))
-		arg0, err = ec.unmarshalNString2ᚕstringᚄ(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg0, err := ec.dir_hasPermissions_argsPermissions(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["permissions"] = arg0
 	return args, nil
+}
+func (ec *executionContext) dir_hasPermissions_argsPermissions(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) ([]string, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["permissions"]
+	if !ok {
+		var zeroVal []string
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("permissions"))
+	if tmp, ok := rawArgs["permissions"]; ok {
+		return ec.unmarshalNString2ᚕstringᚄ(ctx, tmp)
+	}
+
+	var zeroVal []string
+	return zeroVal, nil
 }
 
 func (ec *executionContext) field_Category_subCategories_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
 	var err error
 	args := map[string]interface{}{}
-	var arg0 * fluent_gql.Cursor[string]
-	if tmp, ok := rawArgs["after"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
-		arg0, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg0, err := ec.field_Category_subCategories_argsAfter(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["after"] = arg0
-	var arg1 *int
-	if tmp, ok := rawArgs["first"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("first"))
-		arg1, err = ec.unmarshalOInt2ᚖint(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg1, err := ec.field_Category_subCategories_argsFirst(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["first"] = arg1
-	var arg2 * fluent_gql.Cursor[string]
-	if tmp, ok := rawArgs["before"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
-		arg2, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg2, err := ec.field_Category_subCategories_argsBefore(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["before"] = arg2
-	var arg3 *int
-	if tmp, ok := rawArgs["last"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("last"))
-		arg3, err = ec.unmarshalOInt2ᚖint(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg3, err := ec.field_Category_subCategories_argsLast(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["last"] = arg3
-	var arg4 []*fluent.CategoryOrder
-	if tmp, ok := rawArgs["orderBy"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("orderBy"))
-		arg4, err = ec.unmarshalOCategoryOrder2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategoryOrderᚄ(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg4, err := ec.field_Category_subCategories_argsOrderBy(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["orderBy"] = arg4
-	var arg5 *fluent.CategoryWhereInput
-	if tmp, ok := rawArgs["where"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("where"))
-		arg5, err = ec.unmarshalOCategoryWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategoryWhereInput(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg5, err := ec.field_Category_subCategories_argsWhere(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["where"] = arg5
 	return args, nil
+}
+func (ec *executionContext) field_Category_subCategories_argsAfter(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent_gql.Cursor[string], error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["after"]
+	if !ok {
+		var zeroVal *fluent_gql.Cursor[string]
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
+	if tmp, ok := rawArgs["after"]; ok {
+		return ec.unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, tmp)
+	}
+
+	var zeroVal *fluent_gql.Cursor[string]
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Category_subCategories_argsFirst(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*int, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["first"]
+	if !ok {
+		var zeroVal *int
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("first"))
+	if tmp, ok := rawArgs["first"]; ok {
+		return ec.unmarshalOInt2ᚖint(ctx, tmp)
+	}
+
+	var zeroVal *int
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Category_subCategories_argsBefore(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent_gql.Cursor[string], error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["before"]
+	if !ok {
+		var zeroVal *fluent_gql.Cursor[string]
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
+	if tmp, ok := rawArgs["before"]; ok {
+		return ec.unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, tmp)
+	}
+
+	var zeroVal *fluent_gql.Cursor[string]
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Category_subCategories_argsLast(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*int, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["last"]
+	if !ok {
+		var zeroVal *int
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("last"))
+	if tmp, ok := rawArgs["last"]; ok {
+		return ec.unmarshalOInt2ᚖint(ctx, tmp)
+	}
+
+	var zeroVal *int
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Category_subCategories_argsOrderBy(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) ([]*fluent.CategoryOrder, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["orderBy"]
+	if !ok {
+		var zeroVal []*fluent.CategoryOrder
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("orderBy"))
+	if tmp, ok := rawArgs["orderBy"]; ok {
+		return ec.unmarshalOCategoryOrder2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategoryOrderᚄ(ctx, tmp)
+	}
+
+	var zeroVal []*fluent.CategoryOrder
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Category_subCategories_argsWhere(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent.CategoryWhereInput, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["where"]
+	if !ok {
+		var zeroVal *fluent.CategoryWhereInput
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("where"))
+	if tmp, ok := rawArgs["where"]; ok {
+		return ec.unmarshalOCategoryWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategoryWhereInput(ctx, tmp)
+	}
+
+	var zeroVal *fluent.CategoryWhereInput
+	return zeroVal, nil
 }
 
 func (ec *executionContext) field_Category_todos_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
 	var err error
 	args := map[string]interface{}{}
-	var arg0 * fluent_gql.Cursor[string]
-	if tmp, ok := rawArgs["after"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
-		arg0, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg0, err := ec.field_Category_todos_argsAfter(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["after"] = arg0
-	var arg1 *int
-	if tmp, ok := rawArgs["first"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("first"))
-		arg1, err = ec.unmarshalOInt2ᚖint(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg1, err := ec.field_Category_todos_argsFirst(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["first"] = arg1
-	var arg2 * fluent_gql.Cursor[string]
-	if tmp, ok := rawArgs["before"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
-		arg2, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg2, err := ec.field_Category_todos_argsBefore(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["before"] = arg2
-	var arg3 *int
-	if tmp, ok := rawArgs["last"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("last"))
-		arg3, err = ec.unmarshalOInt2ᚖint(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg3, err := ec.field_Category_todos_argsLast(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["last"] = arg3
-	var arg4 []*fluent.TodoOrder
-	if tmp, ok := rawArgs["orderBy"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("orderBy"))
-		arg4, err = ec.unmarshalOTodoOrder2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoOrderᚄ(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg4, err := ec.field_Category_todos_argsOrderBy(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["orderBy"] = arg4
-	var arg5 *fluent.TodoWhereInput
-	if tmp, ok := rawArgs["where"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("where"))
-		arg5, err = ec.unmarshalOTodoWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoWhereInput(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg5, err := ec.field_Category_todos_argsWhere(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["where"] = arg5
 	return args, nil
+}
+func (ec *executionContext) field_Category_todos_argsAfter(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent_gql.Cursor[string], error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["after"]
+	if !ok {
+		var zeroVal *fluent_gql.Cursor[string]
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
+	if tmp, ok := rawArgs["after"]; ok {
+		return ec.unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, tmp)
+	}
+
+	var zeroVal *fluent_gql.Cursor[string]
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Category_todos_argsFirst(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*int, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["first"]
+	if !ok {
+		var zeroVal *int
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("first"))
+	if tmp, ok := rawArgs["first"]; ok {
+		return ec.unmarshalOInt2ᚖint(ctx, tmp)
+	}
+
+	var zeroVal *int
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Category_todos_argsBefore(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent_gql.Cursor[string], error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["before"]
+	if !ok {
+		var zeroVal *fluent_gql.Cursor[string]
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
+	if tmp, ok := rawArgs["before"]; ok {
+		return ec.unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, tmp)
+	}
+
+	var zeroVal *fluent_gql.Cursor[string]
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Category_todos_argsLast(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*int, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["last"]
+	if !ok {
+		var zeroVal *int
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("last"))
+	if tmp, ok := rawArgs["last"]; ok {
+		return ec.unmarshalOInt2ᚖint(ctx, tmp)
+	}
+
+	var zeroVal *int
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Category_todos_argsOrderBy(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) ([]*fluent.TodoOrder, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["orderBy"]
+	if !ok {
+		var zeroVal []*fluent.TodoOrder
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("orderBy"))
+	if tmp, ok := rawArgs["orderBy"]; ok {
+		return ec.unmarshalOTodoOrder2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoOrderᚄ(ctx, tmp)
+	}
+
+	var zeroVal []*fluent.TodoOrder
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Category_todos_argsWhere(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent.TodoWhereInput, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["where"]
+	if !ok {
+		var zeroVal *fluent.TodoWhereInput
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("where"))
+	if tmp, ok := rawArgs["where"]; ok {
+		return ec.unmarshalOTodoWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoWhereInput(ctx, tmp)
+	}
+
+	var zeroVal *fluent.TodoWhereInput
+	return zeroVal, nil
 }
 
 func (ec *executionContext) field_Group_users_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
 	var err error
 	args := map[string]interface{}{}
-	var arg0 * fluent_gql.Cursor[string]
-	if tmp, ok := rawArgs["after"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
-		arg0, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg0, err := ec.field_Group_users_argsAfter(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["after"] = arg0
-	var arg1 *int
-	if tmp, ok := rawArgs["first"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("first"))
-		arg1, err = ec.unmarshalOInt2ᚖint(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg1, err := ec.field_Group_users_argsFirst(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["first"] = arg1
-	var arg2 * fluent_gql.Cursor[string]
-	if tmp, ok := rawArgs["before"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
-		arg2, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg2, err := ec.field_Group_users_argsBefore(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["before"] = arg2
-	var arg3 *int
-	if tmp, ok := rawArgs["last"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("last"))
-		arg3, err = ec.unmarshalOInt2ᚖint(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg3, err := ec.field_Group_users_argsLast(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["last"] = arg3
-	var arg4 *fluent.UserOrder
-	if tmp, ok := rawArgs["orderBy"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("orderBy"))
-		arg4, err = ec.unmarshalOUserOrder2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUserOrder(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg4, err := ec.field_Group_users_argsOrderBy(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["orderBy"] = arg4
-	var arg5 *fluent.UserWhereInput
-	if tmp, ok := rawArgs["where"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("where"))
-		arg5, err = ec.unmarshalOUserWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUserWhereInput(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg5, err := ec.field_Group_users_argsWhere(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["where"] = arg5
 	return args, nil
+}
+func (ec *executionContext) field_Group_users_argsAfter(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent_gql.Cursor[string], error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["after"]
+	if !ok {
+		var zeroVal *fluent_gql.Cursor[string]
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
+	if tmp, ok := rawArgs["after"]; ok {
+		return ec.unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, tmp)
+	}
+
+	var zeroVal *fluent_gql.Cursor[string]
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Group_users_argsFirst(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*int, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["first"]
+	if !ok {
+		var zeroVal *int
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("first"))
+	if tmp, ok := rawArgs["first"]; ok {
+		return ec.unmarshalOInt2ᚖint(ctx, tmp)
+	}
+
+	var zeroVal *int
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Group_users_argsBefore(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent_gql.Cursor[string], error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["before"]
+	if !ok {
+		var zeroVal *fluent_gql.Cursor[string]
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
+	if tmp, ok := rawArgs["before"]; ok {
+		return ec.unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, tmp)
+	}
+
+	var zeroVal *fluent_gql.Cursor[string]
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Group_users_argsLast(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*int, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["last"]
+	if !ok {
+		var zeroVal *int
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("last"))
+	if tmp, ok := rawArgs["last"]; ok {
+		return ec.unmarshalOInt2ᚖint(ctx, tmp)
+	}
+
+	var zeroVal *int
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Group_users_argsOrderBy(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent.UserOrder, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["orderBy"]
+	if !ok {
+		var zeroVal *fluent.UserOrder
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("orderBy"))
+	if tmp, ok := rawArgs["orderBy"]; ok {
+		return ec.unmarshalOUserOrder2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUserOrder(ctx, tmp)
+	}
+
+	var zeroVal *fluent.UserOrder
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Group_users_argsWhere(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent.UserWhereInput, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["where"]
+	if !ok {
+		var zeroVal *fluent.UserWhereInput
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("where"))
+	if tmp, ok := rawArgs["where"]; ok {
+		return ec.unmarshalOUserWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUserWhereInput(ctx, tmp)
+	}
+
+	var zeroVal *fluent.UserWhereInput
+	return zeroVal, nil
 }
 
 func (ec *executionContext) field_Mutation_createCategory_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
 	var err error
 	args := map[string]interface{}{}
-	var arg0 fluent.CreateCategoryInput
-	if tmp, ok := rawArgs["input"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("input"))
-		arg0, err = ec.unmarshalNCreateCategoryInput2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCreateCategoryInput(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg0, err := ec.field_Mutation_createCategory_argsInput(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["input"] = arg0
 	return args, nil
+}
+func (ec *executionContext) field_Mutation_createCategory_argsInput(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (fluent.CreateCategoryInput, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["input"]
+	if !ok {
+		var zeroVal fluent.CreateCategoryInput
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("input"))
+	if tmp, ok := rawArgs["input"]; ok {
+		return ec.unmarshalNCreateCategoryInput2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCreateCategoryInput(ctx, tmp)
+	}
+
+	var zeroVal fluent.CreateCategoryInput
+	return zeroVal, nil
 }
 
 func (ec *executionContext) field_Mutation_createTodo_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
 	var err error
 	args := map[string]interface{}{}
-	var arg0 fluent.CreateTodoInput
-	if tmp, ok := rawArgs["input"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("input"))
-		arg0, err = ec.unmarshalNCreateTodoInput2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCreateTodoInput(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg0, err := ec.field_Mutation_createTodo_argsInput(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["input"] = arg0
 	return args, nil
+}
+func (ec *executionContext) field_Mutation_createTodo_argsInput(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (fluent.CreateTodoInput, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["input"]
+	if !ok {
+		var zeroVal fluent.CreateTodoInput
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("input"))
+	if tmp, ok := rawArgs["input"]; ok {
+		return ec.unmarshalNCreateTodoInput2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCreateTodoInput(ctx, tmp)
+	}
+
+	var zeroVal fluent.CreateTodoInput
+	return zeroVal, nil
 }
 
 func (ec *executionContext) field_Mutation_updateFriendship_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
 	var err error
 	args := map[string]interface{}{}
-	var arg0 string
-	if tmp, ok := rawArgs["id"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("id"))
-		arg0, err = ec.unmarshalNID2string(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg0, err := ec.field_Mutation_updateFriendship_argsID(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["id"] = arg0
-	var arg1 UpdateFriendshipInput
-	if tmp, ok := rawArgs["input"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("input"))
-		arg1, err = ec.unmarshalNUpdateFriendshipInput2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐUpdateFriendshipInput(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg1, err := ec.field_Mutation_updateFriendship_argsInput(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["input"] = arg1
 	return args, nil
+}
+func (ec *executionContext) field_Mutation_updateFriendship_argsID(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (string, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["id"]
+	if !ok {
+		var zeroVal string
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("id"))
+	if tmp, ok := rawArgs["id"]; ok {
+		return ec.unmarshalNID2string(ctx, tmp)
+	}
+
+	var zeroVal string
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Mutation_updateFriendship_argsInput(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (UpdateFriendshipInput, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["input"]
+	if !ok {
+		var zeroVal UpdateFriendshipInput
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("input"))
+	if tmp, ok := rawArgs["input"]; ok {
+		return ec.unmarshalNUpdateFriendshipInput2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐUpdateFriendshipInput(ctx, tmp)
+	}
+
+	var zeroVal UpdateFriendshipInput
+	return zeroVal, nil
 }
 
 func (ec *executionContext) field_Mutation_updateTodo_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
 	var err error
 	args := map[string]interface{}{}
-	var arg0 string
-	if tmp, ok := rawArgs["id"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("id"))
-		arg0, err = ec.unmarshalNID2string(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg0, err := ec.field_Mutation_updateTodo_argsID(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["id"] = arg0
-	var arg1 fluent.UpdateTodoInput
-	if tmp, ok := rawArgs["input"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("input"))
-		arg1, err = ec.unmarshalNUpdateTodoInput2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUpdateTodoInput(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg1, err := ec.field_Mutation_updateTodo_argsInput(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["input"] = arg1
 	return args, nil
+}
+func (ec *executionContext) field_Mutation_updateTodo_argsID(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (string, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["id"]
+	if !ok {
+		var zeroVal string
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("id"))
+	if tmp, ok := rawArgs["id"]; ok {
+		return ec.unmarshalNID2string(ctx, tmp)
+	}
+
+	var zeroVal string
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Mutation_updateTodo_argsInput(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (fluent.UpdateTodoInput, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["input"]
+	if !ok {
+		var zeroVal fluent.UpdateTodoInput
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("input"))
+	if tmp, ok := rawArgs["input"]; ok {
+		return ec.unmarshalNUpdateTodoInput2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUpdateTodoInput(ctx, tmp)
+	}
+
+	var zeroVal fluent.UpdateTodoInput
+	return zeroVal, nil
 }
 
 func (ec *executionContext) field_Project_todos_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
 	var err error
 	args := map[string]interface{}{}
-	var arg0 * fluent_gql.Cursor[string]
-	if tmp, ok := rawArgs["after"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
-		arg0, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg0, err := ec.field_Project_todos_argsAfter(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["after"] = arg0
-	var arg1 *int
-	if tmp, ok := rawArgs["first"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("first"))
-		arg1, err = ec.unmarshalOInt2ᚖint(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg1, err := ec.field_Project_todos_argsFirst(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["first"] = arg1
-	var arg2 * fluent_gql.Cursor[string]
-	if tmp, ok := rawArgs["before"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
-		arg2, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg2, err := ec.field_Project_todos_argsBefore(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["before"] = arg2
-	var arg3 *int
-	if tmp, ok := rawArgs["last"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("last"))
-		arg3, err = ec.unmarshalOInt2ᚖint(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg3, err := ec.field_Project_todos_argsLast(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["last"] = arg3
-	var arg4 []*fluent.TodoOrder
-	if tmp, ok := rawArgs["orderBy"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("orderBy"))
-		arg4, err = ec.unmarshalOTodoOrder2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoOrderᚄ(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg4, err := ec.field_Project_todos_argsOrderBy(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["orderBy"] = arg4
-	var arg5 *fluent.TodoWhereInput
-	if tmp, ok := rawArgs["where"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("where"))
-		arg5, err = ec.unmarshalOTodoWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoWhereInput(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg5, err := ec.field_Project_todos_argsWhere(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["where"] = arg5
 	return args, nil
+}
+func (ec *executionContext) field_Project_todos_argsAfter(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent_gql.Cursor[string], error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["after"]
+	if !ok {
+		var zeroVal *fluent_gql.Cursor[string]
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
+	if tmp, ok := rawArgs["after"]; ok {
+		return ec.unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, tmp)
+	}
+
+	var zeroVal *fluent_gql.Cursor[string]
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Project_todos_argsFirst(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*int, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["first"]
+	if !ok {
+		var zeroVal *int
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("first"))
+	if tmp, ok := rawArgs["first"]; ok {
+		return ec.unmarshalOInt2ᚖint(ctx, tmp)
+	}
+
+	var zeroVal *int
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Project_todos_argsBefore(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent_gql.Cursor[string], error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["before"]
+	if !ok {
+		var zeroVal *fluent_gql.Cursor[string]
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
+	if tmp, ok := rawArgs["before"]; ok {
+		return ec.unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, tmp)
+	}
+
+	var zeroVal *fluent_gql.Cursor[string]
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Project_todos_argsLast(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*int, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["last"]
+	if !ok {
+		var zeroVal *int
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("last"))
+	if tmp, ok := rawArgs["last"]; ok {
+		return ec.unmarshalOInt2ᚖint(ctx, tmp)
+	}
+
+	var zeroVal *int
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Project_todos_argsOrderBy(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) ([]*fluent.TodoOrder, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["orderBy"]
+	if !ok {
+		var zeroVal []*fluent.TodoOrder
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("orderBy"))
+	if tmp, ok := rawArgs["orderBy"]; ok {
+		return ec.unmarshalOTodoOrder2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoOrderᚄ(ctx, tmp)
+	}
+
+	var zeroVal []*fluent.TodoOrder
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Project_todos_argsWhere(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent.TodoWhereInput, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["where"]
+	if !ok {
+		var zeroVal *fluent.TodoWhereInput
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("where"))
+	if tmp, ok := rawArgs["where"]; ok {
+		return ec.unmarshalOTodoWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoWhereInput(ctx, tmp)
+	}
+
+	var zeroVal *fluent.TodoWhereInput
+	return zeroVal, nil
 }
 
 func (ec *executionContext) field_Query___type_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
 	var err error
 	args := map[string]interface{}{}
-	var arg0 string
-	if tmp, ok := rawArgs["name"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("name"))
-		arg0, err = ec.unmarshalNString2string(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg0, err := ec.field_Query___type_argsName(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["name"] = arg0
 	return args, nil
+}
+func (ec *executionContext) field_Query___type_argsName(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (string, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["name"]
+	if !ok {
+		var zeroVal string
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("name"))
+	if tmp, ok := rawArgs["name"]; ok {
+		return ec.unmarshalNString2string(ctx, tmp)
+	}
+
+	var zeroVal string
+	return zeroVal, nil
 }
 
 func (ec *executionContext) field_Query_categories_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
 	var err error
 	args := map[string]interface{}{}
-	var arg0 * fluent_gql.Cursor[string]
-	if tmp, ok := rawArgs["after"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
-		arg0, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg0, err := ec.field_Query_categories_argsAfter(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["after"] = arg0
-	var arg1 *int
-	if tmp, ok := rawArgs["first"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("first"))
-		arg1, err = ec.unmarshalOInt2ᚖint(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg1, err := ec.field_Query_categories_argsFirst(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["first"] = arg1
-	var arg2 * fluent_gql.Cursor[string]
-	if tmp, ok := rawArgs["before"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
-		arg2, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg2, err := ec.field_Query_categories_argsBefore(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["before"] = arg2
-	var arg3 *int
-	if tmp, ok := rawArgs["last"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("last"))
-		arg3, err = ec.unmarshalOInt2ᚖint(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg3, err := ec.field_Query_categories_argsLast(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["last"] = arg3
-	var arg4 []*fluent.CategoryOrder
-	if tmp, ok := rawArgs["orderBy"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("orderBy"))
-		arg4, err = ec.unmarshalOCategoryOrder2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategoryOrderᚄ(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg4, err := ec.field_Query_categories_argsOrderBy(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["orderBy"] = arg4
-	var arg5 *fluent.CategoryWhereInput
-	if tmp, ok := rawArgs["where"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("where"))
-		arg5, err = ec.unmarshalOCategoryWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategoryWhereInput(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg5, err := ec.field_Query_categories_argsWhere(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["where"] = arg5
 	return args, nil
+}
+func (ec *executionContext) field_Query_categories_argsAfter(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent_gql.Cursor[string], error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["after"]
+	if !ok {
+		var zeroVal *fluent_gql.Cursor[string]
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
+	if tmp, ok := rawArgs["after"]; ok {
+		return ec.unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, tmp)
+	}
+
+	var zeroVal *fluent_gql.Cursor[string]
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_categories_argsFirst(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*int, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["first"]
+	if !ok {
+		var zeroVal *int
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("first"))
+	if tmp, ok := rawArgs["first"]; ok {
+		return ec.unmarshalOInt2ᚖint(ctx, tmp)
+	}
+
+	var zeroVal *int
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_categories_argsBefore(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent_gql.Cursor[string], error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["before"]
+	if !ok {
+		var zeroVal *fluent_gql.Cursor[string]
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
+	if tmp, ok := rawArgs["before"]; ok {
+		return ec.unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, tmp)
+	}
+
+	var zeroVal *fluent_gql.Cursor[string]
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_categories_argsLast(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*int, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["last"]
+	if !ok {
+		var zeroVal *int
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("last"))
+	if tmp, ok := rawArgs["last"]; ok {
+		return ec.unmarshalOInt2ᚖint(ctx, tmp)
+	}
+
+	var zeroVal *int
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_categories_argsOrderBy(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) ([]*fluent.CategoryOrder, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["orderBy"]
+	if !ok {
+		var zeroVal []*fluent.CategoryOrder
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("orderBy"))
+	if tmp, ok := rawArgs["orderBy"]; ok {
+		return ec.unmarshalOCategoryOrder2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategoryOrderᚄ(ctx, tmp)
+	}
+
+	var zeroVal []*fluent.CategoryOrder
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_categories_argsWhere(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent.CategoryWhereInput, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["where"]
+	if !ok {
+		var zeroVal *fluent.CategoryWhereInput
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("where"))
+	if tmp, ok := rawArgs["where"]; ok {
+		return ec.unmarshalOCategoryWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategoryWhereInput(ctx, tmp)
+	}
+
+	var zeroVal *fluent.CategoryWhereInput
+	return zeroVal, nil
 }
 
 func (ec *executionContext) field_Query_groups_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
 	var err error
 	args := map[string]interface{}{}
-	var arg0 * fluent_gql.Cursor[string]
-	if tmp, ok := rawArgs["after"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
-		arg0, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg0, err := ec.field_Query_groups_argsAfter(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["after"] = arg0
-	var arg1 *int
-	if tmp, ok := rawArgs["first"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("first"))
-		arg1, err = ec.unmarshalOInt2ᚖint(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg1, err := ec.field_Query_groups_argsFirst(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["first"] = arg1
-	var arg2 * fluent_gql.Cursor[string]
-	if tmp, ok := rawArgs["before"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
-		arg2, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg2, err := ec.field_Query_groups_argsBefore(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["before"] = arg2
-	var arg3 *int
-	if tmp, ok := rawArgs["last"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("last"))
-		arg3, err = ec.unmarshalOInt2ᚖint(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg3, err := ec.field_Query_groups_argsLast(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["last"] = arg3
-	var arg4 *fluent.GroupWhereInput
-	if tmp, ok := rawArgs["where"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("where"))
-		arg4, err = ec.unmarshalOGroupWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐGroupWhereInput(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg4, err := ec.field_Query_groups_argsWhere(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["where"] = arg4
 	return args, nil
+}
+func (ec *executionContext) field_Query_groups_argsAfter(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent_gql.Cursor[string], error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["after"]
+	if !ok {
+		var zeroVal *fluent_gql.Cursor[string]
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
+	if tmp, ok := rawArgs["after"]; ok {
+		return ec.unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, tmp)
+	}
+
+	var zeroVal *fluent_gql.Cursor[string]
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_groups_argsFirst(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*int, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["first"]
+	if !ok {
+		var zeroVal *int
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("first"))
+	if tmp, ok := rawArgs["first"]; ok {
+		return ec.unmarshalOInt2ᚖint(ctx, tmp)
+	}
+
+	var zeroVal *int
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_groups_argsBefore(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent_gql.Cursor[string], error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["before"]
+	if !ok {
+		var zeroVal *fluent_gql.Cursor[string]
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
+	if tmp, ok := rawArgs["before"]; ok {
+		return ec.unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, tmp)
+	}
+
+	var zeroVal *fluent_gql.Cursor[string]
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_groups_argsLast(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*int, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["last"]
+	if !ok {
+		var zeroVal *int
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("last"))
+	if tmp, ok := rawArgs["last"]; ok {
+		return ec.unmarshalOInt2ᚖint(ctx, tmp)
+	}
+
+	var zeroVal *int
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_groups_argsWhere(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent.GroupWhereInput, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["where"]
+	if !ok {
+		var zeroVal *fluent.GroupWhereInput
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("where"))
+	if tmp, ok := rawArgs["where"]; ok {
+		return ec.unmarshalOGroupWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐGroupWhereInput(ctx, tmp)
+	}
+
+	var zeroVal *fluent.GroupWhereInput
+	return zeroVal, nil
 }
 
 func (ec *executionContext) field_Query_node_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
 	var err error
 	args := map[string]interface{}{}
-	var arg0 string
-	if tmp, ok := rawArgs["id"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("id"))
-		arg0, err = ec.unmarshalNID2string(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg0, err := ec.field_Query_node_argsID(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["id"] = arg0
 	return args, nil
+}
+func (ec *executionContext) field_Query_node_argsID(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (string, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["id"]
+	if !ok {
+		var zeroVal string
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("id"))
+	if tmp, ok := rawArgs["id"]; ok {
+		return ec.unmarshalNID2string(ctx, tmp)
+	}
+
+	var zeroVal string
+	return zeroVal, nil
 }
 
 func (ec *executionContext) field_Query_nodes_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
 	var err error
 	args := map[string]interface{}{}
-	var arg0 []string
-	if tmp, ok := rawArgs["ids"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("ids"))
-		arg0, err = ec.unmarshalNID2ᚕstringᚄ(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg0, err := ec.field_Query_nodes_argsIds(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["ids"] = arg0
 	return args, nil
+}
+func (ec *executionContext) field_Query_nodes_argsIds(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) ([]string, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["ids"]
+	if !ok {
+		var zeroVal []string
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("ids"))
+	if tmp, ok := rawArgs["ids"]; ok {
+		return ec.unmarshalNID2ᚕstringᚄ(ctx, tmp)
+	}
+
+	var zeroVal []string
+	return zeroVal, nil
 }
 
 func (ec *executionContext) field_Query_oneToMany_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
 	var err error
 	args := map[string]interface{}{}
-	var arg0 * fluent_gql.Cursor[string]
-	if tmp, ok := rawArgs["after"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
-		arg0, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg0, err := ec.field_Query_oneToMany_argsAfter(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["after"] = arg0
-	var arg1 *int
-	if tmp, ok := rawArgs["first"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("first"))
-		arg1, err = ec.unmarshalOInt2ᚖint(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg1, err := ec.field_Query_oneToMany_argsFirst(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["first"] = arg1
-	var arg2 * fluent_gql.Cursor[string]
-	if tmp, ok := rawArgs["before"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
-		arg2, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg2, err := ec.field_Query_oneToMany_argsBefore(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["before"] = arg2
-	var arg3 *int
-	if tmp, ok := rawArgs["last"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("last"))
-		arg3, err = ec.unmarshalOInt2ᚖint(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg3, err := ec.field_Query_oneToMany_argsLast(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["last"] = arg3
-	var arg4 *OneToManyOrder
-	if tmp, ok := rawArgs["orderBy"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("orderBy"))
-		arg4, err = ec.unmarshalOOneToManyOrder2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyOrder(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg4, err := ec.field_Query_oneToMany_argsOrderBy(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["orderBy"] = arg4
-	var arg5 *OneToManyWhereInput
-	if tmp, ok := rawArgs["where"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("where"))
-		arg5, err = ec.unmarshalOOneToManyWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyWhereInput(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg5, err := ec.field_Query_oneToMany_argsWhere(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["where"] = arg5
 	return args, nil
+}
+func (ec *executionContext) field_Query_oneToMany_argsAfter(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent_gql.Cursor[string], error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["after"]
+	if !ok {
+		var zeroVal *fluent_gql.Cursor[string]
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
+	if tmp, ok := rawArgs["after"]; ok {
+		return ec.unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, tmp)
+	}
+
+	var zeroVal *fluent_gql.Cursor[string]
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_oneToMany_argsFirst(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*int, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["first"]
+	if !ok {
+		var zeroVal *int
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("first"))
+	if tmp, ok := rawArgs["first"]; ok {
+		return ec.unmarshalOInt2ᚖint(ctx, tmp)
+	}
+
+	var zeroVal *int
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_oneToMany_argsBefore(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent_gql.Cursor[string], error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["before"]
+	if !ok {
+		var zeroVal *fluent_gql.Cursor[string]
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
+	if tmp, ok := rawArgs["before"]; ok {
+		return ec.unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, tmp)
+	}
+
+	var zeroVal *fluent_gql.Cursor[string]
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_oneToMany_argsLast(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*int, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["last"]
+	if !ok {
+		var zeroVal *int
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("last"))
+	if tmp, ok := rawArgs["last"]; ok {
+		return ec.unmarshalOInt2ᚖint(ctx, tmp)
+	}
+
+	var zeroVal *int
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_oneToMany_argsOrderBy(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*OneToManyOrder, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["orderBy"]
+	if !ok {
+		var zeroVal *OneToManyOrder
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("orderBy"))
+	if tmp, ok := rawArgs["orderBy"]; ok {
+		return ec.unmarshalOOneToManyOrder2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyOrder(ctx, tmp)
+	}
+
+	var zeroVal *OneToManyOrder
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_oneToMany_argsWhere(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*OneToManyWhereInput, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["where"]
+	if !ok {
+		var zeroVal *OneToManyWhereInput
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("where"))
+	if tmp, ok := rawArgs["where"]; ok {
+		return ec.unmarshalOOneToManyWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyWhereInput(ctx, tmp)
+	}
+
+	var zeroVal *OneToManyWhereInput
+	return zeroVal, nil
 }
 
 func (ec *executionContext) field_Query_todosWithJoins_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
 	var err error
 	args := map[string]interface{}{}
-	var arg0 * fluent_gql.Cursor[string]
-	if tmp, ok := rawArgs["after"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
-		arg0, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg0, err := ec.field_Query_todosWithJoins_argsAfter(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["after"] = arg0
-	var arg1 *int
-	if tmp, ok := rawArgs["first"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("first"))
-		arg1, err = ec.unmarshalOInt2ᚖint(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg1, err := ec.field_Query_todosWithJoins_argsFirst(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["first"] = arg1
-	var arg2 * fluent_gql.Cursor[string]
-	if tmp, ok := rawArgs["before"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
-		arg2, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg2, err := ec.field_Query_todosWithJoins_argsBefore(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["before"] = arg2
-	var arg3 *int
-	if tmp, ok := rawArgs["last"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("last"))
-		arg3, err = ec.unmarshalOInt2ᚖint(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg3, err := ec.field_Query_todosWithJoins_argsLast(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["last"] = arg3
-	var arg4 []*fluent.TodoOrder
-	if tmp, ok := rawArgs["orderBy"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("orderBy"))
-		arg4, err = ec.unmarshalOTodoOrder2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoOrderᚄ(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg4, err := ec.field_Query_todosWithJoins_argsOrderBy(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["orderBy"] = arg4
-	var arg5 *fluent.TodoWhereInput
-	if tmp, ok := rawArgs["where"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("where"))
-		arg5, err = ec.unmarshalOTodoWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoWhereInput(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg5, err := ec.field_Query_todosWithJoins_argsWhere(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["where"] = arg5
 	return args, nil
+}
+func (ec *executionContext) field_Query_todosWithJoins_argsAfter(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent_gql.Cursor[string], error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["after"]
+	if !ok {
+		var zeroVal *fluent_gql.Cursor[string]
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
+	if tmp, ok := rawArgs["after"]; ok {
+		return ec.unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, tmp)
+	}
+
+	var zeroVal *fluent_gql.Cursor[string]
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_todosWithJoins_argsFirst(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*int, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["first"]
+	if !ok {
+		var zeroVal *int
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("first"))
+	if tmp, ok := rawArgs["first"]; ok {
+		return ec.unmarshalOInt2ᚖint(ctx, tmp)
+	}
+
+	var zeroVal *int
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_todosWithJoins_argsBefore(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent_gql.Cursor[string], error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["before"]
+	if !ok {
+		var zeroVal *fluent_gql.Cursor[string]
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
+	if tmp, ok := rawArgs["before"]; ok {
+		return ec.unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, tmp)
+	}
+
+	var zeroVal *fluent_gql.Cursor[string]
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_todosWithJoins_argsLast(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*int, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["last"]
+	if !ok {
+		var zeroVal *int
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("last"))
+	if tmp, ok := rawArgs["last"]; ok {
+		return ec.unmarshalOInt2ᚖint(ctx, tmp)
+	}
+
+	var zeroVal *int
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_todosWithJoins_argsOrderBy(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) ([]*fluent.TodoOrder, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["orderBy"]
+	if !ok {
+		var zeroVal []*fluent.TodoOrder
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("orderBy"))
+	if tmp, ok := rawArgs["orderBy"]; ok {
+		return ec.unmarshalOTodoOrder2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoOrderᚄ(ctx, tmp)
+	}
+
+	var zeroVal []*fluent.TodoOrder
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_todosWithJoins_argsWhere(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent.TodoWhereInput, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["where"]
+	if !ok {
+		var zeroVal *fluent.TodoWhereInput
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("where"))
+	if tmp, ok := rawArgs["where"]; ok {
+		return ec.unmarshalOTodoWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoWhereInput(ctx, tmp)
+	}
+
+	var zeroVal *fluent.TodoWhereInput
+	return zeroVal, nil
 }
 
 func (ec *executionContext) field_Query_todos_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
 	var err error
 	args := map[string]interface{}{}
-	var arg0 * fluent_gql.Cursor[string]
-	if tmp, ok := rawArgs["after"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
-		arg0, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg0, err := ec.field_Query_todos_argsAfter(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["after"] = arg0
-	var arg1 *int
-	if tmp, ok := rawArgs["first"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("first"))
-		arg1, err = ec.unmarshalOInt2ᚖint(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg1, err := ec.field_Query_todos_argsFirst(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["first"] = arg1
-	var arg2 * fluent_gql.Cursor[string]
-	if tmp, ok := rawArgs["before"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
-		arg2, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg2, err := ec.field_Query_todos_argsBefore(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["before"] = arg2
-	var arg3 *int
-	if tmp, ok := rawArgs["last"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("last"))
-		arg3, err = ec.unmarshalOInt2ᚖint(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg3, err := ec.field_Query_todos_argsLast(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["last"] = arg3
-	var arg4 []*fluent.TodoOrder
-	if tmp, ok := rawArgs["orderBy"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("orderBy"))
-		arg4, err = ec.unmarshalOTodoOrder2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoOrderᚄ(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg4, err := ec.field_Query_todos_argsOrderBy(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["orderBy"] = arg4
-	var arg5 *fluent.TodoWhereInput
-	if tmp, ok := rawArgs["where"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("where"))
-		arg5, err = ec.unmarshalOTodoWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoWhereInput(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg5, err := ec.field_Query_todos_argsWhere(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["where"] = arg5
 	return args, nil
+}
+func (ec *executionContext) field_Query_todos_argsAfter(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent_gql.Cursor[string], error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["after"]
+	if !ok {
+		var zeroVal *fluent_gql.Cursor[string]
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
+	if tmp, ok := rawArgs["after"]; ok {
+		return ec.unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, tmp)
+	}
+
+	var zeroVal *fluent_gql.Cursor[string]
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_todos_argsFirst(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*int, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["first"]
+	if !ok {
+		var zeroVal *int
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("first"))
+	if tmp, ok := rawArgs["first"]; ok {
+		return ec.unmarshalOInt2ᚖint(ctx, tmp)
+	}
+
+	var zeroVal *int
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_todos_argsBefore(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent_gql.Cursor[string], error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["before"]
+	if !ok {
+		var zeroVal *fluent_gql.Cursor[string]
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
+	if tmp, ok := rawArgs["before"]; ok {
+		return ec.unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, tmp)
+	}
+
+	var zeroVal *fluent_gql.Cursor[string]
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_todos_argsLast(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*int, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["last"]
+	if !ok {
+		var zeroVal *int
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("last"))
+	if tmp, ok := rawArgs["last"]; ok {
+		return ec.unmarshalOInt2ᚖint(ctx, tmp)
+	}
+
+	var zeroVal *int
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_todos_argsOrderBy(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) ([]*fluent.TodoOrder, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["orderBy"]
+	if !ok {
+		var zeroVal []*fluent.TodoOrder
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("orderBy"))
+	if tmp, ok := rawArgs["orderBy"]; ok {
+		return ec.unmarshalOTodoOrder2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoOrderᚄ(ctx, tmp)
+	}
+
+	var zeroVal []*fluent.TodoOrder
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_todos_argsWhere(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent.TodoWhereInput, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["where"]
+	if !ok {
+		var zeroVal *fluent.TodoWhereInput
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("where"))
+	if tmp, ok := rawArgs["where"]; ok {
+		return ec.unmarshalOTodoWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoWhereInput(ctx, tmp)
+	}
+
+	var zeroVal *fluent.TodoWhereInput
+	return zeroVal, nil
 }
 
 func (ec *executionContext) field_Query_users_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
 	var err error
 	args := map[string]interface{}{}
-	var arg0 * fluent_gql.Cursor[string]
-	if tmp, ok := rawArgs["after"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
-		arg0, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg0, err := ec.field_Query_users_argsAfter(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["after"] = arg0
-	var arg1 *int
-	if tmp, ok := rawArgs["first"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("first"))
-		arg1, err = ec.unmarshalOInt2ᚖint(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg1, err := ec.field_Query_users_argsFirst(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["first"] = arg1
-	var arg2 * fluent_gql.Cursor[string]
-	if tmp, ok := rawArgs["before"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
-		arg2, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg2, err := ec.field_Query_users_argsBefore(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["before"] = arg2
-	var arg3 *int
-	if tmp, ok := rawArgs["last"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("last"))
-		arg3, err = ec.unmarshalOInt2ᚖint(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg3, err := ec.field_Query_users_argsLast(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["last"] = arg3
-	var arg4 *fluent.UserOrder
-	if tmp, ok := rawArgs["orderBy"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("orderBy"))
-		arg4, err = ec.unmarshalOUserOrder2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUserOrder(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg4, err := ec.field_Query_users_argsOrderBy(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["orderBy"] = arg4
-	var arg5 *fluent.UserWhereInput
-	if tmp, ok := rawArgs["where"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("where"))
-		arg5, err = ec.unmarshalOUserWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUserWhereInput(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg5, err := ec.field_Query_users_argsWhere(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["where"] = arg5
 	return args, nil
+}
+func (ec *executionContext) field_Query_users_argsAfter(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent_gql.Cursor[string], error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["after"]
+	if !ok {
+		var zeroVal *fluent_gql.Cursor[string]
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
+	if tmp, ok := rawArgs["after"]; ok {
+		return ec.unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, tmp)
+	}
+
+	var zeroVal *fluent_gql.Cursor[string]
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_users_argsFirst(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*int, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["first"]
+	if !ok {
+		var zeroVal *int
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("first"))
+	if tmp, ok := rawArgs["first"]; ok {
+		return ec.unmarshalOInt2ᚖint(ctx, tmp)
+	}
+
+	var zeroVal *int
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_users_argsBefore(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent_gql.Cursor[string], error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["before"]
+	if !ok {
+		var zeroVal *fluent_gql.Cursor[string]
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
+	if tmp, ok := rawArgs["before"]; ok {
+		return ec.unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, tmp)
+	}
+
+	var zeroVal *fluent_gql.Cursor[string]
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_users_argsLast(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*int, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["last"]
+	if !ok {
+		var zeroVal *int
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("last"))
+	if tmp, ok := rawArgs["last"]; ok {
+		return ec.unmarshalOInt2ᚖint(ctx, tmp)
+	}
+
+	var zeroVal *int
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_users_argsOrderBy(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent.UserOrder, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["orderBy"]
+	if !ok {
+		var zeroVal *fluent.UserOrder
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("orderBy"))
+	if tmp, ok := rawArgs["orderBy"]; ok {
+		return ec.unmarshalOUserOrder2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUserOrder(ctx, tmp)
+	}
+
+	var zeroVal *fluent.UserOrder
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Query_users_argsWhere(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent.UserWhereInput, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["where"]
+	if !ok {
+		var zeroVal *fluent.UserWhereInput
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("where"))
+	if tmp, ok := rawArgs["where"]; ok {
+		return ec.unmarshalOUserWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUserWhereInput(ctx, tmp)
+	}
+
+	var zeroVal *fluent.UserWhereInput
+	return zeroVal, nil
 }
 
 func (ec *executionContext) field_Todo_children_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
 	var err error
 	args := map[string]interface{}{}
-	var arg0 * fluent_gql.Cursor[string]
-	if tmp, ok := rawArgs["after"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
-		arg0, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg0, err := ec.field_Todo_children_argsAfter(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["after"] = arg0
-	var arg1 *int
-	if tmp, ok := rawArgs["first"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("first"))
-		arg1, err = ec.unmarshalOInt2ᚖint(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg1, err := ec.field_Todo_children_argsFirst(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["first"] = arg1
-	var arg2 * fluent_gql.Cursor[string]
-	if tmp, ok := rawArgs["before"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
-		arg2, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg2, err := ec.field_Todo_children_argsBefore(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["before"] = arg2
-	var arg3 *int
-	if tmp, ok := rawArgs["last"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("last"))
-		arg3, err = ec.unmarshalOInt2ᚖint(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg3, err := ec.field_Todo_children_argsLast(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["last"] = arg3
-	var arg4 []*fluent.TodoOrder
-	if tmp, ok := rawArgs["orderBy"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("orderBy"))
-		arg4, err = ec.unmarshalOTodoOrder2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoOrderᚄ(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg4, err := ec.field_Todo_children_argsOrderBy(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["orderBy"] = arg4
-	var arg5 *fluent.TodoWhereInput
-	if tmp, ok := rawArgs["where"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("where"))
-		arg5, err = ec.unmarshalOTodoWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoWhereInput(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg5, err := ec.field_Todo_children_argsWhere(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["where"] = arg5
 	return args, nil
+}
+func (ec *executionContext) field_Todo_children_argsAfter(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent_gql.Cursor[string], error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["after"]
+	if !ok {
+		var zeroVal *fluent_gql.Cursor[string]
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
+	if tmp, ok := rawArgs["after"]; ok {
+		return ec.unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, tmp)
+	}
+
+	var zeroVal *fluent_gql.Cursor[string]
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Todo_children_argsFirst(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*int, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["first"]
+	if !ok {
+		var zeroVal *int
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("first"))
+	if tmp, ok := rawArgs["first"]; ok {
+		return ec.unmarshalOInt2ᚖint(ctx, tmp)
+	}
+
+	var zeroVal *int
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Todo_children_argsBefore(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent_gql.Cursor[string], error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["before"]
+	if !ok {
+		var zeroVal *fluent_gql.Cursor[string]
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
+	if tmp, ok := rawArgs["before"]; ok {
+		return ec.unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, tmp)
+	}
+
+	var zeroVal *fluent_gql.Cursor[string]
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Todo_children_argsLast(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*int, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["last"]
+	if !ok {
+		var zeroVal *int
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("last"))
+	if tmp, ok := rawArgs["last"]; ok {
+		return ec.unmarshalOInt2ᚖint(ctx, tmp)
+	}
+
+	var zeroVal *int
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Todo_children_argsOrderBy(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) ([]*fluent.TodoOrder, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["orderBy"]
+	if !ok {
+		var zeroVal []*fluent.TodoOrder
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("orderBy"))
+	if tmp, ok := rawArgs["orderBy"]; ok {
+		return ec.unmarshalOTodoOrder2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoOrderᚄ(ctx, tmp)
+	}
+
+	var zeroVal []*fluent.TodoOrder
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_Todo_children_argsWhere(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent.TodoWhereInput, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["where"]
+	if !ok {
+		var zeroVal *fluent.TodoWhereInput
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("where"))
+	if tmp, ok := rawArgs["where"]; ok {
+		return ec.unmarshalOTodoWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoWhereInput(ctx, tmp)
+	}
+
+	var zeroVal *fluent.TodoWhereInput
+	return zeroVal, nil
 }
 
 func (ec *executionContext) field_User_friends_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
 	var err error
 	args := map[string]interface{}{}
-	var arg0 * fluent_gql.Cursor[string]
-	if tmp, ok := rawArgs["after"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
-		arg0, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg0, err := ec.field_User_friends_argsAfter(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["after"] = arg0
-	var arg1 *int
-	if tmp, ok := rawArgs["first"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("first"))
-		arg1, err = ec.unmarshalOInt2ᚖint(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg1, err := ec.field_User_friends_argsFirst(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["first"] = arg1
-	var arg2 * fluent_gql.Cursor[string]
-	if tmp, ok := rawArgs["before"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
-		arg2, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg2, err := ec.field_User_friends_argsBefore(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["before"] = arg2
-	var arg3 *int
-	if tmp, ok := rawArgs["last"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("last"))
-		arg3, err = ec.unmarshalOInt2ᚖint(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg3, err := ec.field_User_friends_argsLast(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["last"] = arg3
-	var arg4 *fluent.UserOrder
-	if tmp, ok := rawArgs["orderBy"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("orderBy"))
-		arg4, err = ec.unmarshalOUserOrder2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUserOrder(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg4, err := ec.field_User_friends_argsOrderBy(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["orderBy"] = arg4
-	var arg5 *fluent.UserWhereInput
-	if tmp, ok := rawArgs["where"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("where"))
-		arg5, err = ec.unmarshalOUserWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUserWhereInput(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg5, err := ec.field_User_friends_argsWhere(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["where"] = arg5
 	return args, nil
+}
+func (ec *executionContext) field_User_friends_argsAfter(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent_gql.Cursor[string], error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["after"]
+	if !ok {
+		var zeroVal *fluent_gql.Cursor[string]
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
+	if tmp, ok := rawArgs["after"]; ok {
+		return ec.unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, tmp)
+	}
+
+	var zeroVal *fluent_gql.Cursor[string]
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_User_friends_argsFirst(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*int, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["first"]
+	if !ok {
+		var zeroVal *int
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("first"))
+	if tmp, ok := rawArgs["first"]; ok {
+		return ec.unmarshalOInt2ᚖint(ctx, tmp)
+	}
+
+	var zeroVal *int
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_User_friends_argsBefore(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent_gql.Cursor[string], error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["before"]
+	if !ok {
+		var zeroVal *fluent_gql.Cursor[string]
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
+	if tmp, ok := rawArgs["before"]; ok {
+		return ec.unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, tmp)
+	}
+
+	var zeroVal *fluent_gql.Cursor[string]
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_User_friends_argsLast(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*int, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["last"]
+	if !ok {
+		var zeroVal *int
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("last"))
+	if tmp, ok := rawArgs["last"]; ok {
+		return ec.unmarshalOInt2ᚖint(ctx, tmp)
+	}
+
+	var zeroVal *int
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_User_friends_argsOrderBy(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent.UserOrder, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["orderBy"]
+	if !ok {
+		var zeroVal *fluent.UserOrder
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("orderBy"))
+	if tmp, ok := rawArgs["orderBy"]; ok {
+		return ec.unmarshalOUserOrder2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUserOrder(ctx, tmp)
+	}
+
+	var zeroVal *fluent.UserOrder
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_User_friends_argsWhere(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent.UserWhereInput, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["where"]
+	if !ok {
+		var zeroVal *fluent.UserWhereInput
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("where"))
+	if tmp, ok := rawArgs["where"]; ok {
+		return ec.unmarshalOUserWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUserWhereInput(ctx, tmp)
+	}
+
+	var zeroVal *fluent.UserWhereInput
+	return zeroVal, nil
 }
 
 func (ec *executionContext) field_User_friendships_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
 	var err error
 	args := map[string]interface{}{}
-	var arg0 * fluent_gql.Cursor[string]
-	if tmp, ok := rawArgs["after"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
-		arg0, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg0, err := ec.field_User_friendships_argsAfter(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["after"] = arg0
-	var arg1 *int
-	if tmp, ok := rawArgs["first"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("first"))
-		arg1, err = ec.unmarshalOInt2ᚖint(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg1, err := ec.field_User_friendships_argsFirst(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["first"] = arg1
-	var arg2 * fluent_gql.Cursor[string]
-	if tmp, ok := rawArgs["before"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
-		arg2, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg2, err := ec.field_User_friendships_argsBefore(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["before"] = arg2
-	var arg3 *int
-	if tmp, ok := rawArgs["last"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("last"))
-		arg3, err = ec.unmarshalOInt2ᚖint(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg3, err := ec.field_User_friendships_argsLast(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["last"] = arg3
-	var arg4 *fluent.FriendshipWhereInput
-	if tmp, ok := rawArgs["where"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("where"))
-		arg4, err = ec.unmarshalOFriendshipWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐFriendshipWhereInput(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg4, err := ec.field_User_friendships_argsWhere(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["where"] = arg4
 	return args, nil
+}
+func (ec *executionContext) field_User_friendships_argsAfter(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent_gql.Cursor[string], error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["after"]
+	if !ok {
+		var zeroVal *fluent_gql.Cursor[string]
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
+	if tmp, ok := rawArgs["after"]; ok {
+		return ec.unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, tmp)
+	}
+
+	var zeroVal *fluent_gql.Cursor[string]
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_User_friendships_argsFirst(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*int, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["first"]
+	if !ok {
+		var zeroVal *int
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("first"))
+	if tmp, ok := rawArgs["first"]; ok {
+		return ec.unmarshalOInt2ᚖint(ctx, tmp)
+	}
+
+	var zeroVal *int
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_User_friendships_argsBefore(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent_gql.Cursor[string], error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["before"]
+	if !ok {
+		var zeroVal *fluent_gql.Cursor[string]
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
+	if tmp, ok := rawArgs["before"]; ok {
+		return ec.unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, tmp)
+	}
+
+	var zeroVal *fluent_gql.Cursor[string]
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_User_friendships_argsLast(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*int, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["last"]
+	if !ok {
+		var zeroVal *int
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("last"))
+	if tmp, ok := rawArgs["last"]; ok {
+		return ec.unmarshalOInt2ᚖint(ctx, tmp)
+	}
+
+	var zeroVal *int
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_User_friendships_argsWhere(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent.FriendshipWhereInput, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["where"]
+	if !ok {
+		var zeroVal *fluent.FriendshipWhereInput
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("where"))
+	if tmp, ok := rawArgs["where"]; ok {
+		return ec.unmarshalOFriendshipWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐFriendshipWhereInput(ctx, tmp)
+	}
+
+	var zeroVal *fluent.FriendshipWhereInput
+	return zeroVal, nil
 }
 
 func (ec *executionContext) field_User_groups_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
 	var err error
 	args := map[string]interface{}{}
-	var arg0 * fluent_gql.Cursor[string]
-	if tmp, ok := rawArgs["after"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
-		arg0, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg0, err := ec.field_User_groups_argsAfter(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["after"] = arg0
-	var arg1 *int
-	if tmp, ok := rawArgs["first"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("first"))
-		arg1, err = ec.unmarshalOInt2ᚖint(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg1, err := ec.field_User_groups_argsFirst(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["first"] = arg1
-	var arg2 * fluent_gql.Cursor[string]
-	if tmp, ok := rawArgs["before"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
-		arg2, err = ec.unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg2, err := ec.field_User_groups_argsBefore(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["before"] = arg2
-	var arg3 *int
-	if tmp, ok := rawArgs["last"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("last"))
-		arg3, err = ec.unmarshalOInt2ᚖint(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg3, err := ec.field_User_groups_argsLast(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["last"] = arg3
-	var arg4 *fluent.GroupWhereInput
-	if tmp, ok := rawArgs["where"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("where"))
-		arg4, err = ec.unmarshalOGroupWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐGroupWhereInput(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg4, err := ec.field_User_groups_argsWhere(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["where"] = arg4
 	return args, nil
+}
+func (ec *executionContext) field_User_groups_argsAfter(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent_gql.Cursor[string], error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["after"]
+	if !ok {
+		var zeroVal *fluent_gql.Cursor[string]
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("after"))
+	if tmp, ok := rawArgs["after"]; ok {
+		return ec.unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, tmp)
+	}
+
+	var zeroVal *fluent_gql.Cursor[string]
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_User_groups_argsFirst(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*int, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["first"]
+	if !ok {
+		var zeroVal *int
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("first"))
+	if tmp, ok := rawArgs["first"]; ok {
+		return ec.unmarshalOInt2ᚖint(ctx, tmp)
+	}
+
+	var zeroVal *int
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_User_groups_argsBefore(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent_gql.Cursor[string], error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["before"]
+	if !ok {
+		var zeroVal *fluent_gql.Cursor[string]
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("before"))
+	if tmp, ok := rawArgs["before"]; ok {
+		return ec.unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, tmp)
+	}
+
+	var zeroVal *fluent_gql.Cursor[string]
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_User_groups_argsLast(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*int, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["last"]
+	if !ok {
+		var zeroVal *int
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("last"))
+	if tmp, ok := rawArgs["last"]; ok {
+		return ec.unmarshalOInt2ᚖint(ctx, tmp)
+	}
+
+	var zeroVal *int
+	return zeroVal, nil
+}
+
+func (ec *executionContext) field_User_groups_argsWhere(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (*fluent.GroupWhereInput, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["where"]
+	if !ok {
+		var zeroVal *fluent.GroupWhereInput
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("where"))
+	if tmp, ok := rawArgs["where"]; ok {
+		return ec.unmarshalOGroupWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐGroupWhereInput(ctx, tmp)
+	}
+
+	var zeroVal *fluent.GroupWhereInput
+	return zeroVal, nil
 }
 
 func (ec *executionContext) field___Type_enumValues_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
 	var err error
 	args := map[string]interface{}{}
-	var arg0 bool
-	if tmp, ok := rawArgs["includeDeprecated"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("includeDeprecated"))
-		arg0, err = ec.unmarshalOBoolean2bool(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg0, err := ec.field___Type_enumValues_argsIncludeDeprecated(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["includeDeprecated"] = arg0
 	return args, nil
+}
+func (ec *executionContext) field___Type_enumValues_argsIncludeDeprecated(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (bool, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["includeDeprecated"]
+	if !ok {
+		var zeroVal bool
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("includeDeprecated"))
+	if tmp, ok := rawArgs["includeDeprecated"]; ok {
+		return ec.unmarshalOBoolean2bool(ctx, tmp)
+	}
+
+	var zeroVal bool
+	return zeroVal, nil
 }
 
 func (ec *executionContext) field___Type_fields_args(ctx context.Context, rawArgs map[string]interface{}) (map[string]interface{}, error) {
 	var err error
 	args := map[string]interface{}{}
-	var arg0 bool
-	if tmp, ok := rawArgs["includeDeprecated"]; ok {
-		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("includeDeprecated"))
-		arg0, err = ec.unmarshalOBoolean2bool(ctx, tmp)
-		if err != nil {
-			return nil, err
-		}
+	arg0, err := ec.field___Type_fields_argsIncludeDeprecated(ctx, rawArgs)
+	if err != nil {
+		return nil, err
 	}
 	args["includeDeprecated"] = arg0
 	return args, nil
+}
+func (ec *executionContext) field___Type_fields_argsIncludeDeprecated(
+	ctx context.Context,
+	rawArgs map[string]interface{},
+) (bool, error) {
+	// We won't call the directive if the argument is null.
+	// Set call_argument_directives_with_null to true to call directives
+	// even if the argument is null.
+	_, ok := rawArgs["includeDeprecated"]
+	if !ok {
+		var zeroVal bool
+		return zeroVal, nil
+	}
+
+	ctx = graphql.WithPathContext(ctx, graphql.NewPathWithField("includeDeprecated"))
+	if tmp, ok := rawArgs["includeDeprecated"]; ok {
+		return ec.unmarshalOBoolean2bool(ctx, tmp)
+	}
+
+	var zeroVal bool
+	return zeroVal, nil
 }
 
 // endregion ***************************** args.gotpl *****************************
@@ -4060,7 +5710,7 @@ func (ec *executionContext) _Category_id(ctx context.Context, field graphql.Coll
 	}
 	res := resTmp.(bigintgql.BigInt)
 	fc.Result = res
-	return ec.marshalNID2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigInt(ctx, field.Selections, res)
+	return ec.marshalNID2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigInt(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Category_id(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -4148,7 +5798,7 @@ func (ec *executionContext) _Category_status(ctx context.Context, field graphql.
 	}
 	res := resTmp.(category.Status)
 	fc.Result = res
-	return ec.marshalNCategoryStatus2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋcategoryᚐStatus(ctx, field.Selections, res)
+	return ec.marshalNCategoryStatus2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋcategoryᚐStatus(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Category_status(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -4189,7 +5839,7 @@ func (ec *executionContext) _Category_config(ctx context.Context, field graphql.
 	}
 	res := resTmp.(*schematype.CategoryConfig)
 	fc.Result = res
-	return ec.marshalOCategoryConfig2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋschemaᚋschematypeᚐCategoryConfig(ctx, field.Selections, res)
+	return ec.marshalOCategoryConfig2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋschemaᚋschematypeᚐCategoryConfig(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Category_config(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -4234,7 +5884,7 @@ func (ec *executionContext) _Category_types(ctx context.Context, field graphql.C
 	}
 	res := resTmp.(*CategoryTypes)
 	fc.Result = res
-	return ec.marshalOCategoryTypes2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐCategoryTypes(ctx, field.Selections, res)
+	return ec.marshalOCategoryTypes2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐCategoryTypes(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Category_types(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -4391,7 +6041,7 @@ func (ec *executionContext) _Category_todos(ctx context.Context, field graphql.C
 	}()
 	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
 		ctx = rctx // use context from middleware stack in children
-		return obj.Todos(ctx, fc.Args["after"].(* fluent_gql.Cursor[string]), fc.Args["first"].(*int), fc.Args["before"].(* fluent_gql.Cursor[string]), fc.Args["last"].(*int), fc.Args["orderBy"].([]*fluent.TodoOrder), fc.Args["where"].(*fluent.TodoWhereInput))
+		return obj.Todos(ctx, fc.Args["after"].(*fluent_gql.Cursor[string]), fc.Args["first"].(*int), fc.Args["before"].(*fluent_gql.Cursor[string]), fc.Args["last"].(*int), fc.Args["orderBy"].([]*fluent.TodoOrder), fc.Args["where"].(*fluent.TodoWhereInput))
 	})
 	if err != nil {
 		ec.Error(ctx, err)
@@ -4405,7 +6055,7 @@ func (ec *executionContext) _Category_todos(ctx context.Context, field graphql.C
 	}
 	res := resTmp.(*fluent.TodoConnection)
 	fc.Result = res
-	return ec.marshalNTodoConnection2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoConnection(ctx, field.Selections, res)
+	return ec.marshalNTodoConnection2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoConnection(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Category_todos(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -4454,7 +6104,7 @@ func (ec *executionContext) _Category_subCategories(ctx context.Context, field g
 	}()
 	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
 		ctx = rctx // use context from middleware stack in children
-		return obj.SubCategories(ctx, fc.Args["after"].(* fluent_gql.Cursor[string]), fc.Args["first"].(*int), fc.Args["before"].(* fluent_gql.Cursor[string]), fc.Args["last"].(*int), fc.Args["orderBy"].([]*fluent.CategoryOrder), fc.Args["where"].(*fluent.CategoryWhereInput))
+		return obj.SubCategories(ctx, fc.Args["after"].(*fluent_gql.Cursor[string]), fc.Args["first"].(*int), fc.Args["before"].(*fluent_gql.Cursor[string]), fc.Args["last"].(*int), fc.Args["orderBy"].([]*fluent.CategoryOrder), fc.Args["where"].(*fluent.CategoryWhereInput))
 	})
 	if err != nil {
 		ec.Error(ctx, err)
@@ -4468,7 +6118,7 @@ func (ec *executionContext) _Category_subCategories(ctx context.Context, field g
 	}
 	res := resTmp.(*fluent.CategoryConnection)
 	fc.Result = res
-	return ec.marshalNCategoryConnection2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategoryConnection(ctx, field.Selections, res)
+	return ec.marshalNCategoryConnection2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategoryConnection(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Category_subCategories(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -4610,7 +6260,7 @@ func (ec *executionContext) _CategoryConnection_edges(ctx context.Context, field
 	}
 	res := resTmp.([]*fluent.CategoryEdge)
 	fc.Result = res
-	return ec.marshalOCategoryEdge2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategoryEdge(ctx, field.Selections, res)
+	return ec.marshalOCategoryEdge2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategoryEdge(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_CategoryConnection_edges(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -4658,9 +6308,9 @@ func (ec *executionContext) _CategoryConnection_pageInfo(ctx context.Context, fi
 		}
 		return graphql.Null
 	}
-	res := resTmp.( fluent_gql.PageInfo[string])
+	res := resTmp.(fluent_gql.PageInfo[string])
 	fc.Result = res
-	return ec.marshalNPageInfo2entgoᚗioᚋcontribᚋ fluent_gqlᚐPageInfo(ctx, field.Selections, res)
+	return ec.marshalNPageInfo2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐPageInfo(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_CategoryConnection_pageInfo(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -4755,7 +6405,7 @@ func (ec *executionContext) _CategoryEdge_node(ctx context.Context, field graphq
 	}
 	res := resTmp.(*fluent.Category)
 	fc.Result = res
-	return ec.marshalOCategory2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategory(ctx, field.Selections, res)
+	return ec.marshalOCategory2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategory(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_CategoryEdge_node(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -4821,9 +6471,9 @@ func (ec *executionContext) _CategoryEdge_cursor(ctx context.Context, field grap
 		}
 		return graphql.Null
 	}
-	res := resTmp.( fluent_gql.Cursor[string])
+	res := resTmp.(fluent_gql.Cursor[string])
 	fc.Result = res
-	return ec.marshalNCursor2entgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, field.Selections, res)
+	return ec.marshalNCursor2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_CategoryEdge_cursor(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -5128,7 +6778,7 @@ func (ec *executionContext) _Friendship_user(ctx context.Context, field graphql.
 	}
 	res := resTmp.(*fluent.User)
 	fc.Result = res
-	return ec.marshalNUser2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUser(ctx, field.Selections, res)
+	return ec.marshalNUser2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUser(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Friendship_user(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -5190,7 +6840,7 @@ func (ec *executionContext) _Friendship_friend(ctx context.Context, field graphq
 	}
 	res := resTmp.(*fluent.User)
 	fc.Result = res
-	return ec.marshalNUser2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUser(ctx, field.Selections, res)
+	return ec.marshalNUser2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUser(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Friendship_friend(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -5249,7 +6899,7 @@ func (ec *executionContext) _FriendshipConnection_edges(ctx context.Context, fie
 	}
 	res := resTmp.([]*fluent.FriendshipEdge)
 	fc.Result = res
-	return ec.marshalOFriendshipEdge2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐFriendshipEdge(ctx, field.Selections, res)
+	return ec.marshalOFriendshipEdge2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐFriendshipEdge(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_FriendshipConnection_edges(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -5297,9 +6947,9 @@ func (ec *executionContext) _FriendshipConnection_pageInfo(ctx context.Context, 
 		}
 		return graphql.Null
 	}
-	res := resTmp.( fluent_gql.PageInfo[string])
+	res := resTmp.(fluent_gql.PageInfo[string])
 	fc.Result = res
-	return ec.marshalNPageInfo2entgoᚗioᚋcontribᚋ fluent_gqlᚐPageInfo(ctx, field.Selections, res)
+	return ec.marshalNPageInfo2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐPageInfo(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_FriendshipConnection_pageInfo(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -5394,7 +7044,7 @@ func (ec *executionContext) _FriendshipEdge_node(ctx context.Context, field grap
 	}
 	res := resTmp.(*fluent.Friendship)
 	fc.Result = res
-	return ec.marshalOFriendship2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐFriendship(ctx, field.Selections, res)
+	return ec.marshalOFriendship2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐFriendship(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_FriendshipEdge_node(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -5450,9 +7100,9 @@ func (ec *executionContext) _FriendshipEdge_cursor(ctx context.Context, field gr
 		}
 		return graphql.Null
 	}
-	res := resTmp.( fluent_gql.Cursor[string])
+	res := resTmp.(fluent_gql.Cursor[string])
 	fc.Result = res
-	return ec.marshalNCursor2entgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, field.Selections, res)
+	return ec.marshalNCursor2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_FriendshipEdge_cursor(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -5570,7 +7220,7 @@ func (ec *executionContext) _Group_users(ctx context.Context, field graphql.Coll
 	}()
 	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
 		ctx = rctx // use context from middleware stack in children
-		return obj.Users(ctx, fc.Args["after"].(* fluent_gql.Cursor[string]), fc.Args["first"].(*int), fc.Args["before"].(* fluent_gql.Cursor[string]), fc.Args["last"].(*int), fc.Args["orderBy"].(*fluent.UserOrder), fc.Args["where"].(*fluent.UserWhereInput))
+		return obj.Users(ctx, fc.Args["after"].(*fluent_gql.Cursor[string]), fc.Args["first"].(*int), fc.Args["before"].(*fluent_gql.Cursor[string]), fc.Args["last"].(*int), fc.Args["orderBy"].(*fluent.UserOrder), fc.Args["where"].(*fluent.UserWhereInput))
 	})
 	if err != nil {
 		ec.Error(ctx, err)
@@ -5584,7 +7234,7 @@ func (ec *executionContext) _Group_users(ctx context.Context, field graphql.Coll
 	}
 	res := resTmp.(*fluent.UserConnection)
 	fc.Result = res
-	return ec.marshalNUserConnection2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUserConnection(ctx, field.Selections, res)
+	return ec.marshalNUserConnection2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUserConnection(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Group_users(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -5644,7 +7294,7 @@ func (ec *executionContext) _GroupConnection_edges(ctx context.Context, field gr
 	}
 	res := resTmp.([]*fluent.GroupEdge)
 	fc.Result = res
-	return ec.marshalOGroupEdge2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐGroupEdge(ctx, field.Selections, res)
+	return ec.marshalOGroupEdge2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐGroupEdge(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_GroupConnection_edges(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -5692,9 +7342,9 @@ func (ec *executionContext) _GroupConnection_pageInfo(ctx context.Context, field
 		}
 		return graphql.Null
 	}
-	res := resTmp.( fluent_gql.PageInfo[string])
+	res := resTmp.(fluent_gql.PageInfo[string])
 	fc.Result = res
-	return ec.marshalNPageInfo2entgoᚗioᚋcontribᚋ fluent_gqlᚐPageInfo(ctx, field.Selections, res)
+	return ec.marshalNPageInfo2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐPageInfo(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_GroupConnection_pageInfo(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -5781,13 +7431,16 @@ func (ec *executionContext) _GroupEdge_node(ctx context.Context, field graphql.C
 			ctx = rctx // use context from middleware stack in children
 			return obj.Node, nil
 		}
+
 		directive1 := func(ctx context.Context) (interface{}, error) {
 			permissions, err := ec.unmarshalNString2ᚕstringᚄ(ctx, []interface{}{"ADMIN", "MODERATOR"})
 			if err != nil {
-				return nil, err
+				var zeroVal *fluent.Group
+				return zeroVal, err
 			}
 			if ec.directives.HasPermissions == nil {
-				return nil, errors.New("directive hasPermissions is not implemented")
+				var zeroVal *fluent.Group
+				return zeroVal, errors.New("directive hasPermissions is not implemented")
 			}
 			return ec.directives.HasPermissions(ctx, obj, directive0, permissions)
 		}
@@ -5813,7 +7466,7 @@ func (ec *executionContext) _GroupEdge_node(ctx context.Context, field graphql.C
 	}
 	res := resTmp.(*fluent.Group)
 	fc.Result = res
-	return ec.marshalOGroup2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐGroup(ctx, field.Selections, res)
+	return ec.marshalOGroup2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐGroup(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_GroupEdge_node(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -5863,9 +7516,9 @@ func (ec *executionContext) _GroupEdge_cursor(ctx context.Context, field graphql
 		}
 		return graphql.Null
 	}
-	res := resTmp.( fluent_gql.Cursor[string])
+	res := resTmp.(fluent_gql.Cursor[string])
 	fc.Result = res
-	return ec.marshalNCursor2entgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, field.Selections, res)
+	return ec.marshalNCursor2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_GroupEdge_cursor(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -5909,7 +7562,7 @@ func (ec *executionContext) _Mutation_createCategory(ctx context.Context, field 
 	}
 	res := resTmp.(*fluent.Category)
 	fc.Result = res
-	return ec.marshalNCategory2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategory(ctx, field.Selections, res)
+	return ec.marshalNCategory2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategory(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_createCategory(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -5988,7 +7641,7 @@ func (ec *executionContext) _Mutation_createTodo(ctx context.Context, field grap
 	}
 	res := resTmp.(*fluent.Todo)
 	fc.Result = res
-	return ec.marshalNTodo2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodo(ctx, field.Selections, res)
+	return ec.marshalNTodo2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodo(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_createTodo(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -6077,7 +7730,7 @@ func (ec *executionContext) _Mutation_updateTodo(ctx context.Context, field grap
 	}
 	res := resTmp.(*fluent.Todo)
 	fc.Result = res
-	return ec.marshalNTodo2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodo(ctx, field.Selections, res)
+	return ec.marshalNTodo2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodo(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_updateTodo(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -6210,7 +7863,7 @@ func (ec *executionContext) _Mutation_updateFriendship(ctx context.Context, fiel
 	}
 	res := resTmp.(*fluent.Friendship)
 	fc.Result = res
-	return ec.marshalNFriendship2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐFriendship(ctx, field.Selections, res)
+	return ec.marshalNFriendship2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐFriendship(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Mutation_updateFriendship(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -6405,7 +8058,7 @@ func (ec *executionContext) _OneToMany_parent(ctx context.Context, field graphql
 	}
 	res := resTmp.(*OneToMany)
 	fc.Result = res
-	return ec.marshalOOneToMany2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToMany(ctx, field.Selections, res)
+	return ec.marshalOOneToMany2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToMany(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_OneToMany_parent(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -6458,7 +8111,7 @@ func (ec *executionContext) _OneToMany_children(ctx context.Context, field graph
 	}
 	res := resTmp.([]*OneToMany)
 	fc.Result = res
-	return ec.marshalOOneToMany2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyᚄ(ctx, field.Selections, res)
+	return ec.marshalOOneToMany2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_OneToMany_children(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -6511,7 +8164,7 @@ func (ec *executionContext) _OneToManyConnection_edges(ctx context.Context, fiel
 	}
 	res := resTmp.([]*OneToManyEdge)
 	fc.Result = res
-	return ec.marshalOOneToManyEdge2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyEdge(ctx, field.Selections, res)
+	return ec.marshalOOneToManyEdge2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyEdge(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_OneToManyConnection_edges(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -6559,9 +8212,9 @@ func (ec *executionContext) _OneToManyConnection_pageInfo(ctx context.Context, f
 		}
 		return graphql.Null
 	}
-	res := resTmp.(* fluent_gql.PageInfo[string])
+	res := resTmp.(*fluent_gql.PageInfo[string])
 	fc.Result = res
-	return ec.marshalNPageInfo2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐPageInfo(ctx, field.Selections, res)
+	return ec.marshalNPageInfo2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐPageInfo(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_OneToManyConnection_pageInfo(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -6656,7 +8309,7 @@ func (ec *executionContext) _OneToManyEdge_node(ctx context.Context, field graph
 	}
 	res := resTmp.(*OneToMany)
 	fc.Result = res
-	return ec.marshalOOneToMany2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToMany(ctx, field.Selections, res)
+	return ec.marshalOOneToMany2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToMany(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_OneToManyEdge_node(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -6710,9 +8363,9 @@ func (ec *executionContext) _OneToManyEdge_cursor(ctx context.Context, field gra
 		}
 		return graphql.Null
 	}
-	res := resTmp.( fluent_gql.Cursor[string])
+	res := resTmp.(fluent_gql.Cursor[string])
 	fc.Result = res
-	return ec.marshalNCursor2entgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, field.Selections, res)
+	return ec.marshalNCursor2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_OneToManyEdge_cursor(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -6728,7 +8381,7 @@ func (ec *executionContext) fieldContext_OneToManyEdge_cursor(_ context.Context,
 	return fc, nil
 }
 
-func (ec *executionContext) _Organization_id(ctx context.Context, field graphql.CollectedField, obj *ent1.Workspace) (ret graphql.Marshaler) {
+func (ec *executionContext) _Organization_id(ctx context.Context, field graphql.CollectedField, obj *fluent1.Workspace) (ret graphql.Marshaler) {
 	fc, err := ec.fieldContext_Organization_id(ctx, field)
 	if err != nil {
 		return graphql.Null
@@ -6772,7 +8425,7 @@ func (ec *executionContext) fieldContext_Organization_id(_ context.Context, fiel
 	return fc, nil
 }
 
-func (ec *executionContext) _Organization_name(ctx context.Context, field graphql.CollectedField, obj *ent1.Workspace) (ret graphql.Marshaler) {
+func (ec *executionContext) _Organization_name(ctx context.Context, field graphql.CollectedField, obj *fluent1.Workspace) (ret graphql.Marshaler) {
 	fc, err := ec.fieldContext_Organization_name(ctx, field)
 	if err != nil {
 		return graphql.Null
@@ -6816,7 +8469,7 @@ func (ec *executionContext) fieldContext_Organization_name(_ context.Context, fi
 	return fc, nil
 }
 
-func (ec *executionContext) _PageInfo_hasNextPage(ctx context.Context, field graphql.CollectedField, obj * fluent_gql.PageInfo[string]) (ret graphql.Marshaler) {
+func (ec *executionContext) _PageInfo_hasNextPage(ctx context.Context, field graphql.CollectedField, obj *fluent_gql.PageInfo[string]) (ret graphql.Marshaler) {
 	fc, err := ec.fieldContext_PageInfo_hasNextPage(ctx, field)
 	if err != nil {
 		return graphql.Null
@@ -6860,7 +8513,7 @@ func (ec *executionContext) fieldContext_PageInfo_hasNextPage(_ context.Context,
 	return fc, nil
 }
 
-func (ec *executionContext) _PageInfo_hasPreviousPage(ctx context.Context, field graphql.CollectedField, obj * fluent_gql.PageInfo[string]) (ret graphql.Marshaler) {
+func (ec *executionContext) _PageInfo_hasPreviousPage(ctx context.Context, field graphql.CollectedField, obj *fluent_gql.PageInfo[string]) (ret graphql.Marshaler) {
 	fc, err := ec.fieldContext_PageInfo_hasPreviousPage(ctx, field)
 	if err != nil {
 		return graphql.Null
@@ -6904,7 +8557,7 @@ func (ec *executionContext) fieldContext_PageInfo_hasPreviousPage(_ context.Cont
 	return fc, nil
 }
 
-func (ec *executionContext) _PageInfo_startCursor(ctx context.Context, field graphql.CollectedField, obj * fluent_gql.PageInfo[string]) (ret graphql.Marshaler) {
+func (ec *executionContext) _PageInfo_startCursor(ctx context.Context, field graphql.CollectedField, obj *fluent_gql.PageInfo[string]) (ret graphql.Marshaler) {
 	fc, err := ec.fieldContext_PageInfo_startCursor(ctx, field)
 	if err != nil {
 		return graphql.Null
@@ -6927,9 +8580,9 @@ func (ec *executionContext) _PageInfo_startCursor(ctx context.Context, field gra
 	if resTmp == nil {
 		return graphql.Null
 	}
-	res := resTmp.(* fluent_gql.Cursor[string])
+	res := resTmp.(*fluent_gql.Cursor[string])
 	fc.Result = res
-	return ec.marshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, field.Selections, res)
+	return ec.marshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_PageInfo_startCursor(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -6945,7 +8598,7 @@ func (ec *executionContext) fieldContext_PageInfo_startCursor(_ context.Context,
 	return fc, nil
 }
 
-func (ec *executionContext) _PageInfo_endCursor(ctx context.Context, field graphql.CollectedField, obj * fluent_gql.PageInfo[string]) (ret graphql.Marshaler) {
+func (ec *executionContext) _PageInfo_endCursor(ctx context.Context, field graphql.CollectedField, obj *fluent_gql.PageInfo[string]) (ret graphql.Marshaler) {
 	fc, err := ec.fieldContext_PageInfo_endCursor(ctx, field)
 	if err != nil {
 		return graphql.Null
@@ -6968,9 +8621,9 @@ func (ec *executionContext) _PageInfo_endCursor(ctx context.Context, field graph
 	if resTmp == nil {
 		return graphql.Null
 	}
-	res := resTmp.(* fluent_gql.Cursor[string])
+	res := resTmp.(*fluent_gql.Cursor[string])
 	fc.Result = res
-	return ec.marshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, field.Selections, res)
+	return ec.marshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_PageInfo_endCursor(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -7058,7 +8711,7 @@ func (ec *executionContext) _Project_todos(ctx context.Context, field graphql.Co
 	}
 	res := resTmp.(*fluent.TodoConnection)
 	fc.Result = res
-	return ec.marshalNTodoConnection2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoConnection(ctx, field.Selections, res)
+	return ec.marshalNTodoConnection2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoConnection(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Project_todos(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -7118,7 +8771,7 @@ func (ec *executionContext) _Query_node(ctx context.Context, field graphql.Colle
 	}
 	res := resTmp.(fluent.Noder)
 	fc.Result = res
-	return ec.marshalONode2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐNoder(ctx, field.Selections, res)
+	return ec.marshalONode2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐNoder(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_node(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -7173,7 +8826,7 @@ func (ec *executionContext) _Query_nodes(ctx context.Context, field graphql.Coll
 	}
 	res := resTmp.([]fluent.Noder)
 	fc.Result = res
-	return ec.marshalNNode2ᚕentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐNoder(ctx, field.Selections, res)
+	return ec.marshalNNode2ᚕgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐNoder(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_nodes(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -7228,7 +8881,7 @@ func (ec *executionContext) _Query_billProducts(ctx context.Context, field graph
 	}
 	res := resTmp.([]*fluent.BillProduct)
 	fc.Result = res
-	return ec.marshalNBillProduct2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐBillProductᚄ(ctx, field.Selections, res)
+	return ec.marshalNBillProduct2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐBillProductᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_billProducts(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -7268,7 +8921,7 @@ func (ec *executionContext) _Query_categories(ctx context.Context, field graphql
 	}()
 	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
 		ctx = rctx // use context from middleware stack in children
-		return ec.resolvers.Query().Categories(rctx, fc.Args["after"].(* fluent_gql.Cursor[string]), fc.Args["first"].(*int), fc.Args["before"].(* fluent_gql.Cursor[string]), fc.Args["last"].(*int), fc.Args["orderBy"].([]*fluent.CategoryOrder), fc.Args["where"].(*fluent.CategoryWhereInput))
+		return ec.resolvers.Query().Categories(rctx, fc.Args["after"].(*fluent_gql.Cursor[string]), fc.Args["first"].(*int), fc.Args["before"].(*fluent_gql.Cursor[string]), fc.Args["last"].(*int), fc.Args["orderBy"].([]*fluent.CategoryOrder), fc.Args["where"].(*fluent.CategoryWhereInput))
 	})
 	if err != nil {
 		ec.Error(ctx, err)
@@ -7282,7 +8935,7 @@ func (ec *executionContext) _Query_categories(ctx context.Context, field graphql
 	}
 	res := resTmp.(*fluent.CategoryConnection)
 	fc.Result = res
-	return ec.marshalNCategoryConnection2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategoryConnection(ctx, field.Selections, res)
+	return ec.marshalNCategoryConnection2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategoryConnection(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_categories(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -7331,7 +8984,7 @@ func (ec *executionContext) _Query_groups(ctx context.Context, field graphql.Col
 	}()
 	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
 		ctx = rctx // use context from middleware stack in children
-		return ec.resolvers.Query().Groups(rctx, fc.Args["after"].(* fluent_gql.Cursor[string]), fc.Args["first"].(*int), fc.Args["before"].(* fluent_gql.Cursor[string]), fc.Args["last"].(*int), fc.Args["where"].(*fluent.GroupWhereInput))
+		return ec.resolvers.Query().Groups(rctx, fc.Args["after"].(*fluent_gql.Cursor[string]), fc.Args["first"].(*int), fc.Args["before"].(*fluent_gql.Cursor[string]), fc.Args["last"].(*int), fc.Args["where"].(*fluent.GroupWhereInput))
 	})
 	if err != nil {
 		ec.Error(ctx, err)
@@ -7345,7 +8998,7 @@ func (ec *executionContext) _Query_groups(ctx context.Context, field graphql.Col
 	}
 	res := resTmp.(*fluent.GroupConnection)
 	fc.Result = res
-	return ec.marshalNGroupConnection2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐGroupConnection(ctx, field.Selections, res)
+	return ec.marshalNGroupConnection2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐGroupConnection(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_groups(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -7394,7 +9047,7 @@ func (ec *executionContext) _Query_oneToMany(ctx context.Context, field graphql.
 	}()
 	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
 		ctx = rctx // use context from middleware stack in children
-		return ec.resolvers.Query().OneToMany(rctx, fc.Args["after"].(* fluent_gql.Cursor[string]), fc.Args["first"].(*int), fc.Args["before"].(* fluent_gql.Cursor[string]), fc.Args["last"].(*int), fc.Args["orderBy"].(*OneToManyOrder), fc.Args["where"].(*OneToManyWhereInput))
+		return ec.resolvers.Query().OneToMany(rctx, fc.Args["after"].(*fluent_gql.Cursor[string]), fc.Args["first"].(*int), fc.Args["before"].(*fluent_gql.Cursor[string]), fc.Args["last"].(*int), fc.Args["orderBy"].(*OneToManyOrder), fc.Args["where"].(*OneToManyWhereInput))
 	})
 	if err != nil {
 		ec.Error(ctx, err)
@@ -7408,7 +9061,7 @@ func (ec *executionContext) _Query_oneToMany(ctx context.Context, field graphql.
 	}
 	res := resTmp.(*OneToManyConnection)
 	fc.Result = res
-	return ec.marshalNOneToManyConnection2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyConnection(ctx, field.Selections, res)
+	return ec.marshalNOneToManyConnection2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyConnection(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_oneToMany(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -7457,7 +9110,7 @@ func (ec *executionContext) _Query_todos(ctx context.Context, field graphql.Coll
 	}()
 	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
 		ctx = rctx // use context from middleware stack in children
-		return ec.resolvers.Query().Todos(rctx, fc.Args["after"].(* fluent_gql.Cursor[string]), fc.Args["first"].(*int), fc.Args["before"].(* fluent_gql.Cursor[string]), fc.Args["last"].(*int), fc.Args["orderBy"].([]*fluent.TodoOrder), fc.Args["where"].(*fluent.TodoWhereInput))
+		return ec.resolvers.Query().Todos(rctx, fc.Args["after"].(*fluent_gql.Cursor[string]), fc.Args["first"].(*int), fc.Args["before"].(*fluent_gql.Cursor[string]), fc.Args["last"].(*int), fc.Args["orderBy"].([]*fluent.TodoOrder), fc.Args["where"].(*fluent.TodoWhereInput))
 	})
 	if err != nil {
 		ec.Error(ctx, err)
@@ -7471,7 +9124,7 @@ func (ec *executionContext) _Query_todos(ctx context.Context, field graphql.Coll
 	}
 	res := resTmp.(*fluent.TodoConnection)
 	fc.Result = res
-	return ec.marshalNTodoConnection2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoConnection(ctx, field.Selections, res)
+	return ec.marshalNTodoConnection2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoConnection(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_todos(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -7520,7 +9173,7 @@ func (ec *executionContext) _Query_users(ctx context.Context, field graphql.Coll
 	}()
 	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
 		ctx = rctx // use context from middleware stack in children
-		return ec.resolvers.Query().Users(rctx, fc.Args["after"].(* fluent_gql.Cursor[string]), fc.Args["first"].(*int), fc.Args["before"].(* fluent_gql.Cursor[string]), fc.Args["last"].(*int), fc.Args["orderBy"].(*fluent.UserOrder), fc.Args["where"].(*fluent.UserWhereInput))
+		return ec.resolvers.Query().Users(rctx, fc.Args["after"].(*fluent_gql.Cursor[string]), fc.Args["first"].(*int), fc.Args["before"].(*fluent_gql.Cursor[string]), fc.Args["last"].(*int), fc.Args["orderBy"].(*fluent.UserOrder), fc.Args["where"].(*fluent.UserWhereInput))
 	})
 	if err != nil {
 		ec.Error(ctx, err)
@@ -7534,7 +9187,7 @@ func (ec *executionContext) _Query_users(ctx context.Context, field graphql.Coll
 	}
 	res := resTmp.(*fluent.UserConnection)
 	fc.Result = res
-	return ec.marshalNUserConnection2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUserConnection(ctx, field.Selections, res)
+	return ec.marshalNUserConnection2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUserConnection(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_users(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -7627,7 +9280,7 @@ func (ec *executionContext) _Query_todosWithJoins(ctx context.Context, field gra
 	}()
 	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
 		ctx = rctx // use context from middleware stack in children
-		return ec.resolvers.Query().TodosWithJoins(rctx, fc.Args["after"].(* fluent_gql.Cursor[string]), fc.Args["first"].(*int), fc.Args["before"].(* fluent_gql.Cursor[string]), fc.Args["last"].(*int), fc.Args["orderBy"].([]*fluent.TodoOrder), fc.Args["where"].(*fluent.TodoWhereInput))
+		return ec.resolvers.Query().TodosWithJoins(rctx, fc.Args["after"].(*fluent_gql.Cursor[string]), fc.Args["first"].(*int), fc.Args["before"].(*fluent_gql.Cursor[string]), fc.Args["last"].(*int), fc.Args["orderBy"].([]*fluent.TodoOrder), fc.Args["where"].(*fluent.TodoWhereInput))
 	})
 	if err != nil {
 		ec.Error(ctx, err)
@@ -7641,7 +9294,7 @@ func (ec *executionContext) _Query_todosWithJoins(ctx context.Context, field gra
 	}
 	res := resTmp.(*fluent.TodoConnection)
 	fc.Result = res
-	return ec.marshalNTodoConnection2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoConnection(ctx, field.Selections, res)
+	return ec.marshalNTodoConnection2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoConnection(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Query_todosWithJoins(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -7921,7 +9574,7 @@ func (ec *executionContext) _Todo_status(ctx context.Context, field graphql.Coll
 	}
 	res := resTmp.(todo.Status)
 	fc.Result = res
-	return ec.marshalNTodoStatus2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋtodoᚐStatus(ctx, field.Selections, res)
+	return ec.marshalNTodoStatus2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋtodoᚐStatus(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Todo_status(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -8050,7 +9703,7 @@ func (ec *executionContext) _Todo_categoryID(ctx context.Context, field graphql.
 	}
 	res := resTmp.(bigintgql.BigInt)
 	fc.Result = res
-	return ec.marshalOID2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigInt(ctx, field.Selections, res)
+	return ec.marshalOID2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigInt(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Todo_categoryID(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -8091,7 +9744,7 @@ func (ec *executionContext) _Todo_category_id(ctx context.Context, field graphql
 	}
 	res := resTmp.(bigintgql.BigInt)
 	fc.Result = res
-	return ec.marshalOID2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigInt(ctx, field.Selections, res)
+	return ec.marshalOID2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigInt(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Todo_category_id(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -8132,7 +9785,7 @@ func (ec *executionContext) _Todo_categoryX(ctx context.Context, field graphql.C
 	}
 	res := resTmp.(bigintgql.BigInt)
 	fc.Result = res
-	return ec.marshalOID2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigInt(ctx, field.Selections, res)
+	return ec.marshalOID2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigInt(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Todo_categoryX(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -8214,7 +9867,7 @@ func (ec *executionContext) _Todo_custom(ctx context.Context, field graphql.Coll
 	}
 	res := resTmp.([]customstruct.Custom)
 	fc.Result = res
-	return ec.marshalOCustom2ᚕentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋschemaᚋcustomstructᚐCustomᚄ(ctx, field.Selections, res)
+	return ec.marshalOCustom2ᚕgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋschemaᚋcustomstructᚐCustomᚄ(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Todo_custom(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -8259,7 +9912,7 @@ func (ec *executionContext) _Todo_customp(ctx context.Context, field graphql.Col
 	}
 	res := resTmp.([]*customstruct.Custom)
 	fc.Result = res
-	return ec.marshalOCustom2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋschemaᚋcustomstructᚐCustom(ctx, field.Selections, res)
+	return ec.marshalOCustom2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋschemaᚋcustomstructᚐCustom(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Todo_customp(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -8348,7 +10001,7 @@ func (ec *executionContext) _Todo_parent(ctx context.Context, field graphql.Coll
 	}
 	res := resTmp.(*fluent.Todo)
 	fc.Result = res
-	return ec.marshalOTodo2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodo(ctx, field.Selections, res)
+	return ec.marshalOTodo2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodo(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Todo_parent(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -8412,7 +10065,7 @@ func (ec *executionContext) _Todo_children(ctx context.Context, field graphql.Co
 	}()
 	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
 		ctx = rctx // use context from middleware stack in children
-		return obj.Children(ctx, fc.Args["after"].(* fluent_gql.Cursor[string]), fc.Args["first"].(*int), fc.Args["before"].(* fluent_gql.Cursor[string]), fc.Args["last"].(*int), fc.Args["orderBy"].([]*fluent.TodoOrder), fc.Args["where"].(*fluent.TodoWhereInput))
+		return obj.Children(ctx, fc.Args["after"].(*fluent_gql.Cursor[string]), fc.Args["first"].(*int), fc.Args["before"].(*fluent_gql.Cursor[string]), fc.Args["last"].(*int), fc.Args["orderBy"].([]*fluent.TodoOrder), fc.Args["where"].(*fluent.TodoWhereInput))
 	})
 	if err != nil {
 		ec.Error(ctx, err)
@@ -8426,7 +10079,7 @@ func (ec *executionContext) _Todo_children(ctx context.Context, field graphql.Co
 	}
 	res := resTmp.(*fluent.TodoConnection)
 	fc.Result = res
-	return ec.marshalNTodoConnection2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoConnection(ctx, field.Selections, res)
+	return ec.marshalNTodoConnection2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoConnection(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Todo_children(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -8486,7 +10139,7 @@ func (ec *executionContext) _Todo_category(ctx context.Context, field graphql.Co
 	}
 	res := resTmp.(*fluent.Category)
 	fc.Result = res
-	return ec.marshalOCategory2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategory(ctx, field.Selections, res)
+	return ec.marshalOCategory2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategory(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_Todo_category(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -8592,7 +10245,7 @@ func (ec *executionContext) _TodoConnection_edges(ctx context.Context, field gra
 	}
 	res := resTmp.([]*fluent.TodoEdge)
 	fc.Result = res
-	return ec.marshalOTodoEdge2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoEdge(ctx, field.Selections, res)
+	return ec.marshalOTodoEdge2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoEdge(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_TodoConnection_edges(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -8640,9 +10293,9 @@ func (ec *executionContext) _TodoConnection_pageInfo(ctx context.Context, field 
 		}
 		return graphql.Null
 	}
-	res := resTmp.( fluent_gql.PageInfo[string])
+	res := resTmp.(fluent_gql.PageInfo[string])
 	fc.Result = res
-	return ec.marshalNPageInfo2entgoᚗioᚋcontribᚋ fluent_gqlᚐPageInfo(ctx, field.Selections, res)
+	return ec.marshalNPageInfo2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐPageInfo(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_TodoConnection_pageInfo(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -8737,7 +10390,7 @@ func (ec *executionContext) _TodoEdge_node(ctx context.Context, field graphql.Co
 	}
 	res := resTmp.(*fluent.Todo)
 	fc.Result = res
-	return ec.marshalOTodo2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodo(ctx, field.Selections, res)
+	return ec.marshalOTodo2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodo(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_TodoEdge_node(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -8813,9 +10466,9 @@ func (ec *executionContext) _TodoEdge_cursor(ctx context.Context, field graphql.
 		}
 		return graphql.Null
 	}
-	res := resTmp.( fluent_gql.Cursor[string])
+	res := resTmp.(fluent_gql.Cursor[string])
 	fc.Result = res
-	return ec.marshalNCursor2entgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, field.Selections, res)
+	return ec.marshalNCursor2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_TodoEdge_cursor(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -9062,7 +10715,7 @@ func (ec *executionContext) _User_groups(ctx context.Context, field graphql.Coll
 	}()
 	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
 		ctx = rctx // use context from middleware stack in children
-		return obj.Groups(ctx, fc.Args["after"].(* fluent_gql.Cursor[string]), fc.Args["first"].(*int), fc.Args["before"].(* fluent_gql.Cursor[string]), fc.Args["last"].(*int), fc.Args["where"].(*fluent.GroupWhereInput))
+		return obj.Groups(ctx, fc.Args["after"].(*fluent_gql.Cursor[string]), fc.Args["first"].(*int), fc.Args["before"].(*fluent_gql.Cursor[string]), fc.Args["last"].(*int), fc.Args["where"].(*fluent.GroupWhereInput))
 	})
 	if err != nil {
 		ec.Error(ctx, err)
@@ -9076,7 +10729,7 @@ func (ec *executionContext) _User_groups(ctx context.Context, field graphql.Coll
 	}
 	res := resTmp.(*fluent.GroupConnection)
 	fc.Result = res
-	return ec.marshalNGroupConnection2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐGroupConnection(ctx, field.Selections, res)
+	return ec.marshalNGroupConnection2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐGroupConnection(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_User_groups(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -9125,7 +10778,7 @@ func (ec *executionContext) _User_friends(ctx context.Context, field graphql.Col
 	}()
 	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
 		ctx = rctx // use context from middleware stack in children
-		return ec.resolvers.User().Friends(rctx, obj, fc.Args["after"].(* fluent_gql.Cursor[string]), fc.Args["first"].(*int), fc.Args["before"].(* fluent_gql.Cursor[string]), fc.Args["last"].(*int), fc.Args["orderBy"].(*fluent.UserOrder), fc.Args["where"].(*fluent.UserWhereInput))
+		return ec.resolvers.User().Friends(rctx, obj, fc.Args["after"].(*fluent_gql.Cursor[string]), fc.Args["first"].(*int), fc.Args["before"].(*fluent_gql.Cursor[string]), fc.Args["last"].(*int), fc.Args["orderBy"].(*fluent.UserOrder), fc.Args["where"].(*fluent.UserWhereInput))
 	})
 	if err != nil {
 		ec.Error(ctx, err)
@@ -9139,7 +10792,7 @@ func (ec *executionContext) _User_friends(ctx context.Context, field graphql.Col
 	}
 	res := resTmp.(*fluent.UserConnection)
 	fc.Result = res
-	return ec.marshalNUserConnection2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUserConnection(ctx, field.Selections, res)
+	return ec.marshalNUserConnection2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUserConnection(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_User_friends(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -9188,7 +10841,7 @@ func (ec *executionContext) _User_friendships(ctx context.Context, field graphql
 	}()
 	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
 		ctx = rctx // use context from middleware stack in children
-		return ec.resolvers.User().Friendships(rctx, obj, fc.Args["after"].(* fluent_gql.Cursor[string]), fc.Args["first"].(*int), fc.Args["before"].(* fluent_gql.Cursor[string]), fc.Args["last"].(*int), fc.Args["where"].(*fluent.FriendshipWhereInput))
+		return ec.resolvers.User().Friendships(rctx, obj, fc.Args["after"].(*fluent_gql.Cursor[string]), fc.Args["first"].(*int), fc.Args["before"].(*fluent_gql.Cursor[string]), fc.Args["last"].(*int), fc.Args["where"].(*fluent.FriendshipWhereInput))
 	})
 	if err != nil {
 		ec.Error(ctx, err)
@@ -9202,7 +10855,7 @@ func (ec *executionContext) _User_friendships(ctx context.Context, field graphql
 	}
 	res := resTmp.(*fluent.FriendshipConnection)
 	fc.Result = res
-	return ec.marshalNFriendshipConnection2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐFriendshipConnection(ctx, field.Selections, res)
+	return ec.marshalNFriendshipConnection2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐFriendshipConnection(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_User_friendships(ctx context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -9262,7 +10915,7 @@ func (ec *executionContext) _UserConnection_edges(ctx context.Context, field gra
 	}
 	res := resTmp.([]*fluent.UserEdge)
 	fc.Result = res
-	return ec.marshalOUserEdge2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUserEdge(ctx, field.Selections, res)
+	return ec.marshalOUserEdge2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUserEdge(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_UserConnection_edges(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -9310,9 +10963,9 @@ func (ec *executionContext) _UserConnection_pageInfo(ctx context.Context, field 
 		}
 		return graphql.Null
 	}
-	res := resTmp.( fluent_gql.PageInfo[string])
+	res := resTmp.(fluent_gql.PageInfo[string])
 	fc.Result = res
-	return ec.marshalNPageInfo2entgoᚗioᚋcontribᚋ fluent_gqlᚐPageInfo(ctx, field.Selections, res)
+	return ec.marshalNPageInfo2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐPageInfo(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_UserConnection_pageInfo(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -9407,7 +11060,7 @@ func (ec *executionContext) _UserEdge_node(ctx context.Context, field graphql.Co
 	}
 	res := resTmp.(*fluent.User)
 	fc.Result = res
-	return ec.marshalOUser2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUser(ctx, field.Selections, res)
+	return ec.marshalOUser2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUser(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_UserEdge_node(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -9467,9 +11120,9 @@ func (ec *executionContext) _UserEdge_cursor(ctx context.Context, field graphql.
 		}
 		return graphql.Null
 	}
-	res := resTmp.( fluent_gql.Cursor[string])
+	res := resTmp.(fluent_gql.Cursor[string])
 	fc.Result = res
-	return ec.marshalNCursor2entgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx, field.Selections, res)
+	return ec.marshalNCursor2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx, field.Selections, res)
 }
 
 func (ec *executionContext) fieldContext_UserEdge_cursor(_ context.Context, field graphql.CollectedField) (fc *graphql.FieldContext, err error) {
@@ -11274,21 +12927,21 @@ func (ec *executionContext) unmarshalInputBillProductWhereInput(ctx context.Cont
 		switch k {
 		case "not":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("not"))
-			data, err := ec.unmarshalOBillProductWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐBillProductWhereInput(ctx, v)
+			data, err := ec.unmarshalOBillProductWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐBillProductWhereInput(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.Not = data
 		case "and":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("and"))
-			data, err := ec.unmarshalOBillProductWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐBillProductWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOBillProductWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐBillProductWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.And = data
 		case "or":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("or"))
-			data, err := ec.unmarshalOBillProductWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐBillProductWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOBillProductWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐBillProductWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -11640,14 +13293,14 @@ func (ec *executionContext) unmarshalInputCategoryOrder(ctx context.Context, obj
 		switch k {
 		case "direction":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("direction"))
-			data, err := ec.unmarshalNOrderDirection2entgoᚗioᚋcontribᚋ fluent_gqlᚐOrderDirection(ctx, v)
+			data, err := ec.unmarshalNOrderDirection2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐOrderDirection(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.Direction = data
 		case "field":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("field"))
-			data, err := ec.unmarshalNCategoryOrderField2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategoryOrderField(ctx, v)
+			data, err := ec.unmarshalNCategoryOrderField2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategoryOrderField(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -11701,77 +13354,77 @@ func (ec *executionContext) unmarshalInputCategoryWhereInput(ctx context.Context
 		switch k {
 		case "not":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("not"))
-			data, err := ec.unmarshalOCategoryWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategoryWhereInput(ctx, v)
+			data, err := ec.unmarshalOCategoryWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategoryWhereInput(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.Not = data
 		case "and":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("and"))
-			data, err := ec.unmarshalOCategoryWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategoryWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOCategoryWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategoryWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.And = data
 		case "or":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("or"))
-			data, err := ec.unmarshalOCategoryWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategoryWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOCategoryWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategoryWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.Or = data
 		case "id":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("id"))
-			data, err := ec.unmarshalOID2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigInt(ctx, v)
+			data, err := ec.unmarshalOID2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigInt(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.ID = data
 		case "idNEQ":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("idNEQ"))
-			data, err := ec.unmarshalOID2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigInt(ctx, v)
+			data, err := ec.unmarshalOID2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigInt(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.IDNEQ = data
 		case "idIn":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("idIn"))
-			data, err := ec.unmarshalOID2ᚕentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigIntᚄ(ctx, v)
+			data, err := ec.unmarshalOID2ᚕgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigIntᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.IDIn = data
 		case "idNotIn":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("idNotIn"))
-			data, err := ec.unmarshalOID2ᚕentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigIntᚄ(ctx, v)
+			data, err := ec.unmarshalOID2ᚕgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigIntᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.IDNotIn = data
 		case "idGT":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("idGT"))
-			data, err := ec.unmarshalOID2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigInt(ctx, v)
+			data, err := ec.unmarshalOID2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigInt(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.IDGT = data
 		case "idGTE":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("idGTE"))
-			data, err := ec.unmarshalOID2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigInt(ctx, v)
+			data, err := ec.unmarshalOID2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigInt(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.IDGTE = data
 		case "idLT":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("idLT"))
-			data, err := ec.unmarshalOID2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigInt(ctx, v)
+			data, err := ec.unmarshalOID2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigInt(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.IDLT = data
 		case "idLTE":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("idLTE"))
-			data, err := ec.unmarshalOID2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigInt(ctx, v)
+			data, err := ec.unmarshalOID2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigInt(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -11869,84 +13522,84 @@ func (ec *executionContext) unmarshalInputCategoryWhereInput(ctx context.Context
 			it.TextContainsFold = data
 		case "status":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("status"))
-			data, err := ec.unmarshalOCategoryStatus2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋcategoryᚐStatus(ctx, v)
+			data, err := ec.unmarshalOCategoryStatus2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋcategoryᚐStatus(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.Status = data
 		case "statusNEQ":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("statusNEQ"))
-			data, err := ec.unmarshalOCategoryStatus2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋcategoryᚐStatus(ctx, v)
+			data, err := ec.unmarshalOCategoryStatus2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋcategoryᚐStatus(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.StatusNEQ = data
 		case "statusIn":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("statusIn"))
-			data, err := ec.unmarshalOCategoryStatus2ᚕentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋcategoryᚐStatusᚄ(ctx, v)
+			data, err := ec.unmarshalOCategoryStatus2ᚕgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋcategoryᚐStatusᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.StatusIn = data
 		case "statusNotIn":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("statusNotIn"))
-			data, err := ec.unmarshalOCategoryStatus2ᚕentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋcategoryᚐStatusᚄ(ctx, v)
+			data, err := ec.unmarshalOCategoryStatus2ᚕgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋcategoryᚐStatusᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.StatusNotIn = data
 		case "config":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("config"))
-			data, err := ec.unmarshalOCategoryConfigInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋschemaᚋschematypeᚐCategoryConfig(ctx, v)
+			data, err := ec.unmarshalOCategoryConfigInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋschemaᚋschematypeᚐCategoryConfig(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.Config = data
 		case "configNEQ":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("configNEQ"))
-			data, err := ec.unmarshalOCategoryConfigInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋschemaᚋschematypeᚐCategoryConfig(ctx, v)
+			data, err := ec.unmarshalOCategoryConfigInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋschemaᚋschematypeᚐCategoryConfig(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.ConfigNEQ = data
 		case "configIn":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("configIn"))
-			data, err := ec.unmarshalOCategoryConfigInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋschemaᚋschematypeᚐCategoryConfigᚄ(ctx, v)
+			data, err := ec.unmarshalOCategoryConfigInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋschemaᚋschematypeᚐCategoryConfigᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.ConfigIn = data
 		case "configNotIn":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("configNotIn"))
-			data, err := ec.unmarshalOCategoryConfigInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋschemaᚋschematypeᚐCategoryConfigᚄ(ctx, v)
+			data, err := ec.unmarshalOCategoryConfigInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋschemaᚋschematypeᚐCategoryConfigᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.ConfigNotIn = data
 		case "configGT":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("configGT"))
-			data, err := ec.unmarshalOCategoryConfigInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋschemaᚋschematypeᚐCategoryConfig(ctx, v)
+			data, err := ec.unmarshalOCategoryConfigInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋschemaᚋschematypeᚐCategoryConfig(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.ConfigGT = data
 		case "configGTE":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("configGTE"))
-			data, err := ec.unmarshalOCategoryConfigInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋschemaᚋschematypeᚐCategoryConfig(ctx, v)
+			data, err := ec.unmarshalOCategoryConfigInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋschemaᚋschematypeᚐCategoryConfig(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.ConfigGTE = data
 		case "configLT":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("configLT"))
-			data, err := ec.unmarshalOCategoryConfigInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋschemaᚋschematypeᚐCategoryConfig(ctx, v)
+			data, err := ec.unmarshalOCategoryConfigInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋschemaᚋschematypeᚐCategoryConfig(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.ConfigLT = data
 		case "configLTE":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("configLTE"))
-			data, err := ec.unmarshalOCategoryConfigInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋschemaᚋschematypeᚐCategoryConfig(ctx, v)
+			data, err := ec.unmarshalOCategoryConfigInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋschemaᚋschematypeᚐCategoryConfig(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -12114,7 +13767,7 @@ func (ec *executionContext) unmarshalInputCategoryWhereInput(ctx context.Context
 			it.HasTodos = data
 		case "hasTodosWith":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("hasTodosWith"))
-			data, err := ec.unmarshalOTodoWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOTodoWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -12128,7 +13781,7 @@ func (ec *executionContext) unmarshalInputCategoryWhereInput(ctx context.Context
 			it.HasSubCategories = data
 		case "hasSubCategoriesWith":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("hasSubCategoriesWith"))
-			data, err := ec.unmarshalOCategoryWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategoryWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOCategoryWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategoryWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -12162,21 +13815,21 @@ func (ec *executionContext) unmarshalInputCreateCategoryInput(ctx context.Contex
 			it.Text = data
 		case "status":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("status"))
-			data, err := ec.unmarshalNCategoryStatus2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋcategoryᚐStatus(ctx, v)
+			data, err := ec.unmarshalNCategoryStatus2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋcategoryᚐStatus(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.Status = data
 		case "config":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("config"))
-			data, err := ec.unmarshalOCategoryConfigInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋschemaᚋschematypeᚐCategoryConfig(ctx, v)
+			data, err := ec.unmarshalOCategoryConfigInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋschemaᚋschematypeᚐCategoryConfig(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.Config = data
 		case "types":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("types"))
-			data, err := ec.unmarshalOCategoryTypesInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐCategoryTypesInput(ctx, v)
+			data, err := ec.unmarshalOCategoryTypesInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐCategoryTypesInput(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -12213,14 +13866,14 @@ func (ec *executionContext) unmarshalInputCreateCategoryInput(ctx context.Contex
 			it.TodoIDs = data
 		case "subCategoryIDs":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("subCategoryIDs"))
-			data, err := ec.unmarshalOID2ᚕentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigIntᚄ(ctx, v)
+			data, err := ec.unmarshalOID2ᚕgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigIntᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.SubCategoryIDs = data
 		case "createTodos":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("createTodos"))
-			data, err := ec.unmarshalOCreateTodoInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCreateTodoInputᚄ(ctx, v)
+			data, err := ec.unmarshalOCreateTodoInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCreateTodoInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -12249,7 +13902,7 @@ func (ec *executionContext) unmarshalInputCreateTodoInput(ctx context.Context, o
 		switch k {
 		case "status":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("status"))
-			data, err := ec.unmarshalNTodoStatus2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋtodoᚐStatus(ctx, v)
+			data, err := ec.unmarshalNTodoStatus2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋtodoᚐStatus(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -12300,7 +13953,7 @@ func (ec *executionContext) unmarshalInputCreateTodoInput(ctx context.Context, o
 			it.ChildIDs = data
 		case "categoryID":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("categoryID"))
-			data, err := ec.unmarshalOID2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigInt(ctx, v)
+			data, err := ec.unmarshalOID2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigInt(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -12403,21 +14056,21 @@ func (ec *executionContext) unmarshalInputFriendshipWhereInput(ctx context.Conte
 		switch k {
 		case "not":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("not"))
-			data, err := ec.unmarshalOFriendshipWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐFriendshipWhereInput(ctx, v)
+			data, err := ec.unmarshalOFriendshipWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐFriendshipWhereInput(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.Not = data
 		case "and":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("and"))
-			data, err := ec.unmarshalOFriendshipWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐFriendshipWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOFriendshipWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐFriendshipWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.And = data
 		case "or":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("or"))
-			data, err := ec.unmarshalOFriendshipWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐFriendshipWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOFriendshipWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐFriendshipWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -12556,21 +14209,21 @@ func (ec *executionContext) unmarshalInputGroupWhereInput(ctx context.Context, o
 		switch k {
 		case "not":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("not"))
-			data, err := ec.unmarshalOGroupWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐGroupWhereInput(ctx, v)
+			data, err := ec.unmarshalOGroupWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐGroupWhereInput(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.Not = data
 		case "and":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("and"))
-			data, err := ec.unmarshalOGroupWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐGroupWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOGroupWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐGroupWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.And = data
 		case "or":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("or"))
-			data, err := ec.unmarshalOGroupWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐGroupWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOGroupWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐGroupWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -12731,7 +14384,7 @@ func (ec *executionContext) unmarshalInputGroupWhereInput(ctx context.Context, o
 			it.HasUsers = data
 		case "hasUsersWith":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("hasUsersWith"))
-			data, err := ec.unmarshalOUserWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUserWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOUserWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUserWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -12762,14 +14415,14 @@ func (ec *executionContext) unmarshalInputOneToManyOrder(ctx context.Context, ob
 		switch k {
 		case "direction":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("direction"))
-			data, err := ec.unmarshalNOrderDirection2entgoᚗioᚋcontribᚋ fluent_gqlᚐOrderDirection(ctx, v)
+			data, err := ec.unmarshalNOrderDirection2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐOrderDirection(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.Direction = data
 		case "field":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("field"))
-			data, err := ec.unmarshalNOneToManyOrderField2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyOrderField(ctx, v)
+			data, err := ec.unmarshalNOneToManyOrderField2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyOrderField(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -12796,21 +14449,21 @@ func (ec *executionContext) unmarshalInputOneToManyWhereInput(ctx context.Contex
 		switch k {
 		case "not":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("not"))
-			data, err := ec.unmarshalOOneToManyWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyWhereInput(ctx, v)
+			data, err := ec.unmarshalOOneToManyWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyWhereInput(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.Not = data
 		case "and":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("and"))
-			data, err := ec.unmarshalOOneToManyWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOOneToManyWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.And = data
 		case "or":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("or"))
-			data, err := ec.unmarshalOOneToManyWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOOneToManyWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -13076,7 +14729,7 @@ func (ec *executionContext) unmarshalInputOneToManyWhereInput(ctx context.Contex
 			it.HasParent = data
 		case "hasParentWith":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("hasParentWith"))
-			data, err := ec.unmarshalOOneToManyWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOOneToManyWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -13090,7 +14743,7 @@ func (ec *executionContext) unmarshalInputOneToManyWhereInput(ctx context.Contex
 			it.HasChildren = data
 		case "hasChildrenWith":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("hasChildrenWith"))
-			data, err := ec.unmarshalOOneToManyWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOOneToManyWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -13117,21 +14770,21 @@ func (ec *executionContext) unmarshalInputOrganizationWhereInput(ctx context.Con
 		switch k {
 		case "not":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("not"))
-			data, err := ec.unmarshalOOrganizationWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOrganizationWhereInput(ctx, v)
+			data, err := ec.unmarshalOOrganizationWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOrganizationWhereInput(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.Not = data
 		case "and":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("and"))
-			data, err := ec.unmarshalOOrganizationWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOrganizationWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOOrganizationWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOrganizationWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.And = data
 		case "or":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("or"))
-			data, err := ec.unmarshalOOrganizationWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOrganizationWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOOrganizationWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOrganizationWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -13305,21 +14958,21 @@ func (ec *executionContext) unmarshalInputProjectWhereInput(ctx context.Context,
 		switch k {
 		case "not":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("not"))
-			data, err := ec.unmarshalOProjectWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐProjectWhereInput(ctx, v)
+			data, err := ec.unmarshalOProjectWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐProjectWhereInput(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.Not = data
 		case "and":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("and"))
-			data, err := ec.unmarshalOProjectWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐProjectWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOProjectWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐProjectWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.And = data
 		case "or":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("or"))
-			data, err := ec.unmarshalOProjectWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐProjectWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOProjectWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐProjectWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -13389,7 +15042,7 @@ func (ec *executionContext) unmarshalInputProjectWhereInput(ctx context.Context,
 			it.HasTodos = data
 		case "hasTodosWith":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("hasTodosWith"))
-			data, err := ec.unmarshalOTodoWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOTodoWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -13420,14 +15073,14 @@ func (ec *executionContext) unmarshalInputTodoOrder(ctx context.Context, obj int
 		switch k {
 		case "direction":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("direction"))
-			data, err := ec.unmarshalNOrderDirection2entgoᚗioᚋcontribᚋ fluent_gqlᚐOrderDirection(ctx, v)
+			data, err := ec.unmarshalNOrderDirection2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐOrderDirection(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.Direction = data
 		case "field":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("field"))
-			data, err := ec.unmarshalNTodoOrderField2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoOrderField(ctx, v)
+			data, err := ec.unmarshalNTodoOrderField2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoOrderField(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -13454,21 +15107,21 @@ func (ec *executionContext) unmarshalInputTodoWhereInput(ctx context.Context, ob
 		switch k {
 		case "not":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("not"))
-			data, err := ec.unmarshalOTodoWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoWhereInput(ctx, v)
+			data, err := ec.unmarshalOTodoWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoWhereInput(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.Not = data
 		case "and":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("and"))
-			data, err := ec.unmarshalOTodoWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOTodoWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.And = data
 		case "or":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("or"))
-			data, err := ec.unmarshalOTodoWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOTodoWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -13587,7 +15240,7 @@ func (ec *executionContext) unmarshalInputTodoWhereInput(ctx context.Context, ob
 			it.CreatedAtLTE = data
 		case "status":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("status"))
-			data, err := ec.unmarshalOTodoStatus2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋtodoᚐStatus(ctx, v)
+			data, err := ec.unmarshalOTodoStatus2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋtodoᚐStatus(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -13596,7 +15249,7 @@ func (ec *executionContext) unmarshalInputTodoWhereInput(ctx context.Context, ob
 			}
 		case "statusNEQ":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("statusNEQ"))
-			data, err := ec.unmarshalOTodoStatus2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋtodoᚐStatus(ctx, v)
+			data, err := ec.unmarshalOTodoStatus2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋtodoᚐStatus(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -13605,7 +15258,7 @@ func (ec *executionContext) unmarshalInputTodoWhereInput(ctx context.Context, ob
 			}
 		case "statusIn":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("statusIn"))
-			data, err := ec.unmarshalOTodoStatus2ᚕentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋtodoᚐStatusᚄ(ctx, v)
+			data, err := ec.unmarshalOTodoStatus2ᚕgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋtodoᚐStatusᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -13614,7 +15267,7 @@ func (ec *executionContext) unmarshalInputTodoWhereInput(ctx context.Context, ob
 			}
 		case "statusNotIn":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("statusNotIn"))
-			data, err := ec.unmarshalOTodoStatus2ᚕentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋtodoᚐStatusᚄ(ctx, v)
+			data, err := ec.unmarshalOTodoStatus2ᚕgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋtodoᚐStatusᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -13770,28 +15423,28 @@ func (ec *executionContext) unmarshalInputTodoWhereInput(ctx context.Context, ob
 			it.TextContainsFold = data
 		case "categoryID":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("categoryID"))
-			data, err := ec.unmarshalOID2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigInt(ctx, v)
+			data, err := ec.unmarshalOID2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigInt(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.CategoryID = data
 		case "categoryIDNEQ":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("categoryIDNEQ"))
-			data, err := ec.unmarshalOID2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigInt(ctx, v)
+			data, err := ec.unmarshalOID2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigInt(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.CategoryIDNEQ = data
 		case "categoryIDIn":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("categoryIDIn"))
-			data, err := ec.unmarshalOID2ᚕentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigIntᚄ(ctx, v)
+			data, err := ec.unmarshalOID2ᚕgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigIntᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.CategoryIDIn = data
 		case "categoryIDNotIn":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("categoryIDNotIn"))
-			data, err := ec.unmarshalOID2ᚕentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigIntᚄ(ctx, v)
+			data, err := ec.unmarshalOID2ᚕgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigIntᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -13875,7 +15528,7 @@ func (ec *executionContext) unmarshalInputTodoWhereInput(ctx context.Context, ob
 			it.HasParent = data
 		case "hasParentWith":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("hasParentWith"))
-			data, err := ec.unmarshalOTodoWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOTodoWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -13889,7 +15542,7 @@ func (ec *executionContext) unmarshalInputTodoWhereInput(ctx context.Context, ob
 			it.HasChildren = data
 		case "hasChildrenWith":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("hasChildrenWith"))
-			data, err := ec.unmarshalOTodoWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOTodoWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -13903,7 +15556,7 @@ func (ec *executionContext) unmarshalInputTodoWhereInput(ctx context.Context, ob
 			it.HasCategory = data
 		case "hasCategoryWith":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("hasCategoryWith"))
-			data, err := ec.unmarshalOCategoryWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategoryWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOCategoryWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategoryWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -13946,14 +15599,14 @@ func (ec *executionContext) unmarshalInputUpdateCategoryInput(ctx context.Contex
 			it.Text = data
 		case "status":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("status"))
-			data, err := ec.unmarshalOCategoryStatus2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋcategoryᚐStatus(ctx, v)
+			data, err := ec.unmarshalOCategoryStatus2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋcategoryᚐStatus(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.Status = data
 		case "config":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("config"))
-			data, err := ec.unmarshalOCategoryConfigInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋschemaᚋschematypeᚐCategoryConfig(ctx, v)
+			data, err := ec.unmarshalOCategoryConfigInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋschemaᚋschematypeᚐCategoryConfig(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -13967,7 +15620,7 @@ func (ec *executionContext) unmarshalInputUpdateCategoryInput(ctx context.Contex
 			it.ClearConfig = data
 		case "types":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("types"))
-			data, err := ec.unmarshalOCategoryTypesInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐCategoryTypesInput(ctx, v)
+			data, err := ec.unmarshalOCategoryTypesInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐCategoryTypesInput(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -14053,14 +15706,14 @@ func (ec *executionContext) unmarshalInputUpdateCategoryInput(ctx context.Contex
 			it.ClearTodos = data
 		case "addSubCategoryIDs":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("addSubCategoryIDs"))
-			data, err := ec.unmarshalOID2ᚕentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigIntᚄ(ctx, v)
+			data, err := ec.unmarshalOID2ᚕgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigIntᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.AddSubCategoryIDs = data
 		case "removeSubCategoryIDs":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("removeSubCategoryIDs"))
-			data, err := ec.unmarshalOID2ᚕentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigIntᚄ(ctx, v)
+			data, err := ec.unmarshalOID2ᚕgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigIntᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -14135,7 +15788,7 @@ func (ec *executionContext) unmarshalInputUpdateTodoInput(ctx context.Context, o
 		switch k {
 		case "status":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("status"))
-			data, err := ec.unmarshalOTodoStatus2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋtodoᚐStatus(ctx, v)
+			data, err := ec.unmarshalOTodoStatus2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋtodoᚐStatus(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -14363,14 +16016,14 @@ func (ec *executionContext) unmarshalInputUserOrder(ctx context.Context, obj int
 		switch k {
 		case "direction":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("direction"))
-			data, err := ec.unmarshalNOrderDirection2entgoᚗioᚋcontribᚋ fluent_gqlᚐOrderDirection(ctx, v)
+			data, err := ec.unmarshalNOrderDirection2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐOrderDirection(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.Direction = data
 		case "field":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("field"))
-			data, err := ec.unmarshalNUserOrderField2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUserOrderField(ctx, v)
+			data, err := ec.unmarshalNUserOrderField2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUserOrderField(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -14397,21 +16050,21 @@ func (ec *executionContext) unmarshalInputUserWhereInput(ctx context.Context, ob
 		switch k {
 		case "not":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("not"))
-			data, err := ec.unmarshalOUserWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUserWhereInput(ctx, v)
+			data, err := ec.unmarshalOUserWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUserWhereInput(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.Not = data
 		case "and":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("and"))
-			data, err := ec.unmarshalOUserWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUserWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOUserWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUserWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
 			it.And = data
 		case "or":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("or"))
-			data, err := ec.unmarshalOUserWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUserWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOUserWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUserWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -14644,7 +16297,7 @@ func (ec *executionContext) unmarshalInputUserWhereInput(ctx context.Context, ob
 			it.HasGroups = data
 		case "hasGroupsWith":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("hasGroupsWith"))
-			data, err := ec.unmarshalOGroupWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐGroupWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOGroupWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐGroupWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -14658,7 +16311,7 @@ func (ec *executionContext) unmarshalInputUserWhereInput(ctx context.Context, ob
 			it.HasFriends = data
 		case "hasFriendsWith":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("hasFriendsWith"))
-			data, err := ec.unmarshalOUserWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUserWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOUserWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUserWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -14672,7 +16325,7 @@ func (ec *executionContext) unmarshalInputUserWhereInput(ctx context.Context, ob
 			it.HasFriendships = data
 		case "hasFriendshipsWith":
 			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("hasFriendshipsWith"))
-			data, err := ec.unmarshalOFriendshipWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐFriendshipWhereInputᚄ(ctx, v)
+			data, err := ec.unmarshalOFriendshipWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐFriendshipWhereInputᚄ(ctx, v)
 			if err != nil {
 				return it, err
 			}
@@ -14732,7 +16385,7 @@ func (ec *executionContext) _Node(ctx context.Context, sel ast.SelectionSet, obj
 			return graphql.Null
 		}
 		return ec._OneToMany(ctx, sel, obj)
-	case *ent1.Workspace:
+	case *fluent1.Workspace:
 		if obj == nil {
 			return graphql.Null
 		}
@@ -15806,7 +17459,7 @@ func (ec *executionContext) _OneToManyEdge(ctx context.Context, sel ast.Selectio
 
 var organizationImplementors = []string{"Organization", "Node"}
 
-func (ec *executionContext) _Organization(ctx context.Context, sel ast.SelectionSet, obj *ent1.Workspace) graphql.Marshaler {
+func (ec *executionContext) _Organization(ctx context.Context, sel ast.SelectionSet, obj *fluent1.Workspace) graphql.Marshaler {
 	fields := graphql.CollectFields(ec.OperationContext, sel, organizationImplementors)
 
 	out := graphql.NewFieldSet(fields)
@@ -15881,7 +17534,7 @@ func (ec *executionContext) _Organization(ctx context.Context, sel ast.Selection
 
 var pageInfoImplementors = []string{"PageInfo"}
 
-func (ec *executionContext) _PageInfo(ctx context.Context, sel ast.SelectionSet, obj * fluent_gql.PageInfo[string]) graphql.Marshaler {
+func (ec *executionContext) _PageInfo(ctx context.Context, sel ast.SelectionSet, obj *fluent_gql.PageInfo[string]) graphql.Marshaler {
 	fields := graphql.CollectFields(ec.OperationContext, sel, pageInfoImplementors)
 
 	out := graphql.NewFieldSet(fields)
@@ -17237,7 +18890,7 @@ func (ec *executionContext) ___Type(ctx context.Context, sel ast.SelectionSet, o
 
 // region    ***************************** type.gotpl *****************************
 
-func (ec *executionContext) marshalNBillProduct2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐBillProductᚄ(ctx context.Context, sel ast.SelectionSet, v []*fluent.BillProduct) graphql.Marshaler {
+func (ec *executionContext) marshalNBillProduct2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐBillProductᚄ(ctx context.Context, sel ast.SelectionSet, v []*fluent.BillProduct) graphql.Marshaler {
 	ret := make(graphql.Array, len(v))
 	var wg sync.WaitGroup
 	isLen1 := len(v) == 1
@@ -17261,7 +18914,7 @@ func (ec *executionContext) marshalNBillProduct2ᚕᚖentgoᚗioᚋcontribᚋ fl
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalNBillProduct2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐBillProduct(ctx, sel, v[i])
+			ret[i] = ec.marshalNBillProduct2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐBillProduct(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -17281,7 +18934,7 @@ func (ec *executionContext) marshalNBillProduct2ᚕᚖentgoᚗioᚋcontribᚋ fl
 	return ret
 }
 
-func (ec *executionContext) marshalNBillProduct2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐBillProduct(ctx context.Context, sel ast.SelectionSet, v *fluent.BillProduct) graphql.Marshaler {
+func (ec *executionContext) marshalNBillProduct2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐBillProduct(ctx context.Context, sel ast.SelectionSet, v *fluent.BillProduct) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -17291,7 +18944,7 @@ func (ec *executionContext) marshalNBillProduct2ᚖentgoᚗioᚋcontribᚋ fluen
 	return ec._BillProduct(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalNBillProductWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐBillProductWhereInput(ctx context.Context, v interface{}) (*fluent.BillProductWhereInput, error) {
+func (ec *executionContext) unmarshalNBillProductWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐBillProductWhereInput(ctx context.Context, v interface{}) (*fluent.BillProductWhereInput, error) {
 	res, err := ec.unmarshalInputBillProductWhereInput(ctx, v)
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
@@ -17311,11 +18964,11 @@ func (ec *executionContext) marshalNBoolean2bool(ctx context.Context, sel ast.Se
 	return res
 }
 
-func (ec *executionContext) marshalNCategory2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategory(ctx context.Context, sel ast.SelectionSet, v fluent.Category) graphql.Marshaler {
+func (ec *executionContext) marshalNCategory2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategory(ctx context.Context, sel ast.SelectionSet, v fluent.Category) graphql.Marshaler {
 	return ec._Category(ctx, sel, &v)
 }
 
-func (ec *executionContext) marshalNCategory2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategory(ctx context.Context, sel ast.SelectionSet, v *fluent.Category) graphql.Marshaler {
+func (ec *executionContext) marshalNCategory2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategory(ctx context.Context, sel ast.SelectionSet, v *fluent.Category) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -17325,16 +18978,16 @@ func (ec *executionContext) marshalNCategory2ᚖentgoᚗioᚋcontribᚋ fluent_g
 	return ec._Category(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalNCategoryConfigInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋschemaᚋschematypeᚐCategoryConfig(ctx context.Context, v interface{}) (*schematype.CategoryConfig, error) {
+func (ec *executionContext) unmarshalNCategoryConfigInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋschemaᚋschematypeᚐCategoryConfig(ctx context.Context, v interface{}) (*schematype.CategoryConfig, error) {
 	res, err := ec.unmarshalInputCategoryConfigInput(ctx, v)
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalNCategoryConnection2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategoryConnection(ctx context.Context, sel ast.SelectionSet, v fluent.CategoryConnection) graphql.Marshaler {
+func (ec *executionContext) marshalNCategoryConnection2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategoryConnection(ctx context.Context, sel ast.SelectionSet, v fluent.CategoryConnection) graphql.Marshaler {
 	return ec._CategoryConnection(ctx, sel, &v)
 }
 
-func (ec *executionContext) marshalNCategoryConnection2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategoryConnection(ctx context.Context, sel ast.SelectionSet, v *fluent.CategoryConnection) graphql.Marshaler {
+func (ec *executionContext) marshalNCategoryConnection2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategoryConnection(ctx context.Context, sel ast.SelectionSet, v *fluent.CategoryConnection) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -17344,18 +18997,18 @@ func (ec *executionContext) marshalNCategoryConnection2ᚖentgoᚗioᚋcontrib�
 	return ec._CategoryConnection(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalNCategoryOrder2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategoryOrder(ctx context.Context, v interface{}) (*fluent.CategoryOrder, error) {
+func (ec *executionContext) unmarshalNCategoryOrder2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategoryOrder(ctx context.Context, v interface{}) (*fluent.CategoryOrder, error) {
 	res, err := ec.unmarshalInputCategoryOrder(ctx, v)
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalNCategoryOrderField2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategoryOrderField(ctx context.Context, v interface{}) (*fluent.CategoryOrderField, error) {
+func (ec *executionContext) unmarshalNCategoryOrderField2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategoryOrderField(ctx context.Context, v interface{}) (*fluent.CategoryOrderField, error) {
 	var res = new(fluent.CategoryOrderField)
 	err := res.UnmarshalGQL(v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalNCategoryOrderField2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategoryOrderField(ctx context.Context, sel ast.SelectionSet, v *fluent.CategoryOrderField) graphql.Marshaler {
+func (ec *executionContext) marshalNCategoryOrderField2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategoryOrderField(ctx context.Context, sel ast.SelectionSet, v *fluent.CategoryOrderField) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -17365,47 +19018,47 @@ func (ec *executionContext) marshalNCategoryOrderField2ᚖentgoᚗioᚋcontrib�
 	return v
 }
 
-func (ec *executionContext) unmarshalNCategoryStatus2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋcategoryᚐStatus(ctx context.Context, v interface{}) (category.Status, error) {
+func (ec *executionContext) unmarshalNCategoryStatus2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋcategoryᚐStatus(ctx context.Context, v interface{}) (category.Status, error) {
 	var res category.Status
 	err := res.UnmarshalGQL(v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalNCategoryStatus2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋcategoryᚐStatus(ctx context.Context, sel ast.SelectionSet, v category.Status) graphql.Marshaler {
+func (ec *executionContext) marshalNCategoryStatus2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋcategoryᚐStatus(ctx context.Context, sel ast.SelectionSet, v category.Status) graphql.Marshaler {
 	return v
 }
 
-func (ec *executionContext) unmarshalNCategoryWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategoryWhereInput(ctx context.Context, v interface{}) (*fluent.CategoryWhereInput, error) {
+func (ec *executionContext) unmarshalNCategoryWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategoryWhereInput(ctx context.Context, v interface{}) (*fluent.CategoryWhereInput, error) {
 	res, err := ec.unmarshalInputCategoryWhereInput(ctx, v)
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalNCreateCategoryInput2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCreateCategoryInput(ctx context.Context, v interface{}) (fluent.CreateCategoryInput, error) {
+func (ec *executionContext) unmarshalNCreateCategoryInput2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCreateCategoryInput(ctx context.Context, v interface{}) (fluent.CreateCategoryInput, error) {
 	res, err := ec.unmarshalInputCreateCategoryInput(ctx, v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalNCreateTodoInput2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCreateTodoInput(ctx context.Context, v interface{}) (fluent.CreateTodoInput, error) {
+func (ec *executionContext) unmarshalNCreateTodoInput2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCreateTodoInput(ctx context.Context, v interface{}) (fluent.CreateTodoInput, error) {
 	res, err := ec.unmarshalInputCreateTodoInput(ctx, v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalNCreateTodoInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCreateTodoInput(ctx context.Context, v interface{}) (*fluent.CreateTodoInput, error) {
+func (ec *executionContext) unmarshalNCreateTodoInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCreateTodoInput(ctx context.Context, v interface{}) (*fluent.CreateTodoInput, error) {
 	res, err := ec.unmarshalInputCreateTodoInput(ctx, v)
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalNCursor2entgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx context.Context, v interface{}) ( fluent_gql.Cursor[string], error) {
+func (ec *executionContext) unmarshalNCursor2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx context.Context, v interface{}) (fluent_gql.Cursor[string], error) {
 	var res fluent_gql.Cursor[string]
 	err := res.UnmarshalGQL(v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalNCursor2entgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx context.Context, sel ast.SelectionSet, v fluent_gql.Cursor[string]) graphql.Marshaler {
+func (ec *executionContext) marshalNCursor2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx context.Context, sel ast.SelectionSet, v fluent_gql.Cursor[string]) graphql.Marshaler {
 	return v
 }
 
-func (ec *executionContext) marshalNCustom2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋschemaᚋcustomstructᚐCustom(ctx context.Context, sel ast.SelectionSet, v customstruct.Custom) graphql.Marshaler {
+func (ec *executionContext) marshalNCustom2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋschemaᚋcustomstructᚐCustom(ctx context.Context, sel ast.SelectionSet, v customstruct.Custom) graphql.Marshaler {
 	return ec._Custom(ctx, sel, &v)
 }
 
@@ -17424,11 +19077,11 @@ func (ec *executionContext) marshalNDuration2timeᚐDuration(ctx context.Context
 	return res
 }
 
-func (ec *executionContext) marshalNFriendship2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐFriendship(ctx context.Context, sel ast.SelectionSet, v fluent.Friendship) graphql.Marshaler {
+func (ec *executionContext) marshalNFriendship2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐFriendship(ctx context.Context, sel ast.SelectionSet, v fluent.Friendship) graphql.Marshaler {
 	return ec._Friendship(ctx, sel, &v)
 }
 
-func (ec *executionContext) marshalNFriendship2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐFriendship(ctx context.Context, sel ast.SelectionSet, v *fluent.Friendship) graphql.Marshaler {
+func (ec *executionContext) marshalNFriendship2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐFriendship(ctx context.Context, sel ast.SelectionSet, v *fluent.Friendship) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -17438,11 +19091,11 @@ func (ec *executionContext) marshalNFriendship2ᚖentgoᚗioᚋcontribᚋ fluent
 	return ec._Friendship(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalNFriendshipConnection2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐFriendshipConnection(ctx context.Context, sel ast.SelectionSet, v fluent.FriendshipConnection) graphql.Marshaler {
+func (ec *executionContext) marshalNFriendshipConnection2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐFriendshipConnection(ctx context.Context, sel ast.SelectionSet, v fluent.FriendshipConnection) graphql.Marshaler {
 	return ec._FriendshipConnection(ctx, sel, &v)
 }
 
-func (ec *executionContext) marshalNFriendshipConnection2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐFriendshipConnection(ctx context.Context, sel ast.SelectionSet, v *fluent.FriendshipConnection) graphql.Marshaler {
+func (ec *executionContext) marshalNFriendshipConnection2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐFriendshipConnection(ctx context.Context, sel ast.SelectionSet, v *fluent.FriendshipConnection) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -17452,16 +19105,16 @@ func (ec *executionContext) marshalNFriendshipConnection2ᚖentgoᚗioᚋcontrib
 	return ec._FriendshipConnection(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalNFriendshipWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐFriendshipWhereInput(ctx context.Context, v interface{}) (*fluent.FriendshipWhereInput, error) {
+func (ec *executionContext) unmarshalNFriendshipWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐFriendshipWhereInput(ctx context.Context, v interface{}) (*fluent.FriendshipWhereInput, error) {
 	res, err := ec.unmarshalInputFriendshipWhereInput(ctx, v)
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalNGroupConnection2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐGroupConnection(ctx context.Context, sel ast.SelectionSet, v fluent.GroupConnection) graphql.Marshaler {
+func (ec *executionContext) marshalNGroupConnection2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐGroupConnection(ctx context.Context, sel ast.SelectionSet, v fluent.GroupConnection) graphql.Marshaler {
 	return ec._GroupConnection(ctx, sel, &v)
 }
 
-func (ec *executionContext) marshalNGroupConnection2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐGroupConnection(ctx context.Context, sel ast.SelectionSet, v *fluent.GroupConnection) graphql.Marshaler {
+func (ec *executionContext) marshalNGroupConnection2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐGroupConnection(ctx context.Context, sel ast.SelectionSet, v *fluent.GroupConnection) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -17471,18 +19124,18 @@ func (ec *executionContext) marshalNGroupConnection2ᚖentgoᚗioᚋcontribᚋ f
 	return ec._GroupConnection(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalNGroupWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐGroupWhereInput(ctx context.Context, v interface{}) (*fluent.GroupWhereInput, error) {
+func (ec *executionContext) unmarshalNGroupWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐGroupWhereInput(ctx context.Context, v interface{}) (*fluent.GroupWhereInput, error) {
 	res, err := ec.unmarshalInputGroupWhereInput(ctx, v)
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalNID2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigInt(ctx context.Context, v interface{}) (bigintgql.BigInt, error) {
+func (ec *executionContext) unmarshalNID2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigInt(ctx context.Context, v interface{}) (bigintgql.BigInt, error) {
 	var res bigintgql.BigInt
 	err := res.UnmarshalGQL(v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalNID2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigInt(ctx context.Context, sel ast.SelectionSet, v bigintgql.BigInt) graphql.Marshaler {
+func (ec *executionContext) marshalNID2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigInt(ctx context.Context, sel ast.SelectionSet, v bigintgql.BigInt) graphql.Marshaler {
 	return v
 }
 
@@ -17569,7 +19222,7 @@ func (ec *executionContext) marshalNMap2map(ctx context.Context, sel ast.Selecti
 	return res
 }
 
-func (ec *executionContext) marshalNNode2ᚕentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐNoder(ctx context.Context, sel ast.SelectionSet, v []fluent.Noder) graphql.Marshaler {
+func (ec *executionContext) marshalNNode2ᚕgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐNoder(ctx context.Context, sel ast.SelectionSet, v []fluent.Noder) graphql.Marshaler {
 	ret := make(graphql.Array, len(v))
 	var wg sync.WaitGroup
 	isLen1 := len(v) == 1
@@ -17593,7 +19246,7 @@ func (ec *executionContext) marshalNNode2ᚕentgoᚗioᚋcontribᚋ fluent_gql�
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalONode2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐNoder(ctx, sel, v[i])
+			ret[i] = ec.marshalONode2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐNoder(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -17607,7 +19260,7 @@ func (ec *executionContext) marshalNNode2ᚕentgoᚗioᚋcontribᚋ fluent_gql�
 	return ret
 }
 
-func (ec *executionContext) marshalNOneToMany2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToMany(ctx context.Context, sel ast.SelectionSet, v *OneToMany) graphql.Marshaler {
+func (ec *executionContext) marshalNOneToMany2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToMany(ctx context.Context, sel ast.SelectionSet, v *OneToMany) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -17617,11 +19270,11 @@ func (ec *executionContext) marshalNOneToMany2ᚖentgoᚗioᚋcontribᚋ fluent_
 	return ec._OneToMany(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalNOneToManyConnection2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyConnection(ctx context.Context, sel ast.SelectionSet, v OneToManyConnection) graphql.Marshaler {
+func (ec *executionContext) marshalNOneToManyConnection2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyConnection(ctx context.Context, sel ast.SelectionSet, v OneToManyConnection) graphql.Marshaler {
 	return ec._OneToManyConnection(ctx, sel, &v)
 }
 
-func (ec *executionContext) marshalNOneToManyConnection2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyConnection(ctx context.Context, sel ast.SelectionSet, v *OneToManyConnection) graphql.Marshaler {
+func (ec *executionContext) marshalNOneToManyConnection2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyConnection(ctx context.Context, sel ast.SelectionSet, v *OneToManyConnection) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -17631,41 +19284,41 @@ func (ec *executionContext) marshalNOneToManyConnection2ᚖentgoᚗioᚋcontrib�
 	return ec._OneToManyConnection(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalNOneToManyOrderField2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyOrderField(ctx context.Context, v interface{}) (OneToManyOrderField, error) {
+func (ec *executionContext) unmarshalNOneToManyOrderField2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyOrderField(ctx context.Context, v interface{}) (OneToManyOrderField, error) {
 	var res OneToManyOrderField
 	err := res.UnmarshalGQL(v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalNOneToManyOrderField2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyOrderField(ctx context.Context, sel ast.SelectionSet, v OneToManyOrderField) graphql.Marshaler {
+func (ec *executionContext) marshalNOneToManyOrderField2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyOrderField(ctx context.Context, sel ast.SelectionSet, v OneToManyOrderField) graphql.Marshaler {
 	return v
 }
 
-func (ec *executionContext) unmarshalNOneToManyWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyWhereInput(ctx context.Context, v interface{}) (*OneToManyWhereInput, error) {
+func (ec *executionContext) unmarshalNOneToManyWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyWhereInput(ctx context.Context, v interface{}) (*OneToManyWhereInput, error) {
 	res, err := ec.unmarshalInputOneToManyWhereInput(ctx, v)
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalNOrderDirection2entgoᚗioᚋcontribᚋ fluent_gqlᚐOrderDirection(ctx context.Context, v interface{}) ( fluent_gql.OrderDirection, error) {
+func (ec *executionContext) unmarshalNOrderDirection2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐOrderDirection(ctx context.Context, v interface{}) (fluent_gql.OrderDirection, error) {
 	var res fluent_gql.OrderDirection
 	err := res.UnmarshalGQL(v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalNOrderDirection2entgoᚗioᚋcontribᚋ fluent_gqlᚐOrderDirection(ctx context.Context, sel ast.SelectionSet, v fluent_gql.OrderDirection) graphql.Marshaler {
+func (ec *executionContext) marshalNOrderDirection2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐOrderDirection(ctx context.Context, sel ast.SelectionSet, v fluent_gql.OrderDirection) graphql.Marshaler {
 	return v
 }
 
-func (ec *executionContext) unmarshalNOrganizationWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOrganizationWhereInput(ctx context.Context, v interface{}) (*OrganizationWhereInput, error) {
+func (ec *executionContext) unmarshalNOrganizationWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOrganizationWhereInput(ctx context.Context, v interface{}) (*OrganizationWhereInput, error) {
 	res, err := ec.unmarshalInputOrganizationWhereInput(ctx, v)
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalNPageInfo2entgoᚗioᚋcontribᚋ fluent_gqlᚐPageInfo(ctx context.Context, sel ast.SelectionSet, v fluent_gql.PageInfo[string]) graphql.Marshaler {
+func (ec *executionContext) marshalNPageInfo2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐPageInfo(ctx context.Context, sel ast.SelectionSet, v fluent_gql.PageInfo[string]) graphql.Marshaler {
 	return ec._PageInfo(ctx, sel, &v)
 }
 
-func (ec *executionContext) marshalNPageInfo2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐPageInfo(ctx context.Context, sel ast.SelectionSet, v * fluent_gql.PageInfo[string]) graphql.Marshaler {
+func (ec *executionContext) marshalNPageInfo2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐPageInfo(ctx context.Context, sel ast.SelectionSet, v *fluent_gql.PageInfo[string]) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -17675,7 +19328,7 @@ func (ec *executionContext) marshalNPageInfo2ᚖentgoᚗioᚋcontribᚋ fluent_g
 	return ec._PageInfo(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalNProjectWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐProjectWhereInput(ctx context.Context, v interface{}) (*ProjectWhereInput, error) {
+func (ec *executionContext) unmarshalNProjectWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐProjectWhereInput(ctx context.Context, v interface{}) (*ProjectWhereInput, error) {
 	res, err := ec.unmarshalInputProjectWhereInput(ctx, v)
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
@@ -17742,11 +19395,11 @@ func (ec *executionContext) marshalNTime2timeᚐTime(ctx context.Context, sel as
 	return res
 }
 
-func (ec *executionContext) marshalNTodo2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodo(ctx context.Context, sel ast.SelectionSet, v fluent.Todo) graphql.Marshaler {
+func (ec *executionContext) marshalNTodo2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodo(ctx context.Context, sel ast.SelectionSet, v fluent.Todo) graphql.Marshaler {
 	return ec._Todo(ctx, sel, &v)
 }
 
-func (ec *executionContext) marshalNTodo2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodo(ctx context.Context, sel ast.SelectionSet, v *fluent.Todo) graphql.Marshaler {
+func (ec *executionContext) marshalNTodo2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodo(ctx context.Context, sel ast.SelectionSet, v *fluent.Todo) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -17756,11 +19409,11 @@ func (ec *executionContext) marshalNTodo2ᚖentgoᚗioᚋcontribᚋ fluent_gql�
 	return ec._Todo(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalNTodoConnection2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoConnection(ctx context.Context, sel ast.SelectionSet, v fluent.TodoConnection) graphql.Marshaler {
+func (ec *executionContext) marshalNTodoConnection2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoConnection(ctx context.Context, sel ast.SelectionSet, v fluent.TodoConnection) graphql.Marshaler {
 	return ec._TodoConnection(ctx, sel, &v)
 }
 
-func (ec *executionContext) marshalNTodoConnection2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoConnection(ctx context.Context, sel ast.SelectionSet, v *fluent.TodoConnection) graphql.Marshaler {
+func (ec *executionContext) marshalNTodoConnection2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoConnection(ctx context.Context, sel ast.SelectionSet, v *fluent.TodoConnection) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -17770,18 +19423,18 @@ func (ec *executionContext) marshalNTodoConnection2ᚖentgoᚗioᚋcontribᚋ fl
 	return ec._TodoConnection(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalNTodoOrder2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoOrder(ctx context.Context, v interface{}) (*fluent.TodoOrder, error) {
+func (ec *executionContext) unmarshalNTodoOrder2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoOrder(ctx context.Context, v interface{}) (*fluent.TodoOrder, error) {
 	res, err := ec.unmarshalInputTodoOrder(ctx, v)
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalNTodoOrderField2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoOrderField(ctx context.Context, v interface{}) (*fluent.TodoOrderField, error) {
+func (ec *executionContext) unmarshalNTodoOrderField2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoOrderField(ctx context.Context, v interface{}) (*fluent.TodoOrderField, error) {
 	var res = new(fluent.TodoOrderField)
 	err := res.UnmarshalGQL(v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalNTodoOrderField2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoOrderField(ctx context.Context, sel ast.SelectionSet, v *fluent.TodoOrderField) graphql.Marshaler {
+func (ec *executionContext) marshalNTodoOrderField2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoOrderField(ctx context.Context, sel ast.SelectionSet, v *fluent.TodoOrderField) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -17791,17 +19444,17 @@ func (ec *executionContext) marshalNTodoOrderField2ᚖentgoᚗioᚋcontribᚋ fl
 	return v
 }
 
-func (ec *executionContext) unmarshalNTodoStatus2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋtodoᚐStatus(ctx context.Context, v interface{}) (todo.Status, error) {
+func (ec *executionContext) unmarshalNTodoStatus2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋtodoᚐStatus(ctx context.Context, v interface{}) (todo.Status, error) {
 	var res todo.Status
 	err := res.UnmarshalGQL(v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalNTodoStatus2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋtodoᚐStatus(ctx context.Context, sel ast.SelectionSet, v todo.Status) graphql.Marshaler {
+func (ec *executionContext) marshalNTodoStatus2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋtodoᚐStatus(ctx context.Context, sel ast.SelectionSet, v todo.Status) graphql.Marshaler {
 	return v
 }
 
-func (ec *executionContext) unmarshalNTodoWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoWhereInput(ctx context.Context, v interface{}) (*fluent.TodoWhereInput, error) {
+func (ec *executionContext) unmarshalNTodoWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoWhereInput(ctx context.Context, v interface{}) (*fluent.TodoWhereInput, error) {
 	res, err := ec.unmarshalInputTodoWhereInput(ctx, v)
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
@@ -17836,17 +19489,17 @@ func (ec *executionContext) marshalNUint642uint64(ctx context.Context, sel ast.S
 	return res
 }
 
-func (ec *executionContext) unmarshalNUpdateFriendshipInput2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐUpdateFriendshipInput(ctx context.Context, v interface{}) (UpdateFriendshipInput, error) {
+func (ec *executionContext) unmarshalNUpdateFriendshipInput2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐUpdateFriendshipInput(ctx context.Context, v interface{}) (UpdateFriendshipInput, error) {
 	res, err := ec.unmarshalInputUpdateFriendshipInput(ctx, v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalNUpdateTodoInput2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUpdateTodoInput(ctx context.Context, v interface{}) (fluent.UpdateTodoInput, error) {
+func (ec *executionContext) unmarshalNUpdateTodoInput2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUpdateTodoInput(ctx context.Context, v interface{}) (fluent.UpdateTodoInput, error) {
 	res, err := ec.unmarshalInputUpdateTodoInput(ctx, v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalNUser2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUser(ctx context.Context, sel ast.SelectionSet, v *fluent.User) graphql.Marshaler {
+func (ec *executionContext) marshalNUser2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUser(ctx context.Context, sel ast.SelectionSet, v *fluent.User) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -17856,11 +19509,11 @@ func (ec *executionContext) marshalNUser2ᚖentgoᚗioᚋcontribᚋ fluent_gql�
 	return ec._User(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalNUserConnection2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUserConnection(ctx context.Context, sel ast.SelectionSet, v fluent.UserConnection) graphql.Marshaler {
+func (ec *executionContext) marshalNUserConnection2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUserConnection(ctx context.Context, sel ast.SelectionSet, v fluent.UserConnection) graphql.Marshaler {
 	return ec._UserConnection(ctx, sel, &v)
 }
 
-func (ec *executionContext) marshalNUserConnection2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUserConnection(ctx context.Context, sel ast.SelectionSet, v *fluent.UserConnection) graphql.Marshaler {
+func (ec *executionContext) marshalNUserConnection2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUserConnection(ctx context.Context, sel ast.SelectionSet, v *fluent.UserConnection) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -17870,13 +19523,13 @@ func (ec *executionContext) marshalNUserConnection2ᚖentgoᚗioᚋcontribᚋ fl
 	return ec._UserConnection(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalNUserOrderField2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUserOrderField(ctx context.Context, v interface{}) (*fluent.UserOrderField, error) {
+func (ec *executionContext) unmarshalNUserOrderField2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUserOrderField(ctx context.Context, v interface{}) (*fluent.UserOrderField, error) {
 	var res = new(fluent.UserOrderField)
 	err := res.UnmarshalGQL(v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalNUserOrderField2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUserOrderField(ctx context.Context, sel ast.SelectionSet, v *fluent.UserOrderField) graphql.Marshaler {
+func (ec *executionContext) marshalNUserOrderField2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUserOrderField(ctx context.Context, sel ast.SelectionSet, v *fluent.UserOrderField) graphql.Marshaler {
 	if v == nil {
 		if !graphql.HasFieldError(ctx, graphql.GetFieldContext(ctx)) {
 			ec.Errorf(ctx, "the requested element is null which the schema does not allow")
@@ -17886,7 +19539,7 @@ func (ec *executionContext) marshalNUserOrderField2ᚖentgoᚗioᚋcontribᚋ fl
 	return v
 }
 
-func (ec *executionContext) unmarshalNUserWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUserWhereInput(ctx context.Context, v interface{}) (*fluent.UserWhereInput, error) {
+func (ec *executionContext) unmarshalNUserWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUserWhereInput(ctx context.Context, v interface{}) (*fluent.UserWhereInput, error) {
 	res, err := ec.unmarshalInputUserWhereInput(ctx, v)
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
@@ -18144,7 +19797,7 @@ func (ec *executionContext) marshalN__TypeKind2string(ctx context.Context, sel a
 	return res
 }
 
-func (ec *executionContext) unmarshalOBillProductWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐBillProductWhereInputᚄ(ctx context.Context, v interface{}) ([]*fluent.BillProductWhereInput, error) {
+func (ec *executionContext) unmarshalOBillProductWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐBillProductWhereInputᚄ(ctx context.Context, v interface{}) ([]*fluent.BillProductWhereInput, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -18156,7 +19809,7 @@ func (ec *executionContext) unmarshalOBillProductWhereInput2ᚕᚖentgoᚗioᚋc
 	res := make([]*fluent.BillProductWhereInput, len(vSlice))
 	for i := range vSlice {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
-		res[i], err = ec.unmarshalNBillProductWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐBillProductWhereInput(ctx, vSlice[i])
+		res[i], err = ec.unmarshalNBillProductWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐBillProductWhereInput(ctx, vSlice[i])
 		if err != nil {
 			return nil, err
 		}
@@ -18164,7 +19817,7 @@ func (ec *executionContext) unmarshalOBillProductWhereInput2ᚕᚖentgoᚗioᚋc
 	return res, nil
 }
 
-func (ec *executionContext) unmarshalOBillProductWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐBillProductWhereInput(ctx context.Context, v interface{}) (*fluent.BillProductWhereInput, error) {
+func (ec *executionContext) unmarshalOBillProductWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐBillProductWhereInput(ctx context.Context, v interface{}) (*fluent.BillProductWhereInput, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -18198,21 +19851,21 @@ func (ec *executionContext) marshalOBoolean2ᚖbool(ctx context.Context, sel ast
 	return res
 }
 
-func (ec *executionContext) marshalOCategory2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategory(ctx context.Context, sel ast.SelectionSet, v *fluent.Category) graphql.Marshaler {
+func (ec *executionContext) marshalOCategory2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategory(ctx context.Context, sel ast.SelectionSet, v *fluent.Category) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._Category(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalOCategoryConfig2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋschemaᚋschematypeᚐCategoryConfig(ctx context.Context, sel ast.SelectionSet, v *schematype.CategoryConfig) graphql.Marshaler {
+func (ec *executionContext) marshalOCategoryConfig2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋschemaᚋschematypeᚐCategoryConfig(ctx context.Context, sel ast.SelectionSet, v *schematype.CategoryConfig) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._CategoryConfig(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalOCategoryConfigInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋschemaᚋschematypeᚐCategoryConfigᚄ(ctx context.Context, v interface{}) ([]*schematype.CategoryConfig, error) {
+func (ec *executionContext) unmarshalOCategoryConfigInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋschemaᚋschematypeᚐCategoryConfigᚄ(ctx context.Context, v interface{}) ([]*schematype.CategoryConfig, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -18224,7 +19877,7 @@ func (ec *executionContext) unmarshalOCategoryConfigInput2ᚕᚖentgoᚗioᚋcon
 	res := make([]*schematype.CategoryConfig, len(vSlice))
 	for i := range vSlice {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
-		res[i], err = ec.unmarshalNCategoryConfigInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋschemaᚋschematypeᚐCategoryConfig(ctx, vSlice[i])
+		res[i], err = ec.unmarshalNCategoryConfigInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋschemaᚋschematypeᚐCategoryConfig(ctx, vSlice[i])
 		if err != nil {
 			return nil, err
 		}
@@ -18232,7 +19885,7 @@ func (ec *executionContext) unmarshalOCategoryConfigInput2ᚕᚖentgoᚗioᚋcon
 	return res, nil
 }
 
-func (ec *executionContext) unmarshalOCategoryConfigInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋschemaᚋschematypeᚐCategoryConfig(ctx context.Context, v interface{}) (*schematype.CategoryConfig, error) {
+func (ec *executionContext) unmarshalOCategoryConfigInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋschemaᚋschematypeᚐCategoryConfig(ctx context.Context, v interface{}) (*schematype.CategoryConfig, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -18240,7 +19893,7 @@ func (ec *executionContext) unmarshalOCategoryConfigInput2ᚖentgoᚗioᚋcontri
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalOCategoryEdge2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategoryEdge(ctx context.Context, sel ast.SelectionSet, v []*fluent.CategoryEdge) graphql.Marshaler {
+func (ec *executionContext) marshalOCategoryEdge2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategoryEdge(ctx context.Context, sel ast.SelectionSet, v []*fluent.CategoryEdge) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -18267,7 +19920,7 @@ func (ec *executionContext) marshalOCategoryEdge2ᚕᚖentgoᚗioᚋcontribᚋ f
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOCategoryEdge2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategoryEdge(ctx, sel, v[i])
+			ret[i] = ec.marshalOCategoryEdge2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategoryEdge(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -18281,14 +19934,14 @@ func (ec *executionContext) marshalOCategoryEdge2ᚕᚖentgoᚗioᚋcontribᚋ f
 	return ret
 }
 
-func (ec *executionContext) marshalOCategoryEdge2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategoryEdge(ctx context.Context, sel ast.SelectionSet, v *fluent.CategoryEdge) graphql.Marshaler {
+func (ec *executionContext) marshalOCategoryEdge2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategoryEdge(ctx context.Context, sel ast.SelectionSet, v *fluent.CategoryEdge) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._CategoryEdge(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalOCategoryOrder2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategoryOrderᚄ(ctx context.Context, v interface{}) ([]*fluent.CategoryOrder, error) {
+func (ec *executionContext) unmarshalOCategoryOrder2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategoryOrderᚄ(ctx context.Context, v interface{}) ([]*fluent.CategoryOrder, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -18300,7 +19953,7 @@ func (ec *executionContext) unmarshalOCategoryOrder2ᚕᚖentgoᚗioᚋcontrib�
 	res := make([]*fluent.CategoryOrder, len(vSlice))
 	for i := range vSlice {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
-		res[i], err = ec.unmarshalNCategoryOrder2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategoryOrder(ctx, vSlice[i])
+		res[i], err = ec.unmarshalNCategoryOrder2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategoryOrder(ctx, vSlice[i])
 		if err != nil {
 			return nil, err
 		}
@@ -18308,7 +19961,7 @@ func (ec *executionContext) unmarshalOCategoryOrder2ᚕᚖentgoᚗioᚋcontrib�
 	return res, nil
 }
 
-func (ec *executionContext) unmarshalOCategoryStatus2ᚕentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋcategoryᚐStatusᚄ(ctx context.Context, v interface{}) ([]category.Status, error) {
+func (ec *executionContext) unmarshalOCategoryStatus2ᚕgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋcategoryᚐStatusᚄ(ctx context.Context, v interface{}) ([]category.Status, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -18320,7 +19973,7 @@ func (ec *executionContext) unmarshalOCategoryStatus2ᚕentgoᚗioᚋcontribᚋ 
 	res := make([]category.Status, len(vSlice))
 	for i := range vSlice {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
-		res[i], err = ec.unmarshalNCategoryStatus2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋcategoryᚐStatus(ctx, vSlice[i])
+		res[i], err = ec.unmarshalNCategoryStatus2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋcategoryᚐStatus(ctx, vSlice[i])
 		if err != nil {
 			return nil, err
 		}
@@ -18328,7 +19981,7 @@ func (ec *executionContext) unmarshalOCategoryStatus2ᚕentgoᚗioᚋcontribᚋ 
 	return res, nil
 }
 
-func (ec *executionContext) marshalOCategoryStatus2ᚕentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋcategoryᚐStatusᚄ(ctx context.Context, sel ast.SelectionSet, v []category.Status) graphql.Marshaler {
+func (ec *executionContext) marshalOCategoryStatus2ᚕgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋcategoryᚐStatusᚄ(ctx context.Context, sel ast.SelectionSet, v []category.Status) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -18355,7 +20008,7 @@ func (ec *executionContext) marshalOCategoryStatus2ᚕentgoᚗioᚋcontribᚋ fl
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalNCategoryStatus2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋcategoryᚐStatus(ctx, sel, v[i])
+			ret[i] = ec.marshalNCategoryStatus2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋcategoryᚐStatus(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -18375,7 +20028,7 @@ func (ec *executionContext) marshalOCategoryStatus2ᚕentgoᚗioᚋcontribᚋ fl
 	return ret
 }
 
-func (ec *executionContext) unmarshalOCategoryStatus2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋcategoryᚐStatus(ctx context.Context, v interface{}) (*category.Status, error) {
+func (ec *executionContext) unmarshalOCategoryStatus2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋcategoryᚐStatus(ctx context.Context, v interface{}) (*category.Status, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -18384,21 +20037,21 @@ func (ec *executionContext) unmarshalOCategoryStatus2ᚖentgoᚗioᚋcontribᚋ 
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalOCategoryStatus2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋcategoryᚐStatus(ctx context.Context, sel ast.SelectionSet, v *category.Status) graphql.Marshaler {
+func (ec *executionContext) marshalOCategoryStatus2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋcategoryᚐStatus(ctx context.Context, sel ast.SelectionSet, v *category.Status) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return v
 }
 
-func (ec *executionContext) marshalOCategoryTypes2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐCategoryTypes(ctx context.Context, sel ast.SelectionSet, v *CategoryTypes) graphql.Marshaler {
+func (ec *executionContext) marshalOCategoryTypes2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐCategoryTypes(ctx context.Context, sel ast.SelectionSet, v *CategoryTypes) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._CategoryTypes(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalOCategoryTypesInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐCategoryTypesInput(ctx context.Context, v interface{}) (*CategoryTypesInput, error) {
+func (ec *executionContext) unmarshalOCategoryTypesInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐCategoryTypesInput(ctx context.Context, v interface{}) (*CategoryTypesInput, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -18406,7 +20059,7 @@ func (ec *executionContext) unmarshalOCategoryTypesInput2ᚖentgoᚗioᚋcontrib
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalOCategoryWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategoryWhereInputᚄ(ctx context.Context, v interface{}) ([]*fluent.CategoryWhereInput, error) {
+func (ec *executionContext) unmarshalOCategoryWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategoryWhereInputᚄ(ctx context.Context, v interface{}) ([]*fluent.CategoryWhereInput, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -18418,7 +20071,7 @@ func (ec *executionContext) unmarshalOCategoryWhereInput2ᚕᚖentgoᚗioᚋcont
 	res := make([]*fluent.CategoryWhereInput, len(vSlice))
 	for i := range vSlice {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
-		res[i], err = ec.unmarshalNCategoryWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategoryWhereInput(ctx, vSlice[i])
+		res[i], err = ec.unmarshalNCategoryWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategoryWhereInput(ctx, vSlice[i])
 		if err != nil {
 			return nil, err
 		}
@@ -18426,7 +20079,7 @@ func (ec *executionContext) unmarshalOCategoryWhereInput2ᚕᚖentgoᚗioᚋcont
 	return res, nil
 }
 
-func (ec *executionContext) unmarshalOCategoryWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCategoryWhereInput(ctx context.Context, v interface{}) (*fluent.CategoryWhereInput, error) {
+func (ec *executionContext) unmarshalOCategoryWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCategoryWhereInput(ctx context.Context, v interface{}) (*fluent.CategoryWhereInput, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -18434,7 +20087,7 @@ func (ec *executionContext) unmarshalOCategoryWhereInput2ᚖentgoᚗioᚋcontrib
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalOCreateTodoInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCreateTodoInputᚄ(ctx context.Context, v interface{}) ([]*fluent.CreateTodoInput, error) {
+func (ec *executionContext) unmarshalOCreateTodoInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCreateTodoInputᚄ(ctx context.Context, v interface{}) ([]*fluent.CreateTodoInput, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -18446,7 +20099,7 @@ func (ec *executionContext) unmarshalOCreateTodoInput2ᚕᚖentgoᚗioᚋcontrib
 	res := make([]*fluent.CreateTodoInput, len(vSlice))
 	for i := range vSlice {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
-		res[i], err = ec.unmarshalNCreateTodoInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐCreateTodoInput(ctx, vSlice[i])
+		res[i], err = ec.unmarshalNCreateTodoInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐCreateTodoInput(ctx, vSlice[i])
 		if err != nil {
 			return nil, err
 		}
@@ -18454,23 +20107,23 @@ func (ec *executionContext) unmarshalOCreateTodoInput2ᚕᚖentgoᚗioᚋcontrib
 	return res, nil
 }
 
-func (ec *executionContext) unmarshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx context.Context, v interface{}) (* fluent_gql.Cursor[string], error) {
+func (ec *executionContext) unmarshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx context.Context, v interface{}) (*fluent_gql.Cursor[string], error) {
 	if v == nil {
 		return nil, nil
 	}
-	var res = new( fluent_gql.Cursor[string])
+	var res = new(fluent_gql.Cursor[string])
 	err := res.UnmarshalGQL(v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalOCursor2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚐCursor(ctx context.Context, sel ast.SelectionSet, v * fluent_gql.Cursor[string]) graphql.Marshaler {
+func (ec *executionContext) marshalOCursor2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚐCursor(ctx context.Context, sel ast.SelectionSet, v *fluent_gql.Cursor[string]) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return v
 }
 
-func (ec *executionContext) marshalOCustom2ᚕentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋschemaᚋcustomstructᚐCustomᚄ(ctx context.Context, sel ast.SelectionSet, v []customstruct.Custom) graphql.Marshaler {
+func (ec *executionContext) marshalOCustom2ᚕgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋschemaᚋcustomstructᚐCustomᚄ(ctx context.Context, sel ast.SelectionSet, v []customstruct.Custom) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -18497,7 +20150,7 @@ func (ec *executionContext) marshalOCustom2ᚕentgoᚗioᚋcontribᚋ fluent_gql
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalNCustom2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋschemaᚋcustomstructᚐCustom(ctx, sel, v[i])
+			ret[i] = ec.marshalNCustom2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋschemaᚋcustomstructᚐCustom(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -18517,7 +20170,7 @@ func (ec *executionContext) marshalOCustom2ᚕentgoᚗioᚋcontribᚋ fluent_gql
 	return ret
 }
 
-func (ec *executionContext) marshalOCustom2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋschemaᚋcustomstructᚐCustom(ctx context.Context, sel ast.SelectionSet, v []*customstruct.Custom) graphql.Marshaler {
+func (ec *executionContext) marshalOCustom2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋschemaᚋcustomstructᚐCustom(ctx context.Context, sel ast.SelectionSet, v []*customstruct.Custom) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -18544,7 +20197,7 @@ func (ec *executionContext) marshalOCustom2ᚕᚖentgoᚗioᚋcontribᚋ fluent_
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOCustom2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋschemaᚋcustomstructᚐCustom(ctx, sel, v[i])
+			ret[i] = ec.marshalOCustom2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋschemaᚋcustomstructᚐCustom(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -18558,7 +20211,7 @@ func (ec *executionContext) marshalOCustom2ᚕᚖentgoᚗioᚋcontribᚋ fluent_
 	return ret
 }
 
-func (ec *executionContext) marshalOCustom2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋschemaᚋcustomstructᚐCustom(ctx context.Context, sel ast.SelectionSet, v *customstruct.Custom) graphql.Marshaler {
+func (ec *executionContext) marshalOCustom2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋschemaᚋcustomstructᚐCustom(ctx context.Context, sel ast.SelectionSet, v *customstruct.Custom) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -18629,14 +20282,14 @@ func (ec *executionContext) marshalODuration2ᚖtimeᚐDuration(ctx context.Cont
 	return res
 }
 
-func (ec *executionContext) marshalOFriendship2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐFriendship(ctx context.Context, sel ast.SelectionSet, v *fluent.Friendship) graphql.Marshaler {
+func (ec *executionContext) marshalOFriendship2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐFriendship(ctx context.Context, sel ast.SelectionSet, v *fluent.Friendship) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._Friendship(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalOFriendshipEdge2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐFriendshipEdge(ctx context.Context, sel ast.SelectionSet, v []*fluent.FriendshipEdge) graphql.Marshaler {
+func (ec *executionContext) marshalOFriendshipEdge2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐFriendshipEdge(ctx context.Context, sel ast.SelectionSet, v []*fluent.FriendshipEdge) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -18663,7 +20316,7 @@ func (ec *executionContext) marshalOFriendshipEdge2ᚕᚖentgoᚗioᚋcontribᚋ
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOFriendshipEdge2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐFriendshipEdge(ctx, sel, v[i])
+			ret[i] = ec.marshalOFriendshipEdge2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐFriendshipEdge(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -18677,14 +20330,14 @@ func (ec *executionContext) marshalOFriendshipEdge2ᚕᚖentgoᚗioᚋcontribᚋ
 	return ret
 }
 
-func (ec *executionContext) marshalOFriendshipEdge2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐFriendshipEdge(ctx context.Context, sel ast.SelectionSet, v *fluent.FriendshipEdge) graphql.Marshaler {
+func (ec *executionContext) marshalOFriendshipEdge2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐFriendshipEdge(ctx context.Context, sel ast.SelectionSet, v *fluent.FriendshipEdge) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._FriendshipEdge(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalOFriendshipWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐFriendshipWhereInputᚄ(ctx context.Context, v interface{}) ([]*fluent.FriendshipWhereInput, error) {
+func (ec *executionContext) unmarshalOFriendshipWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐFriendshipWhereInputᚄ(ctx context.Context, v interface{}) ([]*fluent.FriendshipWhereInput, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -18696,7 +20349,7 @@ func (ec *executionContext) unmarshalOFriendshipWhereInput2ᚕᚖentgoᚗioᚋco
 	res := make([]*fluent.FriendshipWhereInput, len(vSlice))
 	for i := range vSlice {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
-		res[i], err = ec.unmarshalNFriendshipWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐFriendshipWhereInput(ctx, vSlice[i])
+		res[i], err = ec.unmarshalNFriendshipWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐFriendshipWhereInput(ctx, vSlice[i])
 		if err != nil {
 			return nil, err
 		}
@@ -18704,7 +20357,7 @@ func (ec *executionContext) unmarshalOFriendshipWhereInput2ᚕᚖentgoᚗioᚋco
 	return res, nil
 }
 
-func (ec *executionContext) unmarshalOFriendshipWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐFriendshipWhereInput(ctx context.Context, v interface{}) (*fluent.FriendshipWhereInput, error) {
+func (ec *executionContext) unmarshalOFriendshipWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐFriendshipWhereInput(ctx context.Context, v interface{}) (*fluent.FriendshipWhereInput, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -18712,14 +20365,14 @@ func (ec *executionContext) unmarshalOFriendshipWhereInput2ᚖentgoᚗioᚋcontr
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalOGroup2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐGroup(ctx context.Context, sel ast.SelectionSet, v *fluent.Group) graphql.Marshaler {
+func (ec *executionContext) marshalOGroup2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐGroup(ctx context.Context, sel ast.SelectionSet, v *fluent.Group) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._Group(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalOGroupEdge2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐGroupEdge(ctx context.Context, sel ast.SelectionSet, v []*fluent.GroupEdge) graphql.Marshaler {
+func (ec *executionContext) marshalOGroupEdge2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐGroupEdge(ctx context.Context, sel ast.SelectionSet, v []*fluent.GroupEdge) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -18746,7 +20399,7 @@ func (ec *executionContext) marshalOGroupEdge2ᚕᚖentgoᚗioᚋcontribᚋ flue
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOGroupEdge2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐGroupEdge(ctx, sel, v[i])
+			ret[i] = ec.marshalOGroupEdge2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐGroupEdge(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -18760,14 +20413,14 @@ func (ec *executionContext) marshalOGroupEdge2ᚕᚖentgoᚗioᚋcontribᚋ flue
 	return ret
 }
 
-func (ec *executionContext) marshalOGroupEdge2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐGroupEdge(ctx context.Context, sel ast.SelectionSet, v *fluent.GroupEdge) graphql.Marshaler {
+func (ec *executionContext) marshalOGroupEdge2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐGroupEdge(ctx context.Context, sel ast.SelectionSet, v *fluent.GroupEdge) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._GroupEdge(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalOGroupWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐGroupWhereInputᚄ(ctx context.Context, v interface{}) ([]*fluent.GroupWhereInput, error) {
+func (ec *executionContext) unmarshalOGroupWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐGroupWhereInputᚄ(ctx context.Context, v interface{}) ([]*fluent.GroupWhereInput, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -18779,7 +20432,7 @@ func (ec *executionContext) unmarshalOGroupWhereInput2ᚕᚖentgoᚗioᚋcontrib
 	res := make([]*fluent.GroupWhereInput, len(vSlice))
 	for i := range vSlice {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
-		res[i], err = ec.unmarshalNGroupWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐGroupWhereInput(ctx, vSlice[i])
+		res[i], err = ec.unmarshalNGroupWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐGroupWhereInput(ctx, vSlice[i])
 		if err != nil {
 			return nil, err
 		}
@@ -18787,7 +20440,7 @@ func (ec *executionContext) unmarshalOGroupWhereInput2ᚕᚖentgoᚗioᚋcontrib
 	return res, nil
 }
 
-func (ec *executionContext) unmarshalOGroupWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐGroupWhereInput(ctx context.Context, v interface{}) (*fluent.GroupWhereInput, error) {
+func (ec *executionContext) unmarshalOGroupWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐGroupWhereInput(ctx context.Context, v interface{}) (*fluent.GroupWhereInput, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -18795,17 +20448,17 @@ func (ec *executionContext) unmarshalOGroupWhereInput2ᚖentgoᚗioᚋcontribᚋ
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalOID2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigInt(ctx context.Context, v interface{}) (bigintgql.BigInt, error) {
+func (ec *executionContext) unmarshalOID2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigInt(ctx context.Context, v interface{}) (bigintgql.BigInt, error) {
 	var res bigintgql.BigInt
 	err := res.UnmarshalGQL(v)
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalOID2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigInt(ctx context.Context, sel ast.SelectionSet, v bigintgql.BigInt) graphql.Marshaler {
+func (ec *executionContext) marshalOID2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigInt(ctx context.Context, sel ast.SelectionSet, v bigintgql.BigInt) graphql.Marshaler {
 	return v
 }
 
-func (ec *executionContext) unmarshalOID2ᚕentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigIntᚄ(ctx context.Context, v interface{}) ([]bigintgql.BigInt, error) {
+func (ec *executionContext) unmarshalOID2ᚕgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigIntᚄ(ctx context.Context, v interface{}) ([]bigintgql.BigInt, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -18817,7 +20470,7 @@ func (ec *executionContext) unmarshalOID2ᚕentgoᚗioᚋcontribᚋ fluent_gql�
 	res := make([]bigintgql.BigInt, len(vSlice))
 	for i := range vSlice {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
-		res[i], err = ec.unmarshalNID2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigInt(ctx, vSlice[i])
+		res[i], err = ec.unmarshalNID2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigInt(ctx, vSlice[i])
 		if err != nil {
 			return nil, err
 		}
@@ -18825,13 +20478,13 @@ func (ec *executionContext) unmarshalOID2ᚕentgoᚗioᚋcontribᚋ fluent_gql�
 	return res, nil
 }
 
-func (ec *executionContext) marshalOID2ᚕentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigIntᚄ(ctx context.Context, sel ast.SelectionSet, v []bigintgql.BigInt) graphql.Marshaler {
+func (ec *executionContext) marshalOID2ᚕgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigIntᚄ(ctx context.Context, sel ast.SelectionSet, v []bigintgql.BigInt) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	ret := make(graphql.Array, len(v))
 	for i := range v {
-		ret[i] = ec.marshalNID2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigInt(ctx, sel, v[i])
+		ret[i] = ec.marshalNID2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigInt(ctx, sel, v[i])
 	}
 
 	for _, e := range ret {
@@ -18881,7 +20534,7 @@ func (ec *executionContext) marshalOID2ᚕstringᚄ(ctx context.Context, sel ast
 	return ret
 }
 
-func (ec *executionContext) unmarshalOID2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigInt(ctx context.Context, v interface{}) (*bigintgql.BigInt, error) {
+func (ec *executionContext) unmarshalOID2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigInt(ctx context.Context, v interface{}) (*bigintgql.BigInt, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -18890,7 +20543,7 @@ func (ec *executionContext) unmarshalOID2ᚖentgoᚗioᚋcontribᚋ fluent_gql�
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalOID2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚋschemaᚋbigintgqlᚐBigInt(ctx context.Context, sel ast.SelectionSet, v *bigintgql.BigInt) graphql.Marshaler {
+func (ec *executionContext) marshalOID2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚋschemaᚋbigintgqlᚐBigInt(ctx context.Context, sel ast.SelectionSet, v *bigintgql.BigInt) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -18993,14 +20646,14 @@ func (ec *executionContext) marshalOMap2map(ctx context.Context, sel ast.Selecti
 	return res
 }
 
-func (ec *executionContext) marshalONode2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐNoder(ctx context.Context, sel ast.SelectionSet, v fluent.Noder) graphql.Marshaler {
+func (ec *executionContext) marshalONode2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐNoder(ctx context.Context, sel ast.SelectionSet, v fluent.Noder) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._Node(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalOOneToMany2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyᚄ(ctx context.Context, sel ast.SelectionSet, v []*OneToMany) graphql.Marshaler {
+func (ec *executionContext) marshalOOneToMany2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyᚄ(ctx context.Context, sel ast.SelectionSet, v []*OneToMany) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -19027,7 +20680,7 @@ func (ec *executionContext) marshalOOneToMany2ᚕᚖentgoᚗioᚋcontribᚋ flue
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalNOneToMany2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToMany(ctx, sel, v[i])
+			ret[i] = ec.marshalNOneToMany2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToMany(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -19047,14 +20700,14 @@ func (ec *executionContext) marshalOOneToMany2ᚕᚖentgoᚗioᚋcontribᚋ flue
 	return ret
 }
 
-func (ec *executionContext) marshalOOneToMany2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToMany(ctx context.Context, sel ast.SelectionSet, v *OneToMany) graphql.Marshaler {
+func (ec *executionContext) marshalOOneToMany2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToMany(ctx context.Context, sel ast.SelectionSet, v *OneToMany) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._OneToMany(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalOOneToManyEdge2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyEdge(ctx context.Context, sel ast.SelectionSet, v []*OneToManyEdge) graphql.Marshaler {
+func (ec *executionContext) marshalOOneToManyEdge2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyEdge(ctx context.Context, sel ast.SelectionSet, v []*OneToManyEdge) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -19081,7 +20734,7 @@ func (ec *executionContext) marshalOOneToManyEdge2ᚕᚖentgoᚗioᚋcontribᚋ 
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOOneToManyEdge2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyEdge(ctx, sel, v[i])
+			ret[i] = ec.marshalOOneToManyEdge2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyEdge(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -19095,14 +20748,14 @@ func (ec *executionContext) marshalOOneToManyEdge2ᚕᚖentgoᚗioᚋcontribᚋ 
 	return ret
 }
 
-func (ec *executionContext) marshalOOneToManyEdge2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyEdge(ctx context.Context, sel ast.SelectionSet, v *OneToManyEdge) graphql.Marshaler {
+func (ec *executionContext) marshalOOneToManyEdge2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyEdge(ctx context.Context, sel ast.SelectionSet, v *OneToManyEdge) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._OneToManyEdge(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalOOneToManyOrder2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyOrder(ctx context.Context, v interface{}) (*OneToManyOrder, error) {
+func (ec *executionContext) unmarshalOOneToManyOrder2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyOrder(ctx context.Context, v interface{}) (*OneToManyOrder, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -19110,7 +20763,7 @@ func (ec *executionContext) unmarshalOOneToManyOrder2ᚖentgoᚗioᚋcontribᚋ 
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalOOneToManyWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyWhereInputᚄ(ctx context.Context, v interface{}) ([]*OneToManyWhereInput, error) {
+func (ec *executionContext) unmarshalOOneToManyWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyWhereInputᚄ(ctx context.Context, v interface{}) ([]*OneToManyWhereInput, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -19122,7 +20775,7 @@ func (ec *executionContext) unmarshalOOneToManyWhereInput2ᚕᚖentgoᚗioᚋcon
 	res := make([]*OneToManyWhereInput, len(vSlice))
 	for i := range vSlice {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
-		res[i], err = ec.unmarshalNOneToManyWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyWhereInput(ctx, vSlice[i])
+		res[i], err = ec.unmarshalNOneToManyWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyWhereInput(ctx, vSlice[i])
 		if err != nil {
 			return nil, err
 		}
@@ -19130,7 +20783,7 @@ func (ec *executionContext) unmarshalOOneToManyWhereInput2ᚕᚖentgoᚗioᚋcon
 	return res, nil
 }
 
-func (ec *executionContext) unmarshalOOneToManyWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyWhereInput(ctx context.Context, v interface{}) (*OneToManyWhereInput, error) {
+func (ec *executionContext) unmarshalOOneToManyWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOneToManyWhereInput(ctx context.Context, v interface{}) (*OneToManyWhereInput, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -19138,7 +20791,7 @@ func (ec *executionContext) unmarshalOOneToManyWhereInput2ᚖentgoᚗioᚋcontri
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalOOrganizationWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOrganizationWhereInputᚄ(ctx context.Context, v interface{}) ([]*OrganizationWhereInput, error) {
+func (ec *executionContext) unmarshalOOrganizationWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOrganizationWhereInputᚄ(ctx context.Context, v interface{}) ([]*OrganizationWhereInput, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -19150,7 +20803,7 @@ func (ec *executionContext) unmarshalOOrganizationWhereInput2ᚕᚖentgoᚗioᚋ
 	res := make([]*OrganizationWhereInput, len(vSlice))
 	for i := range vSlice {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
-		res[i], err = ec.unmarshalNOrganizationWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOrganizationWhereInput(ctx, vSlice[i])
+		res[i], err = ec.unmarshalNOrganizationWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOrganizationWhereInput(ctx, vSlice[i])
 		if err != nil {
 			return nil, err
 		}
@@ -19158,7 +20811,7 @@ func (ec *executionContext) unmarshalOOrganizationWhereInput2ᚕᚖentgoᚗioᚋ
 	return res, nil
 }
 
-func (ec *executionContext) unmarshalOOrganizationWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐOrganizationWhereInput(ctx context.Context, v interface{}) (*OrganizationWhereInput, error) {
+func (ec *executionContext) unmarshalOOrganizationWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐOrganizationWhereInput(ctx context.Context, v interface{}) (*OrganizationWhereInput, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -19166,7 +20819,7 @@ func (ec *executionContext) unmarshalOOrganizationWhereInput2ᚖentgoᚗioᚋcon
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalOProjectWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐProjectWhereInputᚄ(ctx context.Context, v interface{}) ([]*ProjectWhereInput, error) {
+func (ec *executionContext) unmarshalOProjectWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐProjectWhereInputᚄ(ctx context.Context, v interface{}) ([]*ProjectWhereInput, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -19178,7 +20831,7 @@ func (ec *executionContext) unmarshalOProjectWhereInput2ᚕᚖentgoᚗioᚋcontr
 	res := make([]*ProjectWhereInput, len(vSlice))
 	for i := range vSlice {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
-		res[i], err = ec.unmarshalNProjectWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐProjectWhereInput(ctx, vSlice[i])
+		res[i], err = ec.unmarshalNProjectWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐProjectWhereInput(ctx, vSlice[i])
 		if err != nil {
 			return nil, err
 		}
@@ -19186,7 +20839,7 @@ func (ec *executionContext) unmarshalOProjectWhereInput2ᚕᚖentgoᚗioᚋcontr
 	return res, nil
 }
 
-func (ec *executionContext) unmarshalOProjectWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚐProjectWhereInput(ctx context.Context, v interface{}) (*ProjectWhereInput, error) {
+func (ec *executionContext) unmarshalOProjectWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚐProjectWhereInput(ctx context.Context, v interface{}) (*ProjectWhereInput, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -19302,14 +20955,14 @@ func (ec *executionContext) marshalOTime2ᚖtimeᚐTime(ctx context.Context, sel
 	return res
 }
 
-func (ec *executionContext) marshalOTodo2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodo(ctx context.Context, sel ast.SelectionSet, v *fluent.Todo) graphql.Marshaler {
+func (ec *executionContext) marshalOTodo2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodo(ctx context.Context, sel ast.SelectionSet, v *fluent.Todo) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._Todo(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalOTodoEdge2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoEdge(ctx context.Context, sel ast.SelectionSet, v []*fluent.TodoEdge) graphql.Marshaler {
+func (ec *executionContext) marshalOTodoEdge2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoEdge(ctx context.Context, sel ast.SelectionSet, v []*fluent.TodoEdge) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -19336,7 +20989,7 @@ func (ec *executionContext) marshalOTodoEdge2ᚕᚖentgoᚗioᚋcontribᚋ fluen
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOTodoEdge2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoEdge(ctx, sel, v[i])
+			ret[i] = ec.marshalOTodoEdge2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoEdge(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -19350,14 +21003,14 @@ func (ec *executionContext) marshalOTodoEdge2ᚕᚖentgoᚗioᚋcontribᚋ fluen
 	return ret
 }
 
-func (ec *executionContext) marshalOTodoEdge2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoEdge(ctx context.Context, sel ast.SelectionSet, v *fluent.TodoEdge) graphql.Marshaler {
+func (ec *executionContext) marshalOTodoEdge2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoEdge(ctx context.Context, sel ast.SelectionSet, v *fluent.TodoEdge) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._TodoEdge(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalOTodoOrder2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoOrderᚄ(ctx context.Context, v interface{}) ([]*fluent.TodoOrder, error) {
+func (ec *executionContext) unmarshalOTodoOrder2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoOrderᚄ(ctx context.Context, v interface{}) ([]*fluent.TodoOrder, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -19369,7 +21022,7 @@ func (ec *executionContext) unmarshalOTodoOrder2ᚕᚖentgoᚗioᚋcontribᚋ fl
 	res := make([]*fluent.TodoOrder, len(vSlice))
 	for i := range vSlice {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
-		res[i], err = ec.unmarshalNTodoOrder2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoOrder(ctx, vSlice[i])
+		res[i], err = ec.unmarshalNTodoOrder2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoOrder(ctx, vSlice[i])
 		if err != nil {
 			return nil, err
 		}
@@ -19377,7 +21030,7 @@ func (ec *executionContext) unmarshalOTodoOrder2ᚕᚖentgoᚗioᚋcontribᚋ fl
 	return res, nil
 }
 
-func (ec *executionContext) unmarshalOTodoStatus2ᚕentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋtodoᚐStatusᚄ(ctx context.Context, v interface{}) ([]todo.Status, error) {
+func (ec *executionContext) unmarshalOTodoStatus2ᚕgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋtodoᚐStatusᚄ(ctx context.Context, v interface{}) ([]todo.Status, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -19389,7 +21042,7 @@ func (ec *executionContext) unmarshalOTodoStatus2ᚕentgoᚗioᚋcontribᚋ flue
 	res := make([]todo.Status, len(vSlice))
 	for i := range vSlice {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
-		res[i], err = ec.unmarshalNTodoStatus2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋtodoᚐStatus(ctx, vSlice[i])
+		res[i], err = ec.unmarshalNTodoStatus2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋtodoᚐStatus(ctx, vSlice[i])
 		if err != nil {
 			return nil, err
 		}
@@ -19397,7 +21050,7 @@ func (ec *executionContext) unmarshalOTodoStatus2ᚕentgoᚗioᚋcontribᚋ flue
 	return res, nil
 }
 
-func (ec *executionContext) marshalOTodoStatus2ᚕentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋtodoᚐStatusᚄ(ctx context.Context, sel ast.SelectionSet, v []todo.Status) graphql.Marshaler {
+func (ec *executionContext) marshalOTodoStatus2ᚕgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋtodoᚐStatusᚄ(ctx context.Context, sel ast.SelectionSet, v []todo.Status) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -19424,7 +21077,7 @@ func (ec *executionContext) marshalOTodoStatus2ᚕentgoᚗioᚋcontribᚋ fluent
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalNTodoStatus2entgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋtodoᚐStatus(ctx, sel, v[i])
+			ret[i] = ec.marshalNTodoStatus2githubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋtodoᚐStatus(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -19444,7 +21097,7 @@ func (ec *executionContext) marshalOTodoStatus2ᚕentgoᚗioᚋcontribᚋ fluent
 	return ret
 }
 
-func (ec *executionContext) unmarshalOTodoStatus2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋtodoᚐStatus(ctx context.Context, v interface{}) (*todo.Status, error) {
+func (ec *executionContext) unmarshalOTodoStatus2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋtodoᚐStatus(ctx context.Context, v interface{}) (*todo.Status, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -19453,14 +21106,14 @@ func (ec *executionContext) unmarshalOTodoStatus2ᚖentgoᚗioᚋcontribᚋ flue
 	return res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) marshalOTodoStatus2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodoᚋentᚋtodoᚐStatus(ctx context.Context, sel ast.SelectionSet, v *todo.Status) graphql.Marshaler {
+func (ec *executionContext) marshalOTodoStatus2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodoᚋfluentᚋtodoᚐStatus(ctx context.Context, sel ast.SelectionSet, v *todo.Status) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return v
 }
 
-func (ec *executionContext) unmarshalOTodoWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoWhereInputᚄ(ctx context.Context, v interface{}) ([]*fluent.TodoWhereInput, error) {
+func (ec *executionContext) unmarshalOTodoWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoWhereInputᚄ(ctx context.Context, v interface{}) ([]*fluent.TodoWhereInput, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -19472,7 +21125,7 @@ func (ec *executionContext) unmarshalOTodoWhereInput2ᚕᚖentgoᚗioᚋcontrib�
 	res := make([]*fluent.TodoWhereInput, len(vSlice))
 	for i := range vSlice {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
-		res[i], err = ec.unmarshalNTodoWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoWhereInput(ctx, vSlice[i])
+		res[i], err = ec.unmarshalNTodoWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoWhereInput(ctx, vSlice[i])
 		if err != nil {
 			return nil, err
 		}
@@ -19480,7 +21133,7 @@ func (ec *executionContext) unmarshalOTodoWhereInput2ᚕᚖentgoᚗioᚋcontrib�
 	return res, nil
 }
 
-func (ec *executionContext) unmarshalOTodoWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐTodoWhereInput(ctx context.Context, v interface{}) (*fluent.TodoWhereInput, error) {
+func (ec *executionContext) unmarshalOTodoWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐTodoWhereInput(ctx context.Context, v interface{}) (*fluent.TodoWhereInput, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -19606,14 +21259,14 @@ func (ec *executionContext) marshalOUint642ᚖuint64(ctx context.Context, sel as
 	return res
 }
 
-func (ec *executionContext) marshalOUser2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUser(ctx context.Context, sel ast.SelectionSet, v *fluent.User) graphql.Marshaler {
+func (ec *executionContext) marshalOUser2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUser(ctx context.Context, sel ast.SelectionSet, v *fluent.User) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._User(ctx, sel, v)
 }
 
-func (ec *executionContext) marshalOUserEdge2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUserEdge(ctx context.Context, sel ast.SelectionSet, v []*fluent.UserEdge) graphql.Marshaler {
+func (ec *executionContext) marshalOUserEdge2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUserEdge(ctx context.Context, sel ast.SelectionSet, v []*fluent.UserEdge) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
@@ -19640,7 +21293,7 @@ func (ec *executionContext) marshalOUserEdge2ᚕᚖentgoᚗioᚋcontribᚋ fluen
 			if !isLen1 {
 				defer wg.Done()
 			}
-			ret[i] = ec.marshalOUserEdge2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUserEdge(ctx, sel, v[i])
+			ret[i] = ec.marshalOUserEdge2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUserEdge(ctx, sel, v[i])
 		}
 		if isLen1 {
 			f(i)
@@ -19654,14 +21307,14 @@ func (ec *executionContext) marshalOUserEdge2ᚕᚖentgoᚗioᚋcontribᚋ fluen
 	return ret
 }
 
-func (ec *executionContext) marshalOUserEdge2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUserEdge(ctx context.Context, sel ast.SelectionSet, v *fluent.UserEdge) graphql.Marshaler {
+func (ec *executionContext) marshalOUserEdge2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUserEdge(ctx context.Context, sel ast.SelectionSet, v *fluent.UserEdge) graphql.Marshaler {
 	if v == nil {
 		return graphql.Null
 	}
 	return ec._UserEdge(ctx, sel, v)
 }
 
-func (ec *executionContext) unmarshalOUserOrder2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUserOrder(ctx context.Context, v interface{}) (*fluent.UserOrder, error) {
+func (ec *executionContext) unmarshalOUserOrder2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUserOrder(ctx context.Context, v interface{}) (*fluent.UserOrder, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -19669,7 +21322,7 @@ func (ec *executionContext) unmarshalOUserOrder2ᚖentgoᚗioᚋcontribᚋ fluen
 	return &res, graphql.ErrorOnPath(ctx, err)
 }
 
-func (ec *executionContext) unmarshalOUserWhereInput2ᚕᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUserWhereInputᚄ(ctx context.Context, v interface{}) ([]*fluent.UserWhereInput, error) {
+func (ec *executionContext) unmarshalOUserWhereInput2ᚕᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUserWhereInputᚄ(ctx context.Context, v interface{}) ([]*fluent.UserWhereInput, error) {
 	if v == nil {
 		return nil, nil
 	}
@@ -19681,7 +21334,7 @@ func (ec *executionContext) unmarshalOUserWhereInput2ᚕᚖentgoᚗioᚋcontrib�
 	res := make([]*fluent.UserWhereInput, len(vSlice))
 	for i := range vSlice {
 		ctx := graphql.WithPathContext(ctx, graphql.NewPathWithIndex(i))
-		res[i], err = ec.unmarshalNUserWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUserWhereInput(ctx, vSlice[i])
+		res[i], err = ec.unmarshalNUserWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUserWhereInput(ctx, vSlice[i])
 		if err != nil {
 			return nil, err
 		}
@@ -19689,7 +21342,7 @@ func (ec *executionContext) unmarshalOUserWhereInput2ᚕᚖentgoᚗioᚋcontrib�
 	return res, nil
 }
 
-func (ec *executionContext) unmarshalOUserWhereInput2ᚖentgoᚗioᚋcontribᚋ fluent_gqlᚋinternalᚋtodo_go_typeᚋentᚐUserWhereInput(ctx context.Context, v interface{}) (*fluent.UserWhereInput, error) {
+func (ec *executionContext) unmarshalOUserWhereInput2ᚖgithubᚗcomᚋusalkoᚋfluentᚋfluent_gqlᚋinternalᚋtodo_go_typeᚋfluentᚐUserWhereInput(ctx context.Context, v interface{}) (*fluent.UserWhereInput, error) {
 	if v == nil {
 		return nil, nil
 	}

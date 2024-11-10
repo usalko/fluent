@@ -6,10 +6,10 @@
 package car
 
 import (
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/flc/integration/edge_field/fluent/predicate"
-	"github.com/google/uuid"
 )
 
 // ID filters vertices based on their ID field.

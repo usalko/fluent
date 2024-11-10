@@ -228,14 +228,14 @@ func If(hk fluentv2.Hook, cond Condition) fluentv2.Hook {
 
 // On executes the given hook only for the given operation.
 //
-//	hook.On(Log, fluentv2.Delete|entv2.Create)
+//	hook.On(Log, fluentv2.Delete|fluentv2.Create)
 func On(hk fluentv2.Hook, op fluentv2.Op) fluentv2.Hook {
 	return If(hk, HasOp(op))
 }
 
 // Unless skips the given hook only for the given operation.
 //
-//	hook.Unless(Log, fluentv2.Update|entv2.UpdateOne)
+//	hook.Unless(Log, fluentv2.Update|fluentv2.UpdateOne)
 func Unless(hk fluentv2.Hook, op fluentv2.Op) fluentv2.Hook {
 	return If(hk, Not(HasOp(op)))
 }
@@ -253,7 +253,7 @@ func FixedError(err error) fluentv2.Hook {
 //
 //	func (T) Hooks() []fluentv2.Hook {
 //		return []fluentv2.Hook{
-//			Reject(fluentv2.Delete|entv2.Update),
+//			Reject(fluentv2.Delete|fluentv2.Update),
 //		}
 //	}
 func Reject(op fluentv2.Op) fluentv2.Hook {

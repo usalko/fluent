@@ -94,10 +94,10 @@ func (ualc *UserAuditLogCreate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (ualc *UserAuditLogCreate) check() error {
 	if _, ok := ualc.mutation.OperationType(); !ok {
-		return &ValidationError{Name: "operation_type", err: errors.New(`ent: missing required field "UserAuditLog.operation_type"`)}
+		return &ValidationError{Name: "operation_type", err: errors.New(`fluent: missing required field "UserAuditLog.operation_type"`)}
 	}
 	if _, ok := ualc.mutation.OperationTime(); !ok {
-		return &ValidationError{Name: "operation_time", err: errors.New(`ent: missing required field "UserAuditLog.operation_time"`)}
+		return &ValidationError{Name: "operation_time", err: errors.New(`fluent: missing required field "UserAuditLog.operation_time"`)}
 	}
 	return nil
 }

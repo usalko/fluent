@@ -20,11 +20,11 @@ import (
 	"strings"
 	"time"
 
+	"github.com/usalko/fluent"
+	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/schema/schematype"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/schema/bigintgql"
-	"github.com/usalko/fluent"
-	"github.com/usalko/fluent/dialect/sql"
 )
 
 // Category is the model entity for the Category schema.

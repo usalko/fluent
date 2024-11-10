@@ -8,9 +8,9 @@ import (
 	"strconv"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/fluent_gql"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent"
-	"github.com/google/uuid"
 )
 
 type NamedNode interface {
@@ -40,7 +40,7 @@ type OneToManyConnection struct {
 	// A list of edges.
 	Edges []*OneToManyEdge `json:"edges,omitempty"`
 	// Information to aid in pagination.
-	PageInfo * fluent_gql.PageInfo[uuid.UUID] `json:"pageInfo"`
+	PageInfo *fluent_gql.PageInfo[uuid.UUID] `json:"pageInfo"`
 	// Identifies the total count of items in the connection.
 	TotalCount int `json:"totalCount"`
 }
@@ -146,7 +146,7 @@ type OrganizationWhereInput struct {
 }
 
 type Project struct {
-	ID    uuid.UUID           `json:"id"`
+	ID    uuid.UUID              `json:"id"`
 	Todos *fluent.TodoConnection `json:"todos"`
 }
 
@@ -168,7 +168,7 @@ type ProjectWhereInput struct {
 	IDLt    *uuid.UUID  `json:"idLT,omitempty"`
 	IDLte   *uuid.UUID  `json:"idLTE,omitempty"`
 	// todos edge predicates
-	HasTodos     *bool                 `json:"hasTodos,omitempty"`
+	HasTodos     *bool                    `json:"hasTodos,omitempty"`
 	HasTodosWith []*fluent.TodoWhereInput `json:"hasTodosWith,omitempty"`
 }
 

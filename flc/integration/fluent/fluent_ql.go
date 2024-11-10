@@ -24,7 +24,7 @@ import (
 	"github.com/usalko/fluent/flc/integration/fluent/pet"
 	"github.com/usalko/fluent/flc/integration/fluent/predicate"
 	"github.com/usalko/fluent/flc/integration/fluent/spec"
-	enttask "github.com/usalko/fluent/flc/integration/fluent/task"
+	fluenttask "github.com/usalko/fluent/flc/integration/fluent/task"
 	"github.com/usalko/fluent/flc/integration/fluent/user"
 
 	"github.com/usalko/fluent/dialect/sql"
@@ -367,23 +367,23 @@ var schemaGraph = func() *sqlgraph.Schema {
 	}
 	graph.Nodes[17] = &sqlgraph.Node{
 		NodeSpec: sqlgraph.NodeSpec{
-			Table:   enttask.Table,
-			Columns: enttask.Columns,
+			Table:   fluenttask.Table,
+			Columns: fluenttask.Columns,
 			ID: &sqlgraph.FieldSpec{
 				Type:   field.TypeInt,
-				Column: enttask.FieldID,
+				Column: fluenttask.FieldID,
 			},
 		},
 		Type: "Task",
 		Fields: map[string]*sqlgraph.FieldSpec{
-			enttask.FieldPriority:    {Type: field.TypeInt, Column: enttask.FieldPriority},
-			enttask.FieldPriorities:  {Type: field.TypeJSON, Column: enttask.FieldPriorities},
-			enttask.FieldCreatedAt:   {Type: field.TypeTime, Column: enttask.FieldCreatedAt},
-			enttask.FieldName:        {Type: field.TypeString, Column: enttask.FieldName},
-			enttask.FieldOwner:       {Type: field.TypeString, Column: enttask.FieldOwner},
-			enttask.FieldOrder:       {Type: field.TypeInt, Column: enttask.FieldOrder},
-			enttask.FieldOrderOption: {Type: field.TypeInt, Column: enttask.FieldOrderOption},
-			enttask.FieldOp:          {Type: field.TypeString, Column: enttask.FieldOp},
+			fluenttask.FieldPriority:    {Type: field.TypeInt, Column: fluenttask.FieldPriority},
+			fluenttask.FieldPriorities:  {Type: field.TypeJSON, Column: fluenttask.FieldPriorities},
+			fluenttask.FieldCreatedAt:   {Type: field.TypeTime, Column: fluenttask.FieldCreatedAt},
+			fluenttask.FieldName:        {Type: field.TypeString, Column: fluenttask.FieldName},
+			fluenttask.FieldOwner:       {Type: field.TypeString, Column: fluenttask.FieldOwner},
+			fluenttask.FieldOrder:       {Type: field.TypeInt, Column: fluenttask.FieldOrder},
+			fluenttask.FieldOrderOption: {Type: field.TypeInt, Column: fluenttask.FieldOrderOption},
+			fluenttask.FieldOp:          {Type: field.TypeString, Column: fluenttask.FieldOp},
 		},
 	}
 	graph.Nodes[18] = &sqlgraph.Node{
@@ -2250,47 +2250,47 @@ func (f *TaskFilter) Where(p fluent_ql.P) {
 
 // WhereID applies the fluent_ql int predicate on the id field.
 func (f *TaskFilter) WhereID(p fluent_ql.IntP) {
-	f.Where(p.Field(enttask.FieldID))
+	f.Where(p.Field(fluenttask.FieldID))
 }
 
 // WherePriority applies the fluent_ql int predicate on the priority field.
 func (f *TaskFilter) WherePriority(p fluent_ql.IntP) {
-	f.Where(p.Field(enttask.FieldPriority))
+	f.Where(p.Field(fluenttask.FieldPriority))
 }
 
 // WherePriorities applies the fluent_ql json.RawMessage predicate on the priorities field.
 func (f *TaskFilter) WherePriorities(p fluent_ql.BytesP) {
-	f.Where(p.Field(enttask.FieldPriorities))
+	f.Where(p.Field(fluenttask.FieldPriorities))
 }
 
 // WhereCreatedAt applies the fluent_ql time.Time predicate on the created_at field.
 func (f *TaskFilter) WhereCreatedAt(p fluent_ql.TimeP) {
-	f.Where(p.Field(enttask.FieldCreatedAt))
+	f.Where(p.Field(fluenttask.FieldCreatedAt))
 }
 
 // WhereName applies the fluent_ql string predicate on the name field.
 func (f *TaskFilter) WhereName(p fluent_ql.StringP) {
-	f.Where(p.Field(enttask.FieldName))
+	f.Where(p.Field(fluenttask.FieldName))
 }
 
 // WhereOwner applies the fluent_ql string predicate on the owner field.
 func (f *TaskFilter) WhereOwner(p fluent_ql.StringP) {
-	f.Where(p.Field(enttask.FieldOwner))
+	f.Where(p.Field(fluenttask.FieldOwner))
 }
 
 // WhereOrder applies the fluent_ql int predicate on the order field.
 func (f *TaskFilter) WhereOrder(p fluent_ql.IntP) {
-	f.Where(p.Field(enttask.FieldOrder))
+	f.Where(p.Field(fluenttask.FieldOrder))
 }
 
 // WhereOrderOption applies the fluent_ql int predicate on the order_option field.
 func (f *TaskFilter) WhereOrderOption(p fluent_ql.IntP) {
-	f.Where(p.Field(enttask.FieldOrderOption))
+	f.Where(p.Field(fluenttask.FieldOrderOption))
 }
 
 // WhereOp applies the fluent_ql string predicate on the op field.
 func (f *TaskFilter) WhereOp(p fluent_ql.StringP) {
-	f.Where(p.Field(enttask.FieldOp))
+	f.Where(p.Field(fluenttask.FieldOp))
 }
 
 // addPredicate implements the predicateAdder interface.

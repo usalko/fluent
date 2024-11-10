@@ -402,7 +402,7 @@ func (nuo *NodeUpdateOne) gremlinSave(ctx context.Context) (*Node, error) {
 	res := &gremlin.Response{}
 	id, ok := nuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Node.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Node.id" for update`)}
 	}
 	query, bindings := nuo.gremlin(id).Query()
 	if err := nuo.driver.Exec(ctx, query, bindings, res); err != nil {

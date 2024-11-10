@@ -10,12 +10,12 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/dialect"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/blob"
 	"github.com/usalko/fluent/schema/field"
-	"github.com/google/uuid"
 )
 
 // BlobCreate is the builder for creating a Blob entity.
@@ -154,10 +154,10 @@ func (bc *BlobCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (bc *BlobCreate) check() error {
 	if _, ok := bc.mutation.UUID(); !ok {
-		return &ValidationError{Name: "uuid", err: errors.New(`ent: missing required field "Blob.uuid"`)}
+		return &ValidationError{Name: "uuid", err: errors.New(`fluent: missing required field "Blob.uuid"`)}
 	}
 	if _, ok := bc.mutation.Count(); !ok {
-		return &ValidationError{Name: "count", err: errors.New(`ent: missing required field "Blob.count"`)}
+		return &ValidationError{Name: "count", err: errors.New(`fluent: missing required field "Blob.count"`)}
 	}
 	return nil
 }

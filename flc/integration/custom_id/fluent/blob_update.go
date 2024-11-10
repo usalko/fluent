@@ -10,12 +10,12 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/blob"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/predicate"
 	"github.com/usalko/fluent/schema/field"
-	"github.com/google/uuid"
 )
 
 // BlobUpdate is the builder for updating Blob entities.
@@ -428,7 +428,7 @@ func (buo *BlobUpdateOne) sqlSave(ctx context.Context) (_node *Blob, err error) 
 	_spec := sqlgraph.NewUpdateSpec(blob.Table, blob.Columns, sqlgraph.NewFieldSpec(blob.FieldID, field.TypeUUID))
 	id, ok := buo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Blob.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Blob.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := buo.fields; len(fields) > 0 {

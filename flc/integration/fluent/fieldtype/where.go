@@ -10,11 +10,11 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/flc/integration/fluent/predicate"
 	"github.com/usalko/fluent/flc/integration/fluent/role"
 	"github.com/usalko/fluent/flc/integration/fluent/schema"
-	"github.com/google/uuid"
 )
 
 // ID filters vertices based on their ID field.

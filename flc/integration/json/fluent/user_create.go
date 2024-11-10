@@ -160,21 +160,21 @@ func (uc *UserCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (uc *UserCreate) check() error {
 	if _, ok := uc.mutation.Dirs(); !ok {
-		return &ValidationError{Name: "dirs", err: errors.New(`ent: missing required field "User.dirs"`)}
+		return &ValidationError{Name: "dirs", err: errors.New(`fluent: missing required field "User.dirs"`)}
 	}
 	if v, ok := uc.mutation.IntsValidate(); ok {
 		if err := user.IntsValidateValidator(v); err != nil {
-			return &ValidationError{Name: "ints_validate", err: fmt.Errorf(`ent: validator failed for field "User.ints_validate": %w`, err)}
+			return &ValidationError{Name: "ints_validate", err: fmt.Errorf(`fluent: validator failed for field "User.ints_validate": %w`, err)}
 		}
 	}
 	if v, ok := uc.mutation.FloatsValidate(); ok {
 		if err := user.FloatsValidateValidator(v); err != nil {
-			return &ValidationError{Name: "floats_validate", err: fmt.Errorf(`ent: validator failed for field "User.floats_validate": %w`, err)}
+			return &ValidationError{Name: "floats_validate", err: fmt.Errorf(`fluent: validator failed for field "User.floats_validate": %w`, err)}
 		}
 	}
 	if v, ok := uc.mutation.StringsValidate(); ok {
 		if err := user.StringsValidateValidator(v); err != nil {
-			return &ValidationError{Name: "strings_validate", err: fmt.Errorf(`ent: validator failed for field "User.strings_validate": %w`, err)}
+			return &ValidationError{Name: "strings_validate", err: fmt.Errorf(`fluent: validator failed for field "User.strings_validate": %w`, err)}
 		}
 	}
 	return nil

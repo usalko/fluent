@@ -11,6 +11,7 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/dialect"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
@@ -18,7 +19,6 @@ import (
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweet"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweettag"
 	"github.com/usalko/fluent/schema/field"
-	"github.com/google/uuid"
 )
 
 // TweetTagCreate is the builder for creating a TweetTag entity.
@@ -127,19 +127,19 @@ func (ttc *TweetTagCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (ttc *TweetTagCreate) check() error {
 	if _, ok := ttc.mutation.AddedAt(); !ok {
-		return &ValidationError{Name: "added_at", err: errors.New(`ent: missing required field "TweetTag.added_at"`)}
+		return &ValidationError{Name: "added_at", err: errors.New(`fluent: missing required field "TweetTag.added_at"`)}
 	}
 	if _, ok := ttc.mutation.TagID(); !ok {
-		return &ValidationError{Name: "tag_id", err: errors.New(`ent: missing required field "TweetTag.tag_id"`)}
+		return &ValidationError{Name: "tag_id", err: errors.New(`fluent: missing required field "TweetTag.tag_id"`)}
 	}
 	if _, ok := ttc.mutation.TweetID(); !ok {
-		return &ValidationError{Name: "tweet_id", err: errors.New(`ent: missing required field "TweetTag.tweet_id"`)}
+		return &ValidationError{Name: "tweet_id", err: errors.New(`fluent: missing required field "TweetTag.tweet_id"`)}
 	}
 	if len(ttc.mutation.TagIDs()) == 0 {
-		return &ValidationError{Name: "tag", err: errors.New(`ent: missing required edge "TweetTag.tag"`)}
+		return &ValidationError{Name: "tag", err: errors.New(`fluent: missing required edge "TweetTag.tag"`)}
 	}
 	if len(ttc.mutation.TweetIDs()) == 0 {
-		return &ValidationError{Name: "tweet", err: errors.New(`ent: missing required edge "TweetTag.tweet"`)}
+		return &ValidationError{Name: "tweet", err: errors.New(`fluent: missing required edge "TweetTag.tweet"`)}
 	}
 	return nil
 }

@@ -9,10 +9,10 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/blob"
-	"github.com/google/uuid"
 )
 
 // Blob is the model entity for the Blob schema.

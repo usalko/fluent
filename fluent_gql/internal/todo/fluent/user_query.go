@@ -20,13 +20,13 @@ import (
 	"fmt"
 	"math"
 
+	"github.com/usalko/fluent"
+	"github.com/usalko/fluent/dialect/sql"
+	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/friendship"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/group"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/predicate"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/user"
-	"github.com/usalko/fluent"
-	"github.com/usalko/fluent/dialect/sql"
-	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -343,8 +343,9 @@ func (uq *UserQuery) Clone() *UserQuery {
 		withFriends:     uq.withFriends.Clone(),
 		withFriendships: uq.withFriendships.Clone(),
 		// clone intermediate query.
-		sql:  uq.sql.Clone(),
-		path: uq.path,
+		sql:       uq.sql.Clone(),
+		path:      uq.path,
+		modifiers: append([]func(*sql.Selector){}, uq.modifiers...),
 	}
 }
 

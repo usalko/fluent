@@ -100,40 +100,40 @@ func (pc *PaymentCreate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (pc *PaymentCreate) check() error {
 	if _, ok := pc.mutation.CardID(); !ok {
-		return &ValidationError{Name: "card_id", err: errors.New(`ent: missing required field "Payment.card_id"`)}
+		return &ValidationError{Name: "card_id", err: errors.New(`fluent: missing required field "Payment.card_id"`)}
 	}
 	if _, ok := pc.mutation.Amount(); !ok {
-		return &ValidationError{Name: "amount", err: errors.New(`ent: missing required field "Payment.amount"`)}
+		return &ValidationError{Name: "amount", err: errors.New(`fluent: missing required field "Payment.amount"`)}
 	}
 	if v, ok := pc.mutation.Amount(); ok {
 		if err := payment.AmountValidator(v); err != nil {
-			return &ValidationError{Name: "amount", err: fmt.Errorf(`ent: validator failed for field "Payment.amount": %w`, err)}
+			return &ValidationError{Name: "amount", err: fmt.Errorf(`fluent: validator failed for field "Payment.amount": %w`, err)}
 		}
 	}
 	if _, ok := pc.mutation.Currency(); !ok {
-		return &ValidationError{Name: "currency", err: errors.New(`ent: missing required field "Payment.currency"`)}
+		return &ValidationError{Name: "currency", err: errors.New(`fluent: missing required field "Payment.currency"`)}
 	}
 	if v, ok := pc.mutation.Currency(); ok {
 		if err := payment.CurrencyValidator(v); err != nil {
-			return &ValidationError{Name: "currency", err: fmt.Errorf(`ent: validator failed for field "Payment.currency": %w`, err)}
+			return &ValidationError{Name: "currency", err: fmt.Errorf(`fluent: validator failed for field "Payment.currency": %w`, err)}
 		}
 	}
 	if _, ok := pc.mutation.Time(); !ok {
-		return &ValidationError{Name: "time", err: errors.New(`ent: missing required field "Payment.time"`)}
+		return &ValidationError{Name: "time", err: errors.New(`fluent: missing required field "Payment.time"`)}
 	}
 	if _, ok := pc.mutation.Description(); !ok {
-		return &ValidationError{Name: "description", err: errors.New(`ent: missing required field "Payment.description"`)}
+		return &ValidationError{Name: "description", err: errors.New(`fluent: missing required field "Payment.description"`)}
 	}
 	if _, ok := pc.mutation.Status(); !ok {
-		return &ValidationError{Name: "status", err: errors.New(`ent: missing required field "Payment.status"`)}
+		return &ValidationError{Name: "status", err: errors.New(`fluent: missing required field "Payment.status"`)}
 	}
 	if v, ok := pc.mutation.Status(); ok {
 		if err := payment.StatusValidator(v); err != nil {
-			return &ValidationError{Name: "status", err: fmt.Errorf(`ent: validator failed for field "Payment.status": %w`, err)}
+			return &ValidationError{Name: "status", err: fmt.Errorf(`fluent: validator failed for field "Payment.status": %w`, err)}
 		}
 	}
 	if len(pc.mutation.CardIDs()) == 0 {
-		return &ValidationError{Name: "card", err: errors.New(`ent: missing required edge "Payment.card"`)}
+		return &ValidationError{Name: "card", err: errors.New(`fluent: missing required edge "Payment.card"`)}
 	}
 	return nil
 }

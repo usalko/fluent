@@ -21,13 +21,13 @@ import (
 	"io"
 	"strconv"
 
+	"github.com/99designs/gqlgen/graphql"
+	"github.com/99designs/gqlgen/graphql/errcode"
+	"github.com/usalko/fluent"
+	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/fluent_gql"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/todo"
-	"github.com/usalko/fluent"
-	"github.com/usalko/fluent/dialect/sql"
-	"github.com/99designs/gqlgen/graphql"
-	"github.com/99designs/gqlgen/graphql/errcode"
 	"github.com/vektah/gqlparser/v2/gqlerror"
 )
 

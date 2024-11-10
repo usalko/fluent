@@ -113,19 +113,19 @@ func (afc *AttachedFileCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (afc *AttachedFileCreate) check() error {
 	if _, ok := afc.mutation.AttachTime(); !ok {
-		return &ValidationError{Name: "attach_time", err: errors.New(`ent: missing required field "AttachedFile.attach_time"`)}
+		return &ValidationError{Name: "attach_time", err: errors.New(`fluent: missing required field "AttachedFile.attach_time"`)}
 	}
 	if _, ok := afc.mutation.FID(); !ok {
-		return &ValidationError{Name: "f_id", err: errors.New(`ent: missing required field "AttachedFile.f_id"`)}
+		return &ValidationError{Name: "f_id", err: errors.New(`fluent: missing required field "AttachedFile.f_id"`)}
 	}
 	if _, ok := afc.mutation.ProcID(); !ok {
-		return &ValidationError{Name: "proc_id", err: errors.New(`ent: missing required field "AttachedFile.proc_id"`)}
+		return &ValidationError{Name: "proc_id", err: errors.New(`fluent: missing required field "AttachedFile.proc_id"`)}
 	}
 	if len(afc.mutation.FiIDs()) == 0 {
-		return &ValidationError{Name: "fi", err: errors.New(`ent: missing required edge "AttachedFile.fi"`)}
+		return &ValidationError{Name: "fi", err: errors.New(`fluent: missing required edge "AttachedFile.fi"`)}
 	}
 	if len(afc.mutation.ProcIDs()) == 0 {
-		return &ValidationError{Name: "proc", err: errors.New(`ent: missing required edge "AttachedFile.proc"`)}
+		return &ValidationError{Name: "proc", err: errors.New(`fluent: missing required edge "AttachedFile.proc"`)}
 	}
 	return nil
 }

@@ -144,7 +144,7 @@ func (buo *BuilderUpdateOne) gremlinSave(ctx context.Context) (*Builder, error) 
 	res := &gremlin.Response{}
 	id, ok := buo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Builder.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Builder.id" for update`)}
 	}
 	query, bindings := buo.gremlin(id).Query()
 	if err := buo.driver.Exec(ctx, query, bindings, res); err != nil {

@@ -132,10 +132,10 @@ func (tlu *TweetLikeUpdate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (tlu *TweetLikeUpdate) check() error {
 	if tlu.mutation.TweetCleared() && len(tlu.mutation.TweetIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "TweetLike.tweet"`)
+		return errors.New(`fluent: clearing a required unique edge "TweetLike.tweet"`)
 	}
 	if tlu.mutation.UserCleared() && len(tlu.mutation.UserIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "TweetLike.user"`)
+		return errors.New(`fluent: clearing a required unique edge "TweetLike.user"`)
 	}
 	return nil
 }
@@ -345,10 +345,10 @@ func (tluo *TweetLikeUpdateOne) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (tluo *TweetLikeUpdateOne) check() error {
 	if tluo.mutation.TweetCleared() && len(tluo.mutation.TweetIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "TweetLike.tweet"`)
+		return errors.New(`fluent: clearing a required unique edge "TweetLike.tweet"`)
 	}
 	if tluo.mutation.UserCleared() && len(tluo.mutation.UserIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "TweetLike.user"`)
+		return errors.New(`fluent: clearing a required unique edge "TweetLike.user"`)
 	}
 	return nil
 }
@@ -359,12 +359,12 @@ func (tluo *TweetLikeUpdateOne) sqlSave(ctx context.Context) (_node *TweetLike, 
 	}
 	_spec := sqlgraph.NewUpdateSpec(tweetlike.Table, tweetlike.Columns, sqlgraph.NewFieldSpec(tweetlike.FieldUserID, field.TypeInt), sqlgraph.NewFieldSpec(tweetlike.FieldTweetID, field.TypeInt))
 	if id, ok := tluo.mutation.UserID(); !ok {
-		return nil, &ValidationError{Name: "user_id", err: errors.New(`ent: missing "TweetLike.user_id" for update`)}
+		return nil, &ValidationError{Name: "user_id", err: errors.New(`fluent: missing "TweetLike.user_id" for update`)}
 	} else {
 		_spec.Node.CompositeID[0].Value = id
 	}
 	if id, ok := tluo.mutation.TweetID(); !ok {
-		return nil, &ValidationError{Name: "tweet_id", err: errors.New(`ent: missing "TweetLike.tweet_id" for update`)}
+		return nil, &ValidationError{Name: "tweet_id", err: errors.New(`fluent: missing "TweetLike.tweet_id" for update`)}
 	} else {
 		_spec.Node.CompositeID[1].Value = id
 	}

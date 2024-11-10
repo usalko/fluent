@@ -19,8 +19,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/workspace"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/workspace"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -72,7 +72,7 @@ func (wc *WorkspaceCreate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (wc *WorkspaceCreate) check() error {
 	if _, ok := wc.mutation.Name(); !ok {
-		return &ValidationError{Name: "name", err: errors.New(`ent: missing required field "Workspace.name"`)}
+		return &ValidationError{Name: "name", err: errors.New(`fluent: missing required field "Workspace.name"`)}
 	}
 	return nil
 }

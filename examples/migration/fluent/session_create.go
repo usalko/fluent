@@ -11,11 +11,11 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/examples/migration/fluent/session"
 	"github.com/usalko/fluent/examples/migration/fluent/sessiondevice"
 	"github.com/usalko/fluent/schema/field"
-	"github.com/google/uuid"
 )
 
 // SessionCreate is the builder for creating a Session entity.
@@ -160,10 +160,10 @@ func (sc *SessionCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (sc *SessionCreate) check() error {
 	if _, ok := sc.mutation.Active(); !ok {
-		return &ValidationError{Name: "active", err: errors.New(`ent: missing required field "Session.active"`)}
+		return &ValidationError{Name: "active", err: errors.New(`fluent: missing required field "Session.active"`)}
 	}
 	if _, ok := sc.mutation.IssuedAt(); !ok {
-		return &ValidationError{Name: "issued_at", err: errors.New(`ent: missing required field "Session.issued_at"`)}
+		return &ValidationError{Name: "issued_at", err: errors.New(`fluent: missing required field "Session.issued_at"`)}
 	}
 	return nil
 }

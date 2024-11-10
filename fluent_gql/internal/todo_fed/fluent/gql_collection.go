@@ -17,10 +17,10 @@ package fluent
 import (
 	"context"
 
+	"github.com/99designs/gqlgen/graphql"
 	"github.com/usalko/fluent/fluent_gql"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/todo"
-	"github.com/99designs/gqlgen/graphql"
 )
 
 // CollectFields tells the query-builder to eagerly load connected nodes by resolver context.

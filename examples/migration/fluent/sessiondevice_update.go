@@ -11,13 +11,13 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/examples/migration/fluent/predicate"
 	"github.com/usalko/fluent/examples/migration/fluent/session"
 	"github.com/usalko/fluent/examples/migration/fluent/sessiondevice"
 	"github.com/usalko/fluent/schema/field"
-	"github.com/google/uuid"
 )
 
 // SessionDeviceUpdate is the builder for updating SessionDevice entities.
@@ -181,17 +181,17 @@ func (sdu *SessionDeviceUpdate) ExecX(ctx context.Context) {
 func (sdu *SessionDeviceUpdate) check() error {
 	if v, ok := sdu.mutation.IPAddress(); ok {
 		if err := sessiondevice.IPAddressValidator(v); err != nil {
-			return &ValidationError{Name: "ip_address", err: fmt.Errorf(`ent: validator failed for field "SessionDevice.ip_address": %w`, err)}
+			return &ValidationError{Name: "ip_address", err: fmt.Errorf(`fluent: validator failed for field "SessionDevice.ip_address": %w`, err)}
 		}
 	}
 	if v, ok := sdu.mutation.UserAgent(); ok {
 		if err := sessiondevice.UserAgentValidator(v); err != nil {
-			return &ValidationError{Name: "user_agent", err: fmt.Errorf(`ent: validator failed for field "SessionDevice.user_agent": %w`, err)}
+			return &ValidationError{Name: "user_agent", err: fmt.Errorf(`fluent: validator failed for field "SessionDevice.user_agent": %w`, err)}
 		}
 	}
 	if v, ok := sdu.mutation.Location(); ok {
 		if err := sessiondevice.LocationValidator(v); err != nil {
-			return &ValidationError{Name: "location", err: fmt.Errorf(`ent: validator failed for field "SessionDevice.location": %w`, err)}
+			return &ValidationError{Name: "location", err: fmt.Errorf(`fluent: validator failed for field "SessionDevice.location": %w`, err)}
 		}
 	}
 	return nil
@@ -453,17 +453,17 @@ func (sduo *SessionDeviceUpdateOne) ExecX(ctx context.Context) {
 func (sduo *SessionDeviceUpdateOne) check() error {
 	if v, ok := sduo.mutation.IPAddress(); ok {
 		if err := sessiondevice.IPAddressValidator(v); err != nil {
-			return &ValidationError{Name: "ip_address", err: fmt.Errorf(`ent: validator failed for field "SessionDevice.ip_address": %w`, err)}
+			return &ValidationError{Name: "ip_address", err: fmt.Errorf(`fluent: validator failed for field "SessionDevice.ip_address": %w`, err)}
 		}
 	}
 	if v, ok := sduo.mutation.UserAgent(); ok {
 		if err := sessiondevice.UserAgentValidator(v); err != nil {
-			return &ValidationError{Name: "user_agent", err: fmt.Errorf(`ent: validator failed for field "SessionDevice.user_agent": %w`, err)}
+			return &ValidationError{Name: "user_agent", err: fmt.Errorf(`fluent: validator failed for field "SessionDevice.user_agent": %w`, err)}
 		}
 	}
 	if v, ok := sduo.mutation.Location(); ok {
 		if err := sessiondevice.LocationValidator(v); err != nil {
-			return &ValidationError{Name: "location", err: fmt.Errorf(`ent: validator failed for field "SessionDevice.location": %w`, err)}
+			return &ValidationError{Name: "location", err: fmt.Errorf(`fluent: validator failed for field "SessionDevice.location": %w`, err)}
 		}
 	}
 	return nil
@@ -476,7 +476,7 @@ func (sduo *SessionDeviceUpdateOne) sqlSave(ctx context.Context) (_node *Session
 	_spec := sqlgraph.NewUpdateSpec(sessiondevice.Table, sessiondevice.Columns, sqlgraph.NewFieldSpec(sessiondevice.FieldID, field.TypeUUID))
 	id, ok := sduo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "SessionDevice.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "SessionDevice.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := sduo.fields; len(fields) > 0 {

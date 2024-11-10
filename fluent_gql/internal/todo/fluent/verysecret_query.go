@@ -19,11 +19,11 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/predicate"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/verysecret"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/predicate"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/verysecret"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -265,8 +265,9 @@ func (vsq *VerySecretQuery) Clone() *VerySecretQuery {
 		inters:     append([]Interceptor{}, vsq.inters...),
 		predicates: append([]predicate.VerySecret{}, vsq.predicates...),
 		// clone intermediate query.
-		sql:  vsq.sql.Clone(),
-		path: vsq.path,
+		sql:       vsq.sql.Clone(),
+		path:      vsq.path,
+		modifiers: append([]func(*sql.Selector){}, vsq.modifiers...),
 	}
 }
 

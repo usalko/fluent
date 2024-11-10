@@ -105,10 +105,10 @@ func (lc *LicenseCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (lc *LicenseCreate) check() error {
 	if _, ok := lc.mutation.CreateTime(); !ok {
-		return &ValidationError{Name: "create_time", err: errors.New(`ent: missing required field "License.create_time"`)}
+		return &ValidationError{Name: "create_time", err: errors.New(`fluent: missing required field "License.create_time"`)}
 	}
 	if _, ok := lc.mutation.UpdateTime(); !ok {
-		return &ValidationError{Name: "update_time", err: errors.New(`ent: missing required field "License.update_time"`)}
+		return &ValidationError{Name: "update_time", err: errors.New(`fluent: missing required field "License.update_time"`)}
 	}
 	return nil
 }

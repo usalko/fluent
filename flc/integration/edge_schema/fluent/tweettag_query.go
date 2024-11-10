@@ -10,6 +10,7 @@ import (
 	"fmt"
 	"math"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
@@ -18,7 +19,6 @@ import (
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweet"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweettag"
 	"github.com/usalko/fluent/schema/field"
-	"github.com/google/uuid"
 )
 
 // TweetTagQuery is the builder for querying TweetTag entities.

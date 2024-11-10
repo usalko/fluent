@@ -17,11 +17,11 @@ package fluent
 import (
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/schema/schematype"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/schema/pulid"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/todo"
-	"github.com/google/uuid"
 )
 
 // CreateCategoryInput represents a mutation input for creating categories.

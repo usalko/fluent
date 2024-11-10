@@ -115,19 +115,19 @@ func (evsc *ExValueScanCreate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (evsc *ExValueScanCreate) check() error {
 	if _, ok := evsc.mutation.Binary(); !ok {
-		return &ValidationError{Name: "binary", err: errors.New(`ent: missing required field "ExValueScan.binary"`)}
+		return &ValidationError{Name: "binary", err: errors.New(`fluent: missing required field "ExValueScan.binary"`)}
 	}
 	if _, ok := evsc.mutation.BinaryBytes(); !ok {
-		return &ValidationError{Name: "binary_bytes", err: errors.New(`ent: missing required field "ExValueScan.binary_bytes"`)}
+		return &ValidationError{Name: "binary_bytes", err: errors.New(`fluent: missing required field "ExValueScan.binary_bytes"`)}
 	}
 	if _, ok := evsc.mutation.Text(); !ok {
-		return &ValidationError{Name: "text", err: errors.New(`ent: missing required field "ExValueScan.text"`)}
+		return &ValidationError{Name: "text", err: errors.New(`fluent: missing required field "ExValueScan.text"`)}
 	}
 	if _, ok := evsc.mutation.Base64(); !ok {
-		return &ValidationError{Name: "base64", err: errors.New(`ent: missing required field "ExValueScan.base64"`)}
+		return &ValidationError{Name: "base64", err: errors.New(`fluent: missing required field "ExValueScan.base64"`)}
 	}
 	if _, ok := evsc.mutation.Custom(); !ok {
-		return &ValidationError{Name: "custom", err: errors.New(`ent: missing required field "ExValueScan.custom"`)}
+		return &ValidationError{Name: "custom", err: errors.New(`fluent: missing required field "ExValueScan.custom"`)}
 	}
 	return nil
 }

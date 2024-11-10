@@ -10,6 +10,7 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/group"
@@ -19,7 +20,6 @@ import (
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweet"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweettag"
 	"github.com/usalko/fluent/schema/field"
-	"github.com/google/uuid"
 )
 
 // TagUpdate is the builder for updating Tag entities.
@@ -665,7 +665,7 @@ func (tuo *TagUpdateOne) sqlSave(ctx context.Context) (_node *Tag, err error) {
 	_spec := sqlgraph.NewUpdateSpec(tag.Table, tag.Columns, sqlgraph.NewFieldSpec(tag.FieldID, field.TypeInt))
 	id, ok := tuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Tag.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Tag.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := tuo.fields; len(fields) > 0 {

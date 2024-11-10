@@ -485,7 +485,7 @@ func (cuo *CommentUpdateOne) gremlinSave(ctx context.Context) (*Comment, error) 
 	res := &gremlin.Response{}
 	id, ok := cuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Comment.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Comment.id" for update`)}
 	}
 	query, bindings := cuo.gremlin(id).Query()
 	if err := cuo.driver.Exec(ctx, query, bindings, res); err != nil {

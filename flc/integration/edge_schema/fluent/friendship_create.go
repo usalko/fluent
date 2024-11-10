@@ -124,22 +124,22 @@ func (fc *FriendshipCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (fc *FriendshipCreate) check() error {
 	if _, ok := fc.mutation.Weight(); !ok {
-		return &ValidationError{Name: "weight", err: errors.New(`ent: missing required field "Friendship.weight"`)}
+		return &ValidationError{Name: "weight", err: errors.New(`fluent: missing required field "Friendship.weight"`)}
 	}
 	if _, ok := fc.mutation.CreatedAt(); !ok {
-		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "Friendship.created_at"`)}
+		return &ValidationError{Name: "created_at", err: errors.New(`fluent: missing required field "Friendship.created_at"`)}
 	}
 	if _, ok := fc.mutation.UserID(); !ok {
-		return &ValidationError{Name: "user_id", err: errors.New(`ent: missing required field "Friendship.user_id"`)}
+		return &ValidationError{Name: "user_id", err: errors.New(`fluent: missing required field "Friendship.user_id"`)}
 	}
 	if _, ok := fc.mutation.FriendID(); !ok {
-		return &ValidationError{Name: "friend_id", err: errors.New(`ent: missing required field "Friendship.friend_id"`)}
+		return &ValidationError{Name: "friend_id", err: errors.New(`fluent: missing required field "Friendship.friend_id"`)}
 	}
 	if len(fc.mutation.UserIDs()) == 0 {
-		return &ValidationError{Name: "user", err: errors.New(`ent: missing required edge "Friendship.user"`)}
+		return &ValidationError{Name: "user", err: errors.New(`fluent: missing required edge "Friendship.user"`)}
 	}
 	if len(fc.mutation.FriendIDs()) == 0 {
-		return &ValidationError{Name: "friend", err: errors.New(`ent: missing required edge "Friendship.friend"`)}
+		return &ValidationError{Name: "friend", err: errors.New(`fluent: missing required edge "Friendship.friend"`)}
 	}
 	return nil
 }

@@ -83,16 +83,16 @@ func (gtc *GroupTagCreate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (gtc *GroupTagCreate) check() error {
 	if _, ok := gtc.mutation.TagID(); !ok {
-		return &ValidationError{Name: "tag_id", err: errors.New(`ent: missing required field "GroupTag.tag_id"`)}
+		return &ValidationError{Name: "tag_id", err: errors.New(`fluent: missing required field "GroupTag.tag_id"`)}
 	}
 	if _, ok := gtc.mutation.GroupID(); !ok {
-		return &ValidationError{Name: "group_id", err: errors.New(`ent: missing required field "GroupTag.group_id"`)}
+		return &ValidationError{Name: "group_id", err: errors.New(`fluent: missing required field "GroupTag.group_id"`)}
 	}
 	if len(gtc.mutation.TagIDs()) == 0 {
-		return &ValidationError{Name: "tag", err: errors.New(`ent: missing required edge "GroupTag.tag"`)}
+		return &ValidationError{Name: "tag", err: errors.New(`fluent: missing required edge "GroupTag.tag"`)}
 	}
 	if len(gtc.mutation.GroupIDs()) == 0 {
-		return &ValidationError{Name: "group", err: errors.New(`ent: missing required edge "GroupTag.group"`)}
+		return &ValidationError{Name: "group", err: errors.New(`fluent: missing required edge "GroupTag.group"`)}
 	}
 	return nil
 }

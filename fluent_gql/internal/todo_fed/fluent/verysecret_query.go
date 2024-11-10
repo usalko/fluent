@@ -19,11 +19,11 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/predicate"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/verysecret"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/predicate"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/verysecret"
 	"github.com/usalko/fluent/schema/field"
 )
 

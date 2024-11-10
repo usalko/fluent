@@ -288,7 +288,7 @@ func (gq *GroupQuery) Aggregate(fns ...AggregateFunc) *GroupSelect {
 func (gq *GroupQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range gq.inters {
 		if inter == nil {
-			return fmt.Errorf("fluentv2: uninitialized interceptor (forgotten import entv2/runtime?)")
+			return fmt.Errorf("fluentv2: uninitialized interceptor (forgotten import fluentv2/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, gq); err != nil {

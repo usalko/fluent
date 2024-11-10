@@ -103,7 +103,7 @@ func (cu *CarUpdate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (cu *CarUpdate) check() error {
 	if cu.mutation.OwnerCleared() && len(cu.mutation.OwnerIDs()) > 0 {
-		return errors.New(`entv2: clearing a required unique edge "Car.owner"`)
+		return errors.New(`fluentv2: clearing a required unique edge "Car.owner"`)
 	}
 	return nil
 }
@@ -260,7 +260,7 @@ func (cuo *CarUpdateOne) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (cuo *CarUpdateOne) check() error {
 	if cuo.mutation.OwnerCleared() && len(cuo.mutation.OwnerIDs()) > 0 {
-		return errors.New(`entv2: clearing a required unique edge "Car.owner"`)
+		return errors.New(`fluentv2: clearing a required unique edge "Car.owner"`)
 	}
 	return nil
 }
@@ -272,7 +272,7 @@ func (cuo *CarUpdateOne) sqlSave(ctx context.Context) (_node *Car, err error) {
 	_spec := sqlgraph.NewUpdateSpec(car.Table, car.Columns, sqlgraph.NewFieldSpec(car.FieldID, field.TypeInt))
 	id, ok := cuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`entv2: missing "Car.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluentv2: missing "Car.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := cuo.fields; len(fields) > 0 {

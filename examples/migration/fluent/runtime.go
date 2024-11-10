@@ -6,13 +6,13 @@
 package fluent
 
 import (
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/examples/migration/fluent/card"
 	"github.com/usalko/fluent/examples/migration/fluent/payment"
 	"github.com/usalko/fluent/examples/migration/fluent/pet"
 	"github.com/usalko/fluent/examples/migration/fluent/schema"
 	"github.com/usalko/fluent/examples/migration/fluent/session"
 	"github.com/usalko/fluent/examples/migration/fluent/sessiondevice"
-	"github.com/google/uuid"
 )
 
 // The init function reads all schema descriptors with runtime code

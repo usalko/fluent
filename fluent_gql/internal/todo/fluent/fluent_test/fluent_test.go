@@ -21,8 +21,8 @@ import (
 	// required by schema hooks.
 	_ "github.com/usalko/fluent/fluent_gql/internal/todo/fluent/runtime"
 
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/migrate"
 	"github.com/usalko/fluent/dialect/sql/schema"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/migrate"
 )
 
 type (

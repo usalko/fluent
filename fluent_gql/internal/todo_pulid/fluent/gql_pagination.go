@@ -21,6 +21,10 @@ import (
 	"io"
 	"strconv"
 
+	"github.com/99designs/gqlgen/graphql"
+	"github.com/99designs/gqlgen/graphql/errcode"
+	"github.com/usalko/fluent"
+	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/fluent_gql"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/billproduct"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/category"
@@ -29,10 +33,6 @@ import (
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/schema/pulid"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/todo"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/user"
-	"github.com/usalko/fluent"
-	"github.com/usalko/fluent/dialect/sql"
-	"github.com/99designs/gqlgen/graphql"
-	"github.com/99designs/gqlgen/graphql/errcode"
 	"github.com/vektah/gqlparser/v2/gqlerror"
 )
 
@@ -493,7 +493,7 @@ func (p *categoryPager) applyCursors(query *CategoryQuery, after, before *Cursor
 		}
 		directions = append(directions, direction)
 	}
-	predicates, err := fluent_gql.MultiCursorsPredicate(after, before, & fluent_gql.MultiCursorsOptions{
+	predicates, err := fluent_gql.MultiCursorsPredicate(after, before, &fluent_gql.MultiCursorsOptions{
 		FieldID:     DefaultCategoryOrder.Field.column,
 		DirectionID: idDirection,
 		Fields:      fields,
@@ -1164,7 +1164,7 @@ func (p *groupPager) applyCursors(query *GroupQuery, after, before *Cursor) (*Gr
 		}
 		directions = append(directions, direction)
 	}
-	predicates, err := fluent_gql.MultiCursorsPredicate(after, before, & fluent_gql.MultiCursorsOptions{
+	predicates, err := fluent_gql.MultiCursorsPredicate(after, before, &fluent_gql.MultiCursorsOptions{
 		FieldID:     DefaultGroupOrder.Field.column,
 		DirectionID: idDirection,
 		Fields:      fields,
@@ -1449,7 +1449,7 @@ func (p *todoPager) applyCursors(query *TodoQuery, after, before *Cursor) (*Todo
 		}
 		directions = append(directions, direction)
 	}
-	predicates, err := fluent_gql.MultiCursorsPredicate(after, before, & fluent_gql.MultiCursorsOptions{
+	predicates, err := fluent_gql.MultiCursorsPredicate(after, before, &fluent_gql.MultiCursorsOptions{
 		FieldID:     DefaultTodoOrder.Field.column,
 		DirectionID: idDirection,
 		Fields:      fields,

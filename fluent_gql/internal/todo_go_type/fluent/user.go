@@ -18,9 +18,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/user"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/user"
 )
 
 // User is the model entity for the User schema.

@@ -20,11 +20,11 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/onetomany"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/predicate"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/onetomany"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/predicate"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -315,8 +315,9 @@ func (otmq *OneToManyQuery) Clone() *OneToManyQuery {
 		withParent:   otmq.withParent.Clone(),
 		withChildren: otmq.withChildren.Clone(),
 		// clone intermediate query.
-		sql:  otmq.sql.Clone(),
-		path: otmq.path,
+		sql:       otmq.sql.Clone(),
+		path:      otmq.path,
+		modifiers: append([]func(*sql.Selector){}, otmq.modifiers...),
 	}
 }
 

@@ -132,10 +132,10 @@ func (ruu *RoleUserUpdate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (ruu *RoleUserUpdate) check() error {
 	if ruu.mutation.RoleCleared() && len(ruu.mutation.RoleIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "RoleUser.role"`)
+		return errors.New(`fluent: clearing a required unique edge "RoleUser.role"`)
 	}
 	if ruu.mutation.UserCleared() && len(ruu.mutation.UserIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "RoleUser.user"`)
+		return errors.New(`fluent: clearing a required unique edge "RoleUser.user"`)
 	}
 	return nil
 }
@@ -345,10 +345,10 @@ func (ruuo *RoleUserUpdateOne) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (ruuo *RoleUserUpdateOne) check() error {
 	if ruuo.mutation.RoleCleared() && len(ruuo.mutation.RoleIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "RoleUser.role"`)
+		return errors.New(`fluent: clearing a required unique edge "RoleUser.role"`)
 	}
 	if ruuo.mutation.UserCleared() && len(ruuo.mutation.UserIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "RoleUser.user"`)
+		return errors.New(`fluent: clearing a required unique edge "RoleUser.user"`)
 	}
 	return nil
 }
@@ -359,12 +359,12 @@ func (ruuo *RoleUserUpdateOne) sqlSave(ctx context.Context) (_node *RoleUser, er
 	}
 	_spec := sqlgraph.NewUpdateSpec(roleuser.Table, roleuser.Columns, sqlgraph.NewFieldSpec(roleuser.FieldUserID, field.TypeInt), sqlgraph.NewFieldSpec(roleuser.FieldRoleID, field.TypeInt))
 	if id, ok := ruuo.mutation.UserID(); !ok {
-		return nil, &ValidationError{Name: "user_id", err: errors.New(`ent: missing "RoleUser.user_id" for update`)}
+		return nil, &ValidationError{Name: "user_id", err: errors.New(`fluent: missing "RoleUser.user_id" for update`)}
 	} else {
 		_spec.Node.CompositeID[0].Value = id
 	}
 	if id, ok := ruuo.mutation.RoleID(); !ok {
-		return nil, &ValidationError{Name: "role_id", err: errors.New(`ent: missing "RoleUser.role_id" for update`)}
+		return nil, &ValidationError{Name: "role_id", err: errors.New(`fluent: missing "RoleUser.role_id" for update`)}
 	} else {
 		_spec.Node.CompositeID[1].Value = id
 	}

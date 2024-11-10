@@ -10,11 +10,11 @@ import (
 	"strings"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/blob"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/bloblink"
-	"github.com/google/uuid"
 )
 
 // BlobLink is the model entity for the BlobLink schema.

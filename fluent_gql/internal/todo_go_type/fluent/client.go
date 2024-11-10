@@ -21,11 +21,14 @@ import (
 	"log"
 	"reflect"
 
+	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/migrate"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/schema/bigintgql"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/schema/uintgql"
-	"github.com/usalko/fluent"
 
+	"github.com/usalko/fluent/dialect"
+	"github.com/usalko/fluent/dialect/sql"
+	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/billproduct"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/friendship"
@@ -34,9 +37,6 @@ import (
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/todo"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/user"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/verysecret"
-	"github.com/usalko/fluent/dialect"
-	"github.com/usalko/fluent/dialect/sql"
-	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 )
 
 // Client is the client that holds all fluent builders.
@@ -1536,7 +1536,8 @@ func (c *VerySecretClient) mutate(ctx context.Context, m *VerySecretMutation) (V
 // hooks and interceptors per client, for fast access.
 type (
 	hooks struct {
-		BillProduct, Category, Friendship, Group, Pet, Todo, User, VerySecret []fluent.Hook
+		BillProduct, Category, Friendship, Group, Pet, Todo, User,
+		VerySecret []fluent.Hook
 	}
 	inters struct {
 		BillProduct, Category, Friendship, Group, Pet, Todo, User,

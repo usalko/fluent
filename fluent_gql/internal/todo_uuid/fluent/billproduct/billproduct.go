@@ -15,8 +15,8 @@
 package billproduct
 
 import (
-	"github.com/usalko/fluent/dialect/sql"
 	"github.com/google/uuid"
+	"github.com/usalko/fluent/dialect/sql"
 )
 
 const (

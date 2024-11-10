@@ -18,9 +18,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/onetomany"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/onetomany"
 )
 
 // OneToMany is the model entity for the OneToMany schema.

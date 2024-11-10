@@ -352,7 +352,7 @@ func (giuo *GroupInfoUpdateOne) sqlSave(ctx context.Context) (_node *GroupInfo, 
 	_spec := sqlgraph.NewUpdateSpec(groupinfo.Table, groupinfo.Columns, sqlgraph.NewFieldSpec(groupinfo.FieldID, field.TypeInt))
 	id, ok := giuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "GroupInfo.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "GroupInfo.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := giuo.fields; len(fields) > 0 {

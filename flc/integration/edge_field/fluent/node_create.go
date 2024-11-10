@@ -118,7 +118,7 @@ func (nc *NodeCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (nc *NodeCreate) check() error {
 	if _, ok := nc.mutation.Value(); !ok {
-		return &ValidationError{Name: "value", err: errors.New(`ent: missing required field "Node.value"`)}
+		return &ValidationError{Name: "value", err: errors.New(`fluent: missing required field "Node.value"`)}
 	}
 	return nil
 }

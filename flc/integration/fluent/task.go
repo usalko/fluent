@@ -14,7 +14,7 @@ import (
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/flc/integration/fluent/schema/task"
-	enttask "github.com/usalko/fluent/flc/integration/fluent/task"
+	fluenttask "github.com/usalko/fluent/flc/integration/fluent/task"
 )
 
 // Task is the model entity for the Task schema.
@@ -48,13 +48,13 @@ func (*Task) scanValues(columns []string) ([]any, error) {
 	values := make([]any, len(columns))
 	for i := range columns {
 		switch columns[i] {
-		case enttask.FieldPriorities:
+		case fluenttask.FieldPriorities:
 			values[i] = new([]byte)
-		case enttask.FieldID, enttask.FieldPriority, enttask.FieldOrder, enttask.FieldOrderOption:
+		case fluenttask.FieldID, fluenttask.FieldPriority, fluenttask.FieldOrder, fluenttask.FieldOrderOption:
 			values[i] = new(sql.NullInt64)
-		case enttask.FieldName, enttask.FieldOwner, enttask.FieldOp:
+		case fluenttask.FieldName, fluenttask.FieldOwner, fluenttask.FieldOp:
 			values[i] = new(sql.NullString)
-		case enttask.FieldCreatedAt:
+		case fluenttask.FieldCreatedAt:
 			values[i] = new(sql.NullTime)
 		default:
 			values[i] = new(sql.UnknownType)
@@ -71,19 +71,19 @@ func (t *Task) assignValues(columns []string, values []any) error {
 	}
 	for i := range columns {
 		switch columns[i] {
-		case enttask.FieldID:
+		case fluenttask.FieldID:
 			value, ok := values[i].(*sql.NullInt64)
 			if !ok {
 				return fmt.Errorf("unexpected type %T for field id", value)
 			}
 			t.ID = int(value.Int64)
-		case enttask.FieldPriority:
+		case fluenttask.FieldPriority:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field priority", values[i])
 			} else if value.Valid {
 				t.Priority = task.Priority(value.Int64)
 			}
-		case enttask.FieldPriorities:
+		case fluenttask.FieldPriorities:
 			if value, ok := values[i].(*[]byte); !ok {
 				return fmt.Errorf("unexpected type %T for field priorities", values[i])
 			} else if value != nil && len(*value) > 0 {
@@ -91,38 +91,38 @@ func (t *Task) assignValues(columns []string, values []any) error {
 					return fmt.Errorf("unmarshal field priorities: %w", err)
 				}
 			}
-		case enttask.FieldCreatedAt:
+		case fluenttask.FieldCreatedAt:
 			if value, ok := values[i].(*sql.NullTime); !ok {
 				return fmt.Errorf("unexpected type %T for field created_at", values[i])
 			} else if value.Valid {
 				t.CreatedAt = new(time.Time)
 				*t.CreatedAt = value.Time
 			}
-		case enttask.FieldName:
+		case fluenttask.FieldName:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field name", values[i])
 			} else if value.Valid {
 				t.Name = value.String
 			}
-		case enttask.FieldOwner:
+		case fluenttask.FieldOwner:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field owner", values[i])
 			} else if value.Valid {
 				t.Owner = value.String
 			}
-		case enttask.FieldOrder:
+		case fluenttask.FieldOrder:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field order", values[i])
 			} else if value.Valid {
 				t.Order = int(value.Int64)
 			}
-		case enttask.FieldOrderOption:
+		case fluenttask.FieldOrderOption:
 			if value, ok := values[i].(*sql.NullInt64); !ok {
 				return fmt.Errorf("unexpected type %T for field order_option", values[i])
 			} else if value.Valid {
 				t.OrderOption = int(value.Int64)
 			}
-		case enttask.FieldOp:
+		case fluenttask.FieldOp:
 			if value, ok := values[i].(*sql.NullString); !ok {
 				return fmt.Errorf("unexpected type %T for field op", values[i])
 			} else if value.Valid {

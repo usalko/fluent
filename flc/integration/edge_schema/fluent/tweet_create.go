@@ -10,6 +10,7 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tag"
@@ -18,7 +19,6 @@ import (
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/usertweet"
 	"github.com/usalko/fluent/schema/field"
-	"github.com/google/uuid"
 )
 
 // TweetCreate is the builder for creating a Tweet entity.
@@ -145,7 +145,7 @@ func (tc *TweetCreate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (tc *TweetCreate) check() error {
 	if _, ok := tc.mutation.Text(); !ok {
-		return &ValidationError{Name: "text", err: errors.New(`ent: missing required field "Tweet.text"`)}
+		return &ValidationError{Name: "text", err: errors.New(`fluent: missing required field "Tweet.text"`)}
 	}
 	return nil
 }

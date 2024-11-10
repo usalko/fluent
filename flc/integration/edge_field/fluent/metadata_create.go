@@ -140,7 +140,7 @@ func (mc *MetadataCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (mc *MetadataCreate) check() error {
 	if _, ok := mc.mutation.Age(); !ok {
-		return &ValidationError{Name: "age", err: errors.New(`ent: missing required field "Metadata.age"`)}
+		return &ValidationError{Name: "age", err: errors.New(`fluent: missing required field "Metadata.age"`)}
 	}
 	return nil
 }

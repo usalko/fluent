@@ -326,12 +326,12 @@ func (fu *FileUpdate) ExecX(ctx context.Context) {
 func (fu *FileUpdate) check() error {
 	if v, ok := fu.mutation.SetID(); ok {
 		if err := file.SetIDValidator(v); err != nil {
-			return &ValidationError{Name: "set_id", err: fmt.Errorf(`ent: validator failed for field "File.set_id": %w`, err)}
+			return &ValidationError{Name: "set_id", err: fmt.Errorf(`fluent: validator failed for field "File.set_id": %w`, err)}
 		}
 	}
 	if v, ok := fu.mutation.Size(); ok {
 		if err := file.SizeValidator(v); err != nil {
-			return &ValidationError{Name: "size", err: fmt.Errorf(`ent: validator failed for field "File.size": %w`, err)}
+			return &ValidationError{Name: "size", err: fmt.Errorf(`fluent: validator failed for field "File.size": %w`, err)}
 		}
 	}
 	return nil
@@ -780,12 +780,12 @@ func (fuo *FileUpdateOne) ExecX(ctx context.Context) {
 func (fuo *FileUpdateOne) check() error {
 	if v, ok := fuo.mutation.SetID(); ok {
 		if err := file.SetIDValidator(v); err != nil {
-			return &ValidationError{Name: "set_id", err: fmt.Errorf(`ent: validator failed for field "File.set_id": %w`, err)}
+			return &ValidationError{Name: "set_id", err: fmt.Errorf(`fluent: validator failed for field "File.set_id": %w`, err)}
 		}
 	}
 	if v, ok := fuo.mutation.Size(); ok {
 		if err := file.SizeValidator(v); err != nil {
-			return &ValidationError{Name: "size", err: fmt.Errorf(`ent: validator failed for field "File.size": %w`, err)}
+			return &ValidationError{Name: "size", err: fmt.Errorf(`fluent: validator failed for field "File.size": %w`, err)}
 		}
 	}
 	return nil
@@ -798,7 +798,7 @@ func (fuo *FileUpdateOne) gremlinSave(ctx context.Context) (*File, error) {
 	res := &gremlin.Response{}
 	id, ok := fuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "File.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "File.id" for update`)}
 	}
 	query, bindings := fuo.gremlin(id).Query()
 	if err := fuo.driver.Exec(ctx, query, bindings, res); err != nil {

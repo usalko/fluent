@@ -11,11 +11,11 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/examples/migration/fluent/session"
 	"github.com/usalko/fluent/examples/migration/fluent/sessiondevice"
 	"github.com/usalko/fluent/schema/field"
-	"github.com/google/uuid"
 )
 
 // SessionDeviceCreate is the builder for creating a SessionDevice entity.
@@ -136,31 +136,31 @@ func (sdc *SessionDeviceCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (sdc *SessionDeviceCreate) check() error {
 	if _, ok := sdc.mutation.IPAddress(); !ok {
-		return &ValidationError{Name: "ip_address", err: errors.New(`ent: missing required field "SessionDevice.ip_address"`)}
+		return &ValidationError{Name: "ip_address", err: errors.New(`fluent: missing required field "SessionDevice.ip_address"`)}
 	}
 	if v, ok := sdc.mutation.IPAddress(); ok {
 		if err := sessiondevice.IPAddressValidator(v); err != nil {
-			return &ValidationError{Name: "ip_address", err: fmt.Errorf(`ent: validator failed for field "SessionDevice.ip_address": %w`, err)}
+			return &ValidationError{Name: "ip_address", err: fmt.Errorf(`fluent: validator failed for field "SessionDevice.ip_address": %w`, err)}
 		}
 	}
 	if _, ok := sdc.mutation.UserAgent(); !ok {
-		return &ValidationError{Name: "user_agent", err: errors.New(`ent: missing required field "SessionDevice.user_agent"`)}
+		return &ValidationError{Name: "user_agent", err: errors.New(`fluent: missing required field "SessionDevice.user_agent"`)}
 	}
 	if v, ok := sdc.mutation.UserAgent(); ok {
 		if err := sessiondevice.UserAgentValidator(v); err != nil {
-			return &ValidationError{Name: "user_agent", err: fmt.Errorf(`ent: validator failed for field "SessionDevice.user_agent": %w`, err)}
+			return &ValidationError{Name: "user_agent", err: fmt.Errorf(`fluent: validator failed for field "SessionDevice.user_agent": %w`, err)}
 		}
 	}
 	if _, ok := sdc.mutation.Location(); !ok {
-		return &ValidationError{Name: "location", err: errors.New(`ent: missing required field "SessionDevice.location"`)}
+		return &ValidationError{Name: "location", err: errors.New(`fluent: missing required field "SessionDevice.location"`)}
 	}
 	if v, ok := sdc.mutation.Location(); ok {
 		if err := sessiondevice.LocationValidator(v); err != nil {
-			return &ValidationError{Name: "location", err: fmt.Errorf(`ent: validator failed for field "SessionDevice.location": %w`, err)}
+			return &ValidationError{Name: "location", err: fmt.Errorf(`fluent: validator failed for field "SessionDevice.location": %w`, err)}
 		}
 	}
 	if _, ok := sdc.mutation.CreatedAt(); !ok {
-		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "SessionDevice.created_at"`)}
+		return &ValidationError{Name: "created_at", err: errors.New(`fluent: missing required field "SessionDevice.created_at"`)}
 	}
 	return nil
 }

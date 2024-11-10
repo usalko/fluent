@@ -107,19 +107,19 @@ func (utc *UserTweetCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (utc *UserTweetCreate) check() error {
 	if _, ok := utc.mutation.CreatedAt(); !ok {
-		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "UserTweet.created_at"`)}
+		return &ValidationError{Name: "created_at", err: errors.New(`fluent: missing required field "UserTweet.created_at"`)}
 	}
 	if _, ok := utc.mutation.UserID(); !ok {
-		return &ValidationError{Name: "user_id", err: errors.New(`ent: missing required field "UserTweet.user_id"`)}
+		return &ValidationError{Name: "user_id", err: errors.New(`fluent: missing required field "UserTweet.user_id"`)}
 	}
 	if _, ok := utc.mutation.TweetID(); !ok {
-		return &ValidationError{Name: "tweet_id", err: errors.New(`ent: missing required field "UserTweet.tweet_id"`)}
+		return &ValidationError{Name: "tweet_id", err: errors.New(`fluent: missing required field "UserTweet.tweet_id"`)}
 	}
 	if len(utc.mutation.UserIDs()) == 0 {
-		return &ValidationError{Name: "user", err: errors.New(`ent: missing required edge "UserTweet.user"`)}
+		return &ValidationError{Name: "user", err: errors.New(`fluent: missing required edge "UserTweet.user"`)}
 	}
 	if len(utc.mutation.TweetIDs()) == 0 {
-		return &ValidationError{Name: "tweet", err: errors.New(`ent: missing required edge "UserTweet.tweet"`)}
+		return &ValidationError{Name: "tweet", err: errors.New(`fluent: missing required edge "UserTweet.tweet"`)}
 	}
 	return nil
 }

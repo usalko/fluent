@@ -102,15 +102,15 @@ func (tc *TokenCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (tc *TokenCreate) check() error {
 	if _, ok := tc.mutation.Body(); !ok {
-		return &ValidationError{Name: "body", err: errors.New(`ent: missing required field "Token.body"`)}
+		return &ValidationError{Name: "body", err: errors.New(`fluent: missing required field "Token.body"`)}
 	}
 	if v, ok := tc.mutation.Body(); ok {
 		if err := token.BodyValidator(v); err != nil {
-			return &ValidationError{Name: "body", err: fmt.Errorf(`ent: validator failed for field "Token.body": %w`, err)}
+			return &ValidationError{Name: "body", err: fmt.Errorf(`fluent: validator failed for field "Token.body": %w`, err)}
 		}
 	}
 	if len(tc.mutation.AccountIDs()) == 0 {
-		return &ValidationError{Name: "account", err: errors.New(`ent: missing required edge "Token.account"`)}
+		return &ValidationError{Name: "account", err: errors.New(`fluent: missing required edge "Token.account"`)}
 	}
 	return nil
 }

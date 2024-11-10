@@ -9,10 +9,10 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/mixinid"
-	"github.com/google/uuid"
 )
 
 // MixinID is the model entity for the MixinID schema.

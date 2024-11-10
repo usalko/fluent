@@ -10,12 +10,12 @@ import (
 	"strings"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tag"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweet"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/tweettag"
-	"github.com/google/uuid"
 )
 
 // TweetTag is the model entity for the TweetTag schema.

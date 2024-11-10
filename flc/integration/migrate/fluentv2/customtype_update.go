@@ -279,7 +279,7 @@ func (ctuo *CustomTypeUpdateOne) sqlSave(ctx context.Context) (_node *CustomType
 	_spec := sqlgraph.NewUpdateSpec(customtype.Table, customtype.Columns, sqlgraph.NewFieldSpec(customtype.FieldID, field.TypeInt))
 	id, ok := ctuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`entv2: missing "CustomType.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluentv2: missing "CustomType.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := ctuo.fields; len(fields) > 0 {

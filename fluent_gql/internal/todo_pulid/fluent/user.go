@@ -19,11 +19,11 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/schema/pulid"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/user"
+	"github.com/google/uuid"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
-	"github.com/google/uuid"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/schema/pulid"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/user"
 )
 
 // User is the model entity for the User schema.

@@ -14,7 +14,7 @@ import (
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/flc/integration/fluent/schema/task"
-	enttask "github.com/usalko/fluent/flc/integration/fluent/task"
+	fluenttask "github.com/usalko/fluent/flc/integration/fluent/task"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -166,15 +166,15 @@ func (tc *TaskCreate) ExecX(ctx context.Context) {
 // defaults sets the default values of the builder before save.
 func (tc *TaskCreate) defaults() {
 	if _, ok := tc.mutation.Priority(); !ok {
-		v := enttask.DefaultPriority
+		v := fluenttask.DefaultPriority
 		tc.mutation.SetPriority(v)
 	}
 	if _, ok := tc.mutation.CreatedAt(); !ok {
-		v := enttask.DefaultCreatedAt()
+		v := fluenttask.DefaultCreatedAt()
 		tc.mutation.SetCreatedAt(v)
 	}
 	if _, ok := tc.mutation.GetOp(); !ok {
-		v := enttask.DefaultOp
+		v := fluenttask.DefaultOp
 		tc.mutation.SetOpField(v)
 	}
 }
@@ -182,22 +182,22 @@ func (tc *TaskCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (tc *TaskCreate) check() error {
 	if _, ok := tc.mutation.Priority(); !ok {
-		return &ValidationError{Name: "priority", err: errors.New(`ent: missing required field "Task.priority"`)}
+		return &ValidationError{Name: "priority", err: errors.New(`fluent: missing required field "Task.priority"`)}
 	}
 	if v, ok := tc.mutation.Priority(); ok {
 		if err := v.Validate(); err != nil {
-			return &ValidationError{Name: "priority", err: fmt.Errorf(`ent: validator failed for field "Task.priority": %w`, err)}
+			return &ValidationError{Name: "priority", err: fmt.Errorf(`fluent: validator failed for field "Task.priority": %w`, err)}
 		}
 	}
 	if _, ok := tc.mutation.CreatedAt(); !ok {
-		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "Task.created_at"`)}
+		return &ValidationError{Name: "created_at", err: errors.New(`fluent: missing required field "Task.created_at"`)}
 	}
 	if _, ok := tc.mutation.GetOp(); !ok {
-		return &ValidationError{Name: "op", err: errors.New(`ent: missing required field "Task.op"`)}
+		return &ValidationError{Name: "op", err: errors.New(`fluent: missing required field "Task.op"`)}
 	}
 	if v, ok := tc.mutation.GetOp(); ok {
-		if err := enttask.OpValidator(v); err != nil {
-			return &ValidationError{Name: "op", err: fmt.Errorf(`ent: validator failed for field "Task.op": %w`, err)}
+		if err := fluenttask.OpValidator(v); err != nil {
+			return &ValidationError{Name: "op", err: fmt.Errorf(`fluent: validator failed for field "Task.op": %w`, err)}
 		}
 	}
 	return nil
@@ -224,39 +224,39 @@ func (tc *TaskCreate) sqlSave(ctx context.Context) (*Task, error) {
 func (tc *TaskCreate) createSpec() (*Task, *sqlgraph.CreateSpec) {
 	var (
 		_node = &Task{config: tc.config}
-		_spec = sqlgraph.NewCreateSpec(enttask.Table, sqlgraph.NewFieldSpec(enttask.FieldID, field.TypeInt))
+		_spec = sqlgraph.NewCreateSpec(fluenttask.Table, sqlgraph.NewFieldSpec(fluenttask.FieldID, field.TypeInt))
 	)
 	_spec.OnConflict = tc.conflict
 	if value, ok := tc.mutation.Priority(); ok {
-		_spec.SetField(enttask.FieldPriority, field.TypeInt, value)
+		_spec.SetField(fluenttask.FieldPriority, field.TypeInt, value)
 		_node.Priority = value
 	}
 	if value, ok := tc.mutation.Priorities(); ok {
-		_spec.SetField(enttask.FieldPriorities, field.TypeJSON, value)
+		_spec.SetField(fluenttask.FieldPriorities, field.TypeJSON, value)
 		_node.Priorities = value
 	}
 	if value, ok := tc.mutation.CreatedAt(); ok {
-		_spec.SetField(enttask.FieldCreatedAt, field.TypeTime, value)
+		_spec.SetField(fluenttask.FieldCreatedAt, field.TypeTime, value)
 		_node.CreatedAt = &value
 	}
 	if value, ok := tc.mutation.Name(); ok {
-		_spec.SetField(enttask.FieldName, field.TypeString, value)
+		_spec.SetField(fluenttask.FieldName, field.TypeString, value)
 		_node.Name = value
 	}
 	if value, ok := tc.mutation.Owner(); ok {
-		_spec.SetField(enttask.FieldOwner, field.TypeString, value)
+		_spec.SetField(fluenttask.FieldOwner, field.TypeString, value)
 		_node.Owner = value
 	}
 	if value, ok := tc.mutation.Order(); ok {
-		_spec.SetField(enttask.FieldOrder, field.TypeInt, value)
+		_spec.SetField(fluenttask.FieldOrder, field.TypeInt, value)
 		_node.Order = value
 	}
 	if value, ok := tc.mutation.OrderOption(); ok {
-		_spec.SetField(enttask.FieldOrderOption, field.TypeInt, value)
+		_spec.SetField(fluenttask.FieldOrderOption, field.TypeInt, value)
 		_node.OrderOption = value
 	}
 	if value, ok := tc.mutation.GetOp(); ok {
-		_spec.SetField(enttask.FieldOp, field.TypeString, value)
+		_spec.SetField(fluenttask.FieldOp, field.TypeString, value)
 		_node.Op = value
 	}
 	return _node, _spec
@@ -313,133 +313,133 @@ type (
 
 // SetPriority sets the "priority" field.
 func (u *TaskUpsert) SetPriority(v task.Priority) *TaskUpsert {
-	u.Set(enttask.FieldPriority, v)
+	u.Set(fluenttask.FieldPriority, v)
 	return u
 }
 
 // UpdatePriority sets the "priority" field to the value that was provided on create.
 func (u *TaskUpsert) UpdatePriority() *TaskUpsert {
-	u.SetExcluded(enttask.FieldPriority)
+	u.SetExcluded(fluenttask.FieldPriority)
 	return u
 }
 
 // AddPriority adds v to the "priority" field.
 func (u *TaskUpsert) AddPriority(v task.Priority) *TaskUpsert {
-	u.Add(enttask.FieldPriority, v)
+	u.Add(fluenttask.FieldPriority, v)
 	return u
 }
 
 // SetPriorities sets the "priorities" field.
 func (u *TaskUpsert) SetPriorities(v map[string]task.Priority) *TaskUpsert {
-	u.Set(enttask.FieldPriorities, v)
+	u.Set(fluenttask.FieldPriorities, v)
 	return u
 }
 
 // UpdatePriorities sets the "priorities" field to the value that was provided on create.
 func (u *TaskUpsert) UpdatePriorities() *TaskUpsert {
-	u.SetExcluded(enttask.FieldPriorities)
+	u.SetExcluded(fluenttask.FieldPriorities)
 	return u
 }
 
 // ClearPriorities clears the value of the "priorities" field.
 func (u *TaskUpsert) ClearPriorities() *TaskUpsert {
-	u.SetNull(enttask.FieldPriorities)
+	u.SetNull(fluenttask.FieldPriorities)
 	return u
 }
 
 // SetName sets the "name" field.
 func (u *TaskUpsert) SetName(v string) *TaskUpsert {
-	u.Set(enttask.FieldName, v)
+	u.Set(fluenttask.FieldName, v)
 	return u
 }
 
 // UpdateName sets the "name" field to the value that was provided on create.
 func (u *TaskUpsert) UpdateName() *TaskUpsert {
-	u.SetExcluded(enttask.FieldName)
+	u.SetExcluded(fluenttask.FieldName)
 	return u
 }
 
 // ClearName clears the value of the "name" field.
 func (u *TaskUpsert) ClearName() *TaskUpsert {
-	u.SetNull(enttask.FieldName)
+	u.SetNull(fluenttask.FieldName)
 	return u
 }
 
 // SetOwner sets the "owner" field.
 func (u *TaskUpsert) SetOwner(v string) *TaskUpsert {
-	u.Set(enttask.FieldOwner, v)
+	u.Set(fluenttask.FieldOwner, v)
 	return u
 }
 
 // UpdateOwner sets the "owner" field to the value that was provided on create.
 func (u *TaskUpsert) UpdateOwner() *TaskUpsert {
-	u.SetExcluded(enttask.FieldOwner)
+	u.SetExcluded(fluenttask.FieldOwner)
 	return u
 }
 
 // ClearOwner clears the value of the "owner" field.
 func (u *TaskUpsert) ClearOwner() *TaskUpsert {
-	u.SetNull(enttask.FieldOwner)
+	u.SetNull(fluenttask.FieldOwner)
 	return u
 }
 
 // SetOrder sets the "order" field.
 func (u *TaskUpsert) SetOrder(v int) *TaskUpsert {
-	u.Set(enttask.FieldOrder, v)
+	u.Set(fluenttask.FieldOrder, v)
 	return u
 }
 
 // UpdateOrder sets the "order" field to the value that was provided on create.
 func (u *TaskUpsert) UpdateOrder() *TaskUpsert {
-	u.SetExcluded(enttask.FieldOrder)
+	u.SetExcluded(fluenttask.FieldOrder)
 	return u
 }
 
 // AddOrder adds v to the "order" field.
 func (u *TaskUpsert) AddOrder(v int) *TaskUpsert {
-	u.Add(enttask.FieldOrder, v)
+	u.Add(fluenttask.FieldOrder, v)
 	return u
 }
 
 // ClearOrder clears the value of the "order" field.
 func (u *TaskUpsert) ClearOrder() *TaskUpsert {
-	u.SetNull(enttask.FieldOrder)
+	u.SetNull(fluenttask.FieldOrder)
 	return u
 }
 
 // SetOrderOption sets the "order_option" field.
 func (u *TaskUpsert) SetOrderOption(v int) *TaskUpsert {
-	u.Set(enttask.FieldOrderOption, v)
+	u.Set(fluenttask.FieldOrderOption, v)
 	return u
 }
 
 // UpdateOrderOption sets the "order_option" field to the value that was provided on create.
 func (u *TaskUpsert) UpdateOrderOption() *TaskUpsert {
-	u.SetExcluded(enttask.FieldOrderOption)
+	u.SetExcluded(fluenttask.FieldOrderOption)
 	return u
 }
 
 // AddOrderOption adds v to the "order_option" field.
 func (u *TaskUpsert) AddOrderOption(v int) *TaskUpsert {
-	u.Add(enttask.FieldOrderOption, v)
+	u.Add(fluenttask.FieldOrderOption, v)
 	return u
 }
 
 // ClearOrderOption clears the value of the "order_option" field.
 func (u *TaskUpsert) ClearOrderOption() *TaskUpsert {
-	u.SetNull(enttask.FieldOrderOption)
+	u.SetNull(fluenttask.FieldOrderOption)
 	return u
 }
 
 // SetOp sets the "op" field.
 func (u *TaskUpsert) SetOp(v string) *TaskUpsert {
-	u.Set(enttask.FieldOp, v)
+	u.Set(fluenttask.FieldOp, v)
 	return u
 }
 
 // UpdateOp sets the "op" field to the value that was provided on create.
 func (u *TaskUpsert) UpdateOp() *TaskUpsert {
-	u.SetExcluded(enttask.FieldOp)
+	u.SetExcluded(fluenttask.FieldOp)
 	return u
 }
 
@@ -455,7 +455,7 @@ func (u *TaskUpsertOne) UpdateNewValues() *TaskUpsertOne {
 	u.create.conflict = append(u.create.conflict, sql.ResolveWithNewValues())
 	u.create.conflict = append(u.create.conflict, sql.ResolveWith(func(s *sql.UpdateSet) {
 		if _, exists := u.create.mutation.CreatedAt(); exists {
-			s.SetIgnore(enttask.FieldCreatedAt)
+			s.SetIgnore(fluenttask.FieldCreatedAt)
 		}
 	}))
 	return u
@@ -819,7 +819,7 @@ func (u *TaskUpsertBulk) UpdateNewValues() *TaskUpsertBulk {
 	u.create.conflict = append(u.create.conflict, sql.ResolveWith(func(s *sql.UpdateSet) {
 		for _, b := range u.create.builders {
 			if _, exists := b.mutation.CreatedAt(); exists {
-				s.SetIgnore(enttask.FieldCreatedAt)
+				s.SetIgnore(fluenttask.FieldCreatedAt)
 			}
 		}
 	}))

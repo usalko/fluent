@@ -19,8 +19,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/onetomany"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/onetomany"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -120,11 +120,11 @@ func (otmc *OneToManyCreate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (otmc *OneToManyCreate) check() error {
 	if _, ok := otmc.mutation.Name(); !ok {
-		return &ValidationError{Name: "name", err: errors.New(`ent: missing required field "OneToMany.name"`)}
+		return &ValidationError{Name: "name", err: errors.New(`fluent: missing required field "OneToMany.name"`)}
 	}
 	if v, ok := otmc.mutation.Name(); ok {
 		if err := onetomany.NameValidator(v); err != nil {
-			return &ValidationError{Name: "name", err: fmt.Errorf(`ent: validator failed for field "OneToMany.name": %w`, err)}
+			return &ValidationError{Name: "name", err: fmt.Errorf(`fluent: validator failed for field "OneToMany.name": %w`, err)}
 		}
 	}
 	return nil

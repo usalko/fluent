@@ -327,7 +327,7 @@ func (giuo *GroupInfoUpdateOne) gremlinSave(ctx context.Context) (*GroupInfo, er
 	res := &gremlin.Response{}
 	id, ok := giuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "GroupInfo.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "GroupInfo.id" for update`)}
 	}
 	query, bindings := giuo.gremlin(id).Query()
 	if err := giuo.driver.Exec(ctx, query, bindings, res); err != nil {

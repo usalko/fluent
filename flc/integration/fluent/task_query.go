@@ -15,7 +15,7 @@ import (
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/flc/integration/fluent/predicate"
-	enttask "github.com/usalko/fluent/flc/integration/fluent/task"
+	fluenttask "github.com/usalko/fluent/flc/integration/fluent/task"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -23,7 +23,7 @@ import (
 type TaskQuery struct {
 	config
 	ctx        *QueryContext
-	order      []enttask.OrderOption
+	order      []fluenttask.OrderOption
 	inters     []Interceptor
 	predicates []predicate.Task
 	modifiers  []func(*sql.Selector)
@@ -58,7 +58,7 @@ func (tq *TaskQuery) Unique(unique bool) *TaskQuery {
 }
 
 // Order specifies how the records should be ordered.
-func (tq *TaskQuery) Order(o ...enttask.OrderOption) *TaskQuery {
+func (tq *TaskQuery) Order(o ...fluenttask.OrderOption) *TaskQuery {
 	tq.order = append(tq.order, o...)
 	return tq
 }
@@ -71,7 +71,7 @@ func (tq *TaskQuery) First(ctx context.Context) (*Task, error) {
 		return nil, err
 	}
 	if len(nodes) == 0 {
-		return nil, &NotFoundError{enttask.Label}
+		return nil, &NotFoundError{fluenttask.Label}
 	}
 	return nodes[0], nil
 }
@@ -93,7 +93,7 @@ func (tq *TaskQuery) FirstID(ctx context.Context) (id int, err error) {
 		return
 	}
 	if len(ids) == 0 {
-		err = &NotFoundError{enttask.Label}
+		err = &NotFoundError{fluenttask.Label}
 		return
 	}
 	return ids[0], nil
@@ -120,9 +120,9 @@ func (tq *TaskQuery) Only(ctx context.Context) (*Task, error) {
 	case 1:
 		return nodes[0], nil
 	case 0:
-		return nil, &NotFoundError{enttask.Label}
+		return nil, &NotFoundError{fluenttask.Label}
 	default:
-		return nil, &NotSingularError{enttask.Label}
+		return nil, &NotSingularError{fluenttask.Label}
 	}
 }
 
@@ -147,9 +147,9 @@ func (tq *TaskQuery) OnlyID(ctx context.Context) (id int, err error) {
 	case 1:
 		id = ids[0]
 	case 0:
-		err = &NotFoundError{enttask.Label}
+		err = &NotFoundError{fluenttask.Label}
 	default:
-		err = &NotSingularError{enttask.Label}
+		err = &NotSingularError{fluenttask.Label}
 	}
 	return
 }
@@ -188,7 +188,7 @@ func (tq *TaskQuery) IDs(ctx context.Context) (ids []int, err error) {
 		tq.Unique(true)
 	}
 	ctx = setContextOp(ctx, tq.ctx, fluent.OpQueryIDs)
-	if err = tq.Select(enttask.FieldID).Scan(ctx, &ids); err != nil {
+	if err = tq.Select(fluenttask.FieldID).Scan(ctx, &ids); err != nil {
 		return nil, err
 	}
 	return ids, nil
@@ -252,7 +252,7 @@ func (tq *TaskQuery) Clone() *TaskQuery {
 	return &TaskQuery{
 		config:     tq.config,
 		ctx:        tq.ctx.Clone(),
-		order:      append([]enttask.OrderOption{}, tq.order...),
+		order:      append([]fluenttask.OrderOption{}, tq.order...),
 		inters:     append([]Interceptor{}, tq.inters...),
 		predicates: append([]predicate.Task{}, tq.predicates...),
 		// clone intermediate query.
@@ -273,14 +273,14 @@ func (tq *TaskQuery) Clone() *TaskQuery {
 //	}
 //
 //	client.Task.Query().
-//		GroupBy(enttask.FieldPriority).
+//		GroupBy(fluenttask.FieldPriority).
 //		Aggregate(fluent.Count()).
 //		Scan(ctx, &v)
 func (tq *TaskQuery) GroupBy(field string, fields ...string) *TaskGroupBy {
 	tq.ctx.Fields = append([]string{field}, fields...)
 	grbuild := &TaskGroupBy{build: tq}
 	grbuild.flds = &tq.ctx.Fields
-	grbuild.label = enttask.Label
+	grbuild.label = fluenttask.Label
 	grbuild.scan = grbuild.Scan
 	return grbuild
 }
@@ -295,12 +295,12 @@ func (tq *TaskQuery) GroupBy(field string, fields ...string) *TaskGroupBy {
 //	}
 //
 //	client.Task.Query().
-//		Select(enttask.FieldPriority).
+//		Select(fluenttask.FieldPriority).
 //		Scan(ctx, &v)
 func (tq *TaskQuery) Select(fields ...string) *TaskSelect {
 	tq.ctx.Fields = append(tq.ctx.Fields, fields...)
 	sbuild := &TaskSelect{TaskQuery: tq}
-	sbuild.label = enttask.Label
+	sbuild.label = fluenttask.Label
 	sbuild.flds, sbuild.scan = &tq.ctx.Fields, sbuild.Scan
 	return sbuild
 }
@@ -322,7 +322,7 @@ func (tq *TaskQuery) prepareQuery(ctx context.Context) error {
 		}
 	}
 	for _, f := range tq.ctx.Fields {
-		if !enttask.ValidColumn(f) {
+		if !fluenttask.ValidColumn(f) {
 			return &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 		}
 	}
@@ -377,7 +377,7 @@ func (tq *TaskQuery) sqlCount(ctx context.Context) (int, error) {
 }
 
 func (tq *TaskQuery) querySpec() *sqlgraph.QuerySpec {
-	_spec := sqlgraph.NewQuerySpec(enttask.Table, enttask.Columns, sqlgraph.NewFieldSpec(enttask.FieldID, field.TypeInt))
+	_spec := sqlgraph.NewQuerySpec(fluenttask.Table, fluenttask.Columns, sqlgraph.NewFieldSpec(fluenttask.FieldID, field.TypeInt))
 	_spec.From = tq.sql
 	if unique := tq.ctx.Unique; unique != nil {
 		_spec.Unique = *unique
@@ -386,9 +386,9 @@ func (tq *TaskQuery) querySpec() *sqlgraph.QuerySpec {
 	}
 	if fields := tq.ctx.Fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
-		_spec.Node.Columns = append(_spec.Node.Columns, enttask.FieldID)
+		_spec.Node.Columns = append(_spec.Node.Columns, fluenttask.FieldID)
 		for i := range fields {
-			if fields[i] != enttask.FieldID {
+			if fields[i] != fluenttask.FieldID {
 				_spec.Node.Columns = append(_spec.Node.Columns, fields[i])
 			}
 		}
@@ -418,10 +418,10 @@ func (tq *TaskQuery) querySpec() *sqlgraph.QuerySpec {
 
 func (tq *TaskQuery) sqlQuery(ctx context.Context) *sql.Selector {
 	builder := sql.Dialect(tq.driver.Dialect())
-	t1 := builder.Table(enttask.Table)
+	t1 := builder.Table(fluenttask.Table)
 	columns := tq.ctx.Fields
 	if len(columns) == 0 {
-		columns = enttask.Columns
+		columns = fluenttask.Columns
 	}
 	selector := builder.Select(t1.Columns(columns...)...).From(t1)
 	if tq.sql != nil {

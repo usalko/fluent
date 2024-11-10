@@ -101,10 +101,10 @@ func (fu *FriendshipUpdate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (fu *FriendshipUpdate) check() error {
 	if fu.mutation.UserCleared() && len(fu.mutation.UserIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "Friendship.user"`)
+		return errors.New(`fluent: clearing a required unique edge "Friendship.user"`)
 	}
 	if fu.mutation.FriendCleared() && len(fu.mutation.FriendIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "Friendship.friend"`)
+		return errors.New(`fluent: clearing a required unique edge "Friendship.friend"`)
 	}
 	return nil
 }
@@ -233,10 +233,10 @@ func (fuo *FriendshipUpdateOne) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (fuo *FriendshipUpdateOne) check() error {
 	if fuo.mutation.UserCleared() && len(fuo.mutation.UserIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "Friendship.user"`)
+		return errors.New(`fluent: clearing a required unique edge "Friendship.user"`)
 	}
 	if fuo.mutation.FriendCleared() && len(fuo.mutation.FriendIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "Friendship.friend"`)
+		return errors.New(`fluent: clearing a required unique edge "Friendship.friend"`)
 	}
 	return nil
 }
@@ -248,7 +248,7 @@ func (fuo *FriendshipUpdateOne) sqlSave(ctx context.Context) (_node *Friendship,
 	_spec := sqlgraph.NewUpdateSpec(friendship.Table, friendship.Columns, sqlgraph.NewFieldSpec(friendship.FieldID, field.TypeInt))
 	id, ok := fuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Friendship.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Friendship.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := fuo.fields; len(fields) > 0 {

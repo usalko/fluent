@@ -19,11 +19,11 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/billproduct"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/predicate"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/billproduct"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/predicate"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -265,8 +265,9 @@ func (bpq *BillProductQuery) Clone() *BillProductQuery {
 		inters:     append([]Interceptor{}, bpq.inters...),
 		predicates: append([]predicate.BillProduct{}, bpq.predicates...),
 		// clone intermediate query.
-		sql:  bpq.sql.Clone(),
-		path: bpq.path,
+		sql:       bpq.sql.Clone(),
+		path:      bpq.path,
+		modifiers: append([]func(*sql.Selector){}, bpq.modifiers...),
 	}
 }
 

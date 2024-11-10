@@ -65,7 +65,7 @@ func (ric *RelationshipInfoCreate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (ric *RelationshipInfoCreate) check() error {
 	if _, ok := ric.mutation.Text(); !ok {
-		return &ValidationError{Name: "text", err: errors.New(`ent: missing required field "RelationshipInfo.text"`)}
+		return &ValidationError{Name: "text", err: errors.New(`fluent: missing required field "RelationshipInfo.text"`)}
 	}
 	return nil
 }

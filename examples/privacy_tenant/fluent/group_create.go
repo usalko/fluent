@@ -111,13 +111,13 @@ func (gc *GroupCreate) defaults() error {
 // check runs all checks and user-defined validators on the builder.
 func (gc *GroupCreate) check() error {
 	if _, ok := gc.mutation.TenantID(); !ok {
-		return &ValidationError{Name: "tenant_id", err: errors.New(`ent: missing required field "Group.tenant_id"`)}
+		return &ValidationError{Name: "tenant_id", err: errors.New(`fluent: missing required field "Group.tenant_id"`)}
 	}
 	if _, ok := gc.mutation.Name(); !ok {
-		return &ValidationError{Name: "name", err: errors.New(`ent: missing required field "Group.name"`)}
+		return &ValidationError{Name: "name", err: errors.New(`fluent: missing required field "Group.name"`)}
 	}
 	if len(gc.mutation.TenantIDs()) == 0 {
-		return &ValidationError{Name: "tenant", err: errors.New(`ent: missing required edge "Group.tenant"`)}
+		return &ValidationError{Name: "tenant", err: errors.New(`fluent: missing required edge "Group.tenant"`)}
 	}
 	return nil
 }

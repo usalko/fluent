@@ -19,6 +19,8 @@ import (
 	"database/sql/driver"
 	"fmt"
 
+	"github.com/99designs/gqlgen/graphql"
+	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/fluent_gql"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/billproduct"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/category"
@@ -29,8 +31,6 @@ import (
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/todo"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/user"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/workspace"
-	"github.com/usalko/fluent/dialect/sql"
-	"github.com/99designs/gqlgen/graphql"
 )
 
 // CollectFields tells the query-builder to eagerly load connected nodes by resolver context.

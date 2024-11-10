@@ -364,7 +364,7 @@ func (evsuo *ExValueScanUpdateOne) gremlinSave(ctx context.Context) (*ExValueSca
 	res := &gremlin.Response{}
 	id, ok := evsuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "ExValueScan.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "ExValueScan.id" for update`)}
 	}
 	query, bindings := evsuo.gremlin(id).Query()
 	if err := evsuo.driver.Exec(ctx, query, bindings, res); err != nil {

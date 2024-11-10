@@ -19,6 +19,8 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/99designs/gqlgen/graphql"
+	"github.com/hashicorp/go-multierror"
 	"github.com/usalko/fluent/fluent_gql"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/billproduct"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/category"
@@ -29,8 +31,6 @@ import (
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/schema/uintgql"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/todo"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/user"
-	"github.com/99designs/gqlgen/graphql"
-	"github.com/hashicorp/go-multierror"
 )
 
 // Noder wraps the basic Node method.

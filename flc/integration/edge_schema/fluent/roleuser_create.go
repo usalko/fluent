@@ -107,19 +107,19 @@ func (ruc *RoleUserCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (ruc *RoleUserCreate) check() error {
 	if _, ok := ruc.mutation.CreatedAt(); !ok {
-		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "RoleUser.created_at"`)}
+		return &ValidationError{Name: "created_at", err: errors.New(`fluent: missing required field "RoleUser.created_at"`)}
 	}
 	if _, ok := ruc.mutation.RoleID(); !ok {
-		return &ValidationError{Name: "role_id", err: errors.New(`ent: missing required field "RoleUser.role_id"`)}
+		return &ValidationError{Name: "role_id", err: errors.New(`fluent: missing required field "RoleUser.role_id"`)}
 	}
 	if _, ok := ruc.mutation.UserID(); !ok {
-		return &ValidationError{Name: "user_id", err: errors.New(`ent: missing required field "RoleUser.user_id"`)}
+		return &ValidationError{Name: "user_id", err: errors.New(`fluent: missing required field "RoleUser.user_id"`)}
 	}
 	if len(ruc.mutation.RoleIDs()) == 0 {
-		return &ValidationError{Name: "role", err: errors.New(`ent: missing required edge "RoleUser.role"`)}
+		return &ValidationError{Name: "role", err: errors.New(`fluent: missing required edge "RoleUser.role"`)}
 	}
 	if len(ruc.mutation.UserIDs()) == 0 {
-		return &ValidationError{Name: "user", err: errors.New(`ent: missing required edge "RoleUser.user"`)}
+		return &ValidationError{Name: "user", err: errors.New(`fluent: missing required edge "RoleUser.user"`)}
 	}
 	return nil
 }

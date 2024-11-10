@@ -154,7 +154,7 @@ func (pc *PetCreate) defaults() {
 func (pc *PetCreate) check() error {
 	if v, ok := pc.mutation.ID(); ok {
 		if err := pet.IDValidator(v); err != nil {
-			return &ValidationError{Name: "id", err: fmt.Errorf(`ent: validator failed for field "Pet.id": %w`, err)}
+			return &ValidationError{Name: "id", err: fmt.Errorf(`fluent: validator failed for field "Pet.id": %w`, err)}
 		}
 	}
 	return nil

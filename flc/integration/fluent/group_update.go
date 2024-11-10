@@ -285,21 +285,21 @@ func (gu *GroupUpdate) ExecX(ctx context.Context) {
 func (gu *GroupUpdate) check() error {
 	if v, ok := gu.mutation.GetType(); ok {
 		if err := group.TypeValidator(v); err != nil {
-			return &ValidationError{Name: "type", err: fmt.Errorf(`ent: validator failed for field "Group.type": %w`, err)}
+			return &ValidationError{Name: "type", err: fmt.Errorf(`fluent: validator failed for field "Group.type": %w`, err)}
 		}
 	}
 	if v, ok := gu.mutation.MaxUsers(); ok {
 		if err := group.MaxUsersValidator(v); err != nil {
-			return &ValidationError{Name: "max_users", err: fmt.Errorf(`ent: validator failed for field "Group.max_users": %w`, err)}
+			return &ValidationError{Name: "max_users", err: fmt.Errorf(`fluent: validator failed for field "Group.max_users": %w`, err)}
 		}
 	}
 	if v, ok := gu.mutation.Name(); ok {
 		if err := group.NameValidator(v); err != nil {
-			return &ValidationError{Name: "name", err: fmt.Errorf(`ent: validator failed for field "Group.name": %w`, err)}
+			return &ValidationError{Name: "name", err: fmt.Errorf(`fluent: validator failed for field "Group.name": %w`, err)}
 		}
 	}
 	if gu.mutation.InfoCleared() && len(gu.mutation.InfoIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "Group.info"`)
+		return errors.New(`fluent: clearing a required unique edge "Group.info"`)
 	}
 	return nil
 }
@@ -795,21 +795,21 @@ func (guo *GroupUpdateOne) ExecX(ctx context.Context) {
 func (guo *GroupUpdateOne) check() error {
 	if v, ok := guo.mutation.GetType(); ok {
 		if err := group.TypeValidator(v); err != nil {
-			return &ValidationError{Name: "type", err: fmt.Errorf(`ent: validator failed for field "Group.type": %w`, err)}
+			return &ValidationError{Name: "type", err: fmt.Errorf(`fluent: validator failed for field "Group.type": %w`, err)}
 		}
 	}
 	if v, ok := guo.mutation.MaxUsers(); ok {
 		if err := group.MaxUsersValidator(v); err != nil {
-			return &ValidationError{Name: "max_users", err: fmt.Errorf(`ent: validator failed for field "Group.max_users": %w`, err)}
+			return &ValidationError{Name: "max_users", err: fmt.Errorf(`fluent: validator failed for field "Group.max_users": %w`, err)}
 		}
 	}
 	if v, ok := guo.mutation.Name(); ok {
 		if err := group.NameValidator(v); err != nil {
-			return &ValidationError{Name: "name", err: fmt.Errorf(`ent: validator failed for field "Group.name": %w`, err)}
+			return &ValidationError{Name: "name", err: fmt.Errorf(`fluent: validator failed for field "Group.name": %w`, err)}
 		}
 	}
 	if guo.mutation.InfoCleared() && len(guo.mutation.InfoIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "Group.info"`)
+		return errors.New(`fluent: clearing a required unique edge "Group.info"`)
 	}
 	return nil
 }
@@ -827,7 +827,7 @@ func (guo *GroupUpdateOne) sqlSave(ctx context.Context) (_node *Group, err error
 	_spec := sqlgraph.NewUpdateSpec(group.Table, group.Columns, sqlgraph.NewFieldSpec(group.FieldID, field.TypeInt))
 	id, ok := guo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Group.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Group.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := guo.fields; len(fields) > 0 {

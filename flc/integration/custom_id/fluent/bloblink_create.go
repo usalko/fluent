@@ -11,12 +11,12 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/blob"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/bloblink"
 	"github.com/usalko/fluent/schema/field"
-	"github.com/google/uuid"
 )
 
 // BlobLinkCreate is the builder for creating a BlobLink entity.
@@ -107,19 +107,19 @@ func (blc *BlobLinkCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (blc *BlobLinkCreate) check() error {
 	if _, ok := blc.mutation.CreatedAt(); !ok {
-		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "BlobLink.created_at"`)}
+		return &ValidationError{Name: "created_at", err: errors.New(`fluent: missing required field "BlobLink.created_at"`)}
 	}
 	if _, ok := blc.mutation.BlobID(); !ok {
-		return &ValidationError{Name: "blob_id", err: errors.New(`ent: missing required field "BlobLink.blob_id"`)}
+		return &ValidationError{Name: "blob_id", err: errors.New(`fluent: missing required field "BlobLink.blob_id"`)}
 	}
 	if _, ok := blc.mutation.LinkID(); !ok {
-		return &ValidationError{Name: "link_id", err: errors.New(`ent: missing required field "BlobLink.link_id"`)}
+		return &ValidationError{Name: "link_id", err: errors.New(`fluent: missing required field "BlobLink.link_id"`)}
 	}
 	if len(blc.mutation.BlobIDs()) == 0 {
-		return &ValidationError{Name: "blob", err: errors.New(`ent: missing required edge "BlobLink.blob"`)}
+		return &ValidationError{Name: "blob", err: errors.New(`fluent: missing required edge "BlobLink.blob"`)}
 	}
 	if len(blc.mutation.LinkIDs()) == 0 {
-		return &ValidationError{Name: "link", err: errors.New(`ent: missing required edge "BlobLink.link"`)}
+		return &ValidationError{Name: "link", err: errors.New(`fluent: missing required edge "BlobLink.link"`)}
 	}
 	return nil
 }

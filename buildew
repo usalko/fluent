@@ -83,7 +83,14 @@ if [ "$COMMAND" == "version" ]; then
     sed -i "s/$FLUENT_PACKAGE_VERSION/$NEW_FLUENT_PACKAGE_VERSION/g" ./.env
 fi
 
+if [ "$COMMAND" == "generate" ] || [ "$COMMAND" == "gen" ]; then
+    SCRIPTS=($(find . -type f -name "gen.go"))
+    for SCRIPT in "${SCRIPTS[@]}"; do
+        go generate $SCRIPT
+    done
+fi
+
 # =================================================================================================
 
-AVAILABLE_COMMANDS="test version"
+AVAILABLE_COMMANDS="test version gen"
 [[ $AVAILABLE_COMMANDS =~ (^| )$COMMAND($| ) ]] && echo 'Ok' || (echo 'Unknown command: ' "$COMMAND" && echo 'Available commands are: ' "$AVAILABLE_COMMANDS")

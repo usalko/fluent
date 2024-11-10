@@ -122,22 +122,22 @@ func (ftc *FileTypeCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (ftc *FileTypeCreate) check() error {
 	if _, ok := ftc.mutation.Name(); !ok {
-		return &ValidationError{Name: "name", err: errors.New(`ent: missing required field "FileType.name"`)}
+		return &ValidationError{Name: "name", err: errors.New(`fluent: missing required field "FileType.name"`)}
 	}
 	if _, ok := ftc.mutation.GetType(); !ok {
-		return &ValidationError{Name: "type", err: errors.New(`ent: missing required field "FileType.type"`)}
+		return &ValidationError{Name: "type", err: errors.New(`fluent: missing required field "FileType.type"`)}
 	}
 	if v, ok := ftc.mutation.GetType(); ok {
 		if err := filetype.TypeValidator(v); err != nil {
-			return &ValidationError{Name: "type", err: fmt.Errorf(`ent: validator failed for field "FileType.type": %w`, err)}
+			return &ValidationError{Name: "type", err: fmt.Errorf(`fluent: validator failed for field "FileType.type": %w`, err)}
 		}
 	}
 	if _, ok := ftc.mutation.State(); !ok {
-		return &ValidationError{Name: "state", err: errors.New(`ent: missing required field "FileType.state"`)}
+		return &ValidationError{Name: "state", err: errors.New(`fluent: missing required field "FileType.state"`)}
 	}
 	if v, ok := ftc.mutation.State(); ok {
 		if err := filetype.StateValidator(v); err != nil {
-			return &ValidationError{Name: "state", err: fmt.Errorf(`ent: validator failed for field "FileType.state": %w`, err)}
+			return &ValidationError{Name: "state", err: fmt.Errorf(`fluent: validator failed for field "FileType.state": %w`, err)}
 		}
 	}
 	return nil

@@ -147,19 +147,19 @@ func (cc *CardCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (cc *CardCreate) check() error {
 	if _, ok := cc.mutation.GetType(); !ok {
-		return &ValidationError{Name: "type", err: errors.New(`ent: missing required field "Card.type"`)}
+		return &ValidationError{Name: "type", err: errors.New(`fluent: missing required field "Card.type"`)}
 	}
 	if _, ok := cc.mutation.NumberHash(); !ok {
-		return &ValidationError{Name: "number_hash", err: errors.New(`ent: missing required field "Card.number_hash"`)}
+		return &ValidationError{Name: "number_hash", err: errors.New(`fluent: missing required field "Card.number_hash"`)}
 	}
 	if _, ok := cc.mutation.CvvHash(); !ok {
-		return &ValidationError{Name: "cvv_hash", err: errors.New(`ent: missing required field "Card.cvv_hash"`)}
+		return &ValidationError{Name: "cvv_hash", err: errors.New(`fluent: missing required field "Card.cvv_hash"`)}
 	}
 	if _, ok := cc.mutation.OwnerID(); !ok {
-		return &ValidationError{Name: "owner_id", err: errors.New(`ent: missing required field "Card.owner_id"`)}
+		return &ValidationError{Name: "owner_id", err: errors.New(`fluent: missing required field "Card.owner_id"`)}
 	}
 	if len(cc.mutation.OwnerIDs()) == 0 {
-		return &ValidationError{Name: "owner", err: errors.New(`ent: missing required edge "Card.owner"`)}
+		return &ValidationError{Name: "owner", err: errors.New(`fluent: missing required edge "Card.owner"`)}
 	}
 	return nil
 }

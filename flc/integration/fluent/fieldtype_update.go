@@ -13,6 +13,7 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/dialect/sql/sqljson"
@@ -21,7 +22,6 @@ import (
 	"github.com/usalko/fluent/flc/integration/fluent/role"
 	"github.com/usalko/fluent/flc/integration/fluent/schema"
 	"github.com/usalko/fluent/schema/field"
-	"github.com/google/uuid"
 )
 
 // FieldTypeUpdate is the builder for updating FieldType entities.
@@ -1394,47 +1394,47 @@ func (ftu *FieldTypeUpdate) defaults() {
 func (ftu *FieldTypeUpdate) check() error {
 	if v, ok := ftu.mutation.ValidateOptionalInt32(); ok {
 		if err := fieldtype.ValidateOptionalInt32Validator(v); err != nil {
-			return &ValidationError{Name: "validate_optional_int32", err: fmt.Errorf(`ent: validator failed for field "FieldType.validate_optional_int32": %w`, err)}
+			return &ValidationError{Name: "validate_optional_int32", err: fmt.Errorf(`fluent: validator failed for field "FieldType.validate_optional_int32": %w`, err)}
 		}
 	}
 	if v, ok := ftu.mutation.State(); ok {
 		if err := fieldtype.StateValidator(v); err != nil {
-			return &ValidationError{Name: "state", err: fmt.Errorf(`ent: validator failed for field "FieldType.state": %w`, err)}
+			return &ValidationError{Name: "state", err: fmt.Errorf(`fluent: validator failed for field "FieldType.state": %w`, err)}
 		}
 	}
 	if v, ok := ftu.mutation.MAC(); ok {
 		if err := fieldtype.MACValidator(v.String()); err != nil {
-			return &ValidationError{Name: "mac", err: fmt.Errorf(`ent: validator failed for field "FieldType.mac": %w`, err)}
+			return &ValidationError{Name: "mac", err: fmt.Errorf(`fluent: validator failed for field "FieldType.mac": %w`, err)}
 		}
 	}
 	if v, ok := ftu.mutation.Ndir(); ok {
 		if err := fieldtype.NdirValidator(string(v)); err != nil {
-			return &ValidationError{Name: "ndir", err: fmt.Errorf(`ent: validator failed for field "FieldType.ndir": %w`, err)}
+			return &ValidationError{Name: "ndir", err: fmt.Errorf(`fluent: validator failed for field "FieldType.ndir": %w`, err)}
 		}
 	}
 	if v, ok := ftu.mutation.Link(); ok {
 		if err := fieldtype.LinkValidator(v.String()); err != nil {
-			return &ValidationError{Name: "link", err: fmt.Errorf(`ent: validator failed for field "FieldType.link": %w`, err)}
+			return &ValidationError{Name: "link", err: fmt.Errorf(`fluent: validator failed for field "FieldType.link": %w`, err)}
 		}
 	}
 	if v, ok := ftu.mutation.RawData(); ok {
 		if err := fieldtype.RawDataValidator(v); err != nil {
-			return &ValidationError{Name: "raw_data", err: fmt.Errorf(`ent: validator failed for field "FieldType.raw_data": %w`, err)}
+			return &ValidationError{Name: "raw_data", err: fmt.Errorf(`fluent: validator failed for field "FieldType.raw_data": %w`, err)}
 		}
 	}
 	if v, ok := ftu.mutation.IP(); ok {
 		if err := fieldtype.IPValidator([]byte(v)); err != nil {
-			return &ValidationError{Name: "ip", err: fmt.Errorf(`ent: validator failed for field "FieldType.ip": %w`, err)}
+			return &ValidationError{Name: "ip", err: fmt.Errorf(`fluent: validator failed for field "FieldType.ip": %w`, err)}
 		}
 	}
 	if v, ok := ftu.mutation.Role(); ok {
 		if err := fieldtype.RoleValidator(v); err != nil {
-			return &ValidationError{Name: "role", err: fmt.Errorf(`ent: validator failed for field "FieldType.role": %w`, err)}
+			return &ValidationError{Name: "role", err: fmt.Errorf(`fluent: validator failed for field "FieldType.role": %w`, err)}
 		}
 	}
 	if v, ok := ftu.mutation.Priority(); ok {
 		if err := fieldtype.PriorityValidator(v); err != nil {
-			return &ValidationError{Name: "priority", err: fmt.Errorf(`ent: validator failed for field "FieldType.priority": %w`, err)}
+			return &ValidationError{Name: "priority", err: fmt.Errorf(`fluent: validator failed for field "FieldType.priority": %w`, err)}
 		}
 	}
 	return nil
@@ -3307,47 +3307,47 @@ func (ftuo *FieldTypeUpdateOne) defaults() {
 func (ftuo *FieldTypeUpdateOne) check() error {
 	if v, ok := ftuo.mutation.ValidateOptionalInt32(); ok {
 		if err := fieldtype.ValidateOptionalInt32Validator(v); err != nil {
-			return &ValidationError{Name: "validate_optional_int32", err: fmt.Errorf(`ent: validator failed for field "FieldType.validate_optional_int32": %w`, err)}
+			return &ValidationError{Name: "validate_optional_int32", err: fmt.Errorf(`fluent: validator failed for field "FieldType.validate_optional_int32": %w`, err)}
 		}
 	}
 	if v, ok := ftuo.mutation.State(); ok {
 		if err := fieldtype.StateValidator(v); err != nil {
-			return &ValidationError{Name: "state", err: fmt.Errorf(`ent: validator failed for field "FieldType.state": %w`, err)}
+			return &ValidationError{Name: "state", err: fmt.Errorf(`fluent: validator failed for field "FieldType.state": %w`, err)}
 		}
 	}
 	if v, ok := ftuo.mutation.MAC(); ok {
 		if err := fieldtype.MACValidator(v.String()); err != nil {
-			return &ValidationError{Name: "mac", err: fmt.Errorf(`ent: validator failed for field "FieldType.mac": %w`, err)}
+			return &ValidationError{Name: "mac", err: fmt.Errorf(`fluent: validator failed for field "FieldType.mac": %w`, err)}
 		}
 	}
 	if v, ok := ftuo.mutation.Ndir(); ok {
 		if err := fieldtype.NdirValidator(string(v)); err != nil {
-			return &ValidationError{Name: "ndir", err: fmt.Errorf(`ent: validator failed for field "FieldType.ndir": %w`, err)}
+			return &ValidationError{Name: "ndir", err: fmt.Errorf(`fluent: validator failed for field "FieldType.ndir": %w`, err)}
 		}
 	}
 	if v, ok := ftuo.mutation.Link(); ok {
 		if err := fieldtype.LinkValidator(v.String()); err != nil {
-			return &ValidationError{Name: "link", err: fmt.Errorf(`ent: validator failed for field "FieldType.link": %w`, err)}
+			return &ValidationError{Name: "link", err: fmt.Errorf(`fluent: validator failed for field "FieldType.link": %w`, err)}
 		}
 	}
 	if v, ok := ftuo.mutation.RawData(); ok {
 		if err := fieldtype.RawDataValidator(v); err != nil {
-			return &ValidationError{Name: "raw_data", err: fmt.Errorf(`ent: validator failed for field "FieldType.raw_data": %w`, err)}
+			return &ValidationError{Name: "raw_data", err: fmt.Errorf(`fluent: validator failed for field "FieldType.raw_data": %w`, err)}
 		}
 	}
 	if v, ok := ftuo.mutation.IP(); ok {
 		if err := fieldtype.IPValidator([]byte(v)); err != nil {
-			return &ValidationError{Name: "ip", err: fmt.Errorf(`ent: validator failed for field "FieldType.ip": %w`, err)}
+			return &ValidationError{Name: "ip", err: fmt.Errorf(`fluent: validator failed for field "FieldType.ip": %w`, err)}
 		}
 	}
 	if v, ok := ftuo.mutation.Role(); ok {
 		if err := fieldtype.RoleValidator(v); err != nil {
-			return &ValidationError{Name: "role", err: fmt.Errorf(`ent: validator failed for field "FieldType.role": %w`, err)}
+			return &ValidationError{Name: "role", err: fmt.Errorf(`fluent: validator failed for field "FieldType.role": %w`, err)}
 		}
 	}
 	if v, ok := ftuo.mutation.Priority(); ok {
 		if err := fieldtype.PriorityValidator(v); err != nil {
-			return &ValidationError{Name: "priority", err: fmt.Errorf(`ent: validator failed for field "FieldType.priority": %w`, err)}
+			return &ValidationError{Name: "priority", err: fmt.Errorf(`fluent: validator failed for field "FieldType.priority": %w`, err)}
 		}
 	}
 	return nil
@@ -3366,7 +3366,7 @@ func (ftuo *FieldTypeUpdateOne) sqlSave(ctx context.Context) (_node *FieldType, 
 	_spec := sqlgraph.NewUpdateSpec(fieldtype.Table, fieldtype.Columns, sqlgraph.NewFieldSpec(fieldtype.FieldID, field.TypeInt))
 	id, ok := ftuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "FieldType.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "FieldType.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := ftuo.fields; len(fields) > 0 {

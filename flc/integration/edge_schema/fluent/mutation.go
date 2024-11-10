@@ -12,6 +12,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/attachedfile"
@@ -32,7 +33,6 @@ import (
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/usergroup"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/usertweet"
-	"github.com/google/uuid"
 )
 
 const (

@@ -10,6 +10,7 @@ import (
 	"errors"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/dialect/gremlin"
 	"github.com/usalko/fluent/dialect/gremlin/graph/dsl"
 	"github.com/usalko/fluent/dialect/gremlin/graph/dsl/__"
@@ -18,7 +19,6 @@ import (
 	"github.com/usalko/fluent/flc/integration/gremlin/fluent/pet"
 	"github.com/usalko/fluent/flc/integration/gremlin/fluent/predicate"
 	"github.com/usalko/fluent/flc/integration/gremlin/fluent/user"
-	"github.com/google/uuid"
 )
 
 // PetUpdate is the builder for updating Pet entities.
@@ -537,7 +537,7 @@ func (puo *PetUpdateOne) gremlinSave(ctx context.Context) (*Pet, error) {
 	res := &gremlin.Response{}
 	id, ok := puo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Pet.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Pet.id" for update`)}
 	}
 	query, bindings := puo.gremlin(id).Query()
 	if err := puo.driver.Exec(ctx, query, bindings, res); err != nil {

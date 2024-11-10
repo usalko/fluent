@@ -402,7 +402,7 @@ func (evsuo *ExValueScanUpdateOne) sqlSave(ctx context.Context) (_node *ExValueS
 	_spec := sqlgraph.NewUpdateSpec(exvaluescan.Table, exvaluescan.Columns, sqlgraph.NewFieldSpec(exvaluescan.FieldID, field.TypeInt))
 	id, ok := evsuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "ExValueScan.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "ExValueScan.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := evsuo.fields; len(fields) > 0 {

@@ -132,10 +132,10 @@ func (ttu *TweetTagUpdate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (ttu *TweetTagUpdate) check() error {
 	if ttu.mutation.TagCleared() && len(ttu.mutation.TagIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "TweetTag.tag"`)
+		return errors.New(`fluent: clearing a required unique edge "TweetTag.tag"`)
 	}
 	if ttu.mutation.TweetCleared() && len(ttu.mutation.TweetIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "TweetTag.tweet"`)
+		return errors.New(`fluent: clearing a required unique edge "TweetTag.tweet"`)
 	}
 	return nil
 }
@@ -345,10 +345,10 @@ func (ttuo *TweetTagUpdateOne) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (ttuo *TweetTagUpdateOne) check() error {
 	if ttuo.mutation.TagCleared() && len(ttuo.mutation.TagIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "TweetTag.tag"`)
+		return errors.New(`fluent: clearing a required unique edge "TweetTag.tag"`)
 	}
 	if ttuo.mutation.TweetCleared() && len(ttuo.mutation.TweetIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "TweetTag.tweet"`)
+		return errors.New(`fluent: clearing a required unique edge "TweetTag.tweet"`)
 	}
 	return nil
 }
@@ -360,7 +360,7 @@ func (ttuo *TweetTagUpdateOne) sqlSave(ctx context.Context) (_node *TweetTag, er
 	_spec := sqlgraph.NewUpdateSpec(tweettag.Table, tweettag.Columns, sqlgraph.NewFieldSpec(tweettag.FieldID, field.TypeUUID))
 	id, ok := ttuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "TweetTag.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "TweetTag.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := ttuo.fields; len(fields) > 0 {

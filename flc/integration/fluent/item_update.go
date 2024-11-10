@@ -87,7 +87,7 @@ func (iu *ItemUpdate) ExecX(ctx context.Context) {
 func (iu *ItemUpdate) check() error {
 	if v, ok := iu.mutation.Text(); ok {
 		if err := item.TextValidator(v); err != nil {
-			return &ValidationError{Name: "text", err: fmt.Errorf(`ent: validator failed for field "Item.text": %w`, err)}
+			return &ValidationError{Name: "text", err: fmt.Errorf(`fluent: validator failed for field "Item.text": %w`, err)}
 		}
 	}
 	return nil
@@ -208,7 +208,7 @@ func (iuo *ItemUpdateOne) ExecX(ctx context.Context) {
 func (iuo *ItemUpdateOne) check() error {
 	if v, ok := iuo.mutation.Text(); ok {
 		if err := item.TextValidator(v); err != nil {
-			return &ValidationError{Name: "text", err: fmt.Errorf(`ent: validator failed for field "Item.text": %w`, err)}
+			return &ValidationError{Name: "text", err: fmt.Errorf(`fluent: validator failed for field "Item.text": %w`, err)}
 		}
 	}
 	return nil
@@ -227,7 +227,7 @@ func (iuo *ItemUpdateOne) sqlSave(ctx context.Context) (_node *Item, err error) 
 	_spec := sqlgraph.NewUpdateSpec(item.Table, item.Columns, sqlgraph.NewFieldSpec(item.FieldID, field.TypeString))
 	id, ok := iuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Item.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Item.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := iuo.fields; len(fields) > 0 {

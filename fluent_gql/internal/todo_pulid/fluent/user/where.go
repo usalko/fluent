@@ -15,11 +15,11 @@
 package user
 
 import (
-	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/predicate"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/schema/pulid"
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
-	"github.com/google/uuid"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/predicate"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/schema/pulid"
 )
 
 // ID filters vertices based on their ID field.

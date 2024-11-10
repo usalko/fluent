@@ -16,7 +16,7 @@ import (
 	"github.com/usalko/fluent/dialect/gremlin/graph/dsl/g"
 	"github.com/usalko/fluent/flc/integration/fluent/schema/task"
 	"github.com/usalko/fluent/flc/integration/gremlin/fluent/predicate"
-	enttask "github.com/usalko/fluent/flc/integration/gremlin/fluent/task"
+	fluenttask "github.com/usalko/fluent/flc/integration/gremlin/fluent/task"
 )
 
 // TaskUpdate is the builder for updating Task entities.
@@ -209,12 +209,12 @@ func (tu *TaskUpdate) ExecX(ctx context.Context) {
 func (tu *TaskUpdate) check() error {
 	if v, ok := tu.mutation.Priority(); ok {
 		if err := v.Validate(); err != nil {
-			return &ValidationError{Name: "priority", err: fmt.Errorf(`ent: validator failed for field "Task.priority": %w`, err)}
+			return &ValidationError{Name: "priority", err: fmt.Errorf(`fluent: validator failed for field "Task.priority": %w`, err)}
 		}
 	}
 	if v, ok := tu.mutation.GetOp(); ok {
-		if err := enttask.OpValidator(v); err != nil {
-			return &ValidationError{Name: "op", err: fmt.Errorf(`ent: validator failed for field "Task.op": %w`, err)}
+		if err := fluenttask.OpValidator(v); err != nil {
+			return &ValidationError{Name: "op", err: fmt.Errorf(`fluent: validator failed for field "Task.op": %w`, err)}
 		}
 	}
 	return nil
@@ -237,7 +237,7 @@ func (tu *TaskUpdate) gremlinSave(ctx context.Context) (int, error) {
 }
 
 func (tu *TaskUpdate) gremlin() *dsl.Traversal {
-	v := g.V().HasLabel(enttask.Label)
+	v := g.V().HasLabel(fluenttask.Label)
 	for _, p := range tu.mutation.predicates {
 		p(v)
 	}
@@ -245,50 +245,50 @@ func (tu *TaskUpdate) gremlin() *dsl.Traversal {
 		trs []*dsl.Traversal
 	)
 	if value, ok := tu.mutation.Priority(); ok {
-		v.Property(dsl.Single, enttask.FieldPriority, value)
+		v.Property(dsl.Single, fluenttask.FieldPriority, value)
 	}
 	if value, ok := tu.mutation.AddedPriority(); ok {
-		v.Property(dsl.Single, enttask.FieldPriority, __.Union(__.Values(enttask.FieldPriority), __.Constant(value)).Sum())
+		v.Property(dsl.Single, fluenttask.FieldPriority, __.Union(__.Values(fluenttask.FieldPriority), __.Constant(value)).Sum())
 	}
 	if value, ok := tu.mutation.Priorities(); ok {
-		v.Property(dsl.Single, enttask.FieldPriorities, value)
+		v.Property(dsl.Single, fluenttask.FieldPriorities, value)
 	}
 	if value, ok := tu.mutation.Name(); ok {
-		v.Property(dsl.Single, enttask.FieldName, value)
+		v.Property(dsl.Single, fluenttask.FieldName, value)
 	}
 	if value, ok := tu.mutation.Owner(); ok {
-		v.Property(dsl.Single, enttask.FieldOwner, value)
+		v.Property(dsl.Single, fluenttask.FieldOwner, value)
 	}
 	if value, ok := tu.mutation.Order(); ok {
-		v.Property(dsl.Single, enttask.FieldOrder, value)
+		v.Property(dsl.Single, fluenttask.FieldOrder, value)
 	}
 	if value, ok := tu.mutation.AddedOrder(); ok {
-		v.Property(dsl.Single, enttask.FieldOrder, __.Union(__.Values(enttask.FieldOrder), __.Constant(value)).Sum())
+		v.Property(dsl.Single, fluenttask.FieldOrder, __.Union(__.Values(fluenttask.FieldOrder), __.Constant(value)).Sum())
 	}
 	if value, ok := tu.mutation.OrderOption(); ok {
-		v.Property(dsl.Single, enttask.FieldOrderOption, value)
+		v.Property(dsl.Single, fluenttask.FieldOrderOption, value)
 	}
 	if value, ok := tu.mutation.AddedOrderOption(); ok {
-		v.Property(dsl.Single, enttask.FieldOrderOption, __.Union(__.Values(enttask.FieldOrderOption), __.Constant(value)).Sum())
+		v.Property(dsl.Single, fluenttask.FieldOrderOption, __.Union(__.Values(fluenttask.FieldOrderOption), __.Constant(value)).Sum())
 	}
 	if value, ok := tu.mutation.GetOp(); ok {
-		v.Property(dsl.Single, enttask.FieldOp, value)
+		v.Property(dsl.Single, fluenttask.FieldOp, value)
 	}
 	var properties []any
 	if tu.mutation.PrioritiesCleared() {
-		properties = append(properties, enttask.FieldPriorities)
+		properties = append(properties, fluenttask.FieldPriorities)
 	}
 	if tu.mutation.NameCleared() {
-		properties = append(properties, enttask.FieldName)
+		properties = append(properties, fluenttask.FieldName)
 	}
 	if tu.mutation.OwnerCleared() {
-		properties = append(properties, enttask.FieldOwner)
+		properties = append(properties, fluenttask.FieldOwner)
 	}
 	if tu.mutation.OrderCleared() {
-		properties = append(properties, enttask.FieldOrder)
+		properties = append(properties, fluenttask.FieldOrder)
 	}
 	if tu.mutation.OrderOptionCleared() {
-		properties = append(properties, enttask.FieldOrderOption)
+		properties = append(properties, fluenttask.FieldOrderOption)
 	}
 	if len(properties) > 0 {
 		v.SideEffect(__.Properties(properties...).Drop())
@@ -496,12 +496,12 @@ func (tuo *TaskUpdateOne) ExecX(ctx context.Context) {
 func (tuo *TaskUpdateOne) check() error {
 	if v, ok := tuo.mutation.Priority(); ok {
 		if err := v.Validate(); err != nil {
-			return &ValidationError{Name: "priority", err: fmt.Errorf(`ent: validator failed for field "Task.priority": %w`, err)}
+			return &ValidationError{Name: "priority", err: fmt.Errorf(`fluent: validator failed for field "Task.priority": %w`, err)}
 		}
 	}
 	if v, ok := tuo.mutation.GetOp(); ok {
-		if err := enttask.OpValidator(v); err != nil {
-			return &ValidationError{Name: "op", err: fmt.Errorf(`ent: validator failed for field "Task.op": %w`, err)}
+		if err := fluenttask.OpValidator(v); err != nil {
+			return &ValidationError{Name: "op", err: fmt.Errorf(`fluent: validator failed for field "Task.op": %w`, err)}
 		}
 	}
 	return nil
@@ -514,7 +514,7 @@ func (tuo *TaskUpdateOne) gremlinSave(ctx context.Context) (*Task, error) {
 	res := &gremlin.Response{}
 	id, ok := tuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Task.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Task.id" for update`)}
 	}
 	query, bindings := tuo.gremlin(id).Query()
 	if err := tuo.driver.Exec(ctx, query, bindings, res); err != nil {
@@ -537,50 +537,50 @@ func (tuo *TaskUpdateOne) gremlin(id string) *dsl.Traversal {
 		trs []*dsl.Traversal
 	)
 	if value, ok := tuo.mutation.Priority(); ok {
-		v.Property(dsl.Single, enttask.FieldPriority, value)
+		v.Property(dsl.Single, fluenttask.FieldPriority, value)
 	}
 	if value, ok := tuo.mutation.AddedPriority(); ok {
-		v.Property(dsl.Single, enttask.FieldPriority, __.Union(__.Values(enttask.FieldPriority), __.Constant(value)).Sum())
+		v.Property(dsl.Single, fluenttask.FieldPriority, __.Union(__.Values(fluenttask.FieldPriority), __.Constant(value)).Sum())
 	}
 	if value, ok := tuo.mutation.Priorities(); ok {
-		v.Property(dsl.Single, enttask.FieldPriorities, value)
+		v.Property(dsl.Single, fluenttask.FieldPriorities, value)
 	}
 	if value, ok := tuo.mutation.Name(); ok {
-		v.Property(dsl.Single, enttask.FieldName, value)
+		v.Property(dsl.Single, fluenttask.FieldName, value)
 	}
 	if value, ok := tuo.mutation.Owner(); ok {
-		v.Property(dsl.Single, enttask.FieldOwner, value)
+		v.Property(dsl.Single, fluenttask.FieldOwner, value)
 	}
 	if value, ok := tuo.mutation.Order(); ok {
-		v.Property(dsl.Single, enttask.FieldOrder, value)
+		v.Property(dsl.Single, fluenttask.FieldOrder, value)
 	}
 	if value, ok := tuo.mutation.AddedOrder(); ok {
-		v.Property(dsl.Single, enttask.FieldOrder, __.Union(__.Values(enttask.FieldOrder), __.Constant(value)).Sum())
+		v.Property(dsl.Single, fluenttask.FieldOrder, __.Union(__.Values(fluenttask.FieldOrder), __.Constant(value)).Sum())
 	}
 	if value, ok := tuo.mutation.OrderOption(); ok {
-		v.Property(dsl.Single, enttask.FieldOrderOption, value)
+		v.Property(dsl.Single, fluenttask.FieldOrderOption, value)
 	}
 	if value, ok := tuo.mutation.AddedOrderOption(); ok {
-		v.Property(dsl.Single, enttask.FieldOrderOption, __.Union(__.Values(enttask.FieldOrderOption), __.Constant(value)).Sum())
+		v.Property(dsl.Single, fluenttask.FieldOrderOption, __.Union(__.Values(fluenttask.FieldOrderOption), __.Constant(value)).Sum())
 	}
 	if value, ok := tuo.mutation.GetOp(); ok {
-		v.Property(dsl.Single, enttask.FieldOp, value)
+		v.Property(dsl.Single, fluenttask.FieldOp, value)
 	}
 	var properties []any
 	if tuo.mutation.PrioritiesCleared() {
-		properties = append(properties, enttask.FieldPriorities)
+		properties = append(properties, fluenttask.FieldPriorities)
 	}
 	if tuo.mutation.NameCleared() {
-		properties = append(properties, enttask.FieldName)
+		properties = append(properties, fluenttask.FieldName)
 	}
 	if tuo.mutation.OwnerCleared() {
-		properties = append(properties, enttask.FieldOwner)
+		properties = append(properties, fluenttask.FieldOwner)
 	}
 	if tuo.mutation.OrderCleared() {
-		properties = append(properties, enttask.FieldOrder)
+		properties = append(properties, fluenttask.FieldOrder)
 	}
 	if tuo.mutation.OrderOptionCleared() {
-		properties = append(properties, enttask.FieldOrderOption)
+		properties = append(properties, fluenttask.FieldOrderOption)
 	}
 	if len(properties) > 0 {
 		v.SideEffect(__.Properties(properties...).Drop())

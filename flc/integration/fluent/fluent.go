@@ -33,7 +33,7 @@ import (
 	"github.com/usalko/fluent/flc/integration/fluent/pet"
 	"github.com/usalko/fluent/flc/integration/fluent/spec"
 
-	enttask "github.com/usalko/fluent/flc/integration/fluent/task"
+	fluenttask "github.com/usalko/fluent/flc/integration/fluent/task"
 	"github.com/usalko/fluent/flc/integration/fluent/user"
 )
 
@@ -112,7 +112,7 @@ func checkColumn(table, column string) error {
 			pc.Table:          pc.ValidColumn,
 			pet.Table:         pet.ValidColumn,
 			spec.Table:        spec.ValidColumn,
-			enttask.Table:     enttask.ValidColumn,
+			fluenttask.Table:  fluenttask.ValidColumn,
 			user.Table:        user.ValidColumn,
 		})
 	})

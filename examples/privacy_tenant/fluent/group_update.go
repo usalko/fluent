@@ -116,7 +116,7 @@ func (gu *GroupUpdate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (gu *GroupUpdate) check() error {
 	if gu.mutation.TenantCleared() && len(gu.mutation.TenantIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "Group.tenant"`)
+		return errors.New(`fluent: clearing a required unique edge "Group.tenant"`)
 	}
 	return nil
 }
@@ -299,7 +299,7 @@ func (guo *GroupUpdateOne) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (guo *GroupUpdateOne) check() error {
 	if guo.mutation.TenantCleared() && len(guo.mutation.TenantIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "Group.tenant"`)
+		return errors.New(`fluent: clearing a required unique edge "Group.tenant"`)
 	}
 	return nil
 }
@@ -311,7 +311,7 @@ func (guo *GroupUpdateOne) sqlSave(ctx context.Context) (_node *Group, err error
 	_spec := sqlgraph.NewUpdateSpec(group.Table, group.Columns, sqlgraph.NewFieldSpec(group.FieldID, field.TypeInt))
 	id, ok := guo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Group.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Group.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := guo.fields; len(fields) > 0 {

@@ -291,7 +291,7 @@ func (ualuo *UserAuditLogUpdateOne) sqlSave(ctx context.Context) (_node *UserAud
 	_spec := sqlgraph.NewUpdateSpec(userauditlog.Table, userauditlog.Columns, sqlgraph.NewFieldSpec(userauditlog.FieldID, field.TypeInt))
 	id, ok := ualuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "UserAuditLog.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "UserAuditLog.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := ualuo.fields; len(fields) > 0 {

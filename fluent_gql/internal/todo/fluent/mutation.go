@@ -21,6 +21,9 @@ import (
 	"sync"
 	"time"
 
+	"github.com/google/uuid"
+	"github.com/usalko/fluent"
+	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/billproduct"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/friendship"
@@ -34,9 +37,6 @@ import (
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/user"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/verysecret"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/workspace"
-	"github.com/usalko/fluent"
-	"github.com/usalko/fluent/dialect/sql"
-	"github.com/google/uuid"
 )
 
 const (

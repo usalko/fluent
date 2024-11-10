@@ -178,7 +178,7 @@ func (luo *LicenseUpdateOne) gremlinSave(ctx context.Context) (*License, error) 
 	res := &gremlin.Response{}
 	id, ok := luo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "License.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "License.id" for update`)}
 	}
 	query, bindings := luo.gremlin(id).Query()
 	if err := luo.driver.Exec(ctx, query, bindings, res); err != nil {

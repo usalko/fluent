@@ -154,7 +154,7 @@ func (tu *TeamUpdate) ExecX(ctx context.Context) {
 func (tu *TeamUpdate) check() error {
 	if v, ok := tu.mutation.Name(); ok {
 		if err := team.NameValidator(v); err != nil {
-			return &ValidationError{Name: "name", err: fmt.Errorf(`ent: validator failed for field "Team.name": %w`, err)}
+			return &ValidationError{Name: "name", err: fmt.Errorf(`fluent: validator failed for field "Team.name": %w`, err)}
 		}
 	}
 	return nil
@@ -420,7 +420,7 @@ func (tuo *TeamUpdateOne) ExecX(ctx context.Context) {
 func (tuo *TeamUpdateOne) check() error {
 	if v, ok := tuo.mutation.Name(); ok {
 		if err := team.NameValidator(v); err != nil {
-			return &ValidationError{Name: "name", err: fmt.Errorf(`ent: validator failed for field "Team.name": %w`, err)}
+			return &ValidationError{Name: "name", err: fmt.Errorf(`fluent: validator failed for field "Team.name": %w`, err)}
 		}
 	}
 	return nil
@@ -433,7 +433,7 @@ func (tuo *TeamUpdateOne) sqlSave(ctx context.Context) (_node *Team, err error) 
 	_spec := sqlgraph.NewUpdateSpec(team.Table, team.Columns, sqlgraph.NewFieldSpec(team.FieldID, field.TypeInt))
 	id, ok := tuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Team.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Team.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := tuo.fields; len(fields) > 0 {

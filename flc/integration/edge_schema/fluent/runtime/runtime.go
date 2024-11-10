@@ -9,6 +9,7 @@ import (
 	"context"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/attachedfile"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/friendship"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/group"
@@ -21,7 +22,6 @@ import (
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/user"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/usergroup"
 	"github.com/usalko/fluent/flc/integration/edge_schema/fluent/usertweet"
-	"github.com/google/uuid"
 
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/privacy"
@@ -135,5 +135,5 @@ func init() {
 }
 
 const (
-	Version = "v0.0.0-00010101000000-000000000000" // Version of fluent codegen.
+	Version = "v0.1.4" // Version of fluent codegen.
 )

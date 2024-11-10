@@ -20,6 +20,11 @@ import (
 	"sync"
 	"sync/atomic"
 
+	"github.com/99designs/gqlgen/graphql"
+	"github.com/hashicorp/go-multierror"
+	"github.com/usalko/fluent/dialect"
+	"github.com/usalko/fluent/dialect/sql"
+	"github.com/usalko/fluent/dialect/sql/schema"
 	"github.com/usalko/fluent/fluent_gql"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/billproduct"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/category"
@@ -30,11 +35,6 @@ import (
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/todo"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/user"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/workspace"
-	"github.com/usalko/fluent/dialect"
-	"github.com/usalko/fluent/dialect/sql"
-	"github.com/usalko/fluent/dialect/sql/schema"
-	"github.com/99designs/gqlgen/graphql"
-	"github.com/hashicorp/go-multierror"
 	"golang.org/x/sync/semaphore"
 )
 

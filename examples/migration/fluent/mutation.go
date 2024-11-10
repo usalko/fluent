@@ -12,6 +12,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/examples/migration/fluent/card"
@@ -21,7 +22,6 @@ import (
 	"github.com/usalko/fluent/examples/migration/fluent/session"
 	"github.com/usalko/fluent/examples/migration/fluent/sessiondevice"
 	"github.com/usalko/fluent/examples/migration/fluent/user"
-	"github.com/google/uuid"
 )
 
 const (

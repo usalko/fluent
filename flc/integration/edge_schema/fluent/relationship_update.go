@@ -169,10 +169,10 @@ func (ru *RelationshipUpdate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (ru *RelationshipUpdate) check() error {
 	if ru.mutation.UserCleared() && len(ru.mutation.UserIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "Relationship.user"`)
+		return errors.New(`fluent: clearing a required unique edge "Relationship.user"`)
 	}
 	if ru.mutation.RelativeCleared() && len(ru.mutation.RelativeIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "Relationship.relative"`)
+		return errors.New(`fluent: clearing a required unique edge "Relationship.relative"`)
 	}
 	return nil
 }
@@ -452,10 +452,10 @@ func (ruo *RelationshipUpdateOne) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (ruo *RelationshipUpdateOne) check() error {
 	if ruo.mutation.UserCleared() && len(ruo.mutation.UserIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "Relationship.user"`)
+		return errors.New(`fluent: clearing a required unique edge "Relationship.user"`)
 	}
 	if ruo.mutation.RelativeCleared() && len(ruo.mutation.RelativeIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "Relationship.relative"`)
+		return errors.New(`fluent: clearing a required unique edge "Relationship.relative"`)
 	}
 	return nil
 }
@@ -466,12 +466,12 @@ func (ruo *RelationshipUpdateOne) sqlSave(ctx context.Context) (_node *Relations
 	}
 	_spec := sqlgraph.NewUpdateSpec(relationship.Table, relationship.Columns, sqlgraph.NewFieldSpec(relationship.FieldUserID, field.TypeInt), sqlgraph.NewFieldSpec(relationship.FieldRelativeID, field.TypeInt))
 	if id, ok := ruo.mutation.UserID(); !ok {
-		return nil, &ValidationError{Name: "user_id", err: errors.New(`ent: missing "Relationship.user_id" for update`)}
+		return nil, &ValidationError{Name: "user_id", err: errors.New(`fluent: missing "Relationship.user_id" for update`)}
 	} else {
 		_spec.Node.CompositeID[0].Value = id
 	}
 	if id, ok := ruo.mutation.RelativeID(); !ok {
-		return nil, &ValidationError{Name: "relative_id", err: errors.New(`ent: missing "Relationship.relative_id" for update`)}
+		return nil, &ValidationError{Name: "relative_id", err: errors.New(`fluent: missing "Relationship.relative_id" for update`)}
 	} else {
 		_spec.Node.CompositeID[1].Value = id
 	}

@@ -230,19 +230,19 @@ func (fc *FileCreate) defaults() {
 func (fc *FileCreate) check() error {
 	if v, ok := fc.mutation.SetID(); ok {
 		if err := file.SetIDValidator(v); err != nil {
-			return &ValidationError{Name: "set_id", err: fmt.Errorf(`ent: validator failed for field "File.set_id": %w`, err)}
+			return &ValidationError{Name: "set_id", err: fmt.Errorf(`fluent: validator failed for field "File.set_id": %w`, err)}
 		}
 	}
 	if _, ok := fc.mutation.Size(); !ok {
-		return &ValidationError{Name: "size", err: errors.New(`ent: missing required field "File.size"`)}
+		return &ValidationError{Name: "size", err: errors.New(`fluent: missing required field "File.size"`)}
 	}
 	if v, ok := fc.mutation.Size(); ok {
 		if err := file.SizeValidator(v); err != nil {
-			return &ValidationError{Name: "size", err: fmt.Errorf(`ent: validator failed for field "File.size": %w`, err)}
+			return &ValidationError{Name: "size", err: fmt.Errorf(`fluent: validator failed for field "File.size": %w`, err)}
 		}
 	}
 	if _, ok := fc.mutation.Name(); !ok {
-		return &ValidationError{Name: "name", err: errors.New(`ent: missing required field "File.name"`)}
+		return &ValidationError{Name: "name", err: errors.New(`fluent: missing required field "File.name"`)}
 	}
 	return nil
 }

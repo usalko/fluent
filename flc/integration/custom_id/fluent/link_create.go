@@ -95,7 +95,7 @@ func (lc *LinkCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (lc *LinkCreate) check() error {
 	if _, ok := lc.mutation.LinkInformation(); !ok {
-		return &ValidationError{Name: "link_information", err: errors.New(`ent: missing required field "Link.link_information"`)}
+		return &ValidationError{Name: "link_information", err: errors.New(`fluent: missing required field "Link.link_information"`)}
 	}
 	return nil
 }

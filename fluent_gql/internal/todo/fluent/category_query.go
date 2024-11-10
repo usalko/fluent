@@ -20,12 +20,12 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/category"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/predicate"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/todo"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/category"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/predicate"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/todo"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -317,8 +317,9 @@ func (cq *CategoryQuery) Clone() *CategoryQuery {
 		withTodos:         cq.withTodos.Clone(),
 		withSubCategories: cq.withSubCategories.Clone(),
 		// clone intermediate query.
-		sql:  cq.sql.Clone(),
-		path: cq.path,
+		sql:       cq.sql.Clone(),
+		path:      cq.path,
+		modifiers: append([]func(*sql.Selector){}, cq.modifiers...),
 	}
 }
 

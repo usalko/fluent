@@ -11,12 +11,12 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/flc/integration/edge_field/fluent/car"
 	"github.com/usalko/fluent/flc/integration/edge_field/fluent/rental"
 	"github.com/usalko/fluent/flc/integration/edge_field/fluent/user"
 	"github.com/usalko/fluent/schema/field"
-	"github.com/google/uuid"
 )
 
 // RentalCreate is the builder for creating a Rental entity.
@@ -106,19 +106,19 @@ func (rc *RentalCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (rc *RentalCreate) check() error {
 	if _, ok := rc.mutation.Date(); !ok {
-		return &ValidationError{Name: "date", err: errors.New(`ent: missing required field "Rental.date"`)}
+		return &ValidationError{Name: "date", err: errors.New(`fluent: missing required field "Rental.date"`)}
 	}
 	if _, ok := rc.mutation.UserID(); !ok {
-		return &ValidationError{Name: "user_id", err: errors.New(`ent: missing required field "Rental.user_id"`)}
+		return &ValidationError{Name: "user_id", err: errors.New(`fluent: missing required field "Rental.user_id"`)}
 	}
 	if _, ok := rc.mutation.CarID(); !ok {
-		return &ValidationError{Name: "car_id", err: errors.New(`ent: missing required field "Rental.car_id"`)}
+		return &ValidationError{Name: "car_id", err: errors.New(`fluent: missing required field "Rental.car_id"`)}
 	}
 	if len(rc.mutation.UserIDs()) == 0 {
-		return &ValidationError{Name: "user", err: errors.New(`ent: missing required edge "Rental.user"`)}
+		return &ValidationError{Name: "user", err: errors.New(`fluent: missing required edge "Rental.user"`)}
 	}
 	if len(rc.mutation.CarIDs()) == 0 {
-		return &ValidationError{Name: "car", err: errors.New(`ent: missing required edge "Rental.car"`)}
+		return &ValidationError{Name: "car", err: errors.New(`fluent: missing required edge "Rental.car"`)}
 	}
 	return nil
 }

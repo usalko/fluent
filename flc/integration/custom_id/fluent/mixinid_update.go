@@ -202,7 +202,7 @@ func (miuo *MixinIDUpdateOne) sqlSave(ctx context.Context) (_node *MixinID, err 
 	_spec := sqlgraph.NewUpdateSpec(mixinid.Table, mixinid.Columns, sqlgraph.NewFieldSpec(mixinid.FieldID, field.TypeUUID))
 	id, ok := miuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "MixinID.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "MixinID.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := miuo.fields; len(fields) > 0 {

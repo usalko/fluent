@@ -19,6 +19,7 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/schema/schematype"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/billproduct"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/category"
@@ -27,7 +28,6 @@ import (
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/predicate"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/todo"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/user"
-	"github.com/google/uuid"
 )
 
 // BillProductWhereInput represents a where input for filtering BillProduct queries.

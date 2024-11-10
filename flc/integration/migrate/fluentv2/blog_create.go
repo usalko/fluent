@@ -88,7 +88,7 @@ func (bc *BlogCreate) check() error {
 	switch bc.driver.Dialect() {
 	case dialect.MySQL, dialect.SQLite:
 		if _, ok := bc.mutation.Oid(); !ok {
-			return &ValidationError{Name: "oid", err: errors.New(`entv2: missing required field "Blog.oid"`)}
+			return &ValidationError{Name: "oid", err: errors.New(`fluentv2: missing required field "Blog.oid"`)}
 		}
 	}
 	return nil

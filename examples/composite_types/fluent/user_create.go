@@ -61,7 +61,7 @@ func (uc *UserCreate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (uc *UserCreate) check() error {
 	if _, ok := uc.mutation.Address(); !ok {
-		return &ValidationError{Name: "address", err: errors.New(`ent: missing required field "User.address"`)}
+		return &ValidationError{Name: "address", err: errors.New(`fluent: missing required field "User.address"`)}
 	}
 	return nil
 }

@@ -19,10 +19,10 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/billproduct"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/predicate"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/billproduct"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/predicate"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -259,7 +259,7 @@ func (bpuo *BillProductUpdateOne) sqlSave(ctx context.Context) (_node *BillProdu
 	_spec := sqlgraph.NewUpdateSpec(billproduct.Table, billproduct.Columns, sqlgraph.NewFieldSpec(billproduct.FieldID, field.TypeUUID))
 	id, ok := bpuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "BillProduct.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "BillProduct.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := bpuo.fields; len(fields) > 0 {

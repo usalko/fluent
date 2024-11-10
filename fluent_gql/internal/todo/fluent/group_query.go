@@ -20,12 +20,12 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/group"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/predicate"
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/user"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/group"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/predicate"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/user"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -292,8 +292,9 @@ func (gq *GroupQuery) Clone() *GroupQuery {
 		predicates: append([]predicate.Group{}, gq.predicates...),
 		withUsers:  gq.withUsers.Clone(),
 		// clone intermediate query.
-		sql:  gq.sql.Clone(),
-		path: gq.path,
+		sql:       gq.sql.Clone(),
+		path:      gq.path,
+		modifiers: append([]func(*sql.Selector){}, gq.modifiers...),
 	}
 }
 

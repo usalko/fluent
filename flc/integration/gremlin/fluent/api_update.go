@@ -144,7 +144,7 @@ func (auo *APIUpdateOne) gremlinSave(ctx context.Context) (*Api, error) {
 	res := &gremlin.Response{}
 	id, ok := auo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Api.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Api.id" for update`)}
 	}
 	query, bindings := auo.gremlin(id).Query()
 	if err := auo.driver.Exec(ctx, query, bindings, res); err != nil {

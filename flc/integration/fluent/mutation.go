@@ -16,6 +16,7 @@ import (
 	"sync"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/flc/integration/fluent/card"
@@ -36,9 +37,8 @@ import (
 	schemadir "github.com/usalko/fluent/flc/integration/fluent/schema/dir"
 	"github.com/usalko/fluent/flc/integration/fluent/schema/task"
 	"github.com/usalko/fluent/flc/integration/fluent/spec"
-	enttask "github.com/usalko/fluent/flc/integration/fluent/task"
+	fluenttask "github.com/usalko/fluent/flc/integration/fluent/task"
 	"github.com/usalko/fluent/flc/integration/fluent/user"
-	"github.com/google/uuid"
 )
 
 const (
@@ -15140,19 +15140,19 @@ func (m *TaskMutation) OldPriorities(ctx context.Context) (v map[string]task.Pri
 // ClearPriorities clears the value of the "priorities" field.
 func (m *TaskMutation) ClearPriorities() {
 	m.priorities = nil
-	m.clearedFields[enttask.FieldPriorities] = struct{}{}
+	m.clearedFields[fluenttask.FieldPriorities] = struct{}{}
 }
 
 // PrioritiesCleared returns if the "priorities" field was cleared in this mutation.
 func (m *TaskMutation) PrioritiesCleared() bool {
-	_, ok := m.clearedFields[enttask.FieldPriorities]
+	_, ok := m.clearedFields[fluenttask.FieldPriorities]
 	return ok
 }
 
 // ResetPriorities resets all changes to the "priorities" field.
 func (m *TaskMutation) ResetPriorities() {
 	m.priorities = nil
-	delete(m.clearedFields, enttask.FieldPriorities)
+	delete(m.clearedFields, fluenttask.FieldPriorities)
 }
 
 // SetCreatedAt sets the "created_at" field.
@@ -15225,19 +15225,19 @@ func (m *TaskMutation) OldName(ctx context.Context) (v string, err error) {
 // ClearName clears the value of the "name" field.
 func (m *TaskMutation) ClearName() {
 	m.name = nil
-	m.clearedFields[enttask.FieldName] = struct{}{}
+	m.clearedFields[fluenttask.FieldName] = struct{}{}
 }
 
 // NameCleared returns if the "name" field was cleared in this mutation.
 func (m *TaskMutation) NameCleared() bool {
-	_, ok := m.clearedFields[enttask.FieldName]
+	_, ok := m.clearedFields[fluenttask.FieldName]
 	return ok
 }
 
 // ResetName resets all changes to the "name" field.
 func (m *TaskMutation) ResetName() {
 	m.name = nil
-	delete(m.clearedFields, enttask.FieldName)
+	delete(m.clearedFields, fluenttask.FieldName)
 }
 
 // SetOwner sets the "owner" field.
@@ -15274,19 +15274,19 @@ func (m *TaskMutation) OldOwner(ctx context.Context) (v string, err error) {
 // ClearOwner clears the value of the "owner" field.
 func (m *TaskMutation) ClearOwner() {
 	m.owner = nil
-	m.clearedFields[enttask.FieldOwner] = struct{}{}
+	m.clearedFields[fluenttask.FieldOwner] = struct{}{}
 }
 
 // OwnerCleared returns if the "owner" field was cleared in this mutation.
 func (m *TaskMutation) OwnerCleared() bool {
-	_, ok := m.clearedFields[enttask.FieldOwner]
+	_, ok := m.clearedFields[fluenttask.FieldOwner]
 	return ok
 }
 
 // ResetOwner resets all changes to the "owner" field.
 func (m *TaskMutation) ResetOwner() {
 	m.owner = nil
-	delete(m.clearedFields, enttask.FieldOwner)
+	delete(m.clearedFields, fluenttask.FieldOwner)
 }
 
 // SetOrder sets the "order" field.
@@ -15343,12 +15343,12 @@ func (m *TaskMutation) AddedOrder() (r int, exists bool) {
 func (m *TaskMutation) ClearOrder() {
 	m._order = nil
 	m.add_order = nil
-	m.clearedFields[enttask.FieldOrder] = struct{}{}
+	m.clearedFields[fluenttask.FieldOrder] = struct{}{}
 }
 
 // OrderCleared returns if the "order" field was cleared in this mutation.
 func (m *TaskMutation) OrderCleared() bool {
-	_, ok := m.clearedFields[enttask.FieldOrder]
+	_, ok := m.clearedFields[fluenttask.FieldOrder]
 	return ok
 }
 
@@ -15356,7 +15356,7 @@ func (m *TaskMutation) OrderCleared() bool {
 func (m *TaskMutation) ResetOrder() {
 	m._order = nil
 	m.add_order = nil
-	delete(m.clearedFields, enttask.FieldOrder)
+	delete(m.clearedFields, fluenttask.FieldOrder)
 }
 
 // SetOrderOption sets the "order_option" field.
@@ -15413,12 +15413,12 @@ func (m *TaskMutation) AddedOrderOption() (r int, exists bool) {
 func (m *TaskMutation) ClearOrderOption() {
 	m.order_option = nil
 	m.addorder_option = nil
-	m.clearedFields[enttask.FieldOrderOption] = struct{}{}
+	m.clearedFields[fluenttask.FieldOrderOption] = struct{}{}
 }
 
 // OrderOptionCleared returns if the "order_option" field was cleared in this mutation.
 func (m *TaskMutation) OrderOptionCleared() bool {
-	_, ok := m.clearedFields[enttask.FieldOrderOption]
+	_, ok := m.clearedFields[fluenttask.FieldOrderOption]
 	return ok
 }
 
@@ -15426,7 +15426,7 @@ func (m *TaskMutation) OrderOptionCleared() bool {
 func (m *TaskMutation) ResetOrderOption() {
 	m.order_option = nil
 	m.addorder_option = nil
-	delete(m.clearedFields, enttask.FieldOrderOption)
+	delete(m.clearedFields, fluenttask.FieldOrderOption)
 }
 
 // SetOpField sets the "op" field.
@@ -15501,28 +15501,28 @@ func (m *TaskMutation) Type() string {
 func (m *TaskMutation) Fields() []string {
 	fields := make([]string, 0, 8)
 	if m.priority != nil {
-		fields = append(fields, enttask.FieldPriority)
+		fields = append(fields, fluenttask.FieldPriority)
 	}
 	if m.priorities != nil {
-		fields = append(fields, enttask.FieldPriorities)
+		fields = append(fields, fluenttask.FieldPriorities)
 	}
 	if m.created_at != nil {
-		fields = append(fields, enttask.FieldCreatedAt)
+		fields = append(fields, fluenttask.FieldCreatedAt)
 	}
 	if m.name != nil {
-		fields = append(fields, enttask.FieldName)
+		fields = append(fields, fluenttask.FieldName)
 	}
 	if m.owner != nil {
-		fields = append(fields, enttask.FieldOwner)
+		fields = append(fields, fluenttask.FieldOwner)
 	}
 	if m._order != nil {
-		fields = append(fields, enttask.FieldOrder)
+		fields = append(fields, fluenttask.FieldOrder)
 	}
 	if m.order_option != nil {
-		fields = append(fields, enttask.FieldOrderOption)
+		fields = append(fields, fluenttask.FieldOrderOption)
 	}
 	if m._op != nil {
-		fields = append(fields, enttask.FieldOp)
+		fields = append(fields, fluenttask.FieldOp)
 	}
 	return fields
 }
@@ -15532,21 +15532,21 @@ func (m *TaskMutation) Fields() []string {
 // schema.
 func (m *TaskMutation) Field(name string) (fluent.Value, bool) {
 	switch name {
-	case enttask.FieldPriority:
+	case fluenttask.FieldPriority:
 		return m.Priority()
-	case enttask.FieldPriorities:
+	case fluenttask.FieldPriorities:
 		return m.Priorities()
-	case enttask.FieldCreatedAt:
+	case fluenttask.FieldCreatedAt:
 		return m.CreatedAt()
-	case enttask.FieldName:
+	case fluenttask.FieldName:
 		return m.Name()
-	case enttask.FieldOwner:
+	case fluenttask.FieldOwner:
 		return m.Owner()
-	case enttask.FieldOrder:
+	case fluenttask.FieldOrder:
 		return m.Order()
-	case enttask.FieldOrderOption:
+	case fluenttask.FieldOrderOption:
 		return m.OrderOption()
-	case enttask.FieldOp:
+	case fluenttask.FieldOp:
 		return m.GetOp()
 	}
 	return nil, false
@@ -15557,21 +15557,21 @@ func (m *TaskMutation) Field(name string) (fluent.Value, bool) {
 // database failed.
 func (m *TaskMutation) OldField(ctx context.Context, name string) (fluent.Value, error) {
 	switch name {
-	case enttask.FieldPriority:
+	case fluenttask.FieldPriority:
 		return m.OldPriority(ctx)
-	case enttask.FieldPriorities:
+	case fluenttask.FieldPriorities:
 		return m.OldPriorities(ctx)
-	case enttask.FieldCreatedAt:
+	case fluenttask.FieldCreatedAt:
 		return m.OldCreatedAt(ctx)
-	case enttask.FieldName:
+	case fluenttask.FieldName:
 		return m.OldName(ctx)
-	case enttask.FieldOwner:
+	case fluenttask.FieldOwner:
 		return m.OldOwner(ctx)
-	case enttask.FieldOrder:
+	case fluenttask.FieldOrder:
 		return m.OldOrder(ctx)
-	case enttask.FieldOrderOption:
+	case fluenttask.FieldOrderOption:
 		return m.OldOrderOption(ctx)
-	case enttask.FieldOp:
+	case fluenttask.FieldOp:
 		return m.OldOp(ctx)
 	}
 	return nil, fmt.Errorf("unknown Task field %s", name)
@@ -15582,56 +15582,56 @@ func (m *TaskMutation) OldField(ctx context.Context, name string) (fluent.Value,
 // type.
 func (m *TaskMutation) SetField(name string, value fluent.Value) error {
 	switch name {
-	case enttask.FieldPriority:
+	case fluenttask.FieldPriority:
 		v, ok := value.(task.Priority)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetPriority(v)
 		return nil
-	case enttask.FieldPriorities:
+	case fluenttask.FieldPriorities:
 		v, ok := value.(map[string]task.Priority)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetPriorities(v)
 		return nil
-	case enttask.FieldCreatedAt:
+	case fluenttask.FieldCreatedAt:
 		v, ok := value.(time.Time)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetCreatedAt(v)
 		return nil
-	case enttask.FieldName:
+	case fluenttask.FieldName:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetName(v)
 		return nil
-	case enttask.FieldOwner:
+	case fluenttask.FieldOwner:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetOwner(v)
 		return nil
-	case enttask.FieldOrder:
+	case fluenttask.FieldOrder:
 		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetOrder(v)
 		return nil
-	case enttask.FieldOrderOption:
+	case fluenttask.FieldOrderOption:
 		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetOrderOption(v)
 		return nil
-	case enttask.FieldOp:
+	case fluenttask.FieldOp:
 		v, ok := value.(string)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -15647,13 +15647,13 @@ func (m *TaskMutation) SetField(name string, value fluent.Value) error {
 func (m *TaskMutation) AddedFields() []string {
 	var fields []string
 	if m.addpriority != nil {
-		fields = append(fields, enttask.FieldPriority)
+		fields = append(fields, fluenttask.FieldPriority)
 	}
 	if m.add_order != nil {
-		fields = append(fields, enttask.FieldOrder)
+		fields = append(fields, fluenttask.FieldOrder)
 	}
 	if m.addorder_option != nil {
-		fields = append(fields, enttask.FieldOrderOption)
+		fields = append(fields, fluenttask.FieldOrderOption)
 	}
 	return fields
 }
@@ -15663,11 +15663,11 @@ func (m *TaskMutation) AddedFields() []string {
 // was not set, or was not defined in the schema.
 func (m *TaskMutation) AddedField(name string) (fluent.Value, bool) {
 	switch name {
-	case enttask.FieldPriority:
+	case fluenttask.FieldPriority:
 		return m.AddedPriority()
-	case enttask.FieldOrder:
+	case fluenttask.FieldOrder:
 		return m.AddedOrder()
-	case enttask.FieldOrderOption:
+	case fluenttask.FieldOrderOption:
 		return m.AddedOrderOption()
 	}
 	return nil, false
@@ -15678,21 +15678,21 @@ func (m *TaskMutation) AddedField(name string) (fluent.Value, bool) {
 // type.
 func (m *TaskMutation) AddField(name string, value fluent.Value) error {
 	switch name {
-	case enttask.FieldPriority:
+	case fluenttask.FieldPriority:
 		v, ok := value.(task.Priority)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddPriority(v)
 		return nil
-	case enttask.FieldOrder:
+	case fluenttask.FieldOrder:
 		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.AddOrder(v)
 		return nil
-	case enttask.FieldOrderOption:
+	case fluenttask.FieldOrderOption:
 		v, ok := value.(int)
 		if !ok {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
@@ -15707,20 +15707,20 @@ func (m *TaskMutation) AddField(name string, value fluent.Value) error {
 // mutation.
 func (m *TaskMutation) ClearedFields() []string {
 	var fields []string
-	if m.FieldCleared(enttask.FieldPriorities) {
-		fields = append(fields, enttask.FieldPriorities)
+	if m.FieldCleared(fluenttask.FieldPriorities) {
+		fields = append(fields, fluenttask.FieldPriorities)
 	}
-	if m.FieldCleared(enttask.FieldName) {
-		fields = append(fields, enttask.FieldName)
+	if m.FieldCleared(fluenttask.FieldName) {
+		fields = append(fields, fluenttask.FieldName)
 	}
-	if m.FieldCleared(enttask.FieldOwner) {
-		fields = append(fields, enttask.FieldOwner)
+	if m.FieldCleared(fluenttask.FieldOwner) {
+		fields = append(fields, fluenttask.FieldOwner)
 	}
-	if m.FieldCleared(enttask.FieldOrder) {
-		fields = append(fields, enttask.FieldOrder)
+	if m.FieldCleared(fluenttask.FieldOrder) {
+		fields = append(fields, fluenttask.FieldOrder)
 	}
-	if m.FieldCleared(enttask.FieldOrderOption) {
-		fields = append(fields, enttask.FieldOrderOption)
+	if m.FieldCleared(fluenttask.FieldOrderOption) {
+		fields = append(fields, fluenttask.FieldOrderOption)
 	}
 	return fields
 }
@@ -15736,19 +15736,19 @@ func (m *TaskMutation) FieldCleared(name string) bool {
 // error if the field is not defined in the schema.
 func (m *TaskMutation) ClearField(name string) error {
 	switch name {
-	case enttask.FieldPriorities:
+	case fluenttask.FieldPriorities:
 		m.ClearPriorities()
 		return nil
-	case enttask.FieldName:
+	case fluenttask.FieldName:
 		m.ClearName()
 		return nil
-	case enttask.FieldOwner:
+	case fluenttask.FieldOwner:
 		m.ClearOwner()
 		return nil
-	case enttask.FieldOrder:
+	case fluenttask.FieldOrder:
 		m.ClearOrder()
 		return nil
-	case enttask.FieldOrderOption:
+	case fluenttask.FieldOrderOption:
 		m.ClearOrderOption()
 		return nil
 	}
@@ -15759,28 +15759,28 @@ func (m *TaskMutation) ClearField(name string) error {
 // It returns an error if the field is not defined in the schema.
 func (m *TaskMutation) ResetField(name string) error {
 	switch name {
-	case enttask.FieldPriority:
+	case fluenttask.FieldPriority:
 		m.ResetPriority()
 		return nil
-	case enttask.FieldPriorities:
+	case fluenttask.FieldPriorities:
 		m.ResetPriorities()
 		return nil
-	case enttask.FieldCreatedAt:
+	case fluenttask.FieldCreatedAt:
 		m.ResetCreatedAt()
 		return nil
-	case enttask.FieldName:
+	case fluenttask.FieldName:
 		m.ResetName()
 		return nil
-	case enttask.FieldOwner:
+	case fluenttask.FieldOwner:
 		m.ResetOwner()
 		return nil
-	case enttask.FieldOrder:
+	case fluenttask.FieldOrder:
 		m.ResetOrder()
 		return nil
-	case enttask.FieldOrderOption:
+	case fluenttask.FieldOrderOption:
 		m.ResetOrderOption()
 		return nil
-	case enttask.FieldOp:
+	case fluenttask.FieldOp:
 		m.ResetOp()
 		return nil
 	}

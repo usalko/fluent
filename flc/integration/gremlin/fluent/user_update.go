@@ -651,17 +651,17 @@ func (uu *UserUpdate) ExecX(ctx context.Context) {
 func (uu *UserUpdate) check() error {
 	if v, ok := uu.mutation.OptionalInt(); ok {
 		if err := user.OptionalIntValidator(v); err != nil {
-			return &ValidationError{Name: "optional_int", err: fmt.Errorf(`ent: validator failed for field "User.optional_int": %w`, err)}
+			return &ValidationError{Name: "optional_int", err: fmt.Errorf(`fluent: validator failed for field "User.optional_int": %w`, err)}
 		}
 	}
 	if v, ok := uu.mutation.Role(); ok {
 		if err := user.RoleValidator(v); err != nil {
-			return &ValidationError{Name: "role", err: fmt.Errorf(`ent: validator failed for field "User.role": %w`, err)}
+			return &ValidationError{Name: "role", err: fmt.Errorf(`fluent: validator failed for field "User.role": %w`, err)}
 		}
 	}
 	if v, ok := uu.mutation.Employment(); ok {
 		if err := user.EmploymentValidator(v); err != nil {
-			return &ValidationError{Name: "employment", err: fmt.Errorf(`ent: validator failed for field "User.employment": %w`, err)}
+			return &ValidationError{Name: "employment", err: fmt.Errorf(`fluent: validator failed for field "User.employment": %w`, err)}
 		}
 	}
 	return nil
@@ -1537,17 +1537,17 @@ func (uuo *UserUpdateOne) ExecX(ctx context.Context) {
 func (uuo *UserUpdateOne) check() error {
 	if v, ok := uuo.mutation.OptionalInt(); ok {
 		if err := user.OptionalIntValidator(v); err != nil {
-			return &ValidationError{Name: "optional_int", err: fmt.Errorf(`ent: validator failed for field "User.optional_int": %w`, err)}
+			return &ValidationError{Name: "optional_int", err: fmt.Errorf(`fluent: validator failed for field "User.optional_int": %w`, err)}
 		}
 	}
 	if v, ok := uuo.mutation.Role(); ok {
 		if err := user.RoleValidator(v); err != nil {
-			return &ValidationError{Name: "role", err: fmt.Errorf(`ent: validator failed for field "User.role": %w`, err)}
+			return &ValidationError{Name: "role", err: fmt.Errorf(`fluent: validator failed for field "User.role": %w`, err)}
 		}
 	}
 	if v, ok := uuo.mutation.Employment(); ok {
 		if err := user.EmploymentValidator(v); err != nil {
-			return &ValidationError{Name: "employment", err: fmt.Errorf(`ent: validator failed for field "User.employment": %w`, err)}
+			return &ValidationError{Name: "employment", err: fmt.Errorf(`fluent: validator failed for field "User.employment": %w`, err)}
 		}
 	}
 	return nil
@@ -1560,7 +1560,7 @@ func (uuo *UserUpdateOne) gremlinSave(ctx context.Context) (*User, error) {
 	res := &gremlin.Response{}
 	id, ok := uuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "User.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "User.id" for update`)}
 	}
 	query, bindings := uuo.gremlin(id).Query()
 	if err := uuo.driver.Exec(ctx, query, bindings, res); err != nil {

@@ -118,7 +118,7 @@ func (au *AccountUpdate) ExecX(ctx context.Context) {
 func (au *AccountUpdate) check() error {
 	if v, ok := au.mutation.Email(); ok {
 		if err := account.EmailValidator(v); err != nil {
-			return &ValidationError{Name: "email", err: fmt.Errorf(`ent: validator failed for field "Account.email": %w`, err)}
+			return &ValidationError{Name: "email", err: fmt.Errorf(`fluent: validator failed for field "Account.email": %w`, err)}
 		}
 	}
 	return nil
@@ -303,7 +303,7 @@ func (auo *AccountUpdateOne) ExecX(ctx context.Context) {
 func (auo *AccountUpdateOne) check() error {
 	if v, ok := auo.mutation.Email(); ok {
 		if err := account.EmailValidator(v); err != nil {
-			return &ValidationError{Name: "email", err: fmt.Errorf(`ent: validator failed for field "Account.email": %w`, err)}
+			return &ValidationError{Name: "email", err: fmt.Errorf(`fluent: validator failed for field "Account.email": %w`, err)}
 		}
 	}
 	return nil
@@ -316,7 +316,7 @@ func (auo *AccountUpdateOne) sqlSave(ctx context.Context) (_node *Account, err e
 	_spec := sqlgraph.NewUpdateSpec(account.Table, account.Columns, sqlgraph.NewFieldSpec(account.FieldID, field.TypeOther))
 	id, ok := auo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Account.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Account.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := auo.fields; len(fields) > 0 {

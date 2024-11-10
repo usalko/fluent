@@ -18,9 +18,9 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/verysecret"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/verysecret"
 )
 
 // VerySecret is the model entity for the VerySecret schema.

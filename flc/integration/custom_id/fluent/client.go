@@ -12,12 +12,12 @@ import (
 	"log"
 	"reflect"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/migrate"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/schema"
 	"github.com/usalko/fluent/flc/integration/custom_id/sid"
 	uuidc "github.com/usalko/fluent/flc/integration/custom_id/uuidcompatible"
-	"github.com/google/uuid"
 
 	"github.com/usalko/fluent/dialect"
 	"github.com/usalko/fluent/dialect/sql"

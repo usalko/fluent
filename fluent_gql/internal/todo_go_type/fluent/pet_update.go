@@ -19,10 +19,10 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/pet"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/predicate"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/pet"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/predicate"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -180,7 +180,7 @@ func (puo *PetUpdateOne) sqlSave(ctx context.Context) (_node *Pet, err error) {
 	_spec := sqlgraph.NewUpdateSpec(pet.Table, pet.Columns, sqlgraph.NewFieldSpec(pet.FieldID, field.TypeUint64))
 	id, ok := puo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Pet.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Pet.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := puo.fields; len(fields) > 0 {

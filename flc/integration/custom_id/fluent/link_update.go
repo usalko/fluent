@@ -156,7 +156,7 @@ func (luo *LinkUpdateOne) sqlSave(ctx context.Context) (_node *Link, err error) 
 	_spec := sqlgraph.NewUpdateSpec(link.Table, link.Columns, sqlgraph.NewFieldSpec(link.FieldID, field.TypeUUID))
 	id, ok := luo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Link.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Link.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := luo.fields; len(fields) > 0 {

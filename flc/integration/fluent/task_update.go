@@ -14,7 +14,7 @@ import (
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/flc/integration/fluent/predicate"
 	"github.com/usalko/fluent/flc/integration/fluent/schema/task"
-	enttask "github.com/usalko/fluent/flc/integration/fluent/task"
+	fluenttask "github.com/usalko/fluent/flc/integration/fluent/task"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -209,12 +209,12 @@ func (tu *TaskUpdate) ExecX(ctx context.Context) {
 func (tu *TaskUpdate) check() error {
 	if v, ok := tu.mutation.Priority(); ok {
 		if err := v.Validate(); err != nil {
-			return &ValidationError{Name: "priority", err: fmt.Errorf(`ent: validator failed for field "Task.priority": %w`, err)}
+			return &ValidationError{Name: "priority", err: fmt.Errorf(`fluent: validator failed for field "Task.priority": %w`, err)}
 		}
 	}
 	if v, ok := tu.mutation.GetOp(); ok {
-		if err := enttask.OpValidator(v); err != nil {
-			return &ValidationError{Name: "op", err: fmt.Errorf(`ent: validator failed for field "Task.op": %w`, err)}
+		if err := fluenttask.OpValidator(v); err != nil {
+			return &ValidationError{Name: "op", err: fmt.Errorf(`fluent: validator failed for field "Task.op": %w`, err)}
 		}
 	}
 	return nil
@@ -230,7 +230,7 @@ func (tu *TaskUpdate) sqlSave(ctx context.Context) (n int, err error) {
 	if err := tu.check(); err != nil {
 		return n, err
 	}
-	_spec := sqlgraph.NewUpdateSpec(enttask.Table, enttask.Columns, sqlgraph.NewFieldSpec(enttask.FieldID, field.TypeInt))
+	_spec := sqlgraph.NewUpdateSpec(fluenttask.Table, fluenttask.Columns, sqlgraph.NewFieldSpec(fluenttask.FieldID, field.TypeInt))
 	if ps := tu.mutation.predicates; len(ps) > 0 {
 		_spec.Predicate = func(selector *sql.Selector) {
 			for i := range ps {
@@ -239,54 +239,54 @@ func (tu *TaskUpdate) sqlSave(ctx context.Context) (n int, err error) {
 		}
 	}
 	if value, ok := tu.mutation.Priority(); ok {
-		_spec.SetField(enttask.FieldPriority, field.TypeInt, value)
+		_spec.SetField(fluenttask.FieldPriority, field.TypeInt, value)
 	}
 	if value, ok := tu.mutation.AddedPriority(); ok {
-		_spec.AddField(enttask.FieldPriority, field.TypeInt, value)
+		_spec.AddField(fluenttask.FieldPriority, field.TypeInt, value)
 	}
 	if value, ok := tu.mutation.Priorities(); ok {
-		_spec.SetField(enttask.FieldPriorities, field.TypeJSON, value)
+		_spec.SetField(fluenttask.FieldPriorities, field.TypeJSON, value)
 	}
 	if tu.mutation.PrioritiesCleared() {
-		_spec.ClearField(enttask.FieldPriorities, field.TypeJSON)
+		_spec.ClearField(fluenttask.FieldPriorities, field.TypeJSON)
 	}
 	if value, ok := tu.mutation.Name(); ok {
-		_spec.SetField(enttask.FieldName, field.TypeString, value)
+		_spec.SetField(fluenttask.FieldName, field.TypeString, value)
 	}
 	if tu.mutation.NameCleared() {
-		_spec.ClearField(enttask.FieldName, field.TypeString)
+		_spec.ClearField(fluenttask.FieldName, field.TypeString)
 	}
 	if value, ok := tu.mutation.Owner(); ok {
-		_spec.SetField(enttask.FieldOwner, field.TypeString, value)
+		_spec.SetField(fluenttask.FieldOwner, field.TypeString, value)
 	}
 	if tu.mutation.OwnerCleared() {
-		_spec.ClearField(enttask.FieldOwner, field.TypeString)
+		_spec.ClearField(fluenttask.FieldOwner, field.TypeString)
 	}
 	if value, ok := tu.mutation.Order(); ok {
-		_spec.SetField(enttask.FieldOrder, field.TypeInt, value)
+		_spec.SetField(fluenttask.FieldOrder, field.TypeInt, value)
 	}
 	if value, ok := tu.mutation.AddedOrder(); ok {
-		_spec.AddField(enttask.FieldOrder, field.TypeInt, value)
+		_spec.AddField(fluenttask.FieldOrder, field.TypeInt, value)
 	}
 	if tu.mutation.OrderCleared() {
-		_spec.ClearField(enttask.FieldOrder, field.TypeInt)
+		_spec.ClearField(fluenttask.FieldOrder, field.TypeInt)
 	}
 	if value, ok := tu.mutation.OrderOption(); ok {
-		_spec.SetField(enttask.FieldOrderOption, field.TypeInt, value)
+		_spec.SetField(fluenttask.FieldOrderOption, field.TypeInt, value)
 	}
 	if value, ok := tu.mutation.AddedOrderOption(); ok {
-		_spec.AddField(enttask.FieldOrderOption, field.TypeInt, value)
+		_spec.AddField(fluenttask.FieldOrderOption, field.TypeInt, value)
 	}
 	if tu.mutation.OrderOptionCleared() {
-		_spec.ClearField(enttask.FieldOrderOption, field.TypeInt)
+		_spec.ClearField(fluenttask.FieldOrderOption, field.TypeInt)
 	}
 	if value, ok := tu.mutation.GetOp(); ok {
-		_spec.SetField(enttask.FieldOp, field.TypeString, value)
+		_spec.SetField(fluenttask.FieldOp, field.TypeString, value)
 	}
 	_spec.AddModifiers(tu.modifiers...)
 	if n, err = sqlgraph.UpdateNodes(ctx, tu.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
-			err = &NotFoundError{enttask.Label}
+			err = &NotFoundError{fluenttask.Label}
 		} else if sqlgraph.IsConstraintError(err) {
 			err = &ConstraintError{msg: err.Error(), wrap: err}
 		}
@@ -495,12 +495,12 @@ func (tuo *TaskUpdateOne) ExecX(ctx context.Context) {
 func (tuo *TaskUpdateOne) check() error {
 	if v, ok := tuo.mutation.Priority(); ok {
 		if err := v.Validate(); err != nil {
-			return &ValidationError{Name: "priority", err: fmt.Errorf(`ent: validator failed for field "Task.priority": %w`, err)}
+			return &ValidationError{Name: "priority", err: fmt.Errorf(`fluent: validator failed for field "Task.priority": %w`, err)}
 		}
 	}
 	if v, ok := tuo.mutation.GetOp(); ok {
-		if err := enttask.OpValidator(v); err != nil {
-			return &ValidationError{Name: "op", err: fmt.Errorf(`ent: validator failed for field "Task.op": %w`, err)}
+		if err := fluenttask.OpValidator(v); err != nil {
+			return &ValidationError{Name: "op", err: fmt.Errorf(`fluent: validator failed for field "Task.op": %w`, err)}
 		}
 	}
 	return nil
@@ -516,20 +516,20 @@ func (tuo *TaskUpdateOne) sqlSave(ctx context.Context) (_node *Task, err error) 
 	if err := tuo.check(); err != nil {
 		return _node, err
 	}
-	_spec := sqlgraph.NewUpdateSpec(enttask.Table, enttask.Columns, sqlgraph.NewFieldSpec(enttask.FieldID, field.TypeInt))
+	_spec := sqlgraph.NewUpdateSpec(fluenttask.Table, fluenttask.Columns, sqlgraph.NewFieldSpec(fluenttask.FieldID, field.TypeInt))
 	id, ok := tuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Task.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Task.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := tuo.fields; len(fields) > 0 {
 		_spec.Node.Columns = make([]string, 0, len(fields))
-		_spec.Node.Columns = append(_spec.Node.Columns, enttask.FieldID)
+		_spec.Node.Columns = append(_spec.Node.Columns, fluenttask.FieldID)
 		for _, f := range fields {
-			if !enttask.ValidColumn(f) {
+			if !fluenttask.ValidColumn(f) {
 				return nil, &ValidationError{Name: f, err: fmt.Errorf("fluent: invalid field %q for query", f)}
 			}
-			if f != enttask.FieldID {
+			if f != fluenttask.FieldID {
 				_spec.Node.Columns = append(_spec.Node.Columns, f)
 			}
 		}
@@ -542,49 +542,49 @@ func (tuo *TaskUpdateOne) sqlSave(ctx context.Context) (_node *Task, err error) 
 		}
 	}
 	if value, ok := tuo.mutation.Priority(); ok {
-		_spec.SetField(enttask.FieldPriority, field.TypeInt, value)
+		_spec.SetField(fluenttask.FieldPriority, field.TypeInt, value)
 	}
 	if value, ok := tuo.mutation.AddedPriority(); ok {
-		_spec.AddField(enttask.FieldPriority, field.TypeInt, value)
+		_spec.AddField(fluenttask.FieldPriority, field.TypeInt, value)
 	}
 	if value, ok := tuo.mutation.Priorities(); ok {
-		_spec.SetField(enttask.FieldPriorities, field.TypeJSON, value)
+		_spec.SetField(fluenttask.FieldPriorities, field.TypeJSON, value)
 	}
 	if tuo.mutation.PrioritiesCleared() {
-		_spec.ClearField(enttask.FieldPriorities, field.TypeJSON)
+		_spec.ClearField(fluenttask.FieldPriorities, field.TypeJSON)
 	}
 	if value, ok := tuo.mutation.Name(); ok {
-		_spec.SetField(enttask.FieldName, field.TypeString, value)
+		_spec.SetField(fluenttask.FieldName, field.TypeString, value)
 	}
 	if tuo.mutation.NameCleared() {
-		_spec.ClearField(enttask.FieldName, field.TypeString)
+		_spec.ClearField(fluenttask.FieldName, field.TypeString)
 	}
 	if value, ok := tuo.mutation.Owner(); ok {
-		_spec.SetField(enttask.FieldOwner, field.TypeString, value)
+		_spec.SetField(fluenttask.FieldOwner, field.TypeString, value)
 	}
 	if tuo.mutation.OwnerCleared() {
-		_spec.ClearField(enttask.FieldOwner, field.TypeString)
+		_spec.ClearField(fluenttask.FieldOwner, field.TypeString)
 	}
 	if value, ok := tuo.mutation.Order(); ok {
-		_spec.SetField(enttask.FieldOrder, field.TypeInt, value)
+		_spec.SetField(fluenttask.FieldOrder, field.TypeInt, value)
 	}
 	if value, ok := tuo.mutation.AddedOrder(); ok {
-		_spec.AddField(enttask.FieldOrder, field.TypeInt, value)
+		_spec.AddField(fluenttask.FieldOrder, field.TypeInt, value)
 	}
 	if tuo.mutation.OrderCleared() {
-		_spec.ClearField(enttask.FieldOrder, field.TypeInt)
+		_spec.ClearField(fluenttask.FieldOrder, field.TypeInt)
 	}
 	if value, ok := tuo.mutation.OrderOption(); ok {
-		_spec.SetField(enttask.FieldOrderOption, field.TypeInt, value)
+		_spec.SetField(fluenttask.FieldOrderOption, field.TypeInt, value)
 	}
 	if value, ok := tuo.mutation.AddedOrderOption(); ok {
-		_spec.AddField(enttask.FieldOrderOption, field.TypeInt, value)
+		_spec.AddField(fluenttask.FieldOrderOption, field.TypeInt, value)
 	}
 	if tuo.mutation.OrderOptionCleared() {
-		_spec.ClearField(enttask.FieldOrderOption, field.TypeInt)
+		_spec.ClearField(fluenttask.FieldOrderOption, field.TypeInt)
 	}
 	if value, ok := tuo.mutation.GetOp(); ok {
-		_spec.SetField(enttask.FieldOp, field.TypeString, value)
+		_spec.SetField(fluenttask.FieldOp, field.TypeString, value)
 	}
 	_spec.AddModifiers(tuo.modifiers...)
 	_node = &Task{config: tuo.config}
@@ -592,7 +592,7 @@ func (tuo *TaskUpdateOne) sqlSave(ctx context.Context) (_node *Task, err error) 
 	_spec.ScanValues = _node.scanValues
 	if err = sqlgraph.UpdateNode(ctx, tuo.driver, _spec); err != nil {
 		if _, ok := err.(*sqlgraph.NotFoundError); ok {
-			err = &NotFoundError{enttask.Label}
+			err = &NotFoundError{fluenttask.Label}
 		} else if sqlgraph.IsConstraintError(err) {
 			err = &ConstraintError{msg: err.Error(), wrap: err}
 		}

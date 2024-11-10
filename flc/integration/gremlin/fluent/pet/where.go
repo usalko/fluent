@@ -8,11 +8,11 @@ package pet
 import (
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/dialect/gremlin/graph/dsl"
 	"github.com/usalko/fluent/dialect/gremlin/graph/dsl/__"
 	"github.com/usalko/fluent/dialect/gremlin/graph/dsl/p"
 	"github.com/usalko/fluent/flc/integration/gremlin/fluent/predicate"
-	"github.com/google/uuid"
 )
 
 // ID filters vertices based on their ID field.

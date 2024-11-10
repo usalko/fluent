@@ -20,12 +20,12 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/schema/customstruct"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/schema/bigintgql"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/todo"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/verysecret"
-	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -256,29 +256,29 @@ func (tc *TodoCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (tc *TodoCreate) check() error {
 	if _, ok := tc.mutation.CreatedAt(); !ok {
-		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "Todo.created_at"`)}
+		return &ValidationError{Name: "created_at", err: errors.New(`fluent: missing required field "Todo.created_at"`)}
 	}
 	if _, ok := tc.mutation.Status(); !ok {
-		return &ValidationError{Name: "status", err: errors.New(`ent: missing required field "Todo.status"`)}
+		return &ValidationError{Name: "status", err: errors.New(`fluent: missing required field "Todo.status"`)}
 	}
 	if v, ok := tc.mutation.Status(); ok {
 		if err := todo.StatusValidator(v); err != nil {
-			return &ValidationError{Name: "status", err: fmt.Errorf(`ent: validator failed for field "Todo.status": %w`, err)}
+			return &ValidationError{Name: "status", err: fmt.Errorf(`fluent: validator failed for field "Todo.status": %w`, err)}
 		}
 	}
 	if _, ok := tc.mutation.Priority(); !ok {
-		return &ValidationError{Name: "priority", err: errors.New(`ent: missing required field "Todo.priority"`)}
+		return &ValidationError{Name: "priority", err: errors.New(`fluent: missing required field "Todo.priority"`)}
 	}
 	if _, ok := tc.mutation.Text(); !ok {
-		return &ValidationError{Name: "text", err: errors.New(`ent: missing required field "Todo.text"`)}
+		return &ValidationError{Name: "text", err: errors.New(`fluent: missing required field "Todo.text"`)}
 	}
 	if v, ok := tc.mutation.Text(); ok {
 		if err := todo.TextValidator(v); err != nil {
-			return &ValidationError{Name: "text", err: fmt.Errorf(`ent: validator failed for field "Todo.text": %w`, err)}
+			return &ValidationError{Name: "text", err: fmt.Errorf(`fluent: validator failed for field "Todo.text": %w`, err)}
 		}
 	}
 	if _, ok := tc.mutation.Value(); !ok {
-		return &ValidationError{Name: "value", err: errors.New(`ent: missing required field "Todo.value"`)}
+		return &ValidationError{Name: "value", err: errors.New(`fluent: missing required field "Todo.value"`)}
 	}
 	return nil
 }

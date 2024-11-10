@@ -106,11 +106,11 @@ func (ac *AccountCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (ac *AccountCreate) check() error {
 	if _, ok := ac.mutation.Email(); !ok {
-		return &ValidationError{Name: "email", err: errors.New(`ent: missing required field "Account.email"`)}
+		return &ValidationError{Name: "email", err: errors.New(`fluent: missing required field "Account.email"`)}
 	}
 	if v, ok := ac.mutation.Email(); ok {
 		if err := account.EmailValidator(v); err != nil {
-			return &ValidationError{Name: "email", err: fmt.Errorf(`ent: validator failed for field "Account.email": %w`, err)}
+			return &ValidationError{Name: "email", err: fmt.Errorf(`fluent: validator failed for field "Account.email": %w`, err)}
 		}
 	}
 	return nil

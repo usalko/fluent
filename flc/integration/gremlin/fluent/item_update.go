@@ -88,7 +88,7 @@ func (iu *ItemUpdate) ExecX(ctx context.Context) {
 func (iu *ItemUpdate) check() error {
 	if v, ok := iu.mutation.Text(); ok {
 		if err := item.TextValidator(v); err != nil {
-			return &ValidationError{Name: "text", err: fmt.Errorf(`ent: validator failed for field "Item.text": %w`, err)}
+			return &ValidationError{Name: "text", err: fmt.Errorf(`fluent: validator failed for field "Item.text": %w`, err)}
 		}
 	}
 	return nil
@@ -232,7 +232,7 @@ func (iuo *ItemUpdateOne) ExecX(ctx context.Context) {
 func (iuo *ItemUpdateOne) check() error {
 	if v, ok := iuo.mutation.Text(); ok {
 		if err := item.TextValidator(v); err != nil {
-			return &ValidationError{Name: "text", err: fmt.Errorf(`ent: validator failed for field "Item.text": %w`, err)}
+			return &ValidationError{Name: "text", err: fmt.Errorf(`fluent: validator failed for field "Item.text": %w`, err)}
 		}
 	}
 	return nil
@@ -245,7 +245,7 @@ func (iuo *ItemUpdateOne) gremlinSave(ctx context.Context) (*Item, error) {
 	res := &gremlin.Response{}
 	id, ok := iuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Item.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Item.id" for update`)}
 	}
 	query, bindings := iuo.gremlin(id).Query()
 	if err := iuo.driver.Exec(ctx, query, bindings, res); err != nil {

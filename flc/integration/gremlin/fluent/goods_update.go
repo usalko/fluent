@@ -144,7 +144,7 @@ func (guo *GoodsUpdateOne) gremlinSave(ctx context.Context) (*Goods, error) {
 	res := &gremlin.Response{}
 	id, ok := guo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Goods.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Goods.id" for update`)}
 	}
 	query, bindings := guo.gremlin(id).Query()
 	if err := guo.driver.Exec(ctx, query, bindings, res); err != nil {

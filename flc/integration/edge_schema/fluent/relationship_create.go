@@ -128,19 +128,19 @@ func (rc *RelationshipCreate) defaults() error {
 // check runs all checks and user-defined validators on the builder.
 func (rc *RelationshipCreate) check() error {
 	if _, ok := rc.mutation.Weight(); !ok {
-		return &ValidationError{Name: "weight", err: errors.New(`ent: missing required field "Relationship.weight"`)}
+		return &ValidationError{Name: "weight", err: errors.New(`fluent: missing required field "Relationship.weight"`)}
 	}
 	if _, ok := rc.mutation.UserID(); !ok {
-		return &ValidationError{Name: "user_id", err: errors.New(`ent: missing required field "Relationship.user_id"`)}
+		return &ValidationError{Name: "user_id", err: errors.New(`fluent: missing required field "Relationship.user_id"`)}
 	}
 	if _, ok := rc.mutation.RelativeID(); !ok {
-		return &ValidationError{Name: "relative_id", err: errors.New(`ent: missing required field "Relationship.relative_id"`)}
+		return &ValidationError{Name: "relative_id", err: errors.New(`fluent: missing required field "Relationship.relative_id"`)}
 	}
 	if len(rc.mutation.UserIDs()) == 0 {
-		return &ValidationError{Name: "user", err: errors.New(`ent: missing required edge "Relationship.user"`)}
+		return &ValidationError{Name: "user", err: errors.New(`fluent: missing required edge "Relationship.user"`)}
 	}
 	if len(rc.mutation.RelativeIDs()) == 0 {
-		return &ValidationError{Name: "relative", err: errors.New(`ent: missing required edge "Relationship.relative"`)}
+		return &ValidationError{Name: "relative", err: errors.New(`fluent: missing required edge "Relationship.relative"`)}
 	}
 	return nil
 }

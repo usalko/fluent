@@ -21,6 +21,9 @@ import (
 	"reflect"
 	"sync"
 
+	"github.com/usalko/fluent"
+	"github.com/usalko/fluent/dialect/sql"
+	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/billproduct"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/friendship"
@@ -28,9 +31,6 @@ import (
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/todo"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/user"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/verysecret"
-	"github.com/usalko/fluent"
-	"github.com/usalko/fluent/dialect/sql"
-	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 )
 
 // fluent aliases to avoid import conflicts in user's code.
@@ -87,7 +87,7 @@ var (
 	columnCheck sql.ColumnCheck
 )
 
-// columnChecker checks if the column exists in the given table.
+// checkColumn checks if the column exists in the given table.
 func checkColumn(table, column string) error {
 	initCheck.Do(func() {
 		columnCheck = sql.NewColumnCheck(map[string]func(string) bool{

@@ -120,7 +120,7 @@ func (dc *DeviceCreate) defaults() {
 func (dc *DeviceCreate) check() error {
 	if v, ok := dc.mutation.ID(); ok {
 		if err := device.IDValidator(v[:]); err != nil {
-			return &ValidationError{Name: "id", err: fmt.Errorf(`ent: validator failed for field "Device.id": %w`, err)}
+			return &ValidationError{Name: "id", err: fmt.Errorf(`fluent: validator failed for field "Device.id": %w`, err)}
 		}
 	}
 	return nil

@@ -8,12 +8,12 @@ package fluent
 import (
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/flc/integration/edge_field/fluent/car"
 	"github.com/usalko/fluent/flc/integration/edge_field/fluent/metadata"
 	"github.com/usalko/fluent/flc/integration/edge_field/fluent/node"
 	"github.com/usalko/fluent/flc/integration/edge_field/fluent/rental"
 	"github.com/usalko/fluent/flc/integration/edge_field/fluent/schema"
-	"github.com/google/uuid"
 )
 
 // The init function reads all schema descriptors with runtime code

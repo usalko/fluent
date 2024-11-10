@@ -126,7 +126,7 @@ func (pu *PetUpdate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (pu *PetUpdate) check() error {
 	if pu.mutation.OwnerCleared() && len(pu.mutation.OwnerIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "Pet.owner"`)
+		return errors.New(`fluent: clearing a required unique edge "Pet.owner"`)
 	}
 	return nil
 }
@@ -309,7 +309,7 @@ func (puo *PetUpdateOne) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (puo *PetUpdateOne) check() error {
 	if puo.mutation.OwnerCleared() && len(puo.mutation.OwnerIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "Pet.owner"`)
+		return errors.New(`fluent: clearing a required unique edge "Pet.owner"`)
 	}
 	return nil
 }
@@ -321,7 +321,7 @@ func (puo *PetUpdateOne) sqlSave(ctx context.Context) (_node *Pet, err error) {
 	_spec := sqlgraph.NewUpdateSpec(pet.Table, pet.Columns, sqlgraph.NewFieldSpec(pet.FieldID, field.TypeInt))
 	id, ok := puo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Pet.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Pet.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := puo.fields; len(fields) > 0 {

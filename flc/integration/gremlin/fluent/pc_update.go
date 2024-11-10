@@ -144,7 +144,7 @@ func (puo *PCUpdateOne) gremlinSave(ctx context.Context) (*PC, error) {
 	res := &gremlin.Response{}
 	id, ok := puo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "PC.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "PC.id" for update`)}
 	}
 	query, bindings := puo.gremlin(id).Query()
 	if err := puo.driver.Exec(ctx, query, bindings, res); err != nil {

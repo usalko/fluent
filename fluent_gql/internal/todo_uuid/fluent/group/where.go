@@ -15,10 +15,10 @@
 package group
 
 import (
-	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/predicate"
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
-	"github.com/google/uuid"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/predicate"
 )
 
 // ID filters vertices based on their ID field.

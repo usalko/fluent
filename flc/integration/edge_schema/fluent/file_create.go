@@ -81,7 +81,7 @@ func (fc *FileCreate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (fc *FileCreate) check() error {
 	if _, ok := fc.mutation.Name(); !ok {
-		return &ValidationError{Name: "name", err: errors.New(`ent: missing required field "File.name"`)}
+		return &ValidationError{Name: "name", err: errors.New(`fluent: missing required field "File.name"`)}
 	}
 	return nil
 }

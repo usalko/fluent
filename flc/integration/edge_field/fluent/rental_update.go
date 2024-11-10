@@ -80,10 +80,10 @@ func (ru *RentalUpdate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (ru *RentalUpdate) check() error {
 	if ru.mutation.UserCleared() && len(ru.mutation.UserIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "Rental.user"`)
+		return errors.New(`fluent: clearing a required unique edge "Rental.user"`)
 	}
 	if ru.mutation.CarCleared() && len(ru.mutation.CarIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "Rental.car"`)
+		return errors.New(`fluent: clearing a required unique edge "Rental.car"`)
 	}
 	return nil
 }
@@ -185,10 +185,10 @@ func (ruo *RentalUpdateOne) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (ruo *RentalUpdateOne) check() error {
 	if ruo.mutation.UserCleared() && len(ruo.mutation.UserIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "Rental.user"`)
+		return errors.New(`fluent: clearing a required unique edge "Rental.user"`)
 	}
 	if ruo.mutation.CarCleared() && len(ruo.mutation.CarIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "Rental.car"`)
+		return errors.New(`fluent: clearing a required unique edge "Rental.car"`)
 	}
 	return nil
 }
@@ -200,7 +200,7 @@ func (ruo *RentalUpdateOne) sqlSave(ctx context.Context) (_node *Rental, err err
 	_spec := sqlgraph.NewUpdateSpec(rental.Table, rental.Columns, sqlgraph.NewFieldSpec(rental.FieldID, field.TypeInt))
 	id, ok := ruo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Rental.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Rental.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := ruo.fields; len(fields) > 0 {

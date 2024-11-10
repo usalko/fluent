@@ -19,9 +19,9 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/pet"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/schema/uintgql"
-	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -96,7 +96,7 @@ func (pc *PetCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (pc *PetCreate) check() error {
 	if _, ok := pc.mutation.Name(); !ok {
-		return &ValidationError{Name: "name", err: errors.New(`ent: missing required field "Pet.name"`)}
+		return &ValidationError{Name: "name", err: errors.New(`fluent: missing required field "Pet.name"`)}
 	}
 	return nil
 }

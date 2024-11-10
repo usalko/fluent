@@ -8,5 +8,5 @@ package runtime
 // The schema-stitching logic is generated in github.com/usalko/fluent/examples/migration/fluent/runtime.go
 
 const (
-	Version = "v0.0.0-00010101000000-000000000000" // Version of fluent codegen.
+	Version = "v0.1.4" // Version of fluent codegen.
 )

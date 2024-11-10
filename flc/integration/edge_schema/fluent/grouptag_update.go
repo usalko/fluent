@@ -117,10 +117,10 @@ func (gtu *GroupTagUpdate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (gtu *GroupTagUpdate) check() error {
 	if gtu.mutation.TagCleared() && len(gtu.mutation.TagIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "GroupTag.tag"`)
+		return errors.New(`fluent: clearing a required unique edge "GroupTag.tag"`)
 	}
 	if gtu.mutation.GroupCleared() && len(gtu.mutation.GroupIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "GroupTag.group"`)
+		return errors.New(`fluent: clearing a required unique edge "GroupTag.group"`)
 	}
 	return nil
 }
@@ -313,10 +313,10 @@ func (gtuo *GroupTagUpdateOne) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (gtuo *GroupTagUpdateOne) check() error {
 	if gtuo.mutation.TagCleared() && len(gtuo.mutation.TagIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "GroupTag.tag"`)
+		return errors.New(`fluent: clearing a required unique edge "GroupTag.tag"`)
 	}
 	if gtuo.mutation.GroupCleared() && len(gtuo.mutation.GroupIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "GroupTag.group"`)
+		return errors.New(`fluent: clearing a required unique edge "GroupTag.group"`)
 	}
 	return nil
 }
@@ -328,7 +328,7 @@ func (gtuo *GroupTagUpdateOne) sqlSave(ctx context.Context) (_node *GroupTag, er
 	_spec := sqlgraph.NewUpdateSpec(grouptag.Table, grouptag.Columns, sqlgraph.NewFieldSpec(grouptag.FieldID, field.TypeInt))
 	id, ok := gtuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "GroupTag.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "GroupTag.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := gtuo.fields; len(fields) > 0 {

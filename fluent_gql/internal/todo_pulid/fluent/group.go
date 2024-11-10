@@ -18,10 +18,10 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/group"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/schema/pulid"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/group"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/schema/pulid"
 )
 
 // Group is the model entity for the Group schema.

@@ -19,14 +19,14 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/usalko/fluent/dialect/sql"
+	"github.com/usalko/fluent/dialect/sql/sqlgraph"
+	"github.com/usalko/fluent/dialect/sql/sqljson"
 	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/schema/customstruct"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/predicate"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/schema/pulid"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/todo"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_pulid/fluent/verysecret"
-	"github.com/usalko/fluent/dialect/sql"
-	"github.com/usalko/fluent/dialect/sql/sqlgraph"
-	"github.com/usalko/fluent/dialect/sql/sqljson"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -295,12 +295,12 @@ func (tu *TodoUpdate) ExecX(ctx context.Context) {
 func (tu *TodoUpdate) check() error {
 	if v, ok := tu.mutation.Status(); ok {
 		if err := todo.StatusValidator(v); err != nil {
-			return &ValidationError{Name: "status", err: fmt.Errorf(`ent: validator failed for field "Todo.status": %w`, err)}
+			return &ValidationError{Name: "status", err: fmt.Errorf(`fluent: validator failed for field "Todo.status": %w`, err)}
 		}
 	}
 	if v, ok := tu.mutation.Text(); ok {
 		if err := todo.TextValidator(v); err != nil {
-			return &ValidationError{Name: "text", err: fmt.Errorf(`ent: validator failed for field "Todo.text": %w`, err)}
+			return &ValidationError{Name: "text", err: fmt.Errorf(`fluent: validator failed for field "Todo.text": %w`, err)}
 		}
 	}
 	return nil
@@ -758,12 +758,12 @@ func (tuo *TodoUpdateOne) ExecX(ctx context.Context) {
 func (tuo *TodoUpdateOne) check() error {
 	if v, ok := tuo.mutation.Status(); ok {
 		if err := todo.StatusValidator(v); err != nil {
-			return &ValidationError{Name: "status", err: fmt.Errorf(`ent: validator failed for field "Todo.status": %w`, err)}
+			return &ValidationError{Name: "status", err: fmt.Errorf(`fluent: validator failed for field "Todo.status": %w`, err)}
 		}
 	}
 	if v, ok := tuo.mutation.Text(); ok {
 		if err := todo.TextValidator(v); err != nil {
-			return &ValidationError{Name: "text", err: fmt.Errorf(`ent: validator failed for field "Todo.text": %w`, err)}
+			return &ValidationError{Name: "text", err: fmt.Errorf(`fluent: validator failed for field "Todo.text": %w`, err)}
 		}
 	}
 	return nil
@@ -776,7 +776,7 @@ func (tuo *TodoUpdateOne) sqlSave(ctx context.Context) (_node *Todo, err error) 
 	_spec := sqlgraph.NewUpdateSpec(todo.Table, todo.Columns, sqlgraph.NewFieldSpec(todo.FieldID, field.TypeString))
 	id, ok := tuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "Todo.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "Todo.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := tuo.fields; len(fields) > 0 {

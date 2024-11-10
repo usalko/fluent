@@ -12,9 +12,9 @@ import (
 	"log"
 	"reflect"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/examples/migration/fluent/migrate"
-	"github.com/google/uuid"
 
 	"github.com/usalko/fluent/dialect"
 	"github.com/usalko/fluent/dialect/sql"

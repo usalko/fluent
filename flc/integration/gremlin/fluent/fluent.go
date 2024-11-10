@@ -104,7 +104,7 @@ func As(fn AggregateFunc, end string) AggregateFunc {
 
 // DefaultCountLabel is the default label name for the Count aggregation function.
 // It should be used as the struct-tag for decoding, or a map key for interaction with the returned response.
-// In order to "count" 2 or more fields and avoid conflicting, use the `ent.As(fluent.Count(field), "custom_name")`
+// In order to "count" 2 or more fields and avoid conflicting, use the `fluent.As(fluent.Count(field), "custom_name")`
 // function with custom name in order to override it.
 const DefaultCountLabel = "count"
 
@@ -120,7 +120,7 @@ func Count() AggregateFunc {
 
 // DefaultMaxLabel is the default label name for the Max aggregation function.
 // It should be used as the struct-tag for decoding, or a map key for interaction with the returned response.
-// In order to "max" 2 or more fields and avoid conflicting, use the `ent.As(fluent.Max(field), "custom_name")`
+// In order to "max" 2 or more fields and avoid conflicting, use the `fluent.As(fluent.Max(field), "custom_name")`
 // function with custom name in order to override it.
 const DefaultMaxLabel = "max"
 
@@ -136,7 +136,7 @@ func Max(field string) AggregateFunc {
 
 // DefaultMeanLabel is the default label name for the Mean aggregation function.
 // It should be used as the struct-tag for decoding, or a map key for interaction with the returned response.
-// In order to "mean" 2 or more fields and avoid conflicting, use the `ent.As(fluent.Mean(field), "custom_name")`
+// In order to "mean" 2 or more fields and avoid conflicting, use the `fluent.As(fluent.Mean(field), "custom_name")`
 // function with custom name in order to override it.
 const DefaultMeanLabel = "mean"
 
@@ -152,7 +152,7 @@ func Mean(field string) AggregateFunc {
 
 // DefaultMinLabel is the default label name for the Min aggregation function.
 // It should be used as the struct-tag for decoding, or a map key for interaction with the returned response.
-// In order to "min" 2 or more fields and avoid conflicting, use the `ent.As(fluent.Min(field), "custom_name")`
+// In order to "min" 2 or more fields and avoid conflicting, use the `fluent.As(fluent.Min(field), "custom_name")`
 // function with custom name in order to override it.
 const DefaultMinLabel = "min"
 
@@ -168,7 +168,7 @@ func Min(field string) AggregateFunc {
 
 // DefaultSumLabel is the default label name for the Sum aggregation function.
 // It should be used as the struct-tag for decoding, or a map key for interaction with the returned response.
-// In order to "sum" 2 or more fields and avoid conflicting, use the `ent.As(fluent.Sum(field), "custom_name")`
+// In order to "sum" 2 or more fields and avoid conflicting, use the `fluent.As(fluent.Sum(field), "custom_name")`
 // function with custom name in order to override it.
 const DefaultSumLabel = "sum"
 

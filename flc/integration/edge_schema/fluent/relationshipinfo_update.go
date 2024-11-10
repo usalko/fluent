@@ -171,7 +171,7 @@ func (riuo *RelationshipInfoUpdateOne) sqlSave(ctx context.Context) (_node *Rela
 	_spec := sqlgraph.NewUpdateSpec(relationshipinfo.Table, relationshipinfo.Columns, sqlgraph.NewFieldSpec(relationshipinfo.FieldID, field.TypeInt))
 	id, ok := riuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "RelationshipInfo.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "RelationshipInfo.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := riuo.fields; len(fields) > 0 {

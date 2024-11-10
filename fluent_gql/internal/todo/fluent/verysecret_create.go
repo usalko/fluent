@@ -19,8 +19,8 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/verysecret"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
+	"github.com/usalko/fluent/fluent_gql/internal/todo/fluent/verysecret"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -72,7 +72,7 @@ func (vsc *VerySecretCreate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (vsc *VerySecretCreate) check() error {
 	if _, ok := vsc.mutation.Password(); !ok {
-		return &ValidationError{Name: "password", err: errors.New(`ent: missing required field "VerySecret.password"`)}
+		return &ValidationError{Name: "password", err: errors.New(`fluent: missing required field "VerySecret.password"`)}
 	}
 	return nil
 }

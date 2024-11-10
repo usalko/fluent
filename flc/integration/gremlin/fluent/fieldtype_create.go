@@ -14,13 +14,13 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/dialect/gremlin"
 	"github.com/usalko/fluent/dialect/gremlin/graph/dsl"
 	"github.com/usalko/fluent/dialect/gremlin/graph/dsl/g"
 	"github.com/usalko/fluent/flc/integration/fluent/role"
 	"github.com/usalko/fluent/flc/integration/fluent/schema"
 	"github.com/usalko/fluent/flc/integration/gremlin/fluent/fieldtype"
-	"github.com/google/uuid"
 )
 
 // FieldTypeCreate is the builder for creating a FieldType entity.
@@ -872,79 +872,79 @@ func (ftc *FieldTypeCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (ftc *FieldTypeCreate) check() error {
 	if _, ok := ftc.mutation.Int(); !ok {
-		return &ValidationError{Name: "int", err: errors.New(`ent: missing required field "FieldType.int"`)}
+		return &ValidationError{Name: "int", err: errors.New(`fluent: missing required field "FieldType.int"`)}
 	}
 	if _, ok := ftc.mutation.Int8(); !ok {
-		return &ValidationError{Name: "int8", err: errors.New(`ent: missing required field "FieldType.int8"`)}
+		return &ValidationError{Name: "int8", err: errors.New(`fluent: missing required field "FieldType.int8"`)}
 	}
 	if _, ok := ftc.mutation.Int16(); !ok {
-		return &ValidationError{Name: "int16", err: errors.New(`ent: missing required field "FieldType.int16"`)}
+		return &ValidationError{Name: "int16", err: errors.New(`fluent: missing required field "FieldType.int16"`)}
 	}
 	if _, ok := ftc.mutation.Int32(); !ok {
-		return &ValidationError{Name: "int32", err: errors.New(`ent: missing required field "FieldType.int32"`)}
+		return &ValidationError{Name: "int32", err: errors.New(`fluent: missing required field "FieldType.int32"`)}
 	}
 	if _, ok := ftc.mutation.Int64(); !ok {
-		return &ValidationError{Name: "int64", err: errors.New(`ent: missing required field "FieldType.int64"`)}
+		return &ValidationError{Name: "int64", err: errors.New(`fluent: missing required field "FieldType.int64"`)}
 	}
 	if v, ok := ftc.mutation.ValidateOptionalInt32(); ok {
 		if err := fieldtype.ValidateOptionalInt32Validator(v); err != nil {
-			return &ValidationError{Name: "validate_optional_int32", err: fmt.Errorf(`ent: validator failed for field "FieldType.validate_optional_int32": %w`, err)}
+			return &ValidationError{Name: "validate_optional_int32", err: fmt.Errorf(`fluent: validator failed for field "FieldType.validate_optional_int32": %w`, err)}
 		}
 	}
 	if v, ok := ftc.mutation.State(); ok {
 		if err := fieldtype.StateValidator(v); err != nil {
-			return &ValidationError{Name: "state", err: fmt.Errorf(`ent: validator failed for field "FieldType.state": %w`, err)}
+			return &ValidationError{Name: "state", err: fmt.Errorf(`fluent: validator failed for field "FieldType.state": %w`, err)}
 		}
 	}
 	if v, ok := ftc.mutation.MAC(); ok {
 		if err := fieldtype.MACValidator(v.String()); err != nil {
-			return &ValidationError{Name: "mac", err: fmt.Errorf(`ent: validator failed for field "FieldType.mac": %w`, err)}
+			return &ValidationError{Name: "mac", err: fmt.Errorf(`fluent: validator failed for field "FieldType.mac": %w`, err)}
 		}
 	}
 	if _, ok := ftc.mutation.Dir(); !ok {
-		return &ValidationError{Name: "dir", err: errors.New(`ent: missing required field "FieldType.dir"`)}
+		return &ValidationError{Name: "dir", err: errors.New(`fluent: missing required field "FieldType.dir"`)}
 	}
 	if v, ok := ftc.mutation.Ndir(); ok {
 		if err := fieldtype.NdirValidator(string(v)); err != nil {
-			return &ValidationError{Name: "ndir", err: fmt.Errorf(`ent: validator failed for field "FieldType.ndir": %w`, err)}
+			return &ValidationError{Name: "ndir", err: fmt.Errorf(`fluent: validator failed for field "FieldType.ndir": %w`, err)}
 		}
 	}
 	if v, ok := ftc.mutation.Link(); ok {
 		if err := fieldtype.LinkValidator(v.String()); err != nil {
-			return &ValidationError{Name: "link", err: fmt.Errorf(`ent: validator failed for field "FieldType.link": %w`, err)}
+			return &ValidationError{Name: "link", err: fmt.Errorf(`fluent: validator failed for field "FieldType.link": %w`, err)}
 		}
 	}
 	if v, ok := ftc.mutation.RawData(); ok {
 		if err := fieldtype.RawDataValidator(v); err != nil {
-			return &ValidationError{Name: "raw_data", err: fmt.Errorf(`ent: validator failed for field "FieldType.raw_data": %w`, err)}
+			return &ValidationError{Name: "raw_data", err: fmt.Errorf(`fluent: validator failed for field "FieldType.raw_data": %w`, err)}
 		}
 	}
 	if v, ok := ftc.mutation.IP(); ok {
 		if err := fieldtype.IPValidator([]byte(v)); err != nil {
-			return &ValidationError{Name: "ip", err: fmt.Errorf(`ent: validator failed for field "FieldType.ip": %w`, err)}
+			return &ValidationError{Name: "ip", err: fmt.Errorf(`fluent: validator failed for field "FieldType.ip": %w`, err)}
 		}
 	}
 	if _, ok := ftc.mutation.Role(); !ok {
-		return &ValidationError{Name: "role", err: errors.New(`ent: missing required field "FieldType.role"`)}
+		return &ValidationError{Name: "role", err: errors.New(`fluent: missing required field "FieldType.role"`)}
 	}
 	if v, ok := ftc.mutation.Role(); ok {
 		if err := fieldtype.RoleValidator(v); err != nil {
-			return &ValidationError{Name: "role", err: fmt.Errorf(`ent: validator failed for field "FieldType.role": %w`, err)}
+			return &ValidationError{Name: "role", err: fmt.Errorf(`fluent: validator failed for field "FieldType.role": %w`, err)}
 		}
 	}
 	if v, ok := ftc.mutation.Priority(); ok {
 		if err := fieldtype.PriorityValidator(v); err != nil {
-			return &ValidationError{Name: "priority", err: fmt.Errorf(`ent: validator failed for field "FieldType.priority": %w`, err)}
+			return &ValidationError{Name: "priority", err: fmt.Errorf(`fluent: validator failed for field "FieldType.priority": %w`, err)}
 		}
 	}
 	if _, ok := ftc.mutation.Pair(); !ok {
-		return &ValidationError{Name: "pair", err: errors.New(`ent: missing required field "FieldType.pair"`)}
+		return &ValidationError{Name: "pair", err: errors.New(`fluent: missing required field "FieldType.pair"`)}
 	}
 	if _, ok := ftc.mutation.Vstring(); !ok {
-		return &ValidationError{Name: "vstring", err: errors.New(`ent: missing required field "FieldType.vstring"`)}
+		return &ValidationError{Name: "vstring", err: errors.New(`fluent: missing required field "FieldType.vstring"`)}
 	}
 	if _, ok := ftc.mutation.Triple(); !ok {
-		return &ValidationError{Name: "triple", err: errors.New(`ent: missing required field "FieldType.triple"`)}
+		return &ValidationError{Name: "triple", err: errors.New(`fluent: missing required field "FieldType.triple"`)}
 	}
 	return nil
 }

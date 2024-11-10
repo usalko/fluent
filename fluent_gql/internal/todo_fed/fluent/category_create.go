@@ -20,10 +20,10 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/category"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/schema/schematype"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_fed/fluent/todo"
-	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/schema/field"
 )
 
@@ -136,19 +136,19 @@ func (cc *CategoryCreate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (cc *CategoryCreate) check() error {
 	if _, ok := cc.mutation.Text(); !ok {
-		return &ValidationError{Name: "text", err: errors.New(`ent: missing required field "Category.text"`)}
+		return &ValidationError{Name: "text", err: errors.New(`fluent: missing required field "Category.text"`)}
 	}
 	if v, ok := cc.mutation.Text(); ok {
 		if err := category.TextValidator(v); err != nil {
-			return &ValidationError{Name: "text", err: fmt.Errorf(`ent: validator failed for field "Category.text": %w`, err)}
+			return &ValidationError{Name: "text", err: fmt.Errorf(`fluent: validator failed for field "Category.text": %w`, err)}
 		}
 	}
 	if _, ok := cc.mutation.Status(); !ok {
-		return &ValidationError{Name: "status", err: errors.New(`ent: missing required field "Category.status"`)}
+		return &ValidationError{Name: "status", err: errors.New(`fluent: missing required field "Category.status"`)}
 	}
 	if v, ok := cc.mutation.Status(); ok {
 		if err := category.StatusValidator(v); err != nil {
-			return &ValidationError{Name: "status", err: fmt.Errorf(`ent: validator failed for field "Category.status": %w`, err)}
+			return &ValidationError{Name: "status", err: fmt.Errorf(`fluent: validator failed for field "Category.status": %w`, err)}
 		}
 	}
 	return nil

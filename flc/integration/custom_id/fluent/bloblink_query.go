@@ -10,13 +10,13 @@ import (
 	"fmt"
 	"math"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/blob"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/bloblink"
 	"github.com/usalko/fluent/flc/integration/custom_id/fluent/predicate"
-	"github.com/google/uuid"
 )
 
 // BlobLinkQuery is the builder for querying BlobLink entities.

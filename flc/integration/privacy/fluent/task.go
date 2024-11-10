@@ -9,11 +9,11 @@ import (
 	"fmt"
 	"strings"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
 	"github.com/usalko/fluent/flc/integration/privacy/fluent/task"
 	"github.com/usalko/fluent/flc/integration/privacy/fluent/user"
-	"github.com/google/uuid"
 )
 
 // Task is the model entity for the Task schema.

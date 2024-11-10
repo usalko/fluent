@@ -105,7 +105,7 @@ func (sc *SessionCreate) defaults() {
 func (sc *SessionCreate) check() error {
 	if v, ok := sc.mutation.ID(); ok {
 		if err := session.IDValidator(v[:]); err != nil {
-			return &ValidationError{Name: "id", err: fmt.Errorf(`ent: validator failed for field "Session.id": %w`, err)}
+			return &ValidationError{Name: "id", err: fmt.Errorf(`fluent: validator failed for field "Session.id": %w`, err)}
 		}
 	}
 	return nil

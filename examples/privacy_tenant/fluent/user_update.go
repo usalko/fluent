@@ -135,7 +135,7 @@ func (uu *UserUpdate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (uu *UserUpdate) check() error {
 	if uu.mutation.TenantCleared() && len(uu.mutation.TenantIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "User.tenant"`)
+		return errors.New(`fluent: clearing a required unique edge "User.tenant"`)
 	}
 	return nil
 }
@@ -347,7 +347,7 @@ func (uuo *UserUpdateOne) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (uuo *UserUpdateOne) check() error {
 	if uuo.mutation.TenantCleared() && len(uuo.mutation.TenantIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "User.tenant"`)
+		return errors.New(`fluent: clearing a required unique edge "User.tenant"`)
 	}
 	return nil
 }
@@ -359,7 +359,7 @@ func (uuo *UserUpdateOne) sqlSave(ctx context.Context) (_node *User, err error) 
 	_spec := sqlgraph.NewUpdateSpec(user.Table, user.Columns, sqlgraph.NewFieldSpec(user.FieldID, field.TypeInt))
 	id, ok := uuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "User.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "User.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := uuo.fields; len(fields) > 0 {

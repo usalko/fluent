@@ -285,35 +285,35 @@ func (uc *UserCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (uc *UserCreate) check() error {
 	if _, ok := uc.mutation.Age(); !ok {
-		return &ValidationError{Name: "age", err: errors.New(`entv1: missing required field "User.age"`)}
+		return &ValidationError{Name: "age", err: errors.New(`fluentv1: missing required field "User.age"`)}
 	}
 	if _, ok := uc.mutation.Name(); !ok {
-		return &ValidationError{Name: "name", err: errors.New(`entv1: missing required field "User.name"`)}
+		return &ValidationError{Name: "name", err: errors.New(`fluentv1: missing required field "User.name"`)}
 	}
 	if v, ok := uc.mutation.Name(); ok {
 		if err := user.NameValidator(v); err != nil {
-			return &ValidationError{Name: "name", err: fmt.Errorf(`entv1: validator failed for field "User.name": %w`, err)}
+			return &ValidationError{Name: "name", err: fmt.Errorf(`fluentv1: validator failed for field "User.name": %w`, err)}
 		}
 	}
 	if _, ok := uc.mutation.Nickname(); !ok {
-		return &ValidationError{Name: "nickname", err: errors.New(`entv1: missing required field "User.nickname"`)}
+		return &ValidationError{Name: "nickname", err: errors.New(`fluentv1: missing required field "User.nickname"`)}
 	}
 	if _, ok := uc.mutation.OldToken(); !ok {
-		return &ValidationError{Name: "old_token", err: errors.New(`entv1: missing required field "User.old_token"`)}
+		return &ValidationError{Name: "old_token", err: errors.New(`fluentv1: missing required field "User.old_token"`)}
 	}
 	if v, ok := uc.mutation.Blob(); ok {
 		if err := user.BlobValidator(v); err != nil {
-			return &ValidationError{Name: "blob", err: fmt.Errorf(`entv1: validator failed for field "User.blob": %w`, err)}
+			return &ValidationError{Name: "blob", err: fmt.Errorf(`fluentv1: validator failed for field "User.blob": %w`, err)}
 		}
 	}
 	if v, ok := uc.mutation.State(); ok {
 		if err := user.StateValidator(v); err != nil {
-			return &ValidationError{Name: "state", err: fmt.Errorf(`entv1: validator failed for field "User.state": %w`, err)}
+			return &ValidationError{Name: "state", err: fmt.Errorf(`fluentv1: validator failed for field "User.state": %w`, err)}
 		}
 	}
 	if v, ok := uc.mutation.Workplace(); ok {
 		if err := user.WorkplaceValidator(v); err != nil {
-			return &ValidationError{Name: "workplace", err: fmt.Errorf(`entv1: validator failed for field "User.workplace": %w`, err)}
+			return &ValidationError{Name: "workplace", err: fmt.Errorf(`fluentv1: validator failed for field "User.workplace": %w`, err)}
 		}
 	}
 	return nil

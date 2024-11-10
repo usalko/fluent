@@ -72,13 +72,13 @@ func (uc *UserCreate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (uc *UserCreate) check() error {
 	if _, ok := uc.mutation.Name(); !ok {
-		return &ValidationError{Name: "name", err: errors.New(`ent: missing required field "User.name"`)}
+		return &ValidationError{Name: "name", err: errors.New(`fluent: missing required field "User.name"`)}
 	}
 	if _, ok := uc.mutation.PublicInfo(); !ok {
-		return &ValidationError{Name: "public_info", err: errors.New(`ent: missing required field "User.public_info"`)}
+		return &ValidationError{Name: "public_info", err: errors.New(`fluent: missing required field "User.public_info"`)}
 	}
 	if _, ok := uc.mutation.PrivateInfo(); !ok {
-		return &ValidationError{Name: "private_info", err: errors.New(`ent: missing required field "User.private_info"`)}
+		return &ValidationError{Name: "private_info", err: errors.New(`fluent: missing required field "User.private_info"`)}
 	}
 	return nil
 }

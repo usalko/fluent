@@ -288,7 +288,7 @@ func (zq *ZooQuery) Aggregate(fns ...AggregateFunc) *ZooSelect {
 func (zq *ZooQuery) prepareQuery(ctx context.Context) error {
 	for _, inter := range zq.inters {
 		if inter == nil {
-			return fmt.Errorf("fluentv2: uninitialized interceptor (forgotten import entv2/runtime?)")
+			return fmt.Errorf("fluentv2: uninitialized interceptor (forgotten import fluentv2/runtime?)")
 		}
 		if trv, ok := inter.(Traverser); ok {
 			if err := trv.Traverse(ctx, zq); err != nil {

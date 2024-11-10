@@ -20,11 +20,11 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/google/uuid"
+	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/friendship"
 	"github.com/usalko/fluent/fluent_gql/internal/todo_uuid/fluent/user"
-	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/schema/field"
-	"github.com/google/uuid"
 )
 
 // FriendshipCreate is the builder for creating a Friendship entity.
@@ -132,19 +132,19 @@ func (fc *FriendshipCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (fc *FriendshipCreate) check() error {
 	if _, ok := fc.mutation.CreatedAt(); !ok {
-		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "Friendship.created_at"`)}
+		return &ValidationError{Name: "created_at", err: errors.New(`fluent: missing required field "Friendship.created_at"`)}
 	}
 	if _, ok := fc.mutation.UserID(); !ok {
-		return &ValidationError{Name: "user_id", err: errors.New(`ent: missing required field "Friendship.user_id"`)}
+		return &ValidationError{Name: "user_id", err: errors.New(`fluent: missing required field "Friendship.user_id"`)}
 	}
 	if _, ok := fc.mutation.FriendID(); !ok {
-		return &ValidationError{Name: "friend_id", err: errors.New(`ent: missing required field "Friendship.friend_id"`)}
+		return &ValidationError{Name: "friend_id", err: errors.New(`fluent: missing required field "Friendship.friend_id"`)}
 	}
 	if len(fc.mutation.UserIDs()) == 0 {
-		return &ValidationError{Name: "user", err: errors.New(`ent: missing required edge "Friendship.user"`)}
+		return &ValidationError{Name: "user", err: errors.New(`fluent: missing required edge "Friendship.user"`)}
 	}
 	if len(fc.mutation.FriendIDs()) == 0 {
-		return &ValidationError{Name: "friend", err: errors.New(`ent: missing required edge "Friendship.friend"`)}
+		return &ValidationError{Name: "friend", err: errors.New(`fluent: missing required edge "Friendship.friend"`)}
 	}
 	return nil
 }

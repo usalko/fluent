@@ -16,14 +16,14 @@ import (
 	"github.com/usalko/fluent/dialect/gremlin/graph/dsl/__"
 	"github.com/usalko/fluent/dialect/gremlin/graph/dsl/g"
 	"github.com/usalko/fluent/flc/integration/gremlin/fluent/predicate"
-	enttask "github.com/usalko/fluent/flc/integration/gremlin/fluent/task"
+	fluenttask "github.com/usalko/fluent/flc/integration/gremlin/fluent/task"
 )
 
 // TaskQuery is the builder for querying Task entities.
 type TaskQuery struct {
 	config
 	ctx        *QueryContext
-	order      []enttask.OrderOption
+	order      []fluenttask.OrderOption
 	inters     []Interceptor
 	predicates []predicate.Task
 	// intermediate query (i.e. traversal path).
@@ -57,7 +57,7 @@ func (tq *TaskQuery) Unique(unique bool) *TaskQuery {
 }
 
 // Order specifies how the records should be ordered.
-func (tq *TaskQuery) Order(o ...enttask.OrderOption) *TaskQuery {
+func (tq *TaskQuery) Order(o ...fluenttask.OrderOption) *TaskQuery {
 	tq.order = append(tq.order, o...)
 	return tq
 }
@@ -70,7 +70,7 @@ func (tq *TaskQuery) First(ctx context.Context) (*Task, error) {
 		return nil, err
 	}
 	if len(nodes) == 0 {
-		return nil, &NotFoundError{enttask.Label}
+		return nil, &NotFoundError{fluenttask.Label}
 	}
 	return nodes[0], nil
 }
@@ -92,7 +92,7 @@ func (tq *TaskQuery) FirstID(ctx context.Context) (id string, err error) {
 		return
 	}
 	if len(ids) == 0 {
-		err = &NotFoundError{enttask.Label}
+		err = &NotFoundError{fluenttask.Label}
 		return
 	}
 	return ids[0], nil
@@ -119,9 +119,9 @@ func (tq *TaskQuery) Only(ctx context.Context) (*Task, error) {
 	case 1:
 		return nodes[0], nil
 	case 0:
-		return nil, &NotFoundError{enttask.Label}
+		return nil, &NotFoundError{fluenttask.Label}
 	default:
-		return nil, &NotSingularError{enttask.Label}
+		return nil, &NotSingularError{fluenttask.Label}
 	}
 }
 
@@ -146,9 +146,9 @@ func (tq *TaskQuery) OnlyID(ctx context.Context) (id string, err error) {
 	case 1:
 		id = ids[0]
 	case 0:
-		err = &NotFoundError{enttask.Label}
+		err = &NotFoundError{fluenttask.Label}
 	default:
-		err = &NotSingularError{enttask.Label}
+		err = &NotSingularError{fluenttask.Label}
 	}
 	return
 }
@@ -187,7 +187,7 @@ func (tq *TaskQuery) IDs(ctx context.Context) (ids []string, err error) {
 		tq.Unique(true)
 	}
 	ctx = setContextOp(ctx, tq.ctx, fluent.OpQueryIDs)
-	if err = tq.Select(enttask.FieldID).Scan(ctx, &ids); err != nil {
+	if err = tq.Select(fluenttask.FieldID).Scan(ctx, &ids); err != nil {
 		return nil, err
 	}
 	return ids, nil
@@ -251,7 +251,7 @@ func (tq *TaskQuery) Clone() *TaskQuery {
 	return &TaskQuery{
 		config:     tq.config,
 		ctx:        tq.ctx.Clone(),
-		order:      append([]enttask.OrderOption{}, tq.order...),
+		order:      append([]fluenttask.OrderOption{}, tq.order...),
 		inters:     append([]Interceptor{}, tq.inters...),
 		predicates: append([]predicate.Task{}, tq.predicates...),
 		// clone intermediate query.
@@ -271,14 +271,14 @@ func (tq *TaskQuery) Clone() *TaskQuery {
 //	}
 //
 //	client.Task.Query().
-//		GroupBy(enttask.FieldPriority).
+//		GroupBy(fluenttask.FieldPriority).
 //		Aggregate(fluent.Count()).
 //		Scan(ctx, &v)
 func (tq *TaskQuery) GroupBy(field string, fields ...string) *TaskGroupBy {
 	tq.ctx.Fields = append([]string{field}, fields...)
 	grbuild := &TaskGroupBy{build: tq}
 	grbuild.flds = &tq.ctx.Fields
-	grbuild.label = enttask.Label
+	grbuild.label = fluenttask.Label
 	grbuild.scan = grbuild.Scan
 	return grbuild
 }
@@ -293,12 +293,12 @@ func (tq *TaskQuery) GroupBy(field string, fields ...string) *TaskGroupBy {
 //	}
 //
 //	client.Task.Query().
-//		Select(enttask.FieldPriority).
+//		Select(fluenttask.FieldPriority).
 //		Scan(ctx, &v)
 func (tq *TaskQuery) Select(fields ...string) *TaskSelect {
 	tq.ctx.Fields = append(tq.ctx.Fields, fields...)
 	sbuild := &TaskSelect{TaskQuery: tq}
-	sbuild.label = enttask.Label
+	sbuild.label = fluenttask.Label
 	sbuild.flds, sbuild.scan = &tq.ctx.Fields, sbuild.Scan
 	return sbuild
 }
@@ -365,7 +365,7 @@ func (tq *TaskQuery) gremlinCount(ctx context.Context) (int, error) {
 }
 
 func (tq *TaskQuery) gremlinQuery(context.Context) *dsl.Traversal {
-	v := g.V().HasLabel(enttask.Label)
+	v := g.V().HasLabel(fluenttask.Label)
 	if tq.gremlin != nil {
 		v = tq.gremlin.Clone()
 	}
@@ -474,7 +474,7 @@ func (ts *TaskSelect) gremlinScan(ctx context.Context, root *TaskQuery, v any) e
 		traversal = root.gremlinQuery(ctx)
 	)
 	if fields := ts.ctx.Fields; len(fields) == 1 {
-		if fields[0] != enttask.FieldID {
+		if fields[0] != fluenttask.FieldID {
 			traversal = traversal.Values(fields...)
 		} else {
 			traversal = traversal.ID()

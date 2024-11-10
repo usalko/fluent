@@ -19,10 +19,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/friendship"
-	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/user"
 	"github.com/usalko/fluent"
 	"github.com/usalko/fluent/dialect/sql"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/friendship"
+	"github.com/usalko/fluent/fluent_gql/internal/todo_go_type/fluent/user"
 )
 
 // Friendship is the model entity for the Friendship schema.

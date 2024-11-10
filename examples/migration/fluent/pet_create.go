@@ -10,11 +10,11 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/google/uuid"
 	"github.com/usalko/fluent/dialect/sql/sqlgraph"
 	"github.com/usalko/fluent/examples/migration/fluent/pet"
 	"github.com/usalko/fluent/examples/migration/fluent/user"
 	"github.com/usalko/fluent/schema/field"
-	"github.com/google/uuid"
 )
 
 // PetCreate is the builder for creating a Pet entity.
@@ -134,25 +134,25 @@ func (pc *PetCreate) defaults() {
 // check runs all checks and user-defined validators on the builder.
 func (pc *PetCreate) check() error {
 	if _, ok := pc.mutation.Name(); !ok {
-		return &ValidationError{Name: "name", err: errors.New(`ent: missing required field "Pet.name"`)}
+		return &ValidationError{Name: "name", err: errors.New(`fluent: missing required field "Pet.name"`)}
 	}
 	if _, ok := pc.mutation.Age(); !ok {
-		return &ValidationError{Name: "age", err: errors.New(`ent: missing required field "Pet.age"`)}
+		return &ValidationError{Name: "age", err: errors.New(`fluent: missing required field "Pet.age"`)}
 	}
 	if _, ok := pc.mutation.Weight(); !ok {
-		return &ValidationError{Name: "weight", err: errors.New(`ent: missing required field "Pet.weight"`)}
+		return &ValidationError{Name: "weight", err: errors.New(`fluent: missing required field "Pet.weight"`)}
 	}
 	if _, ok := pc.mutation.BestFriendID(); !ok {
-		return &ValidationError{Name: "best_friend_id", err: errors.New(`ent: missing required field "Pet.best_friend_id"`)}
+		return &ValidationError{Name: "best_friend_id", err: errors.New(`fluent: missing required field "Pet.best_friend_id"`)}
 	}
 	if _, ok := pc.mutation.OwnerID(); !ok {
-		return &ValidationError{Name: "owner_id", err: errors.New(`ent: missing required field "Pet.owner_id"`)}
+		return &ValidationError{Name: "owner_id", err: errors.New(`fluent: missing required field "Pet.owner_id"`)}
 	}
 	if len(pc.mutation.BestFriendIDs()) == 0 {
-		return &ValidationError{Name: "best_friend", err: errors.New(`ent: missing required edge "Pet.best_friend"`)}
+		return &ValidationError{Name: "best_friend", err: errors.New(`fluent: missing required edge "Pet.best_friend"`)}
 	}
 	if len(pc.mutation.OwnerIDs()) == 0 {
-		return &ValidationError{Name: "owner", err: errors.New(`ent: missing required edge "Pet.owner"`)}
+		return &ValidationError{Name: "owner", err: errors.New(`fluent: missing required edge "Pet.owner"`)}
 	}
 	return nil
 }

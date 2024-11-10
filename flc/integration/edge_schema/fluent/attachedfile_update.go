@@ -138,10 +138,10 @@ func (afu *AttachedFileUpdate) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (afu *AttachedFileUpdate) check() error {
 	if afu.mutation.FiCleared() && len(afu.mutation.FiIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "AttachedFile.fi"`)
+		return errors.New(`fluent: clearing a required unique edge "AttachedFile.fi"`)
 	}
 	if afu.mutation.ProcCleared() && len(afu.mutation.ProcIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "AttachedFile.proc"`)
+		return errors.New(`fluent: clearing a required unique edge "AttachedFile.proc"`)
 	}
 	return nil
 }
@@ -357,10 +357,10 @@ func (afuo *AttachedFileUpdateOne) ExecX(ctx context.Context) {
 // check runs all checks and user-defined validators on the builder.
 func (afuo *AttachedFileUpdateOne) check() error {
 	if afuo.mutation.FiCleared() && len(afuo.mutation.FiIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "AttachedFile.fi"`)
+		return errors.New(`fluent: clearing a required unique edge "AttachedFile.fi"`)
 	}
 	if afuo.mutation.ProcCleared() && len(afuo.mutation.ProcIDs()) > 0 {
-		return errors.New(`ent: clearing a required unique edge "AttachedFile.proc"`)
+		return errors.New(`fluent: clearing a required unique edge "AttachedFile.proc"`)
 	}
 	return nil
 }
@@ -372,7 +372,7 @@ func (afuo *AttachedFileUpdateOne) sqlSave(ctx context.Context) (_node *Attached
 	_spec := sqlgraph.NewUpdateSpec(attachedfile.Table, attachedfile.Columns, sqlgraph.NewFieldSpec(attachedfile.FieldID, field.TypeInt))
 	id, ok := afuo.mutation.ID()
 	if !ok {
-		return nil, &ValidationError{Name: "id", err: errors.New(`ent: missing "AttachedFile.id" for update`)}
+		return nil, &ValidationError{Name: "id", err: errors.New(`fluent: missing "AttachedFile.id" for update`)}
 	}
 	_spec.Node.ID.Value = id
 	if fields := afuo.fields; len(fields) > 0 {

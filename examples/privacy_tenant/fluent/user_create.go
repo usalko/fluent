@@ -117,13 +117,13 @@ func (uc *UserCreate) defaults() error {
 // check runs all checks and user-defined validators on the builder.
 func (uc *UserCreate) check() error {
 	if _, ok := uc.mutation.TenantID(); !ok {
-		return &ValidationError{Name: "tenant_id", err: errors.New(`ent: missing required field "User.tenant_id"`)}
+		return &ValidationError{Name: "tenant_id", err: errors.New(`fluent: missing required field "User.tenant_id"`)}
 	}
 	if _, ok := uc.mutation.Name(); !ok {
-		return &ValidationError{Name: "name", err: errors.New(`ent: missing required field "User.name"`)}
+		return &ValidationError{Name: "name", err: errors.New(`fluent: missing required field "User.name"`)}
 	}
 	if len(uc.mutation.TenantIDs()) == 0 {
-		return &ValidationError{Name: "tenant", err: errors.New(`ent: missing required edge "User.tenant"`)}
+		return &ValidationError{Name: "tenant", err: errors.New(`fluent: missing required edge "User.tenant"`)}
 	}
 	return nil
 }
