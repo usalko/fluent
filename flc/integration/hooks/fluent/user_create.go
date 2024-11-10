@@ -201,13 +201,13 @@ func (uc *UserCreate) defaults() error {
 // check runs all checks and user-defined validators on the builder.
 func (uc *UserCreate) check() error {
 	if _, ok := uc.mutation.Version(); !ok {
-		return &ValidationError{Name: "version", err: errors.New(`ent: missing required field "User.version"`)}
+		return &ValidationError{Name: "version", err: errors.New(`fluent: missing required field "User.version"`)}
 	}
 	if _, ok := uc.mutation.Name(); !ok {
-		return &ValidationError{Name: "name", err: errors.New(`ent: missing required field "User.name"`)}
+		return &ValidationError{Name: "name", err: errors.New(`fluent: missing required field "User.name"`)}
 	}
 	if _, ok := uc.mutation.Active(); !ok {
-		return &ValidationError{Name: "active", err: errors.New(`ent: missing required field "User.active"`)}
+		return &ValidationError{Name: "active", err: errors.New(`fluent: missing required field "User.active"`)}
 	}
 	return nil
 }

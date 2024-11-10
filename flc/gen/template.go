@@ -158,8 +158,8 @@ var (
 			Format: "runtime.go",
 		},
 		{
-			Name:   "fluenttest",
-			Format: "fluenttest/fluent_test.go",
+			Name:   "fluent_test",
+			Format: "fluent_test/fluent_test.go",
 		},
 		{
 			Name:   "runtime/pkg",

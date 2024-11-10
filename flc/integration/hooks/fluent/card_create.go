@@ -148,7 +148,7 @@ func (cc *CardCreate) defaults() error {
 	}
 	if _, ok := cc.mutation.CreatedAt(); !ok {
 		if card.DefaultCreatedAt == nil {
-			return fmt.Errorf("fluent: uninitialized card.DefaultCreatedAt (forgotten import ent/runtime?)")
+			return fmt.Errorf("fluent: uninitialized card.DefaultCreatedAt (forgotten import fluent/runtime?)")
 		}
 		v := card.DefaultCreatedAt()
 		cc.mutation.SetCreatedAt(v)
@@ -159,18 +159,18 @@ func (cc *CardCreate) defaults() error {
 // check runs all checks and user-defined validators on the builder.
 func (cc *CardCreate) check() error {
 	if _, ok := cc.mutation.Number(); !ok {
-		return &ValidationError{Name: "number", err: errors.New(`ent: missing required field "Card.number"`)}
+		return &ValidationError{Name: "number", err: errors.New(`fluent: missing required field "Card.number"`)}
 	}
 	if v, ok := cc.mutation.Number(); ok {
 		if err := card.NumberValidator(v); err != nil {
-			return &ValidationError{Name: "number", err: fmt.Errorf(`ent: validator failed for field "Card.number": %w`, err)}
+			return &ValidationError{Name: "number", err: fmt.Errorf(`fluent: validator failed for field "Card.number": %w`, err)}
 		}
 	}
 	if _, ok := cc.mutation.CreatedAt(); !ok {
-		return &ValidationError{Name: "created_at", err: errors.New(`ent: missing required field "Card.created_at"`)}
+		return &ValidationError{Name: "created_at", err: errors.New(`fluent: missing required field "Card.created_at"`)}
 	}
 	if _, ok := cc.mutation.InHook(); !ok {
-		return &ValidationError{Name: "in_hook", err: errors.New(`ent: missing required field "Card.in_hook"`)}
+		return &ValidationError{Name: "in_hook", err: errors.New(`fluent: missing required field "Card.in_hook"`)}
 	}
 	return nil
 }
