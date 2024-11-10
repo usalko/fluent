@@ -11,7 +11,7 @@ require (
 	github.com/lib/pq v1.10.9
 	github.com/mattn/go-sqlite3 v1.14.17
 	github.com/stretchr/testify v1.9.0
-	github.com/usalko/fluent v0.1.4
+	github.com/usalko/fluent v0.1.5
 	gocloud.dev v0.40.0
 )
 
