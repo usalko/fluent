@@ -297,7 +297,7 @@ func (t Type) HasOneFieldID() bool {
 
 // Label returns Gremlin label name of the node/type.
 func (t Type) Label() string {
-	return snake(t.Name)
+	return SnakeCase(t.Name)
 }
 
 // Table returns SQL table name of the node/type.
@@ -308,7 +308,7 @@ func (t Type) Table() string {
 	if t.schema != nil && t.schema.Config.Table != "" {
 		return t.schema.Config.Table
 	}
-	return snake(rules.Pluralize(t.Name))
+	return SnakeCase(rules.Pluralize(t.Name))
 }
 
 // EntSQL returns the EntSQL annotation if exists.
@@ -326,7 +326,7 @@ func (t Type) Package() string {
 
 // PackageDir returns the name of the package directory.
 func (t Type) PackageDir() string {
-	return snake(t.Name)
+	return SnakeCase(t.Name)
 }
 
 // PackageAlias returns local package name of a type if there is one.
@@ -1694,7 +1694,7 @@ func (f Field) StorageKey() string {
 	if f.def != nil && f.def.StorageKey != "" {
 		return f.def.StorageKey
 	}
-	return snake(f.Name)
+	return SnakeCase(f.Name)
 }
 
 // HasGoType indicate if a basic field (like string or bool)
@@ -1893,9 +1893,9 @@ func (f *Field) Ops() []Op {
 // If the edge is inverse
 func (e Edge) Label() string {
 	if e.IsInverse() {
-		return fmt.Sprintf("%s_%s", e.Owner.Label(), snake(e.Inverse))
+		return fmt.Sprintf("%s_%s", e.Owner.Label(), SnakeCase(e.Inverse))
 	}
-	return fmt.Sprintf("%s_%s", e.Owner.Label(), snake(e.Name))
+	return fmt.Sprintf("%s_%s", e.Owner.Label(), SnakeCase(e.Name))
 }
 
 // Constant returns the constant name of the edge.

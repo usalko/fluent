@@ -31,7 +31,7 @@ var (
 		"appends":       reflect.AppendSlice,
 		"order":         order,
 		"camel":         camel,
-		"snake":         snake,
+		"snake":         SnakeCase,
 		"pascal":        pascal,
 		"extend":        extend,
 		"xrange":        xrange,
@@ -195,12 +195,12 @@ func camel(s string) string {
 	return strings.ToLower(words[0]) + pascalWords(words[1:])
 }
 
-// snake converts the given struct or field name into a snake_case.
+// SnakeCase converts the given struct or field name into a snake_case.
 //
 //	Username => username
 //	FullName => full_name
 //	HTTPCode => http_code
-func snake(inputString string) string {
+func SnakeCase(inputString string) string {
 	if len(inputString) == 0 {
 		return ""
 	}
@@ -221,9 +221,6 @@ func snake(inputString string) string {
 	return result.String()
 }
 
-// Export
-func SnakeCase(inputString string) string { return snake(inputString) }
-
 // receiver returns the receiver name of the given type.
 //
 //	[]T       => t
@@ -233,7 +230,7 @@ func SnakeCase(inputString string) string { return snake(inputString) }
 func receiver(s string) (r string) {
 	// Trim invalid tokens for identifier prefix.
 	s = strings.Trim(s, "[]*&0123456789")
-	parts := strings.Split(snake(s), "_")
+	parts := strings.Split(SnakeCase(s), "_")
 	min := len(parts[0])
 	for _, w := range parts[1:] {
 		if len(w) < min {

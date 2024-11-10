@@ -424,7 +424,7 @@ func (g *Graph) resolve(t *Type) error {
 			table := t.Table()
 			// Name the foreign-key column in a format that wouldn't change even if an inverse
 			// edge is dropped (or added). The format is: "<Edge-Owner>_<Edge-Name>".
-			column := fmt.Sprintf("%s_%s", e.Type.Label(), snake(ref.Name))
+			column := fmt.Sprintf("%s_%s", e.Type.Label(), SnakeCase(ref.Name))
 			switch a, b := ref.Unique, e.Unique; {
 			// If the relation column is in the inverse side/table. The rule is simple, if assoc is O2M,
 			// then inverse is M2O and the relation is in its table.
@@ -477,7 +477,7 @@ func (g *Graph) resolve(t *Type) error {
 				e.Rel.Table = e.Type.Table()
 			}
 			if !e.M2M() {
-				e.Rel.Columns = []string{fmt.Sprintf("%s_%s", t.Label(), snake(e.Name))}
+				e.Rel.Columns = []string{fmt.Sprintf("%s_%s", t.Label(), SnakeCase(e.Name))}
 			}
 		}
 	}
@@ -974,7 +974,7 @@ func (g *Graph) templates() (*Template, []GraphTemplate) {
 				// the builtin templates, generate it in a new file.
 				external = append(external, GraphTemplate{
 					Name:   name,
-					Format: snake(name) + ".go",
+					Format: SnakeCase(name) + ".go",
 					Skip:   rootT.condition,
 				})
 				roots[name] = struct{}{}
@@ -991,7 +991,7 @@ func (g *Graph) templates() (*Template, []GraphTemplate) {
 		}
 		external = append(external, GraphTemplate{
 			Name:   name,
-			Format: snake(name) + ".go",
+			Format: SnakeCase(name) + ".go",
 		})
 	}
 	for _, f := range g.Features {

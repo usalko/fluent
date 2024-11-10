@@ -200,7 +200,7 @@ func ({{ $receiver }} *{{ $onebuilder }}) ExecX(ctx context.Context) {
 		return {{ $receiver }}
 	}
 	{{ if not $e.Unique }}
-		{{ $p := snake (printf "%.1s" $e.Type.Name) }}
+		{{ $p := snake (printf "%.2s" $e.Type.Name) }}
 		{{/* if the name of the parameter conflicts with the receiver name */}}
 		{{ if eq $p $receiver }} {{ $p = "v" }} {{ end }}
 		{{ $idsFunc := print "Remove" (singular $e.Name | pascal) "IDs" }}
