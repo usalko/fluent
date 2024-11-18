@@ -5,7 +5,7 @@ title: Generating Schemas
 
 ## Introduction
 
-To facilitate the creation of tooling that generates `ent.Schema`s programmatically, `ent` supports the manipulation of
+To facilitate the creation of tooling that generates `ent.Schema`s programmatically, `fluent` supports the manipulation of
 the `schema/` directory using the `github.com/usalko/fluent/schemast` package.
 
 ## API
@@ -182,7 +182,7 @@ func (Team) Annotations() []schema.Annotation {
 
 ### Working with Edges
 
-Edges are defined in `ent` this way:
+Edges are defined in `fluent` this way:
 
 ```go
 edge.To("edge_name", OtherSchema.Type)

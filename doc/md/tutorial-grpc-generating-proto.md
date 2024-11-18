@@ -35,7 +35,7 @@ func (User) Fields() []fluent.Field {
 }
 ```
 
-Notice that we did not start our field numbers from 1, this is because `ent` implicitly creates the `ID` field for the entity, and that field is automatically assigned the number 1.  We can now generate our protobuf message type definitions. To do that, we will add to `ent/generate.go` a `go:generate` directive that invokes the `entproto` command-line tool. It should now look like this:
+Notice that we did not start our field numbers from 1, this is because `fluent` implicitly creates the `ID` field for the entity, and that field is automatically assigned the number 1.  We can now generate our protobuf message type definitions. To do that, we will add to `ent/generate.go` a `go:generate` directive that invokes the `entproto` command-line tool. It should now look like this:
 
 ```go title="fluent/generate.go"
 package fluent

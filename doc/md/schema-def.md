@@ -67,7 +67,7 @@ annotation as mentioned [here](schema-annotations.md#custom-table-name).
 ## It's Just Another ORM
 
 If you are used to the definition of relations over edges, that's fine.
-The modeling is the same. You can model with `ent` whatever you can model
+The modeling is the same. You can model with `fluent` whatever you can model
 with other traditional ORMs.
 There are many examples in this website that can help you get started
 in the [Edges](schema-edges.mdx) section.

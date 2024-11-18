@@ -5,8 +5,8 @@ title: Introduction
 
 ## Installation
 
-The project comes with a codegen tool called `ent`. In order to install
-`ent` run the following command:
+The project comes with a codegen tool called `fluent`. In order to install
+`fluent` run the following command:
 
 ```bash
 go get github.com/usalko/fluent/cmd/fluent
@@ -21,8 +21,8 @@ go run -mod=mod github.com/usalko/fluent/cmd/fluent new User Pet
 ```
 
 `init` will create the 2 schemas (`user.go` and `pet.go`) under the `ent/schema` directory.
-If the `ent` directory does not exist, it will create it as well. The convention
-is to have an `ent` directory under the root directory of the project.
+If the `fluent` directory does not exist, it will create it as well. The convention
+is to have an `fluent` directory under the root directory of the project.
 
 ## Generate Assets
 
@@ -44,20 +44,20 @@ The `generate` command generates the following assets for the schemas:
 - A `migrate` package for SQL dialects. See [Migration](migrate.md) for more info.
 - A `hook` package for adding mutation middlewares. See [Hooks](hooks.md) for more info.
 
-## Version Compatibility Between `flc` And `ent`
+## Version Compatibility Between `flc` And `fluent`
 
-When working with `ent` CLI in a project, you want to make sure the version being
-used by the CLI is **identical** to the `ent` version used by your project.
+When working with `fluent` CLI in a project, you want to make sure the version being
+used by the CLI is **identical** to the `fluent` version used by your project.
 
 One of the options for achieving this is asking `go generate` to use the version
-mentioned in the `go.mod` file when running `ent`. If your project does not use
+mentioned in the `go.mod` file when running `fluent`. If your project does not use
 [Go modules](https://github.com/golang/go/wiki/Modules#quick-start), setup one as follows:
 
 ```console
 go mod init <project>
 ```
 
-And then, re-run the following command in order to add `ent` to your `go.mod` file:
+And then, re-run the following command in order to add `fluent` to your `go.mod` file:
 
 ```console
 go get github.com/usalko/fluent/cmd/fluent
@@ -72,7 +72,7 @@ package fluent
 ```
 
 Finally, you can run `go generate ./fluent` from the root directory of your project
-in order to run `ent` code generation on your project schemas.
+in order to run `fluent` code generation on your project schemas.
 
 ## Code Generation Options
 
@@ -99,12 +99,12 @@ Flags:
 
 ## Storage Options
 
-`ent` can generate assets for both SQL and Gremlin dialect. The default dialect is SQL.
+`fluent` can generate assets for both SQL and Gremlin dialect. The default dialect is SQL.
 
 ## External Templates
 
-`ent` accepts external Go templates to execute. If the template name already defined by
-`ent`, it will override the existing one. Otherwise, it will write the execution output to
+`fluent` accepts external Go templates to execute. If the template name already defined by
+`fluent`, it will override the existing one. Otherwise, it will write the execution output to
 a file with the same name as the template. The flag format supports  `file`, `dir` and `glob`
 as follows:
 
@@ -116,7 +116,7 @@ More information and examples can be found in the [external templates doc](templ
 
 ## Use `flc` as a Package
 
-Another option for running `ent` code generation is to create a file named `ent/flc.go` with the following content,
+Another option for running `fluent` code generation is to create a file named `ent/flc.go` with the following content,
 and then the `ent/generate.go` file to execute it:
 
 ```go title="fluent/flc.go"
@@ -237,7 +237,7 @@ func EnsureStructTag(name string) gen.Hook {
 
 ## External Dependencies
 
-In order to extend the generated client and builders under the `ent` package, and inject them external
+In order to extend the generated client and builders under the `fluent` package, and inject them external
 dependencies as struct fields, use the `flc.Dependency` option in your [`ent/flc.go`](#use-flc-as-a-package)
 file:
 

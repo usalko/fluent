@@ -230,7 +230,7 @@ func CreateUser(ctx context.Context, client *fluent.Client) (*fluent.User, error
 
 ## Query Your Entities
 
-`ent` generates a package for each entity schema that contains its predicates, default values, validators
+`fluent` generates a package for each entity schema that contains its predicates, default values, validators
 and additional information about storage elements (column names, primary keys, etc).
 
 ```go title="fluentdemo/start.go"
@@ -253,7 +253,7 @@ func QueryUser(ctx context.Context, client *fluent.Client) (*fluent.User, error)
 ## Add Your First Edge (Relation)
 
 In this part of the tutorial, we want to declare an edge (relation) to another entity in the schema.  
-Let's create 2 additional entities named `Car` and `Group` with a few fields. We use `ent` CLI
+Let's create 2 additional entities named `Car` and `Group` with a few fields. We use `fluent` CLI
 to generate the initial schemas:
 
 ```console
@@ -504,7 +504,7 @@ func (User) Edges() []fluent.Edge {
 }
 ```
 
-We run `ent` on the schema directory to re-generate the assets.
+We run `fluent` on the schema directory to re-generate the assets.
 ```console
 go generate ./fluent
 ```

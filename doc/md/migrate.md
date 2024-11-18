@@ -3,7 +3,7 @@ id: migrate
 title: Automatic Migration
 ---
 
-The migration support for `ent` provides the option for keeping the database schema
+The migration support for `fluent` provides the option for keeping the database schema
 aligned with the schema objects defined in `ent/migrate/schema.go` under the root of your project.
 
 ## Auto Migration
@@ -16,7 +16,7 @@ if err := client.Schema.Create(ctx); err != nil {
 }
 ```
 
-`Create` creates all database resources needed for your `ent` project. By default, `Create` works
+`Create` creates all database resources needed for your `fluent` project. By default, `Create` works
 in an *"append-only"* mode; which means, it only creates new tables and indexes, appends columns to tables or 
 extends column types. For example, changing `int` to `bigint`.
 
@@ -109,7 +109,7 @@ func main() {
 }
 ```
 
-**How does it work?** `ent` migration allocates a 1<<32 range for the IDs of each entity (table),
+**How does it work?** `fluent` migration allocates a 1<<32 range for the IDs of each entity (table),
 and store this information in a table named `ent_types`. For example, type `A` will have the range
 of `[1,4294967296)` for its IDs, and type `B` will have the range of `[4294967296,8589934592)`, etc.
 
@@ -185,10 +185,10 @@ func main() {
 
 ## Foreign Keys
 
-By default, `ent` uses foreign-keys when defining relationships (edges) to enforce correctness and consistency on the
+By default, `fluent` uses foreign-keys when defining relationships (edges) to enforce correctness and consistency on the
 database side.
 
-However, `ent` also provide an option to disable this functionality using the `WithForeignKeys` option.
+However, `fluent` also provide an option to disable this functionality using the `WithForeignKeys` option.
 You should note that setting this option to `false`, will tell the migration to not create foreign-keys in the
 schema DDL and the edges validation and clearing must be handled manually by the developer.
 

@@ -190,7 +190,7 @@ func main() {
   `entoas` is an extension that originates from `elk` and was ported into its own extension and is now the official
   generator for and opinionated OpenAPI Specification document. You can use this to rapidly develop and document a
   RESTful HTTP server. There will be a new extension released soon providing a generated implementation integrating for
-  the document provided by `entoas` using `ent`.
+  the document provided by `entoas` using `fluent`.
 
 - **[entrest](https://github.com/lrstanley/fluentrest)**
   `entrest` is an alternative to `entoas`(+ `ogent`) and `elk` (before it was discontinued). entrest generates a compliant,

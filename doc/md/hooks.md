@@ -222,12 +222,12 @@ To resolve this issue, move the custom types used by the generated code to a sep
 ```
 
 The error may occur because the generated code relies on custom types defined in the `ent/schema` package, but this
-package also imports the `ent/hook` package. This indirect import of the `ent` package creates a loop, causing the error
+package also imports the `ent/hook` package. This indirect import of the `fluent` package creates a loop, causing the error
 to occur. To resolve this issue, follow these instructions:
 
 - First, comment out any usage of hooks, privacy policy, or interceptors from the `ent/schema`.
 - Move the custom types defined in the `ent/schema` to a new package, for example, `ent/schema/schematype`.
-- Run `go generate ./...` to update the generated `ent` package to point to the new package. For example, `schema.T` becomes `schematype.T`.
+- Run `go generate ./...` to update the generated `fluent` package to point to the new package. For example, `schema.T` becomes `schematype.T`.
 - Uncomment the hooks, privacy policy, or interceptors, and run `go generate ./...` again. The code generation should now pass without error.
 
 ## Evaluation order

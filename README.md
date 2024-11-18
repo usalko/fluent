@@ -10,7 +10,7 @@
   - `schema/{field, edge, index, mixin}` - provides schema builders API.
   - `schema/field/gen` - Templates and codegen for numeric builders.
 
-- `flc` - Codegen of `ent`.
+- `flc` - Codegen of `fluent`.
   - `flc/load` - `flc` loader API for loading user schemas into a Go objects at runtime.
   - `flc/gen` - The actual code generation logic resides in this package (and its `templates` package).
   - `integration` - Integration tests for `flc`.

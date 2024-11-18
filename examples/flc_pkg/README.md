@@ -50,7 +50,7 @@ func main() {
 ```
 
 As you can see, the file is tagged with `// +build ignore` in order to not include it
-in the `ent` package. In order to run the codegen, run the file itself (using `go run`)
+in the `fluent` package. In order to run the codegen, run the file itself (using `go run`)
 or run `go generate ./fluent`. The `generate.go` file holds the `go run command`:
 
 ```go

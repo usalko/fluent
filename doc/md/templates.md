@@ -3,8 +3,8 @@ id: templates
 title: External Templates
 ---
 
-`ent` accepts external [Go templates](https://golang.org/pkg/text/template) to execute using the `--template` flag.
-If the template name already defined by `ent`, it will override the existing one. Otherwise, it will write the
+`fluent` accepts external [Go templates](https://golang.org/pkg/text/template) to execute using the `--template` flag.
+If the template name already defined by `fluent`, it will override the existing one. Otherwise, it will write the
 execution output to a file with the same name as the template. For example:
 
 `stringer.tmpl` - This template example will be written in a file named: `ent/stringer.go`.
@@ -73,13 +73,13 @@ In order to override an existing template, use its name. For example:
 
 ## Helper Templates
 
-As mentioned above, `ent` writes each template's execution output to a file named the same as the template.
+As mentioned above, `fluent` writes each template's execution output to a file named the same as the template.
 For example, the output from a template defined as `{{ define "stringer" }}` will be written to a file named
 `ent/stringer.go`.
 
-By default, `ent` writes each template declared with `{{ define "<name>" }}` to a file. However, it is sometimes
+By default, `fluent` writes each template declared with `{{ define "<name>" }}` to a file. However, it is sometimes
 desirable to define helper templates - templates that will not be invoked directly but rather be executed by other
-templates. To facilitate this use case, `ent` supports two naming formats that designate a template as a helper.
+templates. To facilitate this use case, `fluent` supports two naming formats that designate a template as a helper.
 The formats are:
 
 1\. `{{ define "helper/.+" }}` for global helper templates. For example:

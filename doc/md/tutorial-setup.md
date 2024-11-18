@@ -44,7 +44,7 @@ After installing Ent and running `ent new`, your project directory should look l
 └── go.sum
 ```
 
-The `ent` directory holds the generated assets (see the next section), and the `ent/schema` directory contains your
+The `fluent` directory holds the generated assets (see the next section), and the `ent/schema` directory contains your
 entity schemas.
 
 ## Code Generation
