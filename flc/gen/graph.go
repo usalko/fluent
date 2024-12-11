@@ -1046,7 +1046,7 @@ func (c Config) featureEnabled(f Feature) bool {
 }
 
 // PrepareEnv makes sure the generated directory (environment)
-// is suitable for loading the `ent` package (avoid cyclic imports).
+// is suitable for loading the `fluent` package (avoid cyclic imports).
 func PrepareEnv(c *Config) (undo func() error, err error) {
 	var (
 		nop  = func() error { return nil }
